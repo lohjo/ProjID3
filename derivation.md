@@ -378,7 +378,7 @@ $$[\varepsilon \rho_g c_{pg} + (1-\varepsilon)\rho_p c_{ps}]\frac{\partial T}{\p
 
 Local equilibrium assumption: $q = q^*(C, T)$. Chain rule:
 
-$$\frac{\partial q}{\partial t} = \left.\frac{\partial q^{*}}{\partial C}\right|_{T} \frac{\partial C}{\partial t} + \left.\frac{\partial q^{*}}{\partial T}\right|_{C} \frac{\partial T}{\partial t}$$
+$$\frac{\partial q}{\partial t}=\left.\frac{\partial q^{*}}{\partial C}\right|_{T}\,\frac{\partial C}{\partial t}+\left.\frac{\partial q^{*}}{\partial T}\right|_{C}\,\frac{\partial T}{\partial t}$$
 
 Define isotherm slopes:
 - $K_C \equiv \partial q^*/\partial C|_T = q_m b /(1+bC)^2$ (mol/kg per mol/m³)
