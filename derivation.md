@@ -2,18 +2,18 @@
 
 Six governing relations. Symbolic forms with term labels. No derivation yet.
 
-## 1.1 Gas-phase CO₂ mass balance
+## 1.1 Gas-phase CO2 mass balance
 
 $$\varepsilon \frac{\partial C}{\partial t} = -u \frac{\partial C}{\partial z} + D_{ax} \frac{\partial^2 C}{\partial z^2} - k_a a_p (1-\varepsilon)(C - C^*)$$
 
 | Term | Meaning |
 |---|---|
-| $\varepsilon \,\partial C/\partial t$ | Accumulation of CO₂ in gas phase per unit bed volume; voidage $\varepsilon$ converts gas-phase concentration to bed basis |
+| $\varepsilon \,\partial C/\partial t$ | Accumulation of CO2 in gas phase per unit bed volume; voidage $\varepsilon$ converts gas-phase concentration to bed basis |
 | $-u\, \partial C/\partial z$ | Net convective transport at interstitial velocity $u$ |
 | $D_{ax}\, \partial^2 C/\partial z^2$ | Axial dispersion (molecular + Taylor + tortuosity-driven mixing) |
 | $-k_a a_p (1-\varepsilon)(C - C^*)$ | Sink to solid phase via film + intraparticle resistance lumped as LDF; $(1-\varepsilon)$ scales surface area to bed volume |
 
-## 1.2 Solid-phase CO₂ mass balance (LDF)
+## 1.2 Solid-phase CO2 mass balance (LDF)
 
 $$(1-\varepsilon)\rho_p \frac{\partial q}{\partial t} = k_a a_p (1-\varepsilon)(C - C^*)$$
 
@@ -58,7 +58,7 @@ $$q_m(T) = q_{m,0}\exp(\chi/T), \qquad b(T) = b_0 \exp\!\left(\frac{|\Delta H_{a
 | $q_m(T)$ | Saturation capacity; weak T-dependence via $\chi$ (thermal expansion of monolayer sites) |
 | $b(T)$ | Affinity constant; van 't Hoff form. Convention: $\Delta H_{ads}$ entered as positive magnitude → $b$ decreases with $T$ as required for exothermic adsorption |
 
-[ASSUMPTION: single-site Langmuir adequate for amine-functionalised silica at low partial pressures. Violated at very high CO₂ loading where Toth or Sips fit better.]
+[ASSUMPTION: single-site Langmuir adequate for amine-functionalised silica at low partial pressures. Violated at very high CO2 loading where Toth or Sips fit better.]
 
 ## 1.6 Rankine–Hugoniot thermal front velocity
 
@@ -74,7 +74,7 @@ $$v_{th}^{(0)} = \frac{u\,\rho_g c_{pg}}{\rho_g c_{pg} + \frac{1-\varepsilon}{\v
 
 # PHASE 2 — Natural Flow Reasoning
 
-## 2.1 Gas-phase CO₂ mass balance
+## 2.1 Gas-phase CO2 mass balance
 
 ### Step A — Control volume derivation
 
@@ -95,7 +95,7 @@ Divide by $A_c \Delta z$, take $\Delta z \to 0$:
 
 $$\varepsilon \frac{\partial C}{\partial t} = -u\frac{\partial C}{\partial z} + D_{ax}\frac{\partial^2 C}{\partial z^2} - k_a a_p (1-\varepsilon)(C - C^*)$$
 
-[ASSUMPTION: $u$ constant in $z$ — valid when total molar flux conserved and $C \ll C_{total}$, i.e. dilute CO₂ in N₂.]
+[ASSUMPTION: $u$ constant in $z$ — valid when total molar flux conserved and $C \ll C_{total}$, i.e. dilute CO2 in N2.]
 [ASSUMPTION: plug flow with axial dispersion lumps radial velocity profile into $D_{ax}$.]
 
 ### Step B — Term justification
@@ -104,7 +104,7 @@ $$\varepsilon \frac{\partial C}{\partial t} = -u\frac{\partial C}{\partial z} + 
 |---|---|---|---|
 | $\varepsilon \partial C/\partial t$ | + | Accumulation | $\text{(mol/m³)/s}$ ✓ |
 | $-u\partial C/\partial z$ | − front, + back of wave | Convective transport | $(\text{m/s})(\text{mol/m}^4) = \text{(mol/m³)/s}$ ✓ |
-| $D_{ax}\partial^2 C/\partial z^2$ | + at concavity | Dispersion smears front | $(\text{m²/s})(\text{mol/m}^5) = \text{(mol/m³)/s}$ ✓ |
+| $D_{ax}\partial^2 C/\partial z^2$ | + at concavity | Dispersion smears front | $(\text{m2/s})(\text{mol/m}^5) = \text{(mol/m³)/s}$ ✓ |
 | $-k_a a_p(1-\varepsilon)(C-C^*)$ | − during adsorption, + during desorption | LDF mass transfer | $(\text{m/s})(\text{m}^{-1})(\text{mol/m³}) = \text{(mol/m³)/s}$ ✓ |
 
 ### Step C — Coupling
@@ -118,7 +118,7 @@ $$\varepsilon \frac{\partial C}{\partial t} = -u\frac{\partial C}{\partial z} + 
 Inlet ($z=0$), Danckwerts:
 $$u\,C(0,t) - D_{ax}\left.\frac{\partial C}{\partial z}\right|_{z=0} = u\,C_{in}(t)$$
 
-For pure N₂ purge during regeneration: $C_{in}(t) = 0$ for $t > 0$.
+For pure N2 purge during regeneration: $C_{in}(t) = 0$ for $t > 0$.
 
 Outlet ($z=L$), Danckwerts (closed):
 $$\left.\frac{\partial C}{\partial z}\right|_{z=L} = 0$$
@@ -129,7 +129,7 @@ IC: $C(z, 0) = C_0$ (saturated bed, in gas-phase equilibrium with $q_{sat}$ at 4
 
 ---
 
-## 2.2 Solid-phase CO₂ mass balance (LDF)
+## 2.2 Solid-phase CO2 mass balance (LDF)
 
 ### Step A — Control volume derivation
 
@@ -158,7 +158,7 @@ $$\rho_p \frac{\partial q}{\partial t} = k_a a_p (C - C^*)$$
 | $(1-\varepsilon)\rho_p \partial q/\partial t$ | + during ads, − during regen | Loading change | $(\text{kg/m³})(\text{mol/kg/s}) = \text{(mol/m³)/s}$ ✓ |
 | $k_a a_p(1-\varepsilon)(C-C^*)$ | + when $C > C^*$ (driving toward solid) | Mass transfer rate | $\text{(mol/m³)/s}$ ✓ |
 
-Sign sanity for regeneration: hot bed → $C^* > C$ (Langmuir at high $T$) → RHS negative → $\partial q/\partial t < 0$ → bed loses CO₂. ✓
+Sign sanity for regeneration: hot bed → $C^* > C$ (Langmuir at high $T$) → RHS negative → $\partial q/\partial t < 0$ → bed loses CO2. ✓
 
 ### Step C — Coupling
 
@@ -205,8 +205,8 @@ $$\varepsilon \rho_g c_{pg}\frac{\partial T_g}{\partial t} = -\rho_g c_{pg} u \f
 |---|---|---|---|
 | $\varepsilon \rho_g c_{pg}\, \partial T_g/\partial t$ | + | Sensible heat accumulation | $\text{(J/m³)/s}$ ✓ |
 | $-\rho_g c_{pg} u\, \partial T_g/\partial z$ | sign of $\partial T/\partial z$ flipped | Enthalpy convection | $(\text{kg/m³})(\text{J/kg/K})(\text{m/s})(\text{K/m}) = \text{(J/m³)/s}$ ✓ |
-| $\lambda_{ax}\, \partial^2 T_g/\partial z^2$ | + at concave-up | Axial thermal dispersion | $(\text{W/m/K})(\text{K/m²}) = \text{W/m³}$ ✓ |
-| $h_f a_p(T_s - T_g)$ | + when solid hotter | Gas-solid film transfer | $(\text{W/m²/K})(\text{m}^{-1})(\text{K}) = \text{W/m³}$ ✓ |
+| $\lambda_{ax}\, \partial^2 T_g/\partial z^2$ | + at concave-up | Axial thermal dispersion | $(\text{W/m/K})(\text{K/m2}) = \text{W/m³}$ ✓ |
+| $h_f a_p(T_s - T_g)$ | + when solid hotter | Gas-solid film transfer | $(\text{W/m2/K})(\text{m}^{-1})(\text{K}) = \text{W/m³}$ ✓ |
 | $(4 h_w/d_c)(T_w - T_g)$ | + during regen ($T_w > T_g$) | Wall heating | $\text{W/m³}$ ✓ |
 
 ### Step C — Coupling
@@ -243,7 +243,7 @@ $$[\text{accum solid sensible}] = [\text{film from gas}] + [\text{heat released 
 
 - Accumulation: $(1-\varepsilon)\rho_p c_{ps}\, A_c \Delta z\, \partial T_s/\partial t$
 - Film: $h_f a_p (T_g - T_s)\, A_c \Delta z$
-- Heat of adsorption: rate of CO₂ uptake × heat per mole. Rate of moles being adsorbed per unit bed volume = $\rho_p (1-\varepsilon)\, \partial q/\partial t$. Heat released per mole adsorbed = $-\Delta H_{ads}$ (positive when exothermic). Heat released per unit volume per second:
+- Heat of adsorption: rate of CO2 uptake × heat per mole. Rate of moles being adsorbed per unit bed volume = $\rho_p (1-\varepsilon)\, \partial q/\partial t$. Heat released per mole adsorbed = $-\Delta H_{ads}$ (positive when exothermic). Heat released per unit volume per second:
 $$Q_{ads} = (-\Delta H_{ads})\,\rho_p (1-\varepsilon)\,\frac{\partial q}{\partial t}$$
 
 Divide by $A_c \Delta z$:
@@ -261,7 +261,7 @@ $$(1-\varepsilon)\rho_p c_{ps}\frac{\partial T_s}{\partial t} = h_f a_p (T_g - T
 | $h_f a_p(T_g - T_s)$ | + when gas hotter | Reverse of gas-side film term | $\text{W/m³}$ ✓ |
 | $(-\Delta H_{ads})\rho_p(1-\varepsilon)\, \partial q/\partial t$ | + during ads ($\partial q/\partial t > 0$, exotherm); − during regen ($\partial q/\partial t < 0$, endothermic) | Heat of phase change between gas & adsorbed states | $(\text{J/mol})(\text{kg/m³})(\text{mol/kg/s}) = \text{W/m³}$ ✓ |
 
-Sanity: regeneration → solid loses CO₂ → $\partial q/\partial t < 0$ → adsorption term contributes cooling → solid temperature rises only due to heat from gas (heated by wall). ✓ Matches physical expectation that breaking sorbent–CO₂ bonds requires energy input.
+Sanity: regeneration → solid loses CO2 → $\partial q/\partial t < 0$ → adsorption term contributes cooling → solid temperature rises only due to heat from gas (heated by wall). ✓ Matches physical expectation that breaking sorbent–CO2 bonds requires energy input.
 
 ### Step C — Coupling
 
@@ -411,7 +411,7 @@ Validation criterion: $|v_{sim} - v_{th}|/v_{th} < 0.15$ (Gate B in study plan).
 Scaling choices:
 - $z^\dagger = z/L$, $t^\dagger = t u/L$ (gas residence time)
 - $\hat{C} = C/C_0$, $\hat{q} = q/q_{m,0}$, $\theta_g = T_g/T_{ref}$, $\theta_s = T_s/T_{ref}$
-- $T_{ref}$ = ambient (298 K); $C_0$ = inlet CO₂ concentration during pre-loading
+- $T_{ref}$ = ambient (298 K); $C_0$ = inlet CO2 concentration during pre-loading
 
 ### F.1 Gas mass balance (non-dimensional)
 
