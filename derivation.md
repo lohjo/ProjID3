@@ -8,10 +8,10 @@ $$\varepsilon \frac{\partial C}{\partial t} = -u \frac{\partial C}{\partial z} +
 
 | Term | Meaning |
 |---|---|
-| $\varepsilon \,\partial C/\partial t$ | Accumulation of CO2 in gas phase per unit bed volume; voidage $\varepsilon$ converts gas-phase concentration to bed basis |
-| $-u\, \partial C/\partial z$ | Net convective transport at interstitial velocity $u$ |
-| $D_{ax}\, \partial^2 C/\partial z^2$ | Axial dispersion (molecular + Taylor + tortuosity-driven mixing) |
-| $-k_a a_p (1-\varepsilon)(C - C^*)$ | Sink to solid phase via film + intraparticle resistance lumped as LDF; $(1-\varepsilon)$ scales surface area to bed volume |
+| $$\varepsilon \,\partial C/\partial t$$ | Accumulation of CO2 in gas phase per unit bed volume; voidage $\varepsilon$ converts gas-phase concentration to bed basis |
+| $$-u\, \partial C/\partial z$$ | Net convective transport at interstitial velocity $u$ |
+| $$D_{ax}\, \partial^2 C/\partial z^2$$ | Axial dispersion (molecular + Taylor + tortuosity-driven mixing) |
+| $$-k_a a_p (1-\varepsilon)(C - C^*)$$ | Sink to solid phase via film + intraparticle resistance lumped as LDF; $(1-\varepsilon)$ scales surface area to bed volume |
 
 ## 1.2 Solid-phase CO2 mass balance (LDF)
 
