@@ -87,7 +87,7 @@ $$[\text{accumulation}] = [\text{in by convection}] - [\text{out by convection}]
 Term-by-term:
 
 - Accumulation: $\dfrac{\partial}{\partial t}(\varepsilon A_c \Delta z\, C)$ = $\varepsilon A_c \Delta z\, \dfrac{\partial C}{\partial t}$
-- Net convection: $A_c[(uC)|_z - (uC)|_{z+\Delta z}] \to -A_c \Delta z\, u\, \dfrac{\partial C}{\partial z}$ as $\Delta z \to 0$ (constant $u$ assumption)
+- Net convection: $A_c[(uC)|_z - (uC)|_{z+\Delta z}]$ to $-A_c \Delta z\, u\, \dfrac{\partial C}{\partial z}$ as $\Delta z \to 0$ (constant $u$ assumption)
 - Net dispersion: $A_c[(-D_{ax} \partial C/\partial z)|_z - (-D_{ax}\partial C/\partial z)|_{z+\Delta z}] \to A_c \Delta z\, D_{ax}\, \dfrac{\partial^2 C}{\partial z^2}$
 - Loss to solid: $-k_a a_p (1-\varepsilon)(C - C^*) \cdot A_c \Delta z$
 
