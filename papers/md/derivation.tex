@@ -1,0 +1,261 @@
+\documentclass[a4paper,11pt]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+
+\theoremstyle{definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
+
+\title{Coupled PDE System for One-Dimensional Packed-Bed CO\textsubscript{2} Sorbent Regeneration: A First-Principles Derivation}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We derive, from elementary conservation laws, the coupled system of partial differential equations governing thermal-swing regeneration of a CO\textsubscript{2}-laden packed sorbent bed in one spatial dimension. The model resolves separate gas-phase and solid-phase mass and energy balances, closed by a temperature-dependent Langmuir isotherm and a linear-driving-force kinetic relation. Each term is justified on physical grounds, dimensionally verified, and traced to the assumption that produces it. We obtain the zeroth-order Rankine--Hugoniot thermal front velocity under local thermal equilibrium and derive its leading correction induced by the heat of adsorption through an isotherm chain rule. Finally, we non-dimensionalise the four-PDE system, extracting six independent groups (Pe, Pe\textsubscript{h}, NTU, $\alpha$, $\Lambda$, Bi\textsubscript{w}) and identifying the limiting regimes each controls. The derivation is self-contained and is intended to serve as a reference chapter for downstream numerical and experimental work.
+\end{abstract}
+
+\maketitle
+
+\section{Physical Setting and Assumptions}
+
+We consider a vertical cylindrical column of length $L$ and internal diameter $d_c$, packed with porous sorbent particles of intrinsic density $\rho_p$ and external specific surface area $a_p$ (m$^2$ per m$^3$ of bed). The bed voidage is $\varepsilon \in (0,1)$. A dilute mixture of carbon dioxide in inert nitrogen flows axially with superficial velocity $u_s$; for the dilute, near-isobaric conditions of interest the interstitial velocity $u = u_s/\varepsilon$ is treated as constant. Adsorption is described by a single-site Langmuir isotherm with temperature-dependent parameters; interphase mass transfer is lumped into a linear-driving-force (LDF) coefficient $k_a$. The bed is heated through its lateral wall, held at temperature $T_w(t)$, with film coefficient $h_w$.
+
+\begin{assumption}\label{ass:basic}
+(i) The bed is one-dimensional in the axial coordinate $z\in[0,L]$. (ii) The gas mixture is ideal, dilute in CO\textsubscript{2}, and incompressible at the relevant pressures, so $\rho_g$, $c_{pg}$ and $u$ are constant. (iii) Sorbent particles are isothermal internally (Biot number $\ll 1$) and stationary. (iv) Wall heating is uniform along $z$ for a given $t$. (v) Pressure-volume work, viscous dissipation, and gas-phase chemical reactions are neglected.
+\end{assumption}
+
+We use the following symbols throughout: $C(z,t)$ is the gas-phase CO\textsubscript{2} molar concentration (mol\,m$^{-3}$); $q(z,t)$ is the solid loading (mol\,kg$^{-1}_{\text{sorbent}}$); $T_g$ and $T_s$ are gas and solid temperatures; $D_{ax}$ and $\lambda_{ax}$ are axial dispersion and effective thermal conductivity; $h_f$ is the gas--solid film coefficient; $\Delta H_{\text{ads}}<0$ is the molar enthalpy of adsorption (exothermic).
+
+\section{Control-Volume Derivations}
+
+Let $A_c=\pi d_c^2/4$ be the column cross-sectional area, and consider the axial slice $\Omega_{\Delta z}=[z,z+\Delta z]$ with bed volume $A_c\Delta z$, gas volume $\varepsilon A_c\Delta z$, and solid volume $(1-\varepsilon)A_c\Delta z$.
+
+\subsection{Gas-phase species balance}\label{sec:gas-mass}
+
+Conservation of CO\textsubscript{2} moles in the gas occupying $\Omega_{\Delta z}$:
+\[
+[\text{accumulation}] = [\text{net convection in}] + [\text{net dispersion in}] - [\text{transfer to solid}].
+\]
+
+The accumulation rate is $\partial_t(\varepsilon A_c\Delta z\,C)=\varepsilon A_c\Delta z\,\partial_t C$. The net convective flux into the slice is $A_c[(uC)|_z-(uC)|_{z+\Delta z}]$, which under Assumption~\ref{ass:basic}(ii) tends to $-A_c\Delta z\,u\,\partial_z C$ as $\Delta z\to 0$. Fickian axial dispersion contributes $A_c\Delta z\,D_{ax}\,\partial_{zz}C$. Finally, the LDF transfer to the solid removes $k_a a_p(1-\varepsilon)(C-C^\ast)A_c\Delta z$ moles per unit time, where $C^\ast$ is the gas concentration in equilibrium with the current local loading $q$ at the local solid temperature $T_s$. Dividing by $A_c\Delta z$ and passing to the limit yields
+\begin{equation}\label{eq:gas-mass}
+\varepsilon\,\frac{\partial C}{\partial t}
+\;=\;
+-u\,\frac{\partial C}{\partial z}
++ D_{ax}\,\frac{\partial^2 C}{\partial z^2}
+- k_a a_p(1-\varepsilon)\bigl(C-C^\ast(q,T_s)\bigr).
+\end{equation}
+
+\emph{Sign and dimensions.} For a regeneration sweep with $T_s$ elevated, $C^\ast>C$ and the LDF term is positive: gas-phase CO\textsubscript{2} grows, as required for desorption. Each term has units mol\,m$^{-3}$\,s$^{-1}$: $D_{ax}\,\partial_{zz}C$ scales as $(\mathrm{m^2\,s^{-1}})(\mathrm{mol\,m^{-3}\,m^{-2}})$, and $k_a a_p$ scales as $(\mathrm{m\,s^{-1}})(\mathrm{m^{-1}})$.
+
+\emph{Coupling.} Equation~\eqref{eq:gas-mass} couples to the solid mass balance through the LDF term and, via $C^\ast(q,T_s)$, to the solid energy balance.
+
+\emph{Boundary and initial conditions.} The physically correct inlet condition is the Danckwerts flux balance
+\begin{equation}\label{eq:dan-in}
+u\,C(0,t) - D_{ax}\,\frac{\partial C}{\partial z}\bigg|_{z=0} \;=\; u\,C_{\text{in}}(t),
+\qquad C_{\text{in}}(t)=0\ \text{for pure N\textsubscript{2} purge},
+\end{equation}
+together with the closed-end outlet
+\begin{equation}\label{eq:dan-out}
+\frac{\partial C}{\partial z}\bigg|_{z=L}=0.
+\end{equation}
+The Dirichlet inlet $C(0,t)=C_{\text{in}}(t)$ is an acceptable simplification only when $\mathrm{Pe}\gg 1$. The initial condition is $C(z,0)=C_0$, the gas-phase concentration in equilibrium with the saturated bed.
+
+\subsection{Solid-phase mass balance (LDF)}\label{sec:solid-mass}
+
+The solid is stationary, so neither convection nor dispersion contributes. Conservation of CO\textsubscript{2} moles in the solid in $\Omega_{\Delta z}$ gives
+\[
+\frac{\partial}{\partial t}\bigl[\rho_p(1-\varepsilon)A_c\Delta z\,q\bigr]
+\;=\; k_a a_p(1-\varepsilon)\bigl(C-C^\ast\bigr)A_c\Delta z,
+\]
+hence
+\begin{equation}\label{eq:solid-mass}
+\rho_p\,\frac{\partial q}{\partial t} \;=\; k_a a_p\,\bigl(C-C^\ast(q,T_s)\bigr).
+\end{equation}
+
+\emph{Consistency.} The right-hand side of \eqref{eq:solid-mass}, multiplied by $(1-\varepsilon)$, is the negative of the LDF sink in \eqref{eq:gas-mass}, so total CO\textsubscript{2} (gas $+$ solid) is conserved up to the boundary fluxes encoded in \eqref{eq:dan-in}--\eqref{eq:dan-out}. Units: $\rho_p\partial_t q\sim (\mathrm{kg\,m^{-3}})(\mathrm{mol\,kg^{-1}\,s^{-1}})=\mathrm{mol\,m^{-3}\,s^{-1}}=k_a a_p C$.
+
+\emph{Coupling.} Equation~\eqref{eq:solid-mass} appears as a source in the solid energy balance through $(-\Delta H_{\text{ads}})\partial_t q$, and its right-hand side depends on $T_s$ through $C^\ast$.
+
+\emph{Closure.} Equation~\eqref{eq:solid-mass} contains no spatial derivative of $q$, so no boundary condition is required. The initial condition is the Langmuir-saturated state $q(z,0)=q^\ast(C_0,T_0)$.
+
+\subsection{Gas-phase energy balance}
+
+Conservation of sensible enthalpy in the gas occupying $\Omega_{\Delta z}$, neglecting compressibility work and viscous dissipation:
+\[
+[\text{accum.}] = [\text{net conv.}] + [\text{axial cond.}] + [\text{from solid}] + [\text{from wall}].
+\]
+
+The wall contributes through the perimeter-to-area ratio $\pi d_c/A_c=4/d_c$, giving heat input per unit bed volume $(4h_w/d_c)(T_w-T_g)$. Repeating the slicing argument and dividing by $A_c\Delta z$,
+\begin{equation}\label{eq:gas-energy}
+\varepsilon\rho_g c_{pg}\,\frac{\partial T_g}{\partial t}
+=
+-\rho_g c_{pg} u\,\frac{\partial T_g}{\partial z}
++ \lambda_{ax}\,\frac{\partial^2 T_g}{\partial z^2}
++ h_f a_p(T_s-T_g)
++ \frac{4h_w}{d_c}(T_w-T_g).
+\end{equation}
+
+\emph{Sign and dimensions.} All terms carry units W\,m$^{-3}$. During regeneration $T_w>T_g$ and the wall term is positive, supplying heat to the gas; the film term has the sign of $T_s-T_g$, redistributing heat between phases.
+
+\emph{Coupling.} Direct coupling to the solid energy balance through $h_f a_p(T_s-T_g)$. Indirect coupling to the mass balances through the temperature dependence of $C^\ast$ in \eqref{eq:gas-mass}.
+
+\emph{Boundary and initial conditions.} Inlet Dirichlet, $T_g(0,t)=T_{\text{in}}(t)$; outlet Neumann, $\partial_z T_g|_{z=L}=0$; initial $T_g(z,0)=T_0$.
+
+\subsection{Solid-phase energy balance}\label{sec:solid-energy}
+
+The solid does not advect, and by Assumption~\ref{ass:basic}(iii) intra-particle conduction is fast, so per-volume sensible-heat accumulation balances the gas--solid film flux and the heat of adsorption. The molar rate at which CO\textsubscript{2} is captured per unit bed volume is $\rho_p(1-\varepsilon)\partial_t q$; each captured mole releases heat $-\Delta H_{\text{ads}}>0$. Hence
+\begin{equation}\label{eq:solid-energy}
+(1-\varepsilon)\rho_p c_{ps}\,\frac{\partial T_s}{\partial t}
+=
+h_f a_p(T_g-T_s)
++ (-\Delta H_{\text{ads}})\,\rho_p(1-\varepsilon)\,\frac{\partial q}{\partial t}.
+\end{equation}
+
+\emph{Sign check during regeneration.} For desorption, $\partial_t q<0$ and $-\Delta H_{\text{ads}}>0$, so the heat-of-adsorption term is negative: bond breaking absorbs energy, retarding $T_s$. Sensible heat is supplied through the film term whenever $T_g>T_s$, ultimately sourced from the wall via \eqref{eq:gas-energy}.
+
+\emph{Coupling.} Through the film term to \eqref{eq:gas-energy}; through $\partial_t q$ to \eqref{eq:solid-mass}; and through $T_s$ entering $C^\ast$ in both mass balances.
+
+\emph{Initial condition.} $T_s(z,0)=T_0$. No spatial boundary condition is required because we have neglected solid axial conduction; restoring it (e.g.\ for very high-conductivity packings) would call for $\partial_z T_s=0$ at both ends.
+
+\subsection{Langmuir closure}
+
+The single-site Langmuir model expresses local equilibrium between gas-phase concentration and solid loading at the surface temperature:
+\begin{equation}\label{eq:lang}
+q^\ast(C,T) = \frac{q_m(T)\,b(T)\,C}{1+b(T)\,C},
+\qquad
+b(T)=b_0\exp\!\left(\frac{|\Delta H_{\text{ads}}|}{RT}\right),\quad
+q_m(T)=q_{m,0}\,e^{\chi/T},
+\end{equation}
+where $\chi$ is small and is often set to zero in practice. The van't Hoff form for $b(T)$ is the equilibrium consequence of Arrhenius adsorption and desorption rate constants whose activation-energy difference equals the heat of adsorption; the convention adopted here ensures $b$ decreases with $T$, as required for an exothermic process. For use as the LDF driving variable we require the inverse,
+\begin{equation}\label{eq:Cstar}
+C^\ast(q,T) = \frac{q}{b(T)\,\bigl(q_m(T)-q\bigr)},
+\qquad q\in[0,q_m(T)).
+\end{equation}
+Equation~\eqref{eq:Cstar} is monotone in $q$ for $q<q_m(T)$, so the LDF terms in \eqref{eq:gas-mass} and \eqref{eq:solid-mass} are well posed.
+
+\section{Rankine--Hugoniot Thermal Front Velocity}\label{sec:RH}
+
+\subsection{Local thermal equilibrium limit}
+
+Set $T_g=T_s\equiv T$ (justified when the gas--solid Stanton number is large; see Section~\ref{sec:nondim}) and neglect axial conduction, wall heating, and the heat of adsorption. Adding \eqref{eq:gas-energy} and \eqref{eq:solid-energy} gives the linear hyperbolic equation
+\begin{equation}\label{eq:hyp}
+\bigl[\varepsilon\rho_g c_{pg}+(1-\varepsilon)\rho_p c_{ps}\bigr]\,\partial_t T
++ \rho_g c_{pg}\,u\,\partial_z T \;=\; 0.
+\end{equation}
+
+\begin{proposition}[Zeroth-order thermal front velocity]
+Under the assumptions above, the temperature profile propagates rigidly with celerity
+\begin{equation}\label{eq:vth0}
+v_{\mathrm{th}}^{(0)}=\frac{\rho_g c_{pg}\,u}{\varepsilon\rho_g c_{pg}+(1-\varepsilon)\rho_p c_{ps}}
+=\frac{u\,\rho_g c_{pg}}{\rho_g c_{pg}+\frac{1-\varepsilon}{\varepsilon}\,\rho_p c_{ps}}\cdot\varepsilon^{-1}\cdot\varepsilon
+=\frac{u\,\rho_g c_{pg}}{\rho_g c_{pg}+\frac{1-\varepsilon}{\varepsilon}\rho_p c_{ps}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Equation \eqref{eq:hyp} is in the conservation form $\partial_t U+\partial_z F=0$ with conserved density $U=[\varepsilon\rho_g c_{pg}+(1-\varepsilon)\rho_p c_{ps}]T$ and flux $F=\rho_g c_{pg}u\,T$. The Rankine--Hugoniot condition for any travelling jump $[\![\cdot]\!]$ is $v_{\text{shock}}=[\![F]\!]/[\![U]\!]$, which collapses to \eqref{eq:vth0} since both jumps are linear in $[\![T]\!]$. The same celerity is, equivalently, the unique characteristic speed of the linear advection equation~\eqref{eq:hyp}.
+\end{proof}
+
+The denominator is the total volumetric heat capacity of the bed, while only the gas contributes to the convective flux; the resulting retardation factor
+\(
+1+\dfrac{(1-\varepsilon)\rho_p c_{ps}}{\varepsilon\rho_g c_{pg}}
+\)
+is typically $\mathcal{O}(10^3)$ for amine-on-silica sorbents under atmospheric purge.
+
+\subsection{Heat-of-adsorption correction}
+
+Reinstate the heat of adsorption in \eqref{eq:solid-energy} and add to \eqref{eq:gas-energy}, retaining $T_g=T_s=T$:
+\begin{equation}\label{eq:hyp-ads}
+[\varepsilon\rho_g c_{pg}+(1-\varepsilon)\rho_p c_{ps}]\,\partial_t T+\rho_g c_{pg}u\,\partial_z T
+=(-\Delta H_{\text{ads}})\,\rho_p(1-\varepsilon)\,\partial_t q.
+\end{equation}
+Under the further assumption of \emph{local sorption equilibrium}, $q=q^\ast(C,T)$, so by the chain rule
+\[
+\partial_t q = K_C(C,T)\,\partial_t C + K_T(C,T)\,\partial_t T,\qquad
+K_C\!\equiv\!\frac{\partial q^\ast}{\partial C}\bigg|_T,\;
+K_T\!\equiv\!\frac{\partial q^\ast}{\partial T}\bigg|_C.
+\]
+For the Langmuir isotherm, $K_C=q_m b/(1+bC)^2>0$ and $K_T<0$ for an exothermic adsorbent (at fixed $C$, hotter surfaces hold less). Substituting into \eqref{eq:hyp-ads} and collecting $\partial_t T$ on the left,
+\begin{equation}\label{eq:effective}
+\underbrace{\bigl\{\varepsilon\rho_g c_{pg}+(1-\varepsilon)\rho_p c_{ps}+(-\Delta H_{\text{ads}})\rho_p(1-\varepsilon)(-K_T)\bigr\}}_{\displaystyle (\rho c_p)_{\text{eff}}}\,\partial_t T+\rho_g c_{pg}u\,\partial_z T
+=(-\Delta H_{\text{ads}})\rho_p(1-\varepsilon)K_C\,\partial_t C.
+\end{equation}
+The bracketed coefficient on the left exceeds the simple total heat capacity by a positive amount because $-K_T>0$. When the composition wave is slow compared with the thermal wave (the regime in which a clean thermal front exists), the right-hand side acts as a slowly varying forcing and the leading-order propagation speed is
+\begin{equation}\label{eq:vth-correction}
+v_{\mathrm{th}}=\frac{\rho_g c_{pg}u}{(\rho c_p)_{\text{eff}}}
+= v_{\mathrm{th}}^{(0)}\cdot\frac{1}{1+\Lambda_{\text{eff}}},
+\qquad
+\Lambda_{\text{eff}}\equiv\frac{(-\Delta H_{\text{ads}})\rho_p(1-\varepsilon)(-K_T)}{\varepsilon\rho_g c_{pg}+(1-\varepsilon)\rho_p c_{ps}}.
+\end{equation}
+
+\begin{remark}
+Equation \eqref{eq:vth0} is the zeroth-order estimate; \eqref{eq:vth-correction} is its first correction under local equilibrium (NTU $\to\infty$) and local thermal equilibrium (St $\to\infty$). The LDF mechanism in \eqref{eq:solid-mass} broadens but does not, to leading order, displace the front position predicted by \eqref{eq:vth-correction}.
+\end{remark}
+
+\section{Dimensionless Form}\label{sec:nondim}
+
+We non-dimensionalise with
+\[
+z^\dagger=z/L,\quad t^\dagger=u t/L,\quad \hat C=C/C_0,\quad \hat q=q/q_{m,0},\quad
+\theta_g=T_g/T_{\text{ref}},\quad \theta_s=T_s/T_{\text{ref}},
+\]
+where $C_0$ is the saturating gas concentration of the pre-loading state and $T_{\text{ref}}$ is the ambient temperature. Substituting and dividing each PDE by an appropriate reference flux yields the canonical system
+
+\begin{align}
+\frac{\partial\hat C}{\partial t^\dagger}
+&=-\frac{1}{\varepsilon}\frac{\partial\hat C}{\partial z^\dagger}
++\frac{1}{\varepsilon\,\mathrm{Pe}}\frac{\partial^2\hat C}{\partial z^{\dagger 2}}
+-\mathrm{NTU}\,(\hat C-\hat C^\ast),
+\label{eq:nd-gas-mass}\\[2pt]
+\alpha\,\frac{\partial \hat q}{\partial t^\dagger}
+&=\mathrm{NTU}\,(\hat C-\hat C^\ast),
+\label{eq:nd-solid-mass}\\[2pt]
+\frac{\partial\theta_g}{\partial t^\dagger}
+&=-\frac{1}{\varepsilon}\frac{\partial\theta_g}{\partial z^\dagger}
++\frac{1}{\varepsilon\,\mathrm{Pe}_h}\frac{\partial^2\theta_g}{\partial z^{\dagger 2}}
++\mathrm{St}\,(\theta_s-\theta_g)
++\mathrm{Bi}_w\,(\theta_w-\theta_g),
+\label{eq:nd-gas-energy}\\[2pt]
+\frac{\partial\theta_s}{\partial t^\dagger}
+&=\mathrm{St}_s\,(\theta_g-\theta_s)+\Lambda\,\frac{\partial \hat q}{\partial t^\dagger},
+\label{eq:nd-solid-energy}
+\end{align}
+with the dimensionless groups
+\begin{equation}\label{eq:groups}
+\begin{aligned}
+\mathrm{Pe}&=\frac{uL}{D_{ax}}, &
+\mathrm{Pe}_h&=\frac{\rho_g c_{pg} u L}{\lambda_{ax}}, &
+\mathrm{NTU}&=\frac{k_a a_p(1-\varepsilon)L}{\varepsilon u},\\
+\alpha&=\frac{(1-\varepsilon)\rho_p q_{m,0}}{\varepsilon C_0}, &
+\Lambda&=\frac{(-\Delta H_{\text{ads}})\,q_{m,0}}{c_{ps}\,T_{\text{ref}}}, &
+\mathrm{Bi}_w&=\frac{4 h_w L}{\varepsilon\rho_g c_{pg} u\,d_c},\\
+\mathrm{St}&=\dfrac{h_f a_p L}{\varepsilon\rho_g c_{pg}u}, &
+\mathrm{St}_s&=\dfrac{h_f a_p L}{(1-\varepsilon)\rho_p c_{ps}\,u}.
+\end{aligned}
+\end{equation}
+
+A brief interpretation:
+\begin{itemize}
+\item $\mathrm{Pe}$ measures axial convection against species dispersion; large Pe sharpens mass fronts. Order of magnitude $50$--$500$ in laboratory columns.
+\item $\mathrm{Pe}_h$ is the thermal analogue and similarly governs thermal-front sharpness; $10$--$200$.
+\item $\mathrm{NTU}$ is the number of mass-transfer units; the limit $\mathrm{NTU}\to\infty$ enforces local sorption equilibrium ($\hat C\to\hat C^\ast$). Typical values $1$--$20$.
+\item $\alpha$ is the capacity ratio of solid to gas reservoirs. For dilute DAC inlet conditions $\alpha\sim 10^2$--$10^4$, leading to long cycle times.
+\item $\Lambda$ is the heat-of-adsorption number; $\Lambda\to 0$ decouples thermal from compositional dynamics, while $\Lambda\sim 1$ produces the wave self-sharpening (ads.) or self-broadening (des.) characteristic of nonlinear chromatographic fronts.
+\item $\mathrm{Bi}_w$ measures wall heating against convective sweep. $\mathrm{Bi}_w\to\infty$ gives the isothermal-wall limit; $\mathrm{Bi}_w\to 0$ the adiabatic limit. Note $\mathrm{Bi}_w\propto u^{-1}$: increasing the purge flow weakens wall heating per unit gas, a key trade-off for energy-optimal regeneration.
+\item $\mathrm{St}$ and $\mathrm{St}_s$ control gas--solid thermal coupling; $\mathrm{St}\to\infty$ collapses \eqref{eq:nd-gas-energy}--\eqref{eq:nd-solid-energy} to the single-temperature model whose hyperbolic limit yielded \eqref{eq:vth0}.
+\end{itemize}
+
+The non-dimensional initial conditions are $\hat C(z^\dagger,0)=1$, $\hat q(z^\dagger,0)=q^\ast(C_0,T_0)/q_{m,0}$, and $\theta_g(z^\dagger,0)=\theta_s(z^\dagger,0)=1$; non-dimensional Danckwerts inlet and Neumann outlet conditions follow from \eqref{eq:dan-in}--\eqref{eq:dan-out} and the corresponding statements for $\theta_g$.
+
+\section{Summary}
+
+The system \eqref{eq:gas-mass}, \eqref{eq:solid-mass}, \eqref{eq:gas-energy}, \eqref{eq:solid-energy}, closed by \eqref{eq:lang}--\eqref{eq:Cstar} and equipped with \eqref{eq:dan-in}--\eqref{eq:dan-out} and the analogous thermal conditions, fully describes 1-D packed-bed regeneration under Assumption~\ref{ass:basic}. Each PDE was derived from a single conservation law on a thin axial slice; each term was traced to a definite physical mechanism and dimensionally checked. The Rankine--Hugoniot analysis of Section~\ref{sec:RH} provides a closed-form, parameter-free benchmark for any numerical solver: at the local-equilibrium limit, the simulated thermal front must propagate at $v_{\text{th}}^{(0)}$ (zeroth order) or $v_{\text{th}}=v_{\text{th}}^{(0)}/(1+\Lambda_{\text{eff}})$ (first correction), with all other deviations attributable to LDF kinetics, axial dispersion, or finite Stanton number. The non-dimensional groups in \eqref{eq:groups} parametrise the limiting regimes and provide a rational basis for designing parametric studies in $T_{\text{regen}}$, purge flow, and bed geometry.
+
+\end{document}
