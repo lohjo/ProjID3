@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:sans-serif;line-height:1.75;font-size:15px;color:#1a1a18;background:#fff;padding:2rem 2.5rem 3rem}
+@media(prefers-color-scheme:dark){body{background:#1a1a18;color:#d4d2c8}}
+h1{font-size:20px;font-weight:500;margin:0 0 .25rem}
+h2{font-size:17px;font-weight:500;margin:2.2rem 0 .6rem}
+h3{font-size:15px;font-weight:500;margin:1.6rem 0 .4rem}
+.sub{font-size:13px;color:#888;margin:0 0 1.8rem}
+.dm{margin:.7rem 0 1rem;overflow-x:auto}
+.sep{border:none;border-top:.5px solid rgba(0,0,0,.12);margin:2rem 0}
+@media(prefers-color-scheme:dark){.sep{border-color:rgba(255,255,255,.1)}}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:4px;margin-left:10px;vertical-align:middle}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:1.2rem 0}
+.cd{background:rgba(0,0,0,.03);border:.5px solid rgba(0,0,0,.1);border-radius:8px;padding:.85rem 1rem}
+@media(prefers-color-scheme:dark){.cd{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}}
+.cl{font-size:11px;font-weight:500;color:#888;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.35rem}
+.wbox{background:#fef3e2;border:.5px solid #d48a07;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0;font-size:14px;line-height:1.7}
+@media(prefers-color-scheme:dark){.wbox{background:#2a1f05;border-color:#7a5000;color:#d4a843}}
+.ibox{background:rgba(0,0,0,.03);border:.5px solid rgba(0,0,0,.08);border-radius:8px;padding:.85rem 1.1rem;margin:1.5rem 0}
+@media(prefers-color-scheme:dark){.ibox{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}}
+.cs{width:100%;border-radius:8px;background:rgba(0,0,0,.025);border:.5px solid rgba(0,0,0,.09);display:block;margin:.5rem 0}
+@media(prefers-color-scheme:dark){.cs{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.09)}}
+.lg{font-size:12px;color:#888;margin:.3rem 0 0}
+li{margin-left:1.2rem;margin-bottom:.2rem}
+ul{margin:.4rem 0 .7rem}
+</style>
+</head>
+<body>
+
+<h1>Evans §3.1–3.2 · u<sub>t</sub> + c(x) u<sub>x</sub> = 0</h1>
+<p class="sub">Method of characteristics · Three textbook problems · The caustic warning for non-constant carrier velocity</p>
+
+<!-- ─── FRAMEWORK ─── -->
+<h2 style="margin-top:.3rem">1 · Framework: method of characteristics</h2>
+<p>We solve the Cauchy problem</p>
+<div class="dm">\[ u_t + c(x)\,u_x = 0,\quad x\in\mathbb{R},\;t>0, \qquad u(x,0)=g(x). \tag{P}\]</div>
+<p>The left side is the directional derivative of \(u\) along the vector \((1,\,c(x))\in\mathbb{R}^2_{t,x}\). We seek curves \((t,\,x(t))\) along which \(u\) is constant; the tangent must be proportional to \((1,c(x))\). The full <strong>characteristic system</strong> is</p>
+<div class="dm">\[\dot t = 1,\qquad \dot x = c(x), \qquad \dot u = 0. \tag{char}\]</div>
+<p>Since \(\dot u=0\), the solution is</p>
+<div class="dm">\[\boxed{u(x,t) = g\!\left(x_0(x,t)\right),}\]</div>
+<p>where \(x_0(x,t)\) is the <em>foot</em> of the characteristic: the unique \(x_0\) such that the solution of the base ODE \(dx/dt=c(x),\; x(0)=x_0\) satisfies \(x(t;\,x_0)=x\).</p>
+
+<h3>Jacobian and the compression criterion</h3>
+<p>Set \(J(t;x_0)=\partial x(t;x_0)/\partial x_0\). Differentiating the ODE in \(x_0\):</p>
+<div class="dm">\[\frac{dJ}{dt}=c'\!\left(x(t;x_0)\right)J,\quad J(0)=1 \;\;\Longrightarrow\;\; J(t;x_0)=\exp\!\Bigl(\int_0^t c'\!\left(x(s;x_0)\right)ds\Bigr).\]</div>
+<p>The spatial gradient satisfies \(u_x = g'(x_0)/J\). A <em>caustic</em> (characteristic fold) occurs where \(J\to 0\):
+<ul>
+<li>\(c'(\cdot)>0\) along the characteristic \(\Rightarrow\) \(J\nearrow\infty\): characteristics spread, gradients dilute.</li>
+<li>\(c'(\cdot)<0\) along the characteristic \(\Rightarrow\) \(J\searrow 0\): characteristics compress, gradients concentrate.</li>
+</ul>
+
+<div class="sep"></div>
+
+<!-- ─── CASE 1 ─── -->
+<h2>Case 1 · \(c=1\) <span class="badge" style="background:#e1f5ee;color:#0f6e56">uniform translation</span></h2>
+
+<p><strong>Characteristic ODE.</strong> \(\;dx/dt=1\) with \(x(0)=x_0\) gives \(x(t;x_0)=x_0+t\). Inverting: \(x_0=x-t\).</p>
+
+<p><strong>Solution.</strong></p>
+<div class="dm">\[\boxed{u(x,t)=g(x-t).}\]</div>
+<p>The initial profile \(g\) translates rigidly to the right at speed 1. The Jacobian \(J=\exp(\int_0^t 0\,ds)=1\) is identically 1; characteristics are parallel straight lines and the map \(x_0\mapsto x_0+t\) is an isometry for every \(t\). The gradient \(u_x(x,t)=g'(x-t)\) is preserved in amplitude for all time — no compression, no expansion.</p>
+
+<svg id="sv1" class="cs" viewBox="0 0 680 185" role="img" aria-label="Parallel characteristics for c=1"></svg>
+<p class="lg">Fig. 1 · Parallel characteristics in the (t, x)-plane for \(c=1\); initial positions \(x_0\in\{-1,0,1,2,3\}\). Jacobian J ≡ 1 throughout.</p>
+
+<div class="sep"></div>
+
+<!-- ─── CASE 2 ─── -->
+<h2>Case 2 · \(c=x\) <span class="badge" style="background:#e6f1fb;color:#185fa5">expanding transport</span></h2>
+
+<p><strong>Characteristic ODE.</strong> \(\;dx/dt=x\) with \(x(0)=x_0\) gives \(x(t;x_0)=x_0 e^t\). Inverting: \(x_0=xe^{-t}\).</p>
+
+<p><strong>Solution.</strong></p>
+<div class="dm">\[\boxed{u(x,t)=g\!\left(xe^{-t}\right).}\]</div>
+<p>Since \(c'(x)=1>0\) everywhere, the Jacobian \(J=e^t\to\infty\). Characteristics from distinct \(x_0\) spread exponentially and never cross. The origin \(x_0=0\) is the unique fixed characteristic. The gradient \(u_x=g'(xe^{-t})\cdot e^{-t}\) <em>decays</em>: expanding transport dilutes the profile amplitude over time.</p>
+
+<svg id="sv2" class="cs" viewBox="0 0 680 185" role="img" aria-label="Diverging characteristics for c=x"></svg>
+<p class="lg">Fig. 2 · Exponentially diverging characteristics for \(c=x\); five values \(x_0\in\{0.25,0.5,1,1.5,2\}\). J = eᵗ → ∞.</p>
+
+<div class="sep"></div>
+
+<!-- ─── CASE 3 ─── -->
+<h2>Case 3 · \(c=\sin x\) <span class="badge" style="background:#faeeda;color:#633806">compressive / caustic</span></h2>
+
+<p>The ODE \(dx/dt=\sin x\) is autonomous with fixed points at \(x=n\pi\). Stability is governed by \(c'(n\pi)=\cos(n\pi)=(-1)^n\):</p>
+<ul>
+<li><strong>Unstable</strong> (\(n\) even, \(x=0,2\pi,\ldots\)): \(c'=+1>0\), characteristics diverge.</li>
+<li><strong>Stable</strong> (\(n\) odd, \(x=\pi,3\pi,\ldots\)): \(c'=-1<0\), characteristics converge — <em>here the caustic lives</em>.</li>
+</ul>
+
+<p><strong>Separating variables</strong> (for \(x\in(0,\pi)\), so \(\sin x>0\)):</p>
+<div class="dm">\[\int\frac{dx}{\sin x}=\int\csc x\,dx = \ln\!\left|\tan\tfrac{x}{2}\right| = t + C.\]</div>
+<p>To verify the antiderivative: \(\tfrac{d}{dx}\ln|\tan(x/2)|= \tfrac{1}{\tan(x/2)}\cdot\tfrac{1}{2}\sec^2(x/2)=\tfrac{1}{2\sin(x/2)\cos(x/2)}=\tfrac{1}{\sin x}=\csc x\). ✓</p>
+
+<p>Applying \(x(0)=x_0\):</p>
+<div class="dm">\[\ln\!\left|\tan\tfrac{x}{2}\right|-\ln\!\left|\tan\tfrac{x_0}{2}\right|=t \;\;\Longrightarrow\;\; \tan\tfrac{x(t)}{2}=e^t\tan\tfrac{x_0}{2}.\]</div>
+<p>Inverting (for \(x\in(0,\pi)\)):</p>
+<div class="dm">\[x_0(x,t)=2\arctan\!\Bigl(e^{-t}\tan\tfrac{x}{2}\Bigr).\]</div>
+
+<p><strong>Solution.</strong></p>
+<div class="dm">\[\boxed{u(x,t)=g\!\!\left(2\arctan\!\Bigl(e^{-t}\tan\tfrac{x}{2}\Bigr)\right).}\]</div>
+<p>As \(t\to\infty\): \(e^{-t}\tan(x/2)\to 0\), so \(x_0\to 0\) — all points in \((0,\pi)\) trace back toward the unstable fixed point \(x=0\) as we run time backwards. Equivalently, running <em>forward</em>, all of \((0,\pi)\) is funnelled toward \(x=\pi\).</p>
+
+<h3>Jacobian and gradient blow-up</h3>
+<p>Differentiate the characteristic relation \(\tan(x/2)=e^t\tan(x_0/2)\) with respect to \(x_0\):</p>
+<div class="dm">\[\tfrac{1}{2}\sec^2\!\tfrac{x}{2}\cdot J = \tfrac{1}{2}e^t\sec^2\!\tfrac{x_0}{2} \;\;\Longrightarrow\;\; J=\frac{e^t\sec^2(x_0/2)}{1+e^{2t}\tan^2(x_0/2)}.\]</div>
+<p>For large \(t\) with \(x_0\in(0,\pi)\) fixed, the denominator is dominated by the \(e^{2t}\) term:</p>
+<div class="dm">\[J\;\sim\;\frac{e^t\sec^2(x_0/2)}{e^{2t}\tan^2(x_0/2)}=\frac{e^{-t}}{\sin^2(x_0/2)}\;\longrightarrow\;0.\]</div>
+<p>Hence — even for smooth \(g\) — the spatial gradient <em>blows up exponentially</em>:</p>
+<div class="dm">\[u_x(x,t)=\frac{g'(x_0)}{J}\;\sim\;g'(x_0)\,\sin^2\!\tfrac{x_0}{2}\cdot e^t\;\longrightarrow\;\infty.\]</div>
+<p>The solution \(u\) itself stays bounded (it equals \(g(x_0)\)), but the gradient concentrates without bound. This is the linear precursor of the caustic.</p>
+
+<svg id="sv3" class="cs" viewBox="0 0 680 215" role="img" aria-label="Converging characteristics for c=sin(x)"></svg>
+<p class="lg">Fig. 3 · Characteristics converge to x = π (dashed) from below (purple) and above (coral). Both families are funnelled into the stable manifold. Jacobian J → 0.</p>
+
+<div class="sep"></div>
+
+<!-- ─── COMPARISON ─── -->
+<h2>4 · Jacobian comparison and the caustic warning</h2>
+
+<div class="g3">
+  <div class="cd">
+    <p class="cl">c = 1</p>
+    <p style="font-size:13.5px;line-height:1.6">\(J\equiv 1\) for all time. Isometric. Gradient amplitude preserved exactly. No compression anywhere. Caustic impossible.</p>
+  </div>
+  <div class="cd">
+    <p class="cl">c = x</p>
+    <p style="font-size:13.5px;line-height:1.6">\(J=e^t\to\infty\). Expanding. Gradients dilute over time. Characteristics diverge; no fold. Caustic impossible.</p>
+  </div>
+  <div class="cd" style="border-color:#d48a07">
+    <p class="cl" style="color:#8a5a00">c = sin x ⚠</p>
+    <p style="font-size:13.5px;line-height:1.6">\(J\to 0\) near \(x=\pi\). Compressive. Gradients grow exponentially. Proto-caustic even in the linear regime.</p>
+  </div>
+</div>
+
+<svg id="svJ" class="cs" viewBox="0 0 680 210" role="img" aria-label="Jacobian J(t) comparison for the three cases"></svg>
+<p class="lg">Fig. 4 · Jacobian J(t) for the three cases. The c = sin x curve (x₀ = 1) rises briefly while c′ > 0 (x < π/2), then decays exponentially once the characteristic enters the compressive zone (π/2, π) where c′ = cos x &lt; 0.</p>
+
+<div class="wbox">
+<strong>The caustic warning.</strong> For \(c(x)=\sin x\) the carrier speed satisfies \(c'(x)=\cos x<0\) throughout \((\pi/2,\,3\pi/2)\). A wide band of initial data is focused toward \(x=\pi\) — like light converging through a lens — compressing the characteristic pencil into a single spatial ray. For the purely linear PDE the solution \(u=g(x_0)\) stays bounded, but the gradient \(u_x=g'(x_0)/J\) grows exponentially even before any nonlinear term is present.
+<br><br>
+As soon as a nonlinear adsorption term is appended, e.g.
+\[ u_t + \sin(x)\,u_x + n(u)\,u_x = 0, \]
+the shock formation time is controlled by the <em>total</em> compression rate \(c'(x)+n'(u)\,u_x\). The linear carrier already contributes \(c'(x)=-1\) in the compressive zone, so the effective shock time is
+\[t^*=\frac{-1}{\min_{x_0}\bigl[c'(x_0)+n'(g(x_0))\,g'(x_0)\bigr]}\]
+which is <strong>strictly shorter</strong> than the estimate obtained by ignoring the \(c'\) term. Caustics (shocks) form <strong>inside the column</strong> — well before the exit boundary — even for a weak adsorption isotherm. This is a warning specific to non-constant carrier velocity: the linear geometry of the flow is itself compressive, and nonlinearity needs only a small push to trigger finite-time blow-up.
+</div>
+
+<div class="ibox">
+<table style="width:100%;font-size:13px;border-collapse:collapse">
+<thead><tr style="border-bottom:.5px solid rgba(0,0,0,.1)">
+  <th style="text-align:left;padding:5px 8px;font-weight:500;white-space:nowrap">c(x)</th>
+  <th style="text-align:left;padding:5px 8px;font-weight:500">Solution u(x,t)</th>
+  <th style="text-align:left;padding:5px 8px;font-weight:500">Jacobian J</th>
+  <th style="text-align:left;padding:5px 8px;font-weight:500">Character</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:5px 8px;white-space:nowrap">\(1\)</td>
+  <td style="padding:5px 8px">\(g(x-t)\)</td>
+  <td style="padding:5px 8px">\(1\)</td>
+  <td style="padding:5px 8px">rigid translation</td>
+</tr>
+<tr style="background:rgba(0,0,0,.02)">
+  <td style="padding:5px 8px;white-space:nowrap">\(x\)</td>
+  <td style="padding:5px 8px">\(g(xe^{-t})\)</td>
+  <td style="padding:5px 8px">\(e^t\)</td>
+  <td style="padding:5px 8px">expanding, diluting</td>
+</tr>
+<tr>
+  <td style="padding:5px 8px;white-space:nowrap">\(\sin x\)</td>
+  <td style="padding:5px 8px">\(g\!\left(2\arctan(e^{-t}\tan\tfrac{x}{2})\right)\)</td>
+  <td style="padding:5px 8px">\(\to 0\)</td>
+  <td style="padding:5px 8px">compressive, caustic</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+renderMathInElement(document.body,{
+  delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],
+  throwOnError:false
+});
+
+// ─── SVG helpers ────────────────────────────────────────────
+const dark=matchMedia('(prefers-color-scheme:dark)').matches;
+const C={
+  ax:dark?'#555':'#aaa',txt:dark?'#777':'#777',
+  grid:dark?'#2a2a28':'#f2f0eb',
+  pi:dark?'#ef9f27':'#9a6200',
+  c1:dark?'#1d9e75':'#0f6e56',
+  c2:dark?'#378add':'#185fa5',
+  c3lo:dark?'#7f77dd':'#534ab7',
+  c3hi:dark?'#d85a30':'#993c1d',
+  jc1:dark?'#1d9e75':'#0f6e56',
+  jc2:dark?'#378add':'#185fa5',
+  jc3:dark?'#d85a30':'#993c1d',
+};
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs,parent){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v] of Object.entries(attrs))e.setAttribute(k,v);
+  if(parent)parent.appendChild(e);
+  return e;
+}
+function ln(svg,x1,y1,x2,y2,stroke,sw,da){
+  const a={x1:x1.toFixed(1),y1:y1.toFixed(1),x2:x2.toFixed(1),y2:y2.toFixed(1),stroke,'stroke-width':sw||0.5};
+  if(da)a['stroke-dasharray']=da;
+  el('line',a,svg);
+}
+function pt(svg,d,stroke,sw,op){
+  const a={d,fill:'none',stroke,'stroke-width':sw||1.6};
+  if(op!=null)a.opacity=op;
+  el('path',a,svg);
+}
+function tx(svg,x,y,s,size,fill,anchor){
+  const t=document.createElementNS(NS,'text');
+  t.setAttribute('x',x.toFixed(1));t.setAttribute('y',y.toFixed(1));
+  t.setAttribute('font-size',size||11);t.setAttribute('fill',fill||C.txt);
+  t.setAttribute('text-anchor',anchor||'middle');
+  t.setAttribute('dominant-baseline','central');
+  t.setAttribute('font-family','sans-serif');
+  t.textContent=s;svg.appendChild(t);
+}
+function mapper(tMax,xMin,xMax,pl,pr,pt2,pb,W,H){
+  return(t,x)=>[pl+t/tMax*(W-pl-pr), H-pb-(x-xMin)/(xMax-xMin)*(H-pt2-pb)];
+}
+function axes(svg,mp,tMax,xMin,xMax,xtks,ytks,W,H,pl,pb){
+  const[ox,oy]=mp(0,xMin),[tx2]=mp(tMax,xMin),[,uy]=mp(0,xMax);
+  ln(svg,ox,oy,tx2,oy,C.ax,0.6); // t-axis
+  ln(svg,ox,oy,ox,uy,C.ax,0.6);  // x-axis
+  xtks.forEach(t=>{
+    const[px,py]=mp(t,xMin);
+    ln(svg,px,py,px,py+4,C.ax,0.5);
+    tx(svg,px,py+13,t===Math.PI?'π':String(t),10,C.txt,'middle');
+  });
+  ytks.forEach(({v,label})=>{
+    const[px,py]=mp(0,v);
+    if(Math.abs(v-xMin)>0.01)ln(svg,px-4,py,px,py,C.ax,0.5);
+    tx(svg,px-7,py,label,10,C.txt,'end');
+  });
+  tx(svg,tx2+14,oy,'t',12,C.txt,'start');
+  tx(svg,ox+2,uy-9,'x',12,C.txt,'middle');
+}
+function euler(c,x0,tMax,dt){
+  const pts=[[0,x0]];let x=x0;
+  for(let t=dt;t<=tMax+1e-9;t+=dt){x+=dt*c(x);pts.push([t,x]);}
+  return pts;
+}
+function ptsToD(pts,mp,xMin,xMax){
+  return pts.filter(([,x])=>x>=xMin-.05&&x<=xMax+.05).map(([t,x],i)=>{
+    const[px,py]=mp(t,x);return(i===0?'M':'L')+px.toFixed(1)+','+py.toFixed(1);
+  }).join(' ');
+}
+
+// ─── Case 1: c = 1 ─────────────────────────────────────────
+{
+  const svg=document.getElementById('sv1');
+  const W=680,H=185,pl=44,pr=24,pt2=15,pb=32;
+  const tMax=3,xMin=-1.5,xMax=4.5;
+  const mp=mapper(tMax,xMin,xMax,pl,pr,pt2,pb,W,H);
+  [-1,0,1,2,3,4].forEach(v=>{const[x1,y1]=mp(0,v),[x2,y2]=mp(tMax,v);ln(svg,x1,y1,x2,y2,C.grid,0.5);});
+  axes(svg,mp,tMax,xMin,xMax,[1,2,3],
+    [{v:-1,label:'-1'},{v:0,label:'0'},{v:1,label:'1'},{v:2,label:'2'},{v:3,label:'3'},{v:4,label:'4'}],
+    W,H,pl,pb);
+  [-1,0,1,2,3].forEach(x0=>{
+    const[px1,py1]=mp(0,x0),[px2,py2]=mp(tMax,x0+tMax);
+    const d=`M${px1.toFixed(1)},${py1.toFixed(1)} L${px2.toFixed(1)},${py2.toFixed(1)}`;
+    pt(svg,d,C.c1,1.8,.85);
+    const[lx,ly]=mp(0,x0);
+    el('circle',{cx:lx.toFixed(1),cy:ly.toFixed(1),r:3,fill:C.c1,opacity:.7},svg);
+  });
+  const[lx,ly]=mp(2.7,4.2);tx(svg,lx,ly,'J ≡ 1',11,C.c1,'start');
+}
+
+// ─── Case 2: c = x ─────────────────────────────────────────
+{
+  const svg=document.getElementById('sv2');
+  const W=680,H=185,pl=44,pr=24,pt2=15,pb=32;
+  const tMax=2,xMin=0,xMax=7.5;
+  const mp=mapper(tMax,xMin,xMax,pl,pr,pt2,pb,W,H);
+  [0,2,4,6].forEach(v=>{const[x1,y1]=mp(0,v),[x2,y2]=mp(tMax,v);ln(svg,x1,y1,x2,y2,C.grid,0.5);});
+  [0.5,1,1.5,2].forEach(t=>{const[x1,y1]=mp(t,xMin),[x2,y2]=mp(t,xMax);ln(svg,x1,y1,x2,y2,C.grid,0.5);});
+  axes(svg,mp,tMax,xMin,xMax,[0.5,1,1.5,2],
+    [{v:0,label:'0'},{v:2,label:'2'},{v:4,label:'4'},{v:6,label:'6'}],
+    W,H,pl,pb);
+  [0.25,0.5,1,1.5,2].forEach(x0=>{
+    const pArr=[];
+    for(let t=0;t<=tMax+1e-9;t+=0.02){const x=x0*Math.exp(t);if(x>xMax+.3)break;pArr.push([t,x]);}
+    const d=pArr.map(([t,x],i)=>{const[px,py]=mp(t,x);return(i===0?'M':'L')+px.toFixed(1)+','+py.toFixed(1);}).join(' ');
+    pt(svg,d,C.c2,1.8,.85);
+    el('circle',{cx:mp(0,x0)[0].toFixed(1),cy:mp(0,x0)[1].toFixed(1),r:3,fill:C.c2,opacity:.7},svg);
+  });
+  const[lx,ly]=mp(1.8,6.8);tx(svg,lx-5,ly,'J = eᵗ → ∞',11,C.c2,'end');
+}
+
+// ─── Case 3: c = sin(x) ─────────────────────────────────────
+{
+  const svg=document.getElementById('sv3');
+  const W=680,H=215,pl=50,pr=24,pt2=15,pb=32;
+  const tMax=5,xMin=0,xMax=2*Math.PI;
+  const PI=Math.PI;
+  const mp=mapper(tMax,xMin,xMax,pl,pr,pt2,pb,W,H);
+  [0,PI/2,PI,3*PI/2,2*PI].forEach(v=>{
+    const[x1,y1]=mp(0,v),[x2,y2]=mp(tMax,v);
+    ln(svg,x1,y1,x2,y2,C.grid,0.5);
+  });
+  [1,2,3,4,5].forEach(t=>{const[x1,y1]=mp(t,xMin),[x2,y2]=mp(t,xMax);ln(svg,x1,y1,x2,y2,C.grid,0.5);});
+  // stable manifold x=π dashed
+  {const[x1,y1]=mp(0,PI),[x2,y2]=mp(tMax,PI);ln(svg,x1,y1,x2,y2,C.pi,1.3,'6 4');}
+  axes(svg,mp,tMax,xMin,xMax,[1,2,3,4,5],
+    [{v:0,label:'0'},{v:PI/2,label:'π/2'},{v:PI,label:'π'},{v:3*PI/2,label:'3π/2'},{v:2*PI,label:'2π'}],
+    W,H,pl,pb);
+  // x=π label on the dashed line
+  {const[px,py]=mp(4.5,PI);tx(svg,px,py-9,'x = π  (stable)',10,C.pi,'middle');}
+  // below π: purple-ish
+  [0.35,0.8,1.3,1.9,2.6].forEach((x0,i)=>{
+    const pts=euler(x=>Math.sin(x),x0,tMax,0.02);
+    const d=ptsToD(pts,mp,xMin,xMax);
+    if(d.length>3){pt(svg,d,C.c3lo,1.7,.5+i*.1);}
+    el('circle',{cx:mp(0,x0)[0].toFixed(1),cy:mp(0,x0)[1].toFixed(1),r:3,fill:C.c3lo,opacity:.8},svg);
+  });
+  // above π: coral
+  [3.55,3.95,4.4,4.9,5.4].forEach((x0,i)=>{
+    const pts=euler(x=>Math.sin(x),x0,tMax,0.02);
+    const d=ptsToD(pts,mp,xMin,xMax);
+    if(d.length>3){pt(svg,d,C.c3hi,1.7,.5+i*.1);}
+    el('circle',{cx:mp(0,x0)[0].toFixed(1),cy:mp(0,x0)[1].toFixed(1),r:3,fill:C.c3hi,opacity:.8},svg);
+  });
+}
+
+// ─── Jacobian plot ────────────────────────────────────────────
+{
+  const svg=document.getElementById('svJ');
+  const W=680,H=210,pl=52,pr=24,pt2=15,pb=38;
+  const tMax=4.5,yMin=0,yMax=3;
+  const mp=mapper(tMax,yMin,yMax,pl,pr,pt2,pb,W,H);
+  [0,.5,1,1.5,2,2.5,3].forEach(v=>{const[x1,y1]=mp(0,v),[x2,y2]=mp(tMax,v);ln(svg,x1,y1,x2,y2,C.grid,0.5);});
+  [1,2,3,4].forEach(t=>{const[x1,y1]=mp(t,yMin),[x2,y2]=mp(t,yMax);ln(svg,x1,y1,x2,y2,C.grid,0.5);});
+  axes(svg,mp,tMax,yMin,yMax,[1,2,3,4],
+    [{v:0,label:'0'},{v:0.5,label:'0.5'},{v:1,label:'1'},{v:1.5,label:'1.5'},{v:2,label:'2'},{v:2.5,label:'2.5'}],
+    W,H,pl,pb);
+  {const[px,py]=mp(0,yMax);tx(svg,px+2,py-9,'J(t)',12,C.txt,'middle');}
+
+  // c=1: J=1 flat
+  {const d=`M${mp(0,1).join(',')} L${mp(tMax,1).join(',')}`;
+   pt(svg,d,C.jc1,2.2);
+   const[lx,ly]=mp(tMax*.55,1);tx(svg,lx,ly-11,'J = 1  (c = 1)',10,C.jc1,'middle');}
+
+  // c=x: J=eᵗ, clip at yMax
+  {const pts2=[];
+   for(let t=0;t<=tMax;t+=0.04){const j=Math.exp(t);if(j>=yMax){pts2.push([t,yMax]);break;}pts2.push([t,j]);}
+   const d=pts2.map(([t,j],i)=>{const[px,py]=mp(t,j);return(i===0?'M':'L')+px.toFixed(1)+','+py.toFixed(1);}).join(' ');
+   pt(svg,d,C.jc2,2.2);
+   const[lx,ly]=mp(pts2[pts2.length-1][0],yMax);
+   tx(svg,lx,ly-11,'J = eᵗ → ∞  (c = x)',10,C.jc2,'middle');}
+
+  // c=sin(x): numerically computed J along characteristic from x₀=1
+  {const pts3=[];let x=1,J=1;const dt=0.015;pts3.push([0,1]);
+   for(let t=dt;t<=tMax+1e-9;t+=dt){
+     J+=dt*Math.cos(x)*J; x+=dt*Math.sin(x);
+     if(J<1e-4||J>yMax){pts3.push([t,Math.min(J,yMax)]);if(J<1e-4)break;continue;}
+     pts3.push([t,J]);
+   }
+   const d=pts3.map(([t,j],i)=>{const[px,py]=mp(t,Math.min(j,yMax));return(i===0?'M':'L')+px.toFixed(1)+','+py.toFixed(1);}).join(' ');
+   pt(svg,d,C.jc3,2.2);
+   // label near the maximum (brief rise then fall)
+   let maxJ=0,maxT=0;pts3.forEach(([t,j])=>{if(j>maxJ){maxJ=j;maxT=t;}});
+   const[lx,ly]=mp(maxT+0.4,maxJ+0.1);
+   tx(svg,lx,ly-8,'J → 0  (c = sin x, x₀ = 1)',10,C.jc3,'start');}
+}
+</script>
+</body>
+</html>
