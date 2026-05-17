@@ -1,20 +1,129 @@
-Bi-Weekly Journal #2: 14 May 2026
-These two weeks gave a comprehensive overview of our design project. The first week, we polished our Gantt chart, sought feedback for our first biweekly journal and reviewed industry-standard models for the CO2 adsorption process. This bi-weekly journal outlines the standard of procedure (SOP), the design of experiment (DOE) and the literature review that has been conducted thus far.
+# Bi-Weekly Journal #2 — Weeks 3–4 (5–16 May 2026)
 
-Student: Loh John Ray, Saraswati Eloise Gunawan
-Institution supervisors (SUTD/NUS): Dr. Prapatsorn Borisut, Prof. Erik Birgerhesson
-NP Supervisor: Dr. Pham the Hanh
-Project code: 3
-Plan prepared: Monday 20 April 2026 (Week 1, Day 1); revised 30 April 2026 – scope change: regeneration → adsorption breakthrough;
-Submission deadlines: Interim Report Mon 1 Jun 2026 (Wk 7); Final Report Mon 10 Aug 2026 (Wk 17); Final Presentation 17–19 Aug 2026 (Wk 18)
+**Project:** Parametric Study of CO₂ Adsorption Breakthrough in Packed-Bed Columns
+**Students:** Loh John Ray, Saraswati Eloise Gunawan
+**Institution supervisors:** Dr. Prapatsorn Borisut (SUTD), Prof. Erik Birgersson (NUS)
+**NP supervisor:** Dr. Pham The Hanh
+**Submission:** Mon 18 May 2026 (Week 5) · Word count: ~800
 
-What I learnt
-	Three-pass method for reading research papers;
-	 Polished Gantt chart with literature review content, experimental preparation and execution;
-	Wrote bill of materials (BOM) for rig equipment setup;
-	Trial Co2 adsorption breakthrough experiment using 5% CO2 concentration, 50ml/min with 6g of PEI-SiO2 sorbent material.
+---
 
- 
+## 1. What I did this period
+
+- **Second supervisor meeting (8 May, SUTD):** Clarified experimental scope with Dr. Borisut.
+  Confirmed that wet-rig breakthrough experiments using PEI@SiO₂ granules are now **in scope**
+  alongside the computational model. Key experimental parameters confirmed: 5% CO₂ inlet
+  concentration, ~50 mL/min flow rate, ~6–10 g of sorbent packed to ≥50% column height. Rig
+  uses MFCs (A: purge line, B: N₂ mixing, C: CO₂), with N₂ purge to baseline before each run.
+  Confirmed that two kinetic models are in focus: **PFO (pseudo-first-order)** and
+  **dual-kinetic (DK)**; Klinkenberg model and Thomas–Adam model are also to be surveyed
+  alongside the Toth isotherm.
+
+- **Conducted a trial CO₂ adsorption breakthrough experiment** at SUTD (5% CO₂, 50 mL/min,
+  6 g PEI@SiO₂). Observed the characteristic S-shaped breakthrough curve; breakthrough
+  threshold set at 5% of inlet concentration. Identified sensor and flowmeter as the two
+  primary measurement sources (±20% sensor tolerance noted). Purge-to-zero was confirmed as
+  mandatory prior to each run.
+
+- **Polished the Gantt chart** for the interim report. Separated high-level deliverable
+  milestones from detailed mathematical reading tasks; the latter now live in the Master
+  Schedule rather than the chart submitted to supervisors.
+
+- **Wrote Bill of Materials (BOM)** for the SUTD rig setup: push-fit connectors, hex
+  adaptors, 3-way valves, T-shaped mixer, 8 mm clear tubing, CO₂ sensor, SFC/SFM electronics,
+  and associated fittings.
+
+- **Drafted the Standard Operating Procedure (SOP):** N₂ baseline calibration (~15 min),
+  MFC concentration verification before introducing gas to column, data acquisition via GasLab
+  (CO₂ sensor) and Sensirion (flow), recording breakthrough curve with inlet/outlet CO₂, flow
+  rate, temperature, and pressure.
+
+- **Literature review continued:** Completed second-pass readings of Xu et al. (2024) DAC
+  review and Chen et al. (2023) structured packed-bed CFD paper. Began first pass of
+  Stampi-Bombelli et al. (2024) as the primary benchmark. Surveyed Hefti et al. on
+  non-standard isotherm shapes for MOF-vs-zeolite comparison; noted its relevance to
+  understanding Toth isotherm behaviour at the DAC concentration range.
+
+- **Learned the three-pass reading method** (first pass: skim title/abstract/figures for
+  relevance; second pass: read all figures, tables, and section headers; third pass:
+  focused read of methods and results relevant to current gate). Applied to all papers this
+  fortnight.
+
+---
+
+## 2. What I learned
+
+**Physical insight — breakthrough curve structure.** The trial experiment made concrete what
+was previously only symbolic. The S-shaped C_out/C_in curve is not arbitrary: it reflects
+the mass-transfer zone (MTZ) entering, traversing, and exiting the bed. The "breakthrough
+hump" at ~5% of inlet is not a true hump but the threshold at which the bed is considered
+saturated for practical purposes. Connecting this to the model: τ_BT is the time at which
+C_out/C_in = 0.05, and the sharpness of the curve at breakthrough is directly set by the
+NTU (mass-transfer rate relative to convective residence time). A low-NTU bed produces a
+long, gradual approach to saturation; a high-NTU bed produces a sharper front — and the
+Toth isotherm's concavity drives this toward a constant-pattern (self-sharpening) regime at
+large NTU.
+
+**Mathematical insight — why two kinetic models matter.** Dr. Borisut confirmed that both
+PFO and DK models are used to fit breakthrough curves because neither fits perfectly across
+the full concentration range. PFO (pseudo-first-order) uses a single lumped rate constant
+k_f(C* − q), which linearises the isotherm; it fits well at low loading but fails at high
+loading where site heterogeneity matters. The dual-kinetic model uses two parallel sites with
+different rate constants — it handles the heterogeneity explicitly. The Toth isotherm is the
+equilibrium closure that governs C*; the kinetic model governs how fast q approaches that
+equilibrium. Understanding this distinction clarifies why we cannot decouple the isotherm
+choice from the kinetic model choice when designing the experiment matrix.
+
+**Experimental design insight — initial and boundary conditions.** From the rig familiarisation
+and the meeting, the ICs and BCs of the physical system are now clear. The bed starts clean
+(C = 0, q = 0, T_g = T_s = T_ads = room temperature after N₂ purge). The inlet BC is a
+step in CO₂ concentration at t = 0; the outlet is open to atmosphere (zero-gradient pressure
+BC). These match the mathematical ICs and BCs in `derivation.md` §2 (adsorption scope), which
+gives confidence the model and experiment are aligned.
+
+---
+
+## 3. Blockers and questions
+
+**B1 — Velocity units in the sweep matrix.** The planned sweep (u = 0.5 / 1.5 / 2.5 m/s) is
+an order of magnitude higher than the experimental rig operates (~50 mL/min ≈ 0.001 m/s
+superficial for an 8 mm column). Need to confirm with Prof. Birgersson whether the sweep is
+in *interstitial* velocity (not superficial), or whether these values are intended as a
+wider-than-experimental parametric study. The distinction matters for how we report
+dimensionless Pe and compare with Stampi-Bombelli (their u ≈ 0.14 m/s).
+*Owner: Prof. Birgersson — flag at next meeting.*
+
+**B2 — Missing Toth α parameter.** Stampi-Bombelli Table 1 lists α = 0.11 (temperature
+dependence of heterogeneity exponent via t(T) = t₀ + α(1 − T₀/T)) but this is absent from
+the CLAUDE.md parameter table. At T_ads = 90 °C, omitting α shifts q* by an amount
+comparable to the ±20% Gate C tolerance. Will add α = 0.11 to `derivation.md` §1.5 and
+`pde_mol.py` before Gate C.
+*Owner: technical — will flag to Dr. Borisut for confirmation.*
+
+**B3 — Gate A solver status.** The linear MOL solver (pure advection-diffusion, no
+adsorption) is scaffolded but not yet at the L² < 1% pass threshold. CFL stability at
+numbers above 1.0 needs explicit testing. This is the week 4 priority.
+*Owner: self — target pass by Fri 22 May.*
+
+---
+
+## 4. Plan for next fortnight (Wks 5–6, 19–29 May)
+
+1. **Pass Gate A** (linear solver, L² < 1% vs analytical Gaussian broadening). Test at CFL =
+   0.5, 0.9, 1.1 to confirm CFL > 1 breaks the scheme as theory predicts. Log timestep
+   history to catch LSODA hiding CFL instability.
+2. **Add Toth + LDF to solver** (Gate B preparation). Verify the zero-NTU case recovers
+   plug-flow step; verify adsorption front appears at finite NTU.
+3. **Compute R-H chord velocity by hand** for the Stampi-Bombelli baseline (400 ppm,
+   T_ads = 25 °C) and compare with the front velocity extracted from the simulation.
+   Target: |v_sim − v_RH| / v_RH < 10%.
+4. **Begin Interim Report draft**: Introduction (~300 words), governing equations section
+   (~800 words from derivation.md), and dimensional analysis section (~400 words). Write
+   these in parallel with Gate work — not after.
+5. **Prepare one experimental run** for the 3×3 OAT matrix (vary flow rate × concentration)
+   at the SUTD rig following the confirmed SOP.
+
+<Appendix>
 Standard Operating Procedure (SOP) for SUTD adsorption breakthrough experiments
 Source: https://connectnpedu.sharepoint.com/:w:/s/DPDACO2AdsorptioninPackedBedColumns/IQDsHK3c-Rs4QpLcMwq52tsmAY0Hx83Pef6cKa53lg0s8iM?e=3SwnHn 
 Key elements from the source document:
@@ -43,7 +152,6 @@ From project context:
 
 Design of Experiment:
 
-
 Literature Review
 -- BIRD EYE VIEW --
 A comprehensive review on direct air carbon capture (DAC) technology… (Huijin Xu et al.)
@@ -65,3 +173,4 @@ Second pass: read all figures, ensure its verifiability, accuracy, relevance and
 	Table. 2. extends with parameters for CFD simulation
 	Fig. 3. Provides a block diagram illustrating the workflow of UDF and CFD calculations
 	
+<\Appendix>
