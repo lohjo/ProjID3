@@ -1,0 +1,26 @@
+Comprehensive review on DAC and its applications:
+- abstract gave a comprehensive overview of understanding DAC technologies, analyses of underlying principles and theories
+- introduction shows various co2 issues in real-world; linking to DAC technologies by use of point-source capture argument.
+- conclusion reviews adsorption materials, seeks both sides for and against DAC technologies
+
+-- BIRD EYE VIEW --
+
+Each figure is explicitly mentioned in its section--linking its visual context to analytical content (i.e. mass transfer effects in the adsorbent particle, illustrating several transport mechanisms such as mass transfer, micropore diffusion with/without external macropore resistances and surface resistance of micro-particles). 
+
+Another notable figure is the CO2 uptake isotherms at 25degC in the pressure range [0,1] bar of activated carbon. While Fig. 9 provides a comparative analysis of different sorbent materials.
+
+A device for fixed-bed CO2 capture experiments shown in Fig. 13 provides further analyses into the design and setup of equipment for CO2 adsorption. To take note on rig familiarization: MFCs, N2 and CO2 routers, and output measurements.
+
+The paper also mentions several adsorption swing methods (i.e. TVSA, PSA, VSA, MSA) with schematics on two-bed VSA and flow diagrams and graphs in Fig. 16 and 17 respectively. The graphs are helpful in understanding adsorption isotherms patterns by analyzing its derivatives and linking it to the governing equations as delimited in Myers & Font.
+
+TSA in particular was evaluated against multiple adsorption isotherms as in Fig 18. This could be helpful to understand how the different parameters affect adsorption as well as comparing experimental findings against qualitative analyses of different adsorption isotherms.
+
+A way that could bypass CO2-H20 adsorption selectivity issue illustrated in Fig. 19 and its isotherms in Fig. 20 can be developed to optimize the efficiency of adsorption process, specifically with physical adsorbents--with implications of cost and energy reductions.
+
+Configuration references are provided in Table 4, enabling deeper analyses of models (i.e. optimization) [196], experimental design for several swing processes (i.e. temperature swing--packed-bed foam => heat transfer [197]; CO2 capture efficiency through temperature management [201]; TVSA DAC setup [185]; energy savings with moving bed systems and low temp steam? [202]; amine loading and pore size on capture capacity (q*) in fluidized packed-bed reactor using silica-based sorbents [203,204]; 
+
+It also analyzes business flow of DAC technology considering economic viability.
+
+-- THIRD PASS -- 
+
+Flow slow = how many l of Co2 to get optimal value

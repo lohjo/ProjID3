@@ -1,3 +1,4 @@
+30/4/2026 (Week 2, Day 5)
 study_plan.md (v1.0 → v2.0): Complete rewrite.
   - Title: "Regeneration" → "Adsorption Breakthrough"
   - Controllable parameters: T_regen/Q_purge/L/m → u/C_in/L/T_ads
@@ -15,3 +16,7 @@ study_plan.md (v1.0 → v2.0): Complete rewrite.
 
   Two files still carry old-scope content and need separate updates: derivation.md and research.md. The .xlsx tracker
   sweep matrix also needs updating.
+
+  17/05/2026: biweekly-journal-18may.md: New file created with content on SOP, DOE, and literature review. This journal reflects the shift in project scope from regeneration to adsorption breakthrough, detailing the new experimental design and key learnings from recent literature.
+
+  
