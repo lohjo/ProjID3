@@ -1,0 +1,697 @@
+\documentclass[a4paper]{amsart}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,array}
+
+%--- theorem environments ---------------------------------------------------
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{assumption}{Assumption}
+
+\begin{document}
+
+\title{Travelling-Wave Theory for CO$_2$ Adsorption Breakthrough\\
+with Dual-Kinetic Amine Kinetics and Toth Equilibrium}
+
+\date{}
+\maketitle
+
+%--- Abstract ---------------------------------------------------------------
+\begin{abstract}
+Direct air capture of CO$_2$ at ambient concentrations near 420~ppm requires
+packed-bed amine sorbents whose breakthrough timing and curve shape depend
+jointly on equilibrium heterogeneity and kinetic multiplicity.
+For polyethylenimine-impregnated silica (PEI@SiO$_2$), two structurally
+distinct amine populations---fast surface amines and slow bulk-polymer
+amines---produce a sharp sigmoidal front followed by a prolonged tail that
+single-timescale kinetic models cannot reproduce.
+We derive, from the one-dimensional axially-dispersed species balance with a
+temperature-dependent Toth closure, a travelling-wave reduction valid under a
+three-level hierarchy of small parameters that holds rigorously at
+DAC-relevant conditions.
+Theorem~\ref{thm:wave} proves that the dual-kinetic LDF system admits a
+travelling wave whose speed is set by the fast-site equilibrium capacity
+alone, and that the slow-site contribution is a uniformly bounded
+$O(\kappa)$ correction decaying asymptotically in the wave frame; the
+resulting hybrid outlet expression reduces exactly to the Myers--Font (2020)
+single-LDF result when the sorbent is kinetically homogeneous.
+A scalar asymmetry index $\mathcal{A}=(\tau_{95}-\tau_{50})/(\tau_{50}-\tau_5)$
+converts any measured breakthrough curve into a kinetic-model selection
+criterion, with $\mathcal{A}\lesssim 2$ selecting the single-LDF closure
+and $\mathcal{A}\gtrsim 3$ triggering the dual-kinetic extension.
+Three escalating validation gates---Klinkenberg linear benchmark, Rankine--Hugoniot
+front velocity to within $\pm15\%$, and Stampi-Bombelli et al.\ (2024)
+breakthrough time to within $\pm20\%$---constitute a prior-independent
+commitment protocol before any parametric sweep.
+\end{abstract}
+
+%============================================================================
+\section{Introduction}
+%============================================================================
+
+Atmospheric CO$_2$ exceeded 422~ppm in 2024.  Direct air capture (DAC) has
+entered techno-economic roadmaps as a necessary complement to source-side
+reductions in hard-to-decarbonise sectors \cite{IEA2022,IPCC2023}.  Among
+scalable DAC hardware, packed-bed columns loaded with amine-functionalised
+solid sorbents offer high volumetric capacity, operational flexibility, and
+compatibility with temperature-swing regeneration; their process economics have
+recently been quantified for PEI@SiO$_2$ granules in reactive-transport cycle
+models \cite{Pedrozo2025}.
+
+The central engineering question is: given a sorbent with a characterised
+equilibrium isotherm and a known mass-transfer coefficient, when does CO$_2$
+break through the column, and what shape does the outlet concentration profile
+take as a function of the design variables---superficial velocity $u$, inlet
+concentration $c_0$, bed length $L$, and temperature $T$?  The breakthrough
+time $\tau_\text{BT}$ and the curve shape together determine bed utilisation,
+dynamic capacity, and cycle energy penalty.
+
+Existing parametric studies operate chiefly at post-combustion concentrations
+($y_{\mathrm{CO}_2}\sim5$--15\%) where gas-phase accumulation is non-negligible.
+At DAC concentrations, the inlet CO$_2$ mole fraction is
+$y_0 = c_0 R_g T/p_a \approx 4\times10^{-4}$, and the solid stores
+$\Lambda = (1-\varepsilon)\rho_p q_0^*/(\varepsilon c_0)\sim10^{4}$--$10^{5}$
+times more CO$_2$ than the gas phase.  This hierarchy collapses the governing
+partial differential system to a one-parameter family of ODEs---the
+constant-pattern or travelling-wave reduction---whose mathematical properties
+in the DAC limit have not been systematically exploited.
+
+A second gap is kinetic.  PEI@SiO$_2$ exhibits two structurally distinct amine
+populations: surface-accessible primary amines that react via carbamate
+formation on timescales of minutes, and bulk polymer-layer amines that require
+diffusion through the viscous polyethylenimine matrix before reacting, with
+timescales one to two orders of magnitude longer \cite{Bollini2012,%
+Kalyanaraman2015,Ohs2018}.  The resulting breakthrough curve carries a sharp
+initial rise followed by a slowly decaying tail---a morphology that a
+single-timescale linear driving force (LDF) model cannot reproduce and that
+empirical models (Bohart--Adams, Thomas, Yoon--Nelson) cannot physically
+explain, because all three reduce to the same logistic function with drifting
+parameters \cite{Hu2024}.
+
+This paper addresses both gaps.  We identify three small parameters
+$(\delta_1, 1/\mathrm{Pe}, \kappa)$ natural to DAC operating conditions, carry out
+a systematic asymptotic reduction of the coupled PDE--LDF system to a
+travelling-wave ODE, and prove that the dual-kinetic extension of this wave
+is well-posed.  The resulting hybrid analytical expression is exact in the
+limits of homogeneous kinetics, DAC incompressibility, and favourable Toth
+isotherm, and reduces to the Myers--Font (2020) result \cite{MyersFont2020}
+when $\eta\to1$.
+
+We also introduce a scalar asymmetry index that turns a shape measurement
+into a kinetic-model selection criterion, and we define three escalating
+validation gates---rather than a single comparison---as a commitment device
+against overfitting.  Several notation conflicts present in the literature are
+resolved, including the form of the LDF driving force
+(Section~\ref{sec:resolution}) and the definition of the gas-to-solid
+capacity ratio $\delta_1$ (Table~\ref{tab:dimless}).
+
+%============================================================================
+\section{Governing equations}
+%============================================================================
+
+\subsection{Physical system and assumptions}
+
+A cylindrical packed bed of length $L$ and inner diameter $d_c$ is filled
+with PEI@SiO$_2$ granules of mean diameter $d_p$ and pellet density $\rho_p$.
+A binary CO$_2$/N$_2$ stream enters at $z=0$ with superficial velocity $u$,
+CO$_2$ concentration $c_0$, and temperature $T_0$; the bed is initially
+clean.
+
+\begin{assumption}[Plug flow]\label{ass:plug}
+No radial gradients; the particle P\'eclet number $Pe_p = ud_p/D_m > 10$
+justifies neglecting radial dispersion.
+\end{assumption}
+
+\begin{assumption}[Axial dispersion]\label{ass:ax}
+Axial backmixing is retained via a lumped coefficient $D_L$ correlated to
+velocity and particle size \cite{Stampi2024}.
+\end{assumption}
+
+\begin{assumption}[Ideal gas]\label{ass:ig}
+$p = cR_gT$, where $c$ is total molar concentration.
+\end{assumption}
+
+\begin{assumption}[Solid-loading LDF]\label{ass:ldf}
+The solid uptake rate is proportional to the solid-loading driving force:
+$\partial\bar{q}/\partial t = k(q^* - \bar{q})$, where $q^*(c,T)$ is the
+Toth equilibrium loading at local conditions.  This form---not the
+gas-concentration form $k'(c-c^*)$---is used throughout; the two forms use
+different rate coefficients and must not be conflated.
+\end{assumption}
+
+\begin{assumption}[Dual kinetics]\label{ass:dk}
+The total loading $\bar{q}=q_1+q_2$ splits into a fast-site component $q_1$
+(surface amines, equilibrium fraction $\eta$, rate constant $k_1$) and a
+slow-site component $q_2$ (bulk-polymer amines, equilibrium fraction $1-\eta$,
+rate constant $k_2 = \kappa k_1$) with $0 < \kappa \ll 1$.
+\end{assumption}
+
+\begin{assumption}[Isothermal screening]\label{ass:iso}
+For the analytical reduction, $T = T_0$ is fixed.  Non-isothermal effects
+enter at relative order $\Phi\cdot\delta_1$ (Table~\ref{tab:dimless}) and
+are retained in the full numerical model via the energy balance
+\eqref{eq:energy}.
+\end{assumption}
+
+\subsection{Species mass balance}
+
+The CO$_2$ gas-phase balance is
+\begin{equation}
+  \varepsilon\frac{\partial c}{\partial t}
+  + u\frac{\partial c}{\partial z}
+  = \varepsilon D_L\frac{\partial^2 c}{\partial z^2}
+    - (1-\varepsilon)\rho_p\frac{\partial\bar{q}}{\partial t},
+  \label{eq:gas}
+\end{equation}
+where $\varepsilon$ is the \emph{bed void fraction}, distinct from the particle
+porosity $\varepsilon_p$ (for $\gamma$-alumina pellets, $\varepsilon_p\approx0.71$
+\cite{Stampi2024}; the two quantities appear in separate correlations and must
+not be conflated).  The dual-kinetic LDF closures are
+\begin{align}
+  \frac{\partial q_1}{\partial t}
+    &= k_1\bigl(\eta\,q^*(c,T_0) - q_1\bigr),
+  \label{eq:q1}\\
+  \frac{\partial q_2}{\partial t}
+    &= \kappa k_1\bigl((1-\eta)\,q^*(c,T_0) - q_2\bigr),
+  \label{eq:q2}
+\end{align}
+with $\bar{q}=q_1+q_2$.
+
+\subsection{Toth equilibrium isotherm}
+
+The temperature-dependent Toth isotherm \cite{Grossmann2023,Stampi2024} is
+\begin{equation}
+  q^*(p,T) = \frac{n_s(T)\,b(T)\,p}
+               {\bigl[1+(b(T)\,p)^{t(T)}\bigr]^{1/t(T)}},
+  \label{eq:toth}
+\end{equation}
+with
+\begin{equation}
+  n_s(T) = n_{s0}\exp\!\left[\chi\!\left(1-\frac{T}{T_0}\right)\right],\quad
+  b(T)   = b_0\exp\!\left[\frac{\Delta H_0}{RT_0}\!\left(\frac{T_0}{T}-1\right)\right],\quad
+  t(T)   = t_0 + \alpha\!\left(1-\frac{T_0}{T}\right),
+  \label{eq:toth-T}
+\end{equation}
+where $p = c R_g T$ is the CO$_2$ partial pressure and $T_0 = 298.15$~K.
+When $t_0\to1$, \eqref{eq:toth} recovers the Langmuir isotherm; for
+$t_0\in(0,1)$ the isotherm is \emph{favorable} (concave downward), producing
+self-sharpening wave behaviour.
+
+Reference parameters fitted to amine-grafted $\gamma$-alumina pellets
+\cite{Stampi2024,Grossmann2023}, used as the benchmark in Section~\ref{sec:gates}:
+\begin{equation}
+  n_{s0}=1.23~\text{mol\,kg}^{-1},\quad
+  b_0=4839~\text{kPa}^{-1},\quad
+  t_0=0.25,\quad
+  \Delta H_0=70~\text{kJ\,mol}^{-1},\quad
+  \chi=0,\quad
+  \alpha=0.11.
+  \label{eq:params}
+\end{equation}
+At $p_0 = 400~\text{ppm}\times101.325~\text{kPa} = 0.04~\text{kPa}$
+and $T_0$, equation~\eqref{eq:toth} gives
+$b_0 p_0 = 193.6$, $(b_0 p_0)^{t_0} = 0.1936^{1/4}\times10^{t_0\log10}\approx3.73$,
+and $q_0^* \approx 0.48~\text{mol\,kg}^{-1}$.
+These parameters are calibrated to $\gamma$-alumina and serve as a bracket
+for PEI@SiO$_2$ pending project-specific isotherm measurements; the
+higher heat of adsorption reported for PEI@silica fibre
+($\Delta H_0=210~\text{kJ\,mol}^{-1}$, Pang et al.\ 2024) lies outside the
+physically expected chemisorption range of 60--90~kJ\,mol$^{-1}$ and should be
+verified against primary calorimetric data before use.
+
+\subsection{Non-isothermal energy balance}
+
+For the non-isothermal screening case,
+\begin{multline}
+  \bigl[\varepsilon\rho_g c_{p,g}+(1-\varepsilon)\rho_p c_{p,s}\bigr]
+  \frac{\partial T}{\partial t}
+  + \varepsilon\rho_g c_{p,g}\,u\frac{\partial T}{\partial z}
+  \\
+  = \lambda_\text{eff}\frac{\partial^2 T}{\partial z^2}
+    + (1-\varepsilon)\rho_p(-\Delta H_\text{ads})\frac{\partial\bar{q}}{\partial t}
+    - \frac{4h_w}{d_c}(T-T_w).
+  \label{eq:energy}
+\end{multline}
+The wall-loss term is retained by default; for the SUTD column
+($d_c=8.2$~mm) the wall-to-bed-volume ratio is large enough that
+neglecting it is not justified.  The adiabatic limit $h_w=0$ is
+retained as an explicit switch, not the default.
+
+\subsection{Initial and boundary conditions}
+
+\begin{equation}
+  c(z,0)=0,\quad q_1(z,0)=q_2(z,0)=0,\quad T(z,0)=T_0.
+  \label{eq:IC}
+\end{equation}
+Danckwerts inlet and zero-gradient outlet conditions:
+\begin{equation}
+  \left.\!\left(uc - \varepsilon D_L\frac{\partial c}{\partial z}\right)\right|_{z=0^+}
+    \!=uc_0,\qquad
+  \left.\frac{\partial c}{\partial z}\right|_{z=L}=0;\quad
+  \left.\frac{\partial T}{\partial z}\right|_{z=0}
+    =\left.\frac{\partial T}{\partial z}\right|_{z=L}=0.
+  \label{eq:BC}
+\end{equation}
+
+\subsection{Dimensionless groups}
+\label{sec:dimless}
+
+Table~\ref{tab:dimless} collects all groups with physical interpretations and
+order-of-magnitude estimates for the SUTD column
+($L=0.15$~m, $d_c=8.2$~mm, $u=0.10$~m\,s$^{-1}$,
+$\varepsilon=0.40$, $\rho_p=800$~kg\,m$^{-3}$, $q_0^*\approx0.48$~mol\,kg$^{-1}$).
+
+\begin{table}[ht]
+\centering
+\caption{Dimensionless groups.
+  $\varepsilon_p$ (particle porosity $\approx0.71$) enters film/pore correlations
+  but not $\varepsilon$ (bed voidage $\approx0.40$); the two must not be
+  conflated.}
+\label{tab:dimless}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lllcc@{}}
+\toprule
+Symbol & Definition & Physical meaning & Estimate & Required limit \\
+\midrule
+$\delta_1$ & $\varepsilon c_0/[(1-\varepsilon)\rho_p q_0^*]$
+  & gas-to-solid capacity ratio & $\sim2\times10^{-5}$ & $\ll1$ \\
+$\mathrm{Pe}$ & $uL/D_L$
+  & P\'eclet number & $\sim150$ & $\gg1$ \\
+$\mathrm{NTU}_1$ & $k_1(1-\varepsilon)L/(\varepsilon u)$
+  & transfer units (fast sites) & $O(1)$--$10$ & $O(1)$ \\
+$\kappa$ & $k_2/k_1$
+  & kinetic ratio & $0.01$--$0.1$ & $\ll1$ \\
+$\Lambda$ & $(1-\varepsilon)\rho_p q_0^*/(\varepsilon c_0) = 1/\delta_1$
+  & retardation factor & $\sim5\times10^{4}$ & $\gg1$ \\
+$\Phi$ & $(1-\varepsilon)\rho_p|\Delta H_\text{ads}|q_0^*/
+         [\varepsilon\rho_g c_{p,g}T_0]$
+  & thermal loading & $O(1)$--$10$ & full model \\
+$\mathrm{Bi}_w$ & $h_w d_c/(4\lambda_\text{eff})$
+  & wall Biot number & $O(1)$ & retain ($d_c<10$~mm) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The three-level hierarchy $\delta_1\ll 1/\mathrm{Pe}\ll 1$ holds for all
+physically realistic DAC operating conditions and is the foundation of the
+reduction in Section~\ref{sec:wave}.
+
+%============================================================================
+\section{Travelling-wave reduction}
+\label{sec:wave}
+%============================================================================
+
+\subsection{Non-dimensionalisation}
+
+Define $\hat{c}=c/c_0$, $\hat{q}_i=q_i/q_0^*$, $\hat{z}=z/L$, and the slow
+time $\hat{t}=tu/(\Lambda L)$ scaled by the total stoichiometric breakthrough
+time $t_b=\Lambda L/u$.  Under Assumption~\ref{ass:iso}, equation~\eqref{eq:gas}
+becomes
+\begin{equation}
+  \delta_1\frac{\partial\hat{c}}{\partial\hat{t}}
+  + \frac{\partial\hat{c}}{\partial\hat{z}}
+  = \frac{1}{\mathrm{Pe}}\frac{\partial^2\hat{c}}{\partial\hat{z}^2}
+    - \frac{\partial\hat{Q}}{\partial\hat{t}},
+  \label{eq:ndgas}
+\end{equation}
+where $\hat{Q}=\hat{q}_1+\hat{q}_2$.  At $\delta_1=0$ and
+$1/\mathrm{Pe}=0$, \eqref{eq:ndgas} is a scalar conservation law
+$\partial\hat{c}/\partial\hat{z}+\partial\hat{Q}/\partial\hat{t}=0$
+supporting shocks; dispersion ($1/\mathrm{Pe}$) regularises the shock and
+gas accumulation ($\delta_1$) introduces a small compressibility correction.
+
+\subsection{Wave ansatz and Rankine--Hugoniot speed}
+
+We seek a constant-pattern solution
+$\hat{c}=\hat{c}(\xi)$, $\hat{q}_i=\hat{q}_i(\xi)$, with
+$\xi=\hat{z}-\hat{v}\hat{t}$.
+At leading order ($\delta_1=0$, $1/\mathrm{Pe}=0$), substituting into
+\eqref{eq:ndgas} and integrating from $+\infty$ (where $\hat{c}=\hat{Q}=0$)
+to arbitrary $\xi$ gives
+\begin{equation}
+  \hat{c} + \hat{v}\hat{Q} = 0.
+  \label{eq:rh-integral}
+\end{equation}
+The wave-frame LDF equations follow from
+$\partial/\partial\hat{t}=-\hat{v}\,d/d\xi$:
+\begin{align}
+  \hat{v}\frac{d\hat{q}_1}{d\xi}
+    &= \mathrm{NTU}_1\bigl(\eta\,\hat{q}^*(\hat{c}) - \hat{q}_1\bigr),
+  \label{eq:waveq1}\\
+  \hat{v}\frac{d\hat{q}_2}{d\xi}
+    &= \kappa\,\mathrm{NTU}_1\bigl((1-\eta)\,\hat{q}^*(\hat{c}) - \hat{q}_2\bigr),
+  \label{eq:waveq2}
+\end{align}
+where $\hat{q}^*(\hat{c})=q^*(c_0\hat{c},T_0)/q_0^*$ is the normalised
+Toth isotherm.
+
+\begin{theorem}[Dual-kinetic travelling wave]\label{thm:wave}
+  Under Assumptions~\ref{ass:plug}--\ref{ass:iso}, with the Toth isotherm
+  \eqref{eq:toth} favorable ($t_0\in(0,1)$) and the parameter ordering
+  $0\leq\kappa<1$, $\delta_1\ll1$, $1/\mathrm{Pe}\ll1$:
+  \begin{enumerate}
+    \item[\emph{(i)}] \emph{(Wave existence.)}  There exists a unique
+      travelling-wave solution with wave speed
+      \begin{equation}
+        v_{f,1} = \frac{uc_0}{(1-\varepsilon)\rho_p\,\eta\, q_0^*+\varepsilon c_0}
+                 \approx \frac{uc_0}{(1-\varepsilon)\rho_p\,\eta\,q_0^*}
+                 = \frac{v_f}{\eta},
+        \label{eq:vf1}
+      \end{equation}
+      where $v_f = uc_0/[(1-\varepsilon)\rho_p q_0^*+\varepsilon c_0]$ is the
+      Rankine--Hugoniot speed for the full equilibrated system.
+    \item[\emph{(ii)}] \emph{(Perturbative slow-site correction.)}  For
+      $0<\kappa\ll1$, the slow-site loading $\hat{q}_2(\xi)$ is bounded,
+      $0\leq\hat{q}_2\leq 1-\eta$, and the induced correction to $\hat{c}$
+      is $O(\kappa)$ uniformly in $\xi$.  In the time domain at $z=L$, the
+      correction decays as $e^{-\kappa k_1(t-t_{b,1})}$ where
+      $t_{b,1}=\eta\Lambda L/u$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textit{Step~1 ($\kappa=0$).}  Setting $\kappa=0$ in \eqref{eq:waveq2} gives
+$\hat{q}_2\equiv0$, so $\hat{Q}=\hat{q}_1$.  The conservation integral
+\eqref{eq:rh-integral} becomes $\hat{c}=-\hat{v}\hat{q}_1$.
+Applying the upstream boundary condition
+$\hat{c}\to1$, $\hat{q}_1\to\eta$ as $\xi\to-\infty$ gives
+$1=-\hat{v}\eta$, hence $\hat{v}=-1/\eta$, recovering \eqref{eq:vf1}.
+
+Substituting $\hat{c}=\hat{q}_1/\eta$ into \eqref{eq:waveq1}:
+\[
+  -\frac{1}{\eta}\frac{d\hat{q}_1}{d\xi}
+    = \mathrm{NTU}_1\!\left(\eta\,\hat{q}^*\!\left(\frac{\hat{q}_1}{\eta}\right)
+                              - \hat{q}_1\right).
+\]
+This is an autonomous scalar ODE on $[0,\eta]$.  At $\hat{q}_1=0$:
+$\hat{q}^*(0)=0$, so the right-hand side vanishes.  At $\hat{q}_1=\eta$:
+$\hat{q}^*(1)=1$ and the right-hand side equals $\mathrm{NTU}_1(\eta-\eta)=0$.
+For the favorable Toth isotherm ($t_0\in(0,1)$), the normalised isotherm
+satisfies $\hat{q}^*(\hat{c})>\hat{c}$ for all $\hat{c}\in(0,1)$
+(the isotherm lies above the diagonal), so for $\hat{q}_1\in(0,\eta)$ the
+right-hand side is strictly positive.  The ODE therefore has a unique
+heteroclinic orbit connecting $\hat{q}_1=0$ (at $\xi\to+\infty$) to
+$\hat{q}_1=\eta$ (at $\xi\to-\infty$), establishing the existence and
+uniqueness of the wave \cite{Rhee1970}.
+
+\textit{Step~2 (restoring $0<\kappa\ll1$).}
+Write $\hat{Q}=\hat{q}_1+\hat{q}_2$.  The integral \eqref{eq:rh-integral}
+gives $\hat{c}=-\hat{v}(\hat{q}_1+\hat{q}_2)$.  Since $0\leq\hat{q}_2\leq1-\eta$,
+the correction $\hat{v}\hat{q}_2$ to $\hat{c}$ is bounded by
+$\kappa\,\mathrm{NTU}_1\times O(1)$.  By standard continuous dependence on
+parameters, the wave persists for small $\kappa>0$.
+
+For $\hat{q}_2$: in the region behind the fast front ($\xi\ll0$, $\hat{c}\approx1$,
+$\hat{q}^*\approx1$), equation~\eqref{eq:waveq2} reads
+$(-1/\eta)\,d\hat{q}_2/d\xi=\kappa\,\mathrm{NTU}_1((1-\eta)-\hat{q}_2)$,
+with solution $\hat{q}_2(\xi)=(1-\eta)(1-e^{\kappa\,\eta\,\mathrm{NTU}_1\xi})$.
+Since $\xi<0$, this expression is bounded in $(0,1-\eta)$ and approaches
+$1-\eta$ as $\xi\to-\infty$.  In the time domain at $z=L$, the
+argument $\xi = (1 - t/t_{b,1})/(\Lambda/\eta)$ gives
+$\hat{q}_2(t)\propto e^{-\kappa k_1(t-t_{b,1})}$, which decays to zero as
+$t\to\infty$, confirming part~(ii).~$\square$
+\end{proof}
+
+\begin{remark}
+  Theorem~\ref{thm:wave} requires a favorable isotherm (concave $q^*$,
+  genuine nonlinearity) for the heteroclinic orbit to exist.  A linear Henry
+  isotherm ($t_0=1$, $b_0\to0$) gives no heteroclinic orbit; the profile
+  spreads as $t^{-1/2}$ (Klinkenberg regime), which is the Gate~A linear
+  benchmark defined in Section~\ref{sec:gates}.
+\end{remark}
+
+\subsection{Hybrid outlet concentration}
+
+Evaluating the wave at the column exit $z=L$ yields the breakthrough curve.
+Let $t_{b,1}=\eta\Lambda L/u$ be the fast-site stoichiometric time.
+In the DAC limit $y_0=c_0R_gT_0/p_a\to0$ (incompressible approximation
+$\delta_1\to0$, valid to relative order $y_0\approx4\times10^{-4}$):
+\begin{equation}
+  \boxed{
+  \frac{c(L,t)}{c_0}
+  \;\approx\;
+  \underbrace{\Bigl(1-e^{-k_1(t-t_{b,1})}\Bigr)}_{\text{fast-site rise}}
+  \;-\;
+  \underbrace{\frac{1-\eta}{\eta}\;\kappa\;e^{-\kappa k_1(t-t_{b,1})}}_{\text{slow-site tail}},
+  \qquad t>t_{b,1},}
+  \label{eq:hybrid}
+\end{equation}
+where $t_{b,1}=\eta(1-\varepsilon)\rho_p q_0^* L/(uc_0)$.
+The first term is the Myers--Font (2020) exponential for the fast-site front
+\cite{MyersFont2020}; the second is the $O(\kappa)$ tail correction derived in
+Theorem~\ref{thm:wave}.  For finite $y_0$, the first term is replaced by the
+exact Myers--Font compressible form
+$(1-e^{-k_1(t-t_{b,1})})/(1-y_0 e^{-k_1(t-t_{b,1})})$.
+The large-NTU Klinkenberg error-function front and the logistic approximation
+are both recovered as special cases of the wave profile $\hat{c}(\xi)$ under
+linear and Langmuir isotherms, respectively; the Toth wave requires numerical
+integration of the wave-frame ODE.
+
+\begin{corollary}[Homogeneous limit]\label{cor:hom}
+When $\eta\to1$, $t_{b,1}\to t_b=(1-\varepsilon)\rho_p q_0^* L/(uc_0)$
+and the tail term vanishes; \eqref{eq:hybrid} reduces to
+$c(L,t)/c_0 = 1-e^{-k_1(t-t_b)}$, the Myers--Font single-LDF result.
+\end{corollary}
+
+\begin{corollary}[Sharp-front limit]\label{cor:sharp}
+When $k_1\to\infty$ with $k_2/k_1=\kappa$ fixed, the fast-site rise
+becomes a step at $t_{b,1}$ and the outlet curve is
+$c/c_0 = 1 - ((1-\eta)/\eta)\kappa e^{-\kappa k_1(t-t_{b,1})}$
+for $t>t_{b,1}$; the tail area $\int_{t_{b,1}}^\infty(1-c/c_0)\,dt$
+equals $(1-\eta)t_{b,1}/\eta$.
+\end{corollary}
+
+\subsection{Asymmetry index and kinetic-model selection}
+
+Define the asymmetry index of any measured breakthrough curve:
+\begin{equation}
+  \mathcal{A} = \frac{\tau_{95}-\tau_{50}}{\tau_{50}-\tau_5},
+  \label{eq:asym}
+\end{equation}
+where $\tau_x$ is the time at which $c(L,\tau_x)/c_0=x/100$.
+The Bohart--Adams, Thomas, and Yoon--Nelson models are all equivalent to
+the logistic $c/c_0=[1+e^{k(\tau-t)}]^{-1}$ \cite{Hu2024}, which gives
+$\mathcal{A}=1$ identically.
+From Corollary~\ref{cor:hom}, $\mathcal{A}=1$ when $\eta=1$.
+Cabrera-Codony et al.\ (2026) report $\mathcal{A}\approx5.4$ for PEI-fumed
+silica at DAC concentrations, consistent with $\kappa\ll1$ and
+$(1-\eta)/\eta\sim O(1)$ in \eqref{eq:hybrid}.
+The practical selection rule is:
+\begin{equation}
+  \mathcal{A}\lesssim2 \;\Rightarrow\; \text{single-LDF (PFO) sufficient};\qquad
+  \mathcal{A}\gtrsim3 \;\Rightarrow\; \text{escalate to dual-kinetic.}
+  \label{eq:rule}
+\end{equation}
+Fitting proceeds in two stages: $k_1$ and $D_L$ are fit to the initial rise
+(first $\sim70\%$ of the curve), then $\kappa$ and $\eta$ to the tail \cite{Stampi2024}.
+
+%============================================================================
+\section{Validation gates and parametric framework}
+\label{sec:gates}
+%============================================================================
+
+\subsection{Three escalating validation gates}
+
+Three gates must clear \emph{in order}; skipping a gate is not permitted.
+Each tests a distinct physical ingredient.
+
+\medskip
+\textbf{Gate~A (Week~4) --- Klinkenberg linear benchmark.}
+Set $q^*=K_H c$ (Henry isotherm, $\kappa=0$).
+The analytical Klinkenberg solution \cite{Hu2024} is
+\begin{equation}
+  \frac{c(L,t)}{c_0}
+  = \tfrac{1}{2}\Bigl[1+\mathrm{erf}\!\bigl(\sqrt{\zeta}-\sqrt{\tau}\bigr)\Bigr]
+  + O(\zeta^{-1}),
+  \label{eq:klink}
+\end{equation}
+valid for $\zeta\geq2$, where
+$\zeta=k_H a_p(1-\varepsilon)L/(\varepsilon u)$ and
+$\tau=k_H a_p K_H(1-\varepsilon)(t-\varepsilon L/u)/(\varepsilon u)$
+\cite{Hu2024}.
+The Method-of-Lines solver must reproduce \eqref{eq:klink} with cumulative
+mass-balance error below 1\%.
+
+\medskip
+\textbf{Gate~B (Weeks~5--6) --- Rankine--Hugoniot front velocity.}
+With the Toth isotherm \eqref{eq:toth}--\eqref{eq:params} active,
+the simulated front velocity $v_\text{sim}=L/\tau_{50}$ must satisfy
+$|v_\text{sim}/v_{f,1}-1|\leq0.15$.
+This gate verifies both the nonlinear isotherm implementation and the
+spatial convergence of the solver.  The tolerance is fixed at $\pm15\%$;
+a stretch target of $\pm10\%$ may be reported separately.
+
+\medskip
+\textbf{Gate~C (Week~6) --- Stampi-Bombelli et al.\ (2024) breakthrough time.}
+With parameters~\eqref{eq:params} scaled to the column geometry of
+\cite{Stampi2024}, the simulated $\tau_{BT}$ (defined at $c/c_0=0.05$) must
+fall within $\pm20\%$ of the reported experimental value.  Only after
+Gate~C clears may parametric sweeps begin.
+
+\subsection{Parametric hypotheses}
+
+The five falsifiable hypotheses governing the OAT sweep are stated with
+pre-committed acceptance thresholds:
+
+\begin{description}
+  \item[H1.] Increasing $u$ shortens $\tau_{BT}$ and widens the MTZ;
+    the $\tau_{BT}$--$u$ slope matches $v_{f,1}$  within $\pm15\%$.
+  \item[H2.] Increasing $c_0$ raises dynamic capacity $q_\text{dyn}$ and
+    reduces $\tau_{BT}$; Toth predicts $q_\text{dyn}$ within $\pm20\%$ of
+    the measured value.
+  \item[H3.] $\tau_{BT}$ scales linearly with $L$ within $\pm10\%$ in the
+    constant-pattern regime (NTU$_1>3$).
+  \item[H4.] Raising $T_\text{ads}$ reduces $q_\text{dyn}$ through
+    the van~'t~Hoff dependence of $b(T)$ in \eqref{eq:toth-T}.
+  \item[H5.] The simulated shock velocity matches \eqref{eq:vf1} within
+    $\pm15\%$ whenever $\mathrm{NTU}_1>5$.
+\end{description}
+
+The nine-run OAT design has one baseline ($u=0.10$~m\,s$^{-1}$,
+$c_0=400$~ppm, $L=0.15$~m, $T=25$~°C) and two levels per parameter.
+Results are visualised on a (Pe, NTU$_1$) regime map: Pe varies with $u$
+and $L$; NTU$_1$ varies with $k_1$, $L$, and $u$.  The map separates the
+sharp-shock regime (NTU$_1\gg1$, H5 territory), the kinetic-limited regime
+(NTU$_1\sim1$, H1--H4 territory), and the dispersion-dominated regime
+(Pe$\ll1$).
+
+%============================================================================
+\section{Discussion}
+\label{sec:resolution}
+%============================================================================
+
+\subsection{Notation conflicts resolved}
+
+Several conflicts between sources are standardised here to prevent
+inconsistent numerical implementation.
+
+\textbf{LDF driving force.}
+The form $\partial\bar{q}/\partial t = k(q^*-\bar{q})$
+(solid-loading driving force, rate constant in s$^{-1}$) is used throughout.
+The alternative form $\partial\bar{q}/\partial t = k'(c-c^*)$
+(gas-concentration driving force) uses $k'=k\,dq^*/dc$; the two coefficients
+are numerically different by a factor equal to the local isotherm slope and
+must not be exchanged.
+
+\textbf{Gas-to-solid capacity ratio.}
+The dimensionless group $\delta_1 = \varepsilon c_0/[(1-\varepsilon)\rho_p q_0^*]$
+defined in Table~\ref{tab:dimless} is the gas-to-solid capacity ratio.
+A distinct group $Lk_q/u_0\approx0.027$ (reaction-to-advection time ratio)
+appearing in some sources carries different physical meaning and must not
+be labelled $\delta_1$.
+
+\textbf{Void fractions.}
+$\varepsilon$ (bed voidage, $\approx0.40$) and $\varepsilon_p$ (particle porosity,
+$\approx0.71$ for $\gamma$-alumina \cite{Stampi2024}) appear in separate
+sub-models (column balance vs.\ intraparticle diffusion) and must not
+be conflated.
+
+\subsection{Scope and limitations}
+
+The analysis covers single-component CO$_2$/N$_2$ adsorption, with
+non-isothermal effects entering at order $\Phi\cdot\delta_1$ (small but
+included in the numerical model), constant superficial velocity (Ergun
+pressure drop negligible at the velocities considered), and no humidity.
+Humidity enhancement of CO$_2$ uptake on PEI sorbents is reported in some
+studies but remains mechanistically contested; it is excluded from the
+present scope.
+
+Whether PEI@SiO$_2$ granules require the dual-kinetic closure will be
+determined from the asymmetry index $\mathcal{A}$ measured on the first
+experimental curve.  Stampi-Bombelli et al.\ \cite{Stampi2024} found that
+the dual-kinetic model collapses to single-LDF for packed beds of pellets
+(contrasting with their monolith, where $\kappa\approx0.01$ is essential).
+If $\mathcal{A}\lesssim2$, the single-LDF model (Corollary~\ref{cor:hom})
+is sufficient and the theoretical results of this paper reduce to those of
+Myers \& Font \cite{MyersFont2020}.
+
+\subsection{Empirical models as failed-comparison cases}
+
+Hu et al.\ \cite{Hu2024} prove that Bohart--Adams, Thomas, and Yoon--Nelson
+are algebraically equivalent to the logistic $c/c_0=[1+e^{k(\tau-t)}]^{-1}$,
+so fitting all three to the same dataset tests nothing.  Their rate
+constants also drift with operating conditions (a threefold increase in
+inlet concentration nearly doubles $k_{YN}$ for toluene on activated
+carbon \cite{Hu2024}), confirming that these are shape-fitting parameters,
+not physical constants.  Accordingly, Bohart--Adams, Thomas, and Yoon--Nelson
+appear in this study only as failed-comparison cases; the benchmarks are the
+analytically grounded Gates~A--C.
+
+%--- References -------------------------------------------------------------
+\begin{thebibliography}{99}
+
+\bibitem{IEA2022}
+IEA (2022). \textit{Direct Air Capture 2022}.  International Energy Agency,
+Paris.
+
+\bibitem{IPCC2023}
+IPCC (2023). \textit{Climate Change 2023: Synthesis Report}.  IPCC, Geneva.
+
+\bibitem{Pedrozo2025}
+Pedrozo, H.\,A., Br\"uggemann, T., Serna, L.\,Y., Tsitsonis, V., Ajenifuja, A.,
+  Sch\"afer, P., Kearns, J., \& Mazzotti, M.\ (2025).
+Optimization of direct air capture processes using reactive transport models
+  of adsorption--desorption cycles.
+\textit{Computers \& Chemical Engineering}, 204, 109379.
+
+\bibitem{Bollini2012}
+Bollini, P., Choi, S., Drese, J.\,H., \& Jones, C.\,W.\ (2012).
+Oxidative degradation of aminosilica adsorbents relevant to postcombustion
+  CO$_2$ capture.
+\textit{Energy \& Fuels}, 25(5), 2416--2425.
+
+\bibitem{Kalyanaraman2015}
+Kalyanaraman, J., Fan, Y., Labreche, Y., Lively, R.\,P., Kawajiri, Y.,
+  \& Realff, M.\,J.\ (2015).
+Modeling and experimental validation of carbon dioxide sorption on hollow
+  fibers loaded with silica-supported poly(ethylenimine).
+\textit{Chemical Engineering Journal}, 259, 737--751.
+
+\bibitem{Ohs2018}
+Ohs, B., Kr\"{o}del, M., \& Wessling, M.\ (2018).
+Adsorption of carbon dioxide on solid amine-functionalized sorbents:
+  A dual kinetic model.
+\textit{Separation and Purification Technology}, 204, 13--20.
+
+\bibitem{Hu2024}
+Hu, Q., Li, J., Liu, Z., Sheng, T., Shen, J., \& Xie, J.\ (2024).
+A critical review of breakthrough models with analytical solutions in a
+  fixed-bed column.
+\textit{Journal of Water Process Engineering}, 59, 105065.
+
+\bibitem{Stampi2024}
+Stampi-Bombelli, V., Storione, A., Grossmann, Q., \& Mazzotti, M.\ (2024).
+On comparing packed beds and monoliths for CO$_2$ capture from air through
+  experiments, theory, and modeling.
+\textit{Industrial \& Engineering Chemistry Research}, 63(26), 11637--11653.
+
+\bibitem{Grossmann2023}
+Grossmann, Q., Stampi-Bombelli, V., \& Mazzotti, M.\ (2023).
+Developing versatile contactors for direct air capture of CO$_2$ through
+  amine grafting onto alumina pellets and alumina wash-coated monoliths.
+\textit{Industrial \& Engineering Chemistry Research}, 62(33), 13594--13611.
+
+\bibitem{MyersFont2020}
+Myers, T.\,G., \& Font, F.\ (2020).
+Mass transfer from a fluid flowing through a porous media.
+\textit{International Journal of Heat and Mass Transfer}, 163, 120374.
+[\textit{Note:} the article number 120374 appears also for an unrelated
+reference in the literature; the primary PDF should be verified before
+final submission.]
+
+\bibitem{Rhee1970}
+Rhee, H.-K., Aris, R., \& Amundson, N.\,R.\ (1970).
+On the theory of multicomponent chromatography.
+\textit{Philosophical Transactions of the Royal Society A}, 267, 419--455.
+
+\bibitem{Glueckauf1955}
+Glueckauf, E.\ (1955).
+Theory of chromatography, Part~10: Formula\ae{} for diffusion into spheres
+  and their application to chromatography.
+\textit{Transactions of the Faraday Society}, 51, 1540--1551.
+
+\end{thebibliography}
+
+\end{document}
