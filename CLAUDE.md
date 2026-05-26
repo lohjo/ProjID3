@@ -30,11 +30,14 @@ source venv/Scripts/activate    # Git Bash on Windows
 pip install -r requirements.txt # numpy, scipy, matplotlib
 
 # Run scripts directly from repo root
-python src/solver/1d_solver.py  # working 1-D advection-diffusion MOL demo
-python src/solver/pde_mol.py    # 4-PDE coupled scaffold — NOT yet runnable
+python src/solver/heat_eq_mol.py     # working 1-D advection-diffusion MOL demo
+python src/solver/pde_mol.py         # 4-PDE coupled scaffold — NOT yet runnable
+python src/solver/illustration.py    # end-to-end numerical illustration for §5
 ```
 
 `pde_mol.py` is a scaffold. Expect to spend Weeks 4–5 turning it into a Gate-A-passing implementation.
+
+`illustration.py` is the working pipeline behind §5 of the paper: ingests the cleaned CSVs in `src/solver/data/*ml_*g.csv`, walks the reader from the linear transport equation through retarded advection–diffusion to fitted Chern–Chien Langmuir/Freundlich and Clark sigmoids, and writes eight figures to `src/img/generated/`. Every fitted parameter (k_YN, K, tau_BT, C_inf, n, t_50, t_i, mu_max, lambda) is printed to stdout — no hand-tuning. Re-run after editing the dataset to refresh figures.
 
 ## Architecture of the solver work
 
