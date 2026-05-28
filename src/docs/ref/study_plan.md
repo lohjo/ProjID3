@@ -169,6 +169,23 @@ Output per run: τ_BT, τ_sat, η, W_MTZ, q_dyn, v_front.
 | Capacity drop with T_ads at 25, 50, 90 °C | Stampi-Bombelli 2024 | τ_BT(T) trend and magnitude | directional + ±20% |
 | Concentration effect on front dynamics at 500–2000 ppm | Chen et al. 2023 | τ_BT vs C_in direction and approximate scaling | directional |
 
+> **Remark**:  L² error (relative):
+
+  $$\text{err} = \frac{| C_{\text{num}} - C_{\text{exact}} |2}{| C{\text{exact}} |_2} = \frac{\sqrt{\sum_i
+  (C_i^{\text{num}} - C_i^{\text{exact}})^2}}{\sqrt{\sum_i (C_i^{\text{exact}})^2}} < 0.01$$
+
+  Gate A workflow:
+  1. Run solver on linear advection-diffusion: ∂C/∂t + u·∂C/∂z = D·∂²C/∂z²
+  2. Compare against Ogata-Banks analytical solution (step-input, semi-infinite column — has closed form)
+  3. Compute relative L² norm of pointwise difference across all z nodes at fixed t
+  4. Pass if < 1%
+
+  Why this gate matters: confirms upwind + central-diff MOL numerics are accurate before adding nonlinear LDF/Toth
+  terms. Errors in the linear case propagate badly in the full 4-PDE system.
+
+  Central-difference diffusion + upwind advection on fine enough grid should hit < 1% easily. If not, grid is too coarse
+   or timestep too large.
+
 ### 2.6 Validation protocol (mandatory before any production sweep)
 
 Three gates, each must pass before moving on:
