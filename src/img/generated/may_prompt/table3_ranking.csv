@@ -1,0 +1,10 @@
+rank,code,model,mean_AdjR2,median_AdjR2,n_runs,flag
+1,M05,"Wolborska (early, C/C0<=0.15)",0.0065702762424007,-0.00381277646835905,6,INVALID for complete curves (early-window exponential)
+2,M02,Clark,-157.05923939264463,-0.0064959430577558,7,complete-curve model
+3,M23,Fractal-BA (fractal YN),-255.02475784563373,-0.1804044392575627,7,complete-curve model
+4,M07,Error function,-262.1916662632339,-0.1798117098492042,7,complete-curve model
+5,M01,Logistic (BA/Thomas/YN),-262.2069248111619,-0.0107273966214007,7,complete-curve model
+6,M06,Gudermannian,-263.8190600735872,-0.0100341768834191,7,complete-curve model
+7,M04,Modified Dose-Response,-475.87249492197407,-0.1798116558293598,7,complete-curve model
+8,M14,Weibull,-475.88285795151035,-0.1798114786055633,7,complete-curve model
+9,M16,Klinkenberg,-3913.5125385662504,-0.3211744113786985,7,CONDITIONAL (ζ≥2 & τ_K≥1 only)
