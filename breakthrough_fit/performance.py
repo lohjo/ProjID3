@@ -80,7 +80,10 @@ def q_dyn_trapz(
         return float("nan")
     integrand = 1.0 - y_use
     integral = float(np.trapezoid(integrand, t_use))
-    return flow_vol_m3_s * c0_mol_m3 * integral / (mass_kg * 1000.0)
+    # [m^3/s]*[mol/m^3]*[s] / [kg] = mol/kg. (The previous extra factor of
+    # 1000 in the denominator was an unjustified unit error that put q_dyn
+    # ~1000x too low; removed 2026-05-31, cross-checked vs YN back-calc q0.)
+    return flow_vol_m3_s * c0_mol_m3 * integral / mass_kg
 
 
 def l_mtz(t: np.ndarray, y: np.ndarray, L_bed_m: float) -> float:

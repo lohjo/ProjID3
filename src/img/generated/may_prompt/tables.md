@@ -1,115 +1,97 @@
-# May-2026 diagnostic runs — engineered-prompt deliverables
+# New experimental runs (3/4/5/6/8) — engineered-prompt deliverables
 
 *Assembled from stored `breakthrough_out/` fits; no re-fitting.*
 
-### Table 1 — Derived physical parameters (May-2026 runs)
+### Table 1 — Derived physical parameters (5 real runs, EC-1 to EC-6)
 
-**FLAG — geometrically inconsistent inputs.** Format-A sensor logs carry no flow/mass/geometry, so every value below uses the engineered prompt's assumptions: d = 85 mm, bed L = 21 cm, m = 8.00 g, ρ_p = 800 kg/m³. With these, EC-1 gives ρ_b = **6.7 kg/m³** and EC-2 gives ε = **0.992** — an essentially empty column. 8 g cannot pack a 21 cm × 85 mm bed (that volume ≈ 953 g at ρ_p = 800). ρ_b, ε(EC-2) and the ε-based interstitial velocity below are therefore unphysical; the real packed-bed geometry of these runs is the missing input (owner: Prof. Birgersson / SUTD rig). The U column (EC-5) depends only on flow + column area and is reliable; v is also reported against a typical packed-bed ε = 0.40 as a usable fallback.
+EC-1: ρ_b = m / (A_c · L_bed). EC-2: ε = 1 − ρ_b / ρ_p; ρ_p = 800 kg/m³ assumed (nominal PEI–SiO₂; open input — real ρ_p not yet supplied). Raw ε (EC-2) ≈ 0.16–0.18 in all runs (bulk density ~656–672 kg/m³ with ρ_p = 800); floored at 0.30 in the pipeline. **U is reliable** (depends only on Q and A_c); **v and ε-derived quantities should not be treated as physical** until ρ_p is confirmed. Outlet flow available for runs 3/4/5 (from pressure-drop table); runs 6/8 outlet = NaN — inlet flow used as operating flow per the prompt.
 
-| Run | conc (%) | flow (lpm) | ρ_b [kg/m³] | ε (EC-2) | U [m/s] (EC-5) | v [m/s] @ε(EC-2) | v [m/s] @ε=0.40 |
-|---|---|---|---|---|---|---|---|
-| May-20-2026Run2conc5_flow0.1 | 5 | 0.10 | 6.7 | 0.992 | 2.937e-04 | 2.962e-04 | 7.343e-04 |
-| May-20-2026conc5_flow1.5 | 5 | 1.50 | 6.7 | 0.992 | 4.406e-03 | 4.443e-03 | 1.101e-02 |
-| May-20-2026conc5_flow1.5(2) | 5 | 1.50 | 6.7 | 0.992 | 4.406e-03 | 4.443e-03 | 1.101e-02 |
-| May-20-2026conc5_flow1.5(3) | 5 | 1.50 | 6.7 | 0.992 | 4.406e-03 | 4.443e-03 | 1.101e-02 |
-| May-22-2026-conc10-flow0.05 | 10 | 0.05 | 6.7 | 0.992 | 1.469e-04 | 1.481e-04 | 3.671e-04 |
-| May-22-2026-conc10-flow0.1 | 10 | 0.10 | 6.7 | 0.992 | 2.937e-04 | 2.962e-04 | 7.343e-04 |
-| May-22-2026-conc10_flow-0.1(2) | 10 | 0.10 | 6.7 | 0.992 | 2.937e-04 | 2.962e-04 | 7.343e-04 |
+| Run | Q (lpm) | m (g) | L_bed (cm) | C₀ (ppm) | ρ_b (kg/m³) | ε (EC-2, floored) | U (cm/s) | v (cm/s)* |
+|---|---|---|---|---|---|---|---|---|
+| run 3 | 0.15 | 8.0076 | 21.0 | — | 672.0 | 0.30 (0.160 raw) | 4.406 | 14.686 |
+| run 4 | 0.05 | 8.0000 | 21.3 | — | 661.9 | 0.30 (0.173 raw) | 1.469 | 4.895 |
+| run 5 | 0.10 | 8.0000 | 21.2 | — | 665.0 | 0.30 (0.169 raw) | 2.937 | 9.790 |
+| run 6 | 0.15 | 8.0000 | 21.5 | — | 655.7 | 0.30 (0.180 raw) | 4.406 | 14.686 |
+| run 8 | 0.10 | 8.0000 | 21.5 | — | 655.7 | 0.30 (0.180 raw) | 2.937 | 9.790 |
 
-### Table 2 — Model fit statistics (9 prompt models × 7 runs)
+*v computed with ε floored at 0.30. C₀ is per-run measured from the CSV plateau (see pipeline output).
 
-Read straight from the stored `results_<run>.csv`. AdjR² < 0 means the model is worse than a horizontal line through the mean. Wolborska (M05) is fitted on the early window only (C/C0 ≤ 0.15), so its statistics are not comparable to the complete-curve models — see Table 3 note.
+### Table 2 — Model fit statistics (9 prompt models × 5 runs)
+
+Read straight from stored `results_<run>.csv`. AdjR² < 0 means the model is worse than a horizontal line through the mean. Wolborska (M05) is fitted on the early window only (C/C₀ ≤ 0.15), so its statistics are not comparable to the complete-curve models — see Table 3 note. F-tests between non-nested models (e.g. M01 vs M04, M01 vs M14) use ΔAICc, not F-statistic; see Table 4 for the only valid nested pair (M01 ⊂ M23).
 
 | Run | Model | p | AdjR² | χ²_ν | AICc | RMSE | key params |
 |---|---|---|---|---|---|---|---|
-| May-20-2026Run2conc5_flow0.1 | Logistic (BA/Thomas/YN) | 2 | 0.2329 | 0.2077 | -2981 | 0.4557 | k_YN=0.1035, tau=1541 |
-| May-20-2026Run2conc5_flow0.1 | Clark | 3 | 0.4503 | 0.1488 | -3612 | 0.3857 | r=0.001674, A=2.989e+04 |
-| May-20-2026Run2conc5_flow0.1 | Modified Dose-Response | 2 | 0.3438 | 0.1777 | -3277 | 0.4215 | a=1.706, t50=2067 |
-| May-20-2026Run2conc5_flow0.1 | Wolborska (early, C/C0<=0.15) | 2 | -0.004683 | 0.001405 | -3748 | 0.03748 | slope=1e-06, intercept=-3.13 |
-| May-20-2026Run2conc5_flow0.1 | Gudermannian | 2 | 0.2329 | 0.2077 | -2981 | 0.4557 | k=0.08671, tau=1541 |
-| May-20-2026Run2conc5_flow0.1 | Error function | 2 | 0.2329 | 0.2077 | -2981 | 0.4557 | k=0.04246, tau=1541 |
-| May-20-2026Run2conc5_flow0.1 | Weibull | 2 | 0.3823 | 0.1673 | -3392 | 0.409 | tau=3453, k=1.247 |
-| May-20-2026Run2conc5_flow0.1 | Klinkenberg | 2 | 0.32 | 0.1841 | -3210 | 0.4291 | K_fa=1, K=4122 |
-| May-20-2026Run2conc5_flow0.1 | Fractal-BA (fractal YN) | 3 | 0.3967 | 0.1634 | -3436 | 0.4041 | k_YN0=0.001188, tau=3177 |
-| May-20-2026conc5_flow1.5 | Logistic (BA/Thomas/YN) | 2 | 0.8929 | 0.01057 | -1349 | 0.1028 | k_YN=0.09132, tau=2168 |
-| May-20-2026conc5_flow1.5 | Clark | 3 | 0.7245 | 0.02718 | -1068 | 0.1646 | r=0.008014, A=6.655e+05 |
-| May-20-2026conc5_flow1.5 | Modified Dose-Response | 2 | 0.6976 | 0.02984 | -1041 | 0.1727 | a=20, t50=2147 |
-| May-20-2026conc5_flow1.5 | Wolborska (early, C/C0<=0.15) | 2 | -0.004487 | 7.775e-05 | -2326 | 0.008818 | slope=1e-06, intercept=-3.994 |
-| May-20-2026conc5_flow1.5 | Gudermannian | 2 | 0.8927 | 0.01059 | -1349 | 0.1029 | k=0.07653, tau=2168 |
-| May-20-2026conc5_flow1.5 | Error function | 2 | 0.8932 | 0.01054 | -1350 | 0.1027 | k=0.0375, tau=2168 |
-| May-20-2026conc5_flow1.5 | Weibull | 2 | 0.6171 | 0.03778 | -971 | 0.1944 | tau=2225, k=10 |
-| May-20-2026conc5_flow1.5 | Klinkenberg | 2 | -0.8157 | 0.1791 | -508.7 | 0.4232 | K_fa=1, K=1e+04 |
-| May-20-2026conc5_flow1.5 | Fractal-BA (fractal YN) | 3 | -0.2023 | 0.1186 | -630.1 | 0.3438 | k_YN0=38.7, tau=4.389e+05 |
-| May-20-2026conc5_flow1.5(2) | Logistic (BA/Thomas/YN) | 2 | -1837 | 0.02334 | -166.8 | 0.1528 | k_YN=0.1318, tau=1 |
-| May-20-2026conc5_flow1.5(2) | Clark | 3 | -1101 | 0.01399 | -188.6 | 0.1169 | r=1, A=1e-06 |
-| May-20-2026conc5_flow1.5(2) | Modified Dose-Response | 2 | -3328 | 0.04229 | -140.1 | 0.2056 | a=16.52, t50=1 |
-| May-20-2026conc5_flow1.5(2) | Wolborska (early, C/C0<=0.15) | 2 | — | — | — | — | slope=—, intercept=— |
-| May-20-2026conc5_flow1.5(2) | Gudermannian | 2 | -1848 | 0.02349 | -166.6 | 0.1533 | k=0.1138, tau=1 |
-| May-20-2026conc5_flow1.5(2) | Error function | 2 | -1821 | 0.02314 | -167.2 | 0.1521 | k=0.05104, tau=1 |
-| May-20-2026conc5_flow1.5(2) | Weibull | 2 | -3328 | 0.04229 | -140.1 | 0.2056 | tau=1.277, k=1.5 |
-| May-20-2026conc5_flow1.5(2) | Klinkenberg | 2 | -1075 | 0.01367 | -190.9 | 0.1169 | K_fa=1, K=1 |
-| May-20-2026conc5_flow1.5(2) | Fractal-BA (fractal YN) | 3 | -1785 | 0.02269 | -166.9 | 0.1489 | k_YN0=4, tau=1 |
-| May-20-2026conc5_flow1.5(3) | Logistic (BA/Thomas/YN) | 2 | 0.5898 | 0.1233 | -1804 | 0.3511 | k_YN=0.09773, tau=1771 |
-| May-20-2026conc5_flow1.5(3) | Clark | 3 | 0.5805 | 0.1261 | -1784 | 0.3549 | r=0.01067, A=9.995e+05 |
-| May-20-2026conc5_flow1.5(3) | Modified Dose-Response | 2 | 0.5153 | 0.1457 | -1660 | 0.3817 | a=2.33, t50=1887 |
-| May-20-2026conc5_flow1.5(3) | Wolborska (early, C/C0<=0.15) | 2 | -0.003138 | 0.0004723 | -1790 | 0.02173 | slope=8.807e-05, intercept=-4.133 |
-| May-20-2026conc5_flow1.5(3) | Gudermannian | 2 | 0.5898 | 0.1233 | -1804 | 0.3511 | k=0.08176, tau=1771 |
-| May-20-2026conc5_flow1.5(3) | Error function | 2 | 0.5898 | 0.1233 | -1804 | 0.3511 | k=0.0402, tau=1771 |
-| May-20-2026conc5_flow1.5(3) | Weibull | 2 | 0.5063 | 0.1484 | -1645 | 0.3852 | tau=3022, k=1.186 |
-| May-20-2026conc5_flow1.5(3) | Klinkenberg | 2 | 0.3636 | 0.1913 | -1425 | 0.4373 | K_fa=1, K=4018 |
-| May-20-2026conc5_flow1.5(3) | Fractal-BA (fractal YN) | 3 | 0.5132 | 0.1463 | -1656 | 0.3823 | k_YN0=1.545, tau=1907 |
-| May-22-2026-conc10-flow0.05 | Logistic (BA/Thomas/YN) | 2 | -0.3057 | 1.372 | 727.2 | 1.171 | k_YN=0.224, tau=477.4 |
-| May-22-2026-conc10-flow0.05 | Clark | 3 | -0.3072 | 1.374 | 731 | 1.172 | r=0.0406, A=1e+06 |
-| May-22-2026-conc10-flow0.05 | Modified Dose-Response | 2 | -0.307 | 1.374 | 729.5 | 1.172 | a=20, t50=456.7 |
-| May-22-2026-conc10-flow0.05 | Wolborska (early, C/C0<=0.15) | 2 | -0.002539 | 0.0005438 | -3899 | 0.02332 | slope=1e-06, intercept=-3.892 |
-| May-22-2026-conc10-flow0.05 | Gudermannian | 2 | -0.3057 | 1.372 | 727.2 | 1.171 | k=0.1934, tau=477.5 |
-| May-22-2026-conc10-flow0.05 | Error function | 2 | -0.3057 | 1.372 | 727.2 | 1.171 | k=0.08685, tau=477.4 |
-| May-22-2026-conc10-flow0.05 | Weibull | 2 | -0.3069 | 1.374 | 729.4 | 1.172 | tau=466.1, k=10 |
-| May-22-2026-conc10-flow0.05 | Klinkenberg | 2 | -0.3212 | 1.389 | 754.3 | 1.178 | K_fa=1, K=202.2 |
-| May-22-2026-conc10-flow0.05 | Fractal-BA (fractal YN) | 3 | -0.3062 | 1.373 | 729.2 | 1.171 | k_YN0=0.9515, tau=477.4 |
-| May-22-2026-conc10-flow0.1 | Logistic (BA/Thomas/YN) | 2 | -0.01073 | 7.432e-06 | -4013 | 0.002726 | k_YN=4.538e-06, tau=1e+06 |
-| May-22-2026-conc10-flow0.1 | Clark | 3 | -0.006496 | 7.401e-06 | -4014 | 0.002716 | r=1e-06, A=1e+06 |
-| May-22-2026-conc10-flow0.1 | Modified Dose-Response | 2 | -4.143 | 3.782e-05 | -3460 | 0.00615 | a=0.6888, t50=1e+06 |
-| May-22-2026-conc10-flow0.1 | Wolborska (early, C/C0<=0.15) | 2 | -0.004709 | 7.072e-06 | -4018 | 0.002659 | slope=1e-06, intercept=-4.541 |
-| May-22-2026-conc10-flow0.1 | Gudermannian | 2 | -0.01003 | 7.427e-06 | -4014 | 0.002725 | k=4.096e-06, tau=1e+06 |
-| May-22-2026-conc10-flow0.1 | Error function | 2 | -15.49 | 0.0001213 | -3064 | 0.01101 | k=0.774, tau=4.389e+05 |
-| May-22-2026-conc10-flow0.1 | Weibull | 2 | -4.165 | 3.798e-05 | -3459 | 0.006163 | tau=1e+06, k=0.69 |
-| May-22-2026-conc10-flow0.1 | Klinkenberg | 2 | -2.632e+04 | 0.1935 | -556.4 | 0.4399 | K_fa=1, K=9832 |
-| May-22-2026-conc10-flow0.1 | Fractal-BA (fractal YN) | 3 | -0.01373 | 7.454e-06 | -4011 | 0.002726 | k_YN0=4.538e-06, tau=1e+06 |
-| May-22-2026-conc10_flow-0.1(2) | Logistic (BA/Thomas/YN) | 2 | -0.1798 | 1.008 | 16.99 | 1.004 | k_YN=1, tau=357.6 |
-| May-22-2026-conc10_flow-0.1(2) | Clark | 3 | -0.1804 | 1.008 | 18.99 | 1.004 | r=0.04389, A=9.93e+05 |
-| May-22-2026-conc10_flow-0.1(2) | Modified Dose-Response | 2 | -0.1798 | 1.008 | 16.99 | 1.004 | a=20, t50=357.5 |
-| May-22-2026-conc10_flow-0.1(2) | Wolborska (early, C/C0<=0.15) | 2 | 0.05898 | 0.0005737 | -856.2 | 0.02395 | slope=0.0005998, intercept=-5.115 |
-| May-22-2026-conc10_flow-0.1(2) | Gudermannian | 2 | -0.1798 | 1.008 | 16.99 | 1.004 | k=1, tau=357.6 |
-| May-22-2026-conc10_flow-0.1(2) | Error function | 2 | -0.1798 | 1.008 | 16.99 | 1.004 | k=1, tau=357.6 |
-| May-22-2026-conc10_flow-0.1(2) | Weibull | 2 | -0.1798 | 1.008 | 16.99 | 1.004 | tau=477, k=8.135 |
-| May-22-2026-conc10_flow-0.1(2) | Klinkenberg | 2 | -0.1839 | 1.011 | 23.83 | 1.005 | K_fa=1, K=153.2 |
-| May-22-2026-conc10_flow-0.1(2) | Fractal-BA (fractal YN) | 3 | -0.1804 | 1.008 | 18.99 | 1.004 | k_YN0=0.4654, tau=362.2 |
+| run 3 | Logistic (BA/Thomas/YN) | 2 | 0.9135 | 0.00425 | -2089 | 0.06519 | k_YN=0.002123, tau=507.5 |
+| run 3 | Clark | 3 | 0.9386 | 0.003019 | -2219 | 0.05487 | r=0.001655, A=0.0155 |
+| run 3 | Modified Dose-Response | 2 | 0.993 | 0.0003459 | -3050 | 0.0186 | a=1.178, t50=342.7 |
+| run 3 | Wolborska (early, C/C0≤0.15) | 2 | 0.9253 | 0.0002692 | -19.65 | 0.01641 | slope=0.03247, intercept=-3.609 |
+| run 3 | Gudermannian | 2 | 0.9191 | 0.003977 | -2115 | 0.06306 | k=0.001707, tau=500.8 |
+| run 3 | Error function | 2 | 0.9052 | 0.00466 | -2054 | 0.06826 | k=0.00092, tau=515.7 |
+| run 3 | Weibull | 2 | 0.9977 | 0.0001107 | -3487 | 0.01052 | tau=600.8, k=0.635 |
+| run 3 | Klinkenberg | 2 | 0.3704 | 0.03093 | -1329 | 0.1759 | K_fa=1, K=1092 |
+| run 3 | Fractal-BA (fractal YN) | 3 | 0.9971 | 0.00014 | -3396 | 0.01182 | k_YN0=0.3768, tau=349.9 |
+| run 4 | Logistic (BA/Thomas/YN) | 2 | 0.963 | 0.003848 | -7960 | 0.06203 | k_YN=0.001549, tau=1004 |
+| run 4 | Clark | 3 | 0.9811 | 0.001971 | -8918 | 0.04438 | r=0.001089, A=0.01937 |
+| run 4 | Modified Dose-Response | 2 | 0.9947 | 0.0005521 | -1.074e+04 | 0.0235 | a=1.409, t50=740.7 |
+| run 4 | Wolborska (early, C/C0≤0.15) | 2 | 0.9329 | 0.0001283 | -275.4 | 0.01133 | slope=0.01094, intercept=-3.393 |
+| run 4 | Gudermannian | 2 | 0.964 | 0.003745 | -7999 | 0.0612 | k=0.001258, tau=996.3 |
+| run 4 | Error function | 2 | 0.961 | 0.004056 | -7885 | 0.06368 | k=0.0006631, tau=1015 |
+| run 4 | Weibull | 2 | 0.9996 | 4.104e-05 | -1.446e+04 | 0.006406 | tau=1202, k=0.8105 |
+| run 4 | Klinkenberg | 2 | 0.03267 | 0.1007 | -3285 | 0.3173 | K_fa=1, K=1870 |
+| run 4 | Fractal-BA (fractal YN) | 3 | 0.9988 | 0.0001276 | -1.284e+04 | 0.01129 | k_YN0=0.245, tau=775.7 |
+| run 5 | Logistic (BA/Thomas/YN) | 2 | 0.9439 | 0.00402 | -4527 | 0.06341 | k_YN=0.003852, tau=342.6 |
+| run 5 | Clark | 3 | 0.9659 | 0.00244 | -4936 | 0.04937 | r=0.002822, A=0.01721 |
+| run 5 | Modified Dose-Response | 2 | 0.9934 | 0.0004729 | -6284 | 0.02175 | a=1.301, t50=236 |
+| run 5 | Wolborska (early, C/C0≤0.15) | 2 | 0.9557 | 9.5e-05 | -89.13 | 0.009747 | slope=0.04379, intercept=-3.649 |
+| run 5 | Gudermannian | 2 | 0.9466 | 0.003827 | -4567 | 0.06186 | k=0.003113, tau=338.6 |
+| run 5 | Error function | 2 | 0.9395 | 0.004335 | -4465 | 0.06584 | k=0.00166, tau=347.6 |
+| run 5 | Weibull | 2 | 0.999 | 7.204e-05 | -7829 | 0.008488 | tau=398.3, k=0.7128 |
+| run 5 | Klinkenberg | 2 | 0.1797 | 0.05873 | -2325 | 0.2423 | K_fa=1, K=671 |
+| run 5 | Fractal-BA (fractal YN) | 3 | 0.9975 | 0.0001806 | -7073 | 0.01343 | k_YN0=0.3754, tau=244.5 |
+| run 6 | Logistic (BA/Thomas/YN) | 2 | 0.9416 | 0.003255 | -1630 | 0.05706 | k_YN=0.003949, tau=349.7 |
+| run 6 | Clark | 3 | 0.9605 | 0.002204 | -1740 | 0.04686 | r=0.002847, A=0.0178 |
+| run 6 | Modified Dose-Response | 2 | 0.9969 | 0.0001716 | -2469 | 0.0131 | a=1.239, t50=239.9 |
+| run 6 | Wolborska (early, C/C0≤0.15) | 2 | 0.9474 | 0.0001382 | — | 0.01176 | slope=0.04009, intercept=-3.739 |
+| run 6 | Gudermannian | 2 | 0.9439 | 0.00313 | -1641 | 0.05595 | k=0.003164, tau=346.7 |
+| run 6 | Error function | 2 | 0.9382 | 0.003449 | -1614 | 0.05873 | k=0.001719, tau=353.3 |
+| run 6 | Weibull | 2 | 0.9973 | 0.0001506 | -2506 | 0.01227 | tau=417.7, k=0.6726 |
+| run 6 | Klinkenberg | 2 | 0.3249 | 0.03765 | -932.6 | 0.194 | K_fa=1, K=715.6 |
+| run 6 | Fractal-BA (fractal YN) | 3 | 0.999 | 5.841e-05 | -2775 | 0.007629 | k_YN0=0.5289, tau=245.9 |
+| run 8 | Logistic (BA/Thomas/YN) | 2 | 0.9416 | 0.00272 | -1504 | 0.05215 | k_YN=0.003933, tau=348 |
+| run 8 | Clark | 3 | 0.9616 | 0.001788 | -1610 | 0.0422 | r=0.002901, A=0.01807 |
+| run 8 | Modified Dose-Response | 2 | 0.9974 | 0.0001199 | -2300 | 0.01095 | a=1.331, t50=250.4 |
+| run 8 | Wolborska (early, C/C0≤0.15) | 2 | — | — | — | — | slope=—, intercept=— |
+| run 8 | Gudermannian | 2 | 0.9446 | 0.002582 | -1518 | 0.05081 | k=0.003159, tau=344.5 |
+| run 8 | Error function | 2 | 0.937 | 0.002933 | -1485 | 0.05416 | k=0.001708, tau=352.2 |
+| run 8 | Weibull | 2 | 0.9962 | 0.0001758 | -2203 | 0.01326 | tau=415.6, k=0.7175 |
+| run 8 | Klinkenberg | 2 | 0.3689 | 0.0294 | -897.3 | 0.1715 | K_fa=1, K=696.7 |
+| run 8 | Fractal-BA (fractal YN) | 3 | 0.999 | 4.834e-05 | -2531 | 0.006939 | k_YN0=0.5947, tau=253.9 |
 
-### Table 3 — Model ranking by mean Adj. R² across the 7 May runs
+### Table 3 — Model ranking by mean Adj. R² across 5 real runs
+
+Note: among the full 24-model library, Fractal Error-Function (M11, Hu 2024) ranks first in 3/5 runs and second in the remaining 2 — it consistently outperforms all 9 prompt-listed models. It is not one of the 9 prompt-specified groups but is reported separately in the interpretation section.
 
 | Rank | Model | mean Adj.R² | median Adj.R² | n runs | validity flag |
 |---|---|---|---|---|---|
-| 1 | Wolborska (early, C/C0<=0.15) | 0.00657 | -0.003813 | 6 | INVALID for complete curves (early-window exponential) |
-| 2 | Clark | -157.1 | -0.006496 | 7 | complete-curve model |
-| 3 | Fractal-BA (fractal YN) | -255 | -0.1804 | 7 | complete-curve model |
-| 4 | Error function | -262.2 | -0.1798 | 7 | complete-curve model |
-| 5 | Logistic (BA/Thomas/YN) | -262.2 | -0.01073 | 7 | complete-curve model |
-| 6 | Gudermannian | -263.8 | -0.01003 | 7 | complete-curve model |
-| 7 | Modified Dose-Response | -475.9 | -0.1798 | 7 | complete-curve model |
-| 8 | Weibull | -475.9 | -0.1798 | 7 | complete-curve model |
-| 9 | Klinkenberg | -3914 | -0.3212 | 7 | CONDITIONAL (ζ≥2 & τ_K≥1 only) |
+| 1 | Fractal-BA (fractal YN) | 0.9983 | 0.9988 | 5 | complete-curve model |
+| 2 | Weibull | 0.998 | 0.9977 | 5 | complete-curve model |
+| 3 | Modified Dose-Response | 0.9951 | 0.9947 | 5 | complete-curve model |
+| 4 | Clark | 0.9615 | 0.9616 | 5 | complete-curve model |
+| 5 | Gudermannian | 0.9436 | 0.9446 | 5 | complete-curve model |
+| 6 | Logistic (BA/Thomas/YN) | 0.9407 | 0.9416 | 5 | complete-curve model |
+| 7 | Wolborska (early, C/C0≤0.15) | 0.9403 | 0.9401 | 4 | INVALID for complete curves (early-window exponential only) |
+| 8 | Error function | 0.9362 | 0.9382 | 5 | complete-curve model |
+| 9 | Klinkenberg | 0.2553 | 0.3249 | 5 | CONDITIONAL (requires ζ ≥ 2 and τ_K ≥ 1) |
 
 ### Table 4 — Nested F-test: BA/logistic (M01) ⊂ fractal-BA (M23)
 
-F = [(RSS₁−RSS₂)/(p₂−p₁)] / [RSS₂/(n−p₂)], recomputed from stored RSS/n/p. Valid because M23 reduces to M01 at h = 0. p < 0.05 ⇒ the fractal term is warranted.
+F = [(RSS₁−RSS₂)/(p₂−p₁)] / [RSS₂/(n−p₂)], recomputed from stored RSS/n/p. Valid because M23 reduces to M01 at h = 0. p < 0.05 ⇒ the fractal term is warranted. M01 vs M04/M14 are NOT nested — use ΔAICc for those comparisons (homoscedasticity caveat applies to all F-tests on bounded C/C₀ ∈ [0,1] data; see interpretation section).
 
 | Run | RSS(M01) | RSS(M23) | n | F | p-value | fractal warranted? |
 |---|---|---|---|---|---|---|
-| May-20-2026Run2conc5_flow0.1 | 393.8 | 309.6 | 1898 | 515.5 | 3.81e-101 | yes |
-| May-20-2026conc5_flow1.5 | 3.117 | 34.87 | 297 | -267.7 | 1 | no |
-| May-20-2026conc5_flow1.5(2) | 1.004 | 0.953 | 45 | 2.235 | 0.142 | no |
-| May-20-2026conc5_flow1.5(3) | 106.2 | 125.8 | 863 | -134.5 | 1 | no |
-| May-22-2026-conc10-flow0.05 | 3141 | 3141 | 2291 | -0.0004546 | 1 | no |
-| May-22-2026-conc10-flow0.1 | 0.002512 | 0.002512 | 340 | 0.0003413 | 0.985 | no |
-| May-22-2026-conc10_flow-0.1(2) | 2006 | 2006 | 1993 | 0.0002374 | 0.988 | no |
+| run 3 | 1.619 | 0.05321 | 383 | 1.118e+04 | 6.15e-284 | yes |
+| run 4 | 5.503 | 0.1824 | 1432 | 4.168e+04 | 0 | yes |
+| run 5 | 3.293 | 0.1477 | 821 | 1.742e+04 | 0 | yes |
+| run 6 | 0.9213 | 0.01647 | 285 | 1.549e+04 | 1.84e-248 | yes |
+| run 8 | 0.688 | 0.01218 | 255 | 1.398e+04 | 9.32e-223 | yes |

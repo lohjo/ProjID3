@@ -19,15 +19,18 @@ import numpy as np
 import pandas as pd
 
 # ---------------------------------------------------------------------------
-# Per-run metadata (from lab notebook / ultracode prompt)
-# Column geometry fixed: d_c = 8.5 mm, T = 298 K, P = 101325 Pa
+# Per-run metadata (measurements block: per-run mass/length + pressure-drop
+# table). Column geometry fixed: d_c = 8.5 mm, T = 298 K, P = 101325 Pa.
+# Inlet flow (Q_lpm) is the authoritative "inlet flow" column of the
+# adsorption pressure-drop table: run3=0.15, run4=0.05, run5=0.10,
+# run6=0.15, run8=0.10 lpm. (run6/run8 corrected 2026-05-31 from 0.05/0.125.)
 # ---------------------------------------------------------------------------
 RUN_META: dict[str, dict] = {
-    "run 3": dict(Q_lpm=0.15,  m_g=8.0076, L_bed_cm=21.0),
-    "run 4": dict(Q_lpm=0.05,  m_g=8.0000, L_bed_cm=21.3),
-    "run 5": dict(Q_lpm=0.10,  m_g=8.0000, L_bed_cm=21.2),
-    "run 6": dict(Q_lpm=0.05,  m_g=8.0000, L_bed_cm=21.5),
-    "run 8": dict(Q_lpm=0.125, m_g=8.0000, L_bed_cm=21.5),
+    "run 3": dict(Q_lpm=0.15, m_g=8.0076, L_bed_cm=21.0),
+    "run 4": dict(Q_lpm=0.05, m_g=8.0000, L_bed_cm=21.3),
+    "run 5": dict(Q_lpm=0.10, m_g=8.0000, L_bed_cm=21.2),
+    "run 6": dict(Q_lpm=0.15, m_g=8.0000, L_bed_cm=21.5),
+    "run 8": dict(Q_lpm=0.10, m_g=8.0000, L_bed_cm=21.5),
 }
 
 D_COL_M   = 0.0085          # inner diameter [m]

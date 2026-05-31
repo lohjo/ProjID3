@@ -1,10 +1,10 @@
 rank,code,model,mean_AdjR2,median_AdjR2,n_runs,flag
-1,M05,"Wolborska (early, C/C0<=0.15)",0.0065702762424007,-0.00381277646835905,6,INVALID for complete curves (early-window exponential)
-2,M02,Clark,-157.05923939264463,-0.0064959430577558,7,complete-curve model
-3,M23,Fractal-BA (fractal YN),-255.02475784563373,-0.1804044392575627,7,complete-curve model
-4,M07,Error function,-262.1916662632339,-0.1798117098492042,7,complete-curve model
-5,M01,Logistic (BA/Thomas/YN),-262.2069248111619,-0.0107273966214007,7,complete-curve model
-6,M06,Gudermannian,-263.8190600735872,-0.0100341768834191,7,complete-curve model
-7,M04,Modified Dose-Response,-475.87249492197407,-0.1798116558293598,7,complete-curve model
-8,M14,Weibull,-475.88285795151035,-0.1798114786055633,7,complete-curve model
-9,M16,Klinkenberg,-3913.5125385662504,-0.3211744113786985,7,CONDITIONAL (ζ≥2 & τ_K≥1 only)
+1,M23,Fractal-BA (fractal YN),0.9982633231848279,0.9987739074598014,5,complete-curve model
+2,M14,Weibull,0.9979744808633038,0.9977462975932082,5,complete-curve model
+3,M04,Modified Dose-Response,0.9950807481394823,0.994697136612398,5,complete-curve model
+4,M02,Clark,0.9615317540625584,0.9616208289990864,5,complete-curve model
+5,M06,Gudermannian,0.943617369473326,0.9445788745893066,5,complete-curve model
+6,M01,Logistic (BA/Thomas/YN),0.940726104008348,0.941625709713953,5,complete-curve model
+7,M05,"Wolborska (early, C/C0≤0.15)",0.9403213622154348,0.9401349579386037,4,INVALID for complete curves (early-window exponential only)
+8,M07,Error function,0.9361683830504173,0.9381554918771552,5,complete-curve model
+9,M16,Klinkenberg,0.25534313847604034,0.3249461695074812,5,CONDITIONAL (requires ζ ≥ 2 and τ_K ≥ 1)
