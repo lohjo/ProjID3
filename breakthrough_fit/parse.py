@@ -46,6 +46,8 @@ class DataParser:
         fmt = self.auto_detect(path)
         if fmt == "A":
             return self.parse_format_a(path, c0_override=c0_override)
+        if fmt == "C":
+            return self.parse_format_c(path, c0_override=c0_override)
         return self.parse_format_b(path, c0_override=c0_override)
 
     def parse_many(
@@ -59,7 +61,7 @@ class DataParser:
     @staticmethod
     def auto_detect(path: Path) -> str:
         with open(path, "r", encoding="utf-8", errors="replace") as fh:
-            head = [next(fh, "") for _ in range(2)]
+            head = [next(fh, "") for _ in range(3)]
         first = head[0].lower()
         # Format B header contains "c0" and "time (s)" labels in row 1.
         if "c0" in first and "time" in first:
@@ -70,6 +72,17 @@ class DataParser:
         # Fallback heuristic: 8 comma-separated cells with datetime in col 0.
         if head[1].count(",") >= 7:
             return "A"
+        # Format C: simple datetime + concentration (2–4 columns, no metadata).
+        # Detected by: ≤ 4 comma-separated fields and a datetime-like string
+        # in the first data row (row 1 if headerless, row 2 if header present).
+        _data_row = head[1] if head[1].strip() else head[2]
+        _parts = [p.strip().strip('"') for p in _data_row.split(",") if p.strip()]
+        if len(_parts) <= 4 and _parts:
+            try:
+                datetime.strptime(_parts[0], _DATETIME_FMT_A)
+                return "C"
+            except ValueError:
+                pass
         return "B"
 
     # ------------------------------------------------------------------ #
@@ -211,6 +224,79 @@ class DataParser:
             filename=path.name,
             run_id=path.stem,
             fmt="B",
+        )
+
+    # ------------------------------------------------------------------ #
+    # Format C — simple datetime + raw ppm  (new lab runs)
+    # ------------------------------------------------------------------ #
+    def parse_format_c(
+        self, path: Path, c0_override: Optional[float] = None
+    ) -> ParsedRun:
+        """Parse 2–4-column files: datetime in col 0, ppm in last non-empty col.
+
+        Auto-detects:
+          * ``C0``  — 92nd-percentile of concentration (plateau median).
+          * ``t=0`` — first pair of consecutive points above 2 % of C0.
+
+        ``C/C0 = (C_raw − baseline) / (C0 − baseline)`` where baseline is the
+        median of the first 10 data points.
+        """
+        content = path.read_text(encoding="utf-8", errors="replace").splitlines()
+        # Skip header row if it contains "Time" or "time".
+        start = 1 if content and "ime" in content[0] else 0
+        times: list[datetime] = []
+        raw: list[float] = []
+        for line in content[start:]:
+            parts = [p.strip().strip('"') for p in line.split(",")]
+            parts = [p for p in parts if p]
+            if len(parts) < 2:
+                continue
+            try:
+                dt = datetime.strptime(parts[0], _DATETIME_FMT_A)
+                c = float(parts[-1])
+                times.append(dt)
+                raw.append(c)
+            except (ValueError, IndexError):
+                continue
+
+        if not times:
+            raise ValueError(f"No parseable rows in {path}")
+
+        conc = np.array(raw, dtype=float)
+        # Baseline = median of first 10 points.
+        baseline = float(np.median(conc[:min(10, len(conc))]))
+        # C0 = 92nd percentile (avoids sensor noise spikes at top).
+        c0 = c0_override if c0_override else float(np.percentile(conc, 92))
+
+        # Detect t=0: first pair of consecutive points above 2 % of C0.
+        thresh = baseline + 0.02 * (c0 - baseline)
+        t0_idx = 0
+        for i in range(len(conc) - 1):
+            if conc[i] > thresh and conc[i + 1] > thresh:
+                t0_idx = max(0, i - 1)
+                break
+        t0 = times[t0_idx]
+
+        t_sec = np.array([(t - t0).total_seconds() for t in times], dtype=float)
+        span = max(c0 - baseline, 1.0)
+        c_c0 = np.clip((conc - baseline) / span, 0.0, 1.05)
+
+        out = pd.DataFrame({"t": t_sec, "C_C0": c_c0})
+        out["C0_ppm"] = c0
+        out["filename"] = path.name
+        out["run_id"] = path.stem
+        out = out.reset_index(drop=True)
+        out = self._despike(out)
+
+        return ParsedRun(
+            df=out,
+            c0_ppm=c0,
+            flow_ml_min=None,
+            temperature_K=None,
+            pressure_Pa=None,
+            filename=path.name,
+            run_id=path.stem,
+            fmt="C",
         )
 
     # ------------------------------------------------------------------ #

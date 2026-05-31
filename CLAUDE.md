@@ -71,17 +71,17 @@ Sorbent: amine-functionalised γ-alumina, 3 mm ring pellets.
 
 | Parameter | Value | Units |
 |---|---|---|
-| ns0 | 1.23 | mol/kg |
-| b0 | 4839 | kPa⁻¹ |
-| t0 | 0.25 | — |
-| ΔH0 | 70 | kJ/mol |
-| T0 | 298 | K |
-| χ | 0 | — |
-| ρ_p | 1044 | kg/m³ |
-| εp | 0.71 | — |
-| d_p | 3 mm rings | — |
-| Column d_c | 3.37 | cm |
-| Column L | 32.5 | cm |
+| ns0 | ?? | mol/kg |
+| b0 | ?? | kPa⁻¹ |
+| t0 | ?? | — |
+| ΔH0 | ?? | kJ/mol |
+| T0 | ?? | K |
+| χ | ? | — |
+| ρ_p | ?? | kg/m³ |
+| εp | ?? | — |
+| d_p | ?? mm granules | — |
+| Column d_c | 8.5 | mm |
+| Column L | 38.6 ± 0.1 | cm |
 
 These are the baseline parameters. Do not silently substitute alternatives — flag any deviation.
 
@@ -100,10 +100,6 @@ The 39-run matrix: 11 OAT + 9 u×C_in interaction + ~19 validation/diagnostic.
 
 | Parameter | Levels | Values |
 |---|---|---|
-| u (m/s) | 3 | 0.5, 1.5, 2.5 |
-| C_in (ppm) | 3 | 400, 1000, 2000 |
-| L (cm) | 3 | 15, 32.5, 65 |
-| T_ads (°C) | 3 | 25, 50, 90 |
 
 Outputs per run: `τ_BT`, `τ_sat`, `η`, `W_MTZ`, `q_dyn`, `v_front`.
 
@@ -118,3 +114,16 @@ Remaining open items (non-blocking):
 - SUTD rig geometry — if provided by Prof. Birgersson, add as stretch model-vs-experiment check in Discussion. Not required for Gate C.
 
 If solver work blocks on a missing parameter, name the parameter and which supervisor owns it rather than substituting a guess silently.
+
+### Column Geometry (Fixed)
+
+| Quantity | Value | Notes |
+|---|---|---|
+| Column length, *L* | 38.6 ± 0.1 cm | Fixed geometry |
+| Column inner diameter, *d* | 8.5 mm | Fixed geometry |
+| Cross-sectional area, *A_c* | π·(0.0085/2)² m² | Computed |
+
+# Operating Times
+
+BREAKTHROUGH TIME (c/c0 = 0.05)
+EQUILIBRIUM TIME (c/c0 = 0.95)
