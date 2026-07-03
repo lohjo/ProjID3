@@ -323,3 +323,26 @@ study_plan.md (v1.0 → v2.0): Complete rewrite.
 ※ recap: Searched the repo on parameter estimation, fit-quality stats, and model limitations for the breakthrough work,
   and reported findings. Plasticisation and accessible amine density aren't covered in the repo. Next: draft a
   limitations subsection on those gaps if you want it. (disable recaps in /config)
+
+  Both deliverables complete. Here's what was done:
+
+  ---
+  Task 1 — assemble_may_prompt.py refactor (done):
+  - D_COL_M 0.085 → 0.0085 (8.5 mm)
+  - RUNS list replaced with RUN_META dict (runs 3/4/5/6/8, per-run Q/m/L/conc_pct)
+  - DATA path updated to src/solver/data/new runs/
+  - load() fixed to use t_b_s / t_E_s / t50_s column names (old May-run CSVs used t_b/t_E/t50)
+  - table1() rewritten: per-run ρ_b/ε/U/v from RUN_META; "geometrically inconsistent" FLAG removed; replaced with correct ρ_p=800 caveat + ε floor explanation
+  - Table 2/3 headers corrected ("7 May runs" → "5 new runs"); Table 3 adds note that M11 outperforms all 9 prompt models
+  - Fig P1 title/colors corrected (blue=~5% CO₂, red=~10%, green=~15%)
+  - Script runs clean; src/img/generated/may_prompt/ regenerated
+
+  Task 2 — experimental-results.md rewrite (done):
+  - Built entirely on the 5 real runs; follows engineered-prompt structure (Tables 0→4, §1–9)
+  - Reports all key findings: fractal family dominates (M23 best among 9 prompt models; M11 best from 24-model library in runs 3/5), decisive F-test (F > 10,000 in all
+  runs), Clark n→1 + MDR a=1.2–1.4 confirm asymmetry, q_dyn = 0.55–0.89 mol/kg physically plausible
+  - Flags the run5/run6 t₅₀ anomaly (19s vs 14s at 150 vs 100 mL/min) honestly
+  - Flags ρ_p/ε open input throughout
+  - Synthetic placeholder appendix (12 *ml_*g) clearly labeled as NOT measured, with old q_dyn values preserved but flagged as pre-fix
+
+  Also corrected: CLAUDE.md "best model M11 every run" → per-run actual winners (M11 runs 3/5, M14 run 4, M10 runs 6/8). Memory updated to match.

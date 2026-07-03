@@ -1,0 +1,2601 @@
+Accepted Manuscript
+
+
+Concentration and temperature profiles in a fixed bed column based
+on an analytical solution of the axial dispersion model for binary and
+multicomponent non-isothermal adsorption processes
+
+Valery A. Danilov , Peter De Schepper , Julien Cousin-Saint-Remi ,
+Joeri F.M. Denayer
+
+PII:                   S0098-1354(18)30831-7
+DOI:                   https://doi.org/10.1016/j.compchemeng.2018.12.026
+Reference:             CACE 6315
+
+
+To appear in:          Computers and Chemical Engineering
+
+Received date:         9 August 2018
+Revised date:          15 December 2018
+Accepted date:         21 December 2018
+
+Please cite this article as: Valery A. Danilov , Peter De Schepper , Julien Cousin-Saint-Remi ,
+Joeri F.M. Denayer , Concentration and temperature profiles in a fixed bed column based
+on an analytical solution of the axial dispersion model for binary and multicomponent
+non-isothermal adsorption processes, Computers and Chemical Engineering (2018), doi:
+https://doi.org/10.1016/j.compchemeng.2018.12.026
+
+
+
+
+This is a PDF file of an unedited manuscript that has been accepted for publication. As a service
+to our customers we are providing this early version of the manuscript. The manuscript will undergo
+copyediting, typesetting, and review of the resulting proof before it is published in its final form. Please
+note that during the production process errors may be discovered which could affect the content, and
+all legal disclaimers that apply to the journal pertain.
+                          ACCEPTED MANUSCRIPT
+
+
+
+Highlights
+
+      An analytical solution of axial dispersion model in a fixed bed column
+
+      Binary and multicomponent mixture adsorption in a fixed bed column
+
+      Transient concentration and temperature profiles in the fixed-bed column.
+
+
+
+
+                                                             T
+                                                           IP
+                                                         CR
+                                        US
+                                      AN
+                                M
+                    ED
+             PT
+   CE
+AC
+                                 ACCEPTED MANUSCRIPT
+
+
+
+
+                  Concentration and temperature profiles in a fixed bed column
+
+                      based on an analytical solution of the axial dispersion model
+
+              for binary and multicomponent non-isothermal adsorption processes
+
+
+
+
+                                                                  T
+   Valery A. Danilovb, Peter De Scheppera, Julien Cousin-Saint-Remia, Joeri F. M. Denayera
+
+
+
+
+                                                                IP
+                                                              CR
+                  a
+                      Department of Chemical Engineering, Vrije Universiteit Brussel,
+
+                                            1050 Brussels, Belgium
+
+                                              US
+                                            AN
+                         b
+                             Faculty of Applied Sciences, Ton Duc Thang University,
+                                      M
+
+
+                                          Ho Chi Minh City, Vietnam
+                        ED
+             PT
+
+
+
+
+Abstract
+    CE
+
+
+
+
+An analytical solution to model dynamic adsorption of multicomponent mixtures in packed beds is
+
+presented. The analytical solution describes transient concentration profiles together with gas and
+AC
+
+
+
+
+solid phase temperature profiles during adsorption and desorption processes. The breakthrough
+
+curves predicted by the analytical solution are in satisfactory agreement with numerical simulations
+
+and experimental data reported in the literature.
+
+
+
+Keywords Fixed bed, Modeling, Binary adsorption, Multicomponent adsorption, Breakthrough
+                            ACCEPTED MANUSCRIPT
+
+
+1. Introduction
+
+Adsorption in a fixed bed column includes multicomponent mass and heat transfer processes
+
+combined with adsorption and desorption processes. The dynamic balance equations describe
+
+transient concentration and temperature profiles in the adsorption column. The modeling of such
+
+processes often relies on the numerical integration of the partial differential equations describing the
+
+transfer processes in fixed-bed adsorption, which in certain cases results in numerical instabilities
+
+
+
+
+                                                                T
+and long calculation times. A number of analytical solutions of those systems of partial differential
+
+
+
+
+                                                              IP
+equations for the axial dispersion model (ADM) have been reported in the literature, but they are
+
+
+
+
+                                                            CR
+often limited to isothermal conditions and/or single-component systems (Ruthven, 1984; Tien, 1994).
+
+Cooney and Strusi (1972) proposed an analytical solution for isothermal binary mixture adsorption
+
+                                          US
+in a fixed bed column defined by a plug flow model with axial dispersion. Miura et al. (1979)
+                                        AN
+developed a method for calculating the binary mixture breakthrough curves in a fixed-bed column
+
+using an analytical solution of partial differential equations describing the transfer processes. Liaw et
+                                 M
+
+
+al. (1979) obtained an analytical solution of the partial differential equations for isothermal
+
+adsorption based on the plug flow model taking into account the transfer processes in the adsorbent
+                      ED
+
+
+
+
+particle. Rasmuson and Neretnieks (1980, 1985) proposed an analytical solution of an axial
+             PT
+
+
+
+
+dispersion model in a fixed bed column with linear sorption in the particles. Seidel-Morgenstern
+
+(1991) considered a fixed-bed adsorber with a linear adsorption isotherm and used Laplace inversion
+    CE
+
+
+
+
+with a Fourier series expansion to obtain an analytical solution and to determine the effect of
+
+boundary conditions on the axial dispersion model. Liao and Shiau (2000) applied the separation of
+AC
+
+
+
+
+variables method to an axial dispersion model of a fixed-bed adsorber with a linear adsorption
+
+isotherm and derived an analytical solution.
+
+       A typical model of adsorption in the fixed-bed column includes (i) description of transfer
+
+processes within an adsorbent pellet; (ii) balance equation for the adsorbate in the fluid phase; and
+
+(iii) adsorption equilibrium equation coupling concentration of a component in fluid and solid phase.
+
+Weber and Chakravorti (1974) provided a comparison of the analytical solution derived by Thomas
+                            ACCEPTED MANUSCRIPT
+
+
+(1944) and Hiester and Vermuellen (1952), the homogeneous solid phase diffusion model of Rosen
+
+(1952), the linear driving force method of Glueckauf (1955) and the pore phase diffusion model
+
+(Edeskuty and Amundson, 1952; Kasten et al., 1952). They reviewed the various possible solutions
+
+for the general case of a fixed bed with a homogeneous solid or pore diffusion model for the pellets.
+
+For the case of constant pattern behavior with uniform velocity for the established temperature and
+
+concentration fronts in the fixed-bed column, Ruthven et al. (1975) obtained the analytical solution
+
+
+
+
+                                                                T
+of the non-isothermal plug flow model with Langmuir adsorption isotherm.
+
+
+
+
+                                                              IP
+       The purpose of this study is to obtain an analytical solution for the case of binary and
+
+
+
+
+                                                            CR
+multicomponent adsorption in a fixed bed column taking into account the coupled heat and mass
+
+transfer processes based on the axial dispersion model.
+
+                                          US
+                                        AN
+
+2. Axial dispersion model of adsorption
+                                 M
+
+
+The axial dispersion model (ADM) is a well-known model, based on an idealization of the flow
+
+patterns in a fixed-bed column. The axial dispersion model of transfer processes developed in the
+                      ED
+
+
+
+
+current work is based on the following assumptions: (i) ideal gas flow in the column; (ii) Langmuir
+             PT
+
+
+
+
+type adsorption isotherm; (iii) a Linear Driving Force (LDF) model is used to describe mass transfer
+
+in the solid phase; (iv) there is thermal equilibrium at the solid-gas interface; (v) mass and heat
+    CE
+
+
+
+
+transfer in the radial direction are negligible; (vi) there is a symmetrical concentration front profile
+
+relative to the stoichiometric time. A theoretical framework for the concentration front during
+AC
+
+
+
+
+adsorption in a fixed bed column and the effect of the equilibrium isotherm has been given by De
+
+Vault (1943) and Tondeur (1987).
+
+       The axial dispersion model balance equations are defined as shown in Table 1. The
+
+developed axial dispersion model is based on dynamic balance equations taking into account the
+
+adsorbed components concentration, temperature and component concentration in the gas phase. The
+
+source terms in Table 1 take into account the interface transfer processes in fixed bed column.
+                                ACCEPTED MANUSCRIPT
+
+
+According to the LDF adsorption model, the driving force of the adsorption process is proportional
+
+to the difference between the local (q) and equilibrium concentrations (qeq) in the adsorbed phase.
+
+The heat of adsorption (ΔHads) is taken into account in the heat balance equations. The initial
+
+condition is set in accord with the operating conditions of the adsorption column:
+
+       Adsorption: t=0, F ( m)  Fini( m) , q ( m )  qini
+                                                       ( m)
+                                                            , T G  TiniG , T S  TiniS .
+
+
+
+
+                                                                                       T
+                                                                                     IP
+                                                                Table 1
+
+
+
+
+                                                                                   CR
+3. Analytical solution of the axial dispersion model
+                                                      US
+The main variables of the axial dispersion model in Table 1 are
+                                                    AN
+               Component molar flux F ( m)  F ( m) (t , z ) ;
+
+               Adsorbate concentration q( m)  q( m) (t , z) ;
+                                        M
+
+
+               Gas-phase temperature T G  T G (t , z ) ;
+                         ED
+
+
+
+
+               Solid phase temperature T S  T S (t , z) .
+
+The integration of this system of partial differential equations is complicated by the fact that
+               PT
+
+
+
+
+differential equations are non-linear with the coupled variables reflecting the coupled heat and mass
+    CE
+
+
+
+
+transfer processes. The driving idea in this work is to simplify the differential equations using the
+
+relationship between the variables
+AC
+
+
+
+
+                                     y ( m )       y ( m ) q ( m )       T G       T G T S
+                                                                       ,          
+                                       t           q ( m ) t              t        T S t
+
+As shown in the Appendix, the modification of the conservation equations allows us to derive an
+
+analytical expression for the driving force of adsorption (ψ). Using the obtained analytical
+
+expression (1) we are able to integrate the mass and heat transfer balance equations in Table 1. The
+
+resulting component concentration and temperature profiles are calculated using numerical
+
+integration:
+                               ACCEPTED MANUSCRIPT
+
+
+                                            0,  i , j   ref 0.5 exp  k f 
+                                                    ( m)     (m)             ( m)
+                                                                                                 
+                                          
+                                                                                                          
+                                                                                                                     (1)
+                                            0,  i , j   ref 0.5  0.5 1  exp  k f 
+                                          
+                                                     ( m)     ( m)                      ( m)
+
+
+
+                                                                                   j
+                                    Fi ,( mj)  Fi ,(0m)  (1   b ) b k (f m)   q( m) i(,mj) z                (2)
+                                                                                  k 0
+
+
+
+
+                                    QiG, j  QiG,0   b vG  Ti , j z
+                                                                  j
+                                                                                                                     (3)
+                                                                k 0
+
+
+
+                                                    (1   b ) b  (H ads  )k (f k ) i(,kj)
+
+
+
+
+                                                                                           T
+                                                                         (k )
+
+
+                                       Ti , j                        k
+                                                                                                                     (4)
+
+
+
+
+                                                                                         IP
+                                                                            vG
+
+
+
+
+                                                                                       CR
+                                                                    Pe          j
+                                                                                                       
+                          yi(,mj)  exp( PeG z j / L) yi(,m0 )  G G  Fi ,(km) exp( PeG zk / L)z              (5)
+                                                                 mol  buG L k 0                    
+
+                                                    
+                                                    
+                                                    
+                                                     US            Pe
+                          Ti ,Gj  exp( PeT z j / L) Ti ,G0  G G T           
+                                                                                 j
+
+
+                                                              C p mol  buG L k  0
+                                                                                                                 
+                                                                                     QiG, k exp(  PeT zk / L)z 
+                                                                                                                 
+                                                                                                                 
+                                                                                                                     (6)
+                                                   AN
+                                            qi(,mj)  qeq , i , j 1   i , j
+                                                       ( m)              ( m)
+                                                                                                                     (7)
+
+                                           Ti ,Sj  Ti ,Gj  Ti , j                                                 (8)
+                                       M
+
+
+                                            ref
+                                             ( m)
+                                                   qeq , i , j 1  qini , i , j 1
+                                                     ( m)             ( m)
+                                                                                                                     (9)
+                       ED
+
+
+
+
+where ti - time, ti= iΔt;  - the corrected time,   (ti  z j / u (fm) )  t s( m) ; t s(m ) - stoichiometric
+              PT
+
+
+
+
+breakthrough time; zj - coordinate, zj = jΔz. The location of mesh point is designed by (i) in time-
+
+domain and (j) in z-direction.
+    CE
+
+
+
+
+        The assumption of a symmetric profile (1) is valid for the low concentration of the adsorbed
+
+component in the gas phase with γ=const. For γ=γ(t) at high concentrations of the adsorbed
+AC
+
+
+
+
+component in the gas phase, we can use an approximation of the analytical solution in the form of a
+
+time series as shown in Appendix. The coefficient (  q ) takes into account the influence of the shape
+
+of an adsorption isotherm on the driving force of adsorption. The definition of the coefficient (  q ) is
+
+given in the Appendix. The boundary conditions for model equations (1)-(8) are specified at the inlet
+
+section of the column
+
+                         Fi ,(0m)  Ft yin( m) ,     QiG,0  Ft C GpTinG , yi(,m0 )  yin( m ) , Ti ,G0  TinG
+                            ACCEPTED MANUSCRIPT
+
+
+For a binary gas mixture adsorption, the empirical Sips equation defines equilibrium adsorbed
+
+concentration as a function of temperature, pressure, and composition
+
+                                                      ( m)
+                                                     qmax  (bm P yi(,mj ) )tm
+                                          ,i , j 
+                                       ( m)
+                                      qeq                 2
+                                                                                                        (10)
+                                                     1   (bk P y )   ( k ) tk
+                                                                       i, j
+                                                         k 1
+
+
+The obtained equation for driving force of adsorption (1) describes sorption front propagation in the
+
+
+
+
+                                                                               T
+fixed bed column. The component concentration and temperature profiles in the column are
+
+
+
+
+                                                                             IP
+calculated taking into account the sorption front propagation in the fixed bed layer by the following
+
+
+
+
+                                                                           CR
+algorithm:
+
+(i) For the local time ti=iΔt, the position of the sorption front is determined by equation (1);
+
+
+                                            US
+(ii) For the local time ti=iΔt, the component flux profile is calculated using equation (2) from the
+
+input section (z=0) to the output section (z=L);
+                                          AN
+(iii) For the local time ti=iΔt, the component concentration profile is calculated using equation (5)
+
+from the input section (z=0) to the output section (z=L);
+                                  M
+
+
+(iv) For the local time ti=iΔt, the heat flux profile is calculated using equation (3) from the input
+                      ED
+
+
+
+
+section (z=0) to the output section (z=L);
+
+(v) For the local time ti=iΔt, the temperature profile is calculated using equation (6) from the input
+             PT
+
+
+
+
+section (z=0) to the output section (z=L);
+
+(vi) Repeating steps (i)-(v) for time step ti+1= (i+1)Δt until the adsorption process completion.
+    CE
+
+
+
+
+The adsorption equilibrium is described using a multicomponent Sips isotherm equation (10), but in
+AC
+
+
+
+
+principle, any kind of equilibrium model could be applied.
+
+
+
+
+4. Simulation Results and Discussion
+
+Experimental breakthrough curves reflect the dynamics of the transfer process in fixed bed columns.
+
+The shape of the breakthrough curve is a result of multicomponent mass transfer processes coupled
+
+with adsorption and desorption processes in the column. The literature provides a large amount of
+                           ACCEPTED MANUSCRIPT
+
+
+experimental data for fixed bed columns equipped with a different adsorbent (particles) under
+
+different operating conditions. We used experimental data reported by Möller et al. (2017) with the
+
+most comprehensive input data for axial dispersion model (ADM) parameters for a gas mixture
+
+consisting of CO2/CH4/He and using the Shirasagi MSC CT Carbon Molecular Sieve adsorbent. The
+
+chosen system corresponds to the case of Langmuir type binary adsorption from the gas phase by a
+
+solid adsorbent. The necessary input data for calculating breakthrough curves are listed in Table 2.
+
+
+
+
+                                                               T
+                                                             IP
+                                               Table 2
+
+
+
+
+                                                           CR
+The capacity of a fixed-bed adsorber depends on both the adsorption equilibrium and adsorption
+
+                                         US
+kinetics. The experimental breakthrough curves provide the most complete information including the
+                                       AN
+kinetics of adsorption, desorption, and mass and heat transfer processes. Figure 1 shows the
+
+comparison of experimental breakthrough curves with those predicted by our analytical solution of
+                                 M
+
+
+the axial dispersion model (ADM). The solid line corresponds to the prediction by the analytical
+
+solution using the input parameters of Table 2. Points correspond to the experimental breakthrough
+                     ED
+
+
+
+
+curves reported by Möller et al. (2017). The shape of the breakthrough curve is associated with
+             PT
+
+
+
+
+equation (1) defining the shape of the sorption front moving with the front velocity (uf) in the fixed
+
+bed. The analytical solution is valuable for understanding the interactions of adsorption equilibrium
+    CE
+
+
+
+
+and mass transfer processes in establishing the shape of the breakthrough curves. The component
+
+concentration in the gas phase (y) is calculated using equation (5) with component flux (2), taking
+AC
+
+
+
+
+into account PeG = 10 and plug flow condition (PeG = ∞). The Peclet number (Pe) reflects the
+
+influence of the flow patterns on the concentration profile in the column. Although a quite good
+
+match was obtained when assuming plug flow (Dax =0, red curve), a better fit was obtained using a
+
+Peclet number for mass transfer equal to 10 (green curve), reflecting the true flow patterns in the
+
+fixed bed. The model equations in Table 1 correspond to a one dimensional model with partial
+
+differential equations. For comparison, the results of a full numerical simulation of the system of
+                           ACCEPTED MANUSCRIPT
+
+
+partial differential equations have been added (blue dashed curve) in Figure 1. The numerical
+
+solution of the axial dispersion model (NADM) has been obtained by implementing the model
+
+equations (Table 1) in COMSOL software.
+
+       The analytical solution (eqns. 1-8) and the numerical solution of the model coincide nicely in
+
+the first part of the breakthrough curve, but the numerical solution shows a more tailed profile. The
+
+comparison indicates that the change in Peclet criterion from ideal mixing (PeG = ∞) to PeG = 10
+
+
+
+
+                                                                 T
+results in changing the shape and shifting the temperature response curve.
+
+
+
+
+                                                               IP
+                                                             CR
+                                               Fig. 1.
+
+
+
+                                         US
+Aguilera and Gutiérrez Ortiz (2016) have simulated H2S adsorption from biogas in a fixed-bed
+                                       AN
+column using Comsol Multiphysics software. They have also performed a sensitivity analysis of the
+
+model with respect to the operational parameters. They have found that a change in the axial
+                                M
+
+
+dispersion coefficient leads to changing the shape and shifting the response curve for the
+
+concentration. The general trend in the response curves in Fig.1 is consistent with the simulation
+                     ED
+
+
+
+
+results reported by Aguilera and Gutiérrez Ortiz (2016). Figure 2 shows the variation of gas phase
+             PT
+
+
+
+
+composition, temperature and adsorption rate with time at the outlet of the column. The adsorbate
+
+concentration is calculated from equation (7). The rate of adsorption (Fig.2, middle) is defined as
+    CE
+
+
+
+
+follows:
+
+                                            ( m)
+                                          rads    k (f m) (qeq
+                                                             ( m)
+                                                                   q ( m) ) , m = CO2 , CH4    (11)
+AC
+
+
+
+
+In this system, CH4 diffuses very slowly into the pores of the carbon molecular sieve adsorbent (see
+
+Table 2) and is nearly not adsorbed in dynamic conditions, explaining the immediate breakthrough
+
+in the experimental data and simulations. The model very well predicts both composition profiles.
+
+The rate of adsorption of CH4 remains at a nearly constant and low value while that of CO2 increases
+
+steeply as soon as CO2 reached the end of the adsorption bed and starts to adsorb locally. When the
+
+pores are almost saturated with CO2 and the mole fraction of CO2 approaches the feed composition
+                            ACCEPTED MANUSCRIPT
+
+
+after about 18 min., the adsorption rate starts to decrease. Heat is released during adsorption of CO2,
+
+resulting in a temporary increase in temperature of the gas and solid adsorbent in the column (Fig. 2,
+
+right). The temperature difference between gas and the solid phase is determined by the volumetric
+
+heat transfer coefficient in accord with equation (4) taking into account the heat of adsorption. The
+
+high value of the volumetric transfer coefficient ( vG ) is associated with the high interfacial area of
+
+the fixed-bed column ensuring the close values of gas and solid phase temperatures.
+
+
+
+
+                                                                T
+                                                              IP
+                                                 Fig. 2.
+
+
+
+
+                                                            CR
+                                          US
+The difference between equilibrium and working adsorbate concentrations is the driving force of the
+
+adsorption process (Fig.3). In accordance with the adopted computation algorithm, the calculation is
+                                        AN
+performed ranging the time from t=0 to the specified process time by integrating the conservation
+
+equations with respect to fixed bed volume from the input section (z=0) to the output section (z=L).
+                                 M
+
+
+                                                 Fig. 3.
+                      ED
+             PT
+
+
+
+
+The development of the component concentration profiles in the gas phase and the adsorbed
+
+concentration profiles is shown in Fig.4. The component molar flux is calculated through numerical
+    CE
+
+
+
+
+integration of equation (2) using the analytical expression for the driving force of adsorption (1). The
+
+component concentration in the gas phase (y) is defined using equation (5) as a function of the
+AC
+
+
+
+
+component flux. The component concentration in the adsorbed phase is associated with the driving
+
+force of adsorption (1) by equation (7). The development of the concentration profile in the gas
+
+phase indicates the displacement of CO2 adsorption front in fixed bed column, with slow mass
+
+transfer resulting in relatively broad concentration profiles. The concentration of CH4 in the
+
+adsorbed phase is almost constant along the length of the column but increases steadily with time
+
+due to even much slower mass transfer in the adsorbed phase for CH4 as compared to CO2.
+                             ACCEPTED MANUSCRIPT
+
+
+
+
+                                                  Fig. 4.
+
+
+
+As shown in Appendix, the driving force of heat transfer in the gas phase (4) is calculated through
+
+integrating the heat balance equation with respect to the heat flux in the gas phase (3). The obtained
+
+heat flux is integrated to calculate the temperature profile in the gas phase (6). The development of
+
+
+
+
+                                                                  T
+the temperature and heat flow profiles in Fig.5 and Fig.6 is indirectly associated with the
+
+
+
+
+                                                                IP
+displacement of the sorption front due to the release of the heat of adsorption. The heat flux at the
+
+
+
+
+                                                              CR
+solid interface (Fig.6) characterizes the mass and heat transfer processes coupled with adsorption and
+
+desorption in a fixed bed column. The temperature of the gas and the solid are identical in these
+
+                                            US
+calculations, as a result of the large value of the heat transfer coefficient (see also Fig. 6).
+                                          AN
+
+                                                  Fig. 5.
+                                   M
+
+
+                                                  Fig. 6.
+                       ED
+
+
+
+
+        Available analytical solutions in the literature are often limited by the isothermal condition
+              PT
+
+
+
+
+and the number of components in the adsorption process. The new analytical solution is based on an
+
+integration of the conservation equations using the new analytical solution for the driving force of
+    CE
+
+
+
+
+adsorption. The obtained analytical solution of the axial dispersion model (ADM) is suitable for
+
+binary and multicomponent non-isothermal adsorption and desorption processes in fixed bed
+AC
+
+
+
+
+columns. The main advantages of the derived analytical solution of the axial dispersion model are
+
+       Flexibility in the description of multicomponent adsorption and desorption processes;
+
+       Flexibility in defining the adsorption equilibrium;
+
+       Flexibility in the description of the coupled transfer processes without iterations;
+
+       Flexibility in modeling adsorption process in fixed bed column with different flow patterns;
+
+       Description of the transient concentration and temperature profiles in a fixed bed column.
+                            ACCEPTED MANUSCRIPT
+
+
+Flexibility in adsorption equilibrium is due to the fact that any equilibrium model (explicit or
+
+implicit models such as IAST) can be expressed through the equilibrium adsorbed concentration as a
+
+function of concentration, temperature and time. The proposed analytical solution is applicable for
+
+multicomponent adsorption and desorption processes. Further modification of this analytical solution
+
+is possible in future taking into account additional effects (such as pressure and temperature
+
+variations applied in PSA and TSA) on multicomponent adsorption and desorption processes in
+
+
+
+
+                                                                T
+fixed bed columns.
+
+
+
+
+                                                              IP
+                                                            CR
+5. Conclusions
+
+                                          US
+An analytical solution of the axial dispersion model (ADM) is obtained for binary and
+                                        AN
+multicomponent mixture adsorption in a fixed bed column in non-isothermal conditions. The axial
+
+dispersion model (ADM) balance equations and analytical solution describe the transient
+                                 M
+
+
+concentration and temperature profiles in the fixed-bed column. The predicted transient
+
+concentration and temperature profiles are consistent with those reported in the literature.
+                      ED
+             PT
+
+
+
+
+Acknowledgments
+    CE
+
+
+
+
+J. Denayer is grateful to Innoviris for financial support for the ‘Advanced Porous Carbon Adsorbents
+
+for CO2 Capture and Separation’ project.
+AC
+                              ACCEPTED MANUSCRIPT
+
+
+Nomenclature
+
+Cp     Heat capacity (J kg-1 K-1)
+
+Dax    Axial dispersion coefficient (m2 s)
+
+F      Molar flux (mol m-2 s-1)
+
+Ft     Inlet molar flux (mol m-2 s-1)
+
+ΔHads Heat of adsorption (J mol-1)
+
+
+
+
+                                                                T
+kf     LDF coefficient (s-1)
+
+
+
+
+                                                              IP
+L      Height of fixed bed (m)
+
+
+
+
+                                                            CR
+n      Number of components
+
+P      Pressure (Pa)
+
+PeG                                        US
+       Peclet number for mass transfer (PeG = uG L/Dax,G)
+                                         AN
+PeT    Peclet number for heat transfer (PeT = uG L/Dax,T)
+
+R      Gas constant (R=8.314 J K-1 mol-1)
+                                    M
+
+
+q      Adsorbate concentration in the adsorbed phase (mole kg-1)
+
+Q      Heat flux (W m-2 K-1)
+                       ED
+
+
+
+
+T      Temperature (K)
+            PT
+
+
+
+
+t      Time (s)
+
+ts     Stoichiometric breakthrough time (s)
+      CE
+
+
+
+
+uf     Sorption front velocity (m s-1)
+AC
+
+
+
+
+uG     Gas velocity (m s-1)
+
+y      mole fraction in the gas phase
+
+z      Coordinate (m)
+
+
+
+Greek symbols
+
+v     Volumetric heat transfer coefficient (W m-3 K-1)
+                             ACCEPTED MANUSCRIPT
+
+
+                              mol
+                                 G
+                                     b  q qeq  
+                                                     1
+
+q                        
+        Coefficient,  q  1 
+                            (1   )  q y  
+                                       b            
+                              b             eq
+
+
+
+
+                                (1   b ) b qeq
+      Coefficient,   1                       ( q  1)
+                                   b mol
+                                        G
+                                               y
+
+b      The porosity of the fixed bed (m3 m-3 )
+
+ mol   Molar density (mol m-3)
+
+
+
+
+                                                                   T
+                                                                 IP
+       Density (kg m-3 )
+
+
+
+
+                                                               CR
+       The corrected time,   (t  z / u f )  ts (s)
+
+ψ       Driving force of adsorption (mol kg-1)
+
+λax                                           US
+        Thermal dispersion coefficient (W m-1 K-1 )
+                                            AN
+Δt      Time step (s)
+
+Δz      Mesh size (m)
+                                    M
+                        ED
+
+
+
+
+Sub/superscripts
+
+ads     adsorption
+                PT
+
+
+
+
+b       fixed bed
+        CE
+
+
+
+
+eq      equilibrium
+
+G       gas
+AC
+
+
+
+
+f       front
+
+in      inlet
+
+ini     initial
+
+m       component
+
+mol     molar
+
+S       solid
+                            ACCEPTED MANUSCRIPT
+
+
+T      temperature
+
+i,j    Space-time mesh
+
+
+
+Abbreviations
+
+IAST            Ideal Adsorbed Solution Theory
+
+PSA             Pressure swing adsorption
+
+
+
+
+                                                               T
+TSA             Temperature swing adsorption
+
+
+
+
+                                                             IP
+AADM            Analytical solution of the axial dispersion model
+
+
+
+
+                                                           CR
+NADM            Numerical solution of the axial dispersion model
+
+ADM             Axial dispersion model
+
+LDF             Linear Driving Force       US
+                                         AN
+                                 M
+                      ED
+            PT
+      CE
+AC
+                           ACCEPTED MANUSCRIPT
+
+
+References
+
+Aguilera, P.G., Gutiérrez Ortiz, F.J., 2016. Prediction of fixed-bed breakthrough curves for H2S
+
+     adsorption from biogas: Importance of axial dispersion for design, Chemical Engineering
+
+     Journal 289, 93-98.
+
+Cooney, D. O., Strusi, F. P., 1972. Analytical description of fixed-bed sorption of two Langmuir
+
+   solutes under nonequilibrium conditions. Industrial & Engineering Chemistry Fundamentals 11,
+
+
+
+
+                                                              T
+   123-126.
+
+
+
+
+                                                            IP
+De Vault, D., 1943. The theory of chromatography. J. Am. Chem. Soc. 65, 532-540.
+
+
+
+
+                                                          CR
+Edeskuty, F. J., Amundson, N. R., 1952. Effect of intraparticle diffusion: agitated nonflow
+
+     adsorption systems. Industrial & Engineering Chemistry 44, 1698-1703.
+
+                                         US
+Glueckauf, E., 1955. Theory of chromatography. Part 10.-Formulæ for diffusion into spheres and
+                                       AN
+     their application to chromatography, Trans. Faraday Soc. 51, 1510-1522.
+
+Hiester, N.K., Vermuellen, T., 1952. Saturation performance of ion exchange and adsorption
+                                M
+
+
+     columns. Chem. Eng. Prog. 48, 505-516.
+
+Kasten, P. R., Lapidus, L., Amundson, N. R., 1952. Mathematics of adsorption in beds. V. Effect of
+                     ED
+
+
+
+
+     intra-particle diffusion in flow systems in fixed beds, The Journal of Physical Chemistry 56,
+              PT
+
+
+
+
+     683-688
+
+Liaw, C. H., Wang, J. S. P., Greenkorn, R. A., Chao, K. C., 1979. Kinetics of fixed‐bed adsorption:
+    CE
+
+
+
+
+   A new solution. AIChE Journal 25, 376-381.
+
+Liao, H. T., Shiau, C. Y., 2000. An analytical solution to an axial dispersion model for the fixed‐
+AC
+
+
+
+
+   bed adsorber. AIChE Journal 46, 1168-1176.
+
+Möller, A., Eschrich, R., Reichenbach, C., Guderian, J., Lange, M., Möllmer, J., 2017. Dynamic and
+
+     equilibrium-based investigations of CO2-removal from CH4-rich gas mixtures on microporous
+
+     adsorbents. Adsorption 23, 197 – 209.
+                           ACCEPTED MANUSCRIPT
+
+
+Miura, K., Kurahashi, H., Inokuchi, Y., Hashimoto, K., 1979. A method for calculating breakthrough
+
+   curves of bicomponent fixed-bed adsorption under the constant pattern and linear driving force.
+
+   Journal of Chemical Engineering of Japan 12, 281-288.
+
+Miura, K., Hashimoto, K., 1979. Analytical solution for the breakthrough curves of bicomponent
+
+   fixed-bed adsorption under Langmuir isotherms. Journal of Chemical Engineering of Japan 12,
+
+   329-331.
+
+
+
+
+                                                               T
+Ruthven, D. M., 1984. Principles of Adsorption and Adsorption Processes, Wiley, New York.
+
+
+
+
+                                                             IP
+Rasmuson, A., Neretnieks, I., 1980. Exact solution of a model for diffusion in particles and
+
+
+
+
+                                                           CR
+   longitudinal dispersion in packed beds. AIChE Journal 26, 686-690.
+
+Rasmuson, A. 1985. Exact solution of a model for diffusion in particles and longitudinal dispersion
+
+                                         US
+   in packed beds: Numerical evaluation, AIChE Journal 31, 518-519.
+                                       AN
+Rosen, J. B., 1952. Kinetics of a fixed bed system for solid diffusion into spherical particles, The
+
+     Journal of Chemical Physics 20, 387
+                                 M
+
+
+Ruthven, D., Garg, D., Crawford, R., 1975. The performance of molecular sieve adsorption columns:
+
+     non-isothermal systems, Chemical Engineering Science 30, 803- 810.
+                     ED
+
+
+
+
+Seidel-Morgenstern, A., 1991. Analysis of boundary conditions in the axial dispersion model by
+              PT
+
+
+
+
+   application of numerical Laplace inversion. Chemical Engineering Science 46, 2567-2571.
+
+Thomas, H. C., 1944. Heterogeneous ion exchange in a flowing system. Journal of the American
+    CE
+
+
+
+
+     Chemical Society 66, 1664-1666.
+
+Tien, C., 1994. Adsorption Calculations and Modelling, MA: Butterworth-Heinemann, Boston.
+AC
+
+
+
+
+Tondeur, D., 1987. Unifying concepts in non-linear unsteady processes. Part I: Solitary travelling
+
+     waves. Chem. Eng. Process. 21, 167-178.
+
+Tondeur, D., 1987. Unifying concepts in non-linear unsteady processes part II: Multicomponent
+
+     waves, competition, and diffusion. Chem. Eng. Process. 22, 91-105.
+
+Weber, T. W., Chakravorti, R. K., 1974. Pore and solid diffusion models for fixed‐bed adsorbers,
+
+     AIChE Journal 20, 228-238.
+                                   ACCEPTED MANUSCRIPT
+
+
+       Appendix A
+
+Modification of conservation equations
+
+The mass balance equation for the component describes the component concentration profile along
+
+the height of the column
+
+                            y ( m )                         y                            (uG y ( m ) )                 q ( m )
+                                                                              (m)
+
+                 b  mol
+                      G
+                                         mol
+                                           G
+                                               b           Dax                        mol
+                                                                                          G
+                                                                                                               (1   b ) b            (A.1)
+                              t                      z       z                 
+                                                                                                 z                           t
+
+
+
+
+                                                                                                  T
+                                                  q ( m )
+
+
+
+
+                                                                                                IP
+                                                               k (f m ) (qeq
+                                                                           ( m)
+                                                                                 q( m) )                                                (A.2)
+                                                    t
+
+
+
+
+                                                                                              CR
+To analyze the mass transfer process, we write the balance equation (A.1) through the component
+
+flux
+
+
+                                       F ( m )  mol
+                                                  G         US
+                                                      uG y ( m )   mol
+                                                                     G
+                                                                          b Dax
+                                                                                              y ( m )
+                                                                                                  z
+                                                                                                                                         (A.3)
+                                                          AN
+Taking Eq. (A.3) into account, Eq. (A.1) is written as
+
+                                                   y ( m )          F ( m )                            q ( m )
+                                        b mol                                    (1   b ) b
+                                              M
+
+
+                                            G
+                                                                                                                                         (A.4)
+                                                     t                   z                               t
+
+We can modify the component mass balance equation (A.4) using the relation
+                       ED
+
+
+
+
+                                                              y ( m )        y ( m ) q ( m )
+                                                                                                                                        (A.5)
+                                                                t            q ( m ) t
+             PT
+
+
+
+
+Substituting (A.5) into (A.4), we re-write the mass balance equation in the form
+       CE
+
+
+
+
+                                                  y ( m) q ( m)               F ( m)                         q ( m)
+                                   b     G
+                                                                                          (1   b ) b
+                                                  q ( m) t                        z                              t
+                                           mol
+AC
+
+
+
+
+or
+
+                                       F ( m )                   q ( m )                                 
+                                                                           1   mol  b
+                                                                                  G
+                                                                                               1            
+                                                   (1   b ) b                                                                        (A.6)
+                                         z                        t  b (1   b ) q ( m ) / y ( m ) 
+
+To determine the partial derivative in parentheses in (A.6), we can use the relation
+
+                                                               q ( m )        q ( m ) qeq
+                                                                                          ( m)
+
+                                                                                                                                        (A.7)
+                                                               y   ( m)
+                                                                               qeq
+                                                                                 ( m)
+                                                                                      y ( m )
+
+Using equation (A.2) and (A.7), the differential equation (A.6) can be written in the form
+                                   ACCEPTED MANUSCRIPT
+
+
+                                  F ( m )
+                                                 (1   b ) b k (f m ) (qeq
+                                                                           ( m)
+                                                                                 q ( m ) ) q( m )                                     (A.8)
+                                    z
+
+                                                        mol
+                                                          G
+                                                               b  q qeq  
+                                                                        ( m) ( m)
+                                                                                   1
+
+where    (m )
+                 - coefficient         ( m)     
+                                                1                                    . The coefficient  q(m) takes into
+                                                                            ( m)  
+                                                      b (1   b )  qeq y 
+          q                             q                               ( m)
+                                                                                     
+
+account the influence of the shape of the adsorption equilibrium curve ( qeq
+                                                                           (m)
+                                                                               / y ( m ) ) on the driving
+
+force of adsorption. The evaluation of the coefficient indicates that  q( m )  1 for the system in Table 2.
+
+
+
+
+                                                                                             T
+                                                                                           IP
+The assumption  q( m )  1 is valid for Langmuir type system adsorption in a fixed bed column under
+
+
+
+
+                                                                                         CR
+the low concentration of the adsorbed component in the gas phase. The boundary condition at the
+
+inlet section is defined for component flux as
+
+
+                                                 uG  mol
+                                                      G    US
+                                                          yin( m )  (uG  mol
+                                                                           G
+                                                                               y ( m )   b Dax  mol
+                                                                                                   G
+                                                                                                                 y ( m )
+                                                                                                                   z
+                                                                                                                            )
+                                                                                                                                z 0
+                                                                                                                                        (A.9)
+                                                         AN
+or
+
+                                                              F ( m) (t ,0)  Ft yin( m)
+                                               M
+
+
+The heat balance equation describes the temperature profile in the gas phase along the column height
+                          ED
+
+
+
+
+                                        T G               G T                (uGT G )
+                                                                    G
+
+                        b  mol
+                             G
+                                 C Gp              b
+                                                            
+                                                                     
+                                                                          G
+                                                                               C G
+                                                                                                b v (T S  T G )                    (A.10)
+                                          t             z      z                  z
+                                                               ax           mol p
+                 PT
+
+
+
+
+To analyze the transport equation, we write the balance equation (A.10) through the heat flux
+     CE
+
+
+
+
+                                                                                          T G
+                                                QG  mol
+                                                      G
+                                                          C GpuGT G   bGax                                                          (A.11)
+                                                                                              z
+AC
+
+
+
+
+The substitution of (I.11) in Eq. (I.10) gives
+
+                                                          T G           Q G
+                                         b  mol
+                                              G
+                                                  C Gp                            b vG (T S  T G )                               (A.12)
+                                                             t            z
+
+Heat balance equation for the solid phase is
+
+                                  T S                                                    n                      q ( k )
+                        CS   S
+                                             (T  T )  (1   b ) b  (H
+                                                  G      G        S                                   (k )
+                                                                                                             )                         (A.13)
+                                   t                                                                              t
+                              p                   v                                                   ads
+                                                                                         k 1
+                                     ACCEPTED MANUSCRIPT
+
+
+Under the condition of thermal equilibrium, the heat flux from the gas phase to the interface is equal
+
+to the heat flux from the interface to the solid phase. Assuming thermal equilibrium at the solid-gas
+
+interface ( TS / t  0 ), we get
+
+                                                                                               n                 q ( k )
+                                         0   vG (T G  T S )  (1   b ) b  (H ads
+                                                                                      (k )
+                                                                                                                            )                        (A.14)
+                                                                                           k 1                    t
+
+or
+
+
+
+
+                                                                                               T
+                                                                                                            
+                                                               n
+                                                (1   b ) b  (H ads
+
+
+
+
+                                                                                             IP
+                                                                     (k )
+                                                                          )k (f k ) qeq
+                                                                                     (k )
+                                                                                           q(k )
+                                     T                      k 1
+                                                                                                                                                     (A.15)
+                                                                          vG
+
+
+
+
+                                                                                           CR
+where T - temperature difference at the interface, T  T S  T G .
+
+
+                                                            US
+Using the assumption of thermal equilibrium ( TS / t  0 ) and relation
+                                                                                                                            T G
+                                                                                                                                t
+                                                                                                                                     
+                                                                                                                                         T G T S
+                                                                                                                                         T S t
+                                                                                                                                                     for the
+                                                          AN
+transformation of the heat balance equation (A.12), we obtain
+
+       G G T G T S     QG
+                            b vG T
+                                             M
+
+
+       b mol p
+             C
+               T t
+                  S
+                           z
+       S
+       T
+       t  0
+                          ED
+
+
+
+
+      
+
+or
+              PT
+
+
+
+
+                                        Q G
+                                                       b vG T                                                                                    (A.16)
+                                            z
+     CE
+
+
+
+
+The boundary condition at the inlet section is defined as
+AC
+
+
+
+
+                                            QG (t ,0)  Ft C GpTinG                                                                                  (A.17)
+
+The component molar flux and heat profiles in the fixed bed column are obtained by integrating,
+
+respectively, Eq. (A.8) and Eq. (A.16)
+
+
+                                                                                  q                              
+                                                                                z
+                   F   ( m)
+                              (t , z )  Ft y ( m)
+                                              in      (1   b ) b k   ( m)
+                                                                         f
+                                                                                    ( m)
+                                                                                    q
+                                                                                           ( m)
+                                                                                           eq       q ( m) (t , z ) d z                             (A.18)
+                                                                                0
+
+
+                                                                     z
+                  Q (t , z )  C Ft T   b  T (t , z )dz
+                    G                   G
+                                        p
+                                              G       G
+                                                     in
+                                                               G
+                                                               v                                                                                     (A.19)
+                                                                     0
+                                    ACCEPTED MANUSCRIPT
+
+
+For the axial dispersion model, the concentration and temperature profiles are obtained by
+
+integrating, respectively, Eq. (A.18) and Eq. (A.19)
+
+                                                      ( m)     PeG
+                                                                        z
+                                                                                                               
+                                                     
+                           (t , z )  exp( PeG z / L) yin  G                                               
+                    ( m)                                                    (m)
+                y                                                         F     (t , z ) exp(   Pe  z / L ) dz    (A.20)
+                                                                u
+                                                              mol b G L 0
+                                                                                                  G
+                                                                                                               
+
+                                                            Pe
+                                                                         z
+                                                                                                           
+                 T G (t , z )  exp( PeT z / L) TinG  G G T             QG (t , z ) exp(  PeT z / L)dz        (A.21)
+                                                      C p  mol  buG L 0                                 
+                                                                                                          
+
+
+
+
+                                                                                         T
+For the plug flow model, the following relationships are valid
+
+
+
+
+                                                                                       IP
+                                             F ( m ) (t , z )                               Q G (t , z )
+                      y ( m ) (t , z )                         ,   T G (t , z )                                  (A.20)
+
+
+
+
+                                                                                     CR
+                                            n                                                     n
+
+                                            F (t , z )
+                                           k 1
+                                                   (k )
+                                                                                     C 
+                                                                                      G
+                                                                                      p
+                                                                                           G
+                                                                                           mol    F (t , z )
+                                                                                                 k 1
+                                                                                                        (k )
+
+
+
+
+                                                            US
+                                                          AN
+                                                M
+                            ED
+             PT
+    CE
+AC
+                                            ACCEPTED MANUSCRIPT
+
+
+Appendix B
+
+Driving force of adsorption
+
+According to the modified axial dispersion model (ADM), the component mass balance equation
+
+links component molar flux (F) and adsorbent concentration (q) at the time (t)
+
+                                                              y ( m)          F ( m)                               q ( m)
+                                                    b mol
+                                                        G
+                                                                                            (1   b ) b                                                     (B.1)
+                                                                 t                 z                                 t
+
+
+
+
+                                                                                                          T
+The kinetics of adsorption is described by the LDF adsorption submodel
+
+
+
+
+                                                                                                        IP
+                                                        q ( m )
+                                                                    k (f m ) (qeq
+                                                                                ( m)
+                                                                                      q (m) )                                                                   (B.2)
+
+
+
+
+                                                                                                      CR
+                                                            t
+
+                                                                            qeq
+                                                                              (m)
+                                                                                             1
+Multiplying both sides of equation (B.1) by                                                           we obtain
+                                                                            y             b  mol
+                                                                   US
+                                                                                   ( m)         G
+
+
+
+
+                1                qeq
+                                   ( m)
+                                        y ( m)                    1     qeq
+                                                                           ( m)
+                                                                                F ( m)                  1                         qeq
+                                                                                                                                     ( m)
+                                                                                                                                          q ( m)
+                       b mol
+                           G
+                                                                                                            (1   b ) b                                     (B.3)
+                                                                 AN
+          b mol   G
+                                     y ( m) t                b mol
+                                                                   G
+                                                                       y ( m) z                      b mol
+                                                                                                             G
+                                                                                                                                   y ( m) t
+
+Subtracting equation (B.2) from (B.3) we get
+                                                      M
+
+
+      b  mol qeq y      q         1 qeq F          (1   b ) b qeq q                                                          
+                                                                                                                                                                
+                     ( m)     ( m)          ( m)                                          ( m)                                     ( m)
+                                  
+                                                                            ( m)                                            ( m)
+           G
+                                                                                                                                           ( m) ( m)
+                                                                                                                                       k f qeq  q
+                                                                                                                                                          ( m)
+
+      b  mol y
+           G      ( m)
+                       t    t     b  mol y
+                                  
+                                          G      ( m)
+                                                      z      b  mol
+                                                                   G
+                                                                         y ( m ) t                                                      
+                                                                                                                                          
+                                 ED
+
+
+
+
+or
+                    PT
+
+
+
+
+                     qeq        
+                                 q ( m )
+                                       1 qeq F             (1   b ) b qeq q 
+                                                                                                                                                          (B.4)
+                                                      ( m)                         ( m)
+                                                                                        ( m) ( m)
+                       ( m)                     ( m)                         (m)
+
+                                                                                     k f qeq  q
+                                                                                                        (m)
+
+                       t   t     b  mol y
+                                                    z         b  mol y       t 
+                                         G      (m)                  G       ( m)
+                                                                                        
+     CE
+
+
+
+
+                                                              F ( m)
+Taking into account Eq. (B.2) and                                          q( m) (1   b ) b k (f m) (qeq
+                                                                                                           ( m)
+                                                                                                                 q ( m ) ) , equation (B.4) takes the
+                                                                 z
+AC
+
+
+
+
+form
+
+                                                (qeq    q( m) )
+                                                                                                                
+                                                   ( m)
+
+                                                                         ( m ) k (f m ) qeq
+                                                                                             ( m)
+                                                                                                   q( m)                                                        (B.5)
+                                                       t
+
+                                                    (1   b ) b qeq
+                                                                              ( m)
+
+where  (m )
+                coefficient,           ( m)
+                                                1                      ( q( m)  1) .
+                                                       b mol y
+                                                            G       ( m)
+                               ACCEPTED MANUSCRIPT
+
+
+The evaluation shows that assumption  q( m )  1 and  ( m )  1 is valid for a Langmuir type system in
+
+Table 2 in the modeling of mass transfer processes during adsorption in a fixed bed column.
+
+                                
+Introducing variable  ( m )  qeq
+                                ( m)
+                                             
+                                      q ( m ) , we obtain
+
+                                                        ( m )
+                                                                    k (f m ) ( m )                       (B.6)
+                                                         t
+
+or
+
+
+
+
+                                                                           T
+                                                       d ( m )
+
+
+
+
+                                                                         IP
+                                                                    k (f m ) dt                           (B.7)
+                                                            (m)
+
+
+
+
+                                                                       CR
+Integrating equation (B.7), we get an analytical solution of differential equation (B.2)
+
+                                                          ( m)  С exp  k (f m)t 
+                                              US
+where  (m ) - the driving force of adsorption, ( m )  qeq
+                                                           ( m)
+                                                                 q( m)  .
+                                                                                                            (B.8)
+                                            AN
+Based on the analytical solution (B.8) and assumptions about the symmetry of the concentration
+
+front profile relative to the stoichiometric time, we introduce the dimensionless driving force
+                                     M
+
+
+                                                                      ( m)
+             Before stoichiometric time           For   0                  0.5 exp k (f m )          (B.9)
+                                                                      ref
+                        ED
+
+
+
+                                                                       ( m)
+
+
+
+
+                                                                    (m)
+              Stoichiometric time                For   0                   0.5                         (B.10)
+               PT
+
+
+
+
+                                                                    ref
+                                                                     (m)
+
+
+
+
+                                                  ( m)
+                                                         0.5  0.51  exp k (f m) 
+     CE
+
+
+
+
+             After stoichiometric time For   0                                                          (B.11)
+                                                  ref
+                                                   ( m)
+AC
+
+
+
+
+where t - time;  - the corrected time,   (t  z / u (fm) )  ts( m) t s(m ) - stoichiometric breakthrough time;
+
+z –coordinate; u (m
+                 f
+                    )
+                      – adsorption front velocity. The reference driving force ( ref
+                                                                                  (m )
+                                                                                       ) corresponds to
+
+the maximum driving force
+
+                                                      ref
+                                                       ( m)
+                                                             qeq
+                                                                ( m)
+                                                                      qini
+                                                                        ( m)
+                                                                                                         (B.12)
+
+It is evident that the shape of the reference driving force ref
+                                                             ( m)
+                                                                    ref
+                                                                      ( m)
+                                                                           (t ) is following the shape of the
+
+concentration curve y ( m)  y ( m) (t ) due to the equilibrium concentration in the solid phase linked to
+                               ACCEPTED MANUSCRIPT
+
+
+                                     ( m)
+the concentration in the gas phase: qeq    f ( y ( m) ) . Before a stoichiometric time (   0 ) the
+
+component concentration in the gas phase is approaching zero in the mass transfer zone. After a
+
+stoichiometric time (   0 ) the component concentration in the gas phase is approaching the bulk
+
+concentration in the mass transfer zone. The local concentration in the solid phase is calculated from
+
+the driving force as follows
+
+                                                                    q ( m)  qeq
+                                                                              ( m)
+                                                                                    ( m)                (B.13)
+
+
+
+
+                                                                            T
+                                                                          IP
+                                                                        CR
+                                                US
+                                              AN
+                                    M
+
+
+Figure B.1 Dimensionless driving force of adsorption (left) and reconstructed driving force of
+                        ED
+
+
+
+
+adsorption (right) based on an analytical solution (B.8).
+              PT
+     CE
+
+
+
+
+Time series approximation
+
+It should be noted that equations (B.6) - (B.11) are obtained for the case when    const . In general,
+AC
+
+
+
+
+the coefficient (   ) is a function of time. For      (t ) , the differential equation (B.5) takes the
+
+form
+
+                                  (qeq    q( m) )
+                                                                                          
+                                     ( m)
+
+                                                         (t ) k (f m ) qeq
+                                                                            ( m)
+                                                                                  q( m)
+                                         t
+
+or
+                              ACCEPTED MANUSCRIPT
+
+
+                                    d ( m)
+                                                     (t ) k (f m) dt                                (B.14)
+                                          ( m)
+
+
+
+
+Integrating equation (B.14), we get an analytical solution of the differential equation
+
+                                                                                       
+                                                   ( m)  С exp   k (f m) (t )dt                 (B.15)
+                                                                                       
+                                                                                       
+
+Function (B.15) can be approximated by a time series
+
+
+
+
+                                                                                     T
+                                                                            n      
+                                                      ( m )  C exp  Ak k 1 
+
+
+
+
+                                                                                   IP
+                                                                                                        (B.16)
+                                                                            k 0   
+
+
+
+
+                                                                                 CR
+To calculate the partial derivative q ( m ) / y ( m ) in (A.6), we can use the analytical solution (B.16)
+
+                                                             n          
+                                                              Ak k 1 )
+                                   
+                                  qeq  q
+                                    ( m)
+
+
+                                     y ( m)
+                                             ( m)
+
+                                                   US
+                                                    
+                                                      
+                                                      (C exp
+                                                             k 0
+                                                            y ( m)
+                                                                          0
+                                                  AN
+or
+
+                                       q ( m )      qeq
+                                                       (m)
+                                                                    qeq
+                                                                      (m)
+
+                                                                              1
+                                    M
+
+
+                                                                ,                                       (B.17)
+                                       y    (m)
+                                                     y ( m )       q ( m )
+                       ED
+              PT
+     CE
+AC
+                          ACCEPTED MANUSCRIPT
+
+
+List of Tables
+
+
+
+Table 1 Balance equations for axial dispersion model (ADM)
+
+
+
+Table 2 Input data of axial dispersion model (ADM).
+
+
+
+
+                                                          T
+                                                        IP
+                                                      CR
+                                       US
+                                     AN
+                               M
+                    ED
+            PT
+    CE
+AC
+                              ACCEPTED MANUSCRIPT
+
+
+
+
+  Table 1
+
+  Balance equations for axial dispersion model (ADM)
+
+      Balance equation                                                          Expression
+
+ Component mass balance for                 y ( m )                        y                (uG y ( m ) )                  q ( m )
+                                                                                ( m)
+
+                                 b  mol
+                                      G
+                                                         b  mol
+                                                               G
+                                                                           D              mol
+                                                                                             G
+                                                                                                                  (1     ) 
+                                              t                     z       z                  z                            t
+                                                                            ax                                            b     b
+
+gas phase                                                                              
+
+
+
+
+                                                                                    T
+ Adsorbed component             q ( m )
+
+
+
+
+                                                                                  IP
+                                             k (f m ) (qeq
+                                                         ( m)
+                                                               q( m) )
+                                   t
+
+
+
+
+                                                                                CR
+ Heat balance for gas phase                        T G                G T                (uGT G )
+                                                                                G
+
+                                 b  mol
+                                      G
+                                          C Gp               b
+                                                                        
+                                                                                 
+                                                                                      G
+                                                                                           C G
+                                                                                                            b vG (T S  T G )
+                                                       t            z      z                  z
+                                                                           ax           mol p
+
+
+
+
+ Heat balance for fixed bed
+                                 CS    S
+                                        p
+                                            T S
+                                              t
+                                                US       (T  T )  (1   b ) b  (H
+                                                              G
+                                                              v
+                                                                      S     G
+
+                                                                                                     k
+                                                                                                                 (k )
+                                                                                                                 ads    )
+                                                                                                                            q ( k )
+                                                                                                                              t
+                                              AN
+                                  M
+                         ED
+              PT
+      CE
+AC
+                                        ACCEPTED MANUSCRIPT
+
+
+            Table 2
+
+            Input data of axial dispersion model (ADM).
+
+                   Parameter                                     Value                         Ref.
+System                                         CO2/CH4/He/Shirasagi MSC CT              Möller et al. (2017)
+CO2 mole fraction                              0.05                                     Möller et al. (2017)
+CH4 mol fraction                               0.15                                     Möller et al. (2017)
+Feed flow rate Ft (mol s-1)                    1.89×10-3                                Möller et al. (2017)
+
+
+
+
+                                                                         T
+Temperature (K)                                293                                      Möller et al. (2017)
+
+
+
+
+                                                                       IP
+Pressure P (MPa)                               0.5                                      Möller et al. (2017)
+Fixed bed porosity εb (m3 m-3)                 0.34                                     Möller et al. (2017)
+
+
+
+
+                                                                     CR
+Bulk density ρb (kg m-3)                       588.5                                    Möller et al. (2017)
+Bed height L (mm)                              200                                      Möller et al. (2017)
+Column diameter (mm)
+CO2 LDF coefficient k CO
+                      f
+                             -1
+                         2 (s )
+                                               30
+                                               1.3×10
+                                                     US-2
+                                                                                        Möller et al. (2017)
+                                                                                        Möller et al. (2017)
+                                                   AN
+CH4 LDF coefficient k CH     -1
+                         4 (s )                1.2×10-4                                 Möller et al. (2017)
+                      f
+
+
+He LDF coefficient k He
+                     f
+                        (s-1)                  0                                                set
+                                             M
+
+
+Sip equation parameter* q max
+                          CO 2
+                               (mol kg-1)      4.263 exp(0.8303 (1-T/293))              Möller et al. (2017)
+
+Sip equation parameter* bCO2 (Pa-1)            1.013×10-5 exp(21.5×103 (1/T-1/293)/R)   Möller et al. (2017)
+                                   ED
+
+
+
+
+Sip equation parameter* t CO2                  0.7176 + 0.5077 (1-293/T)                Möller et al. (2017)
+                           PT
+
+
+
+
+Sip equation parameter* q max
+                          CH 4
+                               (mol kg-1)      3.082 exp(1.4639 (1-T/293))              Möller et al. (2017)
+
+Sip equation parameter* bCH 4 (Pa-1)           2.42×10-5 exp(9.6×103 (1/T-1/293)/R)     Möller et al. (2017)
+                CE
+
+
+
+
+Sip equation parameter* tCH 4                  0.7730 + 0.6792 (1-293/T)                Möller et al. (2017)
+
+Pe number for mass transfer, PeG               10                                               set
+      AC
+
+
+
+
+Pe number for heat transfer, PeT               10                                               set
+CO2 Heat of adsorption H ads
+                          CO 2
+                               (J mol-1)       - 21.5 ×103                              Möller et al. (2017)
+
+CH4 Heat of adsorption H ads
+                          CH 4
+                               (J mol-1)       - 9.6×103                                Möller et al. (2017)
+
+Heat transfer coefficient vG (W m-3 K-1)      1.68×105                                         set
+
+Adsorbent specific heat C pS (J kg-1 K-1)      880                                      Möller et al. (2017)
+
+Adsorbent solid phase density  S (kg m-3)     1.20× 103                                        set
+            *
+             Eq (10)
+                           ACCEPTED MANUSCRIPT
+
+
+
+
+Figure captions
+
+
+
+Fig. 1. Breakthrough curves for CO2 concentration (left) and gas phase temperature (right) at the
+
+outlet section of the fixed bed column predicted by the analytical solution of the axial dispersion
+
+model (AADM) for CO2/CH4/He/Shirasagi MSC CT system as defined in Table 2. Circles represent
+
+
+
+
+                                                              T
+experimental breakthrough data (Möller et al.,2017). AADM – analytical solution of axial dispersion
+
+
+
+
+                                                            IP
+model. NADM – numerical solution of axial dispersion model.
+
+
+
+
+                                                          CR
+Fig. 2. Variation of CO2 and CH4 gas phase concentration (left), the rate of adsorption (middle) and
+
+                                         US
+temperature (right) with time at the outlet of the fixed bed column predicted by the analytical
+                                       AN
+solution of the ADM for CO2/CH4/He/Shirasagi MSC CT system (Table 2).
+                                 M
+
+
+Fig. 3. The variation of actual and equilibrium concentration in the adsorbed phase (left), molar flow
+
+(right) with time at the outlet of the column predicted by the analytical solution of the ADM for
+                     ED
+
+
+
+
+binary mixture adsorption. CO2/CH4/He/Shirasagi MSC CT system as defined in Table 2.
+             PT
+
+
+
+
+Fig. 4. The development of the component concentration profiles in the gas phase (left) and the
+     CE
+
+
+
+
+adsorbed concentration (middle, right) in the fixed bed column predicted by the analytical solution of
+
+the ADM for binary mixture adsorption. CO2/CH4/He/Shirasagi MSC CT system as defined in Table
+AC
+
+
+
+
+2.
+
+
+
+Fig. 5. The development of the gas phase temperature profiles (left), the solid phase temperature
+
+profiles (middle) and total molar flow profiles (right) for binary mixture adsorption in the fixed bed
+
+column predicted by the analytical solution of the ADM for binary mixture adsorption.
+
+CO2/CH4/He/Shirasagi MSC CT system as defined in Table 2.
+                            ACCEPTED MANUSCRIPT
+
+
+
+
+Fig. 6. The development of the heat flux profiles (left) and the temperature difference profiles (right)
+
+at the solid interface in the fixed bed column predicted by the analytical solution of the ADM for
+
+binary mixture adsorption. Temperature difference T  TS  TG . CO2/CH4/He/Shirasagi MSC CT
+
+system (Table 2).
+
+
+
+
+                                                                T
+                                                              IP
+                                                            CR
+                                          US
+                                        AN
+                                 M
+                      ED
+             PT
+    CE
+AC
+                          ACCEPTED MANUSCRIPT
+
+
+
+
+                                                             T
+                                                           IP
+                                                         CR
+Fig. 1. Breakthrough curves for CO2 concentration (left) and gas phase temperature (right) at the
+
+
+                                        US
+outlet section of the fixed bed column predicted by the analytical solution of the axial dispersion
+
+model (AADM) for CO2/CH4/He/Shirasagi MSC CT system as defined in Table 2. Circles represent
+                                      AN
+experimental breakthrough data (Möller et al.,2017). AADM – analytical solution of axial dispersion
+
+model. NADM – numerical solution of axial dispersion model.
+                                M
+                     ED
+            PT
+    CE
+AC
+                           ACCEPTED MANUSCRIPT
+
+
+
+
+                                                              T
+                                                            IP
+                                                          CR
+Fig. 2. Variation of CO2 and CH4 gas phase concentration (left), the rate of adsorption (middle) and
+
+temperature (right) with time at the outlet of the fixed bed column predicted by the analytical
+
+                                         US
+solution of the ADM for CO2/CH4/He/Shirasagi MSC CT system (Table 2).
+                                       AN
+                                 M
+                     ED
+             PT
+    CE
+AC
+
+
+
+
+Fig. 3. The variation of actual and equilibrium concentration in the adsorbed phase (left), molar flux
+
+(right) with time at the outlet of the column predicted by the analytical solution of the ADM for
+
+binary mixture adsorption. CO2/CH4/He/Shirasagi MSC CT system as defined in Table 2.
+                           ACCEPTED MANUSCRIPT
+
+
+
+
+                                                              T
+                                                            IP
+Fig. 4. The development of the component concentration profiles in the gas phase (left) and the
+
+
+
+
+                                                          CR
+adsorbed concentration (middle, right) in the fixed bed column predicted by the analytical solution of
+
+the ADM for binary mixture adsorption. CO2/CH4/He/Shirasagi MSC CT system as defined in Table
+
+2.
+                                         US
+                                       AN
+                                 M
+                     ED
+             PT
+     CE
+
+
+
+
+Fig. 5. The development of the gas phase temperature profiles (left), the solid phase temperature
+
+profiles (middle) and total molar flow profiles (right) for binary mixture adsorption in the fixed bed
+AC
+
+
+
+
+column predicted by the analytical solution of the ADM for binary mixture adsorption.
+
+CO2/CH4/He/Shirasagi MSC CT system as defined in Table 2.
+                            ACCEPTED MANUSCRIPT
+
+
+
+
+                                                                T
+                                                              IP
+                                                            CR
+Fig. 6. The development of the heat flux profiles (left) and the temperature difference profiles (right)
+
+
+
+                                          US
+at the solid interface in the fixed bed column predicted by the analytical solution of the ADM for
+
+binary mixture adsorption. Temperature difference T  TS  TG . CO2/CH4/He/Shirasagi MSC CT
+                                        AN
+system (Table 2).
+                                 M
+                      ED
+             PT
+    CE
+AC
+

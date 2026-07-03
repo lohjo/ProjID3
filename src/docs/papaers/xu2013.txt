@@ -1,0 +1,1506 @@
+                                       Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                               155
+
+
+
+Journal of Zhejiang University-SCIENCE A (Applied Physics & Engineering)
+ISSN 1673-565X (Print); ISSN 1862-1775 (Online)
+www.zju.edu.cn/jzus; www.springerlink.com
+E-mail: jzus@zju.edu.cn
+
+
+
+    Review:
+    Mathematically modeling fixed-bed adsorption in aqueous systems*
+
+                                                 Zhe XU, Jian-guo CAI, Bing-cai PAN†‡
+     (State Key Laboratory of Pollution Control and Resource Reuse, School of the Environment, Nanjing University, Nanjing 210023, China)
+                                                              †
+                                                                  E-mail: bcpan@nju.edu.cn
+                              Received Jan. 18, 2013; Revision accepted Jan. 30, 2013; Crosschecked Feb. 22, 2013
+
+
+Abstract: Adsorption is one of the widely used processes in the chemical industry environmental application. As compared to
+mathematical models proposed to describe batch adsorption in terms of isotherm and kinetic behavior, insufficient models are
+available to describe and predict fixed-bed or column adsorption, though the latter one is the main option in practical application. The
+present review first provides a brief summary on basic concepts and mathematic models to describe the mass transfer and isotherm
+behavior of batch adsorption, which dominate the column adsorption behavior in nature. Afterwards, the widely used models de-
+veloped to predict the breakthrough curve, i.e., the general rate models, linear driving force (LDF) model, wave propagation theory
+model, constant pattern model, Clark model, Thomas model, Bohart-Adams model, Yoon-Nelson model, Wang model, Wolborska
+model, and modified dose-response model, are briefly introduced from the mechanism and mathematical viewpoint. Their basic
+characteristics, including the advantages and inherit shortcomings, are also discussed. This review could help those interested in
+column adsorption to reasonably choose or develop an accurate and convenient model for their study and practical application.
+
+Key words: Column adsorption, Modeling, Fixed-bed adsorption, Breakthrough curve
+doi:10.1631/jzus.A1300029           Document code: A                CLC number: X1
+
+
+
+1 Introduction                                                                 desired amount of adsorbent contacting with a certain
+                                                                               volume of adsorbate solution, while dynamic adsorp-
+      Adsorption is a widely used method to treat in-                          tion usually occurs in an open system where adsorbate
+dustrial waste gas and effluent due to its low cost,                           solution continuously passes through a column
+high efficiency and easy operation. Particularly, the                          packed with adsorbent. For column adsorption, how
+adsorption process is suitable for decontaminating                             to determine the breakthrough curve is a very im-
+those compounds of low concentration or high toxic-                            portant issue because it provides the basic but pre-
+ity, which are not readily treated by biological proc-                         dominant information for the design of a column
+esses. Based on the operation mode, adsorption can be                          adsorption system. Without the information of the
+generally classified into static adsorption and dy-                            breakthrough curve one cannot determine a rational
+namic adsorption. Static adsorption, also called batch                         scale of a column adsorption for practical application.
+adsorption, occurs in a closed system containing a                             There are two widely used approaches to obtain the
+                                                                               breakthrough curve of a given adsorption system:
+                                                                               direct experimentation or mathematical modeling.
+‡
+
+*
+ Corresponding author                                                          The experimental method could provide a direct and
+ Project supported by the National Natural Science Foundation of China
+(No. 21177059), the Science Foundation of Ministry of Education of
+                                                                               concise breakthrough curve of a given system.
+China (No. 20120091130005), the Natural Science Foundation of Ji-              However, it is usually a time-consuming and
+angsu Province of China (No. BK2012017), the Program for New                   economical undesirable process, particularly for the
+Century Excellent Talents in University of China (No. NCET10-0490),
+                                                                               trace contaminants and long residence time. Also, it
+and the Changjiang Scholars Innovative Research Team in University
+(No. IRT1019), China                                                           greatly depends upon the experimental conditions,
+© Zhejiang University and Springer-Verlag Berlin Heidelberg 2013               such as ambient temperature and residence time.
+156                            Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+      Comparatively, mathematical modeling is simple                                  t  0  C ( z , t )  0,
+and readily realized with no experimental apparatus                                   t  0  q( z , t )  0,
+required, and thus, it has attracted increasing interest in                           z  0  C (0, t  0)  0, C (0, t  0)  CF ,
+the past decades.
+                                                                                                       C
+      Currently, a variety of mathematical models                                     zH                 0.
+have been used to describe and predict the break-                                                      z
+through curves of a column adsorption system in
+                                                                           When the axial dispersion is ignored,
+liquid or gaseous phase (Abu-Lail et al., 2012;
+Cheknane et al., 2012; Meng et al., 2012; Nwabanne
+                                                                                          C    C               q
+and Igbokwe, 2012; Yi et al., 2012; Zhao et al., 2012),                                     u     (1   ) a     0.                     (2)
+but there is still lack of a comprehensive review of                                      t    z               t
+these models. The main objective of the present re-
+                                                                           The initial and boundary conditions turn to
+view is to introduce the modeling of dynamic ad-
+sorption in liquid phase. Different from the gas-solid                                    t  0  C ( z , t )  0,
+adsorption, liquid-solid adsorption is more theoreti-
+                                                                                                                 D  C
+cally difficult to give an unambiguous description                                        z  0  C  CF  z            ,
+because the solvent accompanies more intricate in-                                                                 u z
+teraction between the species involved. Moreover, the                                              C
+                                                                                          zH              0,
+salvation effect results in a more complicated be-                                                  z
+havior of the process. To model a liquid-solid column
+adsorption, it is necessary to divide it into four basic            where ε is the bed porosity, t is the time, ρa is the
+steps (Fig. 1): (1) liquid phase mass transfer including            adsorbent density, CF is the initial concentration of
+convective mass transfer and molecular diffusion; (2)               the influent, and H is the bed height.
+interface diffusion between liquid phase and the ex-
+                                                                                                                          External surface
+terior surface of the adsorbent (i.e., film diffusion);                                                                   of the “film”
+(3) intrapellet mass transfer involving pore diffusion
+                                                                                                         1
+and surface diffusion; and, (4) the adsorption- de-                                          A
+                                                                                                   B
+sorption reaction (Crittenden and Weber, 1978;                                                               2
+Crittenden et al., 1986; Helfferich, 1995).                                                              C
+      (1) Liquid phase mass transfer. Molecules or
+                                                                        A: bulk fluid
+ions in the column can move in both axial and radial                    B: interface region
+                                                                        C: adsorbent pellet
+directions. For simplification, it is common to pos-                    1: film diffusion                                 Internal surface
+tulate that all cross-sections are homogeneous and the                  2: intrapellet diffusion                          of the “film”
+
+radial movement could be neglected. Thus, a macro-                  Fig. 1 Macroscopic adsorption process of an adsorbent
+scopic mass conservation equation is acquired to                    pellet
+represent the relationship between the corresponding
+variations (i.e., concentration of the adsorbed adsor-                     1: convective mass transfer
+                                                                           2: axial dispersion
+bate q; concentration of the bulk solution C; distance                     3: adsorbed by adsorbent
+                                                                                                                 1+       2+
+
+to the inlet z; superficial velocity u; and axial disper-                  4: accumulation of adsorbate
+sion coefficient Dz (if the axial dispersion is not ig-
+                                                                                                  C
+nored)). Regarding a control volume as shown in                            1  1  u
+                                                                                                  z
+Fig. 2, one has (Costa and Rodrigues, 1985; Tien,                                               2C                   4             3-
+                                                                            2    2   Dz
+1994; Fournel et al., 2010)                                                                     z2
+                                                                                               q
+                                                                            3   1   a
+                                                                                               t
+           C    C               q      2C                                         C                         1-       2-
+             u     (1   ) a     Dz 2 ,              (1)              4  
+           t    z               t     z                                           t
+
+                                                                     Fig. 2 Schematic diagram of the mass conservation of a
+where initial and boundary conditions are                            control volume
+                             Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                             157
+
+
+
+      Eqs. (1) and (2) are based on the following as-             and Knudsen diffusion will tend to cause dramatic
+sumptions: (1) the process is isothermal; (2) no                  complexity and make the process very tedious.
+chemical reaction occurs in the column; (3) the                   Hence, it is urgent to simplify such a process by
+packing material is made of porous particles that are             making appropriate assumptions based on specific
+spherical and uniform in size; (4) the bed is ho-                 characteristics of the system, and several models were
+mogenous and the concentration gradient in the radial             proposed based on different simplifications indeed.
+direction of the bed is negligible; (5) the flow rate is               Most mathematical models to predict a break-
+constant and invariant with the column position                   through curve have (or are acquired by) the same
+(Warchoł and Petrus, 2006); and, (6) the activity co-             composition, i.e., (a) macroscopic mass conservation
+efficient of each species is unity.                               equation; (b) adsorption kinetic equation (sometimes
+      (2) Film diffusion. The driving force of film dif-          including a set of equations); and (c) equilibrium rela-
+fusion is the concentration gradient located at the in-           tionship. Among these composition, (a) and (b) have
+terface region between the exterior surface of adsorb-            been briefly discussed above. Logically, we introduce
+ent pellets and the bulk solution. As the first step of           the equilibrium relationship (isotherm) in the fol-
+adsorption, film diffusion predominates the overall               lowing sections.
+uptake rate to some extent and even becomes the rate
+control step in some cases. The flux film diffusion can
+be expressed in linear form by multiplying its driving
+force and the phenomenological coefficient (Tien
+1994; Fournel et al., 2010):
+
+               dq
+                   J f  kf a(C  Cs ),                 (3)
+               dt
+
+where Jf is the mass transfer flux, a is the volumetric
+surface area, Cs is the adsorbate concentration at the
+exterior surface of adsorbent, and kf is the film diffu-
+sion coefficient. It is generally known that increasing
+the flow rate will decrease the film thickness and re-
+sistance, whereas larger film resistance can be caused
+by packing with smaller adsorbent pellets due to the
+extension of the exterior surface area.
+      (3) Intrapellet diffusion and reaction. As shown
+in Fig. 3, surface diffusion and pore diffusion proceed
+in parallel accompanying with Knudsen diffusion and
+the adsorption reactions. Of note, when the pore size
+is only slightly larger than the diameter of adsorbate
+ions or molecules, the Knudsen diffusion begins to
+play a significant role as shown in Fig. 3b.
+      Generally speaking, the film diffusion driven
+solely by the concentration gradient can be expressed
+in a routine form (Eq. (3)), and the intrapellet diffu-
+sion, which is more complex and diverse, is the key-
+stone of modeling dynamic adsorption. Pore diffu-                  Fig. 3 Macroscopic schematic illustration of basic diffu-
+sion, surface diffusion and reaction are involved in               sion and adsorption steps inside the pore
+intrapellet transfer simultaneously, and a set of equa-            (a) Surface diffusion; (b) Pore diffusion; (c) Pore diffusion
+                                                                   with significant Knudsen diffusion; (d) Combination of in-
+tions could be set to consider all the possible mecha-             trapellet diffusion and adsorption. 1: pore diffusion; 2: surface
+nisms. Moreover, consideration of the heterogeneity                diffusion; 3: adsorption; 4: desorption
+158                             Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+2 Single-component isotherms                                         2.1 Langmuir isotherm
+                                                                           The Langmuir isotherm assumes: (1) the ad-
+      As we have illustrated, the general way to predict
+                                                                     sorption process takes place as monolayer adsorption
+the breakthrough curve is to solve a set of partial dif-
+                                                                     (chemical adsorption); (2) the surface of adsorbent
+ferential equations which consist of a macroscopic
+                                                                     pellets or each adsorption site is homogeneous; and,
+mass conservation equation, uptake rate equation
+                                                                     (3) the adsorption heat does not vary with the cover-
+(sometimes including a set of equations), and isotherm
+                                                                     age. In other words, in terms of the Langmuir iso-
+equation. Obviously, as a prerequisite of modeling of
+                                                                     therm, adsorption takes place when a free adsorbate
+the dynamic adsorption, the choice of the isotherm
+                                                                     molecule collides with an unoccupied adsorption site
+style will directly affect the effect of mathematic
+                                                                     and each adsorbed molecule has the same percentage
+modeling. Although several methods have been
+                                                                     to desorption (Langmuir, 1916). The model can be
+adopted to determine the isotherm, the most widely
+                                                                     written as
+used one is the conventional static method proceeding
+in a closed system. Actually, due to the complexity of
+                                                                                                   qm bCe
+the structure of adsorbent and the interaction between                                      qe            ,              (4)
+each corpuscle, isotherms can present diverse shapes.                                              1  bCe
+As shown in Fig. 4, Giles et al. (1960) classified dif-
+ferent isotherms into four types (S, L, H and C types).              where qe is the value of q at equilibrium, qm is the
+Malek and Farooq (1996) suggested that there are                     maximum adsorptive capacity, Ce is the concentration
+three fundamental means to formulate an isotherm:                    of adsorbate in liquid phase at equilibrium, and b is
+dynamic equilibrium between adsorption and desorp-                   the Langmuir constant. Certainly, we can obtain a
+tion, thermodynamic equilibrium between phases and                   linear form of the Langmuir model
+species, and adsorption potential theory. Although
+researchers have developed various isotherm models in                                          Ce   1  C
+                                                                                                      e,                (5)
+the past decades, it is clear that none of them fit well                                       qe qm b qm
+with all cases, and thus, one has to determine the best
+suitable isotherm experimentally. Morgenstern (2004)                 where
+reviewed the means to derive the isotherm by both
+                                                                                                   b  ka / kd ,          (6)
+batch method and adsorption-desorption method. Here
+we do not intend to give a detailed discussion of vari-
+ous isotherms but only concisely introduce several                   where ka refers to the adsorption rate coefficient of the
+widespread models.                                                   Langmuir kinetic model, and kd is the desorption rate
+                                                                     coefficient (Azizian, 2004). Despite the reversible
+                                                                     adsorption nature of the Langmuir model, it some-
+             Type S   Type L   Type H     Type C                     times fits irreversible adsorption well. Because of its
+        qe                                                           simple form and well fitting performance, the
+                                                                     Langmuir isotherm has become one of the most
+                                                                     popular models in adsorption studies.
+                                                                     2.2 Freundlich isotherm
+                                                                          Another most widely used model is the
+                                                                     Freundlich isotherm. Comparing with the Langmuir
+                                                                     isotherm, the Freundlich isotherm does not have
+                                                                     much limitation, i.e., it can deal with both homoge-
+                                                                     neous and heterogeneous surfaces, and both physical
+                                                                     and chemical adsorption. Especially, this model fre-
+                                               Ce                    quently succeeds in depicting the adsorption behavior
+  Fig. 4 Adsorption isotherms classified by Giles et al.             of organic compounds and reactive matters. The
+  (1960)                                                             Freundlich isotherm is expressed as
+                               Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                                                       159
+
+
+
+                   qe  KCe1/ n ,                          (7)      therms (Myers and Prausnitz, 1965; Radke and Praus-
+                                                                    nitz, 1972; Hand et al., 1985). Namely,
+and its linear form is
+                               1                                                             i   j .                                                     (9)
+                 ln qe  ln K  ln Ce ,                    (8)
+                               n
+                                                                         The spreading pressure is a surface chemistry
+where K and n are the parameters to be determined.                  terminology referring to the difference of surface
+Though the Freundlich isotherm is one of the earliest               tension of the solvent-solid interface and solutions-
+empirical correlation, it could be deduced from the                 solid interface. According to the Gibbs adsorption
+assumption that Qa=Qa,0–aflnθ, where Qa is the dif-                 formula
+ferential heat of adsorption, θ is the coverage, Qa,0 is
+the value of Qa at θ=0, and af is a constant. According                                             1 d i
+                                                                                           i              ,                                              (10)
+to (Haghseresht and Lu, 1998), the surface hetero-                                                 RT ln ai
+geneity and type of adsorption can be roughly esti-
+mated by the Freundlich parameters.                                 where Γi is the adsorptive capacity per surface area of
+                                                                    species i, R is the ideal gas constant, T is the tem-
+2.3 Other isotherms
+                                                                    perature, and ai is the activity of solute i. Assuming
+     Besides the above two isotherms, adsorption                    that the activity coefficient of each solute is unity, and
+equilibrium can also be described by other isotherms                ai could be substituted by Ci which refers to the con-
+such as the Sips model (Sips, 1948), Toth model                     centration of solute i. Thus, we can rewrite Eq. (10) as
+(Toth, 1971), and the Brunauer-Emmett-Teller (BET)                  (Myers and Prausnitz, 1965)
+model (Brunauer et al., 1938). One must note that the
+lower prevalence of these isotherms do not mean less                                              RT Ci* qi
+                                                                                                   a 0 Ci
+                                                                                     i (Ci )              dCi ,                                          (11)
+functionality, e.g., the Dubinin-Radushkevich iso-
+therm is able to calculate the mean adsorption free
+energy from which the prediction of adsorption type                       or
+is available (Dubinin and Radushkevich, 1947); the
+                                                                                                  RT  q*i d log Ci
+                                                                                                   a 0 d log qi
+Temkin isotherm allows one to estimate the effect of                                 i (qi )                      dqi ,                                  (12)
+temperature (Temkin and Pyzhev, 1940). The
+single-component isotherms have been summarized
+in several studies (Foo and Hameed, 2010). De-                      where qi* and Ci* are respectively the solid phase and
+pending on the linear expression of each isotherm, all              liquid phase concentrations of species i to generate
+the isotherm parameters could be acquired by linear                 the surface tension that is equal to πi. Eqs. (13)−(18)
+regression, and several commonly used error func-
+tions are outlined in Table 1.                                            Table 1 Lists of some widely used error functions
+                                                                            Method                                    Expression
+                                                                      Sum squares errors                        n
+
+
+3 Multi-component isotherms
+                                                                                                              (X
+                                                                                                               i 1
+                                                                                                                           cal    X exp )i2
+
+                                                                      Mean sum of the per-                  100 n X cal  X exp
+      When a variety of pollutants is present with the                 cent errors                              X
+                                                                                                             n i 1      exp                   i
+target pollutant in solution, the equilibrium relationship            Hybrid fractional error               100        n     X cal  X exp
+of any component may not fit the single-component                      function                                   
+                                                                                                            n  p i 1              X exp
+isotherms since competitive adsorption occurs between                                                                                              i
+
+                                                                      Marquardt’s percent
+different species. In order to solve the problem,                                                              1 n  X cal  X exp 
+                                                                                                                                                       2
+
+
+multi-component isotherms were developed, among
+                                                                       standard deviation             100           X
+                                                                                                             n  p i 1 
+                                                                                                                                   
+                                                                                                                            exp                       i
+which the ideal adsorbed solution theory (IAST) model
+                                                                      n is the number of data point, p is the number of parameter, Xcal is
+based on the equivalence of the spreading pressure, π,                the calculated value of parameter X, and Xexp is the measured value
+of each component is one of the most reliable iso-                    of parameter X by the experiment
+160                                               Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+are indispensable to solve the IAST model (Myers                                       4 Modeling of fixed-bed adsorption
+and Prausnitz, 1965; Radke and Prausnitz, 1972; Lo
+and Alok, 1996)                                                                             As one of the most prevalent techniques for
+                                                                                       separation and purification, fixed-bed adsorption has
+                                   Ci  zi C * ,                             (13)      been widely applied for its high efficiency and easy
+                                   1          N                                        operation. How to optimize the design and operation
+                                        zi / qi ,                          (14)      conditions of the fixed-bed adsorption is obviously an
+                                   qT   i
+                                                                                       important issue to be focused on. Given the fact that
+                                   qi  zi q,                                (15)      experimental determination of the adsorption per-
+                                              N
+                                                                                       formance under diverse conditions is usually expen-
+                                   qT   qi ,                               (16)
+                                              i
+                                                                                       sive and time-consuming, development of mathe-
+                                     N                                                 matical models to predict fixed-bed adsorption is
+                                    z  1,
+                                     i
+                                         i                                   (17)      necessary. An ideal model should be mathematically
+                                                                                       convenient, be able to give an exact estimation of the
+                                    qi  f (Ci ),                            (18)      breakthrough behavior, and evaluate the effect of each
+                                                                                       variable on adsorption.
+where zi is the molar fraction of species i, and N is the                                   A dynamic adsorption model usually consists of
+number of the species in mixture. Eq. (18) denotes the                                 a macroscopic mass conservation equation, uptake
+isotherm of a single-compound solution of solute i.                                    rate equation(s) and isotherm. Considering the dif-
+Sometimes modification of the IAST model is re-                                        ferent components of the adsorption systems (sol-
+quired to better represent some specific adsorption                                    vents, adsorbate, adsorbent), variable operation con-
+systems such as solutions containing humic sub-                                        ditions and specific demands of accuracy and calcu-
+stances (Weber and Smith, 1987). Some other iso-                                       lative simplicity, it is an important but challenging
+therms are shown in Table 2.                                                           task to propose a general use model, because most
+
+
+                                                       Table 2 Lists of some multi-component isotherms
+                                     Expression                                                Description                            Reference
+                 qmbiCe,i                                                                    Multi-component                     (Silva et al., 2010)
+      qe,i         N                                                                       Langmuir isotherm
+               1   bi Ce,i
+                     i
+
+                 qmbi (Ce,i ) ki                                                          Multi-component                         (Ruthven, 1984)
+      qe,i         N                                                                Langmuir-Freundlich isotherm
+               1   bi (Ce,i ) ki
+                    i
+
+                    qm,2b1Ce,1               (qm,1  qm,2 )b1Ce,1                   Assume the maximum adsorptive               (Jain and Snoeyink,
+      qe,1                                                                       capacity of species 1 is higher than                1973)
+               1  b1Ce,1  b2Ce,2                1  b1Ce,1
+                                                                                     species 2 and the surplus part is
+                   qm,2b2Ce,2                                                   treated as single-component adsorption
+      qe2 
+               1  b1Ce,1  b2Ce,2
+                  qmb1Ce,1[1  ( K  / b1 )Ce,2 ]                                   Postulate formation of Ad-M1-M2,           (Chong and Volesky,
+      qe,1                                              ,                           Ad is the adsorbent, and M1 and                 1995)
+               1  b1Ce,1  b2Ce,2  2 KCe,1Ce,2
+                                                                                      M2 represent species 1 and 2.
+                  qmb2Ce,2 [1  ( K  / b2 )Ce,1 ]
+      qe,2 
+               1  b1Ce,1  b2Ce,2  2 K Ce,1Ce,2
+                 n1Rsm K1C1n1               n2 Rsm K 2C2n2                             Assume that adsorption of                 (Xue et al., 2009)
+      q1                        , q2                       ,                         species M1 and M2 follows
+             1  K1C1  K 2C2
+                     n1       n2
+                                        1  K1C1n1  K 2C2n2
+                                                                                          n1M 1  Rs  Rs M 1n1 ,
+             Rs M 1n        Rs M 2 n 
+      K1   n1 1  , K 2   n2 2                                                        n2 M 2  Rs  Rs M 2 n2
+           M 1   Rs     M 2   Rs 
+      bi , K′ , K′′ and ki are the model constants, Rs refers to the an active adsorption site, and Rsm is the total amount of the active adsorption sites
+                              Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                           161
+
+
+
+models derived from different assumptions are only                 where Ds is the surface diffusion coefficient.
+suitable for a limited situation but fail to describe                    In addition, PSDM can be represented as (Liu et
+others. In this section, some widely used models are               al., 2010)
+presented and discussed to choose proper models
+when needed. Note that, toward the solution of un-                         C    q Ds   2 q   Dep  2 q 
+known composition, a full illustration of modeling                                     r     2 r        , (21)
+                                                                           t    t r 2 r  r    r  r 
+was provided elsewhere (Crittenden et al., 1985) and
+here, we do not intend to discuss that case.
+                                                                   with its specific initial and boundary conditions of
+4.1 General rate models
+                                                                       0  z  H ,0  r  rp , t  0  q  0,
+     Based on the assumption that the rate of in-
+trapellet diffusion is described by Fick’s Law, some                           q
+                                                                       r 0        0,
+different expressions of general rate models were                              r
+developed, such as the pore diffusion model (PDM),                                          dq  C 
+                                                                       r  rp   Dep  Ds                    kf a(C  Cs ).
+homogeneous surface diffusion model (HSDM), and
+                                                                                            dC  r  r  rp
+pore and surface diffusion model (PSDM).
+     PDM can be described as (Du et al., 2008)
+                                                                                                q
+                                                                   Due to the fact that           is usually much higher than
+                C    q  Dep   2 q                                                        t
+                       2     r     ,               (19)
+                t    t   r r  r                                 C
+                                                                         , the latter term was neglected in most cases.
+                                                                      t
+with the initial and boundary conditions as                              With distinct rate control step(s) of different
+                                                                   systems, the appropriate type of the general rate
+         0  z  H ,0  r  rp , t  0  q  0,                    models should be applied, including the film-pore
+                                                                   diffusion model, film-surface diffusion model and
+                 q
+         r 0        0,                                          film-pore/surface diffusion model. Reasonably, the
+                 r
+                                                                   film diffusion can be neglected when the film mass
+                       q                                        transfer resistance is quite small (i.e., negligible
+         r  rp  Dep    kf a (C  Cs ),
+                       r r  rp                                 concentration gradient in the film). However, addi-
+                                                                   tional experiments should be performed to ensure that
+where ρ is the bed density, rp is the radius of adsorbent          film diffusion is not a rate control step. Note that
+pellets, Dep refers to the effective pore diffusion co-            among Eqs. (19)–(21), the term of the surface reaction
+efficient, and r is the distance to the centre of the              rate is not involved in most cases because it is much
+pellet.                                                            faster than other diffusion steps. Sometimes the sur-
+      The basic mathematic form of HSDM is (Tien,                  face reaction should be considered when it signifi-
+1994)                                                              cantly affects the total adsorption rate or even be-
+                                                                   comes the sole rate control step. Plazinski et al.
+            C    q Ds   2 q                                  (2009) made a comprehensive review of sorption
+                        r   ,                      (20)
+            t    t r 2 r  r                                  kinetics including surface reaction mechanism.
+                                                                         When a proper liquid phase continuity equation
+with its initial and boundary conditions as                        (Eq. (1) or (2)), film diffusion equation (Eq. (3)),
+                                                                   intrapellet diffusion equation, and isotherm equation
+        0  z  H , 0  r  rp , t  0  q  0,                    are available, it is possible to generate the break-
+                                                                   through curve by solving these partial differential
+                q                                                 equations. Note that several parameters in the general
+        r 0        0,
+                r                                                 rate models can be determined both theoretically and
+                       q                                        experimentally. The theoretical method is based on
+        r  rp   Ds    kf a (C  Cs ),
+                       r r  rp                                 some basic correlations (Roberts et al., 1985;
+162                                      Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+Crittenden et al., 1986; Weber and Smith, 1987;                                         To directly solve the general rate models is usu-
+Wolborska, 1989b; Tien, 1994; Sperlich et al., 2005;                              ally a time-consuming and computationally troubled
+Worch, 2008) and part of them are listed in Table 3,                              work. Some convenient methods such as the finite
+whereas the accuracy of estimation values of the pa-                              difference method and orthogonal collocation method
+rameters is not satisfactory. Especially, to our                                  (Mathews and Weber, 1977; Kaczmarski and Antos,
+knowledge, there is no reliable method to theoreti-                               1996; McKay, 2001; Finlayson, 2003; Lee and McKay,
+cally predict the tortuosity τ and surface diffusion                              2004) were developed to obtain the numerical solution
+coefficient Ds, which are indispensable when using                                with the aid of several computational softwares.
+the general rate models. Thus, for trustworthy pre-                                     Except for PDM, HSDM and PSDM, some other
+diction, it is inevitable to use the experimental method                          models based on Fick’s law were also available and
+to determinate these parameters.                                                  summarized in Table 4.
+
+
+                      Table 3 Some basic correlations to determine the parameters of the general rate models
+            Parameter                                   Correlation                                        Condition              Reference
+      Bulk liquid diffusivity DM / T  7.4  10 (  M )0.5 / Vm0.6
+                                                    8                                                        –               (Wilke and Chang,
+       of the adsorbate, DM                                                                                                         1955)
+                                                       1          1                                             –              (Puértolas et al.,
+                                    0.01498T 1.81                                                                                  2010)
+                                                       Mi M j
+                              DM 
+                                                                     
+                                               0.1405               2
+                                    P TCi TC j         Vm0.4
+                                                          i
+                                                            Vm0.4j
+                                        3.595  10 T       14                                                  –                (Worch, 1993)
+                                  DM 
+                                            M 0.53
+      Film (external) diffu-           1.1 1/ 3                                                                 –              (Tan et al., 1975)
+       sivity, kf                 Sh     Pe
+                                          
+                                         1.09                                                          0.0016<εRe<55;           (Wilson and
+                                  Sh             Pe1/ 3                                                950<Sc<70000          Geankoplis, 1966)
+                                        
+                                  Sh  2  1.58 Re0.4 Sc1/ 3                                             0.001<Re<5.8        (Ohashi et al., 1981)
+                                  Sh  2  1.21Re Sc       0.5   1/ 3                                     5.8<Re<500
+                                  Sh  2  0.59 Re0.6 Sc1/ 3                                                Re>500
+                                  Sh  2.4 Re0.3 Sc 0.42                                                0.08<Re<125;         (Williamson et al.,
+                                                                                                         150<Sc<1300                1963)
+                                              0.325                                                            –               (Ko et al., 2003)
+                                  Sh 
+                                          Re0.36 Sc1/ 3
+                                  Sh  2  1.1Re0.6 Sc1/ 3                                              3.0<Re<10000             (Wakao and
+                                                                                                                               Funazkri, 1978)
+                                  Sh  1.85[(1   ) /  ]1/ 3 Re1/ 3 Sc1/ 3                           Re[ε/(1−ε)]<100         (Kataoka et al.,
+                                                                                                                                    1972)
+                                  Sh  (2  0.644 Re1/ 2 Sc1/3 )[1  1.5(1   )]                               –             (Chern and Chien,
+                                                                                                                                    2002)
+                                                                                                           ReSc>500;          (Gnielinski, 1978)
+                                  Sh   2   ShL2  ShT2   1  1.5(1   ) ,
+                                                             0.5
+
+                                                                                                       Sc<12000
+                                  ShL  0.644 Re Sc ,
+                                                   1/ 2 1/ 3
+
+
+                                  ShT   0.037 Re0.8 Sc  1  2.443Re 0.1  Sc 2 / 3  1 
+      Knudsen diffusion                                    T                                                    –             (Scott and Dullien,
+       coefficient, Dk            Dk  9700rap                                                                                       1962)
+                                                           M
+      Pore diffusion coeffi-      Dp   DM /                                                                  –                        –
+       cient, Dp
+      Effective pore diffu-         1   1   1                                                                   –                        –
+       sion coefficient, Dep             
+                                   Dep Dp Dk
+      η is the dynamic viscosity, rap is the average pore radius of adsorbent, M is the molecular weight, β is the association constant of the solvent
+      and β=2.6 for water and 1.5 for ethanol, Vm is the molar volume of solute at normal boiling point, and Tc is the critical temperature
+                               Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                        163
+
+
+
+
+                                     Table 4 Lists of some general rate type models
+  Modification              Assumption                                    Equation                         Reference
+Macropore diffu- Postulating each adsorbent    Diffusion equation of macropore region:                    (Tien, 1994)
+sion and micro- pellet is composed of a core q 1                      q 
+pore diffusion (in with micropore (0<r<rc) and      2  De Ma r 2  , rc  r  rp ;
+                                                t r r                 r 
+series)            outer region with macropore
+                   (rc<r<rp)                   Diffusion   equation   of micropore    region:
+                                               q 1                  2 q 
+                                                             De mi r  , 0  r  rc ;
+                                                t r 2 r              r 
+                                               Mass conservation at the interface:
+                                                          q                    q
+                                                De Ma    ( De )mi  
+                                                          r
+                                                          r  rc
+                                                                 +             r r  rc
+Macropore diffu- The so-called branched pore Diffusion equation of macropore:                              (Peel et al.,
+sion and micro- kinetic model applies to ad-        qMa       1                  q                  1981; Yang and
+pore diffusion (in sorption processes controlled f         f 2  De Ma r 2 Ma   Rb ;                Al-Duri, 2001;
+                                                      t       r r                 r 
+parallel)          by the pore-surface diffusion.                                                        Ko et al., 2002)
+                   Divide the adsorbent pellet    Diffusion equation   of  micropore:
+                   into two regions, micropore (1  f ) qmi  (1  f ) 1   D  r 2 qmi   R ;
+                                                                          r 2 r         r 
+                                                                                      e mi       b
+                   and macropore region, and               t
+                   assume both of them array      Total adsorption amount:
+                   parallel                       q  fqMa  (1  f )qmi ;
+                                                  Transfer rate of solute from macropore to micropore:
+                                                  Rb  kb (qMa  qmi )
+Shrinking core    This model used to describe The mass transfer flux at the solid-liquid phase interface: (Ko et al.,
+theory model      the intrapellet adsorption is  J  4rp2 kf (C  Ce );                                 2001; Quek and
+                  controlled by pore diffusion,                                                          Al-Duri, 2007;
+                                                 Diffusion in the pore of adsorbent (Fick’s Law):
+                  supposing adsorption firstly                                                            Traylor et al.,
+                  occurs at the outer region of J  4Ce rp rc Dep ;                                         2011)
+                  adsorbent, then the mass               rp  rc
+                  transfer zone moves inward The velocity of the mass transfer zone:
+                  together with the extending of
+                                                 drc          J
+                  saturated outer region and                        ;
+                  shrinking of unloaded core      dt      4 rc
+                                                               2
+                                                                  qe
+                  (Fig. 5)                       The mean concentration of adsorbed solute:
+                                                 q  qe [1  (rc / rp )3 ]
+HSDM involved When additional reaction          Diffusion and reaction combined equation:                 (Abuzaid and
+additional reac- occurs in adsorption process, q 1               2 q 
+                                                                                                          Nakhla, 1997)
+tion             the conventional HSDM con-                  Ds r        Rr ;
+                                                 t r 2 r           r 
+                 sidering only the diffusion
+                 mechanism is no longer suit- For example, when Rr is expressed by
+                 able. For this matter, modifi- Rr  K r (q  qe );
+                 cation were made to meet the The diffusion-reaction rate equation is written as
+                 demand                         q 1              2 q 
+                                                             Ds r        K r (q  qe )
+                                                 t r 2 r           r 
+General rate    This method thinks about the The function of volume particle size distribution             (Yun et al.,
+model with      nonuniformity of the size of for spherical particles is expressed as                     2004; Du et al.,
+nonuniform size adsorbent pellets by adding a               1           (d  d a )2                     2007; 2008)
+of particles    distribution equation of the   f1 (d )          exp               ,
+                                                           2π s           2 s2 
+                particle size
+                                                                           f1 (d )
+                                              or f 2 (d )       d min             
+                                                                                            ,
+                                                            1   f1 (d ) d   f1 (d ) d
+                                                                                    d max
+                                                        d max
+                                                     d min
+                                                                f 2 (d ) d  1
+
+
+                                                                                                           To be continued
+164                                  Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+  (Table 4)
+  General rate   To describe the change of surface                         q                                                (Neretnieks,
+  model with     diffusion coefficient under dif-  1. Ds (q )  Ds0 exp  ks    ;                                          1976; Ko et al.,
+  concentration- ferent coverage, functions of                             qm                                           2005; Lee et al.,
+  dependent sur- Ds(q) were proposed. In case 3,                      ln C                                                    2005; Jia and
+  face diffusion according to (Cussler, 1976), the 2. Ds  q   Ds0  ln q ;                                                    Lua, 2008)
+  coefficient    cross-term Fickian diffusivities,
+                 D12 and D21 are usually neglected 3. For binary system,
+                 because they are generally less      qi 1   2            q      q j  
+                                                            2  r  Ds,ii i  Ds,ij        ,
+                 than 10% of D11 and D22               t r r               r     r  
+                                                                                       q  C   q j
+                                                                  Ds,ij  q   Ds0,i  i  i
+                                                                                       q  Ci   qj
+                                                                                       j
+  (De)Ma: effective diffusion coefficient of marcopore region; (De)mi: effective diffusion coefficient of micropore region; Rb: branched pore
+  kinetic model rate constant; qMa: adsorbed concentration of the macropore zone; qmi: adsorbed concentration of the micropore zone; f:
+  volume fraction of the macropore region; Kr: reaction rate coefficient; kb: model kinetic coefficient; ks: model constant; rc: critical radius;
+  σs: standard deviation of the particles; d: diameter of the adsorbent pellets; da: average diameter of the adsorbent pellets; Ds0: surface
+  diffusion coefficient when the coverage is zero (self-diffusivity)
+
+
+
+       (a)                                                                   parameter may lead to variation in the phenomenol-
+                                                  Loaded region              ogical coefficient(s), and optimization based on
+                                                                             modeling is not a precise method). However, the main
+                            rc                                               limitation of these models is the complicated and
+                                                                             time-consuming computation.
+                                               Unloaded region               4.2 Linear driving force (LDF) model
+                                                                                  The linear driving force (LDF) model proposed
+       (b)
+                                                                             by (Glueckauf, 1955) formulates a lumped mass
+                                             Macropore region                transfer coefficient to represent the intrapellet diffu-
+                                                                             sion rate, as written in a linear form as
+                            rc
+
+
+                                                                                                        dq
+                                              Micropore region
+                                                                                                            ke (qs  qa ),                       (22)
+                                                                                                        dt
+
+Fig. 5 Schematic diagram of branched pore kinetic                            where qa is the average concentration of the adsorbed
+model (a) and shrinking core theory model (b)                                adsorbate, qs is the loading of the adsorbate at the
+                                                                             external surface of adsorbent, and ke is the lump in-
+     A review of surface diffusion is available else-
+                                                                             trapellet diffusion kinetic coefficient. The original
+where (Medved and Cerny, 2011), which might pro-
+                                                                             LDF model regards that qs in equilibrium corresponds
+vide some ideas to modify the intrapellet diffusion
+                                                                             to the concentration of the bulk solution C. In other
+models.
+                                                                             words, it neglected the concentration gradient in the
+     The prevalence of the conventional/modified
+                                                                             interface region between the liquid phase and ad-
+general rate models is not only because they give
+good prediction of dynamic adsorption, but also in-                          sorbent, and ke is a function of intrapellet diffusivity.
+volves a variety of parameters to determine the                              When the mass transfer within the interface is in-
+process variables. The variables could be optimized                          volved, the film diffusion equation should be added
+by keeping other parameters constant and comparing                           into the LDF model, namely
+the breakthrough curves predicted by this model un-
+der different values of the target parameter “X”, for                                                   dq
+                                                                                                            kf a(C  Cs ).                       (23)
+example, 0.5X, X and 2X (Note that adjusting a                                                          dt
+                                   Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                     165
+
+
+
+Combining Eqs. (22) and (23) with the liquid phase                      and then calculate De by
+mass conservation equation and proper isotherm, it is
+possible to predict the breakthrough curve. Hence,                                         De  Ds  Dp /  f (C )   .    (29)
+the LDF model can be used to estimate the coeffi-
+cients ke and kf. Similar to the general rate models,
+                                                                             The calculated kinetic parameters sometimes fit
+these parameters can be acquired by the theoretical
+                                                                        well with the experimental data, but conspicuous
+and experimental ways. For the theoretical way, a
+                                                                        deviation may appear in other cases. For instance, the
+widely accepted expression is written as (Glueckauf,
+                                                                        theoretical value is often much higher than the ex-
+1955)
+                                                                        perimental result when the dissolved organic matter
+                                                                        (DOM) is adsorbed. In that case, the theoretical me-
+                           15 De                                        thod could just approximately reckon the adsorption
+                    ke          .                            (24)
+                            rp2                                         performance, and the parameters have to be deter-
+                                                                        mined by the experimental breakthrough curves.
+     When intrapellet diffusion is dominated by pore                         Another expression of the LDF model is avail-
+diffusion                                                               able by incorporating Eqs. (22) and (23)
+
+                                                                                                q
+                              15 Dp                                                                 ko (qs  qa ),          (30)
+                   ke                     .                  (25)                              t
+                            f (C )  r
+                                      p
+                                       2
+
+
+                                                                        where ko is the overall kinetic constant combining
+     While by surface diffusion                                         both the film diffusivity and the intrapellet diffusivity.
+                                                                        Both expressions of the LDF model have widespread
+                                                                        application (Murillo et al., 2004; Borba et al., 2006;
+                            15Ds
+                     ke         .                            (26)      Puértolas et al., 2010; Silva et al., 2010). Addition-
+                             rp2
+                                                                        ally, surface reaction was also involved in LDF in
+                                                                        some cases (Szukiewicz, 2000; 2002). Computational
+    An empirical equation of the rate constant was                      software is often required to derive the numerical
+developed previously (Heese and Worch, 1997;                            solution of the LDF model, especially when the iso-
+Worch, 2008)                                                            therm is in the nonlinear form. Nevertheless, as
+                                                                        compared to the general rate models, the LDF model
+                                                                        could reduce the computational time significantly and
+           ke  0.00129  DM CF /  rp2 qF   ,
+                                                  1/ 2
+                                                              (27)      its accuracy was generally acceptable. Hence, the
+                                                                        LDF model has become one of the most widely used
+where De is the effective intrapellet diffusion coeffi-                 models now. For some recent developments of the
+cient involving both surface diffusion and pore dif-                    LDF model one could refer to the work by Gholami
+fusion, f′(C) is related to the isotherm. Except for Ds                 and Talaie (2010). The limitations of the LDF model
+and De, all the parameters are available by directly                    were also discussed elsewhere (Nakao and Suzuki,
+measuring or referring to the corresponding isotherms.                  1983; Do and Mayfield, 1987; Yao and Tien, 1993;
+            dq                                                          Zhang and Ritter, 1997), such as the limited applica-
+Note that       is not constant if the isotherm is non-                 bility of the conventional expression of ke in many
+            dc
+                                                                        systems.
+linear (i.e., does not obey Henry’s Law). Hence, to
+obtain the value of De, an average value has to be                      4.3 Wave propagation theory
+applied to represent f′(C). As for Ds, it can be reck-
+                                                                             A novel method to evaluate the service volume
+oned by combining Eqs. (26) and (27):
+                                                                        (or service time) was proposed by (Helfferich and
+                                                                        Klein, 1970). They defined the wave velocity as the
+       15Ds
+             0.00129  DM CF /  rp2 qF   ,
+                                              1/ 2
+          2                                                   (28)      velocity of a given value of a variable and made an
+        rp                                                              analog to explain the concept of wave (Helfferich and
+166                             Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+Carr, 1993), from which one can easily deduce the                           Vbk          q           qF  q 
+“concentration velocity” as                                                       1          1           ;     (36)
+                                                                            Vb           C           CF  C 
+
+                         C 
+                                                                         for non-sharpening wave
+                 z    t  z
+           uC               ,                         (31)
+                 t C  C 
+                                                                                           Vbk          dq 
+                         z t                                                                    1          ,      (37)
+                                                                                             Vb           dC 
+where uC is the velocity of the “concentration wave”.
+The liquid phase continuity equation applied in the                  where Vbk is the breakthrough volume, and Vb is the
+wave propagation theory can be expressed as                          bed volume. Apparently, this ingenious method
+                                                                     brings considerably mathematical convenience to
+                q    C        C                                   predict an adsorption system and the only information
+                       ui      0,                    (32)
+                t    t        z                                   needed is the isotherm. Once the isotherm informa-
+                                                                            dq
+                                                                     tion (    or ∆q/∆t) is available, the service time can be
+where ui is the interstitial velocity. Combining                            dt
+Eqs. (31) and (32), we can obtain:                                   directly calculated by Eq. (36) or Eq. (37). On the
+                                                                     other hand, the hypothesis of the infinite mass transfer
+                           ui                                        velocity is too arbitrary when the flow rate is not so
+                uC                  .
+                           dq                           (33)      slow, and the results calculated from the wave theory
+                       1 
+                           dC                                    may deviate from the experimental data notably.
+                                                                     Moreover, when the molecular diffusion cannot be
+     Assuming the adsorption rate is infinite (i.e.,                 neglected or Eq. (2) is used as the liquid phase con-
+                    dq                                               tinuity equation, the service time cannot be acquired
+Local equilibrium),      is available to be calculated               by the wave velocity.
+                    dC
+by the corresponding isotherm                                        4.4 Constant pattern theory
+                                                                          Even though the wave propagation theory has
+                  qe  f (Ce ).                            (34)
+                                                                     limited range of application due to the harsh premise,
+                                                                     wave propagation is still an interesting concept in
+     Especially, for a self-sharpening wave, the wave                modeling. Luckily, the constant pattern theory in-
+velocity is calculated by                                            cluding the “wave” velocity offers another approach
+                                                                     to predict the breakthrough curve. When one assumes
+                          ui                                         that a self-sharpening wave moves at a constant rate
+                uC                .
+                           q                           (35)      in column, τ, the adjusted time, can be represented as
+                       1 
+                           C                                    (Chern and Chien, 2002; Pan et al., 2005)
+
+     For better understanding of the terminologies                                                        z
+“self-sharpening” and “non-sharpening”, one can                                                   t      .            (38)
+                                                                                                         uC
+refer to some previous works where the chroma-
+tographic phenomena were discussed in detail
+                                                                           The liquid phase continuity equation is
+(Helfferich and Klein, 1970; Helfferich, 1984; Helf-
+ferich and Carr, 1993; Helfferich and Whitley, 1996;
+                                                                                             q    C        C
+Chern and Huang, 1999). From the wave velocity the                                                  ui      0.     (39)
+breakthrough volume (or service time) can be calcu-                                          t    t        z
+lated, for the self-sharpening wave (Chern and
+Huang, 1999)                                                               Substituting Eq. (38) into Eq. (39), we can obtain
+                                         Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                          167
+
+
+
+                       ui                                                                  dx           KL a
+                    1   C  q  0.                               (40)                                           ( x  x1/ n ),    (48)
+                     uC                                                                      t
+                                                                                               x  0.5
+                                                                                               d            KC F
+                                                                                                                 n 1
+
+
+
+
+     Thus, an important relationship can be deduced                           where x=C/CF. In some cases the constant pattern
+                                                                              model works in a transcendental way. This is because,
+                               C1 q1                                          when film diffusion is the only rate control step of
+                                  ,                                (41)      adsorption, the value of KL is close to the external
+                               C2 q2
+                                                                              diffusion coefficient kf, which could be estimated by
+                                                                              the corresponding correlation listed in Table 4. Un-
+     or
+                                                                              fortunately, adsorbent of microporous structure usu-
+                               C  q                                           ally has great intrapellet resistance, leading to the
+                                  .                                (42)
+                               CF qF                                          limited application of the method. Chern et al. (2002)
+                                                                              related the volumetric film diffusion mass transfer
+     Combining with the isotherm qe=f(Ce) leads to                            coefficient to the volumetric flow rate Q
+
+                        Ce  f 1 (CqF / CF ).                      (43)                            kf a  k1  k2 Q1/ 2 .              (49)
+
+     The overall mass transfer equation can be ex-                                  Kananpanah et al. (2009) also proposed that
+pressed as
+                                                                                                    kf a  k1  k2 Q n ,               (50)
+                          dq
+                              K L a (C  Ce ),                   (44)                            kf a  k1e    k2 Q
+                                                                                                                         ,              (51)
+                          d
+                                                                                                    kf a  k1  k2 e         k3 Q
+                                                                                                                                    ,   (52)
+where KL is the overall kinetic constant, and
+a=3(1–ε)/rp. After integrating Eq. (43) with Eq. (44)
+                                                                              where specific parameters k1, k2, k3 and n′ can be
+and rearranging, we obtain
+                                                                              acquired by fitting the experimental data. Eqs. (49)
+                                                                              –(52) pave a way to predict the performance under
+                    qF         C            1
+                  K aC 
+   t  t1/ 2                               1
+                                                        dC , (45)             different volumetric flow rates, but it is not suitable to
+                    L      F
+                               CF/2   C  f (qFC / CF )                       predict the performance of the adsorption systems
+                                                                              with no experimental data. The main functions of the
+where t1/2 is the time when the concentration of ad-                          constant pattern theory are: (1) to determine valuable
+sorbate in the effluent reaches half of that in the                           information such as ρ, ε, qF, CF, and isotherm; (2) to
+feeding solution, qF is the value of q in equilibrium                         read t1/2 through dynamic adsorption; and, (3) to de-
+with CF. Combining Eq. (45) with a specific isotherm,                         terminate KLa by proper methods. For instance, when
+the breakthrough curve can be generated, for exam-                            the isotherm follows the Freundlich model, according
+ple, with the Langmuir isotherm                                               to Eq. (48), KLa can be obtained from the tangent
+                                                                              slope of x vs. t at x=1/2. When the Langmuir isotherm
+                  qm                 1      1                              is better to describe the equilibrium relationship, KLa
+ t  t1/ 2              ln 2 x         ln         , (46)                  can be calculated by the slope of the plot of
+                K L aCF          1  bCF 2(1  x) 
+                                                                              ln2x+[1/(1+bCF)]ln[1/(2−2x)] vs. t (Eq. (46)); and, (4)
+                                                                              to generate the complete breakthrough curve by in-
+or with the Freundlich isotherm
+                                                                              tegrating KLa into a corresponding equation. The
+                                                                              constant pattern model gives outstanding prediction
+                           KCFn 1 x       1                                 of the breakthrough curve in numerous studies. Yet,
+                            K L a 1/ 2 x  x1/ n
+           t  t1/ 2                              dx.              (47)
+                                                                              when the adsorption rate is dominated by the in-
+                                                                              trapellet diffusion, prediction by this model some-
+     Rewriting                                                                times deviates from the real situation.
+168                                Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+4.5 Clark model                                                         where Cb is the breakthrough concentration, tb is the
+                                                                        service time, and Cin is the constant influent value on
+     As is well known, granular active carbon (GAC)
+                                                                        the carbon bed. The following procedures should be
+is one of the most popular adsorbents with micropore
+                                                                        completed prior to using the model.
+structure. US EPA even initiated a series of field stu-
+                                                                             (1) Determine n by the batch experiment;
+dies to evaluate the performance of GAC and ac-
+                                                                             (2) Rearrange Eq. (58) into
+quired sufficient data. Based on the data from US
+EPA, Clark (1987) developed a model to predict the
+performance of GAC-organic compounds adsorption                                             C n 1 
+                                                                                        ln  F   1  r ' t  ln B.            (60)
+system. The Clark model was deduced based on the                                            C     
+following equations and assumptions (Clark, 1987).
+     (1) Liquid phase continuity equation is                                 (3) The slope and intercept of the plot
+                                                                        ln[(CF/C)1/n−1] vs. t allow one to solve r’ and B, re-
+                  QA AC  QA A  C  C                                spectively;
+             J                                    .          (53)
+                               Az                                           (4) Generate the whole breakthrough curve.
+                                                                             It is clear that the mass conservation equation in
+     (2) The shape of the mass-transfer zone is con-                    the column is different from those discussed above.
+stant and all the adsorbates are removed at the end of                  We find that Eq. (53) actually disregards the accu-
+the column,                                                             mulation of adsorbate concentration. In other words,
+                                                                        it does not reflect the time difference between C and
+                       QA C  ua qF .                         (54)      C+∆C. If taking a controlled volume V (the volume
+                                                                        passing through any cross-section per unit time) into
+      (3) The isotherm fits the Freundlich type:                        consideration and postulating the uniformity of the
+                                                                        control volume and negligible molecular diffusion,
+                                                                        we obtain
+                       qe  KC1/ n .                          (55)
+
+                                                                                        VCz ,t  VJ t   VCz z ,t t .      (61)
+      (4) Expression of the adsorption rate is
+
+                          dC                                                  When ∆t→0, then
+                J  QA        K T (C  Ce ),                 (56)
+                          dz
+                                                                                         VCz ,t  VJdt   VCz  dz ,t  dt .    (62)
+where J is the mass-transfer rate per unit reactor vo-
+lume, A is the column cross-section area, QA is the                           Additionally
+volumetric flow rate per unit of cross-section area, ua
+is the mass velocity of the adsorbent to maintain the                                                             C      C
+                                                                                      Cz  dz ,t  dt  Cz ,t       dz     dt.   (63)
+mass-transfer zone stationary, ∆C is the incremental                                                              z      t
+change of concentration, and ∆z is the differential
+reactor height.                                                              Cancelling Vdt of Eq. (62) and combining
+      The final expression of Clark model is                            Eq. (63)
+
+                 Cinn 1 
+                                1/( n 1)
+                                                                                                          C    C
+                                             C,              (57)                         J  ui             .               (64)
+                       r 't                                                                            z    t
+                 1  Be 
+                      C n 1                                               Obviously, Eq. (64) is the same with Eq. (32),
+                B   inn1  1 er ' tb ,                    (58)
+                      Cb                                                                                C
+                                                                        while deleting the term of dt           will lead to
+                             K dz                                                                          t
+                r '  (n  1) T ,                             (59)
+                             Qa dt                                      Eq. (53). The same conclusion can also be made when
+                                   Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                    169
+
+
+
+                              q       C        C                     This equation is applied when ln[(CF/C)−1] vs. t
+assuming           a (1   )      u           .             is not in linear form. By fitting the experimental data,
+                               
+                               t       z        t 
+                                                                        the corresponding parameters bi can be calculated.
+However, the Clark model has successfully predicted a
+                                                                        Generally, it is adequately accurate to employ the
+variety of systems and even those not following this
+                                                                        former three terms. It is worth noting that qF derived
+assumption. As mentioned above, the dynamic ad-
+                                                                        from the experiment is often conspicuously different
+sorption is such a complicated process that it is almost
+                                                                        from the value acquired by equilibrium calculation,
+impossible to give a complete description of each
+                                                                        and the bed adsorptive capacity is often determined
+variable. Actually, even the “most theoretically rig-
+                                                                        from the dynamic adsorption (Brauch and Schlunder,
+orous” general rate models are still simplified from the
+                                                                        1975; McKay, 1984; McKay and Al-Duri, 1988; Ko
+real situations, such as the distribution of adsorbent
+                                                                        et al., 2000).
+pellets with different size in the column, the wall ef-
+fect, the mass transfer caused by momentum transfer                     4.7 Bohart-Adams model and bed depth service
+and heat transfer. Moreover, by mathematical fitting,                   time (BDST) model
+each phenomenological coefficient could be adjusted
+                                                                             Bohart and Adams (1920) came up with the
+to the optimal values, which would compensate for the
+                                                                        Bohart-Adams (B-A) model when they proceeded
+inherent shortages of the model to some extent. Thus,
+                                                                        with their work of analyzing the typical chlorine-
+it is still rational to suppose the Clark model has good
+                                                                        charcoal transmission curve. They hypothesized that
+performance under different conditions.
+                                                                        the uptake rate of chlorine is proportional to the
+4.6 Thomas model                                                        concentration of the chlorine existing in the bulk fluid
+                                                                        and the residual adsorptive capacity of charcoal, from
+     The Thomas model is another one frequently
+                                                                        which the following two equations are obtained:
+applied to estimate the adsorptive capacity of ad-
+sorbent and predict breakthrough curves, assuming                                            C     k qC
+the second-order reversible reaction kinetics and the                                             B r ,                  (68)
+                                                                                             z        u
+Langmuir isotherm (Han et al., 2008; Ghasemi et al.,
+                                                                                             qr
+2011). Theoretically, it is suitable to estimate the                                              kB qr C ,              (69)
+adsorption process where external and internal diffu-                                         t
+sion resistances are extremely small (Aksu and
+                                                                        where qr is the residual adsorptive capacity, and kB is
+Gönen, 2004). The Thomas model is given by
+                                                                        the kinetic constant of the Bohart-Adam model.
+               C      k qm                                                 Additionally
+            ln  F  1  Th F  kTh CF t ,                   (65)
+               C          Q
+                                                                                                        qr
+                                                                                                t  0  q  1,
+where kTh is the Thomas rate constant, m is the mass                                                     m
+                                                                                                
+of adsorbent in the column. With several couples of m                                           z  0   C
+                                                                                                             1.
+and Q, kTh and qF values derived through a plot of                                                     CF
+ln[(CF/C)−1] vs. t, further prediction and design is
+then available. Eq. (65) can also be expressed as                            Finally, the basic form of the B-A model was
+                                                                        obtained:
+                  C     
+               ln  F  1  k (t  t1 ),                    (66)             C                     H 
+                  C                                                       ln  F  1  ln exp  kB qm   1  kBCF t. (70)
+                                                                                C                    u  
+where k′=kThCF and t1= qFm/(QCF). The general ver-
+sion of Eq. (66) is represented as (Pearl, 1977; Lin et                      If exp(kBqmH/u) is much larger than 1, Eq. (70)
+al., 2002)                                                              can be reduced and rearranged as
+
+        C                                                                               qm         1     C     
+     ln  F  1  bo  b1t  b2 t 2     bi t i .         (67)                   t        H       ln  F  1 .      (71)
+        C                                i                                              CF u    k B CF  C      
+170                               Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+      Eq. (71) is the so-called bed depth service time                                 qt  qm  (1  exp(ar t ).                                 (73)
+model proposed by Hutchins (1973). Note that the
+B-A model (or bed depth service time (BDST) model)
+                                                                             Integrating into Eq. (68)
+involves several important variables of adsorption
+system such as CF, u, qm, and H, and approximate
+estimation of the effect of each parameter from both                                   t  m  (1  exp(ar t )  z  b,                          (74)
+models is achievable. As two widely used models in
+practice, the B-A and BDST models succeeded in                         where qt is the adsorptive capacity of column at time t,
+predicting several breakthrough curves and optimiz-                    ar is the rate parameter, m′=qm/(CFu), and b′=
+ing the parameters, although it is relatively rough                    −[1/(kBCF)]ln[(CF/C)−1]. This method provides a way
+(Ayoob et al., 2007; Bhakat et al., 2007; Maji et al.,                 to approximately evaluate the significance of both
+2007; Han et al., 2008; Srivastava et al., 2008).                      film diffusion and intrapellet diffusion. The intrapel-
+      Both the B-A and BDST models have seven                          let mass transfer rate is proportional to the square-root
+parameters, among which CF and u can be determined                     of the residence time when the sorption process is
+before the dynamic adsorption experiment. For the                      controlled by intrapellet diffusion (McKay, 1979),
+B-A model, the height of the fixed bed (i.e., the height
+of packing adsorbent), H, is a constant and can be                                            a1   t  u
+directly measured. Subsequently, different C and                                                  1  2.                                           (75)
+corresponding t are obtained through the dynamic
+                                                                                              a2   t2 u1
+adsorption experiment, and then a plot of ln(CF/C−1)
+vs. t should theoretically be a straight line. After lin-                   According to the correlation proposed by (Wil-
+ear regression, qm and kB can be calculated from the                   son and Geankoplis, 1966),
+tangent slope and intercept, respectively. In terms of
+calculated qm and kB, prediction of adsorption per-                                                           1.09
+                                                                                              Sh                    Pe1/3 .                        (76)
+formance at different process variables is available                                                           
+based on Eq. (70). As for the application of the BDST
+model, similar to the B-A model, after determining                           Namely
+the demand concentration of the effluent solution, qm                                                              2/3              2/3
+                                                                                           a1  u1                       u 
+and kB can be worked out by a straight line of t vs. H.                                                                2             .        (77)
+Then, the adsorption efficiency under various condi-                                       a2  u2                        u1 
+tions can be predicted. Actually, qm and kB are not
+constant when the variable(s) is changed, which may                          Combining Eq. (75) and Eq. (77), one can obtain
+lead to unsatisfactory prediction. Especially, at 50%
+breakthrough, C/CF=0.5 and t=t1/2, and Eq. (71)                                                          pi                    pf              p
+                                                                               a1  u2                      u 2/3 
+                                                                                             1/ 2
+                                                                                                                                     u 
+changes to                                                                                                2                 2  ,        (78)
+                                                                               a2  u1                     u1               u1 
+                                                                                   
+                                qm H
+                      t1/ 2         .                       (72)
+                                CF u                                   where pi, pf reflect the fractions of the overall uptake
+                                                                       rate influenced by intrapellet diffusion and film dif-
+                                                                       fusion, respectively. Thus,
+      Hence, qm can be calculated by plotting t1/2 vs. H.
+By rearranging Eq. (71) into proper form or giving
+specific values to parameters, the BDST model is                                                       2
+                                                                                              0.5 pi  pf  p,
+frequently employed as a powerful tool to find the                                                     3
+                                                                                               pi  pf  1,
+optimal operation condition. More recently, Ko et al.                                         
+(2000) came up with a method to optimize the BDST
+model, where the bed adsorptive capacity qm is sub-                    where p′ is determined by fitting the experimental
+stituted by a modified correlation,                                    data so that pi and pf are acquired subsequently.
+                                  Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                    171
+
+
+
+4.8 Yoon-Nelson model                                                                                  1  1 
+                                                                                        t  t1/ 2      ln      ,        (82)
+     The Yoon-Nelson model is extremely concise in                                                    kw  1  x 
+form, supposing that the decrease in the probability of
+each adsorbate to be adsorbed is proportional to the                   where x can be expressed as
+probability of its adsorption and breakthrough on the
+adsorbent (Yoon and James, 1984). It can be repre-                                              x  C / CF .               (83)
+sented by
+                                                                             Substituting Eq. (83) into Eq. (82), t should be in
+                  C                                                    direct proportion to ln[(CF/C)−1]. A plot of ln[(CF/C)
+             ln         K YN t  t1/ 2 K YN ,               (79)
+                CF  C                                                 −1] vs. t produces the slope and intercept value as
+                                                                       1/kw and t1/2, respectively. Then the entire break-
+where KYN is the Yoon-Nelson rate constant. By plot-                   through curve can be obtained based on Eq. (82). This
+ting ln[C/(CF−C)] vs. t, KYN and theoretical t1/2 are                  model was successfully applied in some cases (Wang
+reckoned. The Yoon-Nelson model not only has a                         et al., 2003; Araneda et al., 2011). Meanwhile, similar
+more simple form than other models, but also requires                  to the Yoon-Nelson model, it cannot provide suffi-
+no detailed data concerning the characters of adsor-                   cient information of an adsorption system.
+bate and adsorbent, as well as the parameters of the                   4.10 Other models
+fixed bed (Hamdaoui, 2006). Also, as limited by its
+rough form, the Yoon-Nelson model is less valuable                     4.10.1 Wolborska model
+or convenient to obtain process variables and to pre-
+dict adsorption under variety conditions.                                   Wolborska (1989a) and Wolborska and Pustelnik
+                                                                       (1996) analyzed the adsorption of p-nitrophenol on
+4.9 Wang model                                                         activated carbon and found that the initial segment of
+     Wang et al. (2003) developed a mass transfer                      the breakthrough curve is controlled by film diffusion
+model to describe the breakthrough curve of solutions                  with constant kinetic coefficient, and the concentra-
+containing Co or Zn ions in the fixed bed on the basis                 tion profile of the initial stage moves axially in the
+of the following assumptions                                           column at a constant velocity. Moreover, the width of
+     (1) The adsorption process remains isothermal;                    concentration profile in the column and the final
+     (2) The mass transfer equation is written as                      breakthrough curve were nearly constant. Based on
+                                                                       above observations, they developed a model to de-
+                                                                       scribe the breakthrough at low concentration region,
+                            dy
+                               k w xy,                     (80)      which was written as
+                            dt
+                                                                                                C  L CF     H
+where kw is the kinetic constant, y is the fraction of the                                 ln             t L ,          (84)
+                                                                                                CF    qF     u
+adsorbed metal ions, and x is the fraction of metal ions
+passing through the fixed bed, with x+y=1.
+     (3) The breakthrough curve is symmetrical; and,                   where βL is the film diffusivity, which can be deter-
+     (4) There is negligible axial dispersion in the                   mined from the initial linear section of the break-
+column.                                                                through curve in the semi-logarithmic system through
+     Presuming y=yw at t=tw and integrating Eq. (80),                  experiment or correlations.
+one can obtain                                                         4.10.2 Modified dose-response model
+                                                                            This model was initially developed for phar-
+          ln  x(1  xa ) / xa (1  x)  kw (ta  t ).      (81)      macology studies and recently used to describe ad-
+                                                                       sorption of metals in some cases (Yan et al., 2001;
+     Let w=0.5, then yw=y1/2=x1/2, tw=t1/2. Combining                  Senthilkumar et al., 2006; Araneda et al., 2011). The
+the above parameters with Eq. (81)                                     modified dose-response model can be written as
+172                                 Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+                C               1                                        References
+                   1                   a
+                                              .                          Abu-Lail, L., Bergendahl, J.A., Thompson, R.W., 2012.
+                CF            C Qt                           (85)
+                          1  F                                            Mathematical modeling of chloroform adsorption onto
+                              qF m                                         fixed-bed columns of highly siliceous granular zeolites.
+                                                                             Environmental Progress & Sustainable Energy, 31(4):
+      After rearrangement, it could be written as                            591-596. [doi:10.1002/ep.10593]
+                                                                         Abuzaid, N.S., Nakhla, G., 1997. Predictability of the homo-
+                                                                             geneous surface diffusion model for activated carbon
+                C
+         ln           a ln(CF Qt )  a ln(qF m),            (86)          adsorption kinetics; formulation of a new mathematical
+              CF  C                                                         model. Journal of Environmental Science & Health Part
+                                                                             A, 32(7):1945-1961.
+where a′ is the model parameter. Similar to other                        Aksu, Z., Gönen, F., 2004. Biosorption of phenol by
+                                                                             immobilized activated sludge in a continuous packed bed:
+models, a′ and qF could be determined by plotting
+                                                                             prediction of breakthrough curves. Process Biochemistry,
+ln[C/(CF−C)] vs. ln(CFQt).                                                   39(5):599-613. [doi:10.1016/S0032-9592(03)00132-8]
+                                                                         Araneda, C., Basualto, C., Sapag, J., Tapia, C., Cotoras, D.,
+                                                                             Valenzuela, F., 2011. Uptake of copper (II) ions from
+5 Conclusions                                                                acidic aqueous solutions using a continuous column
+                                                                             packed with microcapsules containing a β-hydroxyoximic
+      Fixed-bed or column adsorption is the most                             compound. Chemical Engineering Research & Design,
+popular option in practical application of adsorption                        89(12):2761-2769. [doi:10.1016/j.cherd.2011.05.008]
+process, and due to the complexity of a column ad-                       Ayoob, S., Gupta, A., Bhakat, P.B., 2007. Analysis of
+sorption system and lack of solid theory, its mathe-                         breakthrough developments and modeling of fixed bed
+                                                                             adsorption system for As (V) removal from water by
+matical modeling is obviously more difficult than
+                                                                             modified calcined bauxite (MCB). Separation and
+batch adsorption. To choose or develop a suitable                            Purification Technology, 52(3):430-438. [doi:10.1016/j.
+model, accuracy and convenience should be consid-                              seppur.2006.05.021]
+ered simultaneously. Currently, although some effort                     Azizian, S., 2004. Kinetic models of sorption: a theoretical
+had been made to complete these models (especially                           analysis. Journal of Colloid and Interface Science, 276(1):
+the general rate models and LDF model), each model                           47-52. [doi:10.1016/j.jcis.2004.03.048]
+                                                                         Bhakat, P., Gupta, A., Ayoob, S., 2007. Feasibility analysis of
+has its inherent shortages and requires further devel-
+                                                                             As (III) removal in a continuous flow fixed bed system by
+opment. The general rate models (and “general rate                           modified calcined bauxite (MCB). Journal of Hazardous
+type” models) and LDF model generally fit well with                          Materials, 139(2):286-292. [doi:10.1016/j.jhazmat.2006.
+the experimental data for most cases, but they are                             06.037]
+relatively time-consuming. Other models including                        Borba, C., Guirardello, R., Silva, E.A., Veit, M.T., Tavares,
+the wave propagation theory, Bohart-Adams model,                             C.R.G., 2006. Removal of nickel (II) ions from aqueous
+                                                                             solution by biosorption in a fixed bed column: Experi-
+Yoon-Nelson model, Thomas model, Wang model,
+                                                                             mental and theoretical breakthrough curves. Biochemical
+Wolborska model, and modified dose-response model                            Engineering Journal, 30(2):184-191. [doi:10.1016/j.bej.
+could be applicable without isotherm information, but                          2006.04.001]
+they are derived from specific situations and limited                    Brauch, V., Schlunder, E., 1975. The scale-up of activated
+in space. The Clark model is suitable to describe                            carbon columns for water purification, based on results
+column adsorption obeying the Freundlich isotherm                            from batch tests-II: Theoretical and experimental deter-
+and do not show conspicuously better accuracy than                           mination of breakthrough curves in activated carbon
+                                                                             columns. Chemical Engineering Science, 30(5-6):539-
+the above models. The constant pattern model is
+                                                                             548. [doi:10.1016/0009-2509(75)80024-8]
+relatively convenient to apply and gives satisfactory                    Brunauer, S., Emmett, P.H., Teller, E., 1938. Adsorption of
+prediction, but it cannot be readily employed for ad-                        gases in multimolecular layers. Journal of the American
+sorption predominated by intrapellet diffusion. In                           Chemical Society, 60(2):309-319.            [doi:10.1021/
+addition, experimental work is always required to                              ja01269a023]
+determine the isotherm and dynamic model as well as                      Cheknane, B., Baudu, M., Bouras, O., Zermane, F., 2012.
+                                                                             Modeling of basic green 4 dynamic sorption onto granular
+the related parameters. Moreover, when the break-
+                                                                             organo-inorgano pillared clays (GOICs) in column reactor.
+through curve deviates from the ideal S shape, pre-                          Chemical Engineering Journal, 209:7-12. [doi:10.1016/
+diction derived from any model usually cannot meet                             j.cej.2012.07.118]
+our demand.                                                              Chern, J.M., Huang, S.N., 1999. Study of nonlinear wave
+                                 Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                           173
+
+
+
+     propagation theory. II. Interference phenomena of single-        Ghasemi, M., Keshtkar, A.R., Dabbagh, R., Jaber Safdari, S.,
+     component dye adsorption waves. Separation Science                   2011. Biosorption of uranium (VI) from aqueous solu-
+     and Technology, 34(10):1993-2011. [doi:10.1081/SS-                   tions by Ca-pretreated Cystoseira indicaalga: break-
+     100100751]                                                           through curves studies and modeling. Journal of
+Chern, J.M., Chien, Y.W., 2002. Adsorption of nitrophenol                 Hazardous Materials, 189(1-2):141-149 [doi:10.1016/j.
+    onto activated carbon: isotherms and breakthrough curves.               jhazmat.2011.02.011]
+    Water Research, 36(3):647-655. [doi:10.1016/S0043-                Gholami, M., Talaie, M., 2010. Investigation of simplifying
+     1354(01)00258-5]                                                     assumptions in mathematical modeling of natural gas
+Chong, K., Volesky, B., 1995. Description of two-metal bio-               dehydration using adsorption process and introduction of
+    sorption equilibria by Langmuir-type models. Biotech-                 a new accurate LDF model. Industrial & Engineering
+    nology and Bioengineering, 47(4):451-460. [doi:10.1002/               Chemistry Research, 49(2):838-846.         [doi:10.1021/
+     bit.260470406]                                                         ie901183q]
+Clark, R.M., 1987. Evaluating the cost and performance of             Giles, C., MacEwan, T., Nakhwa, S.N., 1960. Studies in
+     field-scale granular activated carbon systems. Environ-               adsorption. Part XI. A system of classification of solution
+     mental Science & Technology, 21(6):573-580. [doi:10.                  adsorption isotherms, and its use in diagnosis of
+     1021/es00160a008]                                                     adsorption mechanisms and in measurement of specific
+Costa, C., Rodrigues, A., 1985. Design of cyclic fixed-bed
+                                                                           surface areas of solids. Journal of the Chemical Society,
+    adsorption processes. 1. Phenoal adsorption on polymeric
+                                                                           (0):3973-3993. [doi:10.1039/jr9600003973]
+    adsorbents. AIChE Journal, 31(10):1645-1654. [doi:10.
+                                                                      Glueckauf, E., 1955. Theory of chromatography. Part 10.—
+     1002/aic.690311008]
+                                                                           Formulæ for diffusion into spheres and their application
+Crittenden, J.C., Weber, W.J., 1978. Predictive model for
+                                                                           to chromatography. Transactions of the Faraday Society,
+     design of fixed-bed adsorbers: Parameter estimation and
+                                                                           51(0):1540-1551. [doi:10.1039/tf9555101540]
+     model development. Journal of the Environmental
+                                                                      Gnielinski, V., 1978. Equations for calculation of heat and
+     Engineering Division, 104(2):185-197.
+                                                                           mass transfer in perfused ballasting of spherical particles
+Crittenden, J.C., Luft, C.P., Hand, D.W., 1985. Prediction of
+                                                                           at medium and high Peclet numbers. Verfahrenstechnik,
+     multicomponent adsorption equilibria in background
+     mixtures of unknown composition. Water Research,                      12(6):363-367.
+                                                                      Haghseresht, F., Lu, G., 1998. Adsorption characteristics of
+     19(12):1537-1548. [doi:10.1016/0043-1354(85)90399-9]
+                                                                           phenolic compounds onto coal-reject-derived adsorbents.
+Crittenden, J.C., Hutzler, N.J., Geyer, D.G., Oravitz, J.L.,
+                                                                           Energy & Fuels, 12(6):1100-1107.              [doi:10.1021/
+     Friedman, G., 1986. Model development and parameter
+                                                                           ef9801165]
+     sensitivity. Water Resources Research, 22(3):271-284.
+                                                                      Hamdaoui, O., 2006. Dynamic sorption of methylene blue by
+     [doi:10.1029/WR022i003p00271]
+                                                                         cedar sawdust and crushed brick in fixed bed columns.
+Cussler, E.L., 1976. Multicomponent Diffusion. Elsevier,
+                                                                         Journal of Hazardous Materials, 138(2):293-303.
+    Amsterdam.
+                                                                           [doi:10.1016/j.jhazmat.2006.04.061]
+Do, D., Mayfield, P., 1987. A new simplified model for
+                                                                      Han, R., Ding, D., Xu, Y., Zou, W., Wang, Y., Li, Y., Zou, L.,
+    adsorption in a single particle. AIChE Journal, 33(8):                2008. Use of rice husk for the adsorption of congo red
+    1397-1400. [doi:10.1002/aic.690330819]                                from aqueous solution in column mode. Bioresource
+Du, X., Yuan, Q., Li, Y., 2008. Mathematical analysis of                  Technology, 99(8):2938-2946. [doi:10.1016/j.biortech.
+    solanesol adsorption on macroporous resins using the                   2007.06.027]
+    general rate model. Chemical Engineering & Technology,            Hand, D.W., Loper, S., Ari, M., Crittenden, J.C., 1985. Predic-
+    31(9):1310-1318. [doi:10.1002/ceat.200800010]                          tion of multicomponent adsorption equilibria using ideal
+Du, X., Yuan, Q., Zhao, J., Li, Y., 2007. Comparison of general            adsorbed solution theory. Environmental Science & Tech-
+    rate model with a new model—artificial neural network                  nology, 19(11):1037-1043. [doi:10.1021/es00141a002]
+    model in describing chromatographic kinetics of solane-           Heese, C., Worch, E., 1997. A new user-oriented method for
+    sol adsorption in packed column by macroporous resins.                 prediction of intraparticle mass transfer coefficients for
+    Journal of Chromatography A, 1145(1-2):165-174.                        adsorber modelling. Vom Wasser, 89:373-391 (in
+     [doi:10.1016/j.chroma.2007.01.065]                                    German).
+Dubinin, M., Radushkevich, L., 1947. Equation of the                  Helfferich, F., 1984. Conceptual view of column behavior in
+     characteristic curve of activated charcoal. Chemisches                multicomponent adsorption or ion-exchange systems.
+     Zentralblatt, 1(1):875.                                               AIChE Symposium Series, 80:1.
+Finlayson, B., 2003. Nonlinear Analysis in Chemical                   Helfferich, F.G., 1995. Ion Exchange, Dover Pubns.
+     Engineering. Ravenna Park Publishing, Inc.                       Helfferich, F.G., Klein, G., 1970. Multicomponent Chroma-
+Foo, K., Hameed, B., 2010. Insights into the modeling of                   tography: Theory of Interference. M. Dekker, New York.
+     adsorption isotherm systems. Chemical Engineering                Helfferich, F.G., Carr, P.W., 1993. Non-linear waves in chro-
+     Journal, 156(1):2-10. [doi:10.1016/j.cej.2009.09.013]                 matography: I. Waves, shocks, and shapes. Journal of
+Fournel, L., Mocho, P., Brown, R., le Cloirec, P., 2010. Mod-              Chromatography A, 629(2):97-122. [doi:10.1016/0021-
+     eling breakthrough curves of volatile organic compounds               9673(93)87026-I]
+     on activated carbon fibers. Adsorption, 16(3):147-153.           Helfferich, F.G., Whitley, R.D., 1996. Non-linear waves in
+174                              Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+     chromatography II. Wave interference and coherence in                 HSDM to the acid dye adsorption system. AIChE Journal,
+     multicomponent systems. Journal of Chromatography A,                  51(1):323-332. [doi:10.1002/aic.10290]
+     734(1):7-47. [doi:10.1016/0021-9673(95)01067-X]                  Lin, S.H., Wang, C.S., Chang, C.H., 2002. Removal of methyl
+Hutchins, R., 1973. New method simplifies design of activated              tert-butyl ether from contaminated water by macro-
+     carbon systems. Chemical Engineering, 80(19):133-138.                 reticular resin. Industrial & Engineering Chemistry
+Jain, J.S., Snoeyink, V.L., 1973. Adsorption from bisolute                 Research, 41(16):4116-4121. [doi:10.1021/ie011020s]
+     systems on active carbon. Journal (Water Pollution               Liu, B., Zeng, L., Ren, Q., 2010. Simulation of levulinic acid
+     Control Federation), 45(12):2463-2479.                                adsorption in packed beds using parallel pore/surface
+Jia, Q., Lua, A.C., 2008. Concentration-dependent branched                 diffusion model. Chemical Engineering & Technology,
+     pore kinetic model for aqueous phase adsorption. Chemical             33(7):1146-1152. [doi:10.1002/ceat.201000147]
+     Engineering Journal, 136(2-3):227-235. [doi:10.1016/j.           Lo, I., Alok, P.A., 1996. Computer simulation of activated
+      cej.2007.04.005]                                                     carbon adsorption for multi-component systems.
+Kaczmarski, K., Antos, D., 1996. Fast finite difference method             Environment International, 22(2):239-252. [doi:10.1016/
+    for solving multicomponent adsorption-chromatography                   0160-4120(96)00009-8]
+    models. Computers & Chemical Engineering, 20(11):                 Maji, S.K., Pal, A., Pal, T., Adak, A., 2007. Modeling and fixed
+    1271-1276. [doi:10.1016/0098-1354(95)00247-2]                         bed column adsorption of As (III) on laterite soil.
+Kananpanah, S., Dizadji, N., Abolghasemi, H., Salamatinia, B.,            Separation and Purification Technology, 56(3):284-290.
+    2009. Developing a new model to predict mass transfer                  [doi:10.1016/j.seppur.2007.02.011]
+    coefficient of salicylic acid adsorption onto IRA-93:             Malek, A., Farooq, S., 1996. Comparison of isotherm models for
+    Experimental and modeling. Korean Journal of Chemical                 hydrocarbon adsorption on activated carbon. AIChE
+    Engineering, 26(5):1208-1212. [doi:10.1007/s11814-009-                Journal, 42(11):3191-3201. [doi:10.1002/aic.690421120]
+      0215-6]                                                         Mathews, A., Weber, W.J.J., 1977. Effects of external mass
+Kataoka, T., Yoshida, H., Ueyama, K., 1972. Mass transfer in              transfer and intraparticle diffusion on adsorption rates in
+    laminar region between liquid and packing material                    slurry reactors. AIChE Symposium Series, 73:91-94.
+    surface in the packed bed. Journal of Chemical                    McKay, G., 1979. Basic dye adsorption on activated carbon.
+    Engineering of Japan, 5(2):132-136. [doi:10.1252/jcej.                Water, Air, & Soil Pollution, 12(3):307-317. [doi:10.
+      5.132]                                                               1007/BF01047018]
+Ko, D.C.K., Porter, J.F., McKay, G., 2000. Optimised                  McKay, G., 1984. Analytical solution using a pore diffusion
+    correlations for the fixed-bed adsorption of metal ions on           model for a pseudoirreversible isotherm for the
+    bone char. Chemical Engineering Science, 55(23):                     adsorption of basic dye on silica. AIChE Journal, 30(4):
+    5819-5829. [doi:10.1016/S0009-2509(00)00416-4]                       692-697. [doi:10.1002/aic.690300434]
+Ko, D.C.K., Porter, J.F., McKay, G., 2001. Film-pore diffusion        McKay, G., 2001. Solution to the homogeneous surface
+    model for the fixed-bed sorption of copper and cadmium               diffusion model for batch adsorption systems using
+    ions onto bone char. Water Research, 35(16):3876-3886.               orthogonal collocation. Chemical Engineering Journal,
+      [doi:10.1016/S0043-1354(01)00114-2]                                81(1-3):213-221. [doi:10.1016/S1385-8947(00)00191-1]
+Ko, D.C.K., Porter, J.F., McKay, G., 2002. A branched pore            McKay, G., Al-Duri, B., 1988. Prediction of bisolute
+    model analysis for the adsorption of acid dyes on                    adsorption isotherms using single-component data for dye
+    activated carbon. Adsorption, 8(3):171-188. [doi:10.1023/            adsorption onto carbon. Chemical Engineering Science,
+      A:1021283731952]                                                   43(5):1133-1142. [doi:10.1016/0009-2509(88)85073-5]
+Ko, D.C.K., Porter, J.F., McKay, G., 2003. Mass transport             Medved, I., Cerny, R., 2011. Surface diffusion in porous media:
+    model for the fixed bed sorption of metal ions on bone               A critical review. Microporous and Mesoporous
+    char. Industrial & Engineering Chemistry Research,                   Materials, 142(2-3):405-422.
+    42(14):3458-3469. [doi:10.1021/ie020505t]                         Meng, M.J., Wang, Z.P., Ma, L., Zhang, M., Wang, J., Dai,
+Ko, D.C.K., Porter, J.F., McKay, G., 2005. Application of the            X.H., Yan, Y.S., 2012. Selective adsorption of methylpa-
+    concentration-dependent surface diffusion model on the               raben by submicrosized molecularly imprinted polymer:
+    multicomponent fixed-bed adsorption systems. Chemical                batch and dynamic flow mode studies. Industrial &
+    Engineering Science, 60(20):5472-5479. [doi:10.1016/j.               Engineering Chemistry Research, 51(45):14915-14924.
+      ces.2005.04.048]                                                     [doi:10.1021/ie301890b]
+Langmuir, I., 1916. The constitution and fundmental properties        Murillo, R., Garcıá , T., Aylón, E., Callén, M.S., Navarro, M.V.,
+    of solids and liquids. part I. Solids. Journal of the                 López, J.M., Mastral, A.M., 2004. Adsorption of
+    American Chemical Society, 38(11):2221-2295. [doi:10.                 phenanthrene on activated carbons: Breakthrough curve
+      1021/ja02268a002]                                                   modeling. Carbon, 42(10):2009-2017. [doi:10.1016/j.
+Lee, V.K.C., McKay, G., 2004. Comparison of solutions for the               carbon.2004.04.001]
+     homogeneous surface diffusion model applied to adsorp-           Myers, A., Prausnitz, J.M., 1965. Thermodynamics of mixed-
+     tion systems. Chemical Engineering Journal, 98(3):                  gas adsorption. AIChE Journal, 11(1):121-127. [doi:10.
+     255-264. [doi:10.1016/j.cej.2003.08.028]                              1002/aic.690110125]
+Lee, V.K.C., Porter, J.F., McKay, G., Mathews, A.P., 2005.            Nakao, S., Suzuki, M., 1983. Mass transfer coefficient in
+     Application of solid-phase concentration-dependent                   cyclic adsorption and desorption. Journal of Chemical
+                                 Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176                            175
+
+
+
+     Engineering of Japan, 16(2):114-119.          [doi:10.1252/            P.V.R., Velan, M., 2006. Seaweeds for the remediation of
+     jcej.16.114]                                                           wastewaters contaminated with zinc (II) ions. Journal of
+Neretnieks, I., 1976. Adsorption in finite bath and counter-                Hazardous Materials, 136(3):791-799. [doi:10.1016/j.
+    current flow with systems having a concentration de-                    jhazmat.2006.01.014]
+    pendant coefficient of diffusion. Chemical Engineering            Silva, E.A., Vaz, L.G.L., Veit, M.T., Fagundes-Klen, M.R.,
+    Science, 31(6):465-471.       [doi:10.1016/0009-2509(76)               Cossich, E.S., Tavares, C.R.G., Cardozo-Filho, L.,
+     80031-0]                                                              Guirardello, R., 2010. Biosorption of chromium (III) and
+Nwabanne, J.T., Igbokwe, P.K., 2012. Kinetic modeling of                   copper (II) ions onto marine Alga Sargassum sp. in a
+    heavy metals adsorption on fixed bed column. Interna-                  fixed-bed column. Adsorption Science & Technology,
+    tional Journal of Environmental Research, 6(4):945-952.                28(5):449-464. [doi:10.1260/0263-6174.28.5.449]
+Ohashi, H., Sugawara, T., Kikuchi, K.I., Konno, H., 1981.             Sips, R., 1948. Combined form of Langmuir and Freundlich
+    Correlation of liquid-side mass transfer coefficient for               equations. The Journal of Chemical Physics, 16(5):
+    single particles and fixed beds. Journal of Chemical                   490-495. [doi:10.1063/1.1746922]
+    Engineering of Japan, 14(6):433-438. [doi:10.1252/jcej.           Sperlich, A., Werner, A., Genz, A., Amy, G., Worch, E., Jekel,
+     14.433]                                                               M., 2005. Breakthrough behavior of granular ferric
+Pan, B.C., Meng, F.W., Chen, X.Q., Pan, B.J., Li, X.T., Zhang,             hydroxide (GFH) fixed-bed adsorption filters: modeling
+     W.M., Zhang, X., Chen, J.L., Zhang, Q.X., Sun, Y., 2005.              and experimental approaches. Water Research, 39(6):
+     Application of an effective method in predicting                      1190-1198. [doi:10.1016/j.watres.2004.12.032]
+     breakthrough curves of fixed-bed adsorption onto resin           Srivastava, V., Prasad, B., Mishra, I.M., Mall, I.D., Swamy,
+     adsorbent. Journal of Hazardous Materials, 124(1-3):                  M.M., 2008. Prediction of breakthrough curves for
+     74-80. [doi:10.1016/j.jhazmat.2005.03.052]                            sorptive removal of phenol by bagasse fly ash packed bed.
+Pearl, R., 1977. The Biology of Population Growth. Ayer Co.                Industrial & Engineering Chemistry Research, 47(5):
+     Pub.                                                                  1603-1613. [doi:10.1021/ie0708475]
+Peel, R.G., Benedek, A., Crowe, C.M., 1981. A branched pore           Szukiewicz, M.K., 2000. New approximate model for
+     kinetic model for activated carbon adsorption. AIChE                  diffusion and reaction in a porous catalyst. AIChE Journal,
+     Journal, 27(1):26-32. [doi:10.1002/aic.690270106]                     46(3):661-665. [doi:10.1002/aic.690460326]
+Plazinski, W., Rudzinski, W., Plazinska, A., 2009. Theoretical        Szukiewicz, M.K., 2002. An approximate model for diffusion
+     models of sorption kinetics including a surface reaction              and reaction in a porous pellet. Chemical Engineering
+     mechanism: a review. Advances in Colloid and Interface                Science, 57(8):1451-1457. [doi:10.1016/S0009-2509(02)
+     Science, 152(1-2):2-13. [doi:10.1016/j.cis.2009.07.009]               00055-6]
+Puértolas, B., López, M.R., Navarro, M.V., López, J.M.,               Tan, A.Y., Prasher, B.D., Guin, J.A., 1975. Mass transfer in
+     Murillo, R., García, T., Mastra, A.M., 2010. Modelling                nonuniform packing. AIChE Journal, 21(2):396-397.
+     the breakthrough curves obtained from the adsorption of               [doi:10.1002/aic.690210226]
+     propene onto microporous inorganic solids. Adsorption            Temkin, M., Pyzhev, V., 1940. Kinetics of ammonia synthesis
+     Science & Technology, 28(8):761-775. [doi:10.1260/                    on promoted iron catalysts. Acta Physiochimica URSS, 12:
+     0263-6174.28.8-9.761]                                                 327-356.
+Quek, S., Al-Duri, B., 2007. Application of film-pore diffusion       Tien, C., 1994. Adsorption Calculations and Modeling.
+    model for the adsorption of metal ions on coir in a                    Butterworth-Heinemann Boston.
+    fixed-bed column. Chemical Engineering and Processing             Toth, J., 1971. State equations of the solid-gas interface layers.
+    Process Intensification, 46(5):477-485. [doi:10.1016/j.                Acta Chimica Academiae Scientiarum Hungaricae, 69(3):
+     cep.2006.06.019]                                                      311-328.
+Radke, C., Prausnitz, J., 1972. Thermodynamics of multi-              Traylor, S.J., Xu, X., Lenhoff, A.M., 2011. Shrinking core
+    solute adsorption from dilute liquid solutions. AIChE                  modeling of binary chromatographic breakthrough.
+    Journal, 18(4):761-768. [doi:10.1002/aic.690180417]                    Journal of Chromatography A, 1218(16):2222-2231.
+Roberts, P.V., Cornel, P., Summers, R.S., 1985. External                    [doi:10.1016/j.chroma.2011.02.020]
+    mass-transfer rate in fixed-bed adsorption. Journal of            Wakao, N., Funazkri, T., 1978. Effect of fluid dispersion
+    Environmental Engineering, 111(6):891-905. [doi:10.                  coefficients on particle-to-fluid mass transfer coefficients
+     1061/(ASCE)0733-9372(1985)111:6(891)]                               in packed beds: Correlation of Sherwood numbers.
+Ruthven, D.M., 1984. Principles of Adsorption and Adsorption             Chemical Engineering Science, 33(10):1375-1384.
+     Processes. Wiley-Interscience.                                        [doi:10.1016/0009-2509(78)85120-3]
+Scott, D., Dullien, F., 1962. Diffusion of ideal gases in             Wang, Y.H., Lin, S.H., Juang, R.S., 2003. Removal of heavy
+     capillaries and porous solids. AIChE Journal, 8(1):113-              metal ions from aqueous solutions using various low-cost
+     117. [doi:10.1002/aic.690080126]                                     adsorbents. Journal of Hazardous Materials, 102(2-3):
+Seidel-Morgenstern, A., 2004. Experimental determination of               291-302. [doi:10.1016/S0304-3894(03)00218-8]
+     single solute and competitive adsorption isotherms.              Warchoł, J., Petrus, R., 2006. Modeling of heavy metal
+     Journal of Chromatography A, 1037(1-2):255-272.                      removal dynamics in clinoptilolite packed beds. Micro-
+     [doi:10.1016/j.chroma.2003.11.108]                                   porous and Mesoporous Materials, 93(1-3):29-39.
+Senthilkumar, R., Vijayaraghavan, K., Thilakavathi, M., Iyer,              [doi:10.1016/j.micromeso.2006.01.021]
+176                                 Xu et al. / J Zhejiang Univ-Sci A (Appl Phys & Eng) 2013 14(3):155-176
+
+
+
+Weber, W., Smith, E., 1987. Simulation and design models for                  Journal, 45(8):509-516.        [doi:10.1080/152986684914
+    adsorption processes. Environmental Science and Tech-                     00197]
+    nology, 21(11):1040-1050. [doi:10.1021/es00164a002]                  Yun, J.X., Yao, S.J., Lin, D.Q., Lu, M.H., Zhao, W.T., 2004.
+Wilke, C., Chang, P., 1955. Correlation of diffusion coeffi-                 Modeling axial distributions of adsorbent particle size and
+    cients in dilute solutions. AIChE Journal, 1(2):264-270.                 local voidage in expanded bed. Chemical Engineering
+      [doi:10.1002/aic.690010222]                                            Science, 59(2):449-457. [doi:10.1016/j.ces.2003.10.009]
+Williamson, J., Bazaire, K., Geankoplis, C.J., 1963. Liquid-             Zhang, R., Ritter, J.A., 1997. New approximate model for
+     phase mass transfer at low Reynolds numbers. Industrial                 nonlinear adsorption and diffusion in a single particle.
+     & Engineering Chemistry Fundamentals, 2(2):126-129.                     Chemical Engineering Science, 52(18):3161-3172.
+      [doi:10.1021/i160006a007]                                               [doi:10.1016/S0009-2509(97)00124-3]
+Wilson, E., Geankoplis, C., 1966. Liquid mass transfer at very           Zhao, Y., Shen, Y.M., Bai, L., Ni, S.Q., 2012. Carbon dioxide
+    low Reynolds numbers in packed beds. Industrial &                        adsorption on polyacrylamide-impregnated silica gel and
+    Engineering Chemistry Fundamentals, 5(1):9-14. [doi:10.                  breakthrough modeling. Applied Surface Science, 261:
+      1021/i160017a002]                                                      708-716. [doi:10.1016/j.apsusc.2012.08.085]
+Wolborska, A., 1989a. Adsorption on activated carbon of
+    p-nitrophenol from aqueous solution. Water Research,
+    23(1):85-91. [doi:10.1016/0043-1354(89)90066-3]
+Wolborska, A., 1989b. Determination of mass transfer coeffi-
+    cient adsorption in a fixed bed. Inzynieria Chemiczna I
+    Procesowa, 4:545-556.
+Wolborska, A., Pustelnik, P., 1996. A simplified method for
+    determination of the break-through time of an adsorbent
+    layer. Water Research, 30(11):2643-2650. [doi:10.1016/
+      S0043-1354(96)00166-2]
+Worch, E., 1993. Eine neue gleichung zur berechnung von
+    diffusionskoeffizienten gelöster stoffe. Vom Wasser, 81:
+    289-297 (in German).
+Worch, E., 2008. Fixed-bed adsorption in drinking water
+    treatment: a critical review on models and parameter es-
+    timation. Journal of Water Supply Research and                       Introducing editorial board member:
+    Technology—AQUA, 57(3):171-183. [doi:10.2166/aqua.
+      2008.100]                                                               Dr. Bing-cai PAN is the chair professor of Department of
+Xue, W.B., Yi, A.H., Zhang, Z.Q., Tang, C.L., Zhang, X.C.,               Environmental Engineering, Nanjing University, and the dep-
+    Gao, J.M., 2009. A new competitive adsorption isother-               uty director of State Key Laboratory of Pollution Control and
+    mal model of heavy metals in soils. Pedosphere, 19(2):               Resource Reuse and National Engineering Research Center for
+    251-257. [doi:10.1016/S1002-0160(09)60115-6]                         Organic Pollution Control and Resource Reuse, China. He
+Yan, G., Viraraghavan, T., Chen, M., 2001. A new model for               obtained his bachelor degree in Environmental Chemistry, and
+    heavy metal removal in a biosorption column. Adsorption              master and PhD degree in Environmental Engineering from
+    Science & Technology, 19(1):25-43.         [doi:10.1260/             Nanjing University. His current research activities include
+      0263617011493953]                                                  advanced treatment of water and wastewater, environmental
+Yang, X.Y., Al-Duri, B., 2001. Application of branched pore              functional materials, and environmental nanotechnology.
+     diffusion model in the adsorption of reactive dyes on               Dr. PAN has authored more than 100 research papers in
+     activated carbon. Chemical Engineering Journal, 83(1):              peer-reviewed journals, applied for 63 patents including 11
+     15-23. [doi:10.1016/S1385-8947(00)00233-3]                          international patents. Due to his shining achievements in the
+Yao, C., Tien, C., 1993. Approximations of uptake rate of                related field, he was awarded the Asian Young Researcher
+     spherical adsorbent pellets and their application to batch          Award in 2008 by the Conference of Asian University Presi-
+     adsorption calculations. Chemical Engineering Science,              dents, the ProSPER.Net-Scopus Young Researcher Award in
+     48(1):187-198. [doi:10.1016/0009-2509(93)80295-2]                   2010, and the Jiangsu Young Scientist Award in 2012.
+Yi, H.H., Deng, H., Tang, X.L., Yu, Q.F., Zhou, X., Liu, H.Y.,                Currently, Dr. PAN serves as the chairman of the Inter-
+     2012. Adsorption equilibrium and kinetics for SO2, NO,              national Water Association (IWA) China Young Professionals,
+     CO2 on zeolites FAU and LTA. Journal of Hazardous                   the responsible editor of Environmental Science and Pollution
+     Materials, 203-204:111-117. [doi:10.1016/j.jhazmat.2011.            Research and Frontiers of Environmental Science and Engi-
+      11.091]                                                            neering, and the editorial board member of several well-known
+Yoon, Y.H., James, H.N., 1984. Application of gas adsorption             journals, including Chemical Engineering Journal, Journal of
+    kinetics I. A theoretical model for respirator cartridge             Zhejiang University SCIENCE A (Applied Physics & Engi-
+    service life. The American Industrial Hygiene Association            neering), and Ion Exchange & Adsorption.
+

@@ -1,0 +1,1247 @@
+                                                                Chemical Engineering Science 285 (2024) 119606
+
+
+                                                                    Contents lists available at ScienceDirect
+
+
+                                                            Chemical Engineering Science
+                                                            journal homepage: www.elsevier.com/locate/ces
+
+
+
+
+CFD-based model of adsorption columns: Validation
+Henry Steven Fabian Ramos, Chinmay Baliga, Arvind Rajendran, Petr A. Nikrityuk ∗
+Department of Chemical and Materials Engineering, Donadeo Innovation Centre for Engineering, University of Alberta, 9211-116 St, Edmonton, AB, T6G 1H9, Canada
+
+
+
+
+AR T I CL E              IN F O                          AB S T RA C T
+
+Keywords:                                                 The computational research on adsorption is of signiﬁcant interest for process development and optimization.
+Adsorption column                                         Despite the existence of unidimensional models that reproduce simple vertical columns, a further level of detail
+Carbon dioxide
+                                                          is required to understand the intricacy of transport phenomena within industrial-grade columns across time and
+Nitrogen
+                                                          space. With that in mind, this research work focuses on developing and validating a higher-dimensional model
+Zeolite 13X
+CFD
+                                                          to reproduce the ﬂow, heat, and mass transfer phenomena inside adsorption columns using Computational Fluid
+Higher-dimensional                                        Dynamics (CFD). The mathematics of adsorption are coded into the commercial CFD solver, ANSYS Fluent v19.2,
+UDF                                                       using User-Deﬁned Functions (UDF). The model is implemented using a mathematical adaptation of Fluent’s
+                                                          standard transport equations, so that the material and thermal eﬀects of adsorption can be accounted for. The
+                                                          resulting model is validated against published experimental results for the single-component and competitive
+                                                          adsorption of N 2 and CO 2 on zeolite 13X on a small-scale pilot unit. Good agreement between our modelling
+                                                          results and experimental data is demonstrated. Afterwards, a modiﬁed column geometry with an inlet jet is used
+                                                          to explore the impact of gas injection on the unsteady spatial distribution of matter and energy. Radial gradients
+                                                          and 2D contour plots are illustrated in all cases to showcase the enhanced insight that a higher-dimensional
+                                                          model provides. Finally, this model can be used to predict comprehensive characteristics of adsorption columns
+                                                          of any design and size, taking into account diﬀerent designs of inﬂow gas distributors in industrial scale columns.
+                                                          It includes a new sort of adsorption devices using monolith instead of packed beds. All model UDFs are open-
+                                                          source and can be found in supplementary materials.
+
+
+
+
+1. Introduction                                                                                 computational modelling. The reader is referred to the review articles
+                                                                                                by Shafeeyan et al. (2014), Ben-Mansour et al. (2016), and Akinola et
+     Gas adsorption plays a fundamental role within the realm of sep-                           al. (2022) that focus on prior mathematical modelling studies related
+aration processes in engineering. It ﬁnds application in various ﬁelds,                         to CO 2 adsorption from various mixtures as air, coke oven gas, cracked
+including but not limited to the concentration of oxygen from air (Jee                          gas, ﬂue gas, etc. Ben-Mansour et al. reﬂect on a plethora of CO 2 adsorp-
+et al., 2005a,b), hydrogen puriﬁcation from steam methane reforming                             tion modelling studies. Of the 26 studies reviewed, all were 1D transient
+(Sircar and Golden, 2000; Majlan et al., 2009; Delgado et al., 2014),                           models, assumed ideal gas behaviour, and considered the Linear Driv-
+helium puriﬁcation from natural gas (Jahromi et al., 2018a,b), and                              ing Force (LDF) model for adsorption kinetics.
+the removal of volatile organic compounds (Gales et al., 2003; Krish-                               Due to the inherently transient nature of an adsorption process, it is
+namurthy et al., 2018; Roegiers and Denys, 2019). In addition, the                              crucial to understand the process dynamics within the packed column.
+prominent role of anthropological CO 2 emissions in accelerating cli-                           One must consider coupled transport phenomena (material, momen-
+mate change (Stern, 2008) has prompted several adsorption studies on                            tum, and energy balances), thermodynamics, equilibrium isotherms,
+carbon capture and sequestration (Zhang and Webley, 2008; Zhang et                              adsorption kinetics, and adsorbent properties to appropriately construct
+al., 2008; Grande et al., 2009; Haghpanah et al., 2013; Lian et al., 2019;                      a mathematical model. Framing shell balances gives rise to a system of
+Sandu et al., 2021).                                                                            coupled partial diﬀerential equations (PDEs) distributed over time and
+     This has facilitated developments in adsorbent candidate materials,                        space, along with auxiliary equations that describe adsorption equilib-
+pellet structure design, experimental investigations into adsorption cy-                        rium and many other process variables. Such systems often do not pos-
+cle optimization, and –notably– advances in numerical methods and                               sess analytical solutions and, thus, need to be solved numerically. The
+
+
+ * Corresponding author.
+   E-mail address: nikrityu@ualberta.ca (P.A. Nikrityuk).
+
+https://doi.org/10.1016/j.ces.2023.119606
+Received 9 July 2023; Received in revised form 16 November 2023; Accepted 2 December 2023
+Available online 12 December 2023
+0009-2509/© 2023 Elsevier Ltd. All rights reserved.
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                    Chemical Engineering Science 285 (2024) 119606
+
+
+
+   Nomenclature
+
+   𝑏            adsorption equilibrium constant for site 1                       𝑅𝑊           column wall radius, equivalent to 𝑅 𝑖𝑛
+   𝑐            ﬂuid phase molar concentration                                   𝑟            r-coordinate
+   𝑐𝑝           speciﬁc heat capacity                                            𝑟𝑝           radius of particle
+   𝑑            adsorption equilibrium constant for site 2                       𝑇            ﬂuid and solid phase temperature
+   𝐷𝑚           molecular diﬀusivity                                             𝑡            physical time
+   𝐷𝑒𝑓 𝑓        eﬀective diﬀusivity                                              𝑉            volume
+   𝐷𝐿           dispersion coeﬃcient                                             𝑣           velocity vector
+   𝑑𝑝           diameter of particle                                             𝑌            species mass fraction
+   𝐸            energy                                                           𝑦            species molar fraction
+   𝑔            gravitational acceleration                                       𝑧            z-coordinate
+   𝐻            enthalpy
+                                                                                 Greek letters
+   𝐾            permeability coeﬃcient
+   𝑘            LDF mass transfer coeﬃcient                                      𝜌            density
+   𝑘 −𝜔         k-omega turbulence model                                         𝜀            porosity or void fraction
+   𝐿            length of the domain                                             𝜅𝑒𝑓 𝑓        eﬀective thermal conductivity
+   𝑀            molar mass                                                       Σ𝜈           diﬀusion volume
+   𝑅𝐿𝑋          relaxation factor                                                𝜏            tortuosity
+   𝑃            ﬂuid phase pressure                                              𝜇            viscosity
+   𝑄𝑖𝑠𝑜         isosteric adsorption heat
+                                                                                 Subscripts
+   𝑞            solid phase loading
+   𝑞∗           equilibrium solid phase loading                                  𝑎            adsorbed phase
+   𝑅            universal gas constant                                           𝑖            species 𝑖
+   𝑅 𝑖𝑛         column inner radius                                              𝑔            gas mixture, ﬂuid phase
+   𝑅 𝑜𝑢𝑡        column outer radius                                              𝑝            adsorbent particle
+
+
+prominent choice for modelling transport phenomena has been 1D mod-              al., 2008). Industrial-scale simulations shed light on axial dispersion
+els. Equations are often coded and solved on programming platforms               and ﬂow perturbation inside the columns caused by trays, distributors,
+such as MATLAB, Fortran, PDECOL, DGEAR, ODEPACK, etc., where the                 pipes and beams. They demonstrated that industrial-scale column hy-
+Finite Volume Method (FVM) has been widely employed (Webley and                  drodynamics signiﬁcantly impacted the adsorption yield, emphasizing
+He, 2000; Todd et al., 2001; Cruz et al., 2003, 2005; Javeed et al., 2011;       the relevance of CFD-based research for the optimal design of internals
+Medi and Amanullah, 2011). In particular, it has been shown that 1D              in large-scale adsorption systems and ﬂuid ﬂow scenarios with high
+models can eﬃciently predict the behaviour of temperature and compo-             Reynolds numbers.
+sition along the axial direction of an adsorption column for simple plug             Verbruggen et al. applied a CFD-based approach to determine the
+ﬂow geometry, e.g., see the work (Haghpanah et al., 2013). However,              adsorption parameters of acetaldehyde, a volatile organic compound,
+it should be noted that 1D models are unable to predict the impact of            to abate indoor air pollution (Verbruggen et al., 2016). The Lang-
+inﬂow distributors on the heat and mass transfer inside large-scale in-          muir adsorption isotherm was enhanced by incorporating a chemical
+dustrial adsorption columns.                                                     reaction mechanism, according to the Langmuir-Hinshelwood-Hougen-
+    Computational Fluid Dynamics allows for a more detailed resolu-              Watson (LHHW) framework. Transient simulations were performed on
+tion of each transport equation down to a diﬀerential or ‘cell’ scale,           the COMSOL Multiphysics v.4.4 commercial software package. The CFD
+in time and space. This is of particular importance when dealing with
+                                                                                 results and validation provided accurate acetaldehyde adsorption pa-
+industrial-scaled columns, where the spatial eﬀects of adsorption can
+                                                                                 rameters for further photocatalytic kinetic analysis. This can be applied
+become ampliﬁed by the increased size and complexity of the design.
+                                                                                 more widely to reactive adsorption systems.
+Here, a higher-dimensional or multidimensional adsorption model is
+                                                                                     Esposito et al. modelled and simulated ammonia adsorption on ac-
+required for a more accurate insight into phenomena such as entrance
+                                                                                 tivated carbon with CFD using COMSOL Multiphysics v5.6 (Esposito
+eﬀects (due to an actual ﬂow distributor), ﬂow asymmetries (due to in-
+                                                                                 et al., 2022). In-house experiments were undertaken to validate the
+ternals), dead zones, heat transfer gradients to the surroundings (includ-
+                                                                                 intricate modelling of the hydrodynamic and adsorption processes oc-
+ing process modiﬁcations such as exterior column cooling), and even
+                                                                                 curring in the system. The Toth adsorption equilibrium isotherm and
+the eﬀect of gravity within horizontal columns. Continuous improve-
+ments to achieve a better design, increased throughput, scalability, and         LDF kinetics were considered, and radial intra-particle mass transfer
+techno-economic feasibility can thus beneﬁt signiﬁcantly from multidi-           was attributed to Fickian diﬀusion. The symmetry in geometry of the
+mensional modelling of adsorption processes.                                     ventilator was exploited to reduce domain size and, therefore, compu-
+    Although commercial CFD packages include a module for simulat-               tational times.
+ing packed beds as porous media, they lack the required models or                    Qasem and Ben-Mansour developed a Pressure-Vacuum Swing Ad-
+modules to adequately simulate adsorption within said packed beds, in-           sorption (PVSA) framework via CFD to study CO 2 separation from a ﬂue
+cluding equilibrium isotherms, adsorption kinetics, and transport terms          gas mixture using Mg-MOF-74. (Qasem and Ben-Mansour, 2018). Four
+to account for the eﬀects of adsorption. This opens a research window:           User-Deﬁned Functions (UDFs) and seven User-Deﬁned Scalars (UDSs)
+developing and implementing custom adsorption models based around                were written to implement the transport equations for the species con-
+CFD. Some attempts have been made, which are described next along                centrations, gas temperature, bed temperature and mass transfer to the
+with their achievements. The observed shortcomings and our attempt               adsorbent. In line with the work by Augier et al. (2008), constant values
+to address them are described afterwards.                                        for the LDF mass transfer coeﬃcient were taken, neglecting tempera-
+    Augier et al. carried out CFD simulations to explore hydrodynamic            ture dependencies of considerable consequence (signiﬁcant in cases of
+eﬀects in both laboratory and industrial adsorbent columns (Augier et            pronounced exothermic adsorption of the heavy product).
+
+                                                                             2
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                      Chemical Engineering Science 285 (2024) 119606
+
+
+     Gautier et al. carried out a series of studies (Gautier et al., 2018a,b),       tailed implementation of a CFD-based adsorption model along with its
+the ﬁrst focusing on developing and validating a 3D CFD Pressure-Swing               comprehensive validation against experimental data is rare.
+Adsorption (PSA) model using the commercial software Star-CCM+,                          Motivated by these facts, our work presents a CFD-based model
+and the latter delving into a numerical sensitivity study of a PSA cy-               of the unsteady transport phenomena to reproduce adsorption exper-
+cle in an isotropic porous medium. Experimental data was well ﬁtted                  iments on a packed column. This work attempts to illustrate in detail
+to the Toth isotherm citing thermodynamic consistency, whereas the                   the model’s implementation into a commercial CFD solver using UDFs
+Langmuir isotherm proved to suﬃce in the 3-5 bar high-pressure range.                written in C. A comprehensive validation of the model is then per-
+Their sensitivity analysis work discusses how the eﬀective thermal con-              formed against published experimental data on the single-component
+ductivity, column dead volume and choice of adsorption equilibrium                   and binary competitive adsorption of CO 2 and N 2 on zeolite 13X, which
+model inﬂuence the robustness of the simulation and the overall cycle                comprises various sets of inlet compositions and operating conditions.
+performance. The authors acknowledge a shortcoming regarding their                   Furthermore, the multidimensional capabilities of the model are show-
+approach in how the mass transfer kinetics is modelled using constant                cased by exploring the eﬀects of jet inlet injection on the spatial distri-
+mass transfer coeﬃcients, and instead recommend the use of either                    bution of matter and energy.
+temperature-dependent LDF mass transfer coeﬃcients or a non-linear                       It is our intention to oﬀer a thorough description of the construction
+driving force (NLDF) model to improve the estimation of local adsorp-                and validation of our model, which is designed to oﬀer certain advan-
+tion rates.                                                                          tages over prior studies. Using UDFs in lieu of UDS enables the organic
+     The potential of CFD for modelling separation columns is also                   and synergetic integration of the mathematics of adsorption into the
+demonstrated by Subraveti et al. (2018), who formulated a 2D axisym-                 well-stablished transport equations from ANSYS Fluent. This favours
+metric CFD model in ANSYS Fluent v16.2 to study solute propagation                   a cleaner and more straightforward implementation of the model, with
+in supercritical ﬂuid chromatographic (SFC) columns. The model in-                   signiﬁcantly less chances of error either in the mathematics of the diﬀer-
+vestigated the eﬀects of viscous ﬁngering and the plug eﬀect on pulse                ential transport equations or in the coding itself. Moreover, our frame-
+injection. The CFD model could predict key phenomena that are not                    work allows easy transferability to other adsorbate/carrier combina-
+captured by classical equilibrium-dispersive models, such as a delay in              tions including both single-component and multicomponent adsorption
+elution times due to inlet pressure increase, peak fronting, and peak                on any given adsorbent, meaning that the same model is used and the
+distortions. However, it should be noted that the model by Subraveti et              only changes correspond to the adsorption parameters and experimen-
+al. (2018) studied supercritical ﬂuid chromatography under the isother-              tal conditions. The UDF code has been written with multidimensionality
+mal system assumption, leading to a constant linear driving force mass               in mind, meaning that the same code is intended to work for both 2D
+transfer coeﬃcient 𝑘. The adsorbing solute was showed a linear equi-                 and 3D geometries. This means our model can be applied to various ge-
+librium and the solvent did not adsorb. In contrast, the current work                ometries ranging from lab to pilot and even industrial-scale columns. It
+deals with gas adsorption where all the components adsorb, and some                  is equally worth mentioning that the UDF code is modular, and can thus
+(𝐶𝑂2) in a highly non-linear form. Further, the current model is non-                be easily integrated with other custom routines that may be required.
+isothermal and the impact of the heat eﬀects on the mass transfer                    Additionally, eﬀorts were made to develop a fully coupled model, where
+phenomenon (and vice versa) are explicitly considered.                               relevant parameters (such as the LDF coeﬃcient and thermodynamic
+     Based on an analysis of published works devoted to the modelling of             properties) are evaluated locally to strive for accuracy.
+adsorption processes, it can be concluded that a comprehensive all-in-                   Finally, with the purpose of contributing to the collective eﬀorts
+all validation of 2D and 3D CFD-based ﬁxed bed adsorption models is                  devoted to adsorption modelling, we are delighted to make this model
+missing in the literature. It should be noted that 2D and 3D CFD-based               open-access. The reader is referred to the supporting material, where
+studies have a great potential in aiding the design of column internals,             the Fluent ﬁles and UDF code used in this work are free to download,
+choice of adsorbent, and optimization of operating conditions, as well               alongside a guided tutorial on how to use them.
+as predicting the process performance at large scales. The applications
+of a CFD-based adsorption model may include de-risking the scale-up,                 2. Computational model
+identifying thermal hot or cold spots, and investigating the impact of
+ﬂow and heat transfer asymmetries caused by the inlet diﬀuser design.                2.1. Scope of the model
+A relevant scenario for such applications may be found in the ﬁeld of
+Direct Air Capture, where the types of contactors are less conventional                  The present CFD-based model numerically reproduces the experi-
+than those used in more classical separations. Furthermore, the present              mental setup and data collected by Wilkins and Rajendran (Wilkins and
+model may serve as a tool to explore whether certain experimental con-               Rajendran, 2019; Wilkins et al., 2021), where a comprehensive num-
+ﬁgurations beneﬁt from in-depth ﬂow resolution with CFD, or can just                 ber of Dynamic Column Breakthrough (DCB) experiments on a lab-scale
+be modelled using a standard 1D model without concern.                               ﬁxed bed were reported for the single-component and binary adsorption
+     However, it is also observed that the methodologies on most of                  of CO 2 and N2 on zeolite 13X, with He as carrier. A step input of feed
+these research works have certain weaknesses that compromise the ac-                 containing a certain composition of adsorbate and carrier is sent to the
+curacy of results or make the model particularly restrictive. A number               column. As the adsorption ensues, the adsorbing component(s) start to
+of studies tend to assume ﬁxed-value parameters, such as heat capaci-                saturate the column gradually in the direction of the ﬂow (from left to
+ties, conductivities, diﬀusivities, and –notably– the LDF mass transfer              right). As a result, material and thermal fronts start developing within
+coeﬃcient. Whilst this makes the system easier to solve, it neglects                 the bed. These constitute the basis of a DCB experiment, and are cap-
+the heavy dependency that this key parameter has on other variables,                 tured by our model and discussed afterwards. For validation purposes,
+mainly temperature, diﬀusivity, and composition. As hinted by Gautier                the temperature of the bed at a certain location and the outgoing mole
+et al., the local adsorption rate may be improved using a LDF model                  fraction are registered over time, then compared with data from the
+with temperature-dependent mass transfer coeﬃcients (Gautier et al.,                 aforementioned experiments. These results are accompanied by mesh
+2018a). On the other hand, despite the ample capabilities of UDF pro-                independency and model performance simulations, and are all shown
+gramming, the literature suggests that it may have not been exploited                in Section 3.
+fully. UDS-based models are available, which try to reproduce trans-                     The model is coded to support single-component and multicompo-
+port phenomena equations from scratch; however, a sleeker framework                  nent/binary adsorption; both are tested and shown in this work. A 2D
+can be obtained by simply adjusting the existing, tried-and-tested equa-             geometry is used, although the custom UDF code has been written inde-
+tions from commercial CFD solvers using UDFs to include the necessary                pendently of geometrical features or any particular spatial coordinate,
+adsorption terms. Finally, it is observed that literature showcasing a de-           meaning that it can also be applied to other 2D and 3D geometries. All
+
+                                                                                 3
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                      Chemical Engineering Science 285 (2024) 119606
+
+
+validation simulations are carried out using a rectangular axisymmet-           2.3. Transport equations
+rical domain. Then, to exploit and explore the advantages of higher-
+dimensional modelling, a study of gas injection to the same adsorption
+column is performed on a modiﬁed geometry with an inlet jet that more               Most CFD environments provide a set of standard transport equa-
+closely resembles the real-life conﬁguration of this system.                    tions, whose parameters adopt diﬀerent values according to the
+                                                                                speciﬁcs of the job. However, when it comes to simulating adsorp-
+2.2. Model description and assumptions                                          tion processes, CFD software typically lacks actual adsorption models
+                                                                                or modules. To overcome this, we have modiﬁed the built-in equa-
+    The CFD adsorption model was developed in Fluent v19.2. In con-             tions by adding source and sink terms to account for the eﬀects that
+cordance with the experimental rig dimensions used by Wilkins &                 the adsorption process has on each transport phenomena. That is, de-
+Rajendran, a lab-scale column of 6.4 cm in length and 2.82 cm in in-            pending on whether the transport variables are aﬀected positively or
+ternal diameter was designed in ANSYS Meshing. To better reproduce              negatively as a consequence of adsorption, custom source or sink terms
+the cylindrical geometry of an adsorption column, a 2D axisymmetric             are added accordingly to quantify these eﬀects. This is carried out by
+domain was chosen for the present work, although the model can be ex-           coding each additional term via Fluent’s User-Deﬁned Functions, which
+panded to higher dimensions. Since the breakthrough experiments are             are then hooked to their corresponding transport equation from within
+dynamic processes, a time-dependent solution (transient) is enabled.            the software. The routines were written in C.
+Given that the ﬂow in adsorption processes is typically slow and incom-             With the exception of the momentum conservation equation, all the
+pressible, a pressure-based solver was chosen.                                  additional source/sink terms depend on the rate of adsorption of each
+    The adsorbent bed is modelled using a continuum porous medium                                   
+                                                                                adsorbed species,  . This rate is calculated using the Linear Driving
+                                                                                                    
+model, where the ﬂow is treated as laminar. The velocity within the             Force (LDF) model, a non-separable diﬀerential equation (details on
+porous zone is computed using Fluent’s physical velocity formulation,           the equation are given in Section 2.4). Hence, solving the transport
+which includes the eﬀect of porosity on the transport equation terms            equations involves solving the LDF model as well, simultaneously. A
+and enhances accuracy (Ansys Fluent Theory Guide, 2021). Given that             User-Deﬁned Function was used for this purpose too, as it allowed us
+adsorption processes involve a gradual increase in temperature over             to program a fully customizable numerical solver that determines both
+time, the equilibrium thermal model was used to reproduce the ener-                                     
+                                                                                the rates of adsorption  and the adsorbed quantities   at every time
+getics of the system, which assumes that the solid and gas temperatures                                  
+                                                                                step.
+are the same. As for the ﬂuid phase, the mixing law was used to de-
+                                                                                    Finally, some transport equations –such as the species transport
+termine average properties such as the thermal conductivity, speciﬁc
+                                                                                equations– rely on properties that require a mathematical reformula-
+heat capacity, and viscosity. The individual properties were speciﬁed
+                                                                                tion to account for bed-inﬂuenced phenomena, such as dispersion. This
+using temperature-dependent polynomial expressions determined from
+the Fluent database and the CRC Handbook of Chemistry and Physics               is also achieved with UDFs. More details on the programming of our
+(CRC Handbook, 2015) (for the thermal conductivity and speciﬁc heat             UDFs are provided in Section 2.6.
+capacity), as well as kinetic theory (for viscosity).                               The modiﬁed governing equations are shown and explained below:
+    A velocity-inlet/outﬂow-outlet boundary condition set was used,
+where an artiﬁcial outlet extension of the cylinder (henceforth, out-             • Total mass conservation equation.
+ﬂow zone) was installed to ensure convergency and physical results at               Also known as the continuity equation, this sum typically totals
+the column’s real exit. See Fig. 1(a) for details. A constant heat trans-           zero, which indicates that the scalar quantity (in this case, mass
+fer coeﬃcient is used, and it is set according to the value reported in             per unit volume) is neither being created nor destroyed. Here, how-
+the experimental studies (Wilkins and Rajendran, 2019; Wilkins et al.,              ever, since adsorption is taking place, matter is transferred from the
+2021). See further details in the Boundary conditions subsection at 2.5.            ﬂuid phase to the solid phase. And since the continuity equation
+Finally, second-order discretization schemes were used for all trans-               governs only the ﬂuid phase, a sink must be created to account
+port equations, except for the species conservation equation, where                 for the material ‘loss’. Said sink takes the form of the expression
+the third-order MUSCL scheme was applied to enhance the accuracy                    highlighted by the underbraces, and is implemented using a UDF
+in material calculations. The SIMPLE algorithm was used to solve the                macro. The equation is formulated as (Haghpanah et al., 2013; An-
+Navier-Stokes equations.                                                            sys Fluent Theory Guide, 2021):
+    The mathematical model was formulated under the following as-
+                                                                                                                                        
+sumptions:                                                                                                                        
+                                                                                          + ∇ ⋅   = − (1 − )                                          (1)
+                                                                                                                                       
+ 1. The ﬂow is laminar within the porous zone                                                                               =1
+                                                                                                            
+ 2. The gas ﬂow was treated as an incompressible ideal gas following                                                          
+    the model described in the work (Tomboulides et al., 1997). The
+                                                                                    where  is the ﬂuid phase (gas mixture) density,  is the velocity
+    incompressible ideal gas assumption implies that density depends
+    on the operating pressure and local temperature according to the                vector,   is the adsorbent particle density,  is the bed void frac-
+    ideal gas law. This assumption is widely used in CFD for modelling              tion,   is the molar mass of the species  adsorbed, and   ∕ is
+    gas ﬂows with velocity below the Mach number of 0.3 (Ferziger                   the adsorption rate. The ﬂuid phase density is calculated using Flu-
+    and Peric, 2002).                                                               ent’s pressure-based solver and assuming an ideal incompressible
+ 3. The ﬂuid phase and adsorbent solid are in thermal equilibrium                   gas. The adsorption rate is determined using the LDF equation (see
+ 4. Buoyancy eﬀects are neglected                                                   Section 2.4).
+ 5. The inﬂuence of the wall channelling eﬀect on the heat and mass               • Momentum conservation equation.
+    transfer near the wall is neglected                                             Unlike all other transport equations, the momentum conservation
+ 6. Radiative heat transfer is neglected                                            equation does not involve a source term related to adsorption, but
+ 7. The mass transport mechanism is controlled by molecular diﬀusion                rather to the viscous resistance due to the presence of the porous
+    in the macropores.                                                              bed. This force term works against the ﬂow, and is proportional
+                                                                                    to the velocity and inversely proportional to the medium perme-
+These assumptions determine the form of the governing transport equa-               ability,  . The equation is formulated as (Haghpanah et al., 2013;
+tions, presented next.                                                              Ansys Fluent Theory Guide, 2021):
+
+                                                                            4
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                            Chemical Engineering Science 285 (2024) 119606
+
+
+
+
+Fig. 1. Diagrams of the 2D computational domains for the adsorption columns studied and their corresponding meshes. (a) Schematic for the ﬂat entrance case, (b)
+coarse mesh, (c) medium mesh, (d) ﬁne mesh. (e) Schematic for the jet injector case, (f) medium mesh.
+           
+                                                                                 the mass continuity equation, the adsorbed quantities from all the
+                   + ∇ ⋅  
+                                                                         (2)          adsorbing species are summed up, whereas in the species conser-
+                                      2                                          vation equation for species  , the sink term accounts only for the
+       = −∇ + ∇ ⋅  ∇    + ∇  −                                              adsorbed amount of that particular species.
+                                             
+                                                                                        Besides the adsorption sink term, the mixing that takes place as
+     where  is static pressure,   is the molecular viscosity, and 
+                                                                                        a product of turbulence in the cavities of the packed bed requires
+     is the medium permeability. The second term in the right-hand
+                                                                                        a reformulation of the diﬀusivity. The combination of said mixing
+     side corresponds to the stress tensor, whilst the last represents the
+                                                                                        and the molecular diﬀusion   can be lumped together as the axial
+     viscous resistance due to the porous media. The permeability used
+                                                                                        dispersion coeﬃcient,   . This term and the aforementioned sink
+     in this term is calculated using the Carman–Kozeny equation:
+                                                                                        term are formulated through the use of UDFs. The corresponding
+             2                                                                        transport equation is (Haghpanah et al., 2013; Ansys Fluent Theory
+                   3
+     =                                                                    (3)          Guide, 2021):
+            150 (1 − )2                                                                            
+                                                                                                                   
+     Since these parameters can be set within the Fluent interface, no                                  + ∇ ⋅   
+     UDFs are needed.                                                                          
+   • Species mass conservation equation.                                                                                               
+                                                                                                                                                                  (4)
+     The sink term in the species conservation equations follows the                         = ∇ ⋅    ∇  − (1 − ) 
+     same logic as in the continuity equation: it is included to account                                                        
+     for the loss of matter in the ﬂuid phase. The diﬀerence is that in                                      
+                                                                                                                                      
+
+                                                                                 5
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                                                 Chemical Engineering Science 285 (2024) 119606
+
+
+     where  is the mass fraction of species  , and   represents the                                             Here, the isosteric heat,   = −Δ has a linear dependency on
+     dispersion coeﬃcient, which is deﬁned as:                                                                       the temperature according to −Δ = −Δ +   . The values of the
+                                                                                                                     internal energy for each species are given in Table 5. The isosteric
+      = 0.7 +                                                                             (5)                 heat of CO 2 on zeolite 13X,  ,2 [J/mol], is also signiﬁcantly
+                                                                                                                     dependent on loading, according to the following empirical rela-
+     The molecular diﬀusion,   , is calculated locally as a function of
+                                                                                                                     tionship determined by Wilkins and Rajendran (2019):
+     the species, temperature and pressure using the Fuller correlation:
+                                                                                                                   ,2 = −5156 2 + 50907                                        (10)
+               1.013 × 10−2  1.75 1∕1 + 1∕ 2
+      =                                2                                                     (6)
+                             1∕3
+                      (Σ )1 + (Σ )2
+                                      1∕3                                                                   2.4. Adsorption rate modelling: linear driving force (LDF) model
+
+     where Σ represent the diﬀusion volumes of each species. Further                                           As introduced previously, this diﬀerential equation is used to deter-
+     details on the programming of these diﬀusion and dispersion coef-                                      mine the rate of adsorption. It is formulated as a mass transfer equation
+     ﬁcients are provided in Section 2.6.                                                                   for the solid phase, where the rate of change is proportional to the
+   • Energy conservation equation.                                                                          diﬀerence between the equilibrium and current solid phase loadings
+     Since adsorption is an exothermic process, the eﬀects of the ad-                                       (Wilkins and Rajendran, 2019):
+     sorption heat must be taken into account. This is done through the
+                                                                                                                          
+     ﬁrst source term shown in Equation (7). The released heat is pro-                                          =  ∗ −                                                       (11)
+     portional to the adsorption rates of each species, and is calculated
+                                                                                                             
+     based on their corresponding enthalpies of adsorption Δ  . These                                     where   is the LDF mass transfer coeﬃcient,  ∗ is the equilibrium solid
+     amounts are then summed up to determine the net heat from all                                          loading, and   is the actual solid loading of species  . Assuming that
+     adsorbed species.                                                                                      the transport mechanism is controlled by molecular diﬀusion within
+     As for the remaining two sink terms, they are included to account                                      the macropores (which is the case for the adsorption of CO 2 and N 2 on
+     for the thermal mass contribution from the adsorbed matter to the                                      zeolite 13X), the adsorption mass transfer coeﬃcient,   , is formulated
+     solid bed. Since mass is transferred to the solid phase due to adsorp-                                 as the following lumped parameter (Wilkins and Rajendran, 2019):
+     tion, the additional adsorbed species increase the overall thermal                                                15   
+     inertia of the bed according to their individual adsorbed amounts                                       =                                                                          (12)
+                                                                                                                      ∗      2
+     and speciﬁc heat capacities; thus, their eﬀect is to lower/buﬀer
+     the rises in temperature. These two sink    terms arise from applying                                  where   is the particle porosity and    is the eﬀective diﬀusion. The
+                                                                    
+     the product rule to the derivative        (1 − )    ,  –which                               latter,   , is expressed as a function of the molecular diﬀusion,   ,
+                                           
+     is originally inside the transient term–, and are then switched to                                     according to:
+     the right-hand-side with negative signs (thus becoming sink terms).
+                                                                                                                        
+     With all these considerations in mind, the modiﬁed energy conser-                                        =                                                                       (13)
+                                                                                                                         
+     vation equation is expressed as (Haghpanah et al., 2013):
+                                                                                                                The molecular diﬀusivity of the gas phase,   , is calculated using
+                                                                                                       the Fuller correlation as described in Equation (6).
+           ,  + (1 − )   ,  + ∇ ⋅    , 
+                                                                                                              There are as many LDF equations as there are adsorbing species in a
+                          
+         = ∇ ⋅     ∇                                                                                  system. Our UDF framework has been setup for two adsorbing species,
+                                                                                              but more can be added as needed. The LDF equation solves for the
+                                                                                                    solid phase loading,   , for all the adsorbing species . The equilibrium
+         + (1 − )                 (−Δ )            − (1 − )               ,  
+                                                                                                        solid phase loading,  ∗ , is calculated from an appropriate adsorption
+                            =1                                            =1
+                    isotherm  ∗ =  ( ,  ,  ) (Haghpanah et al., 2013; Wilkins and Rajen-
+                                                                                                      dran, 2019). The form of this function depends not only on the equilib-
+                              
+                                                                                                          rium data for a particular system, but also on the isotherm model and
+                                                 
+         − (1 − )               ,                                                     (7)        ﬁtting procedure employed, all of which involve diﬀerent parameters
+                                =1
+                                                                                                          and provide varied predictions. In that sense, several isotherm formu-
+                                                                 lations arise, such as Single and Dual Site Langmuir (SSL and DSL). For
+                               
+                                                                                                            this particular case, Dual Site Langmuir isotherms are used to repro-
+     where  , is the gas mixture speciﬁc heat capacity,  , is the ad-                                 duce the adsorption equilibrium of CO 2 and N 2 on zeolite 13X, since
+     sorbent particle speciﬁc heat capacity,  ,  is the adsorbed phase                                  they are reported to produce a good predictive description for both
+     speciﬁc heat capacity of species ,    is the eﬀective thermal con-                                single-component and competitive breakthrough experiments in the ref-
+     ductivity, (−Δ  ) is the heat of adsorption of species  , and   is                                erence paper Wilkins and Rajendran (2019). Moreover, the parameters
+     the solid phase loading of species .                                                                  of the DSL model are determined by ﬁtting procedures with diﬀerent
+     The eﬀective thermal conductivity is calculated as a voidage-                                          constraints and underlying assumptions regarding the solid loadings.
+     weighted average between the gas-phase and solid-phase thermal                                         The procedures chosen will be indicated for each case in Section 3. The
+     conductivities, as in Equation (8):                                                                    DSL model is represented by the following equation:
+
+       =  + (1 − )                                                                     (8)                     ,       , 
+                                                                                                             ∗ =             +                                              (14)
+     The speciﬁc heat capacity of the adsorbed phase for each adsor-                                                 1 + =1     1 + =1  
+     bate was determined with respect to their corresponding gas phase                                      where   and  are the saturated solid phase loadings of adsorption
+       values according to the following rule, as explored in works                                       sites 1 and 2 respectively, and   is the molar concentration of species  .
+     Rahman et al. (2013); Al-Muhtaseb and Ritter (1999); Walton and                                        The coeﬃcients   and  are determined using the following Arrhenius-
+     LeVan (2005); Men’shchikov et al. (2020):                                                              type expressions (Haghpanah et al., 2013):
+                                                                                                                                   
+                                                                                                                    −Δ,
+      , =                 −                   = , −                                        (9)          = 0, exp                                                                (15)
+                                                                                                                         
+
+                                                                                                        6
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                              Chemical Engineering Science 285 (2024) 119606
+                            
+                    −Δ𝑈𝑑,𝑖
+𝑑𝑖 = 𝑑0,𝑖 exp                                                          (16)            At 𝑟 = 0, symmetry boundary conditions are used for all the trans-
+                     𝑅𝑇                                                            port equations.
+The molar concentration 𝑐 𝑖 is determined from the mass fractions 𝑌 𝑖                  As for the LDF diﬀerential equation, since it doesn’t involve deriva-
+(passed from the species mass balances) using the following relation-              tives with respect to space, no boundary conditions apply, only initial
+ship:                                                                              values.
+
+        𝑃  𝑌𝑖 ∕𝑀𝑖
+𝑐𝑖 =                                                                  (17)        2.6. User-deﬁned functions (UDFs)
+       𝑅 𝑇 𝑛𝑐𝑜𝑚𝑝 𝑌𝑗
+              𝑗=1    𝑀𝑗
+                                                                                      The custom mathematical reformulations discussed in Section 2.3
+    The isotherm parameters used in this work were determined exper-
+                                                                                   are integrated into the CFD software using UDFs. So far, the term ‘UDF’
+imentally by Wilkins & Rajendran, and are used here for adsorption                 has been used to convey the idea of custom code. Speciﬁcally, a UDF is
+equilibrium modelling. They are shown in Table 5. The global parame-               a C program that is comprised of several sub-routines called macros, in
+ters of the model are shown in Table 6.
+                                                                                   which the actual custom code is implemented. There are diﬀerent types
+                                                                                   of macros, each suited to particular customization goals. In the present
+2.5. Boundary conditions                                                           job, one fully ﬂedged UDF ﬁle was written, comprised of ∼550 lines
+                                                                                   and the following 9 macros:
+    The boundary condition for the momentum conservation equation
+at the inlet is deﬁned as the superﬁcial feed velocity, whilst the outlet            • DEFINE_ADJUST macro (1 instance)
+boundary condition is of the outﬂow type (Haghpanah et al., 2013):                     The purpose of this macro is to execute instructions at the start of
+                                                                                      every iteration. It was thus used to implement a numerical scheme
+𝑣 = 𝑣 𝑓𝑒𝑒𝑑,𝑠𝑢𝑝                                                        (18)            to solve the Linear Driving Force (LDF) diﬀerential equation. In this
+ 𝑧=0                                                                                                                                                  𝑑𝑞
+𝑑𝑣                                                                                    way, the solid phase concentration 𝑞 𝑖 and rate of adsorption 𝑖 are
+       =0                                                             (19)                                                                            𝑑𝑡
+                                                                                       calculated ﬁrst, and can then be passed to the subsequent transport
+𝑑𝑧 𝑧=𝐿
+                                                                                       equations.
+    Referring to the theory of ﬂuid dynamics, momentum conservation
+                                                                                       With regard to the numerical scheme, two diﬀerent approaches
+and transport equations for the porous media can be written using two
+                                                                                       were followed during the development of this work. The ﬁrst con-
+formulations: the superﬁcial velocity porous formulation and the physi-
+                                                                                       sisted in an explicit method. This scheme is based on the 4th-order
+cal velocity formulation (Ansys Fluent Theory Guide, 2021). It is worth
+                                                                                       Runge-Kutta numerical method, which made it possible to deter-
+mentioning that the physical velocity formulation is considered across
+                                                                                       mine the value of 𝑞 𝑖 at the current time step using known quantities
+the porous medium. When this formulation is used, the velocity values
+                                                                                       from the previous time step. The advantage of this method is that
+in the porous region increase automatically according to 𝑣 𝑝ℎ𝑦𝑠 = 𝑣𝑠𝑢𝑝 ∕𝜀,
+                                                                                       the LDF equation can be solved straightforwardly, at the very ﬁrst
+which allows us to determine the true or physical velocity across this
+                                                                                       iteration in each time step, which results in few overall iterations
+region. Not doing so would limit the accuracy of the porous media ap-
+                                                                                       per time step. However, its main drawback lies in the computa-
+proach, as the velocity increase due to the packing would be neglected.
+                                                                                       tional time. Since explicit methods are conditionally stable, very
+This automatic correction of velocity is particularly convenient when
+                                                                                       small time steps had to be chosen to guarantee accuracy and sta-
+simulating columns composed by both porous regions (packed beds)
+                                                                                       bility in the solution (such as 𝑑𝑡 = 0.001). The discretization of the
+and free-ﬂow regions (e.g. inlet/outlet pipes), such as the inlet injec-
+                                                                                       LDF equation using this method is shown below, for completeness:
+tion system shown in Section 4.
+    In the case of the species and energy conservation equations, since
+                                                                                       𝑘𝑅𝐾,1 = ℎ(𝑘𝑖 (𝑞 ∗𝑖 − 𝑞𝑡𝑖 ))                                                     (26)
+we intend to model adsorption across a packed bed where dispersion
+has a signiﬁcant inﬂuence, two sets of Robin boundary conditions are                   𝑘𝑅𝐾,2 = ℎ(𝑘𝑖 (𝑞 ∗𝑖 − (𝑞𝑡𝑖 + 𝑘𝑅𝐾,1 ∕2)))                                         (27)
+used at the inlet (Haghpanah et al., 2013):
+                                                                                     𝑘𝑅𝐾,3 = ℎ(𝑘𝑖 (𝑞 ∗𝑖 − (𝑞𝑡𝑖 + 𝑘𝑅𝐾,2 ∕2)))                                         (28)
+𝑑𝑌𝑖          1                          
+        =−      𝑣𝑠𝑢𝑝      𝑌 𝑖,𝑓𝑒𝑒𝑑 − 𝑌𝑖                             (20)            𝑘𝑅𝐾,4 = ℎ(𝑘𝑖 (𝑞 ∗𝑖 − (𝑞𝑡𝑖 + 𝑘𝑅𝐾,3 )))                                           (29)
+𝑑𝑧 𝑧=0     𝐷𝐿       𝑧=0                 𝑧=0
+             𝜌𝑐𝑝                                                                                    1
+𝑑𝑇                                                                                  𝑞 𝑡𝑖+Δ𝑡 = 𝑞𝑡𝑖 + (𝑘𝑅𝐾,1 + 2𝑘 𝑅𝐾,2 + 2𝑘 𝑅𝐾,3 + 𝑘𝑅𝐾,4 )                            (30)
+        =−       𝑣𝑠𝑢𝑝       𝑇𝑓𝑒𝑒𝑑 − 𝑇                               (21)                           6
+𝑑𝑧  𝑧=0    𝑘 𝑒𝑓𝑓      𝑧=0               𝑧=0
+                                                                                       The second and deﬁnite approach was an implicit formulation. This
+    In the modelling of dispersed plug ﬂows, these are also known as                   was made possible using the trapezoidal method (second order).
+Danckwerts’ boundary conditions, and account for the immediate in-                     This formulation requires that the LDF equation be solved simulta-
+ﬂuence of dispersion when the ﬂow enters the bed. Both boundary                        neously alongside the transport equations, on every iteration. Since
+conditions above can be implemented in Fluent by enabling Inlet Dif-                                                             𝑑𝑞
+                                                                                       this yields unreﬁned values of 𝑞 𝑖 and 𝑖 during the ﬁrst itera-
+fusion (Ansys Fluent Theory Guide, 2021). As for the outlet, outﬂow                                                               𝑑𝑡
+                                                                                       tions, more iterations need to be allocated to reach suﬃciently low
+boundary conditions are applied (Haghpanah et al., 2013):                              residuals. However, this is greatly compensated by the fact that the
+𝑑𝑌𝑖                                                                                   implicit scheme allows time steps to be 10 to 30 times larger than
+        =0                                                            (22)
+𝑑𝑧 𝑧=𝐿                                                                                the explicit scheme, which makes simulating a full DCB experiment
+𝑑𝑇                                                                                    feasible within a reasonable time frame. The mathematical imple-
+        =0                                                            (23)
+𝑑𝑧  𝑧=𝐿                                                                               mentation for the second-order implicit scheme is shown below:
+    At 𝑟 = 𝑅𝑊 , the no-slip condition is used for the momentum equa-
+                                                                                                                                              
+                                                                                                       𝑑𝑡           ∗,𝑡                ∗,𝑛+1
+                                                                                                 𝑞 𝑡𝑖 + 2       𝑘𝑡𝑖 (𝑞 𝑖 − 𝑞𝑖𝑡 ) + 𝑘𝑛+1
+                                                                                                                                    𝑖 𝑞𝑖
+tion. Furthermore, a convective boundary condition is set up to account
+                                                                                       𝑞 𝑛+1
+                                                                                         𝑖   =                                                                         (31)
+for external heat transfer, and zero ﬂux is deﬁned for the species bound-                                                 𝑑𝑡
+                                                                                                                   1 + 2 𝑘𝑛+1
+                                                                                                                          𝑖
+ary condition (Haghpanah et al., 2013):
+                                                                                       Here, 𝑛 is the iteration number. The rate of adsorption is discretized
+𝑑𝑌𝑖 
+        =0                                                            (24)            as:
+𝑑𝑟 𝑟=𝑅
+                                                                                             𝑛+1  𝑡
+   𝑑𝑇                                                                               𝑑𝑞 𝑖 𝑞𝑖 − 𝑞𝑖
+−𝑘        = ℎ 𝑇𝑤 − 𝑇𝑖𝑛𝑓                                               (25)                =                                                                           (32)
+   𝑑𝑟 𝑟=𝑅                                                                              𝑑𝑡     𝑑𝑡
+                                                                               7
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                    Chemical Engineering Science 285 (2024) 119606
+
+
+     To enhance the stability of the LDF implicit formulation even fur-            with this component from left to right. As a consequence, inspecting
+     ther, relaxation factors are also implemented in line with Equation           the 2D contour of a given variable like temperature or adsorbate mole
+     (33). Given the stiﬀ nature of the LDF equation (especially with              fraction reveals an advancing red section through the column. This is
+     high values of 𝑘 𝑖 ), low relaxation factors signiﬁcantly enhance sta-        known as a front, and when it reaches the end of the column, a break-
+     bility, albeit at the cost of an extra number of iterations.                  through is said to have occurred. This is, in short, a Dynamic Column
+                                                                                   Breakthrough (DCB) experiment: it serves as a benchmark to test the
+     𝑞 𝑛+1
+       𝑖   ∶= 𝑅𝐿𝑋𝑞 𝑛+1
+                   𝑖   + (1 − 𝑅𝐿𝑋)𝑞𝑛𝑖                                  (33)        validity of adsorption models, and it forms the basis of the simulations
+     After a series of tests, it was determined that a relaxation factor of        performed in this work.
+     𝑅𝐿𝑋 = 15 provided a good balance between stability and speed.                     Before the complete set of validation simulations are presented, re-
+   • DEFINE_INIT macro (1 instance)                                                sults from a mesh independency study are ﬁrst discussed alongside
+     The name of this macro stands for ‘initialization’, and as its name           a performance analysis of our computational model. These preceding
+     implies, it is used to execute instructions at the very start of a job.       steps were crucial for determining a proper mesh resolution, time step,
+     This macro was thus mainly used to specify initial values for the             and number of iterations for the rest of the simulations. To this end,
+     LDF variables (namely, 𝑞 𝑖 ), as these are excluded from the standard         one experimental case was chosen from Wilkins’ work (Wilkins and Ra-
+     initialization routine in Fluent since our custom LDF model is not a          jendran, 2019), involving 351 ccm of a mixture of 50/50% mole N 2/He
+     standard Fluent equation. Given that the breakthrough experiments             entering the column at 0.96 bar and 23 ◦ C. These results are explored
+     are started with a clean and desorbed column, 𝑞 𝑖 is initialized as           next (Sections 3.1 and 3.2). The model validation results are presented
+     zero.                                                                         from Section 3.3 onwards.
+   • DEFINE_DIFFUSIVITY macro (1 instance)
+     The purpose of this macro is to re-deﬁne the mass diﬀusivity of               3.1. Mesh independency study
+     the ﬂuid phase at every cell in the domain. It that regard, it is
+     suited for the localized calculation of the molecular diﬀusion in line            In order to guarantee mesh independency, three meshes were pro-
+     with Equation (6), and the subsequent calculation of the dispersion           duced, each with a diﬀerent level of reﬁnement. For quick reference,
+     coeﬃcient in line with Equation (5). The resulting value is then              they have been labelled coarse, medium, and ﬁne. These meshes are
+     passed to the species conservation equations.                                 shown in Fig. 1(b,c,d), and the details on their sizes can be seen in Ta-
+   • DEFINE_EXECUTE_AT_END macro (1 instance)                                      ble 1.
+     As its name implies, this macro executes instructions at the end of               To estimate an appropriate value for the simulation time step for
+     a given time step. It was thus used to save the converged values              this study, the CFL number (Courant – Friedrichs – Lewy) was used.
+     of 𝑞 𝑡𝑖 in a User-Deﬁned Memory, so that it can later be used in the          According to the CFL number formulation, the maximum time step,
+     iterations from the next time step.                                           Δ𝑡 𝑚𝑎𝑥 is calculated according to (34):
+   • DEFINE_SOURCE macro (5 instances)
+                                                                                              Δ𝑧
+     This macro allows source or sink terms to be directly added to any            Δ𝑡 𝑚𝑎𝑥 =                                                                  (34)
+                                                                                              𝑣
+     of the standard Fluent transport equations. It was thus used to code
+     and add each of the source/sink terms discussed in Section 2.3.               where 𝑣 is the ﬂow velocity and Δ𝑧 is the grid size in the 𝑧 direction.
+     As opposed to the previous macros, ﬁve instances of the source                The results of this calculation are shown in Table 2. From this table, we
+     macro were needed: one for the continuity equation sink, two for              observe that the minimum value for Δ𝑡 𝑚𝑎𝑥 is around 0.02 s. However,
+     the species equation sinks (one for each adsorbent species), and              since an implicit formulation is used –both by the Fluent solver and
+     two for the energy equation source and sink terms (one instance               by our custom LDF solver–, the stability limit cap can be increased. As
+     for the source term, and another instance for the two sink terms).            seen later in Performance Study (Section 3.2), a value of 𝑑𝑡 = 0.03 𝑠
+                                                                                   provides a very accurate result, comparable to that of a very ﬁne time
+To further illustrate the usage of UDF macros in our model, the reader             step. Hence, the mesh independency study for all three cases (coarse,
+is referred to Table 7, where a summary description of the purpose and             medium and ﬁne) is performed using a time step of 0.03 seconds for
+output of each macro is given, alongside the relevant equations that               uniformity.
+were coded in each.                                                                    The results of the mesh independency study are shown in Fig. 2.
+                                                                                   They correspond to the molar composition breakthrough plot and tem-
+3. Model validation                                                                perature breakthrough plot. In this ﬁgure and all subsequent ones, the
+                                                                                   simulated breakthrough composition was determined by an area av-
+    Upon the complete implementation of the CFD model plus UDFs, we                erage at the column outlet plotted over time, whilst the temperature
+test its validity against published experimental results by Wilkins and            results were registered both at the edge and at the centre of the column
+Rajendran (2019). In their study, several single and multicomponent                at 𝑧 = 0.8𝐿, in accordance with the experiment measurements. As can
+Dynamic Column Breakthrough (DCB) experiments were performed.                      be seen in Fig. 2, the model is capable of reproducing the composition
+The adsorbent of choice was zeolite 13X. As mentioned before, these ex-            breakthrough with a good level of accuracy and independently of the
+periments were carried out on a lab-scale column of 0.064 m in length              mesh used, crossing through most of the experimental data points. As
+and 0.0282 m in diameter. Hence, due to the cylindrical conﬁguration               for the temperature breakthrough, even though the model’s curve does
+of the system, it was set up as a 2D axisymmetric case in Fluent. An               not exactly match all the data points, the breakthrough peak is resem-
+schematic representation of the column’s domain in Fluent is shown in              bled closely, and the same downward tendency is reproduced with an
+Fig. 1(a). As brieﬂy stated in Section 2.2, the ‘outﬂow’ zone was added            overall deviation of roughly 0.5 ◦ C, which can be deemed acceptable
+with the purpose of ensuring that the inﬂuence of the outﬂow bound-                considering some degree of error in the temperature measurements.
+ary conditions was not carried back to the actual column exit, so that                 It is worth mentioning that the results in Fig. 2 are typical in unidi-
+accuracy and stability can be guaranteed.                                          mensional adsorption modelling. However, the main beneﬁt of perform-
+    In concordance with the experimental procedures, all our simula-               ing a higher-dimensional simulation lies in the enhanced spatial insight.
+tions start with the column being fully cleansed or unsaturated (𝑞 𝑁2 =            This is demonstrated, for instance, in ﬁeld contours and radial plots,
+𝑞𝐶𝑂2 = 0) and ﬁlled completely with helium, which is assumed to be                 such as the ones shown in Fig. 3. The inlet composition was switched
+non-adsorbing and used as carrier gas. Then, at 𝑡 = 0, a gas mixture with          to 85/15 N 2/He to better appreciate the temperature gradients, since
+various compositions is fed into the column. As the adsorbing species in           this composition allows a higher temperature rise. In Fig. 3(a), two
+the mixture becomes adsorbed, the column starts to saturate gradually              snapshots of the temperature contour are shown at two diﬀerent times:
+
+                                                                               8
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                                      Chemical Engineering Science 285 (2024) 119606
+
+
+                                            Table 1
+                                            Characteristics and cell count for the three meshes used in the grid resolution study.
+
+                                               Mesh            Axial cell divisions            Radial cell   Number of      Total number
+                                                         Main (porous zone)       Outﬂow       divisions     cells (Main)   of cells
+
+                                               Coarse    32                       23           6             192            330
+                                               Medium    75                       40           18            1350           2070
+                                               Fine      150                      75           40            6000           9000
+
+
+
+Table 2
+CFL numbers for the three meshes used in the grid resolution study.
+
+  Mesh            Interstitial           Main section      Δ𝑥 [mm]            Δ𝑡𝑚𝑎𝑥 [s]
+                  Velocity [m/s]         Length [m]
+
+  Coarse          0.02335                0.064             2.0000             0.0857
+  Medium          0.02335                0.064             0.8533             0.0365
+  Fine            0.02335                0.064             0.4267             0.0183
+
+
+
+
+                                                                                                Fig. 3. 2D distribution of temperature for an inlet composition of N 2/He
+                                                                                                85/15%. (a) Temperature contours at 𝑡 = 24 𝑠 (top, before breakthrough) and
+                                                                                                𝑡 = 120 𝑠 (bottom, after breakthrough), ﬁne mesh. (b) Radial temperature pro-
+                                                                                                ﬁle across the column at 𝑧 = 0.0512 𝑚 (midline) and 𝑡 = 120 𝑠 for the diﬀerent
+                                                                                                mesh sizes.
+
+
+
+                                                                                                of a radial plot, as demonstrated in Fig. 3(b) at 𝑡 = 120𝑠. The decay in
+                                                                                                the temperature towards the wall is evident and consistent with what
+                                                                                                is expected due to heat transfer to the surroundings. Furthermore, the
+                                                                                                radial plots also allow us to compare the variance in the results due
+                                                                                                to the mesh resolution. As can be seen, the results from the medium
+                                                                                                and coarse meshes overlap precisely. A more rugged curve is obtained
+                                                                                                for the coarse mesh, due to the lower number of grid points. Never-
+Fig. 2. Mesh independency results for the 50/50% mole N 2 /He case. (a) Com-                    theless, despite the low grid-point density of the coarse case, its values
+position breakthrough plot. (b) Temperature breakthrough plot. Here, ‘Experi-                   are very close to those of the medium and ﬁne meshes, with a maxi-
+ment’ refers to the work by Wilkins (Wilkins and Rajendran, 2019).                              mum diﬀerence of only 0.016 K from the ﬁne mesh, which showcases
+                                                                                                the robustness and stability of the present CFD model even at low grid
+𝑡 = 24𝑠 and 𝑡 = 120𝑠. In the adsorption time reference, these two times                         resolution.
+correspond to when the hot front (due to the release of adsorption heat)                            Besides the quality of the simulation results, another important fac-
+is travelling around the middle of the column (24 s), and many seconds                          tor to consider is the computational performance of each mesh resolu-
+after breakthrough has occurred and the bed is gradually cooling down                           tion. Details on the speed in each case are provided in Table 3. As can
+(120 s). As can be seen in both contour plots, temperature gradients are                        be seen, in relation to the ﬁne mesh speed, the simulations with the
+present within the bed, both in 𝑧 and 𝑅, especially during the cooling                          medium mesh can be up to 2.3 times faster. The coarse mesh, in turn, is
+stage. The thermal gradient in 𝑅 can be better appreciated by means                             4 times faster. Given that the medium mesh provides virtually the same
+
+                                                                                           9
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                                 Chemical Engineering Science 285 (2024) 119606
+
+
+                                          Table 3
+                                          Performance results for each mesh.
+
+                                            Mesh      Total number     Amount of DCB data               Elapsed time,   Computation
+                                                      of cells         simulated, in seconds [ 𝑠𝐷𝐶𝐵 ]   real life [h]   Speed [𝑠𝐷𝐶𝐵 ∕ℎ]
+
+                                            Coarse    275              1500                             3.78            396.5
+                                            Medium    2070             1500                             6.63            226.1
+                                            Fine      9000             1500                             15.48           96.9
+
+
+
+                                                                                             quantifying their accuracy. The composition and breakthrough curves
+                                                                                             for all cases are shown in Fig. 4. These computations, as well as all
+                                                                                             the simulations presented in this work, were performed on an open-
+                                                                                             SUSE Leap 15.4 Linux computer using a single 13th Gen Intel® Core TM
+                                                                                             i9-13900KS processor (4.3 GHz) in serial mode.
+                                                                                                 As can be observed from Fig. 4, diﬀerent combinations of time step
+                                                                                             and iterations result in slightly shifted temperature and (especially)
+                                                                                             composition breakthrough curves. It can be seen that the accuracy of
+                                                                                             the 6 cases depends on the speciﬁc combination of iterations and time
+                                                                                             steps. For instance, Case (6), which has the ﬁnest time step compared to
+                                                                                             cases 1-4 (the reference case, 0, is not counted), is the most accurate of
+                                                                                             the six, as evidenced by it having the lowest RMSE and by how it over-
+                                                                                             laps Case (0) in the plots precisely. This may be attributed to the fact
+                                                                                             that it not only has an adequate time step, but is also allocated a rel-
+                                                                                             atively large number of iterations: 50. However, if fewer iterations are
+                                                                                             provided, then the accuracy is aﬀected. Let us take, for instance, Case
+                                                                                             (5) as an example. Despite having the same time step as the most accu-
+                                                                                             rate Case (6), Case (5) displays a lower accuracy (higher RMSE), even
+                                                                                             lower than Case (4), which has a larger time step. This is explained by
+                                                                                             the fact that fewer iterations were allocated for Case (5): 25, whilst Case
+                                                                                             (4) operates under 50 iterations, which not only compensate the larger
+                                                                                             time step, but makes this case twice as fast as Case (5). The accuracy
+                                                                                             of Case (3) –similarly to Case (5)– pales in comparison to its counter-
+                                                                                             part (Case 4, same time step), which is again due to the lower number
+                                                                                             of iterations. Finally, the large time step cases, (1) and (2), are the least
+                                                                                             accurate of all. However, it is worth mentioning that by allocating up
+                                                                                             to 125 iterations, Case (2) achieves an accuracy comparable with that
+                                                                                             of Case (5) (similar RMSE), whilst being more than 7 times faster.
+                                                                                                 The importance of the number of iterations can be explained by the
+                                                                                             use of a low relaxation value for solving the LDF equation: even though
+                                                                                             it increases the stability of the solver, it requires more iterations per
+                                                                                             time step to achieve a low enough residual.
+                                                                                                 In summary, this study allows us to appreciate that a good bal-
+                                                                                             ance between computational speed and accuracy can be achieved by
+                                                                                             choosing a suﬃciently low time step whilst allowing a suﬃciently large
+                                                                                             numbers of iterations. If a larger time step is chosen, it must be accom-
+Fig. 4. Results of the time step and iteration number study on the 50/50% mole               panied by an increase in the number of iterations as well.
+N2 /He case. (a) Molar fraction breakthrough plot. (b) Radial average tempera-
+                                                                                                 Case (6), with 𝑡 = 0.03 𝑠 and 50 iterations per time step, provided the
+ture breakthrough plot (𝑧 = 0.8 𝐿). Time step [s] and iterations: (1) 0.5, 50; (2)
+                                                                                             highest accuracy, which is conﬁrmed both by its minimal RMSE and by
+0.5, 125; (3) 0.1, 25; (4) 0.1, 50; (5) 0.03, 25; (6) 0.03, 50; (0, reference) 0.001,
+50.
+                                                                                             how it visually overlaps Case (0). Hence, these two values for the itera-
+                                                                                             tions and time step were chosen for all of the simulations that follow in
+accuracy as the ﬁne mesh at a signiﬁcantly higher speed, it can thus be                      this work. Finally, it must be acknowledged that, despite the slight vari-
+deemed the best performing mesh.                                                             ations, almost all cases (excepting Case 3) are still in close agreement
+                                                                                             with one another, especially regarding the temperature breakthrough,
+3.2. Performance study                                                                       which gives us the conﬁdence of –if needed– increasing the time step
+                                                                                             for very long simulations for the sake of speed, whilst still expecting
+    Next, in order to gain further insights into how computational speed                     reasonably good results.
+correlates to accuracy, a performance study was carried out focusing on
+time step and iterations. For this study, various combinations of time                       3.3. Single-component adsorption of N 2
+step and maximum iterations-per-time-step (henceforth, simply ‘itera-
+tions’) were considered, resulting in 6 cases. An additional Case (0)                            Based on the learnings from the mesh independency and perfor-
+with 50 iterations and a time step of 𝑡 = 0.001 𝑠 was also simulated, and                    mance study, it was decided that a good combination of accuracy and
+is considered our reference for ‘true’ accuracy given its very ﬁne time                      computational cost is provided by the medium mesh and a time step
+step and relatively large number of iterations. The medium mesh reso-                        of 0.03 s, with up to 50 iterations to aid convergence. With these char-
+lution was used. Each case and its relevant computational statistics are                     acteristics, three diﬀerent experiments were reproduced for the follow-
+described in Table 4, where the Root Mean Square Error (RMSE) was                            ing inlet molar compositions of N 2 /He: 85/15%, 50/50% and 25/75%
+calculated for each case with respect to the reference case as a means of                    mole. The ﬂow rates are 350, 351, and 350 ccm respectively, and the
+
+                                                                                        10
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                                              Chemical Engineering Science 285 (2024) 119606
+
+
+
+
+Fig. 5. N2 composition and temperature breakthrough curves predicted numerically for diﬀerent N 2 /He inﬂow gas compositions. Here, the lines represent the CFD
+results and the symbols refer to experimental data by Wilkins (Wilkins and Rajendran, 2019), 1D MATLAB refers to data by Wilkins (Wilkins and Rajendran, 2019).
+(a) Composition breakthrough of all cases. (b) Temperature breakthrough, 85/15% mole N 2 /He case. (c) Temperature breakthrough, 50/50% mole N 2 /He case. (d)
+Temperature breakthrough, 25/75% mole N 2 /He case.
+
+
+
+                              Table 4
+                              Performance results for each case at diﬀerent time steps and iterations.
+
+                                 Case       𝑑𝑡 [s]     Iterations         Amount of DCB data              Elapsed time,     Computation           RMSE
+                                                       per time step      simulated, in seconds [𝑠𝐷𝐶𝐵 ]   real life [min]   Speed [𝑠𝐷𝐶𝐵 ∕ℎ]
+
+                                 (1)        0.5        50                 500                             16                1875.0                1.161 × 10−2
+                                 (2)        0.5        125                500                             17                1764.7                6.038 × 10−3
+                                 (3)        0.1        25                 500                             37                810.8                 2.440 × 10 −2
+                                 (4)        0.1        50                 500                             58                517.2                 3.533 × 10 −3
+                                 (5)        0.03       25                 500                             125               240.0                 4.319 × 10 −3
+                                 (6)        0.03       50                 500                             158               189.9                 4.074 × 10 −4
+                                 (0)        0.001      50                 500                             2801              10.7                  Reference
+
+
+
+
+                             Table 5
+                             Isotherm parameters used for adsorption equilibrium modelling, for both CO 2 and N 2 .
+                               Gas      𝑖      Model         𝑞 𝑠𝑎𝑡
+                                                               𝑏,𝑖
+                                                                   [mol/kg]     𝑏0 [m 3 /mol]   Δ𝑈𝑏 [J/mol]    𝑞 𝑠𝑎𝑡
+                                                                                                                 𝑑,𝑖
+                                                                                                                     [mol/kg]   𝑑0 [m3 /mol]      Δ𝑈𝑑 [J/mol]
+                               CO 2     1      DSL           3.257              2.09 × 10−7     -42670         3.240            1.06 × 10−7        -32210
+                               N2       2      EES           3.257              2.13 × 10−6     -16250         3.240            2.13 × 10−6        -16250
+                               N2       2      UES           3.257              7.96 × 10−7     -18860         3.240            6.94 × 10−7        -17760
+
+
+
+                                                                                                 11
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                                                   Chemical Engineering Science 285 (2024) 119606
+
+
+                                           Table 6
+                                           Parameters used for CFD-based adsorption modelling.
+
+                                             Parameter                                              Value / Method                     Unit
+
+                                             Column characteristics
+                                               Column length, 𝐿                                     0.064                              m
+                                               Column inner radius, 𝑅𝑖𝑛                             0.0141                             m
+                                               Column outer radius, 𝑅𝑜𝑢𝑡                            0.0159                             m
+                                               Artiﬁcial outﬂow zone length                         0.046                              m
+                                               Mean particle diameter, 𝑑𝑝                           0.001                              m
+                                               Bed porosity, 𝜀                                      0.4                                Dimensionless
+                                               Particle porosity, 𝜀𝑝                                0.35                               Dimensionless
+                                               Particle tortuosity, 𝜏                               3                                  Dimensionless
+
+                                             Properties
+                                               Column wall density, 𝜌𝑤                              8030                               kg/m3
+                                               Column wall speciﬁc heat capacity, 𝑐𝑝,𝑤              502.48                             J/kg⋅K
+                                               Column wall thermal conductivity, 𝜅 𝑤                16.27                              W/m⋅K
+                                               Adsorbent particle density, 𝜌𝑝                       1050                               kg/m3
+                                               Adsorbent particle speciﬁc heat capacity, 𝑐𝑝,𝑝       856                                J/kg⋅K
+                                               Adsorbent particle thermal conductivity, 𝜅 𝑝         0.3                                W/m⋅K
+                                               Fluid phase (gas mixture) density, 𝜌𝑔                incompressible ideal gas           kg/m3
+                                               Fluid phase speciﬁc heat capacity, 𝑐𝑝,𝑔              mass-weighted mixing law           J/kg⋅K
+                                               Fluid phase thermal conductivity, 𝜅𝑔                 mass-weighted mixing law           W/m⋅K
+                                               Fluid phase viscosity, 𝜇 𝑔                           mass-weighted mixing law           Pa⋅s
+                                               Pure gas speciﬁc heat capacity                       polynomial function of T           J/kg⋅K
+                                               Pure gas thermal conductivity                        polynomial function of T           W/m ⋅K
+                                               Pure gas viscosity                                   kinetic theory                     Pa⋅s
+                                               Adsorbed phase speciﬁc heat capacity, 𝑐𝑝,𝑎           Equation (9)                       J/kg⋅K
+                                               Eﬀective thermal conductivity, 𝜅𝑒𝑓 𝑓                 Equation (8)                       W/m⋅K
+                                               Heat transfer coeﬃcient to exterior, ℎ𝑜𝑢𝑡            10                                 W/m 2 ⋅K
+                                               Molecular diﬀusivity, 𝐷 𝑚                            Fuller correlation                 m 2 /s
+                                               Dispersion coeﬃcient, 𝐷𝐿                             Equation (5)                       m 2 /s
+
+                                             Constants
+                                               Universal gas constant, 𝑅                            8.3144626                          J/mol⋅K
+                                               Molar mass of CO2 , 𝑀𝐶𝑂 2                            0.04400995                         kg/mol
+                                               Molar mass of N2 , 𝑀 𝑁2                              0.0280134                          kg/mol
+                                               Molar mass of He, 𝑀𝐻𝑒                                0.004002602                        kg/mol
+                                               Diﬀusion volume of CO 2 , (Σ𝜈 )𝐶𝑂 2                  26.9                               -
+                                               Diﬀusion volume of N2 , (Σ𝜈 )𝑁2                      17.9                               -
+                                               Diﬀusion volume of He, (Σ𝜈 )𝐻𝑒                       2.88                               -
+
+
+
+
+Table 7
+Description of all UDF macros employed in the CFD adsorption model.
+
+  UDF Macro                          Main purpose                                                     Output                                                                 Equation(s)
+
+  DEFINE_INIT                        Used for initializing the values of the scalar 𝑞 𝑖 from the       The initial value of 𝑞 𝑖 is set to zero at the beginning of the       (11)
+                                     LDF equation.                                                     simulation (no adsorbed species).
+
+  DEFINE_ADJUST                      Used for specifying isotherm parameters & auxiliary               The values of 𝑐 𝑖 , 𝑞 𝑖 , 𝑞 ∗𝑖 , 𝑘 𝑖 and 𝑑𝑞𝑖 ∕𝑑𝑡 are calculated and   (11), (12), (13),
+                                     adsorption equations, and for implementing a numerical            stored in User-Deﬁned Memories (UDMIs), ready to be                   (14), (15), (16),
+                                     solver for the LDF equation.                                      passed to the Fluent’s solver where needed.                           (17), (31), (32), (33)
+
+  DEFINE_EXECUTE_AT_END              Used for storing the deﬁnitive values of 𝑞 𝑖 and 𝑑𝑞 𝑖 ∕𝑑𝑡 at      The values of 𝑞 𝑖 and 𝑑𝑞 𝑖 ∕𝑑𝑡 are stored in UDMIs to be              (11)
+                                     the end of each time step.                                        used in the next set of iterations within the numerical
+                                                                                                       LDF solver.
+
+  DEFINE_SOURCE (Continuity)         Used for implementing the rate of total mass                      The value of the additional term is returned and added to             (1)
+                                     disappearance due to adsorption in the continuity                 Fluent’s continuity equation as a source term.
+                                     equation.
+
+  DEFINE_SOURCE (Energy)             Used for implementing the heat generation & thermal               The value of the additional terms is returned and added               (7), (9), (10)
+                                     mass contribution terms in the energy equation.                   to Fluent’s energy equation as source terms.
+
+  DEFINE_SOURCE (Species)            Used for implementing the rate of mass disappearance              The value of the additional term is returned and added to             (4)
+                                     due to adsorption of species 𝑖 in the species conservation        each of Fluent’s species equations as a source term.
+                                     equation.
+
+  DEFINE_DIFFUSIVITY                 Used for calculating the molecular diﬀusivity and                 The value of molecular diﬀusivity is calculated, stored in            (5), (6)
+                                     dispersion coeﬃcient.                                             a UDMI, and passed to the custom LDF solver to calculate
+                                                                                                       𝑘 𝑖 . The value of the dispersion coeﬃcient is calculated
+                                                                                                       and returned to Fluent, overriding the default diﬀusivity
+                                                                                                       value.
+
+
+
+                                                                                               12
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                     Chemical Engineering Science 285 (2024) 119606
+
+
+
+
+Fig. 6. CO 2 composition and temperature breakthrough curves predicted for diﬀerent CO 2 /He inﬂow gas compositions. Here, the lines represent the CFD results
+and the symbols refer to experimental data by Wilkins (Wilkins and Rajendran, 2019), 1D MATLAB refers to data by Wilkins (Wilkins and Rajendran, 2019).
+(a) Molar fraction breakthrough of all 3 compositions. (b) Temperature breakthrough, 100/0% mole CO 2 /He case. (c) Temperature breakthrough, 50/50% mole
+CO2 /He case. (d) Temperature breakthrough, 15/85% mole CO 2 /He case.
+
+
+operating temperatures and pressures for all are 0.96 bar and 23 ◦ C               temperature tail is slightly higher than in the experiments, but reaches
+(excepting 25/75%, where T = 22.7 ◦ C). The N 2 isotherm is modelled               a peak that is only less than 0.5 ◦ C away from the experiments. Finally,
+using the Dual Site Langmuir equation with parameters ﬁtted via the                the 25/75% case ranks third in temperature breakthrough accuracy,
+Equal Energy Sites procedure (DSL-EES), as it has reported the best pre-           since its tail is about 0.5 ◦ C away from the data points. Still, its break-
+dictions for single-component N 2 breakthroughs in the work by Wilkins             through peak is very similar to that of the experiment. Comparisons
+(Wilkins and Rajendran, 2019) (see the parameters in Table 5). The re-             between 1D model results and 2D CFD results show good agreement,
+sult of the three cases is shown in Fig. 5. For comparison we show 1D              however, it can be seen that CFD results are closer to experimental
+results from the work by Wilkins (Wilkins and Rajendran, 2019).                    data. Additionally, it is clearly seen that the radial temperature gradi-
+    As can be seen, the CFD-based results agree well with the experi-              ent exists in the bed, see Fig. 5.
+mental points in all three cases. From the composition breakthrough                   In this way, it was demonstrated that this CFD-based model is ca-
+curves, we observe that the model is able to reproduce the breakthrough            pable of reproducing the adsorption column dynamics of a N 2 /He pilot
+timing, the front shape, as well as the ﬁnal composition for each case             experiment successfully. It must be noted that the exact same frame-
+with reliable accuracy. The 50/50% case exhibits almost perfect accu-              work was used for all three cases, where the only changing parameters
+racy, followed by the 25/75% case and, lastly, the 85/15% case, whose              were the feed composition, ﬂow rate, and ambient conditions of pres-
+agreement can still be deemed reasonably good. As for the tempera-                 sure and temperature.
+ture breakthrough, on the contrary, the 85/15% case provides the best
+match of the three. Granted, the peak is not as tall as in the experiment          3.4. Single-component adsorption of CO 2
+(which, again, could be attributed to measurement uncertainty); how-
+ever, it is only diﬀerent by 1 ◦ C, and the remaining portion of the curve             To further assess the capabilities of the model, a whole diﬀerent set
+corresponding to the temperature decay matches well the experimen-                 of simulations was performed involving CO 2 . Three inlet compositions
+tal data points. The 50/50% case follows in terms of accuracy, as the              were tested: 100% CO 2 , 50/50% CO 2/He, and 15/85% CO 2 /He. These
+
+                                                                              13
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                         Chemical Engineering Science 285 (2024) 119606
+
+
+
+
+Fig. 7. 2D contours of CO 2 molar fraction and temperature across the bed for the 15/85% CO 2/He case at diﬀerent times. (a) and (d) 𝑡 = 240𝑠. (b) and (e) 𝑡 = 720𝑠.
+(c) and (f) 𝑡 = 1200𝑠.
+
+
+which were reported in the experimental work by Wilkins (Wilkins and                  the CO 2 cases display a much higher temperature rise compared to N 2
+Rajendran, 2019). The ﬂow rates are 350, 315, and 700 ccm, respec-                    due to its higher equilibrium loading and isosteric adsorption heat. Al-
+tively, and the operating temperature and pressure are set at around 22               though our model overpredicts the peak breakthrough temperature, the
+0
+  C and 1 bar. Since the CFD framework was coded for modelling the                    tendencies still match reasonably well, including the timing. It can be
+binary adsorption of N 2 and CO 2 from the start of this research, the ad-            seen that the temperature diﬀerence between the axis and the side wall
+sorption parameters are already included in the model, and correspond                 is about 30 K for the 100/0% case, 18 K for the 50/50% case, and
+to the Dual Site Langmuir isotherm for CO 2 (refer to the Table 5). The               about 12 K for the 15/85% case. As the front progresses, this tempera-
+only necessary changes in the model for this set pertain only to the                  ture diﬀerence decreases. Finally, it should be noted that in spite of a
+inlet feed, experimental conditions, and the diﬀusivity coeﬃcient for-                good agreement between 1D model results and 2D CFD, see Fig. 6a and
+mulation, which must now be calculated between helium (carrier) and                   Fig. 6c, 2D CFD model is able to predict the radial temperature gradi-
+CO2 (adsorbate), rather than He and N 2.                                              ent in the bed during adsorption processes. This eﬀect is attributed to
+    The breakthrough plots are shown in Fig. 6. For comparisons, we                   the no-slip side walls and to the radial heat transfer between the bed
+show 1D modelling data from the work by Wilkins (Wilkins and Rajen-                   and ambient air.
+dran, 2019). Note that the model features good agreement with all three                   Finally, Fig. 7 shows the two-dimensional contours for the temper-
+diﬀerent experiments regarding the composition breakthrough curve.                    ature and CO 2 composition for the 15/85% CO 2 /He case. Notably, the
+Unlike the N 2 breakthrough, the CO 2 curve features a sharp front at the             composition contour does feature important gradients both before and
+start of the breakthrough, which later becomes smeared as the adsor-                  after the breakthrough, as the front does not resemble a ﬂat plug-ﬂow-
+bent saturates. The same tendency is also observed for the 50/50 and                  like proﬁle. This result is of importance, as it shows that, in addition
+15/85 cases, although to diﬀerent degrees. This behaviour is character-               to the clear existence of temperature gradients, composition gradients
+istic of CO 2 due to its highly non-linear Type I isotherm (as opposed                in the radial direction are also possible, even in a lab-scale system. The
+to N 2 , whose isotherm is fairly linear). The breakthrough curve is ex-              temperature contour displays sizeable thermal gradients across the bed
+pected to mirror the shape of the isotherm, and our model is able to                  at all the times selected. These gradients are not only present during
+reproduce it well. With regard to the temperature breakthrough, all                   the adsorption regime, but well beyond the breakthrough too (cooling
+
+                                                                                 14
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                         Chemical Engineering Science 285 (2024) 119606
+
+
+
+
+Fig. 8. Composition and temperature breakthrough curves for competitive adsorption between CO 2 and N 2 with He as carrier. Inlet composition: 75/25% CO 2/N 2 .
+The lines represent CFD results, and ‘Experiment’ refers to the work by Wilkins (Wilkins and Rajendran, 2019). (a) CO 2 composition breakthrough. (b) N 2 composition
+breakthrough. (c) Temperature breakthrough.
+
+
+regime). The radial gradients for this case are about 12 0 C, which is a              by the isotherms of each component, where an appropriate isotherm
+signiﬁcant quantity that our model is able to predict.                                model and ﬁtting procedure must be used to ensure a proper estima-
+                                                                                      tion of the experimental data. Wilkins & Rajendran determined that a
+3.5. Competitive adsorption of CO 2 and N2                                            Dual Site Langmuir (DSL) model with Unequal Energy Sites (UES) ﬁt-
+                                                                                      ting procedure was the most appropriate for describing the equilibrium
+    The two previous sections explored single-component adsorption,                   of competitive CO 2 /N 2 experiments, since actual experimental binary
+where there is only one adsorbing species (either CO 2 or N 2 ) accom-                loadings are considered to ﬁt the model (Wilkins and Rajendran, 2019).
+panied by a carrier, which is assumed to be non-adsorbing (He). In the                The parameters of the DSL-UES isotherm are included in Table 5, and
+following section, an alternate scenario will be explored, wherein both               are used in this work for binary adsorption simulations.
+adsorbing species coexist within the column and undergo adsorption                        One competitive adsorption experiment from the work of Wilkins
+simultaneously. This is known as competitive or binary adsorption.                    (Wilkins and Rajendran, 2019) was reproduced using our CFD adsorp-
+    The equilibrium and kinetics of competitive adsorption for each                   tion model. A gas mixture containing 75/25% CO 2 /N2 is fed into the
+component are diﬀerent, which determines their corresponding loading                  column at 202 ccm. The bed is initially saturated with helium. The oper-
+values and breakthrough times. In the case of CO 2 and N 2, the former                ating pressure and temperature are 21.6 ◦ C and 0.98 bar. The resulting
+saturates the bed to a considerably higher degree compared to the latter,             breakthrough curves are shown in Fig. 8.
+which results in an earlier breakthrough for N 2 (lighter product), whilst                As can be seen, the model reproduces the experiment with good
+CO2 (heavier product) emerges afterwards. As a result, there are two                  agreement for all the breakthrough curves. The breakthrough curve of
+separate breakthroughs for each component. This is also reﬂected in the               the heavier product, CO 2 , is estimated well in the same fashion as in
+behaviour of the temperature breakthrough with the existence of two                   the single-component CO 2 experiments. As is evidenced by Fig. 8(a),
+temperature peaks: the ﬁrst corresponding to N 2 , and the second corre-              the predicted curve displays the same shape as in the experiments,
+sponding to the heavier CO 2 . This competitive behaviour is described                which –as described before– reﬂects the non-linearity of the type I CO 2
+
+                                                                                 15
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                         Chemical Engineering Science 285 (2024) 119606
+
+
+                                                                                           As for the temperature breakthrough shown in Fig. 8(c), two peaks
+                                                                                       are observed, which, as mentioned before, correspond to the break-
+                                                                                       through times of each component. The ﬁrst peak, which happens at
+                                                                                       around 200 s, corresponds to the heat released by N 2 adsorption. Given
+                                                                                       that N 2 possesses a relatively low isosteric heat and saturation capac-
+                                                                                       ity compared to CO 2, a very short peak results in comparison to the one
+                                                                                       from CO2 , at around 800 s. The model is able to reproduce both peaks,
+                                                                                       with particularly high accuracy for the notorious CO 2 peak, where not
+                                                                                       only the magnitude of the heat rise is predicted well, but also the tem-
+                                                                                       perature values during the cooling stage after the breakthrough.
+
+                                                                                       4. Study of 2D spatial eﬀects: inlet injection
+
+                                                                                           It is now time to deepen the exploration of the beneﬁts of higher-
+                                                                                       dimensional modelling. Unlike uni-dimensional models, we are now
+                                                                                       able to add geometrical complexity to our CFD domain in order to attain
+                                                                                       a more accurate resemblance of a real adsorption column. The results
+                                                                                       presented so far correspond to a rectangular domain, where the intake
+                                                                                       section is of the same width as the rest of the column. However, in real
+                                                                                       systems, the feed is injected through a pipe of smaller radius. This injec-
+                                                                                       tion creates a jet that inﬂuences the development of the ﬂow and fronts
+                                                                                       in the entrance section and beyond, much to the contrary of a rectan-
+                                                                                       gular or 1D geometry, where the fronts remain virtually ﬂat. Thus, the
+                                                                                       next results aim to showcase the capabilities of a 2D model for explor-
+                                                                                       ing the spatial eﬀects of a jet injection on adsorption.
+                                                                                           These next simulations were based on the same experimental setup
+                                                                                       as described previously. The sole diﬀerence lies in the inclusion of a
+                                                                                       small injection pipe at the inlet, which is concentric with the rest of
+                                                                                       the column. The new model domain is shown in Fig. 1(e). Based on our
+                                                                                       mesh study in Section 3.1, it is determined that a medium mesh best
+                                                                                       combines performance and accuracy. Therefore, the aforementioned do-
+                                                                                       main is meshed with a similar resolution, resulting in 2.7 thousand cells.
+                                                                                       The inlet velocity was adjusted to the new inlet pipe maintaining the
+                                                                                       same ﬂow rate. The inlet pipe is considered to be hollow (no packing,
+                                                                                       unobstructed ﬂow), and no adsorption takes place there. All other set-
+                                                                                       tings in the Fluent case ﬁle were kept the same. Apart from specifying
+                                                                                       the new ID of the porous zone, no changes were made to the adsorption
+                                                                                       UDF.
+                                                                                           In a similar fashion as before, this new model was used to sim-
+                                                                                       ulate dynamic column breakthrough experiments for the same three
+                                                                                       inlet N 2 /He compositions explored in Section 3.3. As such, we can com-
+                                                                                       pare the breakthrough curves with and without injection. This is shown
+                                                                                       in Figs. 9(a), 9(b), and 9(c), which correspond to compositions 85/15
+                                                                                       N 2/He, 50/50 N 2 /He, and 25/75 N 2 /He respectively.
+                                                                                           As can be observed, in all three cases, the inclusion of the injector
+                                                                                       produces a small shift in the breakthrough curve. The time delay with
+                                                                                       respect to the no-injector case is approximately 0.5 s for the 85/15%
+                                                                                       case, 0.7 s for the 50/50% case, and 0.9 s for the 25/75% case. De-
+                                                                                       spite this delay, the inclusion of the inlet injection does not signiﬁcantly
+                                                                                       aﬀect the quality of agreement of each case for these lab-scale simula-
+Fig. 9. Comparison of the composition breakthrough curves between the cases            tions, since all curves are still very close to the experimental values and
+with and without an injector, for the three N 2/He compositions. (a) 85/15             follow the same trend and shape as their ﬂat-entrance counterparts.
+N2 /He case. (b) 50/50 N 2 /He case. (c) 25/75 N 2 /He case. Here, ‘Experiment’        Regarding the temperature breakthrough, the eﬀects of the jet can be
+refers to the work by Wilkins (Wilkins and Rajendran, 2019).
+                                                                                       deemed negligible for these cases, since only an increase of 0.01 K is ob-
+                                                                                       served near the end of the cooling stage. Thus, the corresponding plots
+isotherm. Regarding the N 2 composition breakthrough, one feature that                 have not been included.
+the model was able to reproduce accurately was the so-called ‘roll-up’                     The small delay with respect to the ﬂat-proﬁle cases can be at-
+eﬀect, which refers to the period of time in which the outlet molar ﬂow                tributed to the conjoint eﬀect of the next two factors: First, given that
+of N2 is greater than its incoming ﬂow rate. This can be observed in                   the inlet pipe adds extra length to the domain, the ﬂow must now
+Fig. 8(b), where the molar composition of N 2 hits 100% from 200 to                    travel a longer distance. Considering the adjusted new entrance ve-
+800 s, period during which N 2 is eﬀectively separated from CO 2 due to                locity through the small inlet pipe (0.2342 m/s) and the additional
+the relative diﬀerences in their adsorption behaviour. When this period                distance that the ﬂow must travel (0.0141 m), the delay can be cal-
+is over, CO 2 ﬁnally starts to emerge from the column outlet upon hav-                 culated: approximately 0.06 s, for all cases. This means that the longer
+ing largely saturated the bed. This is how competitiveness is exploited                travel distance is not the primary source of the delay. Instead, a second
+during this separation operation, and our model is able to capture it                  factor provides a more plausible explanation: the entrance eﬀects of the
+well.                                                                                  injection jet. As explained next, these cause the upper section of the en-
+
+                                                                                  16
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                        Chemical Engineering Science 285 (2024) 119606
+
+
+
+
+Fig. 10. 2D N2 molar fraction and temperature contours for diﬀerent compositions near the start of a DCB experiment (𝑡 = 7.5𝑠) for the injection case. (a) and (d)
+85/15% mole N2 /He. (b) and (e) 50/50% mole N 2 /He. (c) and (f) 25/75% mole N 2 /He.
+
+
+trance to be used ineﬀectively (𝑟 → 𝑅 𝑊 ), which increases the time that             long-lasting. In Fig. 10(d-f) we can appreciate how the jet aﬀects the
+it takes for the bed to saturate. In order to gain insight on this, we ex-           initial stages of the temperature proﬁle in a similar fashion as in the
+plore the 2D proﬁles and radial concentration proﬁles, which allow us                composition proﬁle, for all compositions. However, unlike the com-
+to observe the distribution of matter and heat around the entrance and               position contours, at 𝑡 = 24𝑠 the temperature contour still carries the
+the evolution of fronts in the remaining length.                                     entrance irregularity due to the jet injection, as is seen in Fig. 11(d-f).
+    First, we look at the distribution of N 2 in the bed at two diﬀerent             For reference, compare Fig. 11(d) with Fig. 3(a) at 𝑡 = 24𝑠 . There, it is
+times: 7.5 seconds (Fig. 10) and 24 seconds (Fig. 11). At 7.5 seconds,               clear that, although the same experiment is reproduced, the presence of
+the species fronts are in the early stages of their development. The inﬂu-           an injector accounts for a signiﬁcant visual diﬀerence, manifested later
+ence of the injection pipe is evident, as nitrogen ﬁrst begins saturating            as an alteration to the breakthrough curves –which could be ampliﬁed
+the bed around the vicinity of the jet. In the ﬂat-proﬁle case (no jet),             when dealing with large and intricate industrial column designs. These
+the whole region is saturated uniformly, whereas in this new case, the               results demonstrate that the capability of a higher-dimension model for
+corner furthest away from the jet has yet to be saturated. This can also             implementing realistic geometrical features (such as an injection pipe)
+be observed by examining the radial concentration proﬁles in Fig. 12,                is of signiﬁcant importance when it comes to capturing the eﬀects of
+where it is evident that the jet induces a higher concentration near the             said features in an adsorption process, as it helps us attain a more de-
+axis and a lower one around the walls. This explains why the break-                  tailed insight into what is actually occurring inside the extents of the
+through curve shifts to the right, as it takes slightly more time for the            domain.
+nitrogen to spread across the low-concentration regions and even out
+the concentration front. It must be noted that the entrance eﬀects are               5. Conclusions
+mostly prevalent during the ﬁrst half of the column. Past that point, the
+fronts ﬁnish their development and adopt a ﬂat, uniform shape again.                    As outcome of this research work, a multidimensional CFD-based
+This can be seen in Fig. 11(a-c), at 24 seconds.                                     framework was developed for the 2D and 3D modelling of adsorption
+    Nevertheless, as opposed to the composition contour, the eﬀects of               column dynamics. The mathematics of the adsorption model were suc-
+the injection pipe on the temperature contour can be signiﬁcantly more               cessfully implemented into ANSYS Fluent v19.2 by modifying each of
+
+                                                                                17
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                      Chemical Engineering Science 285 (2024) 119606
+
+
+
+
+Fig. 11. 2D N 2 molar fraction and temperature contours for diﬀerent compositions around halfway through a DCB experiment (𝑡 = 24𝑠) for the injection case. (a)
+and (d) 85/15% mole N 2 /He. (b) and (e) 50/50% mole N 2 /He. (c) and (f) 25/75% mole N 2 /He.
+
+
+
+the existing transport phenomena equations in order to quantify the                 by researchers to carry out numerical simulations of adsorption columns
+material and thermal eﬀects of adsorption. Fluent’s UDF functionality               of diﬀerent geometries and sizes, such as horizontal ﬁxed beds with ver-
+played a vital role in the implementation of the custom mathemat-                   tical injection of gas, where 1D models cannot be used.
+ics for adsorption, as it allowed us to code each required transport
+term as source/sink terms, and to reformulate and implement certain                 CRediT authorship contribution statement
+transport properties, such as diﬀusivity and axial dispersion. Further-
+more, a numerical solver for the Linear Driving Force (LDF) diﬀerential                 Henry Steven Fabian Ramos: Data curation, Formal analysis, In-
+equation was also coded using UDFs, resulting in a custom 2nd-order                 vestigation, Software, Validation, Visualization, Writing – original draft.
+implicit discretization scheme that favours high-speed runs, making                 Chinmay Baliga: Data curation, Investigation, Software, Validation,
+our model solvable within a reasonable time frame. The model was                    Visualization, Writing – original draft. Arvind Rajendran: Conceptu-
+validated against various Dynamic Column Breakthrough experiments                   alization, Funding acquisition, Supervision, Writing – review & editing.
+involving both single-component and competitive adsorption of nitro-                Petr A. Nikrityuk: Funding acquisition, Project administration, Super-
+gen and carbon dioxide on zeolite 13X, and was able to reproduce                    vision, Writing – review & editing, Formal analysis, Methodology.
+the breakthrough curves well in all cases. The mesh independency and
+time-step/iterations studies allowed us not only to determine the right             Declaration of competing interest
+balance between speed and accuracy, but also to demonstrate the ro-
+bustness of our model, as it was able to produce reasonably good results                The authors certify that they have NO aﬃliations with or involve-
+even with the most ambitious conﬁgurations (high time steps, coarser                ment in any organization or entity with any ﬁnancial interest (such
+mesh). The simulation results of the cases involving CO 2 in their inﬂow            as honorarium; educational grants; participation in speakers’ bureaus;
+gas compositions showed the existence of signiﬁcant radial temperature              membership, employment, consultancies, stock ownership, or other eq-
+gradients with values as high as 10 3 K/m around the heat propagation               uity interest; and expert testimony or patent-licensing arrangements),
+front. Finally, this model and the subroutines implemented can be used              or non-ﬁnancial interest (such as personal or professional relationships,
+
+                                                                               18
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                                             Chemical Engineering Science 285 (2024) 119606
+
+
+                                                                                                     Sircar, S., Golden, T.C., 2000. Puriﬁcation of hydrogen by pressure swing adsorption. Sep.
+                                                                                                         Sci. Technol. 35 (5), 667–687.
+                                                                                                     Majlan, E.H., Daud, W.R.W., Iyuke, S.E., Mohamad, A.B., Kadhum, A.A.H., Mohammad,
+                                                                                                         A.W., Takriﬀ, M.S., Bahaman, N., 2009. Hydrogen puriﬁcation using compact pres-
+                                                                                                         sure swing adsorption system for fuel cell. Int. J. Hydrog. Energy 34 (6), 2771–2777.
+                                                                                                     Delgado, J.A., Águeda, V.I., Uguina, M.A., Sotelo, J.L., Brea, P., Grande, C.A., 2014. Ad-
+                                                                                                         sorption and diﬀusion of H 2 , CO, CH 4 , and CO 2 in BPL activated carbon and 13X
+                                                                                                         zeolite: evaluation of performance in pressure swing adsorption hydrogen puriﬁca-
+                                                                                                         tion by simulation. Ind. Eng. Chem. Res. 53 (40), 15414–15426.
+                                                                                                     Jahromi, P.E., Fatemi, S., Vatani, A., Ritter, J.A., Ebner, A.D., 2018a. Puriﬁcation of
+                                                                                                         helium from a cryogenic natural gas nitrogen rejection unit by pressure swing ad-
+                                                                                                         sorption. Sep. Purif. Technol. 193, 91–102.
+                                                                                                     Jahromi, P.E., Fatemi, S., Vatani, A., 2018b. Eﬀective design of a vacuum pressure swing
+                                                                                                         adsorption process to recover dilute helium from a natural gas source in a methane-
+                                                                                                         rich mixture with nitrogen. Ind. Eng. Chem. Res. 57 (38), 12895–12908.
+                                                                                                     Gales, L., Mendes, A., Costa, C., 2003. Recovery of acetone, ethyl acetate and ethanol by
+                                                                                                         thermal pressure swing adsorption. Chem. Eng. Sci. 58 (23–24), 5279–5289.
+                                                                                                     Krishnamurthy, A., Thakkar, H., Rownaghi, A.A., Rezaei, F., 2018. Adsorptive removal
+                                                                                                         of formaldehyde from air using mixed-metal oxides. Ind. Eng. Chem. Res. 57 (38),
+                                                                                                         12916–12925.
+                                                                                                     Roegiers, J., Denys, S., 2019. CFD-modelling of activated carbon ﬁbers for indoor air
+                                                                                                         puriﬁcation. Chem. Eng. J. 365, 80–87.
+                                                                                                     Stern, N., 2008. The economics of climate change. Am. Econ. Rev. 98 (2), 1–37.
+                                                                                                     Zhang, J., Webley, P.A., 2008. Cycle development and design for CO 2 capture from ﬂue
+                                                                                                         gas by vacuum swing adsorption. Environ. Sci. Technol. 42 (2), 563–569.
+                                                                                                     Zhang, J., Webley, P.A., Xiao, P., 2008. Eﬀect of process parameters on power require-
+                                                                                                         ments of vacuum swing adsorption technology for CO 2 capture from ﬂue gas. Energy
+                                                                                                         Convers. Manag. 49 (2), 346–356.
+                                                                                                     Grande, C.A., Ribeiro, R.P.L., Oliveira, E.L.G., Rodrigues, A.E., 2009. Electric swing ad-
+                                                                                                         sorption as emerging CO 2 capture technique. Energy Proc. 1 (1), 1219–1225.
+                                                                                                     Haghpanah, R., Majumder, A., Nilam, R., Rajendran, A., Farooq, S., Karimi, I.A., Aman-
+                                                                                                         ullah, M., 2013. Multiobjective optimisation of a four-step adsorption process for
+                                                                                                         postcombustion 𝐶𝑂 2 capture via ﬁnite volume simulation. Ind. Eng. Chem. Res. 52,
+                                                                                                         4249–4265.
+                                                                                                     Lian, Y., Deng, S., Li, S., Guo, Z., Zhao, L., Yuan, X., 2019. Numerical analysis on CO 2
+                                                                                                         capture process of temperature swing adsorption (TSA): optimization of reactor ge-
+                                                                                                         ometry. Int. J. Greenh. Gas Control 85, 187–198.
+                                                                                                     Sandu, V.-C., Cormos, A.-M., Dumbrava, I.-D., Imre-Lucaci, A., Cormos, C.-C., de Boer,
+                                                                                                         R., Boon, J., Sluijter, S., 2021. Assessment of CO 2 capture eﬃciency in packed bed
+                                                                                                         versus 3D-printed monolith reactors for SEWGS using CFD modeling. Int. J. Greenh.
+                                                                                                         Gas Control 111, 103447.
+                                                                                                     Shafeeyan, M.S., Daud, W.M.A.W., Shamiri, A., 2014. A review of mathematical modeling
+                                                                                                         of ﬁxed-bed columns for carbon dioxide adsorption. Chem. Eng. Res. Des. 92 (5),
+Fig. 12. Radial proﬁles of composition and temperature for the injection case                            961–988.
+                                                                                                     Ben-Mansour, R., Habib, M.A., Bamidele, O.E., Basha, M., Qasem, N.A.A., Peedikakkal,
+across 𝑧 = 0.015 𝑚 at 7.5 s. (a) Molar fraction. (b) Temperature.
+                                                                                                         A., Laoui, T., Ali, M.J.A.E., 2016. Carbon capture by physical adsorption: materials,
+                                                                                                         experimental investigations and numerical modeling and simulations–a review. Appl.
+aﬃliations, knowledge or beliefs) in the subject matter or materials dis-                                Energy 161, 225–255.
+                                                                                                     Akinola, T.E., Prado, P.L.B., Wang, M., 2022. Experimental studies, molecular simula-
+cussed in this manuscript.
+                                                                                                         tion and process modelling ∖simulation of adsorption-based post-combustion carbon
+                                                                                                         capture for power plants: a state-of-the-art review. Appl. Energy 317, 119156.
+Data availability                                                                                    Webley, P.A., He, J., 2000. Fast solution-adaptive ﬁnite volume method for PSA/VSA cy-
+                                                                                                         cle simulation; 1 single step simulation. Comput. Chem. Eng. 23 (11–12), 1701–1712.
+                                                                                                     Todd, R.S., He, J., Webley, P.A., Beh, C., Wilson, S., Lloyd, M.A., 2001. Fast ﬁnite-
+    Data will be made available on request.
+                                                                                                         volume method for PSA/VSA cycle simulation experimental validation. Ind. Eng.
+                                                                                                         Chem. Res. 40 (14), 3217–3224.
+Acknowledgements                                                                                     Cruz, P., Alves, M.A., Magalhaes, F.D., Mendes, A., 2003. Solution of hyperbolic PDEs
+                                                                                                         using a stable adaptive multiresolution method. Chem. Eng. Sci. 58 (9), 1777–1792.
+                                                                                                     Cruz, P., Santos, J.C., Magalhaes, F.D., Mendes, A., 2005. Simulation of separation pro-
+    The ﬁnancial support from Benchmark International, Edmonton, Al-
+                                                                                                         cesses using ﬁnite volume method. Comput. Chem. Eng. 30 (1), 83–98.
+berta, along with the Natural Science and Engineering Research Council                               Javeed, S., Qamar, S., Seidel-Morgenstern, A., Warnecke, G., 2011. Eﬃcient and accu-
+of Canada (NSERC) under the Alliance Grant, and from Alberta Inno-                                       rate numerical simulation of nonlinear chromatographic processes. Comput. Chem.
+vates through the Campus Alberta Small Business Engagement (CASBE)                                       Eng. 35 (11), 2294–2305.
+                                                                                                     Medi, B., Amanullah, M., 2011. Application of a ﬁnite-volume method in the simulation
+grants, is greatly appreciated.
+                                                                                                         of chromatographic systems: eﬀects of ﬂux limiters. Ind. Eng. Chem. Res. 50 (3),
+    Finally, the authors thank the Digital Research Alliance of Canada                                   1739–1748.
+for providing computational resources.                                                               Augier, F., Laroche, C., Brehon, E., 2008. Application of computational ﬂuid dynamics to
+                                                                                                         ﬁxed bed adsorption calculations: eﬀect of hydrodynamics at laboratory and indus-
+                                                                                                         trial scale. Sep. Purif. Technol. 63 (2), 466–474.
+Appendix A. Supplementary material
+                                                                                                     Verbruggen, S.W., Keulemans, M., van Walsem, J., Tytgat, T., Lenaerts, S., Denys, S.,
+                                                                                                         2016. CFD modeling of transient adsorption/desorption behavior in a gas phase pho-
+    Supplementary material related to this article can be found online                                   tocatalytic ﬁber reactor. Chem. Eng. J. 292, 42.
+at https://doi.org/10.1016/j.ces.2023.119606.                                                        Esposito, F., Cardenas, C., Latiﬁ, A.M., Marsteau, S., 2022. CFD Modeling and Simulation
+                                                                                                         of an Ammonia Adsorption Process. Computer Aided Chemical Engineering, vol. 51.
+                                                                                                         Elsevier, pp. 463–468.
+References                                                                                           Qasem, N.A.A., Ben-Mansour, R., 2018. Energy and productivity eﬃcient vacuum pres-
+                                                                                                         sure swing adsorption process to separate CO 2 from CO 2 /N2 mixture using mg-mof-
+Jee, J.-G., Kim, M.-B., Lee, C.-H., 2005a. Pressure swing adsorption processes to purify                 74: a cfd simulation. Appl. Energy 209, 190–202.
+     oxygen using a carbon molecular sieve. Chem. Eng. Sci. 60 (3), 869–882.                         Gautier, R., Dbouk, T., Campesi, M.A., Hamon, L., Harion, J.-L., Pré, P., 2018a. Pressure-
+Jee, J.-G., Lee, S.-J., Moon, H.-M., Lee, C.-H., 2005b. Adsorption dynamics of air on zeolite            swing-adsorption of gaseous mixture in isotropic porous medium: transient 3d mod-
+     13X and CMS beds for separation and puriﬁcation. Adsorption 11 (1), 415–420.                        eling and validation. Chem. Eng. J. 348, 1049–1062.
+
+
+                                                                                                19
+H.S. Fabian Ramos, C. Baliga, A. Rajendran et al.                                                                                            Chemical Engineering Science 285 (2024) 119606
+
+
+Gautier, R., Dbouk, T., Harion, J.-L., Hamon, L., Pré, P., 2018b. Pressure-swing-adsorption        Ferziger, J.H., Peric, M., 2002. Computational Methods for Fluid Dynamics, 3rd edition.
+    of gaseous mixture in isotropic porous medium: numerical sensitivity analysis in cfd.              Springer, Berlin, Heidelberg, New York.
+    Chem. Eng. Res. Des. 129, 314–326.                                                             Rahman, K.A., Loh, W.S., Ng, K.C., 2013. Heat of adsorption and adsorbed phase speciﬁc
+Subraveti, S.G., Nikrityuk, P., Rajendran, A., 2018. Computational ﬂuid dynamics study                 heat capacity of methane/activated carbon system. Proc. Eng. 56.
+    of viscous ﬁngering in supercritical ﬂuid chromatography. J. Chromatogr. A 1534,               Al-Muhtaseb, S.A., Ritter, J.A., 1999. Roles of surface heterogeneity and lateral interac-
+    150–160.                                                                                           tions on the isosteric heat of adsorption and adsorbed phase heat capacity. J. Phys.
+Wilkins, N.S., Rajendran, A., 2019. Measurement of competitive CO 2 and N 2 adsorption                 Chem. B 103 (13), 2467–2479.
+    on zeolite 13X for post-combustion CO 2 capture. Adsorption 25 (2), 115–133.                   Walton, K.S., LeVan, M.D., 2005. Adsorbed-phase heat capacities: thermodynamically
+Wilkins, N.S., Rajendran, A., Farooq, S., 2021. Dynamic column breakthrough exper-                     consistent values determined from temperature-dependent equilibrium models. Ind.
+    iments for measurement of adsorption equilibrium and kinetics. Adsorption 27,                      Eng. Chem. Res. 44 (1), 178–182.
+    397–422.                                                                                       Men’shchikov, I., Shkolin, A., Khozina, E., Fomkin, A., 2020. Thermodynamics of ad-
+Ansys Fluent Theory Guide. Ansys ﬂuent theory guide. 15317(November) ANSYS Inc.,                       sorbed methane storage systems based on peat-derived activated carbons. Nanomate-
+    USA, 2021, pp. 724–746.                                                                            rials 10 (7), 1–19.
+CRC Handbook, 2015. CRC Handbook of Chemistry and Physics, 95th edition. CRC Press.
+Tomboulides, A., Lee, J., Orszag, S., 1997. Numerical simulation of low Mach number
+    reactive ﬂows. J. Sci. Comput. 12, 139–167.
+
+
+
+
+                                                                                              20
+

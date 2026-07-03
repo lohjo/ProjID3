@@ -1,0 +1,470 @@
+Chemical Engineering Science, 1973, Vol. 28, pp. 79 l-798.   Pctgamon   Press.   Printed in Gmt   Britain
+
+
+
+
+                       Theoretical prediction of breakthrough curves for molecular
+                                       sieve adsorption columns - I
+                                            Asymptotic solutions
+
+                                             D. R. GARG and D. M. RUTHVEN
+                   Department of Chemical Engineering, University of New Brunswick, Fredericton,                        N.B., Canada
+
+                                                   (Received 11 April 1972; accepted 18 July 1972)
+
+               Abstract-The     asymptotic forms of the breakthrough curves for molecular sieve adsorption columns
+               are described. For column saturation, the limiting breakthrough curve is of the ‘constant pattern’ type.
+               For the two cases of micropore and macropore diffusion control the forms of the constant pattern
+               curves are calculated from the solutions of the appropriate diffusion equations subject to the simplified
+               boundary conditions appropriate for a long column. The analysis, which is restricted to the adsorption
+               of a single adsorbable component from a lean gas, should provide an appropriate approximate descrip-
+               tion of the limiting behaviour of a molecular sieve column when operated under isothermal conditions.
+               The ‘proportionate pattern’ type of asymptotic breakthrough curve which is obtained for regeneration
+               of a saturated column is briefly discussed.
+
+                          INTRODUCTION                                                general review covering both general and asymp-
+THE PRACTICAL applications      of molecular sieves                                   totic solutions has been given by Vermeulen[l].
+as drying agents and selective adsorbents gener-                                      The present paper is concerned only with those
+ally involve the use of packed adsorption                                             solutions which provide appropriate descriptions
+columns. For the proper design of such pro-                                           of the asymptotic behaviour of molecular sieve
+cesses knowledge of the breakthrough charac-                                          columns.
+teristics of the column is required. The problem
+of predicting breakthrough curves from basic                                           KINETICS             AND EQUILIBRIUM     OF SORPTION
+kinetic and equilibrium data has attracted much                                          The equilibrium isotherms for the occlusion
+attention because of its importance not only in                                       of many species in molecular sieve zeolites are
+connection with adsorption columns but also in                                        of the Langmuir form. Such isotherms may be
+relation to chromatography and ion exchange. In                                       classified as ‘favorable’ for adsorption       and
+principle the breakthrough curve may be cal-                                          ‘unfavourable’    for desorption.   The physical
+culated, for any system of known kinetics, from                                       conditions ‘of the idealized Langmuir model are
+the solution of the differential rate equation sub-                                   generally not fulfilled but the Langmuir equation
+ject to the boundary conditions imposed by the                                        nevertheless   provides a useful empirical cor-
+ differential fluid phase mass balance for an ele-                                    relation:
+ ment of the column. In practice the differential
+ equations are generally complex and full solu-                                                                  &__
+                                                                                                                   _- bc
+ tions have been obtained only for the simpler                                                                    9s   l+bc’                  (1)
+ cases. Useful insight may however be obtained
+from the asymptotic solutions which give the                                             The parameters qs and b should however be
+ limiting forms of the breakthrough curves for                                        regarded simply as empirical constants [2].
+ sufficiently long columns. Such solutions are                                           Commercial molecular sieves consist of small
+ relatively easy to obtain since, in the asymptotic                                   crystals of zeolite (0.5 -5-O CL)pelleted with a
+ limit, the boundary conditions imposed by the                                        clay binder. Such solids therefore have a bi-
+ mass balance assume a simplified form. A useful                                      disperse pore structure and the .kinetics of ad-
+                                                                                 791
+                                     D. R. GARG   and D. M. RUTHVEN
+
+
+sorption or desorption are governed       by three       be treated as uniform spherical particles the
+distinct diffusional resistances:                        appropriate form of the diffusion equation is:
+
+   (i) film diffusion or external mass transfer from                                                              (2)
+the bulk fluid to the pellet surface;
+   (ii) diffusion through the macropores of the
+                                                         If the zeolitic diffusivity D, is independent of
+pellet;
+   (iii) diffusion within the micropores of the          sorbate concentration,     Eq. (2) reduces to the
+                                                         familiar Fickian expression:
+zeolite crystals.
+
+
+Under conditions of practical importance film                                                                     (3)
+resistance is generally negligible and the rate of
+sorption is controlled by the macropore and              In general, however, zeolitic diffusivities are
+micropore resistances. Under equilibrium condi-          concentration   dependent. For the diffusion of
+tions and for sorbates which are occluded by the         water[4] and light hydrocarbons      in several
+zeolite, the quantity of sorbate held within the         zeolites [5,6] the concentration dependence of
+zeolite crystals is generally far greater than the       the diffusivity has been shown to be related to
+quantity remaining within the macropores of the          the shape of the equilibrium isotherm by the
+pellet. In the analysis of the kinetics of sorption,     Darken equation:
+uptake by the macropores is therefore neglected.
+   The relative importance of macropore and                                D,=D+
+micropore     diffusional resistance depends on
+the particular system and on the conditions and
+                                                         When the equilibrium       isotherm   obeys the
+may be estimated from the magnitude of the
+                                                         Langmuir equation this relationship becomes:
+
+                                    1
+                 3w(l-•,)   D, R, zdq*
+parameter IR =                      =[31                                                D
+                            D, [ rz
+                      EP
+                                                                            R=&                                   (5)
+(n < -    1, micropore control; fi > - 100, macro-
+pore control). For a general treatment of the sorp-
+                                                         where D,, the limiting diffusivity            at zero con-
+tion kinetics it is in principle necessary to take
+                                                         centration, is constant.
+account of both micropore and macropore resis-
+                                                            The corresponding     (non-linear)         form of the
+tances. It is however convenient to consider,only
+                                                         diffusion equation is:
+the limiting cases in which one or other resistance
+is dominant. Such an analysis is directly applic-
+able to many real systems and serves to illustrate                                                                (6)
+the principal features of column performance.
+   For the case of micropore diffusion control we
+                                                         and the appropriate boundary conditions are:
+assume that transport within the macropores of
+the pellet is sufficiently rapid to maintain a uni-
+form sorbate concentration c equal to the bulk           dr,,t-z/v)    =q*=     %bc. a4 (0, t-z/v)
+                                                                                l+bc9       ar
+                                                                                                              =   0
+
+phase concentration       c throughout the macro-
+                                                                                                        (7)
+pores of any particular pellet. Sorption at the
+                                                         with the initial conditions, for a step change in
+crystal surface is assumed to be rapid so that the
+                                                         concentration at the column inlet at time zero
+surface concentration of sorbate is in equilibrium
+                                                         being:
+with the bulk fluid at the particular point in the
+column. Assuming that the zeolite crystals can                        q(r, 0) = 0       (saturation)              (8)
+                                                       792
+                                             Theoretical prediction of breakthrough curves - I
+
+
+                 q(r, 0) = q.       (regeneration).             (9)                  q(R, 0) = 0      (saturation)        (15)
+
+Since the sorbate is assumed to be held entirely                                     q( R, 0) = q.     (regeneration)     (16)
+by the zeolite crystals it is convenient to express
+the adsorbed phase concentration on the basis of                            and the average solid phase concentration   at any
+unit zeolite crystal volume:                                                point in the column is:
+
+                    y=q=l             rzqr2.dr                 (LO)                                                       (17)
+                                 rz I 0
+
+   For macropore      control it is assumed that                         The differential fluid phase mass balance, which
+diffusion within the zeolite crystals is sufficiently                    relates the average sorbate concentration in the
+rapid to maintain at all times a uniform sorbate                         solid to the concentration in the bulk fluid at any
+concentration    through any particular crystal.                         point in the column completes the system of
+Rapid equilibration at the surface is assumed so                         equations defining the breakthrough curve.
+that the sorbed fluid is in equilibrium with the
+macropore fluid just outside the crystal (i.e.                                      FLUID   PHASE     MASS    BALANCE
+q = 4 = q*). For a system of uniform spherical                             The present analysis is restricted to isothermal
+pellets the relevant form of the diffusion equa-                        systems involving dilute fluid mixtures contain-
+tion, neglecting gas phase accumulation in the                          ing only one adsorbable component. Pressure
+macropores, is:                                                         drop across the adsorbent bed is neglected and
+                                                                        plug flow is assumed. The fluid phase mass
+            a-=             ev      &    a        R2K                   balance for an element of the bed at a distance z
+                                                               (11)
+               at    w(I-•Ep)       R2aR      (     aR >                from the column inlet is given by:
+For a Langmuir isotherm (Eq. 1):
+
+         $c=        (l+bC)2=1*         1
+                                                               (12)
+          aq           bq,     bqs Cl- 4/qd2
+                                                                        where m = E/( I- E’) = ratio of bed void volume
+For most systems the macropore diffusivity is                           to crystal volume. For saturation of an initially
+essentially independent of sorbate concentration                        empty column the appropriate         initial and
+so that the diffusion equation becomes:                                 boundary conditions are:
+
+                                                                                       T(z, 0) = 0;     c(0, t) = co     (19)
+
+                                                                        while the corresponding conditions for regenera-
+This equation is formally the same as the particle                      tion of a saturated column are:
+diffusion equation with a concentration depen-
+dent effective diffusivity given by                                                    T(z, 0) = qo; .c(O, t) = 0.       (20)
+
+                                                                        To obtain the complete solution for the break-
+           De’= w(l-eP)bq~(1-q/q~)2                                     through curve for micropore diffusion control
+                                                                        it is necessary to solve Eq. (6) subject to the
+boundary and initial conditions are: .                                  boundary conditions defined by Eqs. (7)-(IO)
+                                                                        and (18)-(20). The corresponding problem for
+                                                                        macropore control requires the solution of Eq.
+4(R,,   t-z/v)      = f$$;         $$O,t-z/v)           =o    (14)
+                                                                        (13) subject to the boundary conditions (14)-
+                                                                      793
+                                    D. R. GARG and D. M. RUTHVEN
+
+
+(20). Since the equations are non-linear, numeri-       lem. Thus, although Eq. (23) gives, for any
+cal methods offer the only feasible approach.           specified conditions, a simple and practically
+The numerical calculations are however bulky            useful approximate      prediction    of the time
+and require considerable     computational   time.      required to regenerate a saturated column, the
+It is therefore appropriate to consider, as a first     validity of the approximation can be determined
+approach      to the problem,    the asymptotic         only by a more complete analysis in which the
+solutions.                                              kinetics of desorption are considered.
+                                                           When the isotherm is favourable, as for the
+ NATURE     OF THE ASYMPTOTIC        SOLUTIONS          adsorption of most species in molecular sieves,
+   The nature of the asymptotic form of the             the asymptotic behaviour of the column is quite
+breakthrough curve depends on the equilibrium           different. The physical reason for this difference
+isotherm. When the isotherm is unfavourable, as         has been discussed by Lightfoot et al. [8]. The
+for the regeneration of a saturated column with a       rate at which a sorbate travels along the column
+non-adsorbing eluent, the concentration     front       depends on the product of the fluid velocity and
+broadens as it progresses through the column.           the sorbate concentration in the fluid phase. For
+For a sufficiently long column or a sufficiently        a favourable isotherm the ratio of fluid phase to
+low flowrate, equilibrium is essentially reached        adsorbed phase concentrations       increases with
+and Eq. (18) may be integrated at constant c to         concentration, so that the sorbate moves more
+give, after some manipulation:                          rapidly when the concentration        is high. The
+                                                        concentration front is thus self-sharpening and
+                                                        the asymptotic limit is reached when the con-
+                                               (21)
+                                                        centration profiles in fluid and solid phases
+The shape of the asymptotic breakthrough curve          become coincident. Under these conditions the
+is determined only by the equilibrium isotherm          fluid phase mass balance reduces to the simple
+and is independent of the kinetics of sorption.         equation:
+For a Langmuir isotherm we have, from Eqs.
+(12)and(21):                                                                c/c0 = &0.                 (24)
+
+                                               (22) The shape of the concentration          profile becomes
+                                                        independent of column lengths and the front
+or, expressed in terms of the dimensionless             travels with a uniform velocity giving rise to a
+variables X/T and the parameter A:                      ‘constant    pattern’   breakthrough      curve.  In
+                                                        contrast with the ‘proportionate pattern’ case
+                                                        the shape of the asymptotic breakthrough curve
+        z= (F)(&1)                             (23)     is determined by both the kinetics and equilib-
+                                                        rium of sorption. For sufficiently rapid sorption
+                  (1 <X/T    < (l-h)+).                 a step function will be approached.
+
+The asymptotic form of the breakthrough curve               CONSTANT     PATTERN  BREAKTHROUGH
+is thus of the ‘proportionate pattern’ type since,           CURVES    FOR COLUMN    SATURATION
+for a given system, the concentration is a func-           To calculate the form of the asymptotic
+tion only of the single variable X/T or vtlz.           constant pattern breakthrough curve for column
+   The argument given above, which is due to            saturation requires the solution of Eqs. (6) or
+De Vault [7], gives no information concerning           (13) but with the boundary conditions defined
+the length of column required to approach the           by Eqs. (18) and (19) replaced by the much
+asymptotic solution. Such information can be            simpler condition expressed by Eq. (24). In
+obtained only from the full solution of the prob-       order to generalize the numerical analysis it is
+                                                      794
+                                                Theoretical prediction of breakthrough curves - I
+
+convenient to express the equations in dimen-                               Equation (13) is transformed        to:
+sionless form. With the dimensionless variables
+and parameters: 4 = c/co, JI = q/q,,, A = qo/qs =                                     ad                                  a*d
+                                            D, =
+                                                                                      aT'=                               ‘+?          (29)
+bco(l+bc,)-1,     T = (0,/r,*) (t-z/v),
+DJD, = (1 -XI/I)-‘, 7) = r/rrr
+                                                                            and the initial and boundary              conditions    given
+                                                                            by Eqs. (15) and (14) become:
+                      J:D1*d9_ln(1-A$)
+                .S=
+                                    In(l-A)               ’                                         u’(n’, 0) = 0                     (30)
+                      s : Dr. d$
+
+                u=sq,p=-ln(l-A)
+
+Eq. (6), the rate equation for micropore diffusion                                ~'(0,T’) = 0.
+control, reduces to:
+                                                                            The dimensionless         average   sorbate        concentra-
+                        au=     ePuls   .   a2u                   (25)      tion in the solid is:
+                        aT                  aq*'
+                                                                                                           U’n’*dr)’
+The modified          initial and boundary               conditions                                       -A($--u’)-                  (32)
+are :
+                                                                            Equation (24), which applies for both micropore
+                             u(q, 0) = 0                         (26) and macropore control, becomes:
+
+u(l,T)       =-~ln[l-A$(:&‘~)];~(O,T)                            =0                                    4 =T.                          (33)
+                                            0
+                                                                  (27)         Although the boundary conditions are differ-
+                                                                            ent, Eqs. (25) and (29) are formally the same as
+and the dimensionless average sorbate concen-                               the equations used in our earlier paper[9] to
+tration in the solid is given by:                                           describe the uptake curves for a single particle
+                                                                            of zeolite subjected to a step change in sorbate
+                                                                            concentration, and the solutions may be obtained
+                                                                            by similar numerical methods. An implicit finite
+                                                                            difference scheme (Crank-Nicholson        method)
+   For the case of macropore diffusion control                              was used. Further details are given in the appen-
+the appropriate  dimensionless  variables are:                              dix to the next paper., An arbitrary initial incre-
+                                                                            mental value was assigned to $ in order to start
+     F= c7lq0,                                                              the solution but for all subsequent time steps
+                                                                            the condition expressed by Eq. (33) was used.
+T’     =    dMf--Z/u)  , q’ = ML                                            Provided that the initial increment was sufficient-
+           WC1- %)R,“~q,                                                    ly small (OM2) convergence to the asymptotic
+                                                                            solution was rapid. Some error is however to be
+D; = (l-A&)-“,
+                                                                            expected at very small 4 values ($J < 0.02).
+            F                                                                  Asymptotic    constant pattern breakthrough
+
+     s’ = I,
+             0;. dF                                                         curves, calculated in the above manner for both
+                    =JI(i-h)(i--h~~)-l,~‘=~‘~‘.                             micropore and macropore diffusion control, are
+           I : 0;. dF                                                       shown in Figs. 1 and 2 and tabulated numerical
+                                                                      795
+                                          D. R. GARG and D. M. RUTHVEN
+
+
+
+
+Fig. 1. Asymptotic constant pattern breakthrough curves
+for micropore diffusion control with concentration dependent     Fig. 3. Asymptotic constant pattern breakthrough curves
+                         diffusivity.                               for micropore diffusion control with constant diffisivity.
+
+
+                                                                 analysis. The curves shown in Figs. (2) and (3)
+                                                                 appear to be consistent with Hall’s solutions
+                                                                 although exact comparison is difficult.
+                                                                    The breakthrough     curves for A = 0.8 and
+                                                                 A = O-167 are compared on normal probability
+                                                                 coordinates in Fig. 4. Even at the smaller values
+                                                                 of A the curves show significant differences from
+                                                                 symmetric error functions and the influence of
+                                                                 the sorption kinetics is clearly evident. At large
+                                                                 values of A the curves shown in Figs. 1 and 2
+                                                                 (concentration dependent effective diffusivities)
+
+Fig. 2. Asymptotic constant pattern breakthrough      curves
+             for macropore diffusion control.
+
+
+values are given in the thesis of Garg[ lo]. In
+order to illustrate the effect of the concentration
+dependence of the zeolitic diffusivity on the
+breakthrough curves, for the micropore control
+                                                                     9
+case, the set of curves given in Fig. 3 was cal-
+culated, for the same values of A, assuming a
+constant diffusivity. For this calculation Eq. (25)
+was replaced by the dimensionless form of
+Eq. (3):
+
+                        au a2u
+                        -=-
+                                                                         0.01 1
+                                                                             -1.0
+                                                                                       ’
+                                                                                    -0.8   -06
+                                                                                                 ’      ’
+                                                                                                     -0.4
+                                                                                                              ’
+                                                                                                            -02
+                                                                                                                   ‘1’0.0
+                                                                                                                       ’        ’
+                                                                                                                                02
+                                                                                                                                      ’
+                                                                                                                                     0.4
+                                                                                                                                            ’
+                                                                                                                                           0.6
+                                                                                                                                                  ’
+                                                                                                                                                 0.8   1.0
+
+                         aT     aq'                     (34)                                                      T -.To,s
+                                                                                                                    or
+                                                                                                                   8        ,
+                                                                                                                  T -To.5
+   For the cases of macropore control and micro-
+pore control with constant diffusivity a previous                 Fig. 4. Comparison of constant pattern breakthrough curves
+                                                                  (micropore control, constant diffusivity -;       micropore
+numerical solution has been given by Hall et ~1.                  control, concentration dependent diffusivity -*--a; macro-
+[ 111 who used a somewhat different method of                                           pore control -----).
+
+                                                               796
+                                   Theoretical prediction of breakthrough curves - I
+
+approach a step function which is the limiting               system in which A is known from the equilibrium
+form of the asymptotic breakthrough curve for                isotherm, the midpoint slope provides a simple
+infinitely rapid kinetics. The differences between           and convenient means of extracting the ditfu-
+the curves for micropore diffusion control with              sional time constant (D,/rZ2 for micropore con-
+constant and concentration dependent diffusivi-              trol or epDJw( 1 - l   p)Rp2bq,, for macropore
+ties become pronounced at large A values whereas             control) from experimental breakthrough curves.
+the differences between the curves for macro-                   The above method of calculation yields only
+pore control and the corresponding curves for                the shape of the asymptotic breakthrough curve:
+micropore control with a concentration depen-                the location of the curve is determined by the
+dent diffusivity are less marked. Practically, this          length of the column and the feed flowrate. For
+means that to distinguish between macropore                  convenience the 4 = O-5 point for each curve is
+and micropore control on the basis of experi-                taken as the zero for the time scale since this
+mental breakthrough curves alone is quite diffi-             facilitates matching the theoretical curves to
+cult, although the shape of the breakthrough                 experimental results. For a perfectly symmetrical
+curves for micropore diffusion controlled systems            breakthrough curve the time required to reach
+should clearly reflect the effect of a concentration         the midpoint will be given by VqO(l - e’)/Qc,,.
+dependent diffusivity.                                       For an asymmetric       breakthrough    curve the
+   Figure 5 shows the midpoint slopes of the                 midpoint should strictly be defined as the point
+breakthrough     curves plotted against A.’ For a            at which the areas above and below the break-
+                                                             through curve are equal, but the percentage
+                                                             difference in dimensionless time between this
+                                                             point and the point given by C#J     = O-5 is small
+                                                             when the column is sufficiently long for the
+                                                             asymptotic solutions to be applicable.
+
+                                                                                   CONCLUSION
+                                                                Although many approximations are involved
+                                                             in the analysis, the asymptotic breakthrough
+                                                             curves given in Figs. 1 and 2 and by Eq. (23)
+                                                             should provide appropriate descriptions of the
+                                                             limiting behaviour of molecular sieve adsorption
+                                                             columns. Under coniditons of micropore diffusion
+                                                             control the concentration      dependence    of the
+                                                             zeolitic diffisivity causes significant modifica-
+                                                             tion of the shape of the constant pattern break-
+                                                             through curve for column saturation. For either
+                                                             macropore control or micropore control with a
+                                                             concentration dependent diffusivity, the constant
+                                                             pattern breakthrough curves approach a step
+                                                             function at large values of the non-linearity para-
+                                                             meter A. From the practical point of view this
+                                                             means that, for highly non-linear systems, the
+                                                             breakthrough capacity of the column is almost
+                                                             the same as the saturation capacity and, under
+Fig. 5. Midpoint slopes of constant pattern breakthrough     these conditions, simple equilibrium considera-
+curves. (Curve 1 -micropore control, constant diffisivity;
+curve 2 - micropore control, concentration dependent         tions are sufficient for design purposes. For such
+         diffusivity; curve 3 - macropore control.)          systems the critical factors in process design
+                                                         797
+                                    D. R. GARG and D. M. RUTHVEN
+
+will generally be determined by regeneration                       radius of zeolite crystal
+conditions since, under comparable conditions,                R”radial coordinate for pellet
+regeneration will be much slower than saturation.          RP pellet radius
+                                                               S   _$D,d$llS: DI . d$
+                                                              S'    J$ D;d&:    0;. d$
+                    NOTATION
+                                                                   time
+       activity of sorbate
+                                                              :    dimensionless time = (D,/rz2) (t - z/v)
+    it Langmuir equilibrium constant
+    C  sorbate concentration in bulk phase                    T'   dimensionless time =      Epop(f-Z’U)
+                                                                                            ~(1 --QJR,~&
+   CO  sorbate concentration at column inlet                   u   sl7
+       local sorbate concentration in macropore               u’   S’$
+   D”, zeolitic diffusivity (based on solid area)                  linear fluid velocity
+  D* limiting zeolitic diffusivity at zero sorbate            ;    column volume
+          concentration                                       W    volume fraction of zeolite crystals        to
+  DP macropore diffusivity (based on pore                             total solid material in a pellet
+          sectional area)
+                                                              X    dimensionless   distance D*bqsz
+  Dl DJD, = (1 -A$)-’                                                                         r,2om
+  Di (l-A&-”                                                       distance measured from bed inlet
+   m ratio of bed void space to zeolite crystal                    -In (1-A)
+          volume=e(l-•‘)                                           void fraction of bed
+    4 local sorbate concentration       in a zeolite               void fraction of pellet
+          crystal                                                  ratio of zeolite crystal volume to total
+    4 average sorbate concentration            for a                  bedvolume=      (I-~)(l-e~)w
+          crystal                                             4    c/co
+    =
+    4 sorbate concentration       averaged over a                  q/40
+          pellet
+  4* sorbate concentration in equilibrium with
+                                                              $
+                                                              9
+                                                                   &IO
+                                                                   370
+          local sorbate concentration        in fluid         Aqdqa
+          phase                                             rl i-h,
+   4s saturation      sorbate    concentration     in      71’ RI&
+          Langmuir equation
+                                                              a
+   40 initial (or final) uniform sorbate con-
+         centration in zeolite crystal in equilib-      Note: Solid phase concentrations  are based on
+         rium with fluid phase concentration co         unit zeolite crystal volume. The dilution effect
+   Q fluid flowrate                                     of any binder is accounted for in the definition
+    r radial coordinate for zeolite crystal ,           ofm
+
+                                              REFERENCES
+ [l] VERMEULEN T.,Adu. Chem. Engng 195i; 147.
+ 121 RUTHVEN D. M. and LOUGHLIN K. F.,J. C/tern. Sot. Faraday Trans. I. 1972 68 696.
+ [3] RUTHVEN D. M. and LOUGHLIN K. F., Can. J. Gem. Engng: 1972 50 550.
+ [4] BARRER R. M. and FENDER B. E. F.,J.phys. Chem. Solids 196121 12.
+ [5] HABGOOD H. W., Can. J. Chem. 1958 36 1384.
+ [6] RUTHVEN D. M. and LOUGHLIN K. F., Trans. Faraday Sot. 197167 1661.
+ 171 DE VAULT D.J. Am. Chem. Sot. 1943 65 532.
+ i8j LIGHTFOOT   i. N., SANCHEZ-PALMA       R. J. and EDWARDS D. O., New Chemical Engineering Separation
+     Techniques, (Ed. SCHOEN H. M.). Interscience, New York 1962.
+ [9] GARG D. R. and RUTHVEN D. M., Chem. Engng Sci. 1972 27 417.
+[lo] GARG D. R.‘Ph.D. Thesis, University of New Brunswick 1972.
+[l l] HALL K. R., EAGLETON L. C., ACRIVOS A. and VERMEULEN           T.,Ind. Engng Chem. Fundls 1966 5 212.
+
+                                                    798
+

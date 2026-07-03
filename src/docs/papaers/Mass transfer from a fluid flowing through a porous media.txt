@@ -1,0 +1,828 @@
+                                                      International Journal of Heat and Mass Transfer 163 (2020) 120374
+
+
+
+                                                                 Contents lists available at ScienceDirect
+
+
+                                    International Journal of Heat and Mass Transfer
+                                                            journal homepage: www.elsevier.com/locate/hmt
+
+
+
+
+Mass transfer from a ﬂuid ﬂowing through a porous media
+T.G. Myers∗, F. Font
+Centre de Recerca Matemàtica, Campus de Bellaterra, Ediﬁci C, Barcelona, 08193 Bellaterra, Spain
+
+
+
+
+a r t i c l e          i n f o                             a b s t r a c t
+
+Article history:                                           A mathematical model is developed for the process of mass transfer from a ﬂuid ﬂowing through a
+Received 12 July 2020                                      packed column. Mass loss, whether by absorption or adsorption, may be signiﬁcant. This is appropri-
+Revised 8 August 2020
+                                                           ate for example when removing contaminants from ﬂue gases. With small mass loss the model reduces
+Accepted 20 August 2020
+                                                           to a simpler form which is appropriate to describe the removal of contaminants/pollutants from liquids.
+Available online 29 September 2020
+                                                           A case study is carried out for the removal of CO2 from a gas mixture passing over activated carbon.
+2010 MSC:                                                  Using the experimental parameter values it is shown, via non-dimensionalisation, that certain terms may
+35Q35                                                      be neglected from the governing equations, resulting in a form which may be solved analytically using a
+                                                           travelling wave substitution. From this all important quantities throughout the column may be described;
+Keywords:                                                  concentration of gaseous materials, amount of material available for mass transfer, ﬂuid velocity and pres-
+Contaminant removal
+                                                           sure. Results are veriﬁed by comparison with experimental data for the breakthrough curve (the amount
+Pollutant removal
+Adsorption
+                                                           of carbon measured at the column outlet). The advantage of the analytical expression over a purely nu-
+Absorption                                                 merical solution is that it can easily be used to optimise the process. In the ﬁnal section we demonstrate
+Carbon capture                                             how the model may be further reduced when small amounts of contaminant are removed. The model is
+Packed column                                              shown to exhibit better agreement than established models when compared to experimental data for the
+Mathematical model                                         removal of amoxicillin and congo red dye from water.
+                                                                                                                             © 2020 Elsevier Ltd. All rights reserved.
+
+
+
+
+1. Introduction                                                                                 In this paper we will develop a model to describe the ﬂow of a
+                                                                                            ﬂuid through a porous material contained in a cylindrical column.
+    With oceans overloaded with plastic, the air that we breathe                            This conﬁguration has been chosen due to its relevance for a wide
+full of noxious substances and even drinking water laced with le-                           number of published experiments and existing extraction equip-
+gal and illegal drugs it is clear that humanity needs to improve                            ment. We will focus on a two-component ﬂuid system, with only
+its methods for dealing with pollutants. However, cutting down on                           one component being removed (the extension to more components
+pollution is not enough, in some cases active removal must be car-                          is straightforward). Once the model is developed we will analyse it
+ried out. In this paper we will focus on just one aspect of this is-                        within the context of post-combustion carbon capture and com-
+sue, namely contaminant removal via column sorption.                                        pare with experimental results for breakthrough (that is the CO2
+    Column sorption involves forcing a ﬂuid through a conﬁned                               concentration on leaving the column). Subsequently we will show
+tube ﬁlled with a porous material capable of removing certain                               how the model compares with previous, standard models and test
+components of the ﬂuid. As the ﬂuid passes through, the compo-                              it against experimental data for the removal of contaminants such
+nent to be removed can attach to the surface of the material (ad-                           as antibiotics and synthetic dyes.
+sorption) or enter into the volume (absorption). This may continue                              There exists a wide literature analysing column sorption. A
+until the material becomes saturated, when no more removal oc-                              number of simple models focus solely on the column outlet and
+curs, and the ﬂuid passes through the material unchanged. It is                             are based on the probability of a gas molecule escaping [8]. These
+perhaps the most popular practical sorption method [1,2] and is                             neglect the evolution of the process through the column and can-
+used for a wide range of processes such as the removal of con-                              not fully explain the physics. However, with carefully chosen pa-
+taminants including pharmaceuticals, carbon dioxide, heavy met-                             rameter values it is possible to reproduce the breakthrough curves.
+als, dyes and salts [1,3–7].                                                                When ﬂow along the column is accounted for the simplest model
+                                                                                            balances advection with mass loss, coupled to a rate equation for
+                                                                                            the mass loss. An early example of this may be found in [9]. Al-
+                                                                                            though their full result is often reduced to a much simpliﬁed equa-
+  ∗
+      Corresponding author.                                                                 tion valid only at the outlet. Recent models typically deal with
+      E-mail address: tmyers@crm.cat (T.G. Myers).                                          variables averaged over the cross-section and include advection,
+
+https://doi.org/10.1016/j.ijheatmasstransfer.2020.120374
+0017-9310/© 2020 Elsevier Ltd. All rights reserved.
+2                                  T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374
+
+
+diffusion and temperature effects [10,11]. However, since the sorp-                solid material, which is here denoted q. The ﬁnal term on the right
+tion process is approximated by a simple kinetic model there is                    hand side is then a sink representing the mass lost at all solid-
+still a degree of ﬁtting to match the breakthrough curve. An is-                   ﬂuid interfaces at a given x, see [12]. If the volume ﬂux at the
+sue with many numerical studies is highlighted in [12] where it                    column inlet is Q0 (t), then the interstitial velocity may be writ-
+is shown that a number of errors in the governing equations have                   ten u(x, t ) with u(0, t ) = u0 (t ) = Q0 (t )/(π R2 ). In the literature it
+propagated through the literature. This leads to inaccuracies in the               is also common to work in terms of the superﬁcial velocity, which
+ﬁtting coeﬃcients and therefore incorrect predictions on scaling                   is simply the interstitial velocity multiplied by the void fraction,
+up.                                                                                 u.
+    The study of [12] was based on the assumption of negligible                         The density may be expressed in terms of the molar mass Mi
+mass removal, so that quantities such as the velocity and ﬂuid                     and molar concentration ci of the components. For a two com-
+density are constant and consequently the pressure gradient is lin-                ponent system ρ = M1 c1 + M2 c2 , while the molar mass of the gas
+ear. In the following we will consider a situation where signiﬁcant                mixture M = ρ /(c1 + c2 ).
+quantities are removed, such that the density and velocity may
+vary along the column. We will follow the style of [12] but do                     2.1. Mass transfer
+not carry out the averaging which acts to complicate the system.
+After deriving the governing equations we apply the model to an                       There are a number of models to approximate the mass transfer
+example of carbon capture, where approximately 15% of a CO2 /N2                    process. These are typically based on assumptions that the rate is
+mixture is removed by adsorption. Comparison with experimen-                       proportional to the amount available for transfer and the free sites
+tal data for breakthrough shows excellent agreement. Subsequently                  on the solid material and lead to different forms of kinetic model.
+we compare the full current model, a reduced version of this ap-                   A classical model is presented in [9]. Local equilibrium, linear driv-
+propriate for incompressible ﬂow and previous models against data                  ing force, pore diffusion, pseudo-ﬁrst-order, pseudo-second-order
+for the removal of amoxicillin and dye from solution.                              and Avrami models are discussed in [10,13]. In the present study
+    The work contains a number of novel elements for this ﬁeld.                    we will employ the popular linear kinetic relation
+The non-dimensionalisation permits us to identify dominant terms
+                                                                                   ∂q         ∗
+and also negligible ones which then permits the study of a much                       = kq ( q − q ),                                                       (4)
+simpliﬁed system (with a known small error). Except during the                     ∂t
+very initial period, the simpliﬁed system permits a travelling wave                where kq is a rate constant and q∗ the saturation value. The form
+solution and so we ﬁnd analytical expressions for all impor-                       of q∗ is also the subject of numerous studies, see the review of
+tant quantities, concentration, available adsorbent, gas velocity and              [14].
+pressure. These solutions have not previously been published. A                         The linear kinetic relation has the unrealistic feature that it
+full numerical solution is therefore not necessary. It is shown that               has a weak dependence on the component available for trans-
+the gas concentration and available sorbent follow almost identical                fer (which can only enter through the deﬁnition of q̄∗ ). It must
+curves, this means that the experimentally observed breakthrough                   therefore be speciﬁed explicitly that this equation only holds over
+curve may be used to determine the form of the kinetic relation.                   regions where material is available. There is a tendency in pub-
+                                                                                   lished literature to immediately integrate equation (4) to ﬁnd q =
+2. Derivation of governing equations                                               q∗ (1 − exp(−kt )) [5,13,15]. This is incorrect. Firstly, q∗ typically de-
+                                                                                   pends in a complex way on space and time, secondly the constant
+   Consider a ﬂuid ﬂowing through a porous medium where mass                       of integration is dependent on space. In the special case where
+transfer occurs at the ﬂuid-solid interfaces. Within the ﬂuid the                  q∗ is constant we may write q = q∗ (1 − exp(−k(t − ts (x )))) where
+mass continuity equation may be written in the form                                ts (x) is the time at which the material to be removed ﬁrst reaches
+∂ρ                                                                                 the point x. With a typical form of time-dependent q∗ the integra-
+   + ∇ · j = −S,                                                         (1)       tion cannot be carried out.
+∂t
+where S is a sink term representing mass loss and ρ is the density.
+The ﬂux is composed of advective and diffusive components                          2.2. Pressure velocity relations
+
+j = −D∇ρ + ρ u.                                                          (2)           If we assume a constant ﬂuid velocity then its value may be
+The exact shape of the porous media is unknown hence it is im-                     easily calculated from the mass or volume ﬂux and the above
+possible to predict the ﬂow, for this reason it is standard practice               equations adequately describe the system. This would be appro-
+to assume plug ﬂow or carry out some radial averaging: the re-                     priate when a negligible mass (compared to the total mass) is re-
+sulting equations are equivalent. Here we will follow the simpler                  moved and is typically the case with transfer from a liquid. If mass
+route, assuming plug ﬂow and hence all other variables also only                   removal is signiﬁcant it will affect the velocity and pressure. This
+vary with distance along the column.                                               often occurs in gas mass transfer processes, which can involve the
+   With the deﬁnition u = (u(x, t ), 0 ), mass continuity now speci-               removal of some 20% of the gas. In this situation we need more
+ﬁes                                                                                equations to close the system. Since the case of gas ﬂow is more
+                                                                                   complex henceforth we will focus on that, the liquid case forms a
+∂ρ ∂ (uρ )    ∂ 2ρ                  ∂q
+   +       = D 2 − ( 1 −  ) ρq M q    ,                                 (3)       subset of the model developed below.
+∂t   ∂x       ∂x                    ∂t                                                 Firstly, we follow the standard practice of relating the pressure
+where  is the bed void fraction. The derivation of the mass loss                  to the concentration via the ideal gas law
+term requires an assumption that the solid component accepts ma-
+terial of density ρ q and molar mass Mq at a rate ∂ q/∂ t, where q                 p = Rg T c = Rg T ( c1 + c2 ).                                           (5)
+represents the amount of material transferred. The overbar indi-                   The ﬁnal governing equation required for the system comes from
+cates it is an average. In practice material is normally adsorbed or               conservation of momentum. For uni-directional plug ﬂow the
+absorbed through the surface or in cracks of the solid. In time the                Navier-Stokes equation may be reduced to the form
+surfaces become saturated. To avoid dealing with an overly com-                                      
+plicated system it is standard to ignore the precise distribution of                       ∂u    ∂u            ∂ p 4 ∂ 2u
+                                                                                   ρ          +u          =−      + μ     − Su.                             (6)
+the transferred mass and instead deﬁne an average throughout the                           ∂t    ∂x            ∂ x 3 ∂ x2
+                                    T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374                                3
+
+
+The term S u represents a reduction in momentum due to mass                         If only one species is removed we may set Mq = M1 that is, the
+loss, where S = (1 −  )ρq Mq ∂ q/∂ t is the sink from the mass conti-              molar mass of the component is the same in the solid and ﬂuid
+nuity equation. The 4/3 factor is speciﬁc to compressible ﬂow: with                 state. The remaining governing equations are
+a constant density ﬂow this factor becomes unity.
+                                                                                    ∂q      ∗   
+   The classical relation describing ﬂow in a porous media is                          = kq q − q ,                                                        (14)
+Darcy’s law, which was derived for the incompressible ﬂow of a                      ∂t
+viscous liquid through sand. In the case of a gas ﬂowing through a
+packed bed Darcy may not be appropriate. To understand Darcy’s                      p = Rg T ( c1 + c2 ) ,                                                 (15)
+law consider conservation of momentum with no mass sink. As-
+suming the steady, slow ﬂow of an incompressible ﬂuid (where
+                                                                                                                                              
+slow is deﬁned such that terms of order u2 may be neglected)                          ∂p                                                    ∂q
+equation (6) reduces to                                                             −    = α ( M 1 c 1 + M 2 c 2 ) u + β + ( 1 −  ) ρq M 1
+                                                                                                                    2
+                                                                                                                                                u.         (16)
+                                                                                      ∂x                                                    ∂t
+        ∂p   ∂ u   2
+0=−        +μ 2.                                                          (7)       Equations (12)–(16) provide the system to describe the evolution
+        ∂x   ∂x
+                                                                                    of the ﬁve variables c1 , c2 , u, p, q. The ﬁve equations are required
+The key assumption is that viscous resistance is proportional to ve-                when mass transfer is signiﬁcant compared to the total mass ﬂow.
+locity uxx ∝ u and then we obtain Darcy’s law                                       When dealing with the transfer of trace amounts of a material, for
+    ∂p μ                                                                            example drugs in the water supply, the system is signiﬁcantly sim-
+−      =   u,                                                             (8)       pler. First, the velocity is approximately constant u = Q0 /(π R2 )
+    ∂ x kp
+                                                                                    and the problem is described by equations (12,14). If a known pres-
+where kp is termed the permeability. Gases have a very low viscos-                  sure drop drives the ﬂow then the velocity may also be calculated
+ity so it is possible that for gas ﬂow viscous resistance is small and              by neglecting the c1 and q terms in equation (16) (since both terms
+instead inertial resistance plays a signiﬁcant role. When inertia is                are small when trace amounts are removed).
+non-negligible a drag law is usually invoked                                           The assumptions made in deriving the above equations include:
+    ∂u      u2                                                                      the amount of material transferred may be averaged over the sor-
+u      = CD    ,                                                          (9)       bent; qt follows a linear kinetic model (this is discussed later); an
+    ∂x      d
+                                                                                    ideal gas law holds; the ﬂow may be approximated as plug ﬂow.
+where the length-scale d is chosen as the typical particle diameter
+and the drag coeﬃcient CD = CD ( , Re, d ). In a similar manner to
+the derivation of Darcy’s law we may use this expression to obtain                  2.4. Boundary and initial conditions
+a relation between pressure gradient and velocity.
+    For the current problem, the momentum equation also contains                        At the inlet, x = 0, there is continuity of mass ﬂux so
+a sink term proportional to velocity. Including both viscous and in-                                                  
+                                                                                                                    ∂ρ 
+ertial resistance as well as the sink we obtain the pressure-velocity               (ρ u )|x=0− =          ρu − D             ,                            (17)
+relation                                                                                                            ∂ x x=0+
+    ∂p                                                                              where the −, + superscripts indicate just before and just after x =
+−      = αρ u2 + (β + S )u,                                             (10)
+    ∂x                                                                              0. Separating the concentrations gives
+where α , β are constant while S is variable. In the absence of the                                            
+                                                                                                            ∂ c1 
+sink term this form of equation is discussed in [16]. Various values                u(0− , t )c10 =        uc1 − D
+for the constants α , β reproduce the Ergun relation (applicable to                                         ∂ x x=0+
+                                                                                                               
+beds packed with beads or granules), or forms appropriate to beds                                           ∂ c2 
+packed with cylinders, foams and laminates [17]. With α = S = 0                     u(0− , t )c20 = uc2 − D           ,                                    (18)
+                                                                                                            ∂ x x=0+
+Darcy’s law is retrieved. Including the sink term we have not been
+able to ﬁnd this relation in the sorption literature, but it is a natu-             where c10 , c20 are the concentrations of the inlet gas and
+ral consequence of momentum conservation with mass loss. Away                       u(0− , t ) = Q0 /(π R2 ), u(0+ , t ) = Q0 /(π R2 ).
+from the sorption front we expect the sink term to be small and                         At the exit we move to a region where no mass transfer occurs,
+its neglect is justiﬁable, however in regions of rapid mass transfer                so it is assumed that whatever the density on leaving the column
+it plays a signiﬁcant role in the mass balance and it is possible that              it remains the same just outside the exit
+this also leads to signiﬁcant momentum loss.                                                         
+                                                                                    ∂ c1      ∂ c2 
+                                                                                              =           = 0.                                             (19)
+2.3. Summary of governing equations                                                 ∂ x x=L−   ∂ x x=L−
+
+   Noting that ρ = M1 c1 + M2 c2 we may eliminate the gas density                   The pressure at inlet and outlet are
+from the mass balance
+                                                                                    p(0, t ) = p0 (t ) ,        p( L ) = p a .                             (20)
+∂                       ∂                         ∂2
+   ( M1 c1 + M2 c2 ) +     (u(M1 c1 + M2 c2 )) = D 2 (M1 c1 + M2 c2 )               The inlet value may vary with time. Initially we assume the solid
+∂t                     ∂x                         ∂x
+                                        ∂q                                          is fresh and the column is free of the component to be removed
+                     − ( 1 −  ) ρq M q    .                   (11)
+                                        ∂t                                                                              p( x )
+                                                                                    ρ (x, 0 ) = M2 c2 (x, 0 ) = M2             ,         q(x, 0 ) = 0 ,    (21)
+Conservation of each species then gives                                                                                  RT
+
+∂ c1   ∂            ∂ 2c             Mq ∂ q                                         hence
+     +    (uc1 ) = D 21 − (1 −  )ρq        ,                           (12)
+∂t     ∂x           ∂x               M1 ∂ t                                                                                 pin (x )
+                                                                                    c1 (x, 0 ) = 0 ,         c2 (x, 0 ) =            ,                     (22)
+                                                                                                                              RT
+∂ c2   ∂          ∂ c  2
+     +   (uc ) = D 22 .                                                 (13)        where the initial pressure pin (x ) = p0 (0 ) − ( p0 (0 ) − pa )x/L.
+∂t     ∂x 2       ∂x
+4                                                   T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374
+
+
+3. Non-dimensionalisation                                                                           4. Application to carbon capture in a packed column
+
+      We scale variables in the following manner                                                       Standard models for carbon capture in a packed column may
+                                                                                                    be found in the reviews of [10,11,16]. In general these are based on
+    p − pa           c1          c2                               q
+pˆ =        , cˆ1 =      , cˆ2 =     ,                     qˆ =    ∗,
+                                                                                                    the following assumptions:
+      p             c10         c20                              q0
+    x        t           u                                                                          1. The gas behaves as an ideal gas.
+xˆ = , tˆ =     , uˆ =      ,                                                           (23)
+    L        t          u0                                                                         2. A plug-ﬂow model is adopted.
+                                                                                                    3. The radial variation of concentration is negligible.
+where L and t are unknown and q∗0 is the value of q∗ at t = 0.                                     4. The bed operates isothermally.
+Since our interest lies with the reaction we choose a time-scale                                    5. The CO2 concentration is low so that the pressure gradient is
+t = 1/kq and so                                                                                       linear and the velocity constant along the bed.
+∂ qˆ
+     = (qˆ∗ − qˆ ) .                                                                    (24)            Assumption 3 follows from 2 (although in mathematical terms
+∂ tˆ                                                                                                the radial variation is the source of the mass sink term, see [12]).
+Balancing advection with mass loss gives the length-scale L =                                       In experimental studies CO2 typically comprises 15–20% which, as
+u0 c10 /((1 −  )ρq q∗0 kq ) and then                                                               we will see later, leads to velocity variation of the same order and
+                                                                                                    non-linear pressure, hence we do not apply assumption 5. We have
+     ∂ cˆ1   ∂              ∂ 2 cˆ ∂ qˆ                                                             retained the isothermal and ideal gas assumptions (in [12] it was
+δ1         +   (uˆcˆ1 ) = δ2 21 − ,                                                     (25)
+     ∂ tˆ ∂ xˆ              ∂ xˆ   ∂ tˆ                                                             shown that the temperature variation is small during carbon cap-
+                                                                                                    ture).
+     ∂ cˆ2   ∂              ∂ 2 cˆ                                                                      A typical experimental set-up involves a circular cross-section
+δ1         +   (uˆcˆ2 ) = δ2 22 .                                                       (26)
+     ∂ tˆ ∂ xˆ              ∂ xˆ                                                                    column containing a porous material, this is then placed inside
+                                                                                                    an oven or furnace to regulate the temperature. Gas is passed
+In experiments the main gas component is not usually the one be-                                    through the column and the concentration measured at the out-
+ing removed, hence we assume c10 < c20 and write                                                    let. Here we consider a speciﬁc experiment which involves a CO2 ,
+                                                                                                  N2 mixture passing through a bed of activated carbon, the data
+1 + δ3 pˆ = δ4 cˆ2 + δ5 cˆ1 ,                                                           (27)
+                                                                                                    and operating conditions are given in Table 1, see [12,13]. Mass
+                                                                                                    transfer was by adsorption. A mass ﬂow controller was employed
+                                               
+     ∂ pˆ                                  ∂ qˆ                                                     to maintain a constant ﬂow rate Q0 = 50 ml/min, which indicates
+−         = δ6 (cˆ2 + δ7 cˆ1 )uˆ2 + 1 + δ8       uˆ ,                                   (28)        u0 = 50 × 10−6 /(60π R2 ) = 0.019 m/s. A full description of the ex-
+     ∂ xˆ                                  ∂ tˆ
+                                                                                                    periment may be found in [13].
+where, assuming the ﬂow to be close to Darcy ﬂow, we have set                                           We assume that the ﬂow rate within the porous media
+the pressure scale  p = β u0 L.                                                                    is described by the Ergun relation, hence the constants of
+   The boundary and initial conditions are                                                          equation (16) are deﬁned by
+                                                                                                    1.75(1 −  )
+                ∂ cˆ1                             ∂ cˆ2                                         α=                 ≈ 2.11 × 103 ,
+1 = uˆcˆ1 − δ2               , 1 = uˆcˆ2 − δ2                    ,                      (29)                  d p
+                 ∂ xˆ xˆ=0+                         ∂ xˆ xˆ=0+
+                                                                                                          150μg (1 −  )2
+                                                                                                  β=                    ≈ 3.86 × 103 ,                             (34)
+∂ cˆ1     ∂ cˆ2                                                                                           d2p  2
+          =              =0     pˆ (0, tˆ) = pˆ 0 (tˆ) pˆ (Lˆ ) = 0 ,                   (30)
+ ∂ xˆ  −    ∂ xˆ  −
+        xˆ=Lˆ                xˆ=Lˆ                                                                  where d p = 6.5 × 10−4 m. The length-scale L ≈ 3.75cm which indi-
+                                                                                                    cates the size of the reaction zone. The pressure scale  p = β u0 L ≈
+cˆ1 (xˆ, 0 ) = 0,            δ4 cˆ2 (xˆ, 0 ) = 1 + δ3 pˆ in ,      qˆ(xˆ, 0 ) = 0,      (31)        14.62Pa, then using values from Table 1 and the deﬁnitions (32,33)
+                                                                                                    we determine
+where the initial pressure proﬁle pˆ in = pˆ 0 (0 )(1 − xˆ/Lˆ ). To keep the
+model general we express the pressure condition at xˆ = 0 as an                                     δ1 = 0.027 , δ2 ∼ 0.036 , δ3 ∼ 1.44 × 10−4 ,
+unspeciﬁed function of time. If the inlet pressure is kept constant                                 δ4 = 0.85 , δ5 ≈ 0.18 ,                                          (35)
+at a given value then pˆ (0, tˆ) = 1, however in a number of exper-
+iments the ﬂux is maintained as the constant (via a ﬂow meter)
+and this requires a variable inlet pressure. This is then determined                                δ6 = 3.3 × 10−3 , δ7 = 0.28 , δ8 = 3.47 × 10−5 .                 (36)
+as part of the solution process.
+      The ﬁve equations (24)–(28), together with the appropriate                                    For a kinetic model we take the version described in [13] since this
+boundary conditions, are suﬃcient to determine the ﬁve unknowns                                     provides the parameter values for this speciﬁc experiment,
+cˆ1 , cˆ2 , qˆ, pˆ, uˆ. They contain eight non-dimensional groupings, δ i ,
+which indicate the relative importance of the terms                                                  ∗            qm1 KT 1 p                 qm2 KT 2 p
+                                                                                                    q =                           +                    1/n2 ,    (37)
+                                                                                                                          n1 1/n1
+    Lk                                                                                                        1 + (KT 1 p)               1 + (KT 2 p)n2
+               c10                                 D
+δ1 = q =                 ,                   δ2 =     ,
+    u0   ( 1 −  )ρq q∗0                          Lu0                                               where qm1 , qm2 = 0.69, 3.57 mol/kg, KT 1 , KT 2 = 8.14 × 104 , 0.66
+         p                    Rg T c20                                                             atm−1 , n1, n2 = 0.27, 0.65. Note, the variation with temperature
+δ3 =             ,     δ4 =             ,                                               (32)
+                                                                                                    discussed in that paper does not apply to the present isothermal
+            pa                    pa
+                                                                                                    study. In non-dimensional form we write
+
+         c10                  α M2 c20 u20 L        M1 c10                                           ∗             qm1 KT 1 pa (1 + δ3 pˆ )
+δ5 =         ,        δ6 =                   , δ7 =        ,                                        q0 qˆ =
+         c20                     p                 M2 c20                                                    [1 + (KT 1 pa (1 + δ3 pˆ ))n1 ]1/n1
+         1−                                                                                                         qm2 KT 2 pa (1 + δ3 pˆ )
+δ8 =                 ρq M1 q∗0 kq .                                                     (33)                  +                                     .                (38)
+             β                                                                                                  [1 + (KT 2 pa (1 + δ3 pˆ ))n2 ]1/n2
+                                                   T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374                           5
+
+
+                                                  Table 1
+                                                  Values of the thermophysical parameters mainly taken from [13], except kq , ρ q (as dis-
+                                                  cussed later).
+
+                                                                                                     Symbol       Value            Dimension
+
+                                                    Initial concentration (CO2 )                     c10          6.03             mol/m3
+                                                    Initial concentration (N2 )                      c20          34.19            mol/m3
+                                                    Molar mass (CO2 )                                M1           0.044            kg/mol
+                                                    Molar mass (N2 )                                 M2           0.028            kg/mol
+                                                    Temperature                                      T            303.15           K
+                                                    Ambient pressure                                 pa           101325 (1)       Pa (Atm)
+                                                    Adsorption saturation                            q̄∗          1.57             mol/kg
+                                                    Bed void fraction                                            0.56             -
+                                                    Bed length                                       L            0.2              m
+                                                    Bed radius                                       R            0.005            m
+                                                    Diameter of bed particles                        dp           6.5 ×10−4        m
+                                                    Gas viscosity (15% CO2 (1.5), 85% N2 (1.8))      μg           1.76 × 10−5      Pa s
+                                                    Density of adsorbed CO2                          ρq           325              kg/m3
+                                                    Axial diffusion coeﬃcient                        D            2.57 × 10−5      m2 /s
+                                                    Initial volume fraction (CO2 )                   y1           0.15             -
+                                                    Initial volume ﬂux                               Q            8.3 × 10−7       m3 /s
+                                                    Initial interstitial velocity                    u0           0.019            m/s
+                                                    Adsorption rate constant (CO2 )                  kq           0.0137           s−1
+                                                    Solid/gas density                                ρ s /ρ g     1818/1.2         kg/m3
+
+
+
+
+Neglecting terms of order δ3 ∼ 10−4 we see that the leading order                                  The scaling of the momentum balance (44) shows that for this case
+equation for qˆ is                                                                                 the Ergun relation is unnecessarily complicated: momentum loss is
+                                                                                                   dominated by viscous resistance between the gas and porous ma-
+∂ qˆ
+     = 1 − qˆ ,                                                                        (39)        terial. Hence velocity is related to pressure drop via a simple Darcy
+∂t                                                                                                 law.
+where the (constant) adsorbent scaling is                                                              The necessary leading order boundary and initial conditions are
+ ∗                 qm1 KT 1 pa                    qm2 KT 2 pa                                                                        
+q0 =                            
+                               n1 1/n1
+                                         +                     
+                                                            n2 1/n2
+                                                                      .                (40)        1 = uˆcˆ1  ˆ                1 = uˆcˆ2  ˆ        ,               (46)
+          1 + (KT 1 pa )                      1 + (KT 2 pa )                                                      x=0+                        x=0+
+
+                                                                                                                        
+Neglecting terms of order δ1 , δ2 ∼ 10−2 the concentration equa-                                   ∂ cˆ1        ∂ cˆ2 
+                                                                                                                =              =0             qˆ(xˆ, 0 ) = 0. ,      (47)
+tions are                                                                                          ∂ xˆ xˆ=Lˆ−   ∂ xˆ xˆ=Lˆ−
+∂          ∂ qˆ
+    uˆcˆ = −      ,                                                                    (41)        Integration of equation (42) shows that uˆcˆ2 = 1 everywhere. Com-
+∂ xˆ 1       ∂ tˆ
+                                                                                                   bining this with equation (45) transforms the mass balance
+∂                                                                                                  (41) to
+    (uˆcˆ ) = 0 .                                                                      (42)                             
+∂ xˆ 2                                                                                                  ∂       cˆ1           ∂ qˆ
+These simply state that gas is primarily advected through the col-                                 δ4                      =−      ,                                 (48)
+                                                                                                        ∂ xˆ 1 − δ45 cˆ1      ∂ tˆ
+umn, with the only variation coming through the mass loss due
+to adsorption. In a constant velocity study [12] the leading or-                                   where δ45 = δ4 δ5 ≈ 0.15. The factor δ4 /(1 − δ45 cˆ1 ) does not appear
+der c1 equation was discussed, where it was pointed out that al-                                   in the constant velocity system of [12]. Since δ4 = 0.85 this indi-
+though diffusion is, in general small, it can play an important role                               cates a change in size of quantities of the order 15% when com-
+in the numerical solution. If we have an initial condition where the                               pared to constant velocity models. Equation (48) must be solved
+CO2 concentration is zero and then jumps to some non-zero value                                    in conjunction with the adsorbent equation, (39) and then uˆ, cˆ2 , pˆ
+when ﬁrst pumped in then the gradient is discontinuous and dif-                                    may be obtained from the preceding equations.
+fusion is important in smoothing this out. However, this is only                                      The above equations hold behind the reaction front, xˆ ≤ sˆ.
+important near x = t = 0. For the present we will focus mainly on                                  Ahead we have cˆ1 = qˆ = 0 and so, from (45), cˆ2 = 1/δ4 is constant
+the outlet, close to ﬁrst breakthrough and so neglect diffusion (ex-                               and hence so is uˆ = δ4 (i.e. the velocity ahead of the front is 15%
+cept in Fig. 5 where we compare the approximate solutions with                                     lower than the inlet velocity).
+numerics to verify the validity of this approach).
+    The leading order pressure relations are                                                       4.1. Travelling wave
+                          
+1 = δ4 cˆ2 + δ5 cˆ1 ,                                                                  (43)
+                                                                                                       Equations (39,48) may be solved numerically to ﬁnd the be-
+                                                                                                   haviour for all time although, due to the neglect of diffusion, the
+     ∂ pˆ                                                                                          very early time solution may be inaccurate. For suﬃciently large
+−         = uˆ .                                                                       (44)
+     ∂ xˆ                                                                                          times, such that the initial transient is complete, we do not even
+The form of the non-dimensional gas law, (43), is very informa-                                    need a numerical solution since there exists a travelling wave so-
+tive: the relative change in pressure along the column is tiny com-                                lution. To ﬁnd this we ﬁrst choose a co-ordinate moving with the
+pared to the total pressure, hence the pressure variation along the                                c1 front, η = xˆ − sˆ(tˆ). Equations (39,48) then become
+column has a negligible effect on the concentration and we may
+                                                                                                   ∂ fˆ        ∂ qˆ
+write one concentration in terms of the other, irrespective of the                                      = sˆtˆ      ,                                                (49)
+pressure or velocity,
+                                                                                                   ∂ ηˆ        ∂η
+         1                                                                                                 ∂ qˆ        
+cˆ2 =         − δ5 cˆ1 .                                                               (45)        −sˆtˆ        = 1 − qˆ ,                                           (50)
+         δ4                                                                                                ∂ ηˆ
+6                                                  T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374
+
+
+where fˆ = uˆcˆ1 = δ4 cˆ1 /(1 − δ45 cˆ1 ). A travelling wave solution may
+                                                                                                                        Rg T
+be found if sˆtˆ = vˆ is constant. If this is the case the equation for fˆ                         p = pa + β                u0 c20 (L − x ).                                                 (59)
+may be integrated immediately. After applying the boundary con-                                                          pa
+ditions cˆ1 = fˆ = qˆ = 0 at ηˆ = 0 we obtain                                                          For x ∈ [0, s]
+
+fˆ = vˆ qˆ.                                                                            (51)                                 1 − e(x−L )/L e−kq (t−tb )
+                                                                                                   c1 = c10                                                        ,                          (60)
+Eliminating qˆ between (49)–(51) leads to an ODE
+                                                                                                                      1 − (Rg T c10 /pa )e(x−L )/vˆ L e−kq (t−tb )
+
+     ∂ fˆ ˆ                                                                                                                             1
+vˆ        − f = −ˆv ,                                                                  (52)        c2 = c20                                                     ,                             (61)
+     ∂ ηˆ                                                                                                             1 − (Rg T c10 /pa )e(x−L )/L e−kq (t−tb )
+                                                                                                          ∗
+                                                                                                                                            
+with solution                                                                                      q = q0 1 − e(x−L )/L e−kq (t−tb ) ,                                                        (62)
+                  
+fˆ = vˆ 1 − eηˆ /vˆ .                                                                  (53)
+                                                                                                                                                             
+The constant of integration in this case has been obtained by ap-                                  u = u0 1 − (Rg T c10 /pa )e(x−L )/L e−kq (t−tb ) ,                                         (63)
+plying the condition at ηˆ = 0. The velocity may be determined by
+assuming the front is far from the column entrance, xˆ = 0, hence                                                                         Rg T
+ηˆ = xˆ − sˆ is large and negative, formally we apply ηˆ → −∞, uˆcˆ1 =                             p = pa + β u0 ( s − x ) −                   c10 L(1 − e(x−L )/L e−kq (t−tb ) )
+                                                                                                                                           pa
+ fˆ → 1 which determines vˆ = 1. This veriﬁes the travelling wave as-
+                                                                                                              Rg T
+sumption that sˆtˆ is constant.                                                                           +        c20 (L − s ) .                                                             (64)
+     The CO2 concentration may be calculated from (53), with vˆ =                                              pa
+1,                                                                                                    In experiments it is common to measure the breakthrough
+               1 − eηˆ                 1 − eηˆ                                                     curve. The analytical representation is obtained by setting x = L in
+cˆ1 =                             ≈                 .                                  (54)        equation (60)
+         δ4 + δ45 (1 − eηˆ )          1 − δ45 eηˆ
+The simpliﬁcation results from δ4 + δ45 = p0 /pa = 1 + δ3 ≈ 1. Then
+                                                                                                                            1 − e−kq (t−tb )
+                                                                                                   c1 = c10                                           ,                                       (65)
+from (45,51) and using uˆcˆ2 = 1, δ4 ≈ 1 − δ45 we ﬁnd                                                                 1 − (Rg T c10 /pa )e−kq (t−tb )
+             1                                                                                     where t ≥ tb .
+cˆ2 =                ,           uˆ = 1 − δ45 eηˆ ,         q = 1 − eηˆ .              (55)
+         1 − δ45 eηˆ
+                                                                                                   4.3. Fixed pressure solution
+The pressure equation (44) may be written as pˆ η = −uˆ. For xˆ ≥ sˆ,
+uˆ = δ4 is constant and with pˆ = 0 at ηˆ = Lˆ − sˆ we obtain                                          In the case studied above the ﬂux is ﬁxed by a ﬂowmeter: the
+pˆ = δ4 ((Lˆ − sˆ) − ηˆ )           for xˆ ≥ sˆ.                                       (56)        pressure is adjusted to maintain a constant ﬂow rate. However it
+                                                                                                   is also common practice to ﬁx the pressure at either end and leave
+For xˆ ≤ sˆ the velocity is speciﬁed by (55). The pressure at the col-                             these constant throughout the experiment. For a ﬁxed ﬂux (con-
+umn inlet is unknown but equation (56) gives the value at xˆ = sˆ                                  stant u0 ) equations (59,64) determine the pressure ahead of and
+(ηˆ = 0), which may be used to determine the constant of integra-                                  behind the front respectively for the speciﬁed value of u0 . If the
+tion, leading to                                                                                   pressure is ﬁxed such that p(0, t ) = p0 , p(L, t ) = pa then ahead of
+                                              
+pˆ = δ4 (Lˆ − sˆ) − ηˆ + δ45 (1 − eηˆ )                 for xˆ ≤ sˆ.                   (57)        the front equation (59) holds, while behind
+                                                                                                                                  Rg T                                    
+To relate the solutions to experiments requires switching between                                  p = p0 − β u0 x −                   c10 Le−kq (t−tb ) e(x−L )/L − e−L/L               x ≤ s.
+ηˆ and xˆ, tˆ. With the deﬁnition sˆtˆ = 1 we obtain sˆ = tˆ + sˆ0 (where                                                          pa
+                                                                                                                                                                                              (66)
+sˆ0 is unknown) and hence ηˆ = xˆ − tˆ − sˆ0 . The travelling wave is
+not valid at tˆ = 0 so we cannot apply an initial condition to deter-                              Since the pressure is continuous at the front we may equate these
+mine sˆ0 and must use information from a later time. In the carbon                                 two expressions at x = s to determine the velocity u0 caused by
+capture literature the breakthrough curve is generally presented,                                  the prescribed pressure drop
+which shows the CO2 concentration at the end of the column. If
+CO2 is ﬁrst recorded at the outlet at time tˆb , then we may use                                          p0 − pa              Rg T                                                     −1
+                                                                                                   u0 =                   s+          c20 (L − s ) − c10 Le−kq (t−tb ) e(s−L )/L − e−L/L       .
+sˆ0 = Lˆ − tˆb . However, given the uncertainty as to when gas actually                                           β             pa
+ﬁrst escapes, a more reliable measure is to note the time t1/2 when                                                                                                                           (67)
+c1 = c10 /2 and then solve equation (54) with xˆ = Lˆ, cˆ1 = 1/2 to de-
+                                                                                                   The inlet ﬂux Q0 (t ) = π R2 u0 (0, t ) is then obviously time-
+termine sˆ0 = Lˆ − tˆ1/2 + log(2 − δ45 ) or alternatively we may write
+                                                                                                   dependent.
+tˆb = tˆ1/2 − log(2 − δ45 ).
+                                                                                                   4.4. Carbon capture results
+4.2. Dimensional solutions
+                                                                                                       In Fig. 1 we show the variation along the column of the con-
+    We now summarise, in dimensional form, the solutions start-                                    centration of CO2 , N2 , the amount of adsorbed material and the
+ing with the simplest region, ahead of the front x ≥ s, where s =                                  velocity of the mixture as predicted by equations (58,60–63). The
+Lkq t + s0 = L + Lkq (t − tb ), and tb could be set as the experimen-                              parameter values used are provided in Table 1. The results cor-
+tally measured breakthrough time or we use tb = t1/2 − log(2 −                                     respond to a time t = 0.9tb , where tb = 10.9 min is the break-
+(Rg T c10 /pa ))/kq and the length-scale L = u0 c10 /((1 −  )ρq q∗0 kq ).                         through time quoted in [13]. As expected from a physical point of
+The velocity of the front sˆtˆ = 1 indicates st = L/t = u0 c10 /((1 −                             view, the CO2 concentration is almost unity at the inlet and de-
+ )ρq q∗0 ).                                                                                       creases smoothly to zero at the front. The non-dimensionalisation
+    For x ∈ [s, L] and t < tb :                                                                    shows that qˆ differs from cˆ1 by a factor of order 1/(1 − δ45 ), where
+                         pa                             Rg T c20                                   δ 45 ≈ 0.1, and so c1 must be very similar to q̄. This may be ob-
+c1 = 0 ,       c2 =          ,      q = 0,         u=            u0 ,                  (58)        served through the close proximity of the two curves. This means
+                        Rg T                               pa
+                                                T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374                                           7
+
+
+
+
+                                                                                                 Fig. 3. Blow-up of breakthrough curve, showing the predicted c1 (L, t) and experi-
+Fig. 1. Concentrations c1 (x, t), c2 (x, t), amount adsorbed q̄(x, t ) and velocity u along      mental data (circles).
+the column at t = 0.9tb .
+
+
+that if we are able to inﬂuence q̄ then it will have a corresponding                             travelling wave solution is not valid at small times, so the curves
+effect on the CO2 concentration and vice-versa. As CO2 is removed                                may not be accurate near t = 0. The correspondence between the
+the velocity of the mixture decreases. Conservation of mass re-                                  CO2 concentration and the experimental data of [13] (shown as cir-
+quires that the nitrogen concentration must increase (the increase                               cles) appears very good, showing a similar level of accuracy to pre-
+is of the order of the initial concentration ratio c10 /c20 ≈ 1.178).                            vious published results which typically present curves over a large
+Ahead of the front the values become constant since no more CO2                                  time range (which then makes the curves more diﬃcult to distin-
+is removed. At the outlet we see that c2 ≈ 1.18c20 , u ≈ 0.85u0 .                                guish). In Fig. 3 we show a close-up of the comparison between
+    Fig. 2 shows the concentrations and velocity at the outlet. The-                             the predicted CO2 concentration predictions and experiment. At
+oretically no CO2 escapes the column until t = 10.9 minutes, af-                                 this scale we observe qualitative differences in the results. In par-
+ter which the concentration increases to its inlet value at around                               ticular we note that the experimental breakthrough is a more gen-
+17.5 minutes. The amount of adsorbent is not shown in the ﬁg-                                    tle process, with c1 at ﬁrst slowly increasing to cross the theoret-
+ure, since it very closely follows the CO2 curve. Both c1 and q̄ have                            ical prediction before increasing in gradient so the two sets of re-
+their greatest rate of increase at the breakthrough time, the gradi-                             sults coincide. We will discuss these differences in more detail in
+ent (with respect to time) then decreases monotonically to zero as                               §5.
+the adsorbent is used up. The theoretical velocity, u(L, t), is around                               In Fig. 4 we show the pressure proﬁle at times t = 0.5tb , 0.9tb .
+0.85u0 until breakthrough, when it increases to the inlet value.                                 The solid line depicts the pressure behind the front, the dashed
+Similarly for the nitrogen concentration, which decreases from                                   line that ahead of it. The dotted line is the linear proﬁle calculated
+1.18c20 to its inlet value. However, we should point out that the                                from −px = β u0 which indicates p = pa + β u0 (L − x ). This is the
+
+
+
+
+                                                                                                 Fig. 4. Pressure variation along the column for t = 0.5tb (red), t = 0.9tb (blue). The
+                                                                                                 dashed section, near the end of the column, shows the pressure ahead of the front.
+Fig. 2. Concentrations c1 (L, t), c2 (L, t) and velocity u(L, t) at outlet, x = L. All divided   The standard linear proﬁle (dotted line) is also shown. (For interpretation of the
+by their initial values. Also shown is the experimentally measured concentration of              references to colour in this ﬁgure legend, the reader is referred to the web version
+c1 (L, t) (circles).                                                                             of this article.)
+8                                         T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374
+
+
+
+
+Fig. 5. Comparison of numerical (dashed) and travelling wave (solid) results for the same conditions as those of Fig. 1: (a) shows c1 (x, 0.9tb ), c2 (x, 0.9tb ), (b) shows
+q(x, 0.9tb ), u(x, 0.9tb ).
+
+
+
+proﬁle that would be observed if velocity variation were neglected,                       perimental data for the adsorption of amoxicillin and a dye from
+it is also the limit of the present theoretical curves for large time                     water. It is shown that in these two examples the form of the
+(when the adsorbent is full and so the velocity is constant). The                         previous models is incapable of capturing the whole breakthrough
+variation of p(0, t) veriﬁes our earlier statement that a ﬂow meter                       curve, whereas the forms (compressible and incompressible) pre-
+will have to vary the pressure to maintain a ﬁxed ﬂow rate.                               sented in this paper both provide a good approximation.
+    To convince the numerically minded reader of the accuracy of
+the travelling wave solution, in Fig. 5 we compare numerical and                          5.1. Previous analytical models
+travelling wave results. The curves correspond to those presented
+in Fig. 1. The dashed lines represent the numerical solution, the                             An early, classic model to describe the concentration and
+solid lines the travelling wave. Full details of the system solved nu-                    amount absorbed was developed by Bohart and Adams [9]. They
+merically and the scheme are provided in Appendix A. In Fig. 5a)                          wrote down a constant velocity model where the time derivative
+we compare the CO2 and N2 concentrations, the CO2 concentration                           and diffusion terms are neglected from the conservation equation
+obviously corresponds to the curves reaching zero around 0.18m.                           for c1 and the absorption rate depends on the amount already ab-
+In the ﬁrst runs of the code it turned out that there was a small                         sorbed and the available absorbate
+discrepancy: the numerical solution moved slightly faster than the                        ∂c    kBA  ∗                          ∂q       ∗   
+                                                                                             =−      q −q c,                         = kBA q − q c ,                  (68)
+travelling wave, by around 4%. The main difference between the                            ∂x     v                                ∂t
+two methods comes from the retention of δ 1 , δ 2 in the numeri-                          where q̄∗ is constant. They provide the solution
+cal scheme. The values δ1 = 0.027, δ2 = 0.036 suggest errors of the                                                         c0
+order 3.6%, so this discrepancy is entirely in line with the approx-                      c=                                               ∗        ,             (69)
+imations made. The diffusion parameter δ 2 controls the spread of
+                                                                                               1 − exp (−kBA c0 t ) + exp kBA q x/v − c0 t
+the front while δ1 = Lkq /u0 = c1 /(1 −  )ρq q̄∗0 relates to the speed.                                                     q0
+The parameter for which we have the least information is ρ q con-                         q=                   ∗                            ∗
+                                                                                                                                                        ,           (70)
+                                                                                               1 − exp kBA q x/v + exp kBA c0 t − q x/v
+sequently we increased this by 4% to ρq = 338kg/m3 . With this ad-
+justment we achieve the excellent agreement between numerics                              see [9, eq. (21,22)]. The breakthrough curve is obtained by setting
+and the analytical solution. Fig. 5b) shows the variation of veloc-                       x = L. This is a much abused result and is often misquoted, as dis-
+ity (top curves) and available adsorbate (bottom curves). Again the                       cussed in [18]. In fact even in [18] a ‘simpliﬁed’ version is studied
+agreement is excellent. Consequently we may state that the trav-                          which results from neglecting the ﬁrst exponential in the denomi-
+elling wave provides solutions within the accuracy of neglected                           nator in (69)
+terms, where here the largest was 0.036. If even higher accuracy                                           c0
+                                                                                          c≈                                  .                                       (71)
+is required then the numerical solution may be used to ﬁne tune                                1 + exp(kBA (q̄∗ x/v − c0 t ))
+the density of adsorbate.
+                                                                                          This may be justiﬁed by assuming a suﬃciently large time such
+                                                                                          that exp(−kBA c0 t )  1. Equation (71) is often referred to as the
+5. Alternative forms of mathematical model                                                Thomas model [3,6,19]. If we divide the top and bottom by the
+                                                                                          exponential term and again assume that an exponential term
+    There exist a variety of breakthrough models designed to model                        is small, exp(−kBA (q̄∗ x/v − c0 t )) 1, then we obtain a formula
+different sorption processes. Typically they are based on the prob-                       which is only valid for small concentrations
+ability of a component escaping and the amount of material avail-                                              ∗                
+able for mass transfer. For example in [8] the assumptions on the
+                                                                                          c ≈ c0 exp −kBA q x/v − c0 t                 ,                              (72)
+probability of escape lead to a standard logistic equation for the                        see [3,6,19] for example. It is equivalent to the Wolborska model
+concentration c1t = kc1 (c10 − c1 ). In this section we discuss a num-                    [7,19].
+ber of mathematically equivalent breakthrough models and also                                 In arriving at (71) we assumed exp(−kBA c0 t )  1, usually this is
+derive the form of the present model appropriate for describing                           justiﬁable after substituting for the parameter values and consider-
+incompressible ﬂuid ﬂow. The models are then compared with ex-                            ing a suﬃciently large time. In arriving at (72) we assumed that a
+                                           T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374                                       9
+
+
+
+
+Fig. 6. Experimental data (circles) for the adsorption of a) congo red dye in water by soil, [19, Fig. 4], b) amoxicillin in water by activated carbon, [5, Fig. 9]. Lines are
+least-squares ﬁt to equation (74) (solid), equation (73) (dashed), equation (76) (dotted). (For interpretation of the references to colour in this ﬁgure legend, the reader is
+referred to the web version of this article.)
+
+
+
+second exponential is small, leaving an expression where the con-                          5.3. Results
+centration is proportional to this neglected exponential, hence it is
+only valid for small concentrations. Equation (72) is, rather harshly,                         In Figs. 6a), b) we show comparisons of the current model
+usually termed the Bohart-Adams equation instead of their more                             against data for the removal of dye [19] and amoxicillin [5]. In
+widely applicable result (69). Since it only holds for small c it is                       each case we determine the time when the concentration is half
+often stated that their model is only valid near the start of break-                       the inlet value, t1/2 , from the experimental data (for the dye t1/2 =
+through.                                                                                   28 × 60 s, for the amoxicillin t1/2 = 13.95 × 60 s) and use this to
+   We now focus on the breakthrough curve and write                                        eliminate an unknown from each model. For equation (73) we ﬁnd
+equation (71) at x = L in a slightly more general form                                     A0 = exp(A1 t1/2 ), for equation (74) A4 = 2A2 − exp(A3 t1/2 ) and for
+                                                                                           equation (76) A5 = exp(A6 t1/2 )/2. Then we apply a least-squares ﬁt
+                    1                                                                      to determine the remaining unknowns. The experimental points in
+c1 = c10                        ,                                              (73)
+            1 + A0 exp (−A1 t )                                                            Fig. 6a) relate to the removal of congo red dye from solution after
+                                                                                           being passed through soil, see [19, Fig. 4, H = 5 cm]. The solid line
+where for the Bohart-Adams model A0 = exp(kBA q̄∗ L/v ), A1 = kBA c0 .
+                                                                                           comes from the current model, equation (74) with A2 = 0.98, A3 =
+This form also covers the Yoon-Nelson, Thomas and Bed Depth Ser-
+                                                                                           2.2 × 10−4 s−1 , the dashed line corresponds to equation (73) with
+vice Time models where the parameters A0 , A1 have slightly dif-
+                                                                                           A1 = 6.7 × 10−4 s−1 , the dotted line (76) with A6 = 3.5 × 10−4 s−1 .
+ferent interpretations in each case (see Table 3 in the review pa-
+                                                                                           The experimental points in Fig. 6b) relate to the removal of amox-
+per [7]). However, since each involve some ﬁtting to experimental
+                                                                                           icillin from water using activated carbon, see [5, Fig. 9]. Again
+data they are mathematically equivalent. Similarly we may write
+                                                                                           the solid line represents the current model, equation (74), now
+the present model, equation (65), as
+                                                                                           with A2 = 2.38, A3 = 0.0016s−1 , the dashed line equation (73) with
+            1 − A2 exp (−A3 t )                                                            A1 = 0.0048s−1 , the dotted line (76) with A6 = 0.022s−1 . In both
+c1 = c10                        ,                                              (74)
+            1 − A4 exp (−A3 t )                                                            graphs the best ﬁt is provided by the current compressible ﬂow
+                                                                                           model. Of the one parameter models the best ﬁt is the present
+where A2 = exp(kq tb ), A3 = kq , A4 = (Rg T c10 /pa )A2 .                                 model for incompressible ﬂow.
+
+5.2. Incompressible ﬂuid or negligible adsorption                                          5.4. Mass transfer models
+
+    The model derived in §2 allows for velocity variation due to the                           In the above we carried out a least-squares ﬁt to determine the
+removal of signiﬁcant amounts of material from the ﬂuid, this af-                          system unknowns. Other researchers use different methods, such
+fects the density and so is equivalent to a compressible ﬂow. If we                        as linear regression. Whatever the method it is clear that the form
+treat the ﬂuid as incompressible or only consider a small amount                           of equation (73), which describes at least four different previous
+of mass transfer then the leading order non-dimensional problem                            models, is not capable of producing a better ﬁt to the data used in
+is governed by                                                                             Fig. 6 than either of the two current models. However, this is not
+∂ cˆ1    ∂ qˆ          ∂ qˆ                                                                to say that the present model solves all problems.
+      =−      ,             = 1 − qˆ.                                          (75)            Consider the form of the adsorption equation q̄t = kq (q̄∗ − q̄ ).
+∂x       ∂ tˆ          ∂ tˆ
+                                                                                           The equilibrium adsorption depends on the total pressure which
+The non-dimensional velocity uˆ = 1 and the scale u0 = Q0 /(π R2 ).                       varies throughout the column, as shown in Fig. 4. However, it is
+The travelling wave analysis then leads to the incompressible form                         usually the breakthrough curve which is measured, this occurs at
+of equation (65)                                                                           the column outlet where the pressure is approximately constant
+                                                                                           throughout the process. Since q̄ increases monotonically from zero
+c1 = c10 (1 − A5 exp (−A6 t ) ) ,                                              (76)
+                                                                                           to q̄∗ the rate q̄t is greatest at ﬁrst breakthrough. From the non-
+where A5 = exp(kq tb ), A6 = kq .                                                          dimensionalisation it is clear that c1 differs from q̄ by a factor of
+10                                  T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374
+
+
+around (1 − δ45 ) where δ 45 is small. Consequently the concentra-                  agreement was excellent, it also outperformed standard previous
+tion variation with time must have a similar form to that of q̄ (this               models.
+is apparent from Fig. 1) and the highest gradient in concentra-                         A key result of the analysis is that the concentration of the ma-
+tion therefore also occurs at ﬁrst breakthrough. This means that,                   terial to be removed closely follows the amount of sorbate avail-
+although the time of ﬁrst breakthrough will depend on system pa-                    able. In the CO2 example the difference was less than 10%. The
+rameters such as the ﬂow-rate, column length, initial concentra-                    experimentally observed breakthrough curve may then be used to
+tion, void fraction etc, it is the form of the mass transfer model that             guide the form of the mass transfer model. For example, in the
+primarily determines the shape of the breakthrough curve.                           cases of amoxicillin and dye removal the breakthrough curve had
+    The two examples shown in Fig. 6 involve experimental data                      its steepest gradient at ﬁrst breakthrough which then slowly de-
+where the gradient ∂ c1 /∂ t is greatest at ﬁrst breakthrough, so the               creased to zero: this suggests a kinetic relation of the form qt ∝
+present linear driving force model results in an excellent ﬁt. The                  q∗ − q. In the case of CO2 removal published data often shows a
+data presented in Fig. 3 indicates ∂ c1 /∂ t ≈ 0 at ﬁrst breakthrough.              small gradient at ﬁrst breakthrough, suggesting qt ∝ c (q∗ − q ) or
+Our model does not accurately capture this. Given that the break-                   q(q∗ − q ). Since the pressure near the outlet is approximately am-
+through curve is similar in form to the mass transfer model, this                   bient the value of q∗ is constant (with respect to pressure), which
+behaviour will therefore be replicated with a logistic type model                   can simplify the breakthrough calculation (there may still be some
+as suggested in [9]                                                                 temperature variation, which was not considered in this paper).
+                                                                                        The analytical solutions provided in our analysis, the gas con-
+q̄t = kc1 (q̄∗ − q̄ ).                                                  (77)
+                                                                                    centrations, gas velocity, amount of sorbate and pressure as well
+This form has a zero adsorption rate when there is zero concen-                     as the front velocity, have been shown to accurately describe the
+tration or no transfer sites available, and a maximum close to the                  evolution in a cylindrical column. This means that we now have
+middle of the process. So perhaps the best system to describe                       explicit expressions to describe the role played by the operating
+CO2 transfer in a column will involve the current set of equa-                      parameters which may then be used to improve or optimise the
+tions but with a mass transfer model such as equation (77). Whilst                  process.
+the transfer of pollutants from a liquid solution best follows the
+present model.                                                                      Declaration of Competing Interest
+
+6. Conclusion                                                                           The authors declare that they have no known competing ﬁnan-
+                                                                                    cial interests or personal relationships that could have appeared to
+    In this paper we have developed a mathematical model to de-                     inﬂuence the work reported in this paper.
+scribe isothermal mass transfer from a ﬂuid ﬂowing through a
+porous medium contained within a cylindrical tube. The model                        CRediT authorship contribution statement
+was kept relatively general, to permit the inclusion of adsorption
+and absorption processes and also the removal of relatively large                      T.G. Myers: Conceptualization, Methodology, Investigation, For-
+quantities of material, such that the velocity and pressure vary                    mal analysis, Writing - original draft, Writing - review & editing. F.
+nonlinearly along the column.                                                       Font: Validation, Writing - review & editing, Formal analysis, Soft-
+    Since the model permits the removal of a signiﬁcant amount of                   ware.
+the ﬂuid it is suitable to gas pollutant studies. As the amount re-
+moved becomes smaller then the model may be reduced to one                          Acknowledgements
+more appropriate to the removal of contaminants in aqueous so-
+lutions. Hence we ﬁrst validated it against experimental data for                      F. Font acknowledges ﬁnancial support from the Juan de la
+CO2 removal by adsorption. Subsequently we considered contami-                      Cierva programme (grant IJC2018-038463-I) from the Spanish
+nant removal from aqueous solutions.                                                MICINN and from the Obra Social la Caixa through the programme
+    Perhaps the key limitation of this work is the assumption of                    Recerca en Matemàtica Col·laborativa. Both authors thank the CERCA
+an isothermal reaction. In a number of studies on carbon capture                    Programme of the Generalitat de Catalunya. T. G. Myers acknowl-
+it has been shown to be a small effect, similarly, with removal of                  edges ﬁnancial support from the Ministerio de Ciencia e Innovacin,
+trace quantities from a liquid it is clearly small however there are,               Spain Grant No. MTM2017-82317-P.
+no doubt, situations where this will not be an appropriate assump-
+tion. The travelling wave solution cannot capture the very early                    Appendix A. Numerical solution
+time behaviour. This may not be viewed as a problem since prac-
+tical sorption equipment usually runs for very long periods and                        Numerically solving the full model (24)–(31) can be relatively
+the start-up is of little interest. The model reduction was based                   complicated, mainly due to the nonlinearities in the momentum
+on the size of the non-dimensional parameters, their relative size                  equation (28). However, a reduced version of the model can be
+may change for different materials and experimental set-ups. Con-                   formulated by neglecting terms of order 10−3 by setting δ3 = δ6 =
+sequently they should be checked whenever a new process is in-                      δ8 = 0 in (24)-(31). The neglect of these terms indicates errors of
+vestigated.                                                                         the order 0.1% when compared to a solution of the full system.
+    It was shown that suﬃciently far from the inlet a travelling                       The governing equations of the reduced model are
+wave solution holds, thus there is no need for a full numerical                          ∂ cˆ1   ∂              ∂ 2 cˆ ∂ qˆ
+solution. To verify this we compared the travelling wave solution                   δ1         +   (uˆcˆ1 ) = δ2 21 −       ,                       (A.1)
+                                                                                         ∂ tˆ ∂ xˆ              ∂ xˆ   ∂ tˆ
+against the numerics. Results showed that the difference, below
+4%, was exactly in line with the terms neglected in the analyti-                         ∂ cˆ2   ∂              ∂ 2 cˆ
+                                                                                    δ1         +   (uˆcˆ2 ) = δ2 22 ,                               (A.2)
+cal approximation. The numerical solution therefore turned out to                        ∂ tˆ ∂ xˆ              ∂ xˆ
+be most useful for ﬁne-tuning the value of the density of material
+transferred to the column or the saturation value, otherwise the                    ∂ qˆ
+                                                                                         = (1 − qˆ ) ,                                              (A.3)
+travelling wave appears suﬃciently accurate.                                        ∂ tˆ
+    The travelling wave solution was compared against experimen-
+tal data for the removal of amoxicillin and dye from water. The                     1 = δ4 (cˆ2 + δ5 cˆ1 ) ,                                        (A.4)
+                                               T.G. Myers and F. Font / International Journal of Heat and Mass Transfer 163 (2020) 120374                                         11
+
+
+                                                                                                   The set of Eqs. (A.14)–(A.16) are solved using second-order cen-
+  ∂ pˆ                                                                                         tral ﬁnite differences in space and explicit Euler in time. The
+−      = uˆ,                                                                      (A.5)
+  ∂ xˆ                                                                                         boundary conditions are discretised using one-sided second-order
+with the boundary conditions                                                                   ﬁnite differences. The nonlinear advection term in (A.14) is dealt
+                                                                                             with by using an upwind scheme with the u proﬁle from the pre-
+                           ∂ cˆ1              ∂ cˆ1 
+1 = uˆ|xˆ=0 cˆ1 |xˆ=0 − δ2            ,                    = 0,                   (A.6)        vious time step. The scheme was implemented in Matlab, using the
+                           ∂ xˆ xˆ=0           ∂ xˆ xˆ=l                                     function trapz for the numerical integration of (A.16) (at each node
+                                                                                             and time step). The choice of t and xˆ is made ensuring that the
+                           ∂ cˆ2              ∂ cˆ2                                        stability criteria tˆ δ2 /(xˆ2 δ1 ) ≤ 0.5 and max(uˆ ) tˆ/(xˆ δ1 ) ≤ 1
+1 = uˆ|xˆ=0 cˆ2 |xˆ=0 − δ2            ,                    = 0,                   (A.7)
+                           ∂ xˆ xˆ=0           ∂ xˆ xˆ=l                                     are satisﬁed. The plots shown in Fig. 5 correspond to tˆ = 0.5 ×
+                                                                                             10−4 and xˆ = 0.05.
+∂ qˆ         ∂ qˆ 
+           =            = 0,                                                      (A.8)
+ ∂ xˆ xˆ=0 ∂ xˆ xˆ=l                                                                         References
+
+and the initial conditions given by (31). Note that (A.1)-(A.8) in-                             [1] Z. Xu, J.-Q. Cai, B.-C. Pan, Mathematically modeling ﬁxed-bed adsorption in
+clude terms of order 10−2 previously neglected in the derivation                                    aqueous systems, J. Zhejiang Univ-Sci A (Appl. Phys. and Eng.) 14(3) (2013)
+                                                                                                    155–176.
+of the travelling wave solution. Hence, the numerical solution of                               [2] L.S. Tan, A.M. Shariff, K.K. Lau, M.A. Bustam, Factors affecting CO2 absorption
+(A.1)-(A.8) can be used to validate the accuracy of the travelling                                  eﬃciency in packed column: A review, J. Ind. and Engng Chem. 18 (2012)
+wave solution.                                                                                      18741883.
+                                                                                                [3] M.J. Ahmed, B.H. Hameed, Removal of emerging pharmaceutical contaminants
+   Expression (A.4) leads to                                                                        by adsorption in a ﬁxed bed column: A review, Ecotoxicology and Environmen-
+        1                                                                                           tal Safety 149 (2018) 257–266.
+cˆ2 =        − δ5 cˆ1 .                                                           (A.9)         [4] Z.Z. Chowdhury, S.M. Zain, A.K. Rashid, R.F. Raﬁque, K. Khalid, Breakthrough
+        δ4                                                                                          curve analysis for column dynamics sorption of mn(II) ions from wastewater
+                                                                                                    by using mangostana garcinia peel-based granular-activated carbon, Journal of
+Substituting (A.9) in (A.2) provides a relation between uˆ and cˆ1 ,                                Chemistry (2013). 10.1155/2013/959761
+which can be combined with (A.1) to give                                                        [5] M.A.E. de Franco, C.B. de Carvalho, M.M. Bonetto, R. de Pelegrini Soares,
+                                                                                                    L.A. Feris, Removal of amoxicillin from water by adsorption onto activated car-
+∂ uˆ          ∂ qˆ                                                                                  bon in batch process and ﬁxed bed column: kinetics, isotherms, experimental
+     = −δ4 δ5      .                                                             (A.10)
+∂ xˆ          ∂ tˆ                                                                                  design and breakthrough curves modelling, J. Clean. Prod. 161 (2017) 947–956.
+                                                                                                [6] R. Han, Y. Wang, X. Zhao, Y. Wang, F. Xie, J. Cheng, M. Tang, Adsorption
+This is consistent with the travelling wave solution (55). In a sim-                                of methylene blue by phoenix tree leaf powder in a ﬁxed-bed column: ex-
+ilar fashion, by substituting (A.9) in (A.7), and using (A.6), we ob-                               periments and prediction of breakthrough curves, Desalination 245 (2009)
+                                                                                                    284–297.
+tain the following boundary condition for the gas velocity                                      [7] H. Patel, Fixed-bed column adsorption study: a comprehensive review, Appl.
+                                                                                                    Water Sci. 9 (45) (2016), doi:10.1007/s13201- 019- 0927- 7.
+uˆ|xˆ=0 = (1 + δ5 )δ4 = 1 ,                                                      (A.11)         [8] Y.H. Yoon, J.H. Nelson, Application of gas adsorption kinetics i. a theoretical
+                                                                                                    model for respirator cartridge service life, Am. Ind. Hyg. Assoc. J. 45(8) (1984)
+(after noting that (1 + δ5 )δ4 = 1 + δ3 ≈ 1). We can integrate                                      509–516, doi:10.1080/15298668491400197.
+(A.10) and apply (A.11) to obtain                                                               [9] G.S. Bohart, E.Q. Adams, Some aspects of the behaviour of charcoal with
+                                                                                                    respect to chlorine, J. Am. Chem. Soc. 42 (3) (1920) 523–544, doi:10.1021/
+                    xˆ
+                                 ∂ qˆ                                                               ja01448a018.
+uˆ = 1 −                 δ5 δ4        dxˆ.                                       (A.12)        [10] S. Li, S. Deng, L. Zhao, R. Zhao, M. Lin, Y. Du, Y. Lian, Mathematical modeling
+                0                ∂ tˆ                                                               and numerical investigation of carbon capture by adsorption: Literature review
+    We note that adsorption can only occur in the region where                                      and case study, Appl. Energy 221 (2018) 437–449.
+                                                                                               [11] R. Ben-Mansour, M.A. Habib, O.E. Bamidele, M. Basha, N.A.A. Qasem,
+cˆ1 is present. In the travelling wave solution this corresponds to                                 A. Peedikakkal, T. Laoui, M. Ali, Carbon capture by physical adsorption: Ma-
+the growing region x < s(t). For the numerical solution, we take a                                  terials, experimental investigations and numerical modeling and simulations -
+different approach and deﬁne the function                                                           A review, Appl. Energy 161 (2016) 225–255.
+                                                                                              [12] T.G. Myers, F. Font, M.G. Hennessy, Mathematical modelling of carbon capture
+                    1            for cˆ1 > 0                                                        in a packed column by adsorption, Appl. Energy 278 (2020) 115565, doi:10.
+H (cˆ1 ) =                                                                       (A.13)             1016/j.apenergy.2020.115565.
+                    0            otherwise                                                     [13] M.S. Shafeeyan, W.M.A.W. Daud, A. Shamiri, N. Aghamohammadi, Modeling of
+                                                                                                    carbon dioxide adsorption onto ammonia-modiﬁed activated carbon: kinetic
+which we will use to enable/disable equation (A.3) if a particu-                                    analysis and breakthrough behavior, Energy & Fuels 29 (10) (2015) 6565–6577.
+lar region within the column contains cˆ1 or not (see [12]), thereby                           [14] N. Ayawei, A.N. Ebelegi, D. Wankasi, Modelling and interpretation of adsorption
+avoiding the diﬃculty of dealing with a moving boundary.                                            isotherms, J. Chem. (2017), doi:10.1155/2017/3039817.
+                                                                                               [15] A.I. Sarker, A. Aroonwilas, A. Veawab, Equilibrium and kinetic behaviour of CO2
+    Using (A.13) as a multiplying factor in (A.3), and substituting                                 adsorption onto zeolites, carbon molecular sieve and activated carbons, Energy
+(A.3) in (A.12), the equations of the model reduce to                                               Procedia 114 (2017) 2450–2459. 13th International Conference on Greenhouse
+                                                                                                    Gas Control Technologies, GHGT-13, 14-18 November 2016, Lausanne, Switzer-
+     ∂ cˆ1   ∂            ∂ 2 cˆ1 ∂ qˆ                                                            land
+δ1         +     uˆcˆ1 = δ2        −      ,                                      (A.14)
+     ∂t  ˆ   ∂ ˆ
+               x            ∂ xˆ2    ∂ tˆ                                                      [16] M.S. Shafeeyan, W.M.A.W. Daud, A. Shamiri, A review of mathematical model-
+                                                                                                    ing of ﬁxed-bed columns for carbon dioxide adsorption, Chem. Eng. Res. Des.
+                                                                                                    92 (5) (2014) 961–988.
+ ∂ qˆ
+      = (1 − qˆ )H (cˆ1 ) ,                                                      (A.15)        [17] F. Rezaei, P. Webley, Optimum structured adsorbents for gas separation pro-
+ ∂ tˆ                                                                                               cesses, Chem. Eng. Sci. 64 (24) (2009) 5182–5191.
+                                                                                               [18] K.H. Chu, Fixed bed sorption: setting the record straight on the Bohart-Adams
+                                                                                               and Thomas models, J. Hazard. Mater. 177 (2010) 1006–1012.
+                 xˆ
+uˆ = uˆ   −         δ5 δ4 1 − qˆ H cˆ1 dxˆ ,                                    (A.16)        [19] C. Smaranda, M.-C. Popescu, D. Bulgariu, T. Malut, M. Gavrilescua, Adsorption
+         xˆ=0             0                                                                         of organic pollutants onto a Romanian soil: column dynamics and transport,
+                                                                                                    Proc. Safety and Environmental Protection 108 (2017) 108–120.
+which are subject to the boundary conditions (A.6), (A.8) and
+(A.11). The concentration cˆ2 is obtained via (A.9) and the pressure
+pˆ can be constructed by numerically integrating (A.5) a posteriori.
+

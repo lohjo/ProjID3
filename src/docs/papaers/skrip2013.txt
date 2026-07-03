@@ -1,0 +1,984 @@
+This article was downloaded by: [University of Saskatchewan Library]
+On: 13 March 2015, At: 10:48
+Publisher: Taylor & Francis
+Informa Ltd Registered in England and Wales Registered Number: 1072954 Registered office:
+Mortimer House, 37-41 Mortimer Street, London W1T 3JH, UK
+
+
+
+                                 Indian Chemical Engineer
+                                 Publication details, including instructions for authors and subscription
+                                 information:
+                                 http://www.tandfonline.com/loi/tice20
+
+                                 Analytical Expressions for the Adsorbate
+                                 Breakthrough Curve from a Fixed Bed of
+                                 Adsorbent with First-order and Second-
+                                 order Kinetic Models
+                                              a                b                            c
+                                 Sean Skrip , Gautam K. Das & Siddharth G. Chatterjee
+                                 a
+                                  Division of Environmental Science , SUNY College of Environmental
+                                 Science and Forestry , 1 Forestry Drive, Syracuse , NY , 13210 , USA
+                                 b
+                                     118/A Acharya Jagdish Chandra Bose Road, Kolkata , 700014 , India
+                                 c
+                                  Department of Paper and Bioprocess Engineering , SUNY College of
+                                 Environmental Science and Forestry , 1 Forestry Drive, Syracuse , NY ,
+                                 13210 , USA
+                                 Published online: 06 Jun 2013.
+
+
+To cite this article: Sean Skrip , Gautam K. Das & Siddharth G. Chatterjee (2013) Analytical Expressions
+for the Adsorbate Breakthrough Curve from a Fixed Bed of Adsorbent with First-order and Second-order
+Kinetic Models, Indian Chemical Engineer, 55:2, 87-103, DOI: 10.1080/00194506.2013.798490
+
+To link to this article: http://dx.doi.org/10.1080/00194506.2013.798490
+
+
+
+PLEASE SCROLL DOWN FOR ARTICLE
+
+Taylor & Francis makes every effort to ensure the accuracy of all the information (the
+“Content”) contained in the publications on our platform. However, Taylor & Francis, our
+agents, and our licensors make no representations or warranties whatsoever as to the
+accuracy, completeness, or suitability for any purpose of the Content. Any opinions and views
+expressed in this publication are the opinions and views of the authors, and are not the views
+of or endorsed by Taylor & Francis. The accuracy of the Content should not be relied upon
+and should be independently verified with primary sources of information. Taylor and Francis
+shall not be liable for any losses, actions, claims, proceedings, demands, costs, expenses,
+damages, and other liabilities whatsoever or howsoever caused arising directly or indirectly in
+connection with, in relation to or arising out of the use of the Content.
+
+This article may be used for research, teaching, and private study purposes. Any substantial
+or systematic reproduction, redistribution, reselling, loan, sub-licensing, systematic supply, or
+                                                                            distribution in any form to anyone is expressly forbidden. Terms & Conditions of access and
+                                                                            use can be found at http://www.tandfonline.com/page/terms-and-conditions
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+                                                                            INDIAN CHEMICAL ENGINEER – 2013 Indian Institute of Chemical Engineers
+                                                                            Vol. 55 No. 2 June 2013, pp. 87103
+                                                                            Print ISSN: 0019-4506, Online ISSN: 0975-007X, http://dx.doi.org/10.1080/00194506.2013.798490
+
+
+
+
+                                                                            Analytical Expressions for the Adsorbate
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            Breakthrough Curve from a Fixed Bed of
+                                                                            Adsorbent with First-order and Second-order
+                                                                            Kinetic Models
+
+                                                                            Sean Skrip1, Gautam K. Das2 & Siddharth G. Chatterjee3*
+                                                                            1
+                                                                             Division of Environmental Science, SUNY College of Environmental Science and Forestry, 1 Forestry Drive,
+                                                                            Syracuse, NY 13210, USA
+                                                                            2
+                                                                             118/A Acharya Jagdish Chandra Bose Road, Kolkata 700014, India
+                                                                            3
+                                                                             Department of Paper and Bioprocess Engineering, SUNY College of Environmental Science and Forestry, 1
+                                                                            Forestry Drive, Syracuse, NY 13210, USA
+
+
+
+
+                                                                            Abstract: In many batch studies, the kinetics of adsorption have demonstrated adherence to first-order
+                                                                            (Lagergren) or second-order (Ho and McKay) models. Since practical adsorption systems generally operate in
+                                                                            the fixed-bed mode, in this work, the first- and second-order kinetic models describing adsorbate uptake are
+                                                                            combined with an overall adsorbate material balance to obtain simple analytical expressions for the adsorbate
+                                                                            breakthrough curve from a fixed bed of adsorbent. These expressions can correlate some fixed-bed
+                                                                            experimental data reported in the literature with an average error of 18%. The equations describing the
+                                                                            breakthrough behaviour can be used for the rapid scale-up and design of fixed-bed adsorption columns for
+                                                                            removing contaminants from water and wastewater.
+
+                                                                            Keywords: Breakthrough curve, Fixed-bed adsorption, Ho and McKay model, Lagergren model, Water
+                                                                            treatment
+
+                                                                            Introduction
+                                                                            Modern industrial processes produce a variety of hazardous materials like metal ions, dyes and
+                                                                            organic compounds, which have to be removed from waste streams before their discharge into the
+                                                                            environment. The removal of such chemicals from liquid and gaseous effluent streams by carbon
+
+
+                                                                            *Author for Correspondence. E-mail: schatterjee@esf.edu
+                                                                            88     SKRIP ET AL.
+
+                                                                            adsorption, in order to comply with environmental regulations, has been a long-standing practice.
+                                                                            Many novel and low-cost adsorbents have been tested for removal of hazardous chemicals [123].
+                                                                            Examples of these alternative adsorbents are natural materials like cedar sawdust, popcorn, kudzu,
+                                                                            sphagnum moss peat, carbons prepared from tamarind nutshell, rice husk and coconut husk [39],
+                                                                            as well as industrial by-products or waste products like crushed brick, mustard-oil cake, activated
+                                                                            slag created in steel blast furnaces, red mud resulting from aluminium processing, and even carbon
+                                                                            developed from waste slurry generated in fertilizer plants [915]. These works have investigated the
+                                                                            effects of temperature, initial pH, initial concentration and adsorbent particle size on the adsorption
+                                                                            process, and have also presented Langmuir and Freundlich isotherms in order to determine sorbent
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            dosage requirements. In many of these studies, which were conducted in batch systems, the
+                                                                            adsorbate uptake was found to obey the first-order model of Lagergren [24] or the second-order
+                                                                            model of Ho and McKay [25]. Assuming no mass-transfer effects, Azizian [26] has provided a
+                                                                            theoretical justification for the first- and second-order kinetic models in the case of batch
+                                                                            adsorption.
+                                                                                  Adsorption systems generally operate in the fixed-bed mode for which sophisticated design
+                                                                            procedures exist [27]. From a practical point of view, such procedures involve complex
+                                                                            mathematical and numerical techniques and presume a high level of technical competence and
+                                                                            skill on the part of the practitioner, as well as the associated computational facilities necessary to
+                                                                            implement the techniques. These are often lacking in the villages and towns of the countries of Latin
+                                                                            America, Africa and Asia, whose populations are increasingly threatened with contamination of
+                                                                            their drinking water supplies owing to rapid industrialization and natural factors (e.g. groundwater
+                                                                            contamination by geogenic arsenic in West Bengal, India and Bangladesh).
+                                                                                  The main objective of this paper is to present simple and alternative methods for the scale-up
+                                                                            and design of fixed-bed adsorption columns for removing contaminants (e.g. arsenic, iron,
+                                                                            chromium and organic dyes) from water and wastewater, which can be easily implemented without
+                                                                            requiring significant expertise or computational facilities. Specifically, the first- and second-order
+                                                                            kinetic models describing adsorbate uptake [24, 25], which were originally developed for batch
+                                                                            adsorption, are combined with an overall adsorbate material balance in order to derive
+                                                                            analytical expressions for the adsorbate breakthrough curve from a fixed bed of adsorbent. These
+                                                                            expressions are used to correlate some fixed-bed experimental data that have been reported in the
+                                                                            literature.
+
+
+                                                                            Theory
+                                                                            Consider a fixed bed of length L containing an adsorbent. A fluid, which has an adsorbable species
+                                                                            with a concentration of cin, enters the bed at x 0 with a superficial velocity us, and leaves it with a
+                                                                            concentration of ceff at x L. The problem is to predict the behaviour of ceff as a function of the
+                                                                            elapsed time t since the start of the process at t0 (i.e. the breakthrough curve). Neglecting axial
+                                                                            dispersion compared with convective transport, the differential mass balance for the adsorbate in the
+                                                                            bed is given by
+
+
+                                                                                                                       @c      @c    @q
+                                                                                                                  eb      þ u s þ qb    ¼0                                      (1)
+                                                                                                                       @t      @x    @t
+                                                                            INDIAN CHEMICAL ENGINEER                                                     Vol. 55 No. 2 June 2013
+                                                                                                          Analytical Expressions for the Adsorbate Breakthrough Curve          89
+
+                                                                            Here, ob and rb are the porosity and bulk density of the bed, respectively, whereas c and q are the
+                                                                            fluid-phase and solid-phase concentrations, respectively, of the adsorbate at a distance x from the
+                                                                            inlet of the bed. The initial and boundary conditions for Equation (1) are
+                                                                                                               c ¼ 0; q ¼ 0 at t ¼ 0; for x  0                               (2)
+                                                                                                                 c ¼ cin ; for t > 0; at x ¼ 0                                (3)
+                                                                                 Integrating Equation (1) over the bed from x0 (where ccin) to x L (where cceff), and
+                                                                            noting that rbq obc, we obtain
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                                                                     ceff         qb L dq
+                                                                                                                            ¼1                                               (4)
+                                                                                                                     cin          us cin dt
+                                                                            where q is the average solid-phase adsorbate concentration in the bed given by
+                                                                                                                           Z
+                                                                                                                          1 L
+                                                                                                                     q¼        qdx                                            (5)
+                                                                                                                          L 0
+
+
+                                                                            First-order Model
+                                                                            The first-order kinetic model, which has been empirically verified in numerous batch-adsorption
+                                                                            studies, is given by [24, 25]
+                                                                                                                      @q
+                                                                                                                            ¼ k1 ðqe  qÞ                                     (6)
+                                                                                                                      @t
+                                                                            where k1 is a first-order rate constant, which includes the effects of mass transfer in the fluid and
+                                                                            solid phases, physical adsorption and/or chemical reaction, and qe is an equilibrium solid-phase
+                                                                            concentration of adsorbate, which, in the case of batch adsorption, has been typically taken to be the
+                                                                            long-time or ultimate concentration of the adsorbate in the solid when it has achieved equilibrium
+                                                                            with the fluid. In this paper, which is concerned with fixed-bed adsorption, we will assume that k1
+                                                                            and qe (adsorbent sorption capacity) are constants that have to be determined empirically. A
+                                                                            theoretical justification for Equation (6), which includes mass-transfer effects, is provided in the
+                                                                            appendix in the case of physical adsorption.
+                                                                                 Integrating Equation (6) over the bed from x0 to xL, we obtain
+                                                                                                                      dq
+                                                                                                                            ¼ k1 ðqe  qÞ                                     (7)
+                                                                                                                      dt
+                                                                            whose solution, subject to the initial condition q ¼ 0 at t0, is
+                                                                                                                   q ¼ qe ½1  expðk1 tÞ                                    (8)
+                                                                            Using Equation (8) in Equation (4) yields
+                                                                                                               ceff      q Lk q
+                                                                                                                    ¼ 1  b 1 e expðk1 tÞ                                    (9)
+                                                                                                               cin        us cin
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                   Vol. 55 No. 2 June 2013
+                                                                            90    SKRIP ET AL.
+
+                                                                            Let n be the number of bed volumes of fluid that have passed through the bed since t0, that is,
+
+                                                                                                                 us ðt  Leb =us Þ           Qt            Qt
+                                                                                                          n¼                             ¼           eb                             (10)
+                                                                                                                         L                   Vbed          Vbed
+
+                                                                            where Q and Vbed are the volumetric flow rate of the fluid through the adsorbent bed and the volume
+                                                                            of the bed, respectively. The expression for the breakthrough curve given by Equation (9) is then
+                                                                            transformed into
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                                                             ceff
+                                                                                                                    ¼ 1  Da1 nstoic expðnDa1 Þ                                    (11a)
+                                                                                                             cin
+
+                                                                            or
+                                                                                                             ceff
+                                                                                                                  ¼ 1  exp½Da1 ðn  nBT Þ                                        (11b)
+                                                                                                             cin
+
+                                                                            where nBT is the number of bed volumes at breakthrough (i.e. when ceff 0). The dimensionless
+                                                                            parameters Da1 and nstoic are given by
+
+                                                                                                                                k1 L          k1 Vbed
+                                                                                                                       Da1 ¼             ¼                                           (12)
+                                                                                                                                    us           Q
+                                                                                                                                         qb qe
+                                                                                                                             nstoic ¼                                                (13)
+                                                                                                                                          cin
+
+                                                                            Thus, the two parameters that govern breakthrough are either Da1 and nstoic [Equation (11a)], or
+                                                                            Da1 and nBT [Equation (11b)]. Equating Equations (11a) and (11b), we obtain
+
+                                                                                                                                lnðDa1 nstoic Þ
+                                                                                                                        nBT ¼                                                        (14)
+                                                                                                                                    Da1
+
+                                                                            which, upon differentiating with respect to Da1, assuming nstoic to be constant, and setting the
+                                                                            derivative equal to zero, yields the maximum number of bed volumes at breakthrough as
+                                                                                                                               nstoic
+                                                                                                                 nBT;max ¼            ¼ 0:368 nstoic                                 (15)
+                                                                                                                                 e
+                                                                            Equation (11b) can also be written as
+                                                                                                                                    !
+                                                                                                                         1
+                                                                                                            ln                           ¼ Da1 ðn  nBT Þ                            (16)
+                                                                                                                    1  ceff =cin
+
+                                                                            Hence, if the adsorbate uptake follows a first-order process (i.e. Equation (6)), plotting effluent
+                                                                            breakthrough data according to Equation (16) will allow one to determine the two parameters Da1
+                                                                            and nBT of the breakthrough curve.
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                              Vol. 55 No. 2 June 2013
+                                                                                                         Analytical Expressions for the Adsorbate Breakthrough Curve             91
+
+                                                                            Second-order Model
+                                                                            Several adsorbateadsorbent systems have been found to obey the second-order kinetic model of
+                                                                            Ho and McKay [25], which is given by
+                                                                                                                         @q               2
+                                                                                                                            ¼ k2 ðqe  qÞ                                       (17)
+                                                                                                                         @t
+                                                                            where k2 is a second-order rate constant, which includes the effects of mass transfer, physical
+                                                                            adsorption and/or chemical reaction. Integrating Equation (17) over the bed from x 0 to xL, and
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            assuming that
+
+                                                                                                            ðqe  qÞ2          ðqe  qÞ2 ¼ ðqe  qÞ2
+                                                                            we get
+                                                                                                                         dq                     2
+                                                                                                                              ¼ k2 ðqe  qÞ                                     (18)
+                                                                                                                         dt
+                                                                            whose solution, subject to the initial condition of q ¼ 0 at t0, is given by
+                                                                                                                                     q2e k2 t
+                                                                                                                          q¼                                                    (19)
+                                                                                                                                 1 þ qe k 2 t
+                                                                            Using Equation (19) in Equation (4) yields
+                                                                                                               ceff                     qb Lk2 q2e
+                                                                                                                      ¼1                                2                      (20)
+                                                                                                                cin             us cin ð1 þ k2 qe tÞ
+                                                                            Equation (20) can also be expressed as
+                                                                                                                  ceff                  nstoic Da2
+                                                                                                                         ¼1                                                   (21a)
+                                                                                                                  cin                ð1 þ nDa2 Þ2
+                                                                            or
+                                                                                                                                                     !2
+                                                                                                               ceff                  1 þ nBT Da2
+                                                                                                                    ¼1                                                        (21b)
+                                                                                                               cin                    1 þ nDa2
+
+                                                                            where
+                                                                                                                              qe k2 L       qe k2 Vbed
+                                                                                                                 Da2 ¼                  ¼                                       (22)
+                                                                                                                                us              Q
+                                                                            The two parameters governing breakthrough are thus either Da2 and nstoic [Equation (21a)], or Da2
+                                                                            and nBT [Equation (21b)]. Equating Equations (21a) and (21b), we obtain
+                                                                                                                       pﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+                                                                                                                         nstoic Da2  1
+                                                                                                                nBT ¼                                                     (23)
+                                                                                                                              Da2
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                         Vol. 55 No. 2 June 2013
+                                                                            92     SKRIP ET AL.
+
+                                                                            Following a similar procedure as for the first-order model yields nBT,max as
+                                                                                                                                       nstoic
+                                                                                                                           nBT;max ¼            ¼ 0:25 nstoic                                  (24)
+                                                                                                                                         4
+                                                                            Equation (21b) can also be written as
+                                                                                                     pﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+                                                                                                   ln 1  ceff =cin ¼ lnð1 þ nBT Da2 Þ  lnð1 þ nDa2 Þ                                         (25)
+
+                                                                            which will allow the determination of the two parameters Da2 and nBT of the breakthrough curve in
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            the case of second-order behaviour.
+
+                                                                            Results and Discussion
+                                                                            The models were correlated against experimental data from three separate investigations [13] that
+                                                                            involved the adsorption of a component from a liquid or gaseous phase on a solid adsorbent. In
+                                                                            order to discriminate between first- and second-order behaviour, the data were first plotted
+                                                                            according to Equation (16). If the correlation coefficient of the fit was 0.98, first-order behaviour
+                                                                            was presumed; if this was not the case, we fitted the data with the second-order expression given by
+                                                                            Equation (21b). Walker and Weatherley [1], who used the beddepthservicetime model to
+                                                                            correlate their data, studied the adsorption of acid dyes in fixed beds of granular activated carbon.
+                                                                            Figure 1 shows their experimental breakthrough data of an acid dye (Tectilon Red 2B) at bed depths
+                                                                            of 10, 15 and 20 cm, respectively; we observe that the data conform closely to the first-order
+                                                                            expression [Equation (11b)]. The values of the relevant experimental parameters are provided in
+                                                                            Table 1, and the values of qe and k1 obtained from the fit are reported in Table 4. The value of the
+                                                                            adsorbent capacity (qe) is fairly consistent; it is 0.0575 g/g on average whereas the value of k1
+                                                                            decreases by 33 and 20% as the bed depth increases by 50 and 33%, respectively (Table 4). From
+                                                                            theoretical considerations, a correlation for k1 as a function of particle, bed and fluid properties is
+
+                                                                                                             1
+                                                                                                            0.9
+                                                                                                            0.8
+                                                                                                            0.7
+                                                                                                            0.6
+                                                                                             c eff / c in
+
+
+
+
+                                                                                                            0.5
+                                                                                                            0.4
+                                                                                                            0.3                                          Experiment (L = 10 cm)
+                                                                                                            0.2                                          Experiment (L = 15 cm)
+                                                                                                                                                         Experiment (L = 20 cm)
+                                                                                                            0.1
+                                                                                                                                                         First-Order Model [Eq. (11b)]
+                                                                                                             0
+                                                                                                                  0   20   40     60      80       100    120      140      160      180
+                                                                                                                                Volume of Liquid Treated (Litres)
+
+                                                                            Fig. 1. Comparison of experimental [1] and theoretical breakthrough curves in the adsorption of an acid dye
+                                                                                    (Tectilon Red 2B) on granular activated carbon  effect of bed depth. Experimental and kinetic
+                                                                                    parameters are given in Tables 1 and 4, respectively.
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                                        Vol. 55 No. 2 June 2013
+                                                                                                                       Analytical Expressions for the Adsorbate Breakthrough Curve                    93
+
+                                                                                          Table 1. Experimental parameters of Fig. 1 (from Walker and Weatherley [1])
+
+                                                                                          Parameter                                                                                 Value
+
+                                                                                          Depth of adsorbent bed, L                                                         10, 15 and 20 cm
+                                                                                          Diameter of adsorbent bed, d                                                      5 cm
+                                                                                          Inlet adsorbate concentration, cin                                                0.0001 g/cm3
+                                                                                          Volumetric flow rate of liquid, Q                                                 50 cm3/min
+                                                                                          Bulk density of adsorbent bed, rb                                                 0.611 g/cm3
+                                                                                          Adsorbent particle size, dp                                                       0.03550.05 cm
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            proposed in the appendix [Equation (A12)], which suggests that, for liquids flowing through a bed
+                                                                            of adsorbent particles,
+                                                                                                                                                       !B
+                                                                                                                                      us nstoic                   1
+                                                                                                                             k1 ¼ A               þ1                                                 (26)
+                                                                                                                                      eb    eb              L2C dpC1
+
+                                                                            where A, B and C are empirical constants with dp being the (average) diameter of the adsorbent
+                                                                            particles. The value of C for the data in Fig. 1 is 1.084.
+                                                                                 Figures 24 show breakthrough data from the work of Han et al. [2], who studied the
+                                                                            individual and competitive removal of copper (II) and lead (II) from aqueous solution in fixed beds
+                                                                            of manganese oxide coated zeolite; they used the Thomas model to represent breakthrough
+                                                                            behaviour. Overall, the data for copper show a good match to the second-order model [Equation
+                                                                            (21b)]; values of qe and k2 obtained from the fit are given in Table 4, while Table 2 reports values of
+                                                                            the experimental parameters. For the data in Fig. 2, the value of qe is nearly constant at 0.0122 g/g,
+                                                                            but k2 decreases by 17 and 12% as the bed depth increases by 50 and 33%, respectively. If one
+                                                                            assumes that Equation (26) also describes the behaviour of the second-order rate constant k2,
+
+
+                                                                                                               1
+                                                                                                             0.9
+                                                                                                             0.8
+                                                                                                             0.7
+                                                                                                             0.6
+                                                                                              c eff / c in
+
+
+
+
+                                                                                                             0.5
+                                                                                                             0.4
+                                                                                                             0.3                                          Experiment (L = 15 cm)
+                                                                                                             0.2                                          Experiment (L = 20 cm)
+                                                                                                                                                          Experiment (L = 10 cm)
+                                                                                                             0.1
+                                                                                                                                                          Second-Order Model [Eq. (21b)]
+                                                                                                               0
+                                                                                                                   0   100    200     300   400     500     600    700    800    900 1000
+
+                                                                                                                                                 Time (min)
+
+                                                                            Fig. 2. Comparison of experimental (figure 1(a) in Han et al. [2]) and theoretical breakthrough curves in the
+                                                                                    adsorption of copper on manganese oxide coated zeolite  effect of bed depth. Experimental and
+                                                                                    kinetic parameters are given in Tables 2 and 4, respectively.
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                                              Vol. 55 No. 2 June 2013
+                                                                            94     SKRIP ET AL.
+
+                                                                                                                 1
+                                                                                                               0.9
+                                                                                                               0.8
+                                                                                                               0.7
+                                                                                                               0.6
+                                                                                               ceff / cin
+                                                                                                               0.5
+                                                                                                               0.4                                      Experiment (16-20 mesh)
+
+                                                                                                               0.3                                      Experiment (20-40 mesh)
+                                                                                                               0.2                                      Experiment (40-60 mesh)
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                                                               0.1                                      Second-Order Model [Eq. (21b)]
+                                                                                                                 0
+                                                                                                                      0              200          400              600                800
+                                                                                                                                               Time (min)
+
+                                                                            Fig. 3. Comparison of experimental (figure 4(a) in Han et al. [2]) and theoretical breakthrough curves in the
+                                                                                    adsorption of copper on manganese oxide coated zeolite  effect of adsorbent particle size.
+                                                                                    Experimental and kinetic parameters are given in Tables 2 and 4, respectively.
+
+                                                                            C 1.539 for the data shown in Fig. 2. Decreasing the adsorbent particle size from 1620 mesh to
+                                                                            4060 mesh increases the value of k2 by a factor of 3.4 owing to increased particle specific surface
+                                                                            area, with consequent steepening in breakthrough behaviour and crossover of the breakthrough
+                                                                            curves (Fig. 3 and Table 4). This effect of a smaller particle size on improved column performance
+                                                                            (i.e. later breakthrough) was also observed by Walker and Weatherley [1], who attributed it to
+                                                                            higher interfacial area and increased sorption capacity of the adsorbent. Increasing the rate of liquid
+                                                                            flow Q through the bed from 5.45 to 10 ml/min increases k2 by 80% owing to enhanced mass
+                                                                            transfer (Fig. 4 and Table 4), causing a steepening of the breakthrough curve and earlier
+                                                                            breakthrough; this latter observation was also made by Walker and Weatherley [1]. For the data in
+                                                                            Fig. 4, k2 is proportional to Q0.991, which conforms very well to the linear relationship between the
+                                                                            rate constant and superficial liquid velocity as predicted by Equation (26), assuming, as mentioned
+
+                                                                                                                       1
+                                                                                                                     0.9
+                                                                                                                     0.8
+                                                                                                                     0.7
+                                                                                                                     0.6
+                                                                                                        ceff / cin
+
+
+
+
+                                                                                                                     0.5                           Experiment (Q = 5.45 mL/min)
+                                                                                                                     0.4                           Experiment (Q = 7.69 mL/min)
+                                                                                                                     0.3                           Experiment (Q = 10 mL/min)
+                                                                                                                     0.2                           Second-Order Model [Eq. (21b)]
+                                                                                                                     0.1
+                                                                                                                       0
+                                                                                                                           0   100 200 300 400 500 600 700 800 900 1000 1100
+                                                                                                                                               Time (min)
+
+                                                                            Fig. 4. Comparison of experimental (figure 2(a) in Han et al. [2]) and theoretical breakthrough curves in the
+                                                                                    adsorption of copper on manganese oxide coated zeolite  effect of liquid flow rate. Experimental and
+                                                                                    kinetic parameters are given in Tables 2 and 4, respectively.
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                                              Vol. 55 No. 2 June 2013
+                                                                                                           Analytical Expressions for the Adsorbate Breakthrough Curve          95
+
+                                                                                               Table 2. Experimental parameters of Figs 24 (from Han et al. [2])
+
+                                                                            Parameter                                                               Value
+
+                                                                            Depth of adsorbent bed, L                   10 (Fig. 2), 15 (Figs 24) and 20 cm (Fig. 2)
+                                                                            Diameter of adsorbent bed, d                1 cm
+                                                                            Inlet adsorbate concentration, cin          0.976 mmol/L (6.202 10-5 g/cm3)
+                                                                            Volumetric flow rate of liquid, Q           5.45 (Fig. 4), 7.69 (Figs 24) and 10 cm3/min (Fig. 4)
+                                                                            Bulk density of adsorbent bed, rb           1.273 g/cm3
+                                                                            Adsorbent particle size                     1620 mesh (Fig. 3), 2040 mesh (Figs 24) and 4060 mesh
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                                                                        (Fig. 3)
+                                                                            Molecular weight of adsorbate (Cu), MW      63.55 g/mol
+                                                                            Experimental temperature, T                 293 K
+
+                                                                            earlier, that this type of equation is also valid for k2. For the experimental data shown in Figs 24,
+                                                                            the value of the adsorbent capacity (qe) is quite consistent; it is 0.013 g/g on average (Table 4).
+                                                                                 Figure 5 shows the rather good fit of the second-order model to the experimental breakthrough
+                                                                            data of Mak et al. [3], who studied the adsorption of trichloroethylene (TCE) from an air stream in a
+                                                                            fixed bed of popcorn (Table 3). These authors determined values of the sorption rate constant and
+                                                                            the equilibrium sorption capacity (for acetone, TCE and toluene), which are analogous to k1 and qe
+                                                                            in our work, by fitting the Wheeler or Mecklenburg equation to the experimental 10% breakthrough
+                                                                            time (i.e. when ceff/cin 0.1). The data shown in Fig. 5 are for an inlet concentration of TCE of
+                                                                            7000 ppm; the fit of the second-order model to their breakthrough data did not reach this level for
+                                                                            inlet concentrations of 3000 and 5000 ppm, presumably because the adsorbent bed was far from
+                                                                            saturation. We were also unable to get good agreement of the first- and second-order models with
+                                                                            steep S-shaped experimental breakthrough curves that have been reported for some systems [912].
+                                                                            Thus, the first-order and second-order expressions for the breakthrough curve [Equations (11b) and
+                                                                            (21b)] have the ability to represent convex-shaped breakthrough data (such as those shown in Figs
+                                                                            15) quite well. The average root-mean-square deviation between prediction and experiment for all
+                                                                            the cases presented in Figs 15 is 18% (Table 4).
+                                                                                 Values of the dimensionless parameters of the first- and second-order kinetic models for the data
+                                                                            in Figs 14 are gathered together in Table 5. The last column of this table shows values of nBT, max,
+
+                                                                                                 Table 3. Experimental parameters of Fig. 5 (from Mak et al. [3])
+
+                                                                                         Parameter                                                    Value
+
+                                                                                         Volume of adsorbent bed, Vbed                    450 cm3
+                                                                                         Inlet adsorbate concentration, cin               7000 ppm (3.784 10-5 g/cm3)
+                                                                                         Volumetric flow rate of fluid, Q                 100 cm3/min
+                                                                                         Bulk density of adsorbent bed, rb                0.045 g/cm3
+                                                                                         Specific surface area of adsorbent, Sp           30,000 cm2/g
+                                                                                         Molecular weight of adsorbate (TCE), MW          131.35 g/mol
+                                                                                         Experimental temperature, T                      296.15 K
+
+                                                                                         TCE, Trichloroethylene.
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                        Vol. 55 No. 2 June 2013
+                                                                            96     SKRIP ET AL.
+
+                                                                            Table 4. Values of kinetic parameters of the first- and second-order models and the root-mean-square (rms)
+                                                                            error of prediction in Figs 15
+
+                                                                            Figure no.                               qe (g/g)               k1 (1/min)                k2 (1/min)           rms Error (%)
+
+                                                                            1 (L10 cm)                              0.0562                7.894 10 4                                         4.4
+                                                                            1 (L15 cm)                              0.0570                5.263 10 4                                        10.5
+                                                                            1 (L20 cm)                              0.0593                4.202 10 4                                         6.0
+                                                                            2 (L10 cm)                              0.0122                                              0.344                 10.7
+                                                                            2 (L15 cm)                              0.0123                                              0.285                 15.0
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            2 (L20 cm)                              0.0122                                              0.25                  61.7a
+                                                                            3 (1620 mesh)                           0.0138                                              0.179                  5.7
+                                                                            3 (2040 mesh)                           0.0138                                              0.217                 12.6
+                                                                            3 (4060 mesh)                           0.0139                                              0.612                  3.7
+                                                                            4 (Q5.45 ml/min)                        0.0129                                              0.171                 66.4b
+                                                                            4 (Q7.69 ml/min)                        0.0129                                              0.277                 12.9
+                                                                            4 (Q10 ml/min)                          0.0129                                              0.308                 17.1
+                                                                            5                                        0.0405                                              1.974                  8.8
+
+                                                                            a
+                                                                             Decreases to 13% if the first two data points are neglected. b Decreases to 13.7% if the first five data
+                                                                            points are neglected.
+
+                                                                            which were obtained from either Equation (15) or Equation (24) using the average values of nstoic
+                                                                            reported in the second column of the table. It can be concluded that, except for the experimental run
+                                                                            with the 4060 mesh particle size (Fig. 3), all other column runs in Figs 14 were far from
+                                                                            optimum, that is, they had significantly smaller nBT values than the (relevant) theoretical limit,
+                                                                            nBT,max.
+
+                                                                                                            1
+                                                                                                           0.9
+                                                                                                           0.8
+                                                                                                           0.7
+                                                                                                           0.6
+                                                                                              ceff / cin
+
+
+
+
+                                                                                                           0.5
+                                                                                                           0.4
+                                                                                                           0.3
+                                                                                                           0.2
+                                                                                                                                                         Experiment (cin = 7000 ppm)
+                                                                                                           0.1
+                                                                                                                                                         Second-Order Model [Eq. (21b)]
+                                                                                                            0
+                                                                                                                 0              10          20         30         40                  50
+                                                                                                                                     N (number of column volumes)
+
+                                                                            Fig. 5. Comparison of experimental [3] and theoretical breakthrough curves in the adsorption of
+                                                                                    tricholoroethylene on popcorn. Experimental and kinetic parameters are given in Tables 3 and 4,
+                                                                                    respectively.
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                                           Vol. 55 No. 2 June 2013
+                                                                                                           Analytical Expressions for the Adsorbate Breakthrough Curve              97
+
+                                                                                  Table 5. Values of dimensionless parameters of the first- and second-order models in Figs 14
+
+                                                                            Figure no.                   nstoic            Da1                 Da2               nBT          nBT,max
+
+                                                                            1 (L10 cm)                 343.38         3.10 10 3                              20.15
+                                                                            1 (L15 cm)                 348.27         3.10 10 3                              24.73
+                                                                            1 (L20 cm)                 362.32         3.30 10 3                              54.17
+                                                                            Average                     351.33                                                                129.25
+                                                                            2 (L10 cm)                 250.41                             4.2910 3            8.40
+                                                                            2 (L15 cm)                 252.47                             5.3710 3           30.61
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            2 (L20 cm)                 250.41                             6.2310 3           39.97
+                                                                            Average                     251.10                                                                    62.77
+                                                                            3 (1620 mesh)              283.25                             3.7810 3            9.34
+                                                                            3 (2040 mesh)              283.25                             4.5910 3           30.50
+                                                                            3 (4060 mesh)              285.31                             1.3010 3           71.23
+                                                                            Average                     283.94                                                                    70.98
+                                                                            4 (Q5.45 ml/min)           264.78                             4.7710 3           25.93
+                                                                            4 (Q7.69 ml/min)           264.78                             5.4710 3           37.25
+                                                                            4 (Q10 ml/min)             264.78                             4.6810 3           24.20
+                                                                            Average                     264.78                                                                    66.20
+
+                                                                                 Metal-ion adsorption is generally pH-dependent [2732]. Since the models presented in this
+                                                                            work are concerned with adsorption of a single species, they are unable to account for effects of the
+                                                                            solution pH. However, it may be possible to include pH effects in the kinetic approach by
+                                                                            developing two-species or three-species models of competitive adsorption. From the point of view
+                                                                            of practical application, this can be a simple route to designing fixed-bed adsorption columns for the
+                                                                            removal of iron and arsenic, which are often present together from groundwater. As can be seen
+                                                                            from Equations (11b) and (21b), only two parameters are needed to describe the breakthrough curve
+                                                                            in the kinetic method, both of which can be directly estimated from experimental breakthrough data
+                                                                            with no subsidiary experiments (e.g. batch studies for determining sorption equilibria and
+                                                                            intraparticle diffusion coefficients) being necessary. While this lumped-parameter approach may
+                                                                            not be as technically sophisticated as the distributed-parameter or mechanistic approach practised in
+                                                                            the adsorption field [27], it nevertheless has the qualities of harmony and simplicity, and allows one
+                                                                            to grasp the totality of the fixed-bed adsorption process.
+
+
+                                                                            Conclusion
+                                                                            First- and second-order kinetic models of adsorbate uptake, which have been used extensively in the
+                                                                            literature to correlate results of batch adsorption experiments, were combined with an overall
+                                                                            adsorbate material balance to derive analytical expressions for adsorbate breakthrough in a fixed
+                                                                            bed of adsorbent. These expressions correlated some convex-shaped experimental breakthrough
+                                                                            data, reported in the literature, with an average error of 18%. The simple, analytical expressions for
+                                                                            the breakthrough curve presented in this paper can guide the adsorption practitioner in developing
+                                                                            rapid scale-up and design methods for fixed-bed adsorption columns in the field from experimental
+                                                                            data obtained with a laboratory or pilot column.
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                      Vol. 55 No. 2 June 2013
+                                                                            98     SKRIP ET AL.
+
+                                                                            Nomenclature
+                                                                            ap       Radius of an adsorbent particle, cm
+                                                                            A        Empirical constant in Equation (A12)
+                                                                            Abed     Area of cross section of the adsorbent bed (pd2/4), cm2
+                                                                            B        Empirical constant in Equation (A12)
+                                                                            c        Fluid-phase concentration of the adsorbate at any location x in the adsorbent bed or in batch
+                                                                                     adsorption, g/cm3
+                                                                            C        Empirical constant in Equation (A12)
+                                                                            Cads     Adsorbent dosage in batch adsorption, g/cm3
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            ceff     Effluent fluid-phase concentration of the adsorbate (i.e. at x L) in the adsorbent bed, g/cm3
+                                                                            cin      Inlet fluid-phase concentration of the adsorbate (i.e. at x 0) in the adsorbent bed, g/cm3
+                                                                            cs       Fluid-phase concentration of the adsorbate at the surface of an adsorbent particle in batch adsorption,
+                                                                                     g/cm3
+                                                                            c0       Initial fluid-phase concentration of the adsorbate in batch adsorption, g/cm3
+                                                                            d        Diameter of the adsorbent bed, cm
+                                                                            D        Molecular diffusion coefficient of the adsorbate in the carrier gas, cm2/min
+                                                                            De       Effective diffusion coefficient of the adsorbate in an adsorbent particle, cm2/min
+                                                                            DL       Axial dispersion coefficient of the adsorbate in the adsorbent bed, cm2/min
+                                                                            dp       Size or diameter of an adsorbent particle, cm
+                                                                            Da1      Dimensionless first-order rate constant defined by Equation (12)
+                                                                            Da2      Dimensionless second-order rate constant defined by Equation (22)
+                                                                            keff     Effective or overall mass-transfer coefficient defined by Equation (A9), 1/min
+                                                                            kf       Fluid-phase mass-transfer coefficient in batch adsorption, cm/min
+                                                                            kf’      Defined by Equation (A10), cm3/g min
+                                                                            kp       Intraparticle mass-transfer coefficient, 1/min
+                                                                            k1       First-order rate constant, 1/min
+                                                                            k2       Second-order rate constant, 1/min
+                                                                            Keq      Slope of adsorption isotherm, cm3/g
+                                                                            L        Length or depth of the adsorbent bed, cm
+                                                                            M        Mass of carbon in the adsorbent bed, g
+                                                                            MW       Molecular weight of the adsorbate, g/mol
+                                                                            n        Number of bed volumes of fluid that have passed through the adsorbent bed since t 0
+                                                                            nBT      Number of bed volumes of fluid that have passed through the adsorbent bed at breakthrough
+                                                                                     (i.e. when ceff 0)
+                                                                            nBT, max Maximum value of nBT
+                                                                            nstoic   Defined by Equation (13)
+                                                                            q        Solid-phase concentration of the adsorbate at any location x in the adsorbent bed or in an adsorbent
+                                                                                     particle in batch adsorption, g/g
+                                                                            Q        Volumetric flow rate of the fluid in the adsorbent bed, cm3/min
+                                                                            q        Average solid-phase concentration of the adsorbate in the adsorbent bed (g/g)
+                                                                            qe       Capacity of the adsorbent for adsorbate, g/g
+                                                                            qs       Solid-phase concentration of the adsorbate at the surface of an adsorbent particle in batch adsorption,
+                                                                                     g/g
+                                                                            q0       Initial solid-phase concentration of the adsorbate in batch adsorption, g/g
+                                                                            Rep      Particle Reynolds number defined by Equation (A15)
+                                                                            Sp       Specific surface area of the adsorbent, cm2/g
+
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                           Vol. 55 No. 2 June 2013
+                                                                                                           Analytical Expressions for the Adsorbate Breakthrough Curve              99
+
+                                                                            t        Elapsed time, min
+                                                                            T        Experimental temperature, K
+                                                                            us       Superficial fluid velocity in the adsorbent bed (LQ/Vbed), cm/min
+                                                                            Vbed     Volume of the adsorbent bed (AbedL), cm3
+                                                                            x        Axial location in the adsorbent bed measured from its inlet, cm
+
+
+
+
+                                                                            Greek Symbols
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            g              Constant ( 0.7)
+                                                                            ob             Porosity of the adsorbent bed
+                                                                            m              Viscosity of the carrier gas, g/cm min
+                                                                            r              Density of the carrier gas, g/cm3
+                                                                            rb             Bulk density of the adsorbent bed (M/Vbed), g/cm3
+                                                                            rp             Density of an adsorbent particle, g/cm3
+
+
+
+                                                                            Acknowledgement
+                                                                            An abridged version of this work was presented at the CHEMCON 2007 conference held at
+                                                                            Heritage Institute of Technology, Kolkata, India during 2730 December, 2007.
+
+                                                                            References
+                                                                            1.  Walker, G.M. and Weatherley, L.R., ‘‘Adsorption of Acid Dyes on to Granular Activated Carbon in Fixed
+                                                                                Beds’’, Water Res., 31, pp. 20932101 (1997).
+                                                                            2. Han, R., Zou, W., Li, H., Li, Y. and Shi, J., ‘‘Copper(II) and Lead(II) Removal from Aqueous Solution
+                                                                                in Fixed-bed Columns by Manganese Oxide Coated Zeolite’’, J. Hazard. Mater., B137, pp. 934942
+                                                                                (2006).
+                                                                            3. Mak, V.W.Y., Chatzis, I., Hudgins, R.R. and Fayed, M.E., ‘‘Removal of VOCs by Sorption in Fixed Beds
+                                                                                of Popcorn’’, Can. J. Chem. Eng., 82, pp. 194197 (2004).
+                                                                            4. Goud, V.V., Mohanty, K., Rao, M.S. and Jayakumar, N.S., ‘‘Phenol Removal from Aqueous Solutions by
+                                                                                Tamarind Nutshell Activated Carbon: Batch and Column Studies’’, Chem. Eng. Technol., 28, pp. 814
+                                                                                821 (2005).
+                                                                            5. Mohanty, K., Naidu, J.T., Meikap, B.C. and Biswas, M.N. ‘‘Removal of Crystal Violet from Wastewater
+                                                                                by Activated Carbons Prepared from Rice Husk’’, Ind. Eng. Chem. Res., 45, pp. 51655171 (2006).
+                                                                            6. Ho, Y.S. and McKay, G., ‘‘The Kinetics of Sorption of Divalent Metal Ions onto Sphagnum Moss Peat’’,
+                                                                                Wat. Res., 34, pp. 735742 (2000).
+                                                                            7. Allen, S.J., Gan, Q., Matthews, R. and Johnson, P.A., ‘‘Kinetic Modeling of the Adsorption of Basic Dyes
+                                                                                by Kudzu’’, J. Coll. Interf. Sci., 286, pp. 101109 (2005).
+                                                                            8. Manju, G.N., Raji, C. and Anirudhan, T.S., ‘‘Evaluation of Coconut Husk Carbon for the Removal of
+                                                                                Arsenic from Water’’, Wat. Res., 32, pp. 30623070 (1998).
+                                                                            9. Hamdaoui, O., ‘‘Dynamic Sorption of Methylene Blue by Cedar Sawdust and Crushed Brick in Fixed Bed
+                                                                                Columns’’, J. Hazard. Mater. B138, pp. 293303 (2006).
+                                                                            10. Gupta, V.K., Mohan, D. and Singh, K.P. ‘‘Removal of 2-Aminophenol Using Novel Adsorbents’’, Ind.
+                                                                                Eng. Chem. Res., 45, pp. 11131122, (2006).
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                       Vol. 55 No. 2 June 2013
+                                                                            100      SKRIP ET AL.
+
+                                                                            11. Gupta, V.K., Srivastava, S.K., Mohan, D. and Sharma, S., ‘‘Design Parameters for Fixed Bed Reactors of
+                                                                                Activated Carbon Developed from Fertilizer Waste for the Removal of Some Heavy Metal Ions’’, Waste
+                                                                                Manag., 17, pp. 517522 (1997).
+                                                                            12. Srivastava, S.K., Tyagi, R. and Pant, N., ‘‘Adsorption of Heavy Metal Ions on Carbonaceous Material
+                                                                                Developed from the Waste Slurry Generated in Local Fertilizer Plants’’, Wat. Res., 23, pp. 11611165 (1989).
+                                                                            13. Ajmal, M., Rao, R.A.K. and Khan, M.A., ‘‘Adsorption of Copper from Aqueous Solution on Brassica
+                                                                                cumpestris (Mustard Oil Cake)’’, J. Hazard. Mater., B122, pp. 177183 (2005).
+                                                                            14. Gupta, V.K. and Sharma, S., ‘‘Removal of Cadmium and Zinc from Aqueous Solutions Using Red Mud’’,
+                                                                                Environ. Sci. Technol., 36, pp. 36123617 (2002).
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            15. Gupta, V.K., Gupta, M. and Sharma, S., ‘‘Process Development for the Removal of Lead and Chromium
+                                                                                from Aqueous Solutions Using Red Mud  an Aluminum Industry Waste’’, Wat. Res., 35, pp. 11251134
+                                                                                (2001).
+                                                                            16. Ahmaruzzaman, M. and Sharma, D.K., ‘‘Adsorption of Phenols from Wastewater’’, J. Coll. Interf. Sci.,
+                                                                                287, pp. 1424 (2005).
+                                                                            17. Purkait, M.K., DasGupta, S. and De, S., ‘‘Adsorption of Eosin Dye on Activated Carbon and its Surfactant
+                                                                                Based Desorption’’, J. Env. Manag., 76, pp. 135142 (2005).
+                                                                            18. Amin, M.N., Kaneco, S., Kitagawa, T., Begum, A., Katsumata, H., Suzuki, T. and Ohta, K., ‘‘Removal of
+                                                                                Arsenic in Aqueous Solutions by Adsorption into Waste Rice Husk’’, Ind. Eng. Chem. Res., 45, pp. 8105
+                                                                                8110 (2006).
+                                                                            19. Yeddou, N. and Bensmaili, A., ‘‘Kinetic Models for the Sorption of Dye from Aqueous Solution by Clay
+                                                                                Wood Sawdust Mixture’’, Desalination, 185, pp. 499508 (2005).
+                                                                            20. Maji, S.K., Pal, A., Pal, T. and Adak, A., ‘‘Modeling and Fixed Bed Column Adsorption of As(III) on
+                                                                                Laterite Soil’’, Sep. Purif. Technol., 56, pp. 284290 (2007).
+                                                                            21. Gupta, V.K., ‘‘Equilibrium Uptake, Sorption Dynamics, Process Development, and Column Operations
+                                                                                for the Removal of Copper and Nickel from Aqueous Solution and Wastewater Using Activated Slag, a
+                                                                                Low-Cost Adsorbent’’, Ind. Eng. Chem. Res., 37, pp. 192202 (1998).
+                                                                            22. Mohanty, K., Jha, M., Meikap, B.C. and Biswas, M.N., ‘‘Removal of Chromium(VI) from Dilute
+                                                                                Aqueous Solutions by Activated Carbon Developed from Terminalia Arjuna Nuts Activated with Zinc
+                                                                                Chloride’’, Chem. Eng. Sci., 60, pp. 30493059 (2005).
+                                                                            23. Sharma, A. and Bhattacharyya, K.G., ‘‘Azadirachta Indica (Neem) Leaf Powder as a Biosorbent for the
+                                                                                Removal of Cd(II) from Aqueous Medium’’, J. Hazard. Mater., B125, pp. 102112 (2005).
+                                                                            24. Lagergren, S., ‘‘Zur Theorie Der Sogenannten Adsorption Gelöster Stoffe’’, Kungliga Svenska
+                                                                                Vetenskapsakademiens Handlingar, 24, pp. 139 (1898).
+                                                                            25. Ho, Y.S. and McKay, G., ‘‘Pseudo-second Order Model for Sorption Processes’’, Process Biochem., 34,
+                                                                                pp. 451465 (1999).
+                                                                            26. Azizian, S., ‘‘Kinetic Models of Sorption: A Theoretical Analysis’’, J. Coll. Interf. Sci., 276, pp. 4752 (2004).
+                                                                            27. Tien, C., Adsorption Calculations and Modeling, Butterworth-Heinemann, Boston, MA (1994).
+                                                                            28. Tien, C., ‘‘Remarks on Adsorption Manuscripts Received and Declined: An Editorial’’, Sep. Purif.
+                                                                                Technol., 54, pp. 277278 (2007).
+                                                                            29. Tiwari, D., Kim, H.-U. and Lee, S.-M., ‘‘Removal Behavior of Sericite for Cu(II) and Pb(II) from
+                                                                                Aqueous Solutions: Batch and Column Studies’’, Sep. Purif. Technol., 57, pp. 1116 (2007).
+                                                                            30. Kumar, G.P., Kumar, P.A., Chakraborty, S. and Ray, M., ‘‘Uptake and Desorption of Copper Ion Using
+                                                                                Functionalized Polymer Coated Silica Gel in Aqueous Environment’’, Sep. Purif. Technol., 57, pp. 4756
+                                                                                (2007).
+                                                                            31. Gezici, O., Kara, H., Ayar, A. and Topkafa, M., ‘‘Sorption Behavior of Cu(II) ions on Insolubilized
+                                                                                Humic Acid under Acidic Conditions: An Application of Scratchard Plot Analysis in Evaluating the pH
+                                                                                Dependence of Specific and Nonspecific Bindings’’, Sep. Purif. Technol., 55, pp. 132139 (2007).
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                               Vol. 55 No. 2 June 2013
+                                                                                                          Analytical Expressions for the Adsorbate Breakthrough Curve               101
+
+                                                                            32. Weng, C.-H., Tsai, C.-Z., Chu, S.-H. and Sharma, Y.C., ‘‘Adsorption Characteristics of Copper(II) onto
+                                                                                Spent Activated Clay’’, Sep. Purif. Technol., 54, pp. 187197 (2007).
+                                                                            33. van der Sman, R.G.M., ‘‘Simple Model for Estimating Heat and Mass Transfer in Regular-shaped
+                                                                                Foods’’, J. Food Engineering, 60, pp. 383390 (2003).
+                                                                            34. Mittal, A., Kataria, T., Das, G.K. and Chatterjee, S.G., ‘‘Evaporative Cooling of Water in a Small Vessel
+                                                                                Under Varying Ambient Humidity’’, Int. J. Green Energy, 3, pp. 347368 (2006).
+                                                                            35. Chatterjee, S.G., ‘‘A Simple Description of Transient Moisture Diffusion in Paper’’, Indian Chemical
+                                                                                Engineer, 50, pp. 3446 (2008).
+                                                                            36. Richardson, J.F., Harker, J.H. and Backhurst, J.R., Coulson and Richardson’s Chemical Engineering,
+                                                                                Vol. 2, 5th edn, Butterworth-Heinemann, London (2002).
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                            Appendix
+                                                                            In this appendix, a theoretical justification is provided for Equations (6) and (26), assuming physical
+                                                                            adsorption. Consider a batch adsorption system in which the dosage of the adsorbent, which
+                                                                            consists of spherical particles of radius ap, is Cads. Let c and q be the adsorbate concentrations in the
+                                                                            fluid and solid phases, respectively, at any time t after the start of the adsorption process,
+                                                                            and let c0 and qo be the initial values of c and q at t0, respectively. An overall mass balance
+                                                                            yields
+
+                                                                                                                      c ¼ c0  Cads ðq  q0 Þ                                      (A1)
+                                                                                 In the adsorption literature, there is a well-known approximation known as the Glueckauf or
+                                                                            linear-driving-force model that is used for describing the uptake of an adsorbate by an adsorbent
+                                                                            pellet [27]. The uptake rate has the form
+                                                                                                                        dq
+                                                                                                                             ¼ k p ½ qs ð t Þ  q                                 (A2)
+                                                                                                                        dt
+                                                                            where qs is the solid-phase concentration of the adsorbate at the pellet’s surface and kp is an
+                                                                            intraparticle mass-transfer coefficient, which for a sphere of radius ap, is given by [27]
+                                                                                                                                        15De
+                                                                                                                                kp ¼                                               (A3)
+                                                                                                                                         a2p
+
+                                                                            Here, De is the effective diffusion coefficient of the adsorbate in the pellet. The linear-driving-force
+                                                                            approximation has also been used for describing evaporative cooling [33, 34] and moisture
+                                                                            diffusion in Chatterjee [35]. A mass balance for adsorbate around a single adsorbent pellet yields
+                                                                                                                       dq        3kf
+                                                                                                                            ¼           ½c  cs ðtÞ                               (A4)
+                                                                                                                       dt       qp ap
+
+                                                                            where kf is the fluid-phase mass-transfer coefficient, rp is the pellet density and cs is the fluid-phase
+                                                                            concentration of the adsorbate at the surface of the pellet. Assuming equilibrium at the pellet’s
+                                                                            surface and a linear isotherm, one has
+
+                                                                                                                                qs ¼ Keq cs                                        (A5)
+
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                        Vol. 55 No. 2 June 2013
+                                                                            102     SKRIP ET AL.
+
+                                                                            where Keq is the slope of the isotherm. From Equations (A1), (A2), (A4) and (A5), it may be
+                                                                            shown that
+
+                                                                                                                      dq
+                                                                                                                            ¼ k1 ½qe  q                                      (A6)
+                                                                                                                       dt
+                                                                            which is the first-order kinetic or Lagergren model [i.e. Equation (6)]. Here, qe is the maximum or
+                                                                            ultimate concentration of the adsorbate in the solid, which is given by
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                                                                             c0 þ Cads q0
+                                                                                                                     qe ¼                                                      (A7)
+                                                                                                                             Cads þ 1=Keq
+
+                                                                            and
+                                                                                                                                         
+                                                                                                                   k1 ¼ keff Keq Cads þ 1                                      (A8)
+
+                                                                            Also, keff is an effective or overall mass-transfer coefficient defined by
+                                                                                                                                          0
+                                                                                                                                    kp kf
+                                                                                                                      keff ¼                   0
+                                                                                                                                                                               (A9)
+                                                                                                                                 kp Keq þ kf
+
+                                                                            where
+
+                                                                                                                             0      3kf
+                                                                                                                            kf ¼                                              (A10)
+                                                                                                                                   qp ap
+
+                                                                            From Equations (A9) and (A10) it follows that, as kf 0 , one has
+
+                                                                                                                     keff ðkf ! 1Þ ! kp                                       (A11)
+
+                                                                                To generalize from a batch adsorption system to a fixed bed of adsorbent particles, it is
+                                                                            proposed that De be replaced by DL (axial dispersion coefficient of the adsorbate in the bed), ap by
+                                                                            L, Cads by rb/ob, and Keq by qe/cin. A dimensionless group that is expected to play a role in fixed-
+                                                                            bed adsorption is L/dp where dp is the particle diameter. Equations (A3), (A8) and (A11) then
+                                                                            suggest the following correlation for fixed-bed adsorption:
+                                                                                                                                          !B            !C
+                                                                                                               k1 L2     n                         L
+                                                                                                                     ¼ A stoic þ 1                                            (A12)
+                                                                                                                DL         eb                      dp
+
+                                                                            where A, B and C are constants that have to be determined experimentally. The factor 1 on the
+                                                                            right-hand side of Equation (A12) represents the case of pure mass transfer (i.e. no adsorption). For
+                                                                            beds of particles, the axial dispersion coefficient DL can be obtained from the expressions given
+                                                                            below [36].
+
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                         Vol. 55 No. 2 June 2013
+                                                                                                         Analytical Expressions for the Adsorbate Breakthrough Curve           103
+
+                                                                            For gases:
+                                                                                                            DL ¼ cD 0:7D for Rep B1
+                                                                                                                 1 us dp
+                                                                                                               ¼          for Rep > 10
+                                                                                                                 2 eb                                                       (A13)
+                                                                                                                        1 us dp
+                                                                                                               ¼ cD þ           for 1BRep B10
+                                                                                                                        2 eb
+                                                                            For liquids:
+Downloaded by [University of Saskatchewan Library] at 10:48 13 March 2015
+
+
+
+
+                                                                                                                                us dp
+                                                                                                                          DL                                                (A14)
+                                                                                                                                 eb
+                                                                            In Equation (A13), D is the molecular diffusion coefficient of the adsorbate species in the carrier gas
+                                                                            and Rep is the particle Reynolds number defined by
+                                                                                                                                us dp q
+                                                                                                                        Rep ¼                                               (A15)
+                                                                                                                                  l
+                                                                            where r and m are the density and viscosity of the gas, respectively.
+
+
+
+
+                                                                            INDIAN CHEMICAL ENGINEER                                                    Vol. 55 No. 2 June 2013
+

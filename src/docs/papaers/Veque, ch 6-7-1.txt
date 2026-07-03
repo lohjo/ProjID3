@@ -1,0 +1,854 @@
+6 Linear Hyperbolic Systems
+
+
+In this chapter we begin the study of systems of conservation laws by reviewing the
+theory of a constant coefficient linear hyperbolic system. Here we can solve the equations
+explicitly by transforming to characteristic variables. We will also obtain explicit solutions
+of the Riemann problem and introduce a "phase space" interpretation that will be very
+useful in our study of nonlinear systems.
+    Consider the linear system
+
+                                         Ut+ Au., =  °                                   (6.1)
+                                         u(x,O) = uo(x)
+
+where u : IR x IR -+ IRmand A E IRmxm is a constant matrix. This is a system of
+conservation laws with the flux function f( u) = Au. This system is called hyperbolic if
+A is diagonalizable with real eigenvalues, so that we can decompose
+
+                                        A = RAR- 1                                       (6.2)
+
+where A = diag(Al' A2 , " " Am) is a diagonal matrix of eigenvalues and R = hhl· · 'Irml
+is the matrix of right eigenvectors. Note that AR = RA, i.e.,
+
+                                                                                         (6.3)
+
+The system is called strictly hyperbolic if the eigenvalues are distinct. We will al-
+ways make this assumption as well. (For a demonstration that the behavior can change
+dramatically in the nonstrictly hyperbolic case, see Exercise 7.4.)
+
+
+6.1     Characteristic variables
+We can solve (6.1) by changing to the "characteristic variables"
+
+                                                                                         (6.4)
+
+                                              58
+                               6.1 Characteristic variables                                   59
+
+Multiplying (6.1) by R- 1 and using (6.2) gives
+
+                                                                                            (6.5)
+
+or, since R- 1 is constant,
+                                         Vt   + Avo: = O.                                   (6.6)
+
+Since A is diagonal, this decouples into m independent scalar equations
+
+                                                          p = 1,2, ... , m.                 (6.7)
+
+Each of these is a constant coefficient linear advection equation, with solution
+
+                                                                                            (6.8)
+
+Since v = R-1u, the initial data for Vp is simply the pth component of the vector
+
+                                                                                            (6.9)
+
+The solution to the original system is finally recovered via (6.4):
+
+                                      u(x, t) = Rv(x, t) .                                 (6.10)
+
+   Note that the value vp(x, t) is the coefficient of rp in an eigenvector expansion of the
+vector u(x, t), i.e., (6.10) can be written out as
+                                                    m
+                                    u(x, t) = L: vp(x, t)rp.                               (6.11 )
+                                                    p=l
+
+
+Combining this with the solutions (6.8) of the decoupled scalar equations gives
+                                              m
+
+                                 u(x, t) = L vp(x - .Apt,O)rp.                             (6.12)
+                                              p=l
+
+
+Note that u(x , t) depends only on the initial data at the m points x - .Apt, so the domain
+of dependence is given by 1)(x, t) = {x = X - .Ai" p = 1, 2, ... , m}.
+    The curves x = xo+ .Apt satisfying x'( t) = .A p are the "characteristics of the pth family" ,
+or simply "p-characteristics". These are straight lines in the case of a constant coefficient
+system. Note that for a strictly hyperbolic system, m distinct characteristic curves pass
+through each point in the x-t plane. The coefficient vp(x, t) of the eigenvector rp in the
+eigenvector expansion (6.11) of u(x, t) is constant along any p-characteristic.
+60                              6 Linear Hyperbolic Systems
+
+6.2    Simple waves
+We can view the solution as being the superposition of m waves, each of which is advected
+independently with no change in shape. The pth wave has shape vp(x, O)rp and propagates
+with speed Ap. This solution has a particularly simple form if vp(x, 0) is constant in x for
+all but one value of p, say v p( x, 0) == C p for p =I- i. Then the solution has the form
+
+                           u(x,t)   = Lcprp+vi(x-Ait,O)ri                             (6.13)
+                                       p#i
+                                       uo(x - Ait)
+
+and the initial data simply propagates with speed Ai. Since m - 1 of the characteristic
+                                                                       °
+variables are constant, the equation essentially reduces to Ut + AiU x = which governs the
+behavior of the ith family. Nonlinear equations have analogous solutions, called "simple
+waves", in which variations occur only in one characteristic family (see (97]).
+
+
+6.3    The wave equation
+The canonical example of a hyperbolic PDE is the second order scalar wave equation,
+
+                                                    -00   < x < 00                    (6.14)
+
+with initial data
+
+                                       U(x,O) = uo(x)
+                                       Ut(x,O) = Ul(X).
+
+This can be rewritten as a first order system of conservation laws by introducing
+
+                                    v = Ux and W = Ut
+Then Vt = Wx by equality of mixed partials, and (6.14) becomes Wt = c2 v x , so we obtain
+
+
+                                    [:t ú Åú î =L
+the system
+
+                                          +[               = 0,                       (6.15)
+
+which is of the form (6.1) with
+
+
+                                     A=   [ ° -1]° .
+                                              -c2
+                                                                                      (6.16)
+
+The initial conditions become
+
+                                     V(x,O)    = ì ú Eñ F=                            (6.17)
+                                     w(x,O)          Ul(X).
+                         6.4 Linearization of nonlinear systems                                       61
+
+Note that this system is hyperbolic since the eigenvalues of A are ±c, which are the wave
+speeds.
+   EXERCISE 6.1.     Compute the eigenvectors of A in (6.16) and use these to decouple
+(6.15) into a pair of scalar equations. Solve these equations to find that
+
+                   v(X, t)      ú =x ì ú E ñ Ç= + ú r f Eu f F = + r ú Eu OF = - ú r f Eu OF z =   (6.18)
+
+                   w(X,t)       ú =x` r ú Eu f F = + UI(XI) - ` r ú Eu OF = + UI(X2)]              (6.19)
+
+where Xl = X + ct, X2 = X - ct . Use this to compute u(x , t) in the original wave equation
+(6.14)·
+
+   EXERCISE 6.2.     Rewrite the 2D wave equation
+
+                                                                                                   (6.20)
+
+as a first order system of the form qt + Aqx + Bqy =              °where q = [v, w, <p] by introducing
+   EXERCISE 6.3.     Solve the "linearized shallow water equations",
+
+                                  [rpu] + [it'fi it1] [u]
+                                         t
+                                                            -0
+                                                       rp x -
+                                                                                                   (6.21 )
+
+where   it and'fi > °are constants, with some given initial conditions for U and rp .
+    Propagation of singularities. If we consider a point (x, t) for which the initial data
+is smooth at each point Xo = X-Apt, p = 1,2, ... , m, then V(X-Apt , O) = R-Iu(X-Apt, O)
+is also a smooth function at each of these points, and hence so is u(x, t). It follows that
+any singularities in the initial data can propagate only along characteristics, just as in the
+scalar linear case. Moreover, smooth initial data gives smooth solutions.
+
+
+6.4      Linearization of nonlinear systems
+Now consider a nonlinear system of conservation laws
+
+                                             Ut + f(u)x = 0,                                       (6.22)
+
+where u : IR x IR --+ IRm and f: IRm --+ IRm. This can be written in the quasilinear form
+
+                                             Ut + A(u)u x = 0                                      (6.23)
+
+where A(u) = f'(u) is the m x m Jacobian matrix. Again the system is hyperbolic
+if A( u) is diagonalizable with real eigenvalues for all values of u, at least in some range
+62                             6 Linear Hyperbolic Systems
+
+where the solution is known to lie, and strictly hyperbolic if the eigenvalues are distinct
+for all u.
+    We can define characteristics as before by integrating the eigenvalues of A(u). There
+are m characteristic curves through each point. The curves x( t) in the pth family satisfy
+
+                                      x'(t) = Ap(U(X(t), t)),
+                                      x(O) = xo,
+
+for some Xo. Note that the Ap now depend on u, the solution of the problem, and so we
+can no longer solve the problem by first determining the characteristics and then solving
+a system of ODEs along the characteristics. Instead a more complicated coupled system
+is obtained, reducing the effectiveness of this approach. Characteristics do yield valuable
+information about what happens locally for smooth data, however. In particular, if we
+linearize the problem about a constant state u we obtain a constant coefficient linear
+system, with the Jacobian frozen at A( u). This is relevant if we consider the propagation
+of small disturbances as we did for the scalar traffic flow model in Chapter 4. Assume an
+expansion of the solution with the form
+
+                                                                                     (6.24)
+
+where u is constant and f is small, then by the same derivation as equation (4.12) we find
+that U(l)(X, t) satisfies
+                              uP)(x, t) + ^ E ì F ì ú F E ñ I =t) = O.               (6.25)
+Small disturbances thus propagate (approximately) along characteristic curves of the form
+xp(t) = Xo + Ap(U)t. Higher order corrections for nonlinear problems can be obtained by
+retaining more terms in the expansion. The propagation of discontinuities and other
+singularities can also be studied through the use of similar expansions. This "geometrical
+optics" approach to studying weakly nonlinear phenomenon is a powerful tool, but one
+we will not pursue here. (See Whitham[97], for example.)
+    Weak shocks. Recall that for a linear system singularities propagate only along
+characteristics. For nonlinear problems this is not the case, as we have already seen for
+nonlinear scalar equations in Chapter 3. Instead, the Rankine-Hugoniot jump condition
+(3.33) must be satisfied for a propagating discontinuity,
+
+                                                                                     (6.26)
+
+where s is the propagation speed. However, for very weak discontinuities this relates
+nicely to the linear theory. Suppose that
+
+                                                                                     (6.27)
+                          6.4 Linearization of nonlinear systems                            63
+
+In this case expanding f( u/) about U r gives
+
+                                                                                        (6.28)
+
+so that (6.26) yields
+                                                                                        (6.29)
+In the limit as t -+ 0, the normalized vector (u/ - u r ) / t must approach an eigenvector of
+1'( u r ) = A( u r ) with s approaching the corresponding eigenvalue. This observation will
+be very important in studying the structure of nonlinear solutions more generally.
+
+
+6.4.1     Sound waves
+A familiar example of small disturbances in gas dynamics is the propagation of sound
+waves in the air. If we consider the Euler equations for a polytropic gas, in which the flux
+is (2.14) with equation of state (5.22), then the flux Jacobian matrix is
+
+                                                         1
+     J'(U) = [          Ky ú =3)v 2                   (3 -,)v          E>úf,v FäD=      (6.30)
+                 Ky -1)v   3 -   v(E + p)/p     (E + p)/p - (,-I)v 2
+
+A tedious calculation confirms that the eigenvalues are given by Al = V -     C, A2   = v, and
+A3 = V + c, where
+                                           c = V,p/p.                                   (6.31 )
+This is the local speed of sound in the gas. If we linearize these equations about some
+state ii, we see that small disturbances propagate at speeds v, v ± c, i.e. at speeds 0, ±c
+relative to the background velocity v. The waves traveling at speeds ±c are sound waves;
+our ears are sensitive to the small variations in pressure in these waves.
+    The waves that travel with the velocity of the gas turn out to be simply density
+variations which advect with the fluid just as in the scalar linear advection equation.
+Even for the full nonlinear equations it is easy to check that there are solutions of the
+form
+
+                                      p(x, t)     p{x - vt)
+                                      v(x, t)  = v                                      (6.32)
+                                      p( x, t) = P
+
+where p( x) is any density distribution.
+   EXERCISE 6.4.        Verify that (6.32) satisfies the nonlinear Euler equations. Is this
+solution isentropic?
+64                             6 Linear Hyperbolic Systems
+
+     EXERCISE   6.5.  The sound speed for the Euler equations is most easily calculated
+using the equations in the form (5. 26}, where the entropy S is one of the variables and
+the equation of state gives p = p(p, S). Linearize these equations about a constant state
+and compute the eigenvalues of the resulting matrix. This verifies that more generally the
+sound speed is given by VfJp/fJp, which for the polytropic case reduces to (6. 31}.
+
+     EXERCISE 6.6. Show that the sound speed in the isentropic equations (5.30) is the
+same as in the full Euler equations. For this system of two equations, small disturbance
+waves travel with speeds v ± c. Waves of the form (6.32) traveling with speed v are not
+isentropic and no longer appear.
+
+     EXERCISE 6.7.  Verify that linearizing the shallow water equations (5.38) gives the
+system (6. 21}. What is the "sound speed" for this system?
+
+
+6.5      The Riemann Problem
+For the constant coefficient linear system, the Riemann problem can be explicitly solved.
+We will see shortly that the solution to a nonlinear Riemann problem has a simple struc-
+ture which is quite similar to the structure of this linear solution, and so it is worthwhile
+studying the linear case in some detail.
+   The Riemann problem consists of the equation Ut + Au x = 0 together with piecewise
+constant initial data of the form
+
+                                  u(x,O) = {U/      x<0                               (6.33)
+                                               Ur   x> 0
+We will assume that this system is strictly hyperbolic, which means that the eigenvalues
+of A are real and distinct, and order them
+
+                                                                                      (6.34)
+
+   Recall that the general solution to the linear problem is given by (6.12). For the
+Riemann problem we can simplify the notation if we decompose u/ and U r as
+
+                                                                                      (6.35)
+
+Then
+                                                                                      (6.36)
+
+and so
+                                                                                      (6.37)
+                                6.5 The Riemann Problem                                      65
+
+If we let P(x, t) be the maximum value of p for which x - Apt> 0, then
+                                          P(x ,t)                    m
+
+                            u(x, t) = l: (3prp +                     l:     Qprp.         (6.38)
+                                              p=l              p=P(x,t)+I
+
+The determination of u(x, t) at a given point is illustrated in Figure 6.1. In the case
+shown, VI = (31 while V2 = Q2 and V3 = Q3. The solution at the point illustrated is thus
+
+                                                                                          (6.39)
+
+Note that the solution is the same at any point in the wedge between the x' = Al and
+x' = A2 characteristics. As we cross the pth characteristic, the value of x - Apt passes
+through 0 and the corresponding vp jumps from Qp to (3p. The other coefficients Vi (i :f p)
+remain constant.
+    The solution is constant in each of the wedges as shown in Figure 6.2. Across the pth
+characteristic the solution jumps with the jump given by
+
+
+
+Note that these jumps satisfy the Rankine-Hugoniot conditions (3.33), since f(u) = Au
+leads to
+
+                                        [I]     = A[u]
+                                                = ((3p - Qp)Arp
+                                                       Ap[U]
+
+and Ap is precisely the speed of propagation of this jump. The solution u(x, t) in (6.38)
+can alternatively be written in terms of these jumps as
+
+                              u(x, t)     = u/ + l: ((3p - Qp)rp                          (6.41 )
+                                                           >'p<x/t
+                                                    Ur -     l: ((3p - Qp)rp              (6.42)
+                                                           >.p?x/t
+
+     It might happen that the initial jump U r - u/ is already an eigenvector of A, if U r - u/ =
+((3i - Qi)ri for some i. In this case Qp = (3p for p :f i. Then this discontinuity simply
+propagates with speed Ai, and the other characteristics carry jumps of zero strength.
+     In general this is not the case, however, and the jump U r - u/ cannot propagate as
+a single discontinuity with any speed without violating the Rankine-Hugoniot condition.
+We can view "solving the Riemann problem" as finding a way to split up the jump U r - U/
+into a sum of jumps
+
+                                                                                          (6.43)
+66                      6 Linear Hyperbolic Systems
+
+
+
+
+     Figure 6.1. Construction of solution to Riemann problem at (x, t).
+
+
+
+
+                                      o
+
+        Figure 6.2. Values of solution u in each wedge of x-t plane.
+                               6.5 The Riemann Problem                                      67
+
+each of which can propagate at an appropriate speed Ai with the Rankine-Hugoniot con-
+dition satisfied.
+    For nonlinear systems we solve the Riemann problem in much the same way: The
+jump U r - UI will usually not have the property that [f] is a scalar multiple of [u], but we
+can attempt to find a way to split this jump up as a sum of jumps, across each of which
+this property does hold. (Although life is complicated by the fact that we may need to
+introduce rarefaction waves as well as shocks.) In studying the solution of the Riemann
+problem, the jump in the pth family, traveling at constant speed Ap , is often called the
+p-wave.
+
+
+6.5.1     The phase plane
+For systems of two equations, it is illuminating to view this splitting in the phase plane.
+This is simply the UI-U2 plane, where U = (UI,U2). Each vector u(x,t) is represented by
+a point in this plane. In particular, UI and U T are points in this plane and a discontinuity
+with left and right states UI and U T can propagate as a single discontinuity only if U r - UI
+is an eigenvector of A, which means that the line segment from UI to U must be parallel
+                                                                           T
+
+
+to the eigenvector TI or T2. Figure 6.3 shows an example. For the state UI illustrated
+there, the jump from UI to U r can propagate as a single discontinuity if and only if U T lies
+on one of the two lines drawn through UI in the direction TI and T2. These lines give the
+locus of all points that can be connected to UI by a I-wave or a 2-wave. This set of states
+is called the Hugoniot locus. We will see that there is a direct generalization of this to
+nonlinear systems in the next chapter.
+    Similarly, there is a Hugoniot locus through any point U T that gives the set of all points
+UI that can be connected to U T by an elementary p-wave. These curves are again in the
+
+directions TI and T2.
+    For a general Riemann problem with arbitrary UI and Un the solution consists of two
+discontinuities travelling with speeds Al and A2, with a new constant state in between
+ that we will call Urn. By the discussion above,
+
+                                                                                        (6.44)
+
+so that Urn - UI = (/31 - QI)TI and U T - Urn = (/32 - Q2)T2. The location of Urn in the phase
+plane must be where the I-wave locus through UI intersects the 2-wave locus through Ur.
+This is illustrated in Figure 6.4a.
+     Note that if we interchange U r and UI in this picture, the location of Urn changes as
+illustrated in Figure 6.4b. In each case we travel from UI to U r by first going in the
+direction TI and then in the direction T2. This is required by the fact that Al < A2 since
+clearly the jump between UI and Urn must travel slower than the jump between Urn and
+U r if we are to obtain a single-valued solution.
+68                                         6 Linear Hyperbolic Systems
+
+
+
+
+Figure 6.3. The Hugoniot locus of the state u/ consists of all states that differ from u/ by
+a scalar multiple of rl or r2.
+
+
+
+
+                                                                                      .... u/
+         .:.:,.::(' ?úKWWKWWW\ =                                                ...
+                                                                           .....
+                                       r
+                                   U                                           '
+
+                   ...                                                 .'
+                                                                          .
+                                                                          '
+
+                                                                ....
+                                                                   .'
+            .'
+
+
+
+Figure 6.4. The new state Urn arising in the solution to the Riemann problem for two
+different choices of u/ and u r .
+                              6.5 The Riemann Problem                                    69
+
+   For systems with more than two equations, the same interpretation is possible but
+becomes harder to draw since the phase space is now m dimensional. Since the m eigen-
+vectors rp are linearly independent, we can decompose any jump U r - U/ into the sum of
+jumps in these directions, obtaining a piecewise linear path from u/ to U r in m-dimensional
+space.
+7 Shocks and the Hugoniot Locus
+
+
+We now return to the nonlinear system Ut + j(u)x = 0, where u(x, t) E lRm. As before
+we assume strict hyperbolicity, so that 1'(u) has disctinct real eigenvalues At (u) < ... <
+Am(u) and hence linearly independent eigenvectors. We choose a particular basis for
+these eigenvectors, {r p( u)} ú í D = usually chosen to be normalized in some manner, e.g.
+Ilrp(u)11   =
+           1.
+    In the previous chapter we constructed the solution to the general Riemann problem
+for a linear hyperbolic system of conservation laws. Our goal in the next two chapters
+is to perform a similar construction for the nonlinear Riemann problem. In the linear
+case the solution consists of m waves, which are simply discontinuities traveling at the
+characteristic velocities of the linear system. In the nonlinear case our experience with the
+scalar equation leads us to expect more possibilities. In particular, the physically relevant
+vanishing viscosity solution may contain rarefaction waves as well as discontinuities. In
+this chapter we will first ignore the entropy condition and ask a simpler question: is
+it possible to construct a weak solution of the Riemann problem consisting only of m
+discontinuities propagating with constant speeds 81 < 82 < ... < 8 m ? As we will see, the
+answer is yes for Ilul - urll sufficiently small.
+
+
+7.1         The H ugoniot locus
+Recall that if a discontinuity propagating with speed 8 has constant values it and u on
+either side of the discontinuity, then the Rankine-Hugoniot jump condition must hold,
+
+                                  j(u) - j(it) = 8(U - it) .                            (7.1)
+
+Now suppose we fix the point it E IRm and attempt to determine the set of all points u
+which can be connected to u by a discontinuity satisfying (7.1) for some 8. This gives a
+system of m equations in m + 1 unknowns: the m components of U, and 8 . This leads us
+to expect one parameter families of solutions.
+    We know that in the linear case there are indeed m such families for any it. In the
+pth family the jump u- it is some scalar multiple of rp, the pth eigenvector of A. We can
+
+                                             70
+                                7.1 The Hugoniot locus                                    71
+
+parameterize these families of solutions using this scalar multiple, say   e, and we obtain
+the following solution curves:
+
+                                   Up(ejU) = u+erp
+                                   sp(ej u)  >'p
+
+for p = 1, 2, ... , m. Note that up(Oj u) = u for each p and so through the point u
+in phase space there are m curves (straight lines in fact) of possible solutions. This is
+illustrated in Figure 6.4 for the case m = 2. The two lines through each point are the
+states that can be connected by a discontinuity with jump proportional to rl or rz.
+    In the nonlinear case we also obtain m curves through any point U, one for each
+characteristic family. We again parameterize these curves by up(ej u) with up(Oj u) = u
+and let sp(ej u) denote the corresponding speed. To simplify notation, we will frequently
+write these as simply up(e), sp(e) when the point u is clearly understood.
+    The Rankine-Hugoniot condition gives
+
+                                                                                        (7.2)
+
+Differentiating this expression with respect to eand setting e= 0 gives
+
+                                                                                        (7.3)
+
+so that r ú E l F = must be a scalar multiple of the eigenvector rp(u) of 1'(u), while sp(O) =
+>'p( u). The curve up ( e) is thus tangent to r p( u) at the point U. We have already observed
+this, by a slightly different argument, in discussing weak shocks in Chapter 6. For a
+system of m = 2 equations, this is easily illustrated in the phase plane. An example for
+the isothermal equations of gas dynamics is discussed below, see Figure 7.l.
+     For smooth f, it can be shown using the implicit function theorem that these solution
+curves exist locally in a neighborhood of U, and that the functions Up and sp are smooth.
+See Lax[45] or Smoller[77] for details. These curves are called Hugoniot curves. The set of
+all points on these curves is often collectively called the Hugoniot locus for the point U.
+If Up lies on the pth Hugoniot curve through U, then we say that u and Up are connected
+by a p-shock.
+    EXAMPLE 7.1.    The isothermal equations of gas dynamics (5.32) provide a relatively
+simple example of the nonlinear theory.
+   If we let m represent the momentum, m = pv, then the system becomes
+
+                                             Pt + mx       0                             (7.4)
+                                 mt+(mz/p+aZp)x         = 0
+or Ut + f(u)x = 0 where u = (p,m).
+72                            7 Shocks and the Hugoniot Locus
+
+     The Jacobian matrix is
+
+                              J'(u) _
+                                    -
+                                            [0            1]
+                                             a2 - m 21p2 2mlp .
+                                                                                     (7.5)
+
+The eigenvalues are
+                                                                                     (7.6)
+with eigenvectors
+
+                      rl (u) = [    I1 ] ,                                           (7.7)
+                                   m p-a
+
+These could be normalized but it is easiest to leave them in this simple form.
+    Now let's fix a state it and determine the set of states it that can be connected by a
+discontinuity. The Rankine-Hugoniot condition (7.1) becomes, for this system,
+
+                                                    m-m          s(p - P)            (7.8)
+                                                                 s(m - m).
+This gives two equations in the three unknowns p, m, and s. These equations can be
+easily solved for m and s in terms of p, giving
+
+                                   m= pml P± a[iii (p - p)                           (7.9)
+and
+                                          s= mlp ± a[iii.                           (7.10)
+The ± signs in these equations give two solutions, one for each family. Since m and s
+can be expressed in terms of p, we can easily parameterize these curves by taking, for
+example,
+                                                   p = 1,2.                     (7.11)
+We then have
+
+                                                                                    (7.12)
+
+and
+
+                                                                                    (7.13)
+
+The choice of signs for each family is determined by the behavior as ú = -+ 0, where the
+relation (7.3) must hold. It is easy to check that with the above choice we have
+
+                               Wú á í é El à =it)   prp(it) ex rp(u),
+                                    sp(Oj it)       Ap( u),
+                          7.2 Solution of the Riemann problem                                 73
+
+
+m
+
+
+
+
+                                            p
+
+
+
+
+      (a)                                                 (b)
+
+Figure 7.1. a) Hugoniot locus for the state it = (1,1) in the isothermal gas dynamics
+equations with a = 1. b) Variation of these curves for it = (p,O), p = 1, 2, 3, 4.
+
+
+as expected.
+    Notice that real-valued solutions exist only for ú = > -1 and that up ( -1; it) = (0,0) for
+p = 1,2 and any it. Thus, each Hugoniot locus terminates at the origin (the vacuum state,
+since p = 0). There are no states with p < 0 that can be connected to it by a propagating
+discontinuity. The curves up(O are illustrated in Figure 7.1a for one particular choice of
+it and a = 1. Figure 7.1b shows how these curves vary with it. In this case we see ì é E ú X =it)
+for it = (p,O), p = 1, 2, 3, 4.
+
+    EXERCISE 7.1. Determine the Hugoniot locus for the shallow water equations (5.38).
+
+
+
+
+7.2     Solution of the Riemann problem
+Now suppose that we wish to solve the Riemann problem with left and right states u/ and
+U r (and recall that we are ignoring the entropy condition at this point). Just as in the
+
+linear case, we can accomplish this by finding an intermediate state Urn such that U/ and
+Urn are connected by a discontinuity satisfying the Rankine-Hugoniot condition, and so
+
+are Urn and u r • Graphically we accomplish this by drawing the Hugoniot locus for each
+of the states u/ and U r and looking for intersections. See Figure 7.2 for an example with
+the isothermal equations.
+    In this example there are two points of intersection, labelled Urn and u;;" but only
+Urn gives a single-valued solution to the Riemann problem since we need the jump from
+74                            7 Shocks and the Hugoniot Locus
+
+
+
+
+Figure 7.2. Construction of a weak solution to the Riemann problem with left and right
+states u/ and u r •
+
+U/ to Urn to travel more slowly than the jump from Urn to u r • This requires that Urn
+be connected to u/ by a I-shock while U r is connected to Urn by a 2-shock, due to our
+convention that A1(U) < A2(U). Of course our requirement really involves the shock speeds,
+not the characteristic speeds, but note that any I-shock connected to Urn has speed
+
+
+
+while any 2-shock has speed
+
+
+
+a.nd consequently s1(6; urn) < S2(e2; urn) for all 6, 6 > -Pm'
+    The state Urn can be found algebraically by using our explicit expressions for the
+Hugoniot locus. We wish to find a state (Pm, mrn) which is connected to u/ by a I-shock
+and to U r by a 2-shock. Consequently equation (7.9) with the minus sign should hold for
+U = Urn, it = U/, and the same equation with the plus sign should hold for U = Urn, it = U r .
+Equating the two resulting expressions for mrn gives
+
+                                                                                        (7.14)
+
+Setting z = ffm, we obtain a quadratic equation for z,
+
+                                                                                        (7.15)
+                                 7.3 Genuine nonlinearity                                  75
+
+This equation has a unique positive solution z, and Pm = z2. We can then determine mm
+by evaluating either side of (7.14).
+   More generally, for a system of m equations we can attempt to solve the Riemann
+problem by finding a sequence of states Ul, U2, ••• , Um-l such that U/ is connected to Ul
+by a I-shock, Ul is connected to U2 by a 2-shock, and so on, with Um-l connected to U r by
+an m-shock. If u/ and U r are sufficiently close together then this can always be achieved.
+Lax proved a stronger version of this in his fundamental paper [44]. (By considering
+rarefaction waves also, the entropy satisfying solution can be constructed in a similar
+manner.) See also Lax[45] and Smoller[77] for detailed proofs. The idea is quite simple
+and will be summarized here following Lax[45]. From u/ we know that we can reach a one
+parameter family of states Ul (6) through a I-shock. From Ul (6) we can reach another
+one parameter family of states U2(el> 6) through a 2-shock. Continuing, we see that from
+u/ we can reach an m parameter family of states u m(6, 6, ... , em) . Moreover, we know
+that
+                      8'
+                      GUm    I                 ()
+                                           <X rp U/,   p= 1,2, .. . , m .
+                        ep   (t= "'={m=O
+
+These vectors are linearly independent by our hyperbolicity assumption, and hence the
+Jacobian of the mapping U m : IRm ---t IRm is nonsingular. It follows that the mapping Urn
+is bijective in a neighborhood of the origin. Hence for any U r sufficiently close to U/ there
+is a unique set of parameters 6 , ... , em such that U r = u m (6, ···, em) .
+
+
+7.2.1     Riemann problems with no solution
+For a general nonlinear system the local result quoted above is the best we can expect,
+and there are examples where the Riemann problem has no weak solution when \lu/ - ur\l
+is sufficiently large. In such examples the shock curves simply do not intersect in the
+required way. One such example is given by Smoller[76].
+    For specific systems of conservation laws one can often prove that solutions to the
+Riemann problem exist more globally. For example, in the isothermal case we can clearly
+always solve the Riemann problem provided PI, pr > O. The case where PI or Pr is negative
+is of little interest physically, but even then the Riemann problem can be solved by taking
+the vacuum state Urn = (0,0) as the intermediate state. We encounter problems only if
+P = 0 and m #- 0 for one of the states, but since the equations involve m/ P this is not
+surprising.
+
+
+7.3     Genuine nonlinearity
+In defining the Hugoniot locus above, we ignored the question of whether a given dis-
+continuity is physically relevant. The state ii. is in the Hugoniot locus of u if the jump
+76                           7 Shocks and the Hugoniot Locus
+
+satisfies the Rankine-Hugoniot condition, regardless of whether this jump could exist in
+a vanishing viscosity solution. We would now like to define an entropy condition that
+can be applied directly to a discontinuous weak solution to determine whether the jumps
+should be allowed. In Chapter 3 we considered several forms of the entropy condition for
+scalar equations. In the convex case, the simplest condition is simply that characteristics
+should go into the shock as time advances, resulting in the requirement (3.45),
+
+
+
+Lax[44] proposed a simple generalization of this entropy condition to systems of equations
+that are genuinely nonlinear, a natural generalization of the convex scalar equation. The
+pth characteristic field is said to be genuinely nonlinear if
+
+                                                     for all u,                      (7.16)
+
+where VTAp(U) = (GAp/GUI, ... , GAp/GUm) is the gradient of Ap(U). Note that in the
+scalar case, m = 1 and At(U) = f'(u) while rt(u) = 1 for all u. The condition (7.16)
+reduces to the convexity requirement 1"(u) =f:. 0 Vu. This implies that the characteristic
+speed f'(u) is monotonically increasing or decreasing as U varies, and leads to a relatively
+simple solution of the Riemann problem.
+    For a system of equations, (7.16) implies that Ap(U) is monotonically increasing or
+decreasing as U varies along an integral curve of the vector field rp(u). These integral
+curves will be discussed in detail in the next chapter, where we will see that through a
+rarefaction wave U varies along an integral curve. Since monotonicity of the propagation
+speed Ap is clearly required through a rarefaction wave, genuine nonlinearity is a natural
+assumption.
+
+
+7.4     The Lax entropy condition
+For a genuinely nonlinear field, Lax's entropy condition says that a jump in the pth field
+(from u/ to Un say) is admissible only if
+
+                                                                                      (7.17)
+
+where s is again the shock speed. Characteristics in the pth family disappear into the
+shock as time advances, just as in the scalar case.
+     EXAMPLE 7.2 .   For isothermal gas dynamics we can easily verify that both fields are
+genuinely nonlinear. Since Ap = m/ p ± a, we compute that in each case
+
+                                                      p   = 1, 2.                     (7.18)
+                            7.4 The Lax entropy condition                                77
+
+Using (7.7), we compute that
+                                    VAI(U)· rl(U)             -alp                    (7.19)
+                                    V).2(u)·r2(U)     = alp·                          (7.20)
+These quantities are both nonzero for all u.
+    Now suppose UI and Ur are connected by a I-shock. Then UI lies in the Hugoniot locus
+of Ur and also Ur lies in the Hugoniot locus of UI . We can thus evaluate the shock speed
+s using (7.10) (with the minus sign, since the jump is a I-shock) in two different ways,
+obtaining
+                            s = ml _ aJPr/PI = mr - aJpdPr .                        (7.21)
+                                    PI                   Pr
+Since Al (u) = m/ P - a, the entropy condition (7.17) becomes
+                   ml        ml
+                   -    -a > -
+                                         ú
+                                     -aYPr/PI
+                                             ã
+                                                 =ê- =-ayPI/Pr
+                                                         ú ã ê =
+                                                               >- - a                 (7.22)
+                   PI         PI                    Pr                   Pr
+and is clearly satisfied if and only if pr > PI .
+    Notice that since the fluid velocity is v = m/ p, I-shocks always travel slower than the
+fluid on either side, and so a given fluid particle passes through the shock from left to
+right (i.e. its state jumps from UI to u r ). A consequence of the entropy condition is that
+the density of the gas must increase as it goes through the shock. This is also true more
+generally in the full Euler equations. The gas can only be compressed as the shock passes,
+not rarefied (rarefaction occurs, naturally enough, through a rarefaction wave rather than
+a shock).
+    For 2-shocks the entropy condition requires
+                   ml         ml
+                   - +a > -+aYPr/PI = -+aYPr/PI > - + a
+                                         ú   ã    ê      =      ú    ã   ê    =
+                                                                                      (7.23)
+                   PI          PI                   pr                   pr
+which is now satisfied only if Pr < PI. But note that 2-shocks travel faster than the fluid
+on either side, so that particles pass through the shock from right to left. So the entropy
+condition has the same physical interpretation as before: the density must jump from Pr
+to a higher value PI as the gas goes through the shock.
+    We can now reconsider the Hugoniot locus of a point uand retain only the points it that
+can be connected to u by an entropy-satisfying shock, discarding the entropy-violating
+shocks. In order to do this, we must first decide whether u is to lie to the left of the
+discontinuity or to the right. The entropy condition (7.17), unlike the Rankine-Hugoniot
+condition, is not symmetric in the two states.
+    Figure 7.3a shows the set of states that can be connected to the right of a given state u
+by an entropy-satisfying shock. Figure 7.3b shows the set of states that can be connected
+to the left of the same state u. Note that the union of these curves gives the full Hugoniot
+locus. Each branch of the Hugoniot locus splits into two parts at u; states on one side
+can only be connected to the left, states on the other side can only be connected to the
+right.
+78                            7 Shocks and the Hugoniot Locus
+
+
+
+
+                                                                  +--   2-shocks
+                                                   I-shocks
+                                                       1
+                   / I-shocks
+           '\
+
+            2-shocks
+
+
+
+
+     (a)                                            (b)
+
+Figure 7.3. a) States U r that can be connected to u/ = u by an entropy-satisfying shock.
+b) States U/ that can be connected to U r = U by an entropy-satisfying shock. In each case
+the entropy-violating branches of the Hugoniot locus are shown as dashed lines.
+
+7.5        Linear degeneracy
+The assumption of genuine nonlinearity is obviously violated for a constant coefficient
+linear system, in which Ap( u) is constant and hence V AI' == O. More generally, for a
+nonlinear system it might happen that in one of the characteristic fields the eigenvalue
+Ap( u) is constant along integral curves of this field, and hence
+
+                                                           VU .                         (7.24)
+
+(Of course the value of Ap(U) might vary from one integral curve to the next.) In this
+case we say that the pth field is linearly degenerate. This may seem rather unlikely,
+and not worth endowing with a special name, but in fact the Euler equations have this
+property. We will see later that for this system of three equations, two of the fields are
+genuinely nonlinear while the third is linearly degenerate.
+    A discontinuity in a linearly degenerate field is called a contact discontinuity. This
+name again comes from gas dynamics. In a shock tube problem the gas initially on one
+side of the diaphram never mixes with gas from the other side (in the inviscid Euler
+equations). As time evolves these two gases remain in contact along a ray in the x-t plane
+along which, in general, there is a jump in density. This is the contact discontinuity.
+    For general systems, if the pth field is linearly degenerate and u/ and U r are connected
+by a discontinuity in this field, then it can be shown that u/ and U r lie on the same integral
+curve of rp(u), so that Ap(u/) = Ap(U r ). Moreover, the propagation speed s is also equal to
+                              7.6 The Riemann problem                                    79
+
+
+
+
+Figure 7.4. The shaded region shows the set of points U r for which the Riemann problem
+with states u/, U r will have an entropy satisfying solution consisting of two shocks.
+
+Ap(U/). Consequently, the p-characteristics are parallel to the propagating discontinuity
+on each side, just as in the case of a linear system. Contact discontinuities can occur
+in vanishing viscosity solutions, and so for systems with both genuinely nonlinear and
+linearly degenerate fields, we should modify the entropy condition (7.17) to read
+
+                                                                                      (7.25)
+
+
+7.6    The Riemann problem
+Returning to the Riemann problem, we see that for general data U/ and U r , the weak
+solution previously constructed will not be the physically correct solution if any of the
+resulting shocks violate the entropy condition. In this case we need to also use rarefaction
+waves in our construction of the solution. This will be done in the next chapter.
+   EXAMPLE 7.3.        In particular, the weak solution to the isothermal equations con-
+structed in Figure 7.2 is nonphysical, since the 2-shock does not satisfy the entropy con-
+dition. For the state u/ illustrated there, a physically correct Riemann solution consisting
+of two shocks will exist only if the state U r lies in the region shaded in Figure 7.4.
+
+   EXERCISE 7.2 . Consider the shallow water equations (5.38).
+
+   1. Show that a weak solution to the Riemann problem consisting only of shocks always
+      exists if cp/, CPr > O. Determine the intermediate state Urn for given states u/ and
+
