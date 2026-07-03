@@ -147,3 +147,22 @@ Remaining open items (non-blocking):
 
 If solver work blocks on a missing parameter, name the parameter and which supervisor owns it rather than substituting a guess silently.
 
+<<<<<<< HEAD
+=======
+### Column Geometry (Fixed)
+
+| Quantity | Value | Notes |
+|---|---|---|
+| Column length, *L* | 38.6 ± 0.1 cm | Fixed geometry |
+| Column inner diameter, *d* | 8.5 mm | Fixed geometry |
+| Cross-sectional area, *A_c* | π·(0.0085/2)² = 5.675×10⁻⁵ m² | Computed |
+| Packed-bed length, *L_bed* | ~21 cm (20.2–21.5 per run) | of the 38.6 cm column |
+| Sorbent mass, *m* | ~8.00 g | per-run measured |
+| Bulk density, ρ_b | ~660–672 kg/m³ | derived (m / A_c·L_bed) |
+| Pellet density, ρ_p | **open** | needed for ε; not yet supplied |
+
+# Operating Times
+
+BREAKTHROUGH TIME (c/c0 = 0.05)
+EQUILIBRIUM TIME (c/c0 = 0.95)
+>>>>>>> 879b87ec874f8ac4bd37c1eb789f3a05bc190be9
