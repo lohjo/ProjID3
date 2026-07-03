@@ -147,8 +147,6 @@ Remaining open items (non-blocking):
 
 If solver work blocks on a missing parameter, name the parameter and which supervisor owns it rather than substituting a guess silently.
 
-<<<<<<< HEAD
-=======
 ### Column Geometry (Fixed)
 
 | Quantity | Value | Notes |
@@ -165,4 +163,3 @@ If solver work blocks on a missing parameter, name the parameter and which super
 
 BREAKTHROUGH TIME (c/c0 = 0.05)
 EQUILIBRIUM TIME (c/c0 = 0.95)
->>>>>>> 879b87ec874f8ac4bd37c1eb789f3a05bc190be9
