@@ -479,7 +479,7 @@ Produced by `src/solver/mechanistic_verify.py` (FV scheme (b), LSODA, banded Jac
 
 ### V.1 — Gate-A analogue: no-adsorption ADE vs (D.5) — `V1_ade_vs_erfc.png`
 
-![Figure 5) Full non-isothermal Toth demo](https://github.com/lohjo/ProjID3/blob/src/img/generated/mechanistic/V1_ade_vs_erfc.png?raw=true)
+![Figure 5) Full non-isothermal Toth demo](https://github.com/lohjo/ProjID3/blob/main/src/img/generated/mechanistic/V1_ade_vs_erfc.png?raw=true)
 
 $k=0$, $Pe_i=v_iL/D_L\approx303$; outlet trace vs Ogata–Banks, relative $L^2$ error:
 
@@ -491,7 +491,7 @@ Error halves per grid doubling — the clean first-order signature of upwind + $
 
 ### V.2 — Rankine–Hugoniot speed (D.3) and first-moment invariance (Cor. B.1) — `V2_rh_front.png`
 
-![Figure 5) Full non-isothermal Toth demo](https://github.com/lohjo/ProjID3/blob/src/img/generated/mechanistic/V2_rh_front.png?raw=true)
+![Figure 5) Full non-isothermal Toth demo](https://github.com/lohjo/ProjID3/blob/main/src/img/generated/mechanistic/V2_rh_front.png?raw=true)
 
 Isothermal Langmuir ($bc_f=2.045$), $Da=kL/u\approx14$, $D_L=10^{-6}$, $N=800$:
 
@@ -504,7 +504,7 @@ Gate B tolerance is ±10 %; the scheme is three orders inside it. The moment ide
 
 ### V.3 — Exact LDF travelling wave (D.8) — `V3_travelling_wave.png`
 
-![Figure 5) Full non-isothermal Toth demo](https://github.com/lohjo/ProjID3/blob/src/img/generated/mechanistic/V3_travelling_wave.png?raw=true)
+![Figure 5) Full non-isothermal Toth demo](https://github.com/lohjo/ProjID3/blob/main/src/img/generated/mechanistic/V3_travelling_wave.png?raw=true)
 
 Finite kinetics ($k=0.02$ s⁻¹, $D_L=0$), $N=3000$, profile sampled at $0.65\,t_{st}$ and overlaid on the implicit closed form $\ln w-(1+bc_f)\ln(1-w)=-(kbc_f/v_{RH})(\eta-\eta_0)$ after matching only the 50 % point (no fitted parameters): **RMS deviation 0.30 %** over $0.02<c/c_f<0.98$. The predicted tail asymmetry is visible: saturation tail $\ell_-\approx(1+bc_f)$-fold slower than the leading foot — the mechanistic origin of the tailing that symmetric logistic fits (M01) cannot represent.
 
@@ -514,7 +514,7 @@ Over the full T2 run: relative drift $4.6\times10^{-5}$, dominated by the output
 
 ### V.5 — Full non-isothermal Toth demo — `V4_nonisothermal.png`
 
-![Figure 5) Full non-isothermal Toth demo](https://github.com/lohjo/ProjID3/blob/src/img/generated/mechanistic/V4_nonisothermal.png?raw=true)
+![Figure 5) Full non-isothermal Toth demo](https://github.com/lohjo/ProjID3/blob/main/src/img/generated/mechanistic/V4_nonisothermal.png?raw=true)
 
 Toth ($n_{s0}=2.5$ mol kg⁻¹, $b(T_0)=0.49$ m³ mol⁻¹, $t_0=0.4$, $Q_{\mathrm{iso}}=70$ kJ mol⁻¹), $k=5\times10^{-3}$ s⁻¹, $q_f=0.61$ mol kg⁻¹ (inside the measured $q_{dyn}$ band 0.55–0.89 of runs 3–8), $t_{st}=707$ s:
 
