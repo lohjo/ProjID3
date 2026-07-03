@@ -22,10 +22,13 @@ Run from repo root:  python src/solver/mechanistic_verify.py
 from __future__ import annotations
 
 import os
+import sys
 import numpy as np
 from dataclasses import dataclass
 from scipy.integrate import solve_ivp
 from scipy.special import erfc
+
+trapz = getattr(np, "trapezoid", None) or np.trapz  # numpy 2.x rename
 
 FIGDIR = os.path.join("src", "img", "generated", "mechanistic")
 R_GAS = 8.314
@@ -35,7 +38,7 @@ R_GAS = 8.314
 
 def l2_rel(a, b):
     """Relative L2 error of a vs reference b."""
-    return np.sqrt(np.trapz((a - b) ** 2, dx=1.0) / max(np.trapz(b**2, dx=1.0), 1e-300))
+    return np.sqrt(trapz((a - b) ** 2, dx=1.0) / max(trapz(b**2, dx=1.0), 1e-300))
 
 
 def ogata_banks(z, t, v, D, cf):
@@ -189,7 +192,7 @@ def test1_ade(fig):
         c_out = sol.y[2 * (N - 1)]     # last cell centre z = L - dz/2
         z_out = p.L - dz / 2.0
         ref = ogata_banks(z_out, t_eval, v, D, p.cf)
-        err = np.sqrt(np.trapz((c_out - ref) ** 2, t_eval) / np.trapz(ref**2, t_eval))
+        err = np.sqrt(trapz((c_out - ref) ** 2, t_eval) / trapz(ref**2, t_eval))
         rows.append((N, err))
     if fig:
         import matplotlib
@@ -239,7 +242,7 @@ def test2_rh(fig):
     v_num = np.polyfit(ts, zs, 1)[0]
     # first-moment invariance (Cor. B.1): trapz of (1 - c_out/cf) up to full saturation
     c_out = c[N - 1]
-    mom = np.trapz(1.0 - c_out / p.cf, t_eval)
+    mom = trapz(1.0 - c_out / p.cf, t_eval)
     # T4: discrete inventory drift
     M_fv = (p.eps * c + p.alpha_b * q).sum(axis=0) * dz     # exact FV inventory
     inflow = p.u * p.cf * t_eval
@@ -277,7 +280,7 @@ def test3_wave(fig):
     t_st = p.L * (p.eps * p.cf + p.alpha_b * qf) / (p.u * p.cf)
     v = p.L / t_st
     N = 3000
-    t_eval = np.linspace(0.0, 2.6 * t_st, 1400)
+    t_eval = np.linspace(0.0, 0.8 * t_st, 500)   # profile is sampled at 0.65 t_st; no need to saturate
     sol, dz = solve_iso(p, iso, N, t_eval, rtol=1e-8)
     c = sol.y[0::2]
     zc = (np.arange(N) + 0.5) * dz
@@ -292,7 +295,7 @@ def test3_wave(fig):
     idx = np.where(prof <= 0.5)[0]
     i0 = idx[0]
     z_half = np.interp(0.5, [prof[i0], prof[i0 - 1]], [zc[i0], zc[i0 - 1]])
-    eta_half = np.interp(0.5, w, eta[::-1][::-1]) if False else eta[np.argmin(np.abs(w - 0.5))]
+    eta_half = eta[np.argmin(np.abs(w - 0.5))]
     # w as a function of eta: xp must ascend -> use reversed arrays
     w_theory = np.interp(zc - z_half, (eta - eta_half)[::-1], w[::-1], left=1.0, right=0.0)
     mask = (w_theory > 0.02) & (w_theory < 0.98)
@@ -302,7 +305,7 @@ def test3_wave(fig):
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
         fg, ax = plt.subplots(figsize=(6.4, 3.8))
-        ax.plot(zc - z_half, prof, "r-", lw=1.4, label=f"FV-MOL, N={N}, t=0.62 t_st")
+        ax.plot(zc - z_half, prof, "r-", lw=1.4, label=f"FV-MOL, N={N}, t=0.65 t_st")
         ax.plot(eta - eta_half, w, "k--", lw=1.2, label="exact travelling wave (D.8)")
         ax.set(xlabel="η − η₀ [m]", ylabel="c/c_f",
                title=f"T3: LDF constant-pattern wave  (RMS dev {err*100:.2f}%)")
@@ -331,7 +334,7 @@ def test5_full(fig):
         t_bt = crossing_time(t_eval, x, 0.05)
         t_sat = crossing_time(t_eval, x, 0.95)
         jbt = np.searchsorted(t_eval, t_bt)
-        q_dyn = p.u * np.trapz(p.cf - c_out[:jbt + 1], t_eval[:jbt + 1]) / (p.alpha_b * p.L)
+        q_dyn = p.u * trapz(p.cf - c_out[:jbt + 1], t_eval[:jbt + 1]) / (p.alpha_b * p.L)
         results[tag] = dict(t_st=t_st, t_bt=t_bt, t_sat=t_sat, q_dyn=q_dyn,
                             dT_max=float(T.max() - p.T0), rollup=float(x.max()))
         curves[tag] = (t_eval, x, T[N - 1] - p.T0)
@@ -371,26 +374,31 @@ def test5_full(fig):
 def main():
     os.makedirs(FIGDIR, exist_ok=True)
     fig = True
+    sel = set(a.lower() for a in sys.argv[1:]) or {"t1", "t2", "t3", "t5"}
     print("=" * 78)
-    print("T1  no-adsorption ADE vs Ogata-Banks (D.5)")
-    for N, e in test1_ade(fig):
-        print(f"    N={N:5d}   rel L2 err = {e*100:8.4f} %   {'PASS(<1%)' if e < 0.01 else ''}")
-    print("T2  Rankine-Hugoniot front speed (D.3) + first moment (B.1)  [T4 drift]")
-    r = test2_rh(fig)
-    print(f"    v_RH = {r['v_rh']:.4e} m/s   v_num = {r['v_num']:.4e} m/s   err = {r['err_v']*100:.3f} %")
-    print(f"    t_st = {r['t_st']:.1f} s     moment = {r['moment']:.1f} s     err = {r['err_mom']*100:.3f} %")
-    print(f"    T4 mass-balance drift (rel.) = {r['drift']:.2e}")
-    print("T3  travelling wave vs exact implicit profile (D.8)")
-    r3 = test3_wave(fig)
-    print(f"    RMS profile deviation = {r3['rms']*100:.3f} %  (t_st = {r3['t_st']:.1f} s)")
-    print("T5  non-isothermal Toth demo")
-    r5 = test5_full(fig)
-    for tag, d in r5.items():
-        if isinstance(d, dict):
-            print(f"    {tag:12s}: t_st={d['t_st']:.0f}s  t_BT={d['t_bt']:.0f}s  t_sat={d['t_sat']:.0f}s  "
-                  f"q_dyn={d['q_dyn']:.3f} mol/kg  dT_max={d['dT_max']:.1f}K  max c/cf={d['rollup']:.3f}")
-        else:
-            print(f"    {tag}: {d:.0f}s")
+    if "t1" in sel:
+        print("T1  no-adsorption ADE vs Ogata-Banks (D.5)")
+        for N, e in test1_ade(fig):
+            print(f"    N={N:5d}   rel L2 err = {e*100:8.4f} %   {'PASS(<1%)' if e < 0.01 else ''}")
+    if "t2" in sel:
+        print("T2  Rankine-Hugoniot front speed (D.3) + first moment (B.1)  [T4 drift]")
+        r = test2_rh(fig)
+        print(f"    v_RH = {r['v_rh']:.4e} m/s   v_num = {r['v_num']:.4e} m/s   err = {r['err_v']*100:.3f} %")
+        print(f"    t_st = {r['t_st']:.1f} s     moment = {r['moment']:.1f} s     err = {r['err_mom']*100:.3f} %")
+        print(f"    T4 mass-balance drift (rel.) = {r['drift']:.2e}")
+    if "t3" in sel:
+        print("T3  travelling wave vs exact implicit profile (D.8)")
+        r3 = test3_wave(fig)
+        print(f"    RMS profile deviation = {r3['rms']*100:.3f} %  (t_st = {r3['t_st']:.1f} s)")
+    if "t5" in sel:
+        print("T5  non-isothermal Toth demo")
+        r5 = test5_full(fig)
+        for tag, d in r5.items():
+            if isinstance(d, dict):
+                print(f"    {tag:12s}: t_st={d['t_st']:.0f}s  t_BT={d['t_bt']:.0f}s  t_sat={d['t_sat']:.0f}s  "
+                      f"q_dyn={d['q_dyn']:.3f} mol/kg  dT_max={d['dT_max']:.1f}K  max c/cf={d['rollup']:.3f}")
+            else:
+                print(f"    {tag}: {d:.0f}s")
     print("=" * 78)
 
 
