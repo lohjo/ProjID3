@@ -1,0 +1,312 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+
+\newtheorem{lemma}{Lemma}
+\renewcommand{\thelemma}{A.\arabic{lemma}}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\renewcommand{\theremark}{A.\arabic{remark}}
+
+\newcommand{\Deff}{D_{\mathrm{eff}}}
+\newcommand{\dcol}{d_{\mathrm{col}}}
+\newcommand{\Twall}{T_{\mathrm{wall}}}
+\newcommand{\lameff}{\lambda_{\mathrm{eff}}}
+\newcommand{\DTad}{\Delta T_{\mathrm{ad}}}
+
+\title{Mechanistic Fixed-Bed CO$_2$ Adsorption Model\\[2pt]
+\large Part A --- Derivation from Conservation Laws}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Part A --- Derivation from conservation laws}
+
+\subsection*{A.1 Gas-phase CO$_2$ mass balance}
+
+Take a control volume $[z,z+\Delta z]$ of cross-section $A$ (bed basis). Moles of
+gaseous CO$_2$ inside: $\varepsilon\,c\,A\,\Delta z$.
+
+\paragraph{Fluxes through the faces} (per bed area, $\mathrm{mol\,m^{-2}\,s^{-1}}$):
+\begin{equation*}
+N(z,t) \;=\; \underbrace{u\,c}_{\text{convective}}\;
+\underbrace{-\;\varepsilon D_L \frac{\partial c}{\partial z}}_{\text{dispersive (Fickian)}}.
+\end{equation*}
+The convective term is $u c = \varepsilon v_i c$: interstitial molar flux $v_i c$
+scaled by the open-area fraction $\varepsilon$. The dispersive flux acts on the same
+open area, hence the $\varepsilon$.
+
+\paragraph{Sink to the solid.} Sorbent mass in the CV is $(1-\varepsilon)\rho_p A\Delta z$,
+so uptake removes $(1-\varepsilon)\rho_p \frac{\partial q}{\partial t} A\Delta z$
+$\mathrm{mol\,s^{-1}}$ from the gas.
+
+Balance (accumulation $=$ in $-$ out $-$ sink), divide by $A\Delta z$, let $\Delta z\to0$:
+\begin{equation*}
+\varepsilon\frac{\partial c}{\partial t} + \frac{\partial N}{\partial z}
+= -(1-\varepsilon)\rho_p\frac{\partial q}{\partial t},
+\end{equation*}
+and with A2 ($u_z=0$):
+\begin{equation}
+\boxed{\;\varepsilon\frac{\partial c}{\partial t} + u\frac{\partial c}{\partial z}
+\;=\; \varepsilon D_L\frac{\partial^2 c}{\partial z^2}
+\;-\;(1-\varepsilon)\rho_p\frac{\partial q}{\partial t}\;}
+\tag{A.1}\label{eq:A1}
+\end{equation}
+
+\begin{center}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+Term & Physical meaning & Units \\
+\midrule
+$\varepsilon\,c_t$ & accumulation of gaseous CO$_2$ per \textbf{bed} volume
+  ($\varepsilon$ converts gas-basis $c$ to bed basis) & $\mathrm{mol\,m^{-3}\,s^{-1}}$ \\
+$u\,c_z$ & net convective outflow per bed volume, superficial $u$ & $\mathrm{mol\,m^{-3}\,s^{-1}}$ \\
+$\varepsilon D_L c_{zz}$ & net dispersive inflow (axial mixing) & $\mathrm{mol\,m^{-3}\,s^{-1}}$ \\
+$(1-\varepsilon)\rho_p q_t = \alpha_b q_t$ & transfer to the adsorbed phase & $\mathrm{mol\,m^{-3}\,s^{-1}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[variable velocity --- when 10--15\,\% feeds bite]\label{rem:A1}
+Only CO$_2$ leaves the gas; a total molar balance with $c_{\mathrm{tot}}=P/RT$
+constant (A3, isothermal) gives
+\begin{equation*}
+c_{\mathrm{tot}}\frac{\partial u}{\partial z} = -(1-\varepsilon)\rho_p\frac{\partial q}{\partial t}
+\quad\Longrightarrow\quad
+u(z,t)=u_{\mathrm{in}}-\frac{\alpha_b}{c_{\mathrm{tot}}}\int_0^z q_t\,dz'.
+\end{equation*}
+Across a saturating front the velocity deficit is $\Delta u/u \approx y_f$:
+${\sim}1\,\%$ at $1\,\%$ feed (negligible) but ${\sim}10$--$15\,\%$ for runs 4--8
+(\texttt{new runs/}). The dilute model \eqref{eq:A1} then mislocates $t_{st}$ by
+$O(y_f)$; if that exceeds the $\pm10\,\%$ Gate-B budget, solve \eqref{eq:A1}
+together with the $u$-equation above (still MOL-compatible: $u$ is obtained by
+quadrature of $q_t$ at each RHS evaluation).
+\end{remark}
+
+\subsection*{A.2 Solid-phase balance: LDF kinetics}
+
+Exact pellet-scale mass transfer is a diffusion problem in the particle; the
+\textbf{linear driving force} closure replaces it by first-order relaxation toward
+equilibrium:
+\begin{equation}
+\boxed{\;\frac{\partial q}{\partial t} = k\,\bigl(q^*(c,T)-q\bigr)\;}
+\tag{A.2}\label{eq:A2}
+\end{equation}
+
+\begin{center}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+Term & Physical meaning & Units \\
+\midrule
+$q_t$ & uptake rate per kg sorbent & $\mathrm{mol\,kg^{-1}\,s^{-1}}$ \\
+$k$ & inverse relaxation time of the pellet & $\mathrm{s^{-1}}$ \\
+$q^*-q$ & displacement from equilibrium (driving force) & $\mathrm{mol\,kg^{-1}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Mechanistic content of $k$} (resistances in series, Glueckauf; Ruthven
+ch.~6): for spherical pellets of radius $r_p$, film coefficient $k_f$, macropore
+diffusivity $D_p$, porosity $\varepsilon_p$, crystal/micro scale $r_c$, $D_c$, and
+local slope $K'=\rho_p\,\partial q^*/\partial c$,
+\begin{equation*}
+\frac{1}{k} \;=\; \frac{r_p K'}{3k_f} \;+\; \frac{r_p^2 K'}{15\,\varepsilon_p D_p}
+\;+\; \frac{r_c^2}{15\,D_c},
+\end{equation*}
+each term a time constant (s). LDF is exact for a linear isotherm with parabolic
+intraparticle profile; otherwise it is the controlled approximation this project
+fits at Gate~B. For amine sorbents (PEI@SiO$_2$) the last, reaction/amine-phase
+term often dominates and $k$ is small --- the measured, strongly smeared fronts
+(\texttt{breakthrough\_out/run 5}: $t_b\approx14$~s vs $t_{50}\approx230$~s) are
+consistent with a kinetics-limited bed (\S C.4).
+
+\subsection*{A.3 Equilibrium closure}
+
+\paragraph{Toth (primary; amine-functionalised sorbent).} Written in the
+concentration basis,
+\begin{equation}
+\boxed{\;q^*(c,T)=\frac{n_s(T)\,b(T)\,c}{\bigl[1+(b(T)\,c)^{t_T}\bigr]^{1/t_T}}\;}
+\tag{A.3}\label{eq:A3}
+\end{equation}
+\begin{equation*}
+n_s(T)=n_{s0}\exp\!\Bigl[\chi\Bigl(1-\tfrac{T}{T_0}\Bigr)\Bigr],\qquad
+b(T)=b_0\exp\!\Bigl[\tfrac{\Delta H_0}{R T_0}\Bigl(\tfrac{T_0}{T}-1\Bigr)\Bigr],\qquad
+t_T(T)=t_0+\alpha_T\Bigl(1-\tfrac{T_0}{T}\Bigr),
+\end{equation*}
+with $0<t_T\le 1$ the heterogeneity exponent ($t_T=1$ recovers Langmuir).
+\textbf{Units trap:} literature Toth parameters (e.g.\ the Stampi-Bombelli 2024
+set, still \texttt{??} in \texttt{CLAUDE.md}) are usually \emph{pressure-basis},
+$b_P$ in $\mathrm{kPa^{-1}}$ with $q^*(p_{\mathrm{CO_2}})$; convert with
+$p_{\mathrm{CO_2}}=cRT$, i.e.\ $b(T)=b_P(T)\,R\,T$. The conversion inserts an
+extra $T$-dependence --- do it before differentiating, not after.
+
+Equivalent driving-force form used in \texttt{derivation.md} \S1.2 ($C-C^*$ with
+$C^*$ the isotherm inverse): identical model when
+$k_a a_p (1-\varepsilon)(C-C^*) = \alpha_b k (q^*-q)$ under the local
+linearisation $k = k_a a_p (C-C^*)/(\rho_p (q^*-q))$; \eqref{eq:A2} is preferred
+because $q^*(c,T)$ stays single-valued while the inverse $C^*(q,T)$ need not be
+evaluated.
+
+\paragraph{Dual-Site Langmuir (alternative; zeolite 13X):}
+\begin{equation}
+q^*(c,T)=\frac{q_1 b(T)c}{1+b(T)c}+\frac{q_2 d(T)c}{1+d(T)c},\qquad
+b=b_0e^{-\Delta U_b/RT},\quad d=d_0e^{-\Delta U_d/RT},\quad
+\Delta U_b,\Delta U_d<0.
+\tag{A.4}\label{eq:A4}
+\end{equation}
+
+\begin{lemma}[shape of the closures]\label{lem:A1}
+For fixed $T$ and $c>0$, both \eqref{eq:A3} and \eqref{eq:A4} satisfy
+\begin{enumerate}
+\item $q^*(0,T)=0$ and Henry limit $q^*\sim n_s b\,c$ (Toth) resp.\
+      $(q_1b+q_2d)c$ (DSL);
+\item strict monotonicity --- Toth:
+      $\dfrac{\partial q^*}{\partial c}
+       = \dfrac{n_s b}{\bigl[1+(bc)^{t_T}\bigr]^{(1+t_T)/t_T}}>0$;
+\item strict concavity --- Toth:
+      $\dfrac{\partial^2 q^*}{\partial c^2}
+       = -\,n_s b^2 (1+t_T)\,(bc)^{t_T-1}
+         \bigl[1+(bc)^{t_T}\bigr]^{-(1+2t_T)/t_T}<0$;
+      DSL: sum of Langmuir terms with $q_i b^2\cdot(-2)/(1+bc)^3<0$;
+\item saturation $q^*\to n_s$ (Toth) resp.\ $q_1+q_2$ (DSL) as $c\to\infty$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Differentiate \eqref{eq:A3} with $s=(bc)^{t_T}$: $q^*=n_sbc(1+s)^{-1/t_T}$,
+$\partial_c q^* = n_s b(1+s)^{-1/t_T}-n_s b s(1+s)^{-1/t_T-1}
+= n_s b (1+s)^{-(1+t_T)/t_T}$; differentiate again using
+$\partial_c s = t_T s/c$.
+\end{proof}
+
+Concavity $=$ \textbf{favorable} isotherm; it is what makes adsorption fronts
+self-sharpening (Part~D). Note for $t_T<1$ the curvature blows up like
+$c^{\,t_T-1}$ as $c\to0^+$: $q^*$ is $C^1$ but not $C^2$ at $c=0$ --- harmless
+for well-posedness (the slope stays bounded by $n_sb$) but it steepens the
+leading foot of the front.
+
+\paragraph{A.4.3 Thermodynamic consistency of $(-\Delta H)$.}
+The isosteric heat implied by the closure is
+$(-\Delta H_{\mathrm{iso}}) = R T^2\,\partial_T \ln p \big|_{q^*}$. For
+\eqref{eq:A3} with $\chi=\alpha_T=0$ this returns exactly
+$-\Delta H_{\mathrm{iso}}=-\Delta H_0$, constant; with $\chi\neq0$ it becomes
+loading-dependent. Assumption A7: use that same function in \eqref{eq:A5}.
+Using an isotherm fitted with one $\Delta H_0$ and an energy balance with an
+unrelated $(-\Delta H)$ violates the Clausius--Clapeyron relation and produces
+spurious heat.
+
+\subsection*{A.4 Pseudo-homogeneous energy balance}
+
+Same control volume; energy carried by gas convection, conducted axially through
+the composite bed, released by adsorption, exchanged with the wall. Accumulation
+uses both phases (single $T$, A6):
+\begin{equation}
+\boxed{\;C_h\frac{\partial T}{\partial t}
++ u\rho_g c_{p,g}\frac{\partial T}{\partial z}
+\;=\; \lameff\frac{\partial^2 T}{\partial z^2}
+\;+\;(1-\varepsilon)\rho_p(-\Delta H)\frac{\partial q}{\partial t}
+\;-\;\frac{4h_w}{\dcol}\,(T-\Twall)\;}
+\tag{A.5}\label{eq:A5}
+\end{equation}
+\begin{equation*}
+C_h=\varepsilon\rho_g c_{p,g}+(1-\varepsilon)\rho_p c_{p,s}
+\quad[\mathrm{J\,m^{-3}\,K^{-1}}].
+\end{equation*}
+
+\begin{center}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+Term & Physical meaning & Units \\
+\midrule
+$C_h T_t$ & sensible-heat accumulation of gas $+$ solid per bed volume & $\mathrm{W\,m^{-3}}$ \\
+$u\rho_g c_{p,g} T_z$ & convected enthalpy gradient (superficial flux $u\rho_g c_{p,g}$,
+  $\mathrm{J\,m^{-2}\,s^{-1}\,K^{-1}}$) & $\mathrm{W\,m^{-3}}$ \\
+$\lameff T_{zz}$ & effective axial conduction/thermal dispersion & $\mathrm{W\,m^{-3}}$ \\
+$\alpha_b(-\Delta H) q_t$ & adsorption heat source; $>0$ during uptake since
+  $(-\Delta H)>0$, $q_t>0$ & $\mathrm{W\,m^{-3}}$ \\
+$\tfrac{4h_w}{\dcol}(T-\Twall)$ & wall loss; $4/\dcol$ $=$ perimeter/area of the
+  cylinder & $\mathrm{W\,m^{-3}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Neglected knowingly: adsorbed-phase heat capacity
+$(1-\varepsilon)\rho_p q\,c_{p,a}$ ($\le$ a few \% of $C_h$ at
+$q\lesssim1~\mathrm{mol\,kg^{-1}}$), pressure work, kinetic energy.
+\textbf{Adiabatic column:} $h_w=0$.
+
+\paragraph{Isothermal reduction --- quantitative justification (prompt item 3).}
+Two independent smallness arguments:
+\begin{enumerate}
+\item \emph{Heat-release vs wall-loss timescales.} Heat is generated over the
+front-passage time ${\sim}t_{st}$ and removed on $\tau_w = C_h \dcol/(4h_w)$.
+The quasi-steady excursion is $\Delta T \approx \DTad\cdot \tau_w/t_{st}$ where
+$\DTad=\alpha_b(-\Delta H)q_f/C_h$ is the adiabatic rise. Bench rig estimate
+($\dcol=8.5$~mm, $C_h\sim6.6\times10^{5}~\mathrm{J\,m^{-3}\,K^{-1}}$,
+$h_w\sim30~\mathrm{W\,m^{-2}\,K^{-1}}$, $t_{st}\sim600$~s):
+$\tau_w\approx47$~s, $\DTad\approx40$~K, so $\Delta T\approx3$--$4$~K --- mild,
+and the isothermal model is a defensible base case \textbf{for this rig}. For a
+pilot column ($\dcol\gtrsim5$~cm) $\tau_w$ grows linearly in $\dcol$ and the
+full \eqref{eq:A5} is mandatory.
+\item \emph{Isotherm sensitivity.} The perturbation enters through $b(T)$:
+$\delta q^*/q^* \sim (\Delta H_0/RT^2)\,\Delta T
+\approx (70\,000/8.314/298^2)\times 3.5 \approx 0.33$\ldots{} i.e.\ even a
+3--4~K excursion shifts local capacity by ${\sim}30\,\%$ near the front.
+Conclusion: keep \eqref{eq:A5} in the model; drop it only after checking
+\emph{both} numbers for the case at hand. (This is why the model here is
+non-isothermal by default and the isothermal system is treated as a limit in
+Part~D.)
+\end{enumerate}
+
+\subsection*{A.5 Initial and boundary conditions}
+
+Clean bed:
+\begin{equation}
+c(z,0)=0,\qquad q(z,0)=0,\qquad T(z,0)=T_0.
+\tag{A.6}\label{eq:A6}
+\end{equation}
+
+\paragraph{Inlet ($z=0$), feed step at $t>0$.} Two admissible choices:
+\begin{itemize}
+\item \emph{Dirichlet (hyperbolic-limit shortcut):} $c(0,t)=c_f$, $T(0,t)=T_f$.
+\item \emph{Danckwerts flux continuity (correct with dispersion):} upstream of
+the packing there is no dispersion, so the total flux $uc_f$ must equal the
+total flux just inside:
+\end{itemize}
+\begin{equation}
+u c_f = u\,c(0^+,t) - \varepsilon D_L\,c_z(0^+,t), \qquad
+u\rho_g c_{p,g} T_f = u\rho_g c_{p,g} T(0^+,t) - \lameff T_z(0^+,t).
+\tag{A.7}\label{eq:A7}
+\end{equation}
+
+\paragraph{Outlet ($z=L$):} $c_z(L,t)=0$, $T_z(L,t)=0$ (no dispersive flux
+through the exit plane).
+
+Danckwerts is a Robin condition; it makes the inventory identity of Part~B exact
+and forces $c(0^+,t)<c_f$ while the front is inside the bed (the dispersive term
+is positive). Dirichlet overfeeds the column by $-\varepsilon D_L c_z(0,t)>0$;
+the defect is $O(Pe^{-1})$ and vanishes in the hyperbolic limit. Both are
+implemented in Part~E; the finite-volume form makes Danckwerts trivial.
+
+\subsection*{A.6 Full model (summary)}
+
+\begin{equation*}
+\varepsilon c_t + u c_z = \varepsilon D_L c_{zz} - \alpha_b q_t, \qquad
+q_t = k\,(q^*(c,T)-q),
+\end{equation*}
+\begin{equation*}
+C_h T_t + u\rho_g c_{p,g} T_z = \lameff T_{zz} + \alpha_b(-\Delta H)q_t
+- \tfrac{4h_w}{\dcol}(T-\Twall),
+\end{equation*}
+with closure \eqref{eq:A3} or \eqref{eq:A4}, IC \eqref{eq:A6}, BC \eqref{eq:A7}
+$+$ zero-gradient outlet. Structurally this is a
+\textbf{parabolic--hyperbolic relaxation system}: two transport PDEs coupled
+pointwise to one stiff local ODE.
+
+\end{document}
