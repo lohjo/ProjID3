@@ -116,6 +116,119 @@ Tail e-folding lengths $\ell_+\ne\ell_-$ (asymmetric) unless $bc_f\to0$, where t
 # PART 2 — RESEARCH DIRECTION
 
 <research_direction>
+
+Q: "Be honest. Is this publishable right now?"
+
+Based on what I can see, **no—not yet as a research paper.** It is, however, substantially stronger than a typical undergraduate derivation and is close to being the mathematical core of a publishable paper. 
+
+Here's how I would assess it.
+
+| Aspect                   | Assessment |
+| ------------------------ | ---------- |
+| Mathematical correctness | 9/10       |
+| Physical modelling       | 9/10       |
+| Literature integration   | 9/10       |
+| Novelty                  | 4–5/10     |
+| Publishability           | 5–6/10     |
+
+The strongest parts are:
+
+* The derivation is clean and starts from conservation laws rather than quoting equations. That is a strength.
+* The notation is consistent and the assumptions are explicitly stated.
+* You correctly connect the PDE model to simpler breakthrough models (Thomas, Yoon–Nelson, etc.) instead of treating them as unrelated.
+* The structure aligns well with the modelling framework used throughout the adsorption literature (mass balance + LDF + equilibrium isotherm + energy balance + MOL). 
+
+The main issue is **novelty**.
+
+Almost every major component already exists in the literature:
+
+* 1-D axial dispersion model
+* LDF kinetics
+* Toth/Dual-Site Langmuir equilibrium
+* Non-isothermal coupling
+* Method of lines
+* Conservative finite-volume discretisation
+* Dimensionless analysis
+
+These have all been developed previously in classic references and more recent CFD and analytical work. 
+
+Your manuscript currently does an excellent job of **synthesising** them into one coherent derivation, but synthesis alone is generally insufficient for journals like *Chemical Engineering Science*, *Adsorption*, or *Industrial & Engineering Chemistry Research*.
+
+What is missing is a publishable contribution.
+
+For example, reviewers will ask:
+
+> "What is new here?"
+
+At the moment, the answer is approximately:
+
+> "A complete derivation."
+
+Unfortunately, derivation alone is rarely enough unless it reveals something genuinely unknown.
+
+What would make it publishable?
+
+I think there are several realistic directions.
+
+1. **New mathematics.**
+   This is the strongest option.
+
+   Examples include:
+
+   * proving existence or uniqueness of breakthrough solutions,
+   * proving monotonicity,
+   * proving positivity preservation,
+   * proving entropy stability,
+   * deriving analytical travelling-wave solutions for nonlinear Toth systems,
+   * proving when constant-pattern behaviour exists for nonlinear isotherms,
+   * deriving rigorous error estimates for the LDF approximation.
+
+2. **New asymptotic analysis.**
+
+   For example,
+
+   * derive a new asymptotic breakthrough formula,
+   * derive MTZ width analytically,
+   * derive shock speed for nonlinear adsorption,
+   * derive corrections to the Rankine–Hugoniot approximation.
+
+3. **New numerical method.**
+
+   For example,
+
+   * positivity-preserving finite volume scheme,
+   * adaptive moving mesh,
+   * energy-stable discretisation,
+   * high-order IMEX solver.
+
+4. **New physical model.**
+
+   For example,
+
+   * coupling pressure drop consistently,
+   * variable porosity,
+   * humidity effects,
+   * multiscale diffusion,
+   * rigorous two-temperature model.
+
+There are also a few technical points I would strengthen before submission.
+
+* Some statements are asserted rather than proved. If you claim "sign-preserving" or "conservative," those properties should be established mathematically, not stated.
+* Several assumptions should be tied more explicitly to measurable dimensionless criteria (Biot, Peclet, Fourier, Stanton numbers).
+* The discussion of the LDF approximation should clearly state its validity range and limitations, consistent with the classic treatment. 
+* If you include claims like "exact limits" or "proved conservative," reviewers will expect formal propositions with proofs.
+
+My overall judgement would be:
+
+* **As a project report or honours thesis:** 9.5/10.
+* **As the mathematical modelling chapter of a PhD thesis:** very good.
+* **As a journal article today:** probably **not yet**.
+
+The encouraging part is that I don't think you are far away. The derivation is already strong enough that, if you add **one genuinely original mathematical result**, the work could shift from being "well-written exposition" to "publishable research." The modelling foundation itself is solid; what it currently lacks is a contribution that advances the state of the art rather than consolidating it.
+</research_direction>
+
+<research_problem>
+
 ```markdown
 Don't search the internet. This is a test to see how well you can craft non-trivial, novel and creative proofs given a "Ψ-Quadrature Consistency and Error-Bound" math problem. Provide a full unconditional proof or disproof of the problem.
 
@@ -162,7 +275,7 @@ Toth closure $q^*(c,T)=n_s(T)b(T)c/[1+(b(T)c)^{t_T}]^{1/t_T}$, $b(T)=b_0\exp[\tf
 
 **Empirical corroboration (context, not proof-admissible evidence).** This project's own curve-fitting library, applied to five real packed-bed CO₂ breakthrough runs at 4.7–15.1% CO₂ on a PEI-functionalised sorbent, finds all five measured curves strongly right-skewed/asymmetric — fractal/asymmetric model families beat the symmetric logistic by roughly $6\times$ in RMSE. This is consistent with route A's prediction that asymmetry should be the norm once $bc_f$ is not small, and inconsistent with route B's ansatz being generally adequate — but the real runs are also non-isothermal, non-dilute, and finite-$Pe$, so this observation cannot be used as evidence inside the proof itself; it only motivates why the question is worth answering rigorously rather than dismissing route B outright.
 ```
-</research_direction>
+</research_problem>
 
 ---
 
