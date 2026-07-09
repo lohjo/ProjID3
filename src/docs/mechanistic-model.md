@@ -134,11 +134,36 @@ Concavity = **favorable** isotherm; it is what makes adsorption fronts self-shar
 
 ### A.4 Pseudo-homogeneous energy balance
 
-Same control volume; energy carried by gas convection, conducted axially through the composite bed, released by adsorption, exchanged with the wall. Accumulation uses both phases (single $T$, A6):
+Same control volume as A.1: $[z,z+\Delta z]\times A$ (bed basis). Energy carried by gas convection, conducted axially through the composite bed, released by adsorption, exchanged with the wall. Accumulation uses both phases (single $T$, A6).
+
+**Derivation** (cf. A.1's method; source material condensed from Ruthven, Garg & Crawford 1975, *Chem. Eng. Sci.* **30**, 803–810 [RGC75], eq. (4)–(6), (11); Ruthven, *Principles of Adsorption and Adsorption Processes*, Ch. 6 §6.1).
+
+*(i) Accumulation.* Under A6 the gas and the solid inside the CV share one temperature $T(z,t)$ — RGC75 assumption (5): "the temperature is assumed to be uniform across any section of the column with negligible temperature difference between gas and pellet." This is reinforced by Ch. 6 §6.1: for a composite adsorbent it is "the dissipation of heat from the external surface of the adsorbent sample, rather than the conduction of heat within the adsorbent, which is generally the rate-limiting heat transfer process" — i.e. intraparticle conduction is fast enough that a pellet carries no internal $\Delta T$ worth resolving, so it can be assigned the local gas temperature. Sensible energy stored in the CV relative to an arbitrary reference $T_{\mathrm{ref}}$:
+$$E = \bigl[\varepsilon\rho_gc_{p,g}+(1-\varepsilon)\rho_pc_{p,s}\bigr](T-T_{\mathrm{ref}})\,A\,\Delta z,\qquad \frac{\partial E}{\partial t} = C_h\,\frac{\partial T}{\partial t}\,A\,\Delta z .$$
+
+*(ii) Convection.* Only the gas moves; the solid is a stationary packing. The enthalpy flux carried through a face by the superficial gas flux $u\rho_g$ is $u\rho_gc_{p,g}(T-T_{\mathrm{ref}})$ (per bed area). Net convective accumulation in the CV is $-\partial_z[u\rho_gc_{p,g}T]\,A\Delta z = -u\rho_gc_{p,g}T_z\,A\Delta z$ under A2 ($u_z\approx0$). This matches RGC75 eq. (4) term-for-term: writing their interstitial velocity as $v$ (their notation list: "$v$ linear gas velocity in bed") so that $u=\varepsilon v$ is the superficial velocity, their $v\varepsilon\rho c_p\,\partial T/\partial z$ term is exactly $u\rho_gc_{p,g}T_z$.
+
+*(iii) Axial conduction/dispersion — the extension beyond RGC75.* RGC75 assumption (1) is "plug flow with negligible axial dispersion... a valid approximation for a packed bed at moderate Reynolds numbers although at very low Reynolds numbers axial dispersion may become significant," and their eq. (4) accordingly carries no $T_{zz}$ term. Their own Results section, however, records a real *effective thermal conductivity of the bed*: "at low Reynolds numbers ($Re<{\sim}30$) both the wall heat transfer coefficient and the effective thermal conductivity of the bed become essentially independent of fluid velocity" (citing Yagi & Kunii). Since A4 already lumps every axial mixing mechanism for the *mass* balance into one Fickian closure $-\varepsilon D_L\,\partial c/\partial z$ (A.1) — molecular diffusion, Taylor–Aris shear dispersion, and packing-tortuosity mixing all folded into a single effective coefficient — the same interstitial eddies disperse a scalar temperature exactly as they disperse a scalar concentration, to leading order, so the identical closure is applied to the heat flux (only the transport coefficient differs, $D_L\to\lambda_{\mathrm{eff}}$):
+$$q''_{\mathrm{cond}} = -\lambda_{\mathrm{eff}}\frac{\partial T}{\partial z}\quad[\mathrm{W\,m^{-2}\ bed\ area}],\qquad \text{net inflow} = -\partial_zq''_{\mathrm{cond}}\,A\Delta z = \lambda_{\mathrm{eff}}T_{zz}\,A\Delta z.$$
+This term is retained here where RGC75 drops it, because Gate A of this project explicitly validates an axial-dispersion solver at this rig's low Reynolds numbers, and because the project policy is to flag idealisations rather than silently assume them away.
+
+*(iv) Adsorption source.* Heat released in the CV per unit time equals (moles adsorbed per unit time in the CV) $\times\,(-\Delta H)$. The CV holds $(1-\varepsilon)\rho_p A\Delta z$ kg sorbent (A.1, "sink to the solid"), taking up $q$ [mol kg⁻¹] at rate $\partial q/\partial t$, so
+$$\text{source} = (1-\varepsilon)\rho_p(-\Delta H)\frac{\partial q}{\partial t}\,A\Delta z = \alpha_b(-\Delta H)\,q_t\,A\Delta z.$$
+In RGC75's pellet-volume-basis loading $q'\equiv\rho_p q$ (their notation list: "$q'$ pellet based sorbate concentration... mole cm⁻³") this is literally their $(1-\varepsilon)(-\Delta H)\,\partial q'/\partial t$ term. (A7/§A.4.3 already requires this $(-\Delta H)$ to be the isosteric heat of the isotherm actually in use, not an independent literature constant.)
+
+*(v) Wall loss.* For a cylindrical column of internal diameter $d_{\mathrm{col}}$, wall area per unit length is $\pi d_{\mathrm{col}}$ and bed cross-section is $\pi d_{\mathrm{col}}^2/4$, so heat lost to a wall held at uniform $T_{\mathrm{wall}}$ — RGC75 assumption (6): heat transfer at the external wall surface is "sufficiently rapid to maintain the wall at a uniform temperature" — per unit bed volume is
+$$\frac{h_w\,\pi d_{\mathrm{col}}\,(T-T_{\mathrm{wall}})}{\pi d_{\mathrm{col}}^2/4} = \frac{4h_w}{d_{\mathrm{col}}}(T-T_{\mathrm{wall}}),$$
+identical to RGC75's $(4h/d)(T-T_0)$ term.
+
+*(vi) Assemble* (accumulation $=$ $-$divergence of flux $+$ source $-$ sink):
+$$C_h T_t = -\partial_z\bigl[u\rho_gc_{p,g}T - \lambda_{\mathrm{eff}}T_z\bigr] + \alpha_b(-\Delta H)q_t - \frac{4h_w}{d_{\mathrm{col}}}(T-T_{\mathrm{wall}}),$$
+i.e.
 
 $$\boxed{\ C_h\frac{\partial T}{\partial t} + u\rho_g c_{p,g}\frac{\partial T}{\partial z} \;=\; \lambda_{\mathrm{eff}}\frac{\partial^2 T}{\partial z^2} \;+\;(1-\varepsilon)\rho_p(-\Delta H)\frac{\partial q}{\partial t}\;-\;\frac{4h_w}{d_{\mathrm{col}}}\,(T-T_{\mathrm{wall}})\ }\tag{A.5}$$
 
 $$C_h=\varepsilon\rho_g c_{p,g}+(1-\varepsilon)\rho_p c_{p,s}\ \ [\mathrm{J\,m^{-3}K^{-1}}].$$
+
+**Consistency check against the source.** Setting $\lambda_{\mathrm{eff}}=0$ recovers RGC75's own plug-flow limit exactly: moving the source in their eq. (4) to the right, $(1-\varepsilon)(-\Delta H)q'_t = u\rho_gc_{p,g}T_z + C_hT_t + \tfrac{4h}{d}(T-T_0) \iff C_hT_t+u\rho_gc_{p,g}T_z = \alpha_b(-\Delta H)q_t - \tfrac{4h_w}{d_{\mathrm{col}}}(T-T_{\mathrm{wall}})$ — which is (A.5) with $\lambda_{\mathrm{eff}}=0$. RGC75 eq. (4) is thus the high-axial-Péclet ($\lambda_{\mathrm{eff}}\to0$) special case of (A.5), not a different model.
 
 | Term | Physical meaning | Units |
 |---|---|---|
@@ -150,9 +175,22 @@ $$C_h=\varepsilon\rho_g c_{p,g}+(1-\varepsilon)\rho_p c_{p,s}\ \ [\mathrm{J\,m^{
 
 Neglected knowingly: adsorbed-phase heat capacity $(1-\varepsilon)\rho_p q\,c_{p,a}$ (≤ a few % of $C_h$ at $q\lesssim1$ mol kg⁻¹), pressure work, kinetic energy. **Adiabatic column:** $h_w=0$.
 
-**Isothermal reduction — quantitative justification (prompt item 3).** Two independent smallness arguments:
-1. *Heat-release vs wall-loss timescales.* Heat is generated over the front-passage time $\sim t_{st}$ and removed on $\tau_w = C_h d_{\mathrm{col}}/(4h_w)$. The quasi-steady excursion is $\Delta T \approx \Delta T_{\mathrm{ad}}\cdot \tau_w/t_{st}$ where $\Delta T_{\mathrm{ad}}=\alpha_b(-\Delta H)q_f/C_h$ is the adiabatic rise. Bench rig estimate ($d_{\mathrm{col}}=8.5$ mm, $C_h\!\sim\!6.6\times10^5$ J m⁻³K⁻¹, $h_w\!\sim\!30$ W m⁻²K⁻¹, $t_{st}\!\sim\!600$ s): $\tau_w\!\approx\!47$ s, $\Delta T_{\mathrm{ad}}\!\approx\!40$ K, so $\Delta T\!\approx\!3$–4 K — mild, and the isothermal model is a defensible base case **for this rig**. For a pilot column ($d_{\mathrm{col}}\!\gtrsim\!5$ cm) $\tau_w$ grows linearly in $d_{\mathrm{col}}$ and the full (A.5) is mandatory.
-2. *Isotherm sensitivity.* The perturbation enters through $b(T)$: $\delta q^*/q^* \sim (\Delta H_0/RT^2)\,\Delta T \approx (70\,000/8.314/298^2)\times 3.5 \approx 0.33$… i.e. even a 3–4 K excursion shifts local capacity by ~30 % near the front. Conclusion: keep (A.5) in the model; drop it only after checking *both* numbers for the case at hand. (This is why the model here is non-isothermal by default and the isothermal system is treated as a limit in Part D.)
+**Isothermal reduction — quantitative justification (prompt item 3), derived from (A.5).** Two independent smallness arguments; RGC75 supplies the physical ingredients, the scaling argument that combines them is built here.
+
+1. *Heat-release vs wall-loss timescales.* Drop convection and conduction — they redistribute heat, they do not create or destroy it (exact statement: the energy-inventory identity §B.2) — and consider pure relaxation to the wall with the source off: $C_hT_t = -\tfrac{4h_w}{d_{\mathrm{col}}}(T-T_{\mathrm{wall}})$ decays with time constant
+$$\tau_w = \frac{C_hd_{\mathrm{col}}}{4h_w}.$$
+Separately, with the source on and $h_w=0$ (fully adiabatic), integrating (A.5) as loading rises from $0$ to $q_f$ converts *all* released heat into sensible heat:
+$$C_h\,\Delta T_{\mathrm{ad}} = \alpha_b(-\Delta H)q_f \ \Rightarrow\ \Delta T_{\mathrm{ad}} = \frac{\alpha_b(-\Delta H)q_f}{C_h}.$$
+If a front takes $\sim t_{st}$ to pass a given $z$, the average generation rate there is $\alpha_b(-\Delta H)q_f/t_{st}$. When $\tau_w\ll t_{st}$ the wall term equilibrates almost as fast as heat is produced (quasi-steady: generation $\approx$ loss instant-by-instant),
+$$\frac{\alpha_b(-\Delta H)q_f}{t_{st}} \approx \frac{4h_w}{d_{\mathrm{col}}}\Delta T \ \Rightarrow\ \Delta T \approx \Delta T_{\mathrm{ad}}\cdot\frac{\tau_w}{t_{st}}.$$
+*Numbers for this rig* ($d_{\mathrm{col}}=8.5$ mm; $C_h\approx6.6\times10^5$ J m⁻³K⁻¹ at ambient; $h_w\approx30$ W m⁻²K⁻¹, literature packed-bed order-of-magnitude — open parameter, see "Critical open data dependencies"; $\alpha_b\approx\rho_b\approx666$ kg m⁻³ and $q_f\approx0.555$ mol kg⁻¹, run 3 measured $q_{dyn}$; $-\Delta H\approx70{,}000$ J mol⁻¹, order-of-magnitude amine–CO₂ heat of adsorption; $t_{st}\approx600$ s, run 3 stoichiometric time):
+$$\tau_w=\frac{6.6\times10^5\times0.0085}{4\times30}\approx47\ \mathrm{s},\qquad \Delta T_{\mathrm{ad}}=\frac{666\times70{,}000\times0.555}{6.6\times10^5}\approx39\text{–}40\ \mathrm{K},\qquad \Delta T \approx 40\times\frac{47}{600}\approx3\text{–}4\ \mathrm{K}.$$
+Self-consistency check: $\tau_w/t_{st}\approx0.08\ll1$, so the quasi-steady approximation used to get $\Delta T$ is internally valid — mild, and the isothermal model is a defensible base case **for this rig**. Since $\tau_w\propto d_{\mathrm{col}}$ while $t_{st}$ is set by throughput, not bore, a pilot column ($d_{\mathrm{col}}\gtrsim5$ cm) pushes $\tau_w/t_{st}$ up by an order of magnitude or more and the full (A.5) becomes mandatory.
+2. *Isotherm sensitivity.* RGC75 eq. (11) linearises the van't Hoff temperature dependence of the Langmuir affinity for moderate $\Delta T$: $b \approx b_0\exp\!\bigl[\tfrac{\Delta H_0}{RT_0^2}(T-T_0)\bigr] \approx b_0\bigl[1+\tfrac{\Delta H_0}{RT_0^2}\Delta T\bigr]$. Since $q^*$ is a strictly monotone function of $b$ (Lemma A.1), a temperature excursion perturbs local capacity by the same relative amount to leading order:
+$$\frac{\delta q^*}{q^*} \sim \frac{\delta b}{b} \approx \frac{\Delta H_0}{RT_0^2}\,\Delta T.$$
+With $\Delta H_0\approx70{,}000$ J mol⁻¹, $T_0\approx298$ K (ambient), and $\Delta T\approx3.5$ K (midpoint of case 1's range):
+$$\frac{\delta q^*}{q^*} \approx \frac{70{,}000}{8.314\times298^2}\times3.5 \approx 0.33,$$
+i.e. even the mild 3–4 K excursion from case 1 shifts local equilibrium capacity by ${\sim}30\%$ near the front — capacity is far more sensitive to $T$ than $T$ is free to drift. **Conclusion:** the wall-loss argument (mild $\Delta T$) and the isotherm-sensitivity argument (large response *per* degree) point in opposite directions; only both together, checked jointly, justify a reduction, and only for a geometry where case 1 actually holds. Keep (A.5) as the default model; treat isothermal as a checked limit (Part D), not an a-priori simplification.
 
 ### A.5 Initial and boundary conditions
 

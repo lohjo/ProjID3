@@ -228,8 +228,6 @@ The encouraging part is that I don't think you are far away. The derivation is a
 </research_direction>
 
 <research_problem>
-
-```markdown
 Don't search the internet. This is a test to see how well you can craft non-trivial, novel and creative proofs given a "Ψ-Quadrature Consistency and Error-Bound" math problem. Provide a full unconditional proof or disproof of the problem.
 
 REMEMBER — this unconditional argument may require non-trivial, creative and novel elements.
@@ -274,7 +272,6 @@ Toth closure $q^*(c,T)=n_s(T)b(T)c/[1+(b(T)c)^{t_T}]^{1/t_T}$, $b(T)=b_0\exp[\tf
 **Numerical ground truth for part (c) (no closed form exists here, per the governing model's own Part D.6).** An independently validated finite-volume Method-of-Lines solver (upwind convection, central dispersion, Danckwerts inlet as exact face flux) reproduces: the linear-isotherm analytical solution to $<1\%$ relative $L^2$ error; the Rankine–Hugoniot front speed to $0.020\%$ and the first-moment stoichiometric time to $<0.005\%$; the exact Langmuir travelling wave to $0.30\%$ RMS with zero fitted parameters; discrete mass-balance drift of $4.6\times10^{-5}$; and, for the full non-isothermal Toth case, a documented two-front structure (adiabatic run: outlet concentration plateaus at $c/c_f\approx0.955$ while outlet temperature remains $+18.9\,$K above ambient) that persists at fine mesh resolution — i.e. this is not itself a discretisation artefact to be refined away, it is the true solution's structure.
 
 **Empirical corroboration (context, not proof-admissible evidence).** This project's own curve-fitting library, applied to five real packed-bed CO₂ breakthrough runs at 4.7–15.1% CO₂ on a PEI-functionalised sorbent, finds all five measured curves strongly right-skewed/asymmetric — fractal/asymmetric model families beat the symmetric logistic by roughly $6\times$ in RMSE. This is consistent with route A's prediction that asymmetry should be the norm once $bc_f$ is not small, and inconsistent with route B's ansatz being generally adequate — but the real runs are also non-isothermal, non-dilute, and finite-$Pe$, so this observation cannot be used as evidence inside the proof itself; it only motivates why the question is worth answering rigorously rather than dismissing route B outright.
-```
 </research_problem>
 
 ---
