@@ -1,4 +1,4 @@
-# Proof/Disproof Challenge Prompt — Non-Isothermal Fixed-Bed CO₂ Adsorption
+.# Proof/Disproof Challenge Prompt — Non-Isothermal Fixed-Bed CO₂ Adsorption
 
 *Source dissected: `Adsorption_Breakthrough_Research_Roadmap.docx` (13 papers + 1 technical reference, Pillars A–C). This prompt is self-contained — the target model receives no other context and must not search the internet.*
 
