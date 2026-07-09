@@ -163,7 +163,7 @@ $$\boxed{\ C_h\frac{\partial T}{\partial t} + u\rho_g c_{p,g}\frac{\partial T}{\
 
 $$C_h=\varepsilon\rho_g c_{p,g}+(1-\varepsilon)\rho_p c_{p,s}\ \ [\mathrm{J\,m^{-3}K^{-1}}].$$
 
-**Consistency check against the source.** Setting $$\lambda_{\mathrm{eff}}=0$$ recovers RGC75's own plug-flow limit exactly: moving the source in their eq. (4) to the right, $(1-\varepsilon)(-\Delta H)q'_t = u\rho_gc_{p,g}T_z + C_hT_t + \tfrac{4h}{d}(T-T_0) \iff C_hT_t+u\rho_gc_{p,g}T_z = \alpha_b(-\Delta H)q_t - \tfrac{4h_w}{d_{\mathrm{col}}}(T-T_{\mathrm{wall}})$ — which is (A.5) with $\lambda_{\mathrm{eff}}=0$. RGC75 eq. (4) is thus the high-axial-Péclet ($\lambda_{\mathrm{eff}}\to0$) special case of (A.5), not a different model.
+**Consistency check against the source.** Setting $$\lambda_{\mathrm{eff}}=0$$ recovers RGC75's own plug-flow limit exactly: moving the source in their eq. (4) to the right, $$(1-\varepsilon)(-\Delta H)q'_t = u\rho_gc_{p,g}T_z + C_hT_t + \tfrac{4h}{d}(T-T_0) \iff C_hT_t+u\rho_gc_{p,g}T_z = \alpha_b(-\Delta H)q_t - \tfrac{4h_w}{d_{\mathrm{col}}}(T-T_{\mathrm{wall}})$$ — which is (A.5) with $\lambda_{\mathrm{eff}}=0$. RGC75 eq. (4) is thus the high-axial-Péclet ($\lambda_{\mathrm{eff}}\to0$) special case of (A.5), not a different model.
 
 | Term | Physical meaning | Units |
 |---|---|---|
