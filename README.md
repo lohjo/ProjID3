@@ -1,6 +1,32 @@
-# ProjID3
-Parametric Study of the Regeneration Process of CO2 Capture Sorbent in Packed-Bed Columns
+# ProjID3 — CO₂ Adsorption Breakthrough in Packed-Bed Columns
 
-**`Foolproof_Study_Plan.md`** — the master document, nine parts plus four appendices. The spine is Part III (18-week table mapped exactly to your NP calendar: Wk 1 = 20–24 Apr starting today, Interim Wk 7 = 1 Jun, Final Wk 17 = 10 Aug, panel Wk 18 = 17–19 Aug). Every week carries three columns — math learning (M), technical coding (T), writing (W) — and a deliverable or gate. The three **validation gates** (A: linear, B: Rankine–Hugoniot, C: Elfving SER benchmark) are the single most important control in the schedule; they must all pass by end of Wk 6 for the Interim to land. Part II is the experiment-tracker layer: five sub-hypotheses H1–H5 each tied to one of the seven sources from `research.md`, with pre-committed accept/refine thresholds and a pre-specified 39-run sweep matrix (14 OAT + 15 T×Q interaction + 10 validation/diagnostic). Mathematical derivation, non-dimensionalisation, and the R–H front-velocity prediction are load-bearing — not optional colour — so Part IV pairs weekly math topics (Evans Ch 3 → LeVeque Ch 3 → upwind/CFL → sensitivity equations → response surface) directly to the coding you're doing that same week.
+**Parametric Study of CO₂ Adsorption Breakthrough in Packed-Bed Columns.** NP Year-3 Design Project (Apr 2026 semester). Supervisors: Prof. Erik Birgersson (NUS), Dr. Prapatsorn Borisut (SUTD).
 
-**`CO2_Regen_Project_Tracker.xlsx`** — the working companion. Eight tabs: Master Schedule (colour-coded: orange = deliverable, green = gate, cream = term break), Deliverables (all 100% of assessment, with due dates and assessors), Bi-weekly Journal (four pre-templated entries for Wk 3, 5, 13, 15 — just fill in the right-hand "Entry" column each Monday), Experiment Log (all 39 planned runs pre-populated with Run IDs R00–R06, parameter levels, and empty result columns for v_th / τ_90 / SER), Hypotheses (H1–H5 with verdict column to flip from "Pending" to accept/refine), Risk Register (nine named risks R1–R9 with triggers and responses), Reading Tracker (Tier 1/2/3 progress), and Meeting Log (with the Wk-1 kickoff meeting already entered and the critical action item — get q_m0, b_0, ΔH_ads, column geometry from the SUTD supervisors by end of Wk 2 — already logged).
+> Scope revised **30 Apr 2026**: from TSA *regeneration* to adsorption *breakthrough*. Anything in this repo still referring to "regeneration", `Foolproof_Study_Plan.md`, or an SER/Elfving benchmark is **old-scope and superseded** — see `src/docs/archive (DO NOT OPEN)/`.
+
+## What's here
+
+- `src/docs/` — live scientific content (derivation, proofs, journals, sprints, source papers, LaTeX). Start with `mechanistic-model.md`.
+- `src/solver/` — Python solver + the `breakthrough_fit/` 24-model fitter.
+- `src/solver/data/new runs/` — the **five measured bench runs** (run 3/4/5/6/8), the only real data.
+- `src/img/generated/` — generated figures/tables (headless, 300 dpi).
+- `CLAUDE.md` / `AGENTS.md` — working instructions for AI agents (mirror each other; read before making changes).
+
+## Deliverables
+
+- **Interim Report** — Mon 1 Jun 2026 (Wk 7): full PDE derivation + validated solver + baseline vs Stampi-Bombelli 2024 benchmark.
+- **Final Report** — Mon 10 Aug 2026 (Wk 17).
+- **Final Presentation** — 17–19 Aug 2026 (Wk 18).
+- **Validation gates** (all pass by end Wk 6): A (linear adv-diff, L² < 1%) · B (R-H shock chord velocity ±10%) · C (Stampi-Bombelli τ_BT ±20% at 400 ppm).
+
+## Run
+
+```bash
+source venv/Scripts/activate        # Git Bash on Windows
+pip install -r requirements.txt     # numpy, scipy, matplotlib
+
+python new_runs_pipeline.py                      # 5 real runs -> breakthrough_out/run N/
+python -m breakthrough_fit.assemble_may_prompt   # tables/figures -> src/img/generated/may_prompt/
+```
+
+The `*ml_*g.csv` and `May-*.csv` files under `src/solver/data/` are **synthetic-validation placeholders, not measured data.**
