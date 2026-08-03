@@ -1,11 +1,11 @@
-"""Pipeline for new experimental runs (runs 3/4/5/6/8).
+"""Pipeline for the newest experimental runs (2026-06-26 .. 2026-07-15).
 
 Usage (from repo root, venv activated)::
 
     python new_runs_pipeline.py
 
-Outputs per run in ``breakthrough_out/run <N>/``:
-    * results_run <N>.csv  — all 24 model fits + performance metrics
+Outputs per run in ``breakthrough_out/<run_id>/``:
+    * results_<run_id>.csv  — all 24 model fits + performance metrics
     * P1–P7 plots at 150 dpi
     * console: ranked AICc table + nested F-tests + performance summary
 """
@@ -19,25 +19,23 @@ import numpy as np
 import pandas as pd
 
 # ---------------------------------------------------------------------------
-# Per-run metadata (measurements block: per-run mass/length + pressure-drop
-# table). Column geometry fixed: d_c = 8.5 mm, T = 298 K, P = 101325 Pa.
-# Inlet flow (Q_lpm) is the authoritative "inlet flow" column of the
-# adsorption pressure-drop table: run3=0.15, run4=0.05, run5=0.10,
-# run6=0.15, run8=0.10 lpm. (run6/run8 corrected 2026-05-31 from 0.05/0.125.)
+# Per-run metadata (mass, bed height, flow rate, tube diameter, C0, T, P) is
+# auto-extracted per file by breakthrough_fit.parse's Format D, straight out
+# of each CSV's own embedded header block — never hand-typed here.
+#
+# Two files in `newest runs/` have no embedded metadata at all — raw Format-A
+# sensor logs (2026-07-17-conc15-flow0.1.csv and -flow0.15.csv). run_one()
+# skips any file missing mass/bed-height/flow rather than fabricating them;
+# do not hardcode geometry for those two until the lab supplies it.
+#
+# D_COL_M/T_K_DEFAULT/P_PA_DEFAULT below are fallbacks only, used if a given
+# file's Format D metadata doesn't supply that particular field.
 # ---------------------------------------------------------------------------
-RUN_META: dict[str, dict] = {
-    "run 3": dict(Q_lpm=0.15, m_g=8.0076, L_bed_cm=21.0),
-    "run 4": dict(Q_lpm=0.05, m_g=8.0000, L_bed_cm=21.3),
-    "run 5": dict(Q_lpm=0.10, m_g=8.0000, L_bed_cm=21.2),
-    "run 6": dict(Q_lpm=0.15, m_g=8.0000, L_bed_cm=21.5),
-    "run 8": dict(Q_lpm=0.10, m_g=8.0000, L_bed_cm=21.5),
-}
-
-D_COL_M   = 0.0085          # inner diameter [m]
-T_K       = 298.0            # operating temperature [K]
-P_PA      = 101_325.0        # operating pressure [Pa]
-DATA_DIR  = Path("src/solver/data/new runs")
-OUT_DIR   = Path("breakthrough_out")
+D_COL_M       = 0.0082          # fallback inner diameter [m] (8.2 mm)
+T_K_DEFAULT   = 298.0           # fallback operating temperature [K]
+P_PA_DEFAULT  = 101_325.0       # fallback operating pressure [Pa]
+DATA_DIR      = Path("src/solver/data/newest runs")
+OUT_DIR       = Path("breakthrough_out")
 
 # ---------------------------------------------------------------------------
 # Imports (after venv path is set)
@@ -84,37 +82,47 @@ def _write_csv(path: Path, run, results, perf) -> None:
 # ---------------------------------------------------------------------------
 # Per-run processing
 # ---------------------------------------------------------------------------
-def run_one(run_id: str, fpath: Path, parser: DataParser, fitter: ModelFitter) -> None:
-    meta = RUN_META[run_id]
-    Q_lpm    = meta["Q_lpm"]
-    m_g      = meta["m_g"]
-    L_bed_cm = meta["L_bed_cm"]
-
+def run_one(fpath: Path, parser: DataParser, fitter: ModelFitter) -> None:
     run = parser.parse(fpath)
     df  = run.df
+    c0_str = f"{run.c0_ppm:.0f} ppm" if run.c0_ppm else "unknown"
     print(f"\n{'='*70}")
-    print(f"Run: {run.run_id}  fmt={run.fmt}  n={len(df)}  C0={run.c0_ppm:.0f} ppm")
-    print(f"     Q={Q_lpm} lpm | m={m_g} g | L_bed={L_bed_cm} cm | d_c={D_COL_M*1000:.1f} mm")
+    print(f"Run: {run.run_id}  fmt={run.fmt}  n={len(df)}  C0={c0_str}")
+
+    if run.mass_g is None or run.bed_height_cm is None or run.flow_ml_min is None:
+        print(f"  [SKIP] {fpath.name}: missing mass/bed-height/flow metadata "
+              f"(likely a raw sensor log with no embedded header block).")
+        return
     if len(df) < 10:
-        print(f"  skipped: only {len(df)} usable rows.")
+        print(f"  [SKIP] {fpath.name}: only {len(df)} usable rows.")
         return
 
+    Q_lpm    = run.flow_ml_min / 1000.0
+    m_g      = run.mass_g
+    L_bed_cm = run.bed_height_cm
+    d_col_m  = (run.tube_diameter_mm * 1e-3) if run.tube_diameter_mm else D_COL_M
+    T_K      = run.temperature_K or T_K_DEFAULT
+    P_Pa     = run.pressure_Pa or P_PA_DEFAULT
+
+    print(f"     Q={Q_lpm:.3f} lpm | m={m_g:.4g} g | L_bed={L_bed_cm:.2f} cm | "
+          f"d_c={d_col_m*1000:.1f} mm | T={T_K:.1f} K | P={P_Pa:.0f} Pa")
+
     # Geometry
-    A_c       = np.pi * (D_COL_M / 2.0) ** 2
+    A_c       = np.pi * (d_col_m / 2.0) ** 2
     L_bed_m   = L_bed_cm * 1e-2
     flow_m3_s = Q_lpm * 1e-3 / 60.0
     u         = flow_m3_s / A_c
     rho_b     = (m_g * 1e-3) / (A_c * L_bed_m)
     eps_b     = max(1.0 - rho_b / 800.0, 0.3)   # ρ_p = 800 kg/m³ assumed
     v_int     = u / max(eps_b, 1e-6)
-    c0_mol_m3 = isotherm.ppm_to_mol_m3(run.c0_ppm, T_K=T_K, P_Pa=P_PA)
+    c0_mol_m3 = isotherm.ppm_to_mol_m3(run.c0_ppm, T_K=T_K, P_Pa=P_Pa)
     mass_kg   = m_g * 1e-3
 
     print(f"     A_c={A_c*1e4:.4f} cm2  rho_b={rho_b:.1f} kg/m3  eps={eps_b:.4f}")
     print(f"     u={u*100:.4f} cm/s  v_int={v_int*100:.4f} cm/s")
 
     # Fit all models
-    results = fitter.fit_all(df, progress=lambda it: _tqdm(it, desc=run_id, leave=False))
+    results = fitter.fit_all(df, progress=lambda it: _tqdm(it, desc=run.run_id, leave=False))
 
     # Ranked AICc table
     rows = []
@@ -189,15 +197,11 @@ def main() -> int:
     parser = DataParser()
     fitter = ModelFitter(n_starts=12, seed=42)
 
-    for run_id in sorted(RUN_META):
-        fpath = DATA_DIR / f"{run_id}.csv"
-        if not fpath.exists():
-            print(f"\n[SKIP] {fpath} not found.", file=sys.stderr)
-            continue
+    for fpath in sorted(DATA_DIR.glob("*.csv")):
         try:
-            run_one(run_id, fpath, parser, fitter)
+            run_one(fpath, parser, fitter)
         except Exception as exc:
-            print(f"\n[ERROR] {run_id}: {exc}", file=sys.stderr)
+            print(f"\n[ERROR] {fpath.name}: {exc}", file=sys.stderr)
             import traceback; traceback.print_exc()
 
     print("\n=== Pipeline complete ===")

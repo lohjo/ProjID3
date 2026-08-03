@@ -16,6 +16,8 @@ Usage (repo root, venv active):
 """
 
 import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 from datetime import datetime
 from pathlib import Path
 
@@ -37,7 +39,7 @@ R_GAS = 8.314  # J mol-1 K-1
 # ---------------------------------------------------------------------------
 # 1. Constants & run metadata (measurements block; audited 2026-05-31 values)
 # ---------------------------------------------------------------------------
-D_COL = 8.5e-3                      # m, column i.d. (measured)
+D_COL = 8.2e-3                      # m, column i.d. (measured)
 A_COL = np.pi * (D_COL / 2) ** 2    # m2 bed cross-section
 M_SORB = 8.00e-3                    # kg sorbent (measured, ~8.00 g)
 T_AMB = 298.0                       # K  — ambient, FLAG: uncontrolled
@@ -68,11 +70,15 @@ FLAGS = [
 
 # run name -> (flow mL/min, bed length m)  — measurements block, post-audit
 RUNS = {
-    "run 3": (150.0, 0.210),
-    "run 4": (50.0, 0.213),
-    "run 5": (100.0, 0.212),
-    "run 6": (150.0, 0.215),
-    "run 8": (100.0, 0.215),
+    "run 1": (50.0, 0.235),
+    "run 2": (100.0, 0.240),
+    "run 3": (150.0, 0.235),
+    "run 4": (50.0, 0.230),
+    "run 5": (100.0, 0.233),
+    "run 6": (150.0, 0.240),
+    "run 7": (50.0, 0.245),
+    "run 8": (100.0, 0.240),
+    "run 9": (150.0, 0.240),
 }
 
 
@@ -212,9 +218,12 @@ def simulate(N, L, u, DL, k, alpha_b, cf, qstar, t_end, t_eval=None,
     y0 = np.zeros(2 * N)
     qf = float(qstar(np.array([cf]))[0])
     atol = np.concatenate([np.full(N, 1e-6 * cf), np.full(N, 1e-6 * max(qf, 1e-9))])
+    # variable_u: cumsum(dq) couples every cell to all upstream cells — the
+    # tridiagonal pattern is then WRONG and cripples Newton; use dense FD.
+    sparsity = None if variable_u else jac_pattern(N, 2)
     sol = solve_ivp(
         rhs_iso, (0.0, t_end), y0, method="BDF", t_eval=t_eval,
-        rtol=rtol, atol=atol, jac_sparsity=jac_pattern(N, 2), events=events,
+        rtol=rtol, atol=atol, jac_sparsity=sparsity, events=events,
         args=(N, dz, u, DL, k, alpha_b, cf, qstar, variable_u))
     if not sol.success:
         raise RuntimeError(f"solve_ivp failed: {sol.message}")
@@ -355,12 +364,19 @@ def stage_v3(iso):
     print("\n=== V3: constant-pattern travelling wave vs closed form (D.8) ===")
     ns, bP, _ = iso
     tt = 1.0                              # D.8 is the Langmuir closed form
-    u = superficial_u(100.0)
+    # Verification operating point (feed/flow are operating conditions, not
+    # sorbent parameters): b*c_f = 3 so the wave is strongly nonlinear (a
+    # weakly nonlinear front is smeared mostly by numerical diffusion and the
+    # comparison tests the grid, not (D.8)); low flow so the sample time is
+    # >> 1/k and the transient has converged to the constant pattern.
+    u = superficial_u(30.0)
     L = 0.212
     alpha_b = M_SORB / (A_COL * L)
-    cf = ppm_to_molm3(95000.0)
     k = 0.02
     bc = bP * R_GAS * T_AMB / 1e3        # concentration-basis b [m3/mol]
+    cf = 3.0 / bc
+    print(f"  verification point: c_f={cf:.3f} mol/m3 (b*c_f=3), "
+          f"u={u*100:.2f} cm/s")
     qstar = lambda c: toth_q(c, ns, bP, tt)
     qf = float(qstar(np.array([cf]))[0])
     v_rh = u * cf / (EPS * cf + alpha_b * qf)
@@ -372,13 +388,17 @@ def stage_v3(iso):
     z = (np.arange(N) + 0.5) * (L / N)
     w_num = sol.y[:N, -1] / cf
     eta = z - v_rh * t_samp
-    # closed form: eta(w) = eta0 - (v_rh/(k bc cf)) [ln w - (1+bc cf) ln(1-w)]
-    i50 = np.argmin(np.abs(w_num - 0.5))
-    eta0 = eta[i50]                       # match at the 50 % point only
+    # closed form (D.8): eta(w) = eta0 - (v_rh/(k bc cf)) * phi(w),
+    # phi(w) = ln w - (1+bc cf) ln(1-w). Anchor: exact curve through the
+    # numeric 50 % crossing (phi(0.5) != 0, so eta0 is NOT the 50 % location).
+    phi = lambda w: np.log(w) - (1 + bc * cf) * np.log(1 - w)
+    scale = v_rh / (k * bc * cf)
+    # numeric 50 % location (w_num decreasing in z)
+    eta_num50 = np.interp(0.5, w_num[::-1], eta[::-1])
+    eta0 = eta_num50 + scale * phi(0.5)
     mask = (w_num > 0.02) & (w_num < 0.98)
     w_m = np.clip(w_num[mask], 1e-12, 1 - 1e-12)
-    eta_exact = eta0 - (v_rh / (k * bc * cf)) * (
-        np.log(w_m) - (1 + bc * cf) * np.log(1 - w_m))
+    eta_exact = eta0 - scale * phi(w_m)
     # compare w at same eta: interpolate exact w(eta) onto numeric eta
     order = np.argsort(eta_exact)
     w_exact_at = np.interp(eta[mask], eta_exact[order], w_m[order])
@@ -472,32 +492,39 @@ def run_conditions(name):
     return u, L, alpha_b
 
 
-def prep_fit_data(max_pts=150):
+def prep_fit_data(max_pts=100):
     data = {}
     for name in RUNS:
         d = parse_run(name)
-        # subsample uniformly for fitting speed
-        idx = np.linspace(0, len(d["t"]) - 1, min(max_pts, len(d["t"]))).astype(int)
-        data[name] = {**d, "tf": d["t"][idx], "yf": d["y_norm"][idx]}
+        # cap the fit window shortly after saturation — the flat tail carries
+        # no shape information but dominates the ODE solve time
+        y = d["y_norm"]
+        i_sat = int(np.argmax(y > 0.985)) if np.any(y > 0.985) else len(y) - 1
+        t_cap = min(d["t"][i_sat] * 1.10, d["t"][-1])
+        sel = d["t"] <= t_cap
+        tt, yy = d["t"][sel], y[sel]
+        idx = np.linspace(0, len(tt) - 1, min(max_pts, len(tt))).astype(int)
+        data[name] = {**d, "tf": tt[idx], "yf": yy[idx], "t_cap": t_cap}
     return data
 
 
-def model_curves(theta_iso, k, data, N=120, rtol=1e-5):
+def model_curves(theta_iso, k, data, N=96, rtol=1e-4, full_span=False):
     """Simulate each run once; return dict name -> (t_grid, C_out(t))."""
     out = {}
     for name in RUNS:
         u, L, alpha_b = run_conditions(name)
         cf = data[name]["cf"]
         qstar = lambda c: toth_q(c, *theta_iso)
-        t_end = float(data[name]["t"][-1]) * 1.05
-        t_grid = np.linspace(0, t_end, 300)
+        t_end = float(data[name]["t"][-1] if full_span
+                      else data[name]["t_cap"]) * 1.05
+        t_grid = np.linspace(0, t_end, 200)
         sol = simulate(N, L, u, d_axial(u), k, alpha_b, cf, qstar, t_end,
                        t_eval=t_grid, variable_u=True, rtol=rtol)
         out[name] = (t_grid, sol.y[N - 1, :] / cf)
     return out
 
 
-def residuals(x, data, fit_t, N=120):
+def residuals(x, data, fit_t, N=96):
     """x = [ln ns, ln bP, (t), ln k, t0_1..t0_5]; stacked residual vector."""
     ns, bP = np.exp(x[0]), np.exp(x[1])
     if fit_t:
@@ -535,24 +562,25 @@ def fit_model(data, fit_t, label):
     scored = []
     for ns0, bP0, k0 in cands:
         x = [np.log(ns0), np.log(bP0)] + ([0.5] if fit_t else []) + [np.log(k0)] + t0g
-        r = residuals(np.array(x), data, fit_t, N=80)
+        r = residuals(np.array(x), data, fit_t, N=64)
         scored.append((np.sum(r ** 2), x))
         print(f"    screen ns={ns0:.1f} bP={bP0:.2g} k={k0:.1g}: "
-              f"SSR={scored[-1][0]:.2f}")
+              f"SSR={scored[-1][0]:.2f}", flush=True)
     scored.sort(key=lambda s: s[0])
     lo = [np.log(0.1), np.log(1e-3)] + ([0.05] if fit_t else []) + \
          [np.log(1e-5)] + [t - 300 for t in t0g]
     hi = [np.log(10.0), np.log(1e2)] + ([1.0] if fit_t else []) + \
          [np.log(1.0)] + [t + 300 for t in t0g]
     best = None
-    for ssr0, x0 in scored[:2]:
-        # ponytail: diff_step=1e-3 + multi-start — least_squares over solve_ivp
-        # residuals stalls at x0 with the default step (repo-known gotcha)
+    for ssr0, x0 in scored[:1]:
+        # ponytail: diff_step=1e-3 + screened start — least_squares over
+        # solve_ivp residuals stalls at x0 with the default step (repo gotcha);
+        # single polished start from the best of 8 screens, add starts if flat
         r = least_squares(residuals, np.array(x0), args=(data, fit_t),
-                          bounds=(lo, hi), diff_step=1e-3, max_nfev=250,
-                          xtol=1e-8, ftol=1e-8)
+                          bounds=(lo, hi), diff_step=1e-3, max_nfev=120,
+                          xtol=1e-6, ftol=1e-6, verbose=2)
         print(f"    start SSR={ssr0:.2f} -> final SSR={2*r.cost:.4f} "
-              f"({r.nfev} evals)")
+              f"({r.nfev} evals)", flush=True)
         if best is None or r.cost < best.cost:
             best = r
     x = best.x
@@ -594,7 +622,7 @@ def stage_fit():
     print("\n  fitted parameters (1-sigma in log-space for ns,bP,k):")
     for label, m in (("Toth", toth), ("Langmuir", lang)):
         print(f"    {label:9s} n_s={m['ns']:.3f} mol/kg  b={m['bP']:.4g} kPa^-1  "
-              f"t={m['t']:.3f}  k={m['k']:.30e} s^-1  "
+              f"t={m['t']:.3f}  k={m['k']:.3e} s^-1  "
               f"RSS={m['rss']:.4f}  AICc={m['aicc']:.1f}")
     d_aicc = toth["aicc"] - lang["aicc"]
     sig_t = toth["sig"][2] if len(toth["sig"]) > 2 else np.nan
@@ -609,7 +637,7 @@ def stage_fit():
     # per-run diagnostics with the retained model
     print("\n  per-run diagnostics (retained model):")
     curves = model_curves((best["ns"], best["bP"], best["t"]), best["k"], data,
-                          N=240, rtol=1e-6)
+                          N=240, rtol=1e-6, full_span=True)
     fig, axes = plt.subplots(2, 3, figsize=(14, 8))
     for ax, (name, t0) in zip(axes.flat, zip(RUNS, best["t0s"])):
         d = data[name]
@@ -676,17 +704,17 @@ def stage_fit():
     u, L, alpha_b = run_conditions(name)
     cf = data[name]["cf"]
     qstar = lambda c: toth_q(c, best["ns"], best["bP"], best["t"])
-    t_end = float(data[name]["t"][-1])
+    t_end = float(data[name]["t_cap"])
     tbts = {}
-    for N in (120, 240, 480):
+    for N in (96, 192, 384):
         tg = np.linspace(0, t_end, 300)
         sol = simulate(N, L, u, d_axial(u), best["k"], alpha_b, cf, qstar,
                        t_end, t_eval=tg, variable_u=True)
         tbts[N] = np.interp(0.5, sol.y[N - 1, :] / cf, tg)
-    dev = abs(tbts[120] / tbts[480] - 1)
-    print(f"\n  grid check (run 5 t50): N120={tbts[120]:.0f} s  "
-          f"N240={tbts[240]:.0f} s  N480={tbts[480]:.0f} s  "
-          f"(N120 vs N480: {dev*100:.2f} %)")
+    dev = abs(tbts[96] / tbts[384] - 1)
+    print(f"\n  grid check (run 5 t50): N96={tbts[96]:.0f} s  "
+          f"N192={tbts[192]:.0f} s  N384={tbts[384]:.0f} s  "
+          f"(N96 vs N384: {dev*100:.2f} %)")
     if dev > 0.01:
         print("  WARNING: fit-resolution t50 not grid-converged below 1 %")
     return best

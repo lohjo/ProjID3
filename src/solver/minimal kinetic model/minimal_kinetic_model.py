@@ -1,24 +1,27 @@
 """Minimal kinetic model — isothermal 1-D plug flow + LDF + Langmuir (A1–A7).
 
-Fully self-contained: references ONLY the measured data in
-``src/solver/data/new runs/`` (runs 3/4/5/6/8) and the Danckwerts
-finite-volume Method-of-Lines scheme of mechanistic-model2.md Part E
-(inlet face flux F_{-1/2} = u*c_f exactly; upwind convection; the
-discrete inventory identity telescopes). No project imports.
+Derivation source: src/docs/mechanistic_model_report.md, section "Minimal Kinetic
+Model for CO2 Adsorption with Amine Sorbents in Dry Condition" — assumptions
+A1–A7 and Eqs (1)–(5). Numerics follow the Danckwerts finite-volume
+Method-of-Lines scheme (b) of src/docs/mechanistic-model.md Part E (inlet face
+flux F_{-1/2} = u*c_f exactly; upwind convection; the discrete inventory identity
+telescopes). Fully self-contained: references ONLY the measured data in
+``src/solver/data/new runs/`` (runs 3/4/5/6/8). No project imports.
 
-Model (spec Eqs. 1–5, isothermal so b is a constant):
+Model (report Eqs (1)–(5); isothermal, so b is a constant):
     eps*dc/dt = -u_s*dc/dz - rho_b*dq/dt          (1)  [FV form, D_L = 0 per A1]
     dq/dt     = k*(q_e - q)                        (2)
     q_e       = qm*b*P / (1 + b*P),  P = c*R*T     (3),(4)
+    b(T)      = b0*exp(-dH/(R*T))                  (5)  [NOT exercised — see below]
 
 Global fit of (qm, b, k) across all five runs; b and k are FITTED, not
-literature values (Table 1 b is a deliberate unknown).
+literature values (report Table 1 b is a deliberate unknown).
 
 Verification: Rankine–Hugoniot isothermal equilibrium shock speed
-    v_RH = u_s*c_f / (eps*c_f + rho_b*q*(c_f))
+    v_RH = u_s*c_f / (eps*c_f + rho_b*q*(c_f))          [doc D.3]
 against the tracked half-height front in the large-k limit (±10 %).
 
-Run from repo root:  python src/solver/minimal_kinetic_model.py
+Run from repo root:  python "src/solver/minimal kinetic model/minimal_kinetic_model.py"
 Figures -> src/img/generated/minimal_kinetic/
 """
 
@@ -35,9 +38,9 @@ from scipy.optimize import least_squares
 
 # ---------------------------------------------------------------- constants
 R_GAS = 8.314          # J/(mol K)
-D_COL_M = 0.0085       # column i.d. [m]
+D_COL_M = 0.0085       # column i.d. [m]  (1-D axial model, A3: no radial gradients)
 T_K = 298.0            # operating temperature [K]  (isothermal, A2)
-P_PA = 101_325.0       # operating pressure [Pa]    (A5)
+P_PA = 101_325.0       # operating pressure [Pa]    (A5: negligible pressure drop)
 DATA_DIR = os.path.join("src", "solver", "data", "new runs")
 FIGDIR = os.path.join("src", "img", "generated", "minimal_kinetic")
 N_CELLS = 100
@@ -97,7 +100,8 @@ def parse_run_csv(path):
 
 
 def ppm_to_mol_m3(ppm):
-    """Ideal gas (A4, spec Eq. 4): c = y*P/(R*T)."""
+    """Let the gas phase be ideal (A4). Report Eq (4), P = cRT, applied to the
+    CO2 partial pressure y*P gives the molar concentration c = y*P/(R*T)."""
     return ppm * 1e-6 * P_PA / (R_GAS * T_K)
 
 
@@ -125,13 +129,24 @@ def load_run(run_id):
 
 # ---------------------------------------------------------------- model core
 def q_eq(c, qm, b, T=T_K):
-    """Langmuir on partial pressure (Eqs. 3–4)."""
+    """Let the surface carry identical elementary sites, each hosting one adsorbed
+    molecule. Report Eq (3), Langmuir on the CO2 partial pressure:
+        q_e = qm*b*P / (1 + b*P),   with P = cRT from report Eq (4).
+    Only CO2 adsorbs (A6); the carrier is inert.
+    """
     P = np.maximum(c, 0.0) * R_GAS * T
     return qm * b * P / (1.0 + b * P)
 
 
 def rhs(t, y, bed, qm, b, k, N, dz):
-    """FV-MOL scheme (b) of mechanistic-model2 Part E, D_L = 0 (A1).
+    """Report Eqs (1)+(2) in finite-volume form; scheme (b) of doc Part E.
+
+    Let there be a control volume [z, z+dz] of cross-section A: gas occupies
+    eps*A*dz, sorbent mass is rho_b*A*dz. Accumulation = in - out - sink gives
+    report Eq (1), eps*dc/dt = -u_s*dc/dz - rho_b*dq/dt, with D_L = 0 because A1
+    puts plug flow at constant u_s and no axial dispersion. The sink is the LDF
+    closure, report Eq (2), dq/dt = k(q_e - q) (A7): a single first-order
+    relaxation lumping film + macropore + micropore resistances into one k.
 
     Interleaved y = [c0,q0,c1,q1,...]; face fluxes F[0..N]:
     F[0] = u*cf is the Danckwerts inlet flux EXACTLY (not an approximated BC),
@@ -176,11 +191,20 @@ def global_residual(x, runs):
 def verify_rankine_hugoniot(bed, qm, b, ax=None):
     """Equilibrium-limit shock: track c = cf/2 front, compare to v_RH.
 
-    v_RH = u*cf / (eps*cf + rho_b*q*(cf))   [mechanistic-model2 D.3]
-    Large k -> LDF collapses to local equilibrium; front must move at v_RH.
+    Let k -> inf so report Eq (2) collapses to local equilibrium q = q_e(c)
+    pointwise. Report Eq (1) then becomes a scalar conservation law in
+    m = eps*c + rho_b*q_e(c) with flux u*c, whose jump from the clean bed
+    (m = 0) to the fed state (m = m_f) travels at the Rankine-Hugoniot speed
+
+        v_RH = [F(m_f) - F(0)] / (m_f - 0) = u*cf / (eps*cf + rho_b*q_e(cf))
+
+    (src/docs/mechanistic-model.md D.3; not covered by the report). Equivalently
+    v_RH = L / t_st with t_st the stoichiometric time below. q_e is concave, so
+    this shock is the entropy solution and the front must move at v_RH.
     """
     k_eq = 2.0  # ponytail: fixed large k, equilibrium limit; wave width u/(eps*k) ~ 0.06 m < L
     qf = q_eq(bed.cf, qm, b)
+    # Stoichiometric time: total capacity L*(eps*cf + rho_b*qf) per unit area fed at u*cf.
     t_st = bed.L * (bed.eps * bed.cf + bed.rho_b * qf) / (bed.u * bed.cf)
     v_rh = bed.L / t_st
     N = 800
@@ -227,6 +251,11 @@ def main():
               f"L={bed.L*100:.1f} cm  rho_b={bed.rho_b:.0f} kg/m3  "
               f"eps={bed.eps:.2f} (placeholder rho_p={RHO_P_PLACEHOLDER:.0f})")
 
+    # Report Eq (5), the van't Hoff b(T) = b0*exp(-dH/(R*T)), is NOT exercised:
+    # every run sits at one ambient T (A2), so only the lumped b(T_K) is
+    # identifiable. The fitted b below is b(298 K), NOT b0 — and report Table 1
+    # lists b as a deliberate unknown, so there is nothing to compare it against.
+    #
     # diff_step >> solver rtol: default FD step (~1e-8) sits below the LSODA
     # integration noise floor, giving a garbage Jacobian and a stalled fit.
     # The cost valley along the qm*b ridge is shallow — multi-start, keep best.

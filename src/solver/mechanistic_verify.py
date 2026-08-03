@@ -2,6 +2,15 @@
 mechanistic_verify.py — numerical verification of every closed-form claim in
 src/docs/mechanistic-model.md (Parts B, D, E).
 
+Derivation sources (dual-cited throughout):
+  * src/docs/mechanistic_model_report.md — Appendix A: the conservation-law
+    derivation itself (gas mass balance, LDF closure, Toth/Langmuir equilibrium,
+    thermodynamic consistency, pseudo-homogeneous energy balance, IC/BC,
+    nondimensionalisation). Its numbered equations are cited as "report Eq (n)".
+  * src/docs/mechanistic-model.md — Parts B/D/E: the inventory identity, the
+    analytically tractable limits, and the numerical formulation. The report does
+    NOT contain these parts, so §B.x/D.x/E.x tags below refer only to that file.
+
 Scheme: finite-volume Method of Lines, upwind convection, central dispersion,
 Danckwerts inlet as the exact inlet-face flux (scheme (b), doc §E.1) -> the
 discrete inventory identity dM/dt = u*cf - u*c_out holds to solver tolerance.
@@ -23,10 +32,15 @@ from __future__ import annotations
 
 import os
 import sys
-import numpy as np
 from dataclasses import dataclass
+
+import numpy as np
 from scipy.integrate import solve_ivp
 from scipy.special import erfc
+
+import matplotlib
+matplotlib.use("Agg")          # headless: figures are written, never shown
+import matplotlib.pyplot as plt
 
 trapz = getattr(np, "trapezoid", None) or np.trapz  # numpy 2.x rename
 
@@ -34,11 +48,6 @@ FIGDIR = os.path.join("src", "img", "generated", "mechanistic")
 R_GAS = 8.314
 
 # ----------------------------------------------------------------------------- utilities
-
-
-def l2_rel(a, b):
-    """Relative L2 error of a vs reference b."""
-    return np.sqrt(trapz((a - b) ** 2, dx=1.0) / max(trapz(b**2, dx=1.0), 1e-300))
 
 
 def ogata_banks(z, t, v, D, cf):
@@ -50,6 +59,22 @@ def ogata_banks(z, t, v, D, cf):
     arg = v * z / D
     term2 = np.where(arg < 700, 0.5 * np.exp(np.minimum(arg, 700)) * erfc((z + v * t) / s), 0.0)
     return cf * (term1 + term2)
+
+
+def crossing(x, s, level, rising=True):
+    """First x at which s crosses `level`, linearly interpolated between samples.
+
+    Serves both directions: a rising outlet trace (t_BT at c/cf = 0.05, t_sat at
+    0.95) and a falling axial profile (the c = cf/2 front position used to measure
+    the shock speed). Returns NaN if the level is never reached.
+    """
+    idx = np.where(s >= level if rising else s <= level)[0]
+    if idx.size == 0:
+        return np.nan
+    i = idx[0]
+    if i == 0:
+        return x[0]
+    return x[i - 1] + (level - s[i - 1]) * (x[i] - x[i - 1]) / (s[i] - s[i - 1])
 
 
 # ----------------------------------------------------------------------------- model
@@ -78,10 +103,16 @@ class Bed:
 
     @property
     def Ch(self):
+        # Let the energy stored in a CV relative to a reference T_ref be
+        #   E = [eps*rho_g*c_pg + (1-eps)*rho_p*c_ps] (T - T_ref) A dz,
+        # so the volumetric heat capacity of the bed is the bracket (report App. A,
+        # "Pseudo-homogeneous energy balance"). alpha_b = (1-eps)*rho_p already.
         return self.eps * self.rho_g * self.cpg + self.alpha_b * self.cps
 
 
 class Langmuir:
+    """Report Eq (3) at t_T = 1 — identical adsorption sites, one molecule each."""
+
     def __init__(self, qm, b):
         self.qm, self.b = qm, b
 
@@ -91,7 +122,21 @@ class Langmuir:
 
 
 class Toth:
-    """Concentration-basis Toth with van't Hoff b(T) (doc A.3); chi = alphaT = 0."""
+    """Concentration-basis Toth with van't Hoff b(T) (report Eq (3); doc A.3).
+
+    Let the surface have a *distribution* of binding affinities rather than one:
+        q*(c,T) = n_s(T) b(T) c / [1 + (b(T) c)^t_T]^(1/t_T),
+        n_s(T)  = n_s0 exp[chi (1 - T/T0)],
+        b(T)    = b0 exp[(dH0/(R T0)) (T0/T - 1)],
+        t_T(T)  = t0 + alpha_T (1 - T0/T),
+    with 0 < t_T <= 1 the heterogeneity exponent (t_T = 1 recovers Langmuir).
+
+    Here chi = alpha_T = 0, so the isosteric heat implied by the closure through
+    Clausius-Clapeyron collapses to the constant -dH_iso = -dH_0 (report App. A,
+    "Thermodynamic consistency"). That is exactly the enthalpy fed to the energy
+    balance below (Bed.dH) — isotherm and thermal model stay consistent. With
+    chi != 0 the implied heat becomes loading-dependent and the two would diverge.
+    """
 
     def __init__(self, ns0, b0, t0, Qiso, T0):
         self.ns0, self.b0, self.t0, self.Qiso, self.T0 = ns0, b0, t0, Qiso, T0
@@ -103,54 +148,98 @@ class Toth:
         return self.ns0 * b * c / np.power(1.0 + s, 1.0 / self.t0)
 
 
+class FrozenT:
+    """An isotherm pinned at one temperature — the isothermal reference run of T5."""
+
+    def __init__(self, iso, T):
+        self.iso, self.T = iso, T
+
+    def q(self, c, T=None):
+        return self.iso.q(c, self.T)
+
+
+def flux_div(phi, dz, adv, diff, inlet_flux):
+    """Net outflow per unit volume of a conserved scalar, FV scheme (b).
+
+    Let there be a control volume [z, z+dz] of cross-section A. Accumulation =
+    in - out - sink (report App. A, "Gas-phase mass balance equation"). Face
+    fluxes on the N-cell grid are
+
+        F_{i-1/2} = adv * phi_{i-1}  -  diff * (phi_i - phi_{i-1}) / dz
+                    ^ upwind (monotone, positivity-preserving)  ^ central
+
+    with the inlet face set DIRECTLY to the Danckwerts flux (report Eq (8):
+    u*c_f = u*c(0+,t) - eps*D_L*c_z(0+,t)); it is not a boundary condition to be
+    approximated, it *is* F_{-1/2}. The outlet face carries convection only —
+    the zero-gradient exit condition c_z(L,t) = 0. Summing (F_{i-1/2} - F_{i+1/2})
+    over i telescopes to dM/dt = u*c_f - u*c_out, the discrete inventory identity
+    (doc B.3 / E.1), which is why T4's drift is at solver tolerance.
+
+    Mass:   adv = u,               diff = eps*D_L,  inlet_flux = u*c_f
+    Energy: adv = u*rho_g*c_pg,    diff = lam_eff,  inlet_flux = adv*T_f
+    (identical structure; only the transport coefficient differs — report App. A.)
+    """
+    F = np.empty(phi.size + 1)
+    F[0] = inlet_flux
+    F[1:-1] = adv * phi[:-1] - diff * np.diff(phi) / dz
+    F[-1] = adv * phi[-1]
+    return (F[:-1] - F[1:]) / dz
+
+
 def rhs_iso(t, y, p: Bed, iso, N, dz):
-    """Isothermal FV scheme (b): y = interleaved [c0,q0,c1,q1,...]."""
-    c = y[0::2]
-    q = y[1::2]
+    """Isothermal FV scheme (b): y = interleaved [c0,q0,c1,q1,...].
+
+    report Eq (1): eps*c_t + u*c_z = eps*D_L*c_zz - (1-eps)*rho_p*q_t
+    report Eq (2): q_t = k (q*(c,T) - q)   — the LDF closure, mass transfer as
+    first-order relaxation toward equilibrium with k lumping film + macropore +
+    micropore resistances in series (1/k = 1/k_film + 1/k_pore + 1/k_amine).
+    """
+    c, q = y[0::2], y[1::2]
     dq = p.k * (iso.q(c) - q) if p.k > 0 else np.zeros_like(c)
-    # face fluxes F[0..N]; F[0] Danckwerts, F[N] zero-gradient outlet
-    F = np.empty(N + 1)
-    F[0] = p.u * p.cf
-    F[1:N] = p.u * c[:-1] - p.eps * p.DL * (c[1:] - c[:-1]) / dz
-    F[N] = p.u * c[-1]
-    dc = ((F[:-1] - F[1:]) / dz - p.alpha_b * dq) / p.eps
     out = np.empty_like(y)
-    out[0::2] = dc
+    out[0::2] = (flux_div(c, dz, p.u, p.eps * p.DL, p.u * p.cf) - p.alpha_b * dq) / p.eps
     out[1::2] = dq
     return out
 
 
 def rhs_full(t, y, p: Bed, iso, N, dz):
-    """Non-isothermal FV scheme (b): y = interleaved [c,q,T]*N."""
-    c = y[0::3]
-    q = y[1::3]
-    T = y[2::3]
+    """Non-isothermal FV scheme (b): y = interleaved [c,q,T]*N.
+
+    Adds report Eq (6), the pseudo-homogeneous energy balance:
+        C_h*T_t + u*rho_g*c_pg*T_z = lam_eff*T_zz + (1-eps)*rho_p*(-dH)*q_t
+                                     - (4 h_w / d_col) (T - T_wall)
+    Source: moles adsorbed per unit time x (-dH), over the (1-eps)*rho_p*A*dz kg
+    of sorbent in the CV. Wall loss: area per unit length pi*d_col over bed section
+    pi*d_col^2/4 gives the 4/d_col factor. h_w = 0 is the adiabatic column.
+    """
+    c, q, T = y[0::3], y[1::3], y[2::3]
     dq = p.k * (iso.q(c, T) - q)
-    F = np.empty(N + 1)
-    F[0] = p.u * p.cf
-    F[1:N] = p.u * c[:-1] - p.eps * p.DL * (c[1:] - c[:-1]) / dz
-    F[N] = p.u * c[-1]
-    dc = ((F[:-1] - F[1:]) / dz - p.alpha_b * dq) / p.eps
-    G = np.empty(N + 1)  # heat fluxes
-    G[0] = p.u * p.rho_g * p.cpg * p.Tf
-    G[1:N] = p.u * p.rho_g * p.cpg * T[:-1] - p.lam * (T[1:] - T[:-1]) / dz
-    G[N] = p.u * p.rho_g * p.cpg * T[-1]
-    dT = ((G[:-1] - G[1:]) / dz + p.alpha_b * p.dH * dq
-          - (4.0 * p.hw / p.dcol) * (T - p.Twall)) / p.Ch
+    adv_h = p.u * p.rho_g * p.cpg
     out = np.empty_like(y)
-    out[0::3] = dc
+    out[0::3] = (flux_div(c, dz, p.u, p.eps * p.DL, p.u * p.cf) - p.alpha_b * dq) / p.eps
     out[1::3] = dq
-    out[2::3] = dT
+    out[2::3] = (flux_div(T, dz, adv_h, p.lam, adv_h * p.Tf)
+                 + p.alpha_b * p.dH * dq
+                 - (4.0 * p.hw / p.dcol) * (T - p.Twall)) / p.Ch
     return out
 
 
-def solve_iso(p, iso, N, t_eval, rtol=1e-8, atol=None):
+def t_stoich(p: Bed, qf):
+    """Stoichiometric time (Cor. B.1): total capacity / feed rate.
+
+    Let the bed saturate: M(inf) = L (eps*c_f + alpha_b*q_f) mol per unit area,
+    fed at u*c_f, so t_st = L (eps*c_f + alpha_b*q_f) / (u*c_f). Integrating the
+    inventory identity B.3 gives the model-free check int(1 - c/c_f) dt = t_st,
+    and in the equilibrium limit v_RH = L / t_st (doc D.3).
+    """
+    return p.L * (p.eps * p.cf + p.alpha_b * qf) / (p.u * p.cf)
+
+
+def solve_iso(p, iso, N, t_eval, rtol=1e-8):
     dz = p.L / N
-    y0 = np.zeros(2 * N)
-    if atol is None:
-        atol = 1e-9 * max(p.cf, 1.0)
-    sol = solve_ivp(rhs_iso, (0.0, t_eval[-1]), y0, t_eval=t_eval, args=(p, iso, N, dz),
-                    method="LSODA", rtol=rtol, atol=atol, lband=2, uband=2)
+    sol = solve_ivp(rhs_iso, (0.0, t_eval[-1]), np.zeros(2 * N), t_eval=t_eval,
+                    args=(p, iso, N, dz), method="LSODA", rtol=rtol,
+                    atol=1e-9 * max(p.cf, 1.0), lband=2, uband=2)
     assert sol.success, sol.message
     return sol, dz
 
@@ -158,23 +247,12 @@ def solve_iso(p, iso, N, t_eval, rtol=1e-8, atol=None):
 def solve_full(p, iso, N, t_eval, rtol=1e-7):
     dz = p.L / N
     y0 = np.zeros(3 * N)
-    y0[2::3] = p.T0
+    y0[2::3] = p.T0                       # IC: clean bed, c = q = 0, T = T0 (report Eq (7))
     atol = np.tile([1e-9 * p.cf, 1e-9, 1e-7 * p.T0], N)
     sol = solve_ivp(rhs_full, (0.0, t_eval[-1]), y0, t_eval=t_eval, args=(p, iso, N, dz),
                     method="LSODA", rtol=rtol, atol=atol, lband=3, uband=3)
     assert sol.success, sol.message
-    return sol, dz
-
-
-def crossing_time(t, s, level):
-    """First time s(t) crosses level (linear interpolation)."""
-    idx = np.where(s >= level)[0]
-    if len(idx) == 0:
-        return np.nan
-    i = idx[0]
-    if i == 0:
-        return t[0]
-    return t[i - 1] + (level - s[i - 1]) * (t[i] - t[i - 1]) / (s[i] - s[i - 1])
+    return sol
 
 
 # ----------------------------------------------------------------------------- tests
@@ -186,18 +264,16 @@ def test1_ade(fig):
     v, D = p.u / p.eps, p.DL           # interstitial frame: c_t + v c_z = D c_zz
     t_end = 2.2 * p.L / v
     t_eval = np.linspace(0.0, t_end, 400)
-    rows = []
+    rows, finest = [], None
     for N in (500, 1000, 2000, 4000):
-        sol, dz = solve_iso(p, Langmuir(0.0, 1.0), N, t_eval)
+        sol, dz = solve_iso(p, None, N, t_eval)   # k = 0 -> the isotherm is never called
         c_out = sol.y[2 * (N - 1)]     # last cell centre z = L - dz/2
-        z_out = p.L - dz / 2.0
-        ref = ogata_banks(z_out, t_eval, v, D, p.cf)
+        ref = ogata_banks(p.L - dz / 2.0, t_eval, v, D, p.cf)
         err = np.sqrt(trapz((c_out - ref) ** 2, t_eval) / trapz(ref**2, t_eval))
         rows.append((N, err))
+        finest = (N, c_out, ref)       # plot the finest grid, named rather than leaked
     if fig:
-        import matplotlib
-        matplotlib.use("Agg")
-        import matplotlib.pyplot as plt
+        N, c_out, ref = finest
         fg, ax = plt.subplots(1, 2, figsize=(10, 3.6))
         ax[0].plot(t_eval, ref / p.cf, "k-", lw=2, label="Ogata–Banks (D.5)")
         ax[0].plot(t_eval, c_out / p.cf, "r--", label=f"FV-MOL N={N}")
@@ -219,8 +295,7 @@ def test2_rh(fig):
     """T2: sharp-front speed vs v_RH; first-moment vs t_st. T4: mass drift."""
     p = Bed(k=2.0, DL=1e-6)
     iso = Langmuir(qm=1.0, b=0.5)                    # b*cf = 2.045
-    qf = iso.q(p.cf)
-    t_st = p.L * (p.eps * p.cf + p.alpha_b * qf) / (p.u * p.cf)
+    t_st = t_stoich(p, iso.q(p.cf))
     v_rh = p.L / t_st
     N = 800
     t_eval = np.linspace(0.0, 2.0 * t_st, 1200)
@@ -230,15 +305,8 @@ def test2_rh(fig):
     zc = (np.arange(N) + 0.5) * dz
     # front position (c = cf/2) at a series of times in mid-column
     ts = np.linspace(0.35 * t_st, 0.85 * t_st, 12)
-    zs = []
-    for tt in ts:
-        j = np.argmin(np.abs(t_eval - tt))
-        prof = c[:, j] / p.cf
-        # first z where prof drops through 0.5 (monotone decreasing front)
-        idx = np.where(prof <= 0.5)[0]
-        i = idx[0]
-        z_half = np.interp(0.5, [prof[i], prof[i - 1]], [zc[i], zc[i - 1]])
-        zs.append(z_half)
+    zs = [crossing(zc, c[:, np.argmin(np.abs(t_eval - tt))] / p.cf, 0.5, rising=False)
+          for tt in ts]
     v_num = np.polyfit(ts, zs, 1)[0]
     # first-moment invariance (Cor. B.1): trapz of (1 - c_out/cf) up to full saturation
     c_out = c[N - 1]
@@ -250,9 +318,6 @@ def test2_rh(fig):
     drift = np.abs(M_fv - M_fv[0] - (inflow - outflow)) / np.maximum(inflow, 1e-30)
     drift_max = np.nanmax(drift[10:])
     if fig:
-        import matplotlib
-        matplotlib.use("Agg")
-        import matplotlib.pyplot as plt
         fg, ax = plt.subplots(1, 2, figsize=(10, 3.6))
         for tt in np.linspace(0.2, 1.0, 5) * t_st:
             j = np.argmin(np.abs(t_eval - tt))
@@ -276,12 +341,11 @@ def test3_wave(fig):
     """T3: finite-k outlet/profile vs exact Langmuir travelling wave (D.8)."""
     p = Bed(k=2e-2, DL=0.0)                 # k chosen so the wave (width ~ v/k) sits interior to the bed
     iso = Langmuir(qm=1.0, b=0.5)
-    qf = iso.q(p.cf)
-    t_st = p.L * (p.eps * p.cf + p.alpha_b * qf) / (p.u * p.cf)
+    t_st = t_stoich(p, iso.q(p.cf))
     v = p.L / t_st
     N = 3000
     t_eval = np.linspace(0.0, 0.8 * t_st, 500)   # profile is sampled at 0.65 t_st; no need to saturate
-    sol, dz = solve_iso(p, iso, N, t_eval, rtol=1e-8)
+    sol, dz = solve_iso(p, iso, N, t_eval)
     c = sol.y[0::2]
     zc = (np.arange(N) + 0.5) * dz
     # numerical profile at a time when the front is fully developed & interior
@@ -292,18 +356,13 @@ def test3_wave(fig):
     w = np.linspace(1e-6, 1 - 1e-6, 4001)
     eta = -(v / (p.k * iso.b * p.cf)) * (np.log(w) - (1 + iso.b * p.cf) * np.log1p(-w))
     # align both at w = 0.5
-    idx = np.where(prof <= 0.5)[0]
-    i0 = idx[0]
-    z_half = np.interp(0.5, [prof[i0], prof[i0 - 1]], [zc[i0], zc[i0 - 1]])
+    z_half = crossing(zc, prof, 0.5, rising=False)
     eta_half = eta[np.argmin(np.abs(w - 0.5))]
     # w as a function of eta: xp must ascend -> use reversed arrays
     w_theory = np.interp(zc - z_half, (eta - eta_half)[::-1], w[::-1], left=1.0, right=0.0)
     mask = (w_theory > 0.02) & (w_theory < 0.98)
     err = np.sqrt(np.mean((prof[mask] - w_theory[mask]) ** 2))
     if fig:
-        import matplotlib
-        matplotlib.use("Agg")
-        import matplotlib.pyplot as plt
         fg, ax = plt.subplots(figsize=(6.4, 3.8))
         ax.plot(zc - z_half, prof, "r-", lw=1.4, label=f"FV-MOL, N={N}, t=0.65 t_st")
         ax.plot(eta - eta_half, w, "k--", lw=1.2, label="exact travelling wave (D.8)")
@@ -323,36 +382,27 @@ def test5_full(fig):
     curves = {}
     for tag, hw in (("adiabatic", 0.0), ("wall h=30", 30.0)):
         p = Bed(k=5e-3, DL=5e-5, hw=hw)
-        qf = iso.q(p.cf, p.T0)
-        t_st = p.L * (p.eps * p.cf + p.alpha_b * qf) / (p.u * p.cf)
+        t_st = t_stoich(p, iso.q(p.cf, p.T0))
         N = 600
         t_eval = np.linspace(0.0, 3.0 * t_st, 1600)
-        sol, dz = solve_full(p, iso, N, t_eval)
+        sol = solve_full(p, iso, N, t_eval)
         c_out = sol.y[3 * (N - 1)]
         T = sol.y[2::3]
         x = c_out / p.cf
-        t_bt = crossing_time(t_eval, x, 0.05)
-        t_sat = crossing_time(t_eval, x, 0.95)
+        t_bt = crossing(t_eval, x, 0.05)
+        t_sat = crossing(t_eval, x, 0.95)
         jbt = np.searchsorted(t_eval, t_bt)
         q_dyn = p.u * trapz(p.cf - c_out[:jbt + 1], t_eval[:jbt + 1]) / (p.alpha_b * p.L)
         results[tag] = dict(t_st=t_st, t_bt=t_bt, t_sat=t_sat, q_dyn=q_dyn,
                             dT_max=float(T.max() - p.T0), rollup=float(x.max()))
         curves[tag] = (t_eval, x, T[N - 1] - p.T0)
-    # isothermal reference (same isotherm at T0)
+    # isothermal reference (same isotherm frozen at T0)
     p = Bed(k=5e-3, DL=5e-5)
-
-    class IsoT:
-        def q(self, c, T=None):
-            return iso.q(c, p.T0 * np.ones_like(np.atleast_1d(c)))
-    qf = iso.q(p.cf, p.T0)
-    t_st = p.L * (p.eps * p.cf + p.alpha_b * qf) / (p.u * p.cf)
+    t_st = t_stoich(p, iso.q(p.cf, p.T0))
     t_eval = np.linspace(0.0, 3.0 * t_st, 1600)
-    sol, dz = solve_iso(p, IsoT(), 600, t_eval)
+    sol, _ = solve_iso(p, FrozenT(iso, p.T0), 600, t_eval)
     x_iso = sol.y[2 * 599] / p.cf
     if fig:
-        import matplotlib
-        matplotlib.use("Agg")
-        import matplotlib.pyplot as plt
         fg, ax = plt.subplots(1, 2, figsize=(10, 3.8))
         ax[0].plot(t_eval / 60, x_iso, "k-", label="isothermal")
         for tag, (tv, x, dT) in curves.items():
@@ -367,8 +417,7 @@ def test5_full(fig):
         fg.tight_layout()
         fg.savefig(os.path.join(FIGDIR, "V4_nonisothermal.png"), dpi=150)
         plt.close(fg)
-    results["isothermal t_bt"] = crossing_time(t_eval, x_iso, 0.05)
-    return results
+    return results, crossing(t_eval, x_iso, 0.05)
 
 
 def main():
@@ -392,13 +441,11 @@ def main():
         print(f"    RMS profile deviation = {r3['rms']*100:.3f} %  (t_st = {r3['t_st']:.1f} s)")
     if "t5" in sel:
         print("T5  non-isothermal Toth demo")
-        r5 = test5_full(fig)
+        r5, t_bt_iso = test5_full(fig)
         for tag, d in r5.items():
-            if isinstance(d, dict):
-                print(f"    {tag:12s}: t_st={d['t_st']:.0f}s  t_BT={d['t_bt']:.0f}s  t_sat={d['t_sat']:.0f}s  "
-                      f"q_dyn={d['q_dyn']:.3f} mol/kg  dT_max={d['dT_max']:.1f}K  max c/cf={d['rollup']:.3f}")
-            else:
-                print(f"    {tag}: {d:.0f}s")
+            print(f"    {tag:12s}: t_st={d['t_st']:.0f}s  t_BT={d['t_bt']:.0f}s  t_sat={d['t_sat']:.0f}s  "
+                  f"q_dyn={d['q_dyn']:.3f} mol/kg  dT_max={d['dT_max']:.1f}K  max c/cf={d['rollup']:.3f}")
+        print(f"    isothermal t_bt: {t_bt_iso:.0f}s")
     print("=" * 78)
 
 

@@ -9,6 +9,7 @@ Both formats are detected automatically.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -29,7 +30,10 @@ class ParsedRun:
     pressure_Pa: Optional[float]
     filename: str
     run_id: str
-    fmt: str  # "A" or "B"
+    fmt: str  # "A", "B", "C", or "D"
+    mass_g: Optional[float] = None
+    bed_height_cm: Optional[float] = None
+    tube_diameter_mm: Optional[float] = None
 
 
 _DATETIME_FMT_A = "%m/%d/%y %H:%M:%S.%f"
@@ -48,6 +52,8 @@ class DataParser:
             return self.parse_format_a(path, c0_override=c0_override)
         if fmt == "C":
             return self.parse_format_c(path, c0_override=c0_override)
+        if fmt == "D":
+            return self.parse_format_d(path, c0_override=c0_override)
         return self.parse_format_b(path, c0_override=c0_override)
 
     def parse_many(
@@ -61,7 +67,12 @@ class DataParser:
     @staticmethod
     def auto_detect(path: Path) -> str:
         with open(path, "r", encoding="utf-8", errors="replace") as fh:
-            head = [next(fh, "") for _ in range(3)]
+            head = [next(fh, "") for _ in range(5)]
+        blob = "".join(head).lower()
+        # Format D: self-describing newest-runs CSVs carry a quoted prose
+        # block naming "Bed height:"/"Tube diameter:" — unique to this format.
+        if "bed height:" in blob or "tube diameter:" in blob:
+            return "D"
         first = head[0].lower()
         # Format B header contains "c0" and "time (s)" labels in row 1.
         if "c0" in first and "time" in first:
@@ -297,6 +308,96 @@ class DataParser:
             filename=path.name,
             run_id=path.stem,
             fmt="C",
+        )
+
+    # ------------------------------------------------------------------ #
+    # Format D — self-describing newest-runs CSV (prose header + label/
+    # value/unit table at cols 8-10, real header row further down, then
+    # a pre-processed data block).
+    # ------------------------------------------------------------------ #
+    def parse_format_d(
+        self, path: Path, c0_override: Optional[float] = None
+    ) -> ParsedRun:
+        df_raw = pd.read_csv(path, header=None, engine="python", on_bad_lines="skip")
+
+        # Locate the real header row by content, not a fixed offset.
+        hdr_idx = None
+        for i in range(min(20, len(df_raw))):
+            if (
+                str(df_raw.iat[i, 0]).strip() == "Time"
+                and df_raw.shape[1] > 1
+                and str(df_raw.iat[i, 1]).strip() == "Time (min)"
+            ):
+                hdr_idx = i
+                break
+        if hdr_idx is None:
+            raise ValueError(f"Format D: header row not found in {path}")
+
+        # Label/value/unit metadata table at cols 8-10, rows above the header.
+        meta: dict[str, float] = {}
+        if df_raw.shape[1] > 9:
+            labels = df_raw.iloc[:hdr_idx, 8].astype(str).str.strip().str.lower()
+            values = pd.to_numeric(df_raw.iloc[:hdr_idx, 9], errors="coerce")
+            for label, value in zip(labels, values):
+                if pd.notna(value):
+                    meta[label] = float(value)
+
+        # Prose block (row 0, col 0) — bed height & tube diameter live only here.
+        prose = str(df_raw.iat[0, 0])
+        bed_height_m = re.search(r"Bed height:\s*([\d.]+)\s*mm", prose, re.IGNORECASE)
+        tube_dia_m = re.search(r"Tube diameter:\s*([\d.]+)\s*mm", prose, re.IGNORECASE)
+        mass_m = re.search(r"Mass:\s*([\d.]+)\s*g", prose, re.IGNORECASE)
+
+        mass_g = meta.get("mass")
+        if mass_m is not None:
+            mass_prose = float(mass_m.group(1))
+            if mass_g is not None and abs(mass_prose - mass_g) > 0.05:
+                print(
+                    f"[WARN] {path.name}: prose mass {mass_prose:g} g vs "
+                    f"table mass {mass_g:g} g disagree"
+                )
+            elif mass_g is None:
+                mass_g = mass_prose
+
+        c0_ppm = c0_override if c0_override is not None else meta.get("c0")
+
+        # Data rows: Time (min) -> t [s]; recompute C/C0 ourselves.
+        data = df_raw.iloc[hdr_idx + 1 :]
+        t_sec = pd.to_numeric(data.iloc[:, 1], errors="coerce") * 60.0
+        co2 = pd.to_numeric(data.iloc[:, 2], errors="coerce")
+
+        out = pd.DataFrame({"t": t_sec, "C_C0": co2 / c0_ppm if c0_ppm else np.nan})
+        out["CO2"] = co2
+        out = out.dropna(subset=["t", "C_C0"]).copy()
+        out = out.sort_values("t").drop_duplicates("t", keep="first")
+        if c0_ppm is None and out["CO2"].notna().any():
+            c0_ppm = float(out["CO2"].max())
+            out["C_C0"] = out["CO2"] / c0_ppm
+        out["C0_ppm"] = c0_ppm
+        out["filename"] = path.name
+        out["run_id"] = path.stem
+        out = out[["t", "C_C0", "C0_ppm", "filename", "run_id"]].reset_index(drop=True)
+        out = self._despike(out)
+
+        temp_col = 5  # Temperature, by position
+        temp = (
+            pd.to_numeric(data.iloc[:, temp_col], errors="coerce").mean()
+            if data.shape[1] > temp_col
+            else float("nan")
+        )
+
+        return ParsedRun(
+            df=out,
+            c0_ppm=c0_ppm,
+            flow_ml_min=(meta["v"] * 1000.0) if "v" in meta else None,
+            temperature_K=(temp + 273.15) if pd.notna(temp) else None,
+            pressure_Pa=meta.get("p"),
+            filename=path.name,
+            run_id=path.stem,
+            fmt="D",
+            mass_g=mass_g,
+            bed_height_cm=(float(bed_height_m.group(1)) / 10.0) if bed_height_m else None,
+            tube_diameter_mm=float(tube_dia_m.group(1)) if tube_dia_m else None,
         )
 
     # ------------------------------------------------------------------ #

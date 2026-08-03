@@ -1,0 +1,1 @@
+ dense FD Jacobian the residual eval went from 417 s to 0.6 s.

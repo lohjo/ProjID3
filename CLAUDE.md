@@ -9,7 +9,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Hard rules, ordered by how often they get broken. Violating the first two wastes the most time.
 
 ### 1. Data basis — the #1 mistake
-- **Measured basis = exactly five bench runs: `run 3/4/5/6/8`** in `src/solver/data/new runs/`, processed by `new_runs_pipeline.py` + the `breakthrough_fit/` package. These are the **only** real data.
+- **Measured basis = five bench runs: `run 3/4/5/6/8`** in `src/solver/data/new runs/`, plus (since 2026-07-31) **nine further real bench runs** in `src/solver/data/newest runs/` (a 3×3 flow×concentration grid, dated 2026-06-26 to 2026-07-15) — 14 real runs total, both processed by the `breakthrough_fit/` package. These are the **only** real data.
+- `new_runs_pipeline.py` currently targets **`newest runs/` only** (its `RUN_META` for run 3/4/5/6/8 was removed when it was repointed) — it no longer regenerates the original five. Their committed artefacts (`src/solver/breakthrough_out/run <N>/`) are static and unaffected, but the "refresh the real results" command below only refreshes `newest runs/` until this is reconciled. See `src/docs/experimental-results.md` §10 for detail.
+- Metadata (mass, bed height, flow, C₀, tube diameter) for `newest runs/` is **auto-extracted per file** from each CSV's own embedded header block (parser Format D) — never hand-typed into a dict. `new runs/` files carry no in-file metadata and still rely on the documented measurements block below.
+- Two files in `newest runs/` (`2026-07-17-conc15-flow0.1.csv`, `-flow0.15.csv`) are raw sensor logs with **no embedded metadata** and are excluded, not fabricated — flag to the lab if bed geometry for those two ever needed.
 - The `*ml_*g.csv` and `May-*.csv` files are **synthetic/placeholder** — never present them as measured results. They fed only a synthetic-validation appendix (now archived).
 - **Never invent sweep points.** The "39-run / 11 OAT + 9 u×C_in" matrix is *planned, not executed*; H1–H5 have not been tested against measured data. Flag any request that assumes otherwise.
 
@@ -82,14 +85,16 @@ python src/solver/illustration.py    # end-to-end numerical illustration for §5
 
 ### The real experiment (the measured basis)
 
-The five bench runs in `src/solver/data/new runs/` (run 3/4/5/6/8) are the only measured data. Refresh the real results with:
+The five bench runs in `src/solver/data/new runs/` (run 3/4/5/6/8) plus nine bench runs in `src/solver/data/newest runs/` (2026-06-26 – 2026-07-15) are the only measured data — 14 real runs total, see `src/docs/experimental-results.md` §1–9 and §10 respectively. Refresh results with:
 
 ```bash
-python new_runs_pipeline.py                       # 5 real runs -> breakthrough_out/run N/
-python -m breakthrough_fit.assemble_may_prompt    # engineered-prompt tables/figures -> src/img/generated/may_prompt/
+python src/solver/new_runs_pipeline.py            # 9 newest runs -> breakthrough_out/<run_id>/ (currently targets `newest runs/` only — see note below)
+python -m breakthrough_fit.assemble_may_prompt    # engineered-prompt tables/figures for runs 3/4/5/6/8 -> src/img/generated/may_prompt/
 ```
 
-`breakthrough_fit/` package layout: `parse.py` (auto-detect Format A/B, despike, metadata) · `models.py` (M01–M24 registry + bounds) · `stats.py` (R², AdjR², RMSE, AICc, F-test) · `fit.py` (curve_fit + L-BFGS-B fallback, 10 starts, seed=42) · `isotherm.py` (q₀ back-calc) · `performance.py` (t_b, t_E, t₅₀, q_dyn, L_MTZ, ψ) · `plots.py` (P1–P7, 300 dpi headless) · `mtz_fem.py` (1-D FEM + travelling-wave) · `main.py` (CLI).
+**Note:** `new_runs_pipeline.py` was repointed at `newest runs/` on 2026-07-31 and its `RUN_META` for run 3/4/5/6/8 was removed — it no longer regenerates the original five runs. Their committed artefacts (`src/solver/breakthrough_out/run <N>/`) are static and still valid; the pre-repurposing script version is recoverable from git history if regenerating both datasets from one entry point is needed. `assemble_may_prompt.py` is unaffected — still wired to `new runs/`/run 3/4/5/6/8 only.
+
+`breakthrough_fit/` package layout: `parse.py` (auto-detect Format A/B/C/D, despike, metadata — Format D auto-extracts mass/bed height/flow/C₀/tube diameter from the self-describing `newest runs/` headers) · `models.py` (M01–M24 registry + bounds) · `stats.py` (R², AdjR², RMSE, AICc, F-test) · `fit.py` (curve_fit + L-BFGS-B fallback, 10 starts, seed=42) · `isotherm.py` (q₀ back-calc) · `performance.py` (t_b, t_E, t₅₀, q_dyn, L_MTZ, ψ) · `plots.py` (P1–P7, 300 dpi headless) · `mtz_fem.py` (1-D FEM + travelling-wave) · `main.py` (CLI).
 
 ## Architecture of the solver work
 
@@ -159,7 +164,7 @@ These are the baseline parameters. Do not silently substitute alternatives — f
 
 ## Experimental design — as executed (the real basis)
 
-The **only correct measured basis** is the five bench runs in `src/solver/data/new runs/` (run 3/4/5/6/8). Their authoritative metadata is the measurements block (per-run mass/bed length + the adsorption pressure-drop table); inlet C₀ is read per run from the data.
+The measured basis is the five bench runs in `src/solver/data/new runs/` (run 3/4/5/6/8) **plus** nine bench runs in `src/solver/data/newest runs/` (2026-06-26 – 2026-07-15, a 3×3 flow×concentration grid; two further files in that folder are raw sensor logs with no embedded geometry and are excluded). Runs 3/4/5/6/8's authoritative metadata is the measurements block (per-run mass/bed length + the adsorption pressure-drop table), read per run below; `newest runs/` metadata is auto-extracted per file from its own embedded header (mass/bed height/flow/tube diameter/C₀) — see `src/docs/experimental-results.md` §10 for that run inventory and results table.
 
 Fixed: column **38.6 cm × 8.5 mm i.d.**; sorbent **~8.00 g** PEI@SiO₂ in a **~21 cm** bed; **ambient** (uncontrolled) T; P ≈ 101.325 kPa. Swept: inlet flow and inlet CO₂.
 
