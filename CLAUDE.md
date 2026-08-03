@@ -147,10 +147,10 @@ These are the baseline parameters. Do not silently substitute alternatives — f
 - `src/docs/experimental-results.md` — **mirrors Hu et al. 2024**: measured breakthrough curves, fitted models, and derived metrics (t_b, t_E, t₅₀, q_dyn, L_MTZ, ψ). This is the live source-of-truth for the measured basis.
 - `src/docs/updates.md` — running change log.
 - `src/docs/prompts/` — engineered prompts that drive figure/table generation.
-- `src/docs/papers/` — source papers; cite report-prose claims from here.
-- `src/docs/sprints/<DD-MM>.md` — dated weekly sprint plans; newest supersedes older.
-- `src/docs/journals/` — bi-weekly journals for supervisor submission.
-- `src/docs/latex/` — LaTeX report builds (secondary output).
+- `src/docs/literature/` — source papers; cite report-prose claims from here.
+- `src/docs/biweekly-journals/sprint/<DD-MM>.md` — dated weekly sprint plans; newest supersedes older.
+- `src/docs/biweekly-journals/` — bi-weekly journals for supervisor submission.
+- `src/docs/biweekly-journals/latex/` — LaTeX report builds (secondary output).
 
 **Archived / not current — do not treat as source of truth:**
 - `src/docs/archive (DO NOT OPEN)/` — superseded old-scope. Do **not** read or edit. This now contains the old `derivation.md`, `CO2-adsorption-model.md`, `equation_compendium.md`, `literature-survey-summary.md`, `my-research-paper.md`, `study_plan.md`, `research.md` (in `maybe_archive/`). Earlier CLAUDE.md versions wrongly listed these six as live under `src/docs/` — they are **not**.
