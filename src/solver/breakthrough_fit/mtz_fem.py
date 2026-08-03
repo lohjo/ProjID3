@@ -36,25 +36,6 @@ def build_mesh(L: float, n_nodes: int = 100) -> FEMesh:
     return FEMesh(n_nodes=n_nodes, L=L, x=x, dx=float(x[1] - x[0]))
 
 
-def assemble_upwind(mesh: FEMesh, v: float) -> tuple[np.ndarray, np.ndarray]:
-    """Mass and (upwind) stiffness matrices for the 1-D linear basis."""
-    n = mesh.n_nodes
-    dx = mesh.dx
-    # Consistent mass matrix (tridiagonal: dx/6 [1 4 1]).
-    M = np.zeros((n, n))
-    np.fill_diagonal(M, 4.0)
-    np.fill_diagonal(M[:-1, 1:], 1.0)
-    np.fill_diagonal(M[1:, :-1], 1.0)
-    M *= dx / 6.0
-    # Upwind first-derivative matrix (assumes flow in +x): backward difference.
-    K = np.zeros((n, n))
-    for i in range(1, n):
-        K[i, i] = v / dx
-        K[i, i - 1] = -v / dx
-    K[0, 0] = v / dx  # inflow boundary
-    return M, K
-
-
 # ---------------------------------------------------------------------------
 # Travelling-wave evaluation
 # ---------------------------------------------------------------------------

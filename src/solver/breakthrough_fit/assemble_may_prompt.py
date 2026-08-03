@@ -43,14 +43,22 @@ from scipy.stats import f as f_dist
 from breakthrough_fit import models as M
 from breakthrough_fit.parse import DataParser
 
-REPO = Path(__file__).resolve().parents[1]
-RESULTS = REPO / "breakthrough_out"
+# .../src/solver/breakthrough_fit/assemble_may_prompt.py -> repo root is parents[3].
+REPO = Path(__file__).resolve().parents[3]
+RESULTS = REPO / "src" / "solver" / "breakthrough_out"
 DATA = REPO / "src" / "solver" / "data" / "new runs"
 OUT = REPO / "src" / "img" / "generated" / "may_prompt"
-OUT.mkdir(parents=True, exist_ok=True)
 
 # --------------------------------------------------------------------------- #
-# Per-run metadata — matches new_runs_pipeline.py RUN_META.
+# Per-run metadata for runs 3/4/5/6/8.
+#
+# This used to mirror a RUN_META dict in new_runs_pipeline.py. That dict was
+# deleted on 2026-07-31 when the pipeline was repointed at `newest runs/`, whose
+# metadata is auto-extracted per file by the Format-D parser. This script still
+# targets `new runs/`, whose CSVs carry no embedded header, so the values below
+# remain hand-entered from the measurements block and are now the sole source of
+# truth for these five runs -- there is nothing left to mirror.
+#
 # Q_lpm: authoritative inlet flow from the adsorption pressure-drop table.
 # conc_pct: nominal CO2 level (5 ≈ 4.7%, 10 ≈ 9.5-10.2%, 15 ≈ 15.1%).
 # --------------------------------------------------------------------------- #
@@ -445,6 +453,7 @@ def fig_p8(rows) -> None:
 
 # --------------------------------------------------------------------------- #
 def main() -> None:
+    OUT.mkdir(parents=True, exist_ok=True)
     rows = load()
     print(f"Loaded {len(rows)} new runs.")
     t1, t2, t3, t4 = table1(rows), table2(rows), table3(rows), table4(rows)
