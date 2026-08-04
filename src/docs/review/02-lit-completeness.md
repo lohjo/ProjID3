@@ -1,5 +1,10 @@
 # Literature Completeness Audit
 
+> **Status 2026-08-04:** the missing/duplicated model citations identified here were added
+> in `T32_PI05_Final_Report.docx` §3.6.8–3.6.14 (17 previously-uncited models, each with a
+> real equation and citation). See `11-process-record.md`. This file is retained unmodified
+> as the original audit record.
+
 **Reviewing as for** *Adsorption Science & Technology*
 **Question asked** which breakthrough models are missing, duplicated, outdated or
 unnecessary — and would each omission *materially* affect the paper?

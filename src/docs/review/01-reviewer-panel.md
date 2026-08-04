@@ -1,5 +1,9 @@
 # Stage 3 — Simulated Peer Review Panel
 
+> **Status 2026-08-04:** the "Major Revision" findings below were addressed in
+> `T32_PI05_Final_Report.docx` (see `11-process-record.md` for the full list of edits).
+> This file is retained unmodified as the original review record.
+
 **Manuscript** T32_PI05 — *Parametric Study of CO₂ Adsorption Breakthrough in Packed-Bed
 Columns* · ~9,400 words
 **Target venue (assumed for calibration)** *Adsorption Science & Technology*

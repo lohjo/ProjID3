@@ -1,5 +1,10 @@
 # Stage 4 — Change List
 
+> **Status 2026-08-04:** every numbered item in this change-list has been applied directly
+> to `T32_PI05_Final_Report.docx` (Priority 1/1b/2/2b/3, plus §7 and §3.6.8–3.6.14 written
+> from scratch). See `11-process-record.md` for the item-by-item mapping. This file is
+> retained unmodified as the original change-list.
+
 **Form.** The reviewer is read-only and you own the `.docx`, so Stage 4's normal output (a
 patched draft) is delivered here as an ordered edit list instead.
 

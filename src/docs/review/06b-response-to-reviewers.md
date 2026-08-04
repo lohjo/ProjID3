@@ -1,5 +1,11 @@
 # Response to Reviewers — skeleton
 
+> **Status 2026-08-04:** superseded by the completed resolution — every item this skeleton
+> was drafted to track is now `RESOLVED` in `T32_PI05_Final_Report.docx` except the B9/B10
+> process items (reference re-verification of the pre-existing set; plagiarism screening),
+> which remain open and are documented in `09-final-integrity.md` and
+> `11-process-record.md`.
+
 **Status** drafting aid, not a submission. Statuses are `RESOLVED` /
 `DELIBERATE_LIMITATION` / `UNRESOLVABLE` / `REVIEWER_DISAGREE`, filled in as you work
 through `06-change-list.md`.

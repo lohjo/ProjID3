@@ -1,5 +1,10 @@
 # Methodology and Logical Flow Audit
 
+> **Status 2026-08-04:** the structural/ordering findings below were resolved by the full
+> chapter reorder in `T32_PI05_Final_Report.docx` (SOP → Results → Analysis →
+> Fitting-performance → Math Modelling → Conclusions). See `11-process-record.md`. This
+> file is retained unmodified as the original audit record.
+
 **Questions asked** Is every transition justified? Does each section depend on the
 previous one? Are there logical jumps? Does any result appear before the method that
 generated it?

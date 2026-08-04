@@ -1,5 +1,9 @@
 # Claim-to-Reference Audit
 
+> **Status 2026-08-04:** the ChatGPT citation and the Kimani misrepresentation identified
+> here were corrected in `T32_PI05_Final_Report.docx`. See `11-process-record.md`. This
+> file is retained unmodified as the original audit record.
+
 **Question asked of every technical claim** *Does the cited paper actually support this
 statement?*
 

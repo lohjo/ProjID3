@@ -1,5 +1,10 @@
 # Academic Integrity Verification Report — Stage 2.5 (pre-review)
 
+> **Status 2026-08-04:** findings in this file were carried through Stages 3–4.5 and
+> resolved directly in `T32_PI05_Final_Report.docx`. See `09-final-integrity.md` (final
+> verdict) and `11-process-record.md` (full resolution record) for current status. This
+> file is retained unmodified as the original pre-review record.
+
 **Manuscript** `src/T32_PI05_Final_Report.docx` (1250 paragraphs, ~9,400 words, 13 tables, 22 images, 205 equations)
 **Mode** 1 (pre-review) · **Date** 2026-08-03 · **Verdict** **FAIL**
 **Anchors** `[pN]` = paragraph index from `_source/extract_report.py` (see that file for the convention)

@@ -1,5 +1,9 @@
 # Stage 3′ — Re-Review (verification pass)
 
+> **Status 2026-08-04:** the roadmap this traceability matrix tracked is now complete in
+> `T32_PI05_Final_Report.docx`. See `09-final-integrity.md` for the re-run Stage 4.5 verdict
+> and `11-process-record.md` for the full resolution record.
+
 **What Stage 3′ normally does.** Verify that a revised draft actually addressed the Stage 3
 roadmap, producing a Schema 11 traceability matrix.
 

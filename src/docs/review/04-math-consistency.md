@@ -1,5 +1,10 @@
 # Mathematical Consistency Audit
 
+> **Status 2026-08-04:** the k_T collision, δ-for-∂, and Danckwerts BC findings below were
+> corrected in `T32_PI05_Final_Report.docx`; a nomenclature table (§3.3) resolves the
+> x/z and C₀/c₀/ε/ϵ notation findings. See `11-process-record.md`. This file is retained
+> unmodified as the original audit record.
+
 **Scope** notation · variable definitions · units · dimensions · assumptions
 **Basis** all 205 OMML equations extracted from the `.docx`, cross-read against
 `src/docs/mechanistic-model.md` §0

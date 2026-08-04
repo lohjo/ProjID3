@@ -1,5 +1,11 @@
 # Analysis Code — Simplification Report
 
+> **Status 2026-08-04:** code changes described here were already applied and verified
+> (Stage 6 record). This session's work was manuscript-only (`.docx` editing); the two
+> flagged code decisions — RMSE denominator, `W_AICc` naming — were **not** changed in code
+> this session. `W_AICc` is addressed at the manuscript-text level instead (§7.1's
+> corrective note). See `11-process-record.md`.
+
 **Package** `src/solver/breakthrough_fit/` (3,597 LOC, 12 modules) + `new_runs_pipeline.py`
 (212 LOC) + `breakthrough_analysis.ipynb`
 **Constraint** every applied change is **behaviour-preserving**, verified by regenerating
