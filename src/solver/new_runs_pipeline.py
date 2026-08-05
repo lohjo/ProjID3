@@ -175,12 +175,7 @@ def run_one(fpath: Path, parser: DataParser, fitter: ModelFitter) -> None:
     plot_P3(run.run_id, df, results, out_dir=out_dir)
     plot_P4(run.run_id, df, results, out_dir=out_dir)
     plot_P5(run.run_id, results, L_bed_m=L_bed_m, v_interstitial=v_int, out_dir=out_dir)
-    f_p = None
-    if not ftests.empty:
-        sel = ftests[(ftests["simple"] == "M01") & (ftests["complex"] == "M23")]
-        if not sel.empty:
-            f_p = float(sel["p_value"].iloc[0])
-    plot_P6(run.run_id, df, results, f_p_ba_vs_fractal=f_p, out_dir=out_dir)
+    plot_P6(run.run_id, df, results, out_dir=out_dir)
     plot_P7(run.run_id, df, results, out_dir=out_dir)
     print(f"  -> Saved to {out_dir}")
 

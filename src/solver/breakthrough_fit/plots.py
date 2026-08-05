@@ -37,6 +37,17 @@ def _save(fig: plt.Figure, out_dir: Optional[Path], stem: str) -> plt.Figure:
     return fig
 
 
+def _series(df) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Unpack a run frame into (t [s], C/C0, t [min]).
+
+    Every plot below starts from these three arrays; keeping the unpacking in one
+    place stops the seconds-to-minutes conversion drifting between panels.
+    """
+    t = df["t"].to_numpy(dtype=float)
+    y = df["C_C0"].to_numpy(dtype=float)
+    return t, y, t / 60.0
+
+
 # ---------------------------------------------------------------------------
 # P1 — predicted vs observed
 # ---------------------------------------------------------------------------
@@ -57,7 +68,7 @@ def plot_P1(
         ax.scatter(
             r.y_obs[mask], r.y_pred[mask],
             s=10, alpha=0.55, color=cmap(i % 10),
-            label=f"{r.code}  R²={r.stats.r2:0.4f}",
+            label=r.code,
         )
     ax.plot([0, 1], [0, 1], "k--", lw=1)
     ax.set_xlim(-0.02, 1.05)
@@ -88,9 +99,7 @@ def plot_P2(
     out_dir: Optional[Path] = None,
 ) -> plt.Figure:
     fig, axes = plt.subplots(1, 2, figsize=_FIGSIZE_L, sharey=True)
-    t = df["t"].to_numpy(dtype=float)
-    y = df["C_C0"].to_numpy(dtype=float)
-    t_min = t / 60.0
+    t, y, t_min = _series(df)
 
     langmuir_codes = ("M01", "M02", "M16", "M17")
     freundlich_codes = ("M04", "M19")
@@ -109,7 +118,7 @@ def plot_P2(
             )
             ax.plot(
                 t_min[mask], r.y_pred[mask], lw=1.5,
-                label=f"{r.code}  R²={r.stats.r2:0.3f}\n  {param_str}",
+                label=f"{r.code}\n  {param_str}",
             )
         _vlines(ax, t, y)
         ax.set_xlabel("time [min]")
@@ -131,9 +140,7 @@ def plot_P3(
     out_dir: Optional[Path] = None,
 ) -> plt.Figure:
     fig, axes = plt.subplots(1, 2, figsize=_FIGSIZE_L)
-    t = df["t"].to_numpy(dtype=float)
-    y = df["C_C0"].to_numpy(dtype=float)
-    t_min = t / 60.0
+    t, y, t_min = _series(df)
 
     r = results.get("M14")
     axes[0].scatter(t_min, y, s=10, color="black", alpha=0.6, label="data")
@@ -172,9 +179,7 @@ def plot_P4(
         2, 1, figsize=_FIGSIZE_L, sharex=True,
         gridspec_kw={"height_ratios": [3, 1]},
     )
-    t = df["t"].to_numpy(dtype=float)
-    y = df["C_C0"].to_numpy(dtype=float)
-    t_min = t / 60.0
+    t, y, t_min = _series(df)
 
     axes[0].scatter(t_min, y, s=10, color="black", alpha=0.6, label="data")
     r01 = results.get("M01")
@@ -182,9 +187,9 @@ def plot_P4(
     y1 = r01.y_pred if (r01 and r01.converged) else None
     y4 = r04.y_pred if (r04 and r04.converged) else None
     if y1 is not None:
-        axes[0].plot(t_min, y1, "b-", lw=1.5, label=f"M01 Thomas/YN  R²={r01.stats.r2:0.3f}")
+        axes[0].plot(t_min, y1, "b-", lw=1.5, label="M01 Thomas/YN")
     if y4 is not None:
-        axes[0].plot(t_min, y4, "g-", lw=1.5, label=f"M04 Dose-Response  R²={r04.stats.r2:0.3f}")
+        axes[0].plot(t_min, y4, "g-", lw=1.5, label="M04 Dose-Response")
     if y1 is not None and y4 is not None:
         lower = np.minimum(y1, y4)
         upper = np.maximum(y1, y4)
@@ -276,16 +281,13 @@ def plot_P6(
     run_id: str,
     df,
     results: dict[str, FitResult],
-    f_p_ba_vs_fractal: Optional[float],
     out_dir: Optional[Path] = None,
 ) -> plt.Figure:
     fig, axes = plt.subplots(
         2, 2, figsize=_FIGSIZE_L, sharex=True,
         gridspec_kw={"height_ratios": [3, 1]},
     )
-    t = df["t"].to_numpy(dtype=float)
-    y = df["C_C0"].to_numpy(dtype=float)
-    t_min = t / 60.0
+    t, y, t_min = _series(df)
     pairs = (("M01", "Standard YN"), ("M23", "Fractal YN"))
 
     for col, (code, title) in enumerate(pairs):
@@ -294,23 +296,10 @@ def plot_P6(
         r = results.get(code)
         ax_top.scatter(t_min, y, s=10, color="black", alpha=0.5, label="data")
         if r is not None and r.converged:
-            ax_top.plot(t_min, r.y_pred, "r-", lw=1.5,
-                        label=f"{code}  R²={r.stats.r2:0.3f}")
+            ax_top.plot(t_min, r.y_pred, "r-", lw=1.5, label=code)
             resid = y - r.y_pred
             ax_bot.bar(t_min, resid, width=(t_min[-1] - t_min[0]) / max(t.size, 1),
                        color="grey")
-            if code == "M23" and "h" in r.param_names:
-                h_idx = r.param_names.index("h")
-                h_val = r.params[h_idx]
-                p_str = (f"  F-test p={f_p_ba_vs_fractal:0.3g}"
-                         if f_p_ba_vs_fractal is not None and
-                         np.isfinite(f_p_ba_vs_fractal)
-                         else "")
-                ax_top.text(
-                    0.02, 0.95, f"h = {h_val:0.3f}{p_str}",
-                    transform=ax_top.transAxes, fontsize=9, va="top",
-                    bbox=dict(facecolor="white", alpha=0.6),
-                )
         ax_top.set_title(title)
         ax_top.set_ylim(-0.02, 1.05)
         ax_top.legend(fontsize=8)
@@ -340,9 +329,7 @@ def plot_P7(
     out_dir: Optional[Path] = None,
     codes: Optional[Iterable[str]] = None,
 ) -> plt.Figure:
-    t = df["t"].to_numpy(dtype=float)
-    y = df["C_C0"].to_numpy(dtype=float)
-    t_min = t / 60.0
+    t, y, t_min = _series(df)
     converged = [r for r in results.values() if r.converged]
     if codes is not None:
         converged = [r for r in converged if r.code in codes]
@@ -363,7 +350,7 @@ def plot_P7(
         ax.scatter(t_min, resid, s=6, alpha=0.5, color="steelblue")
         ax.plot(t_min, _rolling_mean(resid, 11), color="orange", lw=1.0)
         ax.axhline(0.0, color="black", lw=0.6)
-        ax.set_title(f"{r.code}  χ²_red={r.stats.chi2_red:0.3g}", fontsize=9)
+        ax.set_title(r.code, fontsize=9)
         ax.tick_params(labelsize=7)
     for ax in axes[len(converged):]:
         ax.set_axis_off()

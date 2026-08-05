@@ -16,7 +16,7 @@ import pandas as pd
 from scipy.optimize import OptimizeWarning, curve_fit, minimize
 import warnings
 
-from .models import REGISTRY, BreakthroughModel, get_model
+from .models import REGISTRY, BreakthroughModel
 from .stats import FitStats, compute_stats, f_test, rank_aicc
 
 

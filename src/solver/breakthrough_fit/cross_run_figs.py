@@ -37,9 +37,10 @@ import pandas as pd
 from breakthrough_fit import models as M
 from breakthrough_fit.parse import DataParser
 
-REPO = Path(__file__).resolve().parents[1]
+# .../src/solver/breakthrough_fit/cross_run_figs.py -> repo root is parents[3].
+REPO = Path(__file__).resolve().parents[3]
 OUT_DIR = REPO / "src" / "img" / "generated"
-RESULTS_GLOB = REPO / "breakthrough_out"
+RESULTS_GLOB = REPO / "src" / "solver" / "breakthrough_out"
 DATA_DIR = REPO / "src" / "solver" / "data"
 
 CLEAN_RE = re.compile(r"^(\d+)ml_(\d+)g$")
@@ -273,20 +274,7 @@ def fig10_model_ranking(rows: list[dict]) -> None:
     ax.set_xlim(-0.05, 1.0)
     ax.axvline(0.0, color="k", linewidth=0.6)
     ax.grid(axis="x", alpha=0.3)
-    for yi, c in zip(y, order):
-        if win_count[c] > 0:
-            ax.text(
-                max(vals[yi], 0.02) + 0.01,
-                yi,
-                f"best in {win_count[c]}",
-                va="center",
-                fontsize=7,
-                color="#2ca02c",
-            )
-    ax.set_title(
-        "Model performance ranking (green = selected as best by AICc in ≥1 run)",
-        fontsize=10,
-    )
+    ax.set_title("Model performance ranking", fontsize=10)
     fig.tight_layout()
     path = OUT_DIR / "fig10_model_ranking.png"
     fig.savefig(path, dpi=300)
@@ -323,7 +311,7 @@ def fig11_breakthrough_window(rows: list[dict]) -> None:
             curve[win],
             color=color,
             linewidth=2.0,
-            label=f"{run_id}  (best: {r['best_code']}, R²={r['best_R2']:.3f})",
+            label=f"{run_id}  (best: {r['best_code']})",
         )
         # Observed points only within the [0.05, 0.95] band.
         band = (y_obs >= 0.05) & (y_obs <= 0.95)
@@ -377,7 +365,7 @@ def fig12_degenerate(rows: list[dict]) -> None:
             y_obs,
             color=color,
             linewidth=1.3,
-            label=f"{run_id}  (max C/C₀={r['obs_ymax']:.2f}, best R²={r['best_R2']:.2f})",
+            label=f"{run_id}  (max C/C₀={r['obs_ymax']:.2f})",
         )
     ax.axhline(0.05, color="k", linestyle=":", linewidth=0.8)
     ax.set_ylim(-0.05, 1.0)
@@ -385,8 +373,7 @@ def fig12_degenerate(rows: list[dict]) -> None:
     ax.set_ylabel("C/C$_0$  [-]")
     ax.set_title(
         "Unsuccessful runs retained for troubleshooting:\n"
-        "high-concentration (~10 % CO$_2$) tests whose anomalous fronts defeated all 24 "
-        "models (best R² ≤ 0)",
+        "high-concentration (~10 % CO$_2$) tests whose anomalous fronts no model fitted",
         fontsize=9.5,
     )
     ax.grid(alpha=0.3)

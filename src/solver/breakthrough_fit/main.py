@@ -210,12 +210,7 @@ def run_one(args, path: Path, parser: DataParser, fitter: ModelFitter) -> None:
     if np.isfinite(v):
         plot_P5(run.run_id, results, L_bed_m=L_bed_m,
                 v_interstitial=v, out_dir=out_dir)
-    f_p = None
-    if not ftests.empty:
-        sel = ftests[(ftests["simple"] == "M01") & (ftests["complex"] == "M23")]
-        if not sel.empty:
-            f_p = float(sel["p_value"].iloc[0])
-    plot_P6(run.run_id, df, results, f_p_ba_vs_fractal=f_p, out_dir=out_dir)
+    plot_P6(run.run_id, df, results, out_dir=out_dir)
     plot_P7(run.run_id, df, results, out_dir=out_dir)
 
 
