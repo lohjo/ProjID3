@@ -361,3 +361,108 @@ Gap analysis of the Danilov-pairing comment vs. the three sessions it seeded (Me
 - **Research-direction novelty gap:** psi-quadrature-consistency-proof.md's Theorem 7.1 (general Ansatz-Consistency principle for seeded marching schemes) and Theorem 5.2 (closed-form error floor in bc_f) are genuinely original results in the sense the "is this publishable" assessment asked for — but they come from a single unverified pass. Per prompt00.md's own closing-note protocol (run twice, diff before trusting), this has not yet happened for the ψ-quadrature problem. `src/docs/prompts/prompt02.md` created to run it: same problem, two independently-dispatched rerun modes (creative-disproof / rigor-check), explicit instruction not to read the existing proof first, and a diff procedure before anything gets promoted into mechanistic-model.md or the report.
 
 **Audit addendum (same day):** cross-checked prompt02.md against mechanistic-model.md and the actual `danilov2019.txt` (OCR'd, `src/docs/literature/modelling/danilov2019.txt` — not `src/docs/papers/`, which does not exist; CLAUDE.md's own citation rule points at a dead path, fixed in prompt02.md's notes). Route A equations (v_RH, t_st, D.8, tail rates) verified verbatim against MM. Route B mechanics verified against the paper directly: Eq. (1)'s corrected-time formula θ=(t-z/u_f)-t_s matches the paper's printed form exactly (line 459); Appendix A Eq. A.8 defines γ_q as an explicit function of the local isotherm slope ∂q_eq/∂y, and Appendix B Eq. B.5 defines β=1-(γ_q-1)/(ε_b·mol_G·y) in terms of it — i.e. the paper's own machinery already makes β state-dependent, and "γ_q≈1, β≈1" (line 1478, 1915-1917) is stated as a numerical evaluation result for the Table-2 system specifically, not a structural assumption. This corroborates rather than undermines psi-quadrature-consistency-proof.md's Lemma 2.4 (independently derived via Route A's concentration-basis ODE) — added as expected-failure-mode #6 in prompt02.md so a rerun that doesn't notice this from the paper itself is flagged as having missed available information.
+  05/08/2026
+    sensitivity-analysis.md + sensitivity_anova.py: NEW — sensitivity analysis by ANOVA of clusters in
+    scatterplots (Kleijnen & Helton 1999a CMNs/CLs tests; Saltelli et al. 2000 SRC + Iman-Conover).
+    Three tiers: (1) experimental, model-free, on the balanced 3x3 grid (flow x C0); (2) Monte-Carlo/LHS
+    over the fitted-parameter ranges of the top-3 models by pooled AICc rank (M11, M24, M10), N=2000,
+    propagated to t_b/t_E/t50/q_dyn/L_MTZ/psi at a fixed reference operating point; (3) regression of the
+    fitted parameters themselves on (Q, C0).
+
+    Headline: flow rate sets WHEN breakthrough happens (t_b F(2,6)=30.9, p=0.0007, eta2=0.911; C0 n.s.);
+    concentration sets HOW MUCH is adsorbed (q_dyn F=5.29, p=0.047, eta2=0.638; flow n.s.). Mechanism —
+    flow compresses every time constant (tau0/tau1/tau2 std. coef. -0.86/-0.89/-0.87 on Q) and also lowers
+    the fractal exponent h (b ~ -0.72 to -0.75, p ~ 0.026); concentration reaches the kinetics only weakly
+    and the shape parameters not at all.
+
+    Findings that constrain future work:
+      - M10/M11 k0 and h are NOT independently identifiable: rho_Spearman = 1.000 (M11) / 0.982 (M10)
+        across all 14 runs. Independent-uniform sampling leaves the ridge — 11.3% (M11) / 8.3% (M10) of
+        LHS draws failed to produce a breakthrough curve at all, vs 0% under Iman-Conover rank-correlated
+        sampling. Re-parameterise on kappa = k0*tau0^(-h). Do not report k0 as an independent sensitivity.
+      - M24 label switching: 2 of 14 runs returned tau1 > tau2. Canonical ordering tau1 <= tau2 now imposed;
+        without it the tau1 range was wrong by ~4x.
+      - M03 (Fractal Clark) excluded from the dissection despite 4th rank: pins n = 1.01 (lower bound) in
+        all 14 runs and A0 = 1e6 (upper bound) in 6 of 9 newest runs. M10 k0 hits its upper bound (1.000)
+        in 2026-07-10-conc15-flow0.05.
+      - DO NOT POOL the 5 old runs with the 9-run grid for inference: bed L is 21.0-21.5 cm vs 23.0-24.5 cm
+        and i.d. 8.5 vs 8.2 mm, so pooling adds a confounded factor. Every eta2 falls; t_b R2 0.879 -> 0.496;
+        pooled L_MTZ adj. R2 goes negative.
+      - L_MTZ = [1 - (t_E-t_b)/(2 t_E)]*L_bed has a hard floor of 0.5*L_bed. Measured span is 0.519-0.569
+        of L_bed, CV 3.8% vs 79% for t_b. Its universal non-significance is a formula artefact, not physics.
+      - The uniform MC prior is an ASSUMPTION, flagged as such. k0/tau0/tau1/tau2 are log-normal-shaped
+        (Shapiro p >= 0.26 on logs, <= 0.013 raw); log-uniform would be the more defensible prior.
+      - Blocking matters: C0 is n.s. for t_b in the one-way cluster test (p=0.80) but significant in the
+        two-way factorial once flow's variance is removed (p=0.041). Report the factorial.
+
+    Validation: 7 assertion-based self-checks run before any result prints (cluster F vs scipy f_oneway;
+    SRC blindness to a pure quadratic; single-regressor SRC == Pearson r; M01 closed-form t50 = tau and
+    t_b/t_E = tau -/+ ln(19)/k; propagated M11 t_b/t50/q_dyn vs measured for the reference run; Iman-Conover
+    marginal preservation; two-way SS decomposition). Separately, all 141 numeric claims in the markdown
+    were re-read from the workbook and reconciled to 3 s.f.
+
+    CLAUDE.md / AGENTS.md: document-layout section updated with the new live doc and its three standing flags.
+
+  05/08/2026 (later) — RERUN ON THE EXPANDED BASIS (18 files / 16 usable runs)
+    new_runs_pipeline.py re-run over all 18 files in `newest runs/`. 16 fitted (24 models x 12 starts,
+    seed 42, + plots P1-P7); 2 skipped by the pipeline's own metadata guard. sensitivity-analysis.md
+    and sensitivity_anova_tables.xlsx regenerated. Basis for Tier 1 is now n=16 (grid) / n=21 (pooled).
+
+    Reproducibility check: refitting the 9 previously-committed runs reproduced them to
+    max |dAdjR2| = 9.9e-12 with identical t_b/t_E/t50/q_dyn. The git diff on those CSVs is last-digit
+    formatting only. The pipeline is reproducible end to end.
+
+    *** CONCLUSION WITHDRAWN ***
+    The 14-run claim that "concentration sets capacity" does NOT survive replication. At n=9 the C0
+    effect on q_dyn was F=5.29, p=0.047, eta2=0.638. At n=16 it is F=3.75, p=0.052 (cluster) and
+    p=0.220 (factorial). Cause: 78.4% of q_dyn's total variance is PURE MEASUREMENT ERROR — replicate
+    cells differ by up to 3.04x (e.g. 1.133 vs 0.373 mol/kg at 0.10 lpm / 10% CO2), median within-cell
+    CV 36.7%. q_dyn is not currently measurable at the precision needed to detect anything.
+    By contrast t_b and t50 carry only 4.4% / 4.0% pure error and are trustworthy.
+    ACTION: run every experiment to a fixed C/C0 = 0.98 rather than stopping by wall-clock; q_dyn is an
+    integral to t_E and inherits all tail noise.
+
+    New results the replication bought (interaction was previously confounded with error, df_err 0 -> 7):
+      - t50 shows a significant flow x concentration INTERACTION, F(4,7)=4.36, p=0.044. First time testable.
+      - L_MTZ became significant for both factors (flow p=0.015, C0 p=0.028) — but see the standing
+        dynamic-range flag; L_MTZ/L spans only 0.519-0.589 against a hard floor of 0.5.
+      - Flow -> t_b strengthened to F(2,13)=46.2, p=1.2e-6, eta2=0.877 (was F=30.9, p=7e-4).
+      - Flow -> h (fractal exponent) is now the strongest parameter-level effect in the study:
+        M10 F(2,13)=52.0, p=6.3e-7, eta2=0.889.
+
+    Data problems found and how they were handled:
+      - 2026-07-22-conc10-flow0.10.csv IS MIS-NAMED: its header says 150 ml/min, not 100. Metadata is
+        authoritative, and this was confirmed physically — its t_b=185 s sits with the 0.15 lpm runs
+        (213 s), not the 0.10 lpm runs (326, 249 s). Treated as 0.15 lpm. ACTION: rename at source.
+      - 2026-07-17-conc15-flow0.1.csv (no metadata) is the SAME EXPERIMENT as
+        2026-07-17-conc15-flow0.10.csv (has metadata): the raw log has an ~80-min idle head; after
+        aligning the trim they agree (132700 vs 134400 ppm at the 30-min mark). Excluding the raw one
+        loses nothing and avoids double-counting.
+      - 2026-07-17-conc15-flow0.15.csv still has no metadata AND is not a clean breakthrough — CO2 reads
+        144590 ppm at 98 min, 0 ppm at 139 min, 142040 ppm at 179 min (sensor dropout / multi-segment).
+        Genuinely lost. ACTION: supply bed geometry and re-record.
+      - 2026-07-29-conc5-flow0.05 never reaches C/C0=0.95, so t_E is undefined. Handled pairwise (n=15
+        for t_E/L_MTZ/psi); never imputed.
+      - M24 label switching is OPTIMISER-ORDER-DEPENDENT: 2026-07-08-conc5-flow0.15 was swapped in the
+        previous fit and is not in this one — same optimum, same RSS, components returned in the other
+        order. Confirms canonicalisation (tau1 <= tau2) must be applied, not trusted to the fitter.
+
+    Code changes to sensitivity_anova.py:
+      - two_way_anova_no_rep() -> two_way_anova(): unbalanced two-way with replication, Type II SS,
+        estimable interaction, aliased-column dropping. The old function silently AVERAGED replicate
+        cells via pivot_table and would have been wrong on this basis.
+      - replicate_reproducibility(): pure-error vs total-variance decomposition per response.
+      - bound_pinning() + top_models() screen: a model is disqualified from the parameter dissection if
+        any parameter sits at its own bound in >25% of runs. This is what now excludes M03 (n pinned
+        21/21, A0 10/21) automatically — previously a hand-written exclusion. Tolerance is relative to
+        each BOUND, not the bound span (a span-relative test called any tau0 < 1001 "pinned at 1").
+      - Self-checks 7 -> 9: added Type II SS reducing to the orthogonal decomposition on a balanced
+        synthetic design, a planted interaction recovered, and an absent interaction reported absent.
+      - Scope labels are now derived from the data (n=16 / n=21), not hardcoded.
+
+    Verification: 9/9 assertions pass. src/docs/verify_sensitivity_doc.py re-reads all 341 numeric
+    claims in the markdown from the workbook and reconciles them (0 mismatches).
+
+    Standing flags unchanged: k0/h non-identifiable (rho_S = 0.984 M11 / 0.971 M10; 11.3% / 8.3% of
+    independent-uniform draws produce no breakthrough curve vs 0% rank-correlated); do not pool the
+    5 old runs (every eta2 still falls); L_MTZ dynamic range is a formula artefact; rho_p still unknown.
