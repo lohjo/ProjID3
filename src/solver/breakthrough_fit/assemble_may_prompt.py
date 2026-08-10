@@ -41,6 +41,7 @@ import pandas as pd
 from scipy.stats import f as f_dist
 
 from breakthrough_fit import models as M
+from breakthrough_fit.axes_origin import snap_origin
 from breakthrough_fit.parse import DataParser
 
 # .../src/solver/breakthrough_fit/assemble_may_prompt.py -> repo root is parents[3].
@@ -405,6 +406,7 @@ def fig_p1(rows) -> None:
     )
     ax.legend(fontsize=7, loc="center right")
     ax.grid(alpha=0.3)
+    snap_origin(fig, label="Plot1_overlay")
     fig.tight_layout()
     fig.savefig(OUT / "Plot1_overlay.png", dpi=300)
     plt.close(fig)
@@ -445,6 +447,7 @@ def fig_p8(rows) -> None:
     )
     ax.legend(fontsize=8, loc="upper left", markerscale=2)
     ax.grid(alpha=0.3)
+    snap_origin(fig, label="Plot8_parity")
     fig.tight_layout()
     fig.savefig(OUT / "Plot8_parity.png", dpi=300)
     plt.close(fig)

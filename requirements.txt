@@ -7,3 +7,9 @@ tqdm
 jupyter
 ipykernel
 nbformat
+
+openpyxl        # sensitivity_anova.py writes src/docs/sensitivity_anova_tables.xlsx
+
+# Report tooling only (src/docs/review/_source/) -- not needed to run the solver.
+python-docx
+pillow          # image downscaling for the report figure atlas

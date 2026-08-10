@@ -1,0 +1,1123 @@
+{
+  "passport_version": "1.0",
+  "campaign": "newest runs (2026-06-26 to 2026-07-31)",
+  "column_id_mm": 8.2,
+  "generated_by": "src/solver/build_experiments_passport.py",
+  "generated_at_commit": "5bf98240692b449233b09765360ce423c363ea14",
+  "source_of_derived_values": "breakthrough_out/<run_id>/results_<run_id>.csv (committed; nothing is refitted here)",
+  "n_records": 18,
+  "n_included": 16,
+  "n_excluded": 2,
+  "experiments_provenance": [
+    {
+      "run_id": "2026-06-26-conc5-flow0.05",
+      "source_file": "src/solver/data/newest runs/2026-06-26-conc5-flow0.05.csv",
+      "sha256": "56d3ded9cb3efd941f6444f18ae3990fe34c049edae923d1808fbb5aa4d8b21a",
+      "bytes": 119005,
+      "date": "2026-06-26",
+      "filename_states": {
+        "C0_pct": 5,
+        "Q_lpm": 0.05
+      },
+      "measured": {
+        "C0_ppm": 50000.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 23.5,
+        "d_col_mm": 8.2,
+        "T_K": 298.6,
+        "P_Pa": 100800.0,
+        "n_points": 1658
+      },
+      "flow_ml_min": {
+        "prose_header": 50.0,
+        "metadata_table": 50.0,
+        "used_by_pipeline": 50.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 5,
+        "Q_nominal_ml_min": 50,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 1658,
+        "t_b_min": 23.957,
+        "t_E_min": 252.0,
+        "t50_min": 49.085,
+        "q_dyn_mol_per_kg": 0.9459,
+        "L_MTZ_cm": 12.87,
+        "psi": 0.3158,
+        "best_model_code": "M11",
+        "best_model_name": "Fractal Error-Function (Hu 2024)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "I",
+        "row": 1,
+        "t_b_min_printed": 23.958
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-06-26-conc5-flow0.05/results_2026-06-26-conc5-flow0.05.csv",
+        "plots": [
+          "breakthrough_out/2026-06-26-conc5-flow0.05/P1_2026-06-26-conc5-flow0.05.png",
+          "breakthrough_out/2026-06-26-conc5-flow0.05/P2_2026-06-26-conc5-flow0.05.png",
+          "breakthrough_out/2026-06-26-conc5-flow0.05/P3_2026-06-26-conc5-flow0.05.png",
+          "breakthrough_out/2026-06-26-conc5-flow0.05/P4_2026-06-26-conc5-flow0.05.png",
+          "breakthrough_out/2026-06-26-conc5-flow0.05/P5_2026-06-26-conc5-flow0.05.png",
+          "breakthrough_out/2026-06-26-conc5-flow0.05/P6_2026-06-26-conc5-flow0.05.png",
+          "breakthrough_out/2026-06-26-conc5-flow0.05/P7_2026-06-26-conc5-flow0.05.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-03-conc5-flow0.10",
+      "source_file": "src/solver/data/newest runs/2026-07-03-conc5-flow0.10.csv",
+      "sha256": "879a3d6694e541e938443fc3bfba866f9c6a3f5b625a251765c5ef132d4c4401",
+      "bytes": 51489,
+      "date": "2026-07-03",
+      "filename_states": {
+        "C0_pct": 5,
+        "Q_lpm": 0.1
+      },
+      "measured": {
+        "C0_ppm": 50010.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 24.0,
+        "d_col_mm": 8.2,
+        "T_K": 299.0,
+        "P_Pa": 101200.0,
+        "n_points": 413
+      },
+      "flow_ml_min": {
+        "prose_header": 100.0,
+        "metadata_table": 100.0,
+        "used_by_pipeline": 100.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 5,
+        "Q_nominal_ml_min": 100,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 413,
+        "t_b_min": 10.65,
+        "t_E_min": 111.563,
+        "t50_min": 26.118,
+        "q_dyn_mol_per_kg": 0.9548,
+        "L_MTZ_cm": 13.15,
+        "psi": 0.276,
+        "best_model_code": "M24",
+        "best_model_name": "Parallel two-component sigmoidal (Blagojev)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "I",
+        "row": 2,
+        "t_b_min_printed": 10.651
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-03-conc5-flow0.10/results_2026-07-03-conc5-flow0.10.csv",
+        "plots": [
+          "breakthrough_out/2026-07-03-conc5-flow0.10/P1_2026-07-03-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-03-conc5-flow0.10/P2_2026-07-03-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-03-conc5-flow0.10/P3_2026-07-03-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-03-conc5-flow0.10/P4_2026-07-03-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-03-conc5-flow0.10/P5_2026-07-03-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-03-conc5-flow0.10/P6_2026-07-03-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-03-conc5-flow0.10/P7_2026-07-03-conc5-flow0.10.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-08-conc10-flow0.05",
+      "source_file": "src/solver/data/newest runs/2026-07-08-conc10-flow0.05.csv",
+      "sha256": "415416b6ef53d53038f5b3cd79250082d86c7f02d95a623d3370120b9d70ee20",
+      "bytes": 133132,
+      "date": "2026-07-08",
+      "filename_states": {
+        "C0_pct": 10,
+        "Q_lpm": 0.05
+      },
+      "measured": {
+        "C0_ppm": 99000.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 23.0,
+        "d_col_mm": 8.2,
+        "T_K": 295.9,
+        "P_Pa": 101200.0,
+        "n_points": 1746
+      },
+      "flow_ml_min": {
+        "prose_header": 50.0,
+        "metadata_table": 50.0,
+        "used_by_pipeline": 50.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 10,
+        "Q_nominal_ml_min": 50,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 1746,
+        "t_b_min": 19.06,
+        "t_E_min": 163.585,
+        "t50_min": 37.64,
+        "q_dyn_mol_per_kg": 1.3357,
+        "L_MTZ_cm": 12.84,
+        "psi": 0.3525,
+        "best_model_code": "M11",
+        "best_model_name": "Fractal Error-Function (Hu 2024)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "I",
+        "row": 4,
+        "t_b_min_printed": 19.05
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-08-conc10-flow0.05/results_2026-07-08-conc10-flow0.05.csv",
+        "plots": [
+          "breakthrough_out/2026-07-08-conc10-flow0.05/P1_2026-07-08-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.05/P2_2026-07-08-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.05/P3_2026-07-08-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.05/P4_2026-07-08-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.05/P5_2026-07-08-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.05/P6_2026-07-08-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.05/P7_2026-07-08-conc10-flow0.05.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-08-conc10-flow0.10",
+      "source_file": "src/solver/data/newest runs/2026-07-08-conc10-flow0.10.csv",
+      "sha256": "263af4579c3c3ede26691f710367086b1dfa813f93abccd07fefc54ceccef52a",
+      "bytes": 112164,
+      "date": "2026-07-08",
+      "filename_states": {
+        "C0_pct": 10,
+        "Q_lpm": 0.1
+      },
+      "measured": {
+        "C0_ppm": 100580.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 23.3,
+        "d_col_mm": 8.2,
+        "T_K": 296.3,
+        "P_Pa": 101400.0,
+        "n_points": 1472
+      },
+      "flow_ml_min": {
+        "prose_header": 100.0,
+        "metadata_table": 100.0,
+        "used_by_pipeline": 100.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 10,
+        "Q_nominal_ml_min": 100,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 1472,
+        "t_b_min": 5.433,
+        "t_E_min": 72.933,
+        "t50_min": 14.679,
+        "q_dyn_mol_per_kg": 1.1333,
+        "L_MTZ_cm": 12.52,
+        "psi": 0.2261,
+        "best_model_code": "M11",
+        "best_model_name": "Fractal Error-Function (Hu 2024)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "I",
+        "row": 5,
+        "t_b_min_printed": 5.43
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-08-conc10-flow0.10/results_2026-07-08-conc10-flow0.10.csv",
+        "plots": [
+          "breakthrough_out/2026-07-08-conc10-flow0.10/P1_2026-07-08-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.10/P2_2026-07-08-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.10/P3_2026-07-08-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.10/P4_2026-07-08-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.10/P5_2026-07-08-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.10/P6_2026-07-08-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.10/P7_2026-07-08-conc10-flow0.10.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-08-conc10-flow0.15",
+      "source_file": "src/solver/data/newest runs/2026-07-08-conc10-flow0.15.csv",
+      "sha256": "0ef9cac90b316c4cfeaa6d4e97ebaf29faa63376b76771edfba07c72283ce3c2",
+      "bytes": 34194,
+      "date": "2026-07-08",
+      "filename_states": {
+        "C0_pct": 10,
+        "Q_lpm": 0.15
+      },
+      "measured": {
+        "C0_ppm": 100000.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 24.0,
+        "d_col_mm": 8.2,
+        "T_K": 296.3,
+        "P_Pa": 101000.0,
+        "n_points": 477
+      },
+      "flow_ml_min": {
+        "prose_header": 150.0,
+        "metadata_table": 150.0,
+        "used_by_pipeline": 150.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 10,
+        "Q_nominal_ml_min": 150,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 477,
+        "t_b_min": 3.552,
+        "t_E_min": 71.605,
+        "t50_min": 10.883,
+        "q_dyn_mol_per_kg": 1.38,
+        "L_MTZ_cm": 12.6,
+        "psi": 0.174,
+        "best_model_code": "M03",
+        "best_model_name": "Fractal Clark",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "I",
+        "row": 6,
+        "t_b_min_printed": 3.55
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-08-conc10-flow0.15/results_2026-07-08-conc10-flow0.15.csv",
+        "plots": [
+          "breakthrough_out/2026-07-08-conc10-flow0.15/P1_2026-07-08-conc10-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.15/P2_2026-07-08-conc10-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.15/P3_2026-07-08-conc10-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.15/P4_2026-07-08-conc10-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.15/P5_2026-07-08-conc10-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.15/P6_2026-07-08-conc10-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc10-flow0.15/P7_2026-07-08-conc10-flow0.15.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-08-conc5-flow0.15",
+      "source_file": "src/solver/data/newest runs/2026-07-08-conc5-flow0.15.csv",
+      "sha256": "aa7b60bde5d18200b8875f96b28e70eb5523ec4347f7732527c886cdfe27b7ff",
+      "bytes": 53964,
+      "date": "2026-07-08",
+      "filename_states": {
+        "C0_pct": 5,
+        "Q_lpm": 0.15
+      },
+      "measured": {
+        "C0_ppm": 50220.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 23.5,
+        "d_col_mm": 8.2,
+        "T_K": 296.0,
+        "P_Pa": 101600.0,
+        "n_points": 440
+      },
+      "flow_ml_min": {
+        "prose_header": 150.0,
+        "metadata_table": 150.0,
+        "used_by_pipeline": 150.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 5,
+        "Q_nominal_ml_min": 150,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 440,
+        "t_b_min": 4.2,
+        "t_E_min": 112.023,
+        "t50_min": 12.846,
+        "q_dyn_mol_per_kg": 0.9681,
+        "L_MTZ_cm": 12.19,
+        "psi": 0.1565,
+        "best_model_code": "M11",
+        "best_model_name": "Fractal Error-Function (Hu 2024)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "I",
+        "row": 3,
+        "t_b_min_printed": 4.198
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-08-conc5-flow0.15/results_2026-07-08-conc5-flow0.15.csv",
+        "plots": [
+          "breakthrough_out/2026-07-08-conc5-flow0.15/P1_2026-07-08-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc5-flow0.15/P2_2026-07-08-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc5-flow0.15/P3_2026-07-08-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc5-flow0.15/P4_2026-07-08-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc5-flow0.15/P5_2026-07-08-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc5-flow0.15/P6_2026-07-08-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-08-conc5-flow0.15/P7_2026-07-08-conc5-flow0.15.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-10-conc15-flow0.05",
+      "source_file": "src/solver/data/newest runs/2026-07-10-conc15-flow0.05.csv",
+      "sha256": "3791ec460894f09cc83eb4646bc9b3586231957388723cd88c9709f8580288f1",
+      "bytes": 125309,
+      "date": "2026-07-10",
+      "filename_states": {
+        "C0_pct": 15,
+        "Q_lpm": 0.05
+      },
+      "measured": {
+        "C0_ppm": 150970.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 24.5,
+        "d_col_mm": 8.2,
+        "T_K": 299.1,
+        "P_Pa": 101000.0,
+        "n_points": 1650
+      },
+      "flow_ml_min": {
+        "prose_header": 50.0,
+        "metadata_table": 50.0,
+        "used_by_pipeline": 50.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 15,
+        "Q_nominal_ml_min": 50,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 1650,
+        "t_b_min": 17.68,
+        "t_E_min": 127.721,
+        "t50_min": 30.919,
+        "q_dyn_mol_per_kg": 1.6272,
+        "L_MTZ_cm": 13.95,
+        "psi": 0.406,
+        "best_model_code": "M11",
+        "best_model_name": "Fractal Error-Function (Hu 2024)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "I",
+        "row": 7,
+        "t_b_min_printed": 17.677
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-10-conc15-flow0.05/results_2026-07-10-conc15-flow0.05.csv",
+        "plots": [
+          "breakthrough_out/2026-07-10-conc15-flow0.05/P1_2026-07-10-conc15-flow0.05.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.05/P2_2026-07-10-conc15-flow0.05.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.05/P3_2026-07-10-conc15-flow0.05.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.05/P4_2026-07-10-conc15-flow0.05.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.05/P5_2026-07-10-conc15-flow0.05.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.05/P6_2026-07-10-conc15-flow0.05.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.05/P7_2026-07-10-conc15-flow0.05.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-10-conc15-flow0.10",
+      "source_file": "src/solver/data/newest runs/2026-07-10-conc15-flow0.10.csv",
+      "sha256": "968f4702e163ebcb2a53dacd2e580804533e4f82244859dd5f3ebb8fd3f92449",
+      "bytes": 88412,
+      "date": "2026-07-10",
+      "filename_states": {
+        "C0_pct": 15,
+        "Q_lpm": 0.1
+      },
+      "measured": {
+        "C0_ppm": 149800.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 24.0,
+        "d_col_mm": 8.2,
+        "T_K": 300.4,
+        "P_Pa": 100800.0,
+        "n_points": 1147
+      },
+      "flow_ml_min": {
+        "prose_header": 100.0,
+        "metadata_table": 100.0,
+        "used_by_pipeline": 100.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 15,
+        "Q_nominal_ml_min": 100,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 1147,
+        "t_b_min": 4.294,
+        "t_E_min": 54.717,
+        "t50_min": 10.567,
+        "q_dyn_mol_per_kg": 1.2119,
+        "L_MTZ_cm": 12.94,
+        "psi": 0.2465,
+        "best_model_code": "M11",
+        "best_model_name": "Fractal Error-Function (Hu 2024)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "I",
+        "row": 8,
+        "t_b_min_printed": 4.295
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-10-conc15-flow0.10/results_2026-07-10-conc15-flow0.10.csv",
+        "plots": [
+          "breakthrough_out/2026-07-10-conc15-flow0.10/P1_2026-07-10-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.10/P2_2026-07-10-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.10/P3_2026-07-10-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.10/P4_2026-07-10-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.10/P5_2026-07-10-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.10/P6_2026-07-10-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-10-conc15-flow0.10/P7_2026-07-10-conc15-flow0.10.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-15-conc15-flow0.15",
+      "source_file": "src/solver/data/newest runs/2026-07-15-conc15-flow0.15.csv",
+      "sha256": "1507bf806717e1f1d0d5dbefe91cd39e758a04054d9df4b6a08295446fc1f712",
+      "bytes": 95297,
+      "date": "2026-07-15",
+      "filename_states": {
+        "C0_pct": 15,
+        "Q_lpm": 0.15
+      },
+      "measured": {
+        "C0_ppm": 150100.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 24.0,
+        "d_col_mm": 8.2,
+        "T_K": 300.6,
+        "P_Pa": 101600.0,
+        "n_points": 1002
+      },
+      "flow_ml_min": {
+        "prose_header": 150.0,
+        "metadata_table": 150.0,
+        "used_by_pipeline": 150.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 15,
+        "Q_nominal_ml_min": 150,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 1002,
+        "t_b_min": 2.585,
+        "t_E_min": 39.145,
+        "t50_min": 6.446,
+        "q_dyn_mol_per_kg": 1.2091,
+        "L_MTZ_cm": 12.79,
+        "psi": 0.215,
+        "best_model_code": "M11",
+        "best_model_name": "Fractal Error-Function (Hu 2024)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "I",
+        "row": 9,
+        "t_b_min_printed": 2.588
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-15-conc15-flow0.15/results_2026-07-15-conc15-flow0.15.csv",
+        "plots": [
+          "breakthrough_out/2026-07-15-conc15-flow0.15/P1_2026-07-15-conc15-flow0.15.png",
+          "breakthrough_out/2026-07-15-conc15-flow0.15/P2_2026-07-15-conc15-flow0.15.png",
+          "breakthrough_out/2026-07-15-conc15-flow0.15/P3_2026-07-15-conc15-flow0.15.png",
+          "breakthrough_out/2026-07-15-conc15-flow0.15/P4_2026-07-15-conc15-flow0.15.png",
+          "breakthrough_out/2026-07-15-conc15-flow0.15/P5_2026-07-15-conc15-flow0.15.png",
+          "breakthrough_out/2026-07-15-conc15-flow0.15/P6_2026-07-15-conc15-flow0.15.png",
+          "breakthrough_out/2026-07-15-conc15-flow0.15/P7_2026-07-15-conc15-flow0.15.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-17-conc15-flow0.10",
+      "source_file": "src/solver/data/newest runs/2026-07-17-conc15-flow0.10.csv",
+      "sha256": "6b7b89d7ba345b51c488557a0bcf54b215549bc937a24a1b7bd71f89b083a5f6",
+      "bytes": 78033,
+      "date": "2026-07-17",
+      "filename_states": {
+        "C0_pct": 15,
+        "Q_lpm": 0.1
+      },
+      "measured": {
+        "C0_ppm": 150800.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 23.0,
+        "d_col_mm": 8.2,
+        "T_K": 300.6,
+        "P_Pa": 101500.0,
+        "n_points": 778
+      },
+      "flow_ml_min": {
+        "prose_header": 100.0,
+        "metadata_table": 100.0,
+        "used_by_pipeline": 100.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 15,
+        "Q_nominal_ml_min": 100,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 778,
+        "t_b_min": 5.185,
+        "t_E_min": 42.651,
+        "t50_min": 11.333,
+        "q_dyn_mol_per_kg": 1.1788,
+        "L_MTZ_cm": 12.9,
+        "psi": 0.3205,
+        "best_model_code": "M24",
+        "best_model_name": "Parallel two-component sigmoidal (Blagojev)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "II",
+        "row": 8,
+        "t_b_min_printed": 5.189
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-17-conc15-flow0.10/results_2026-07-17-conc15-flow0.10.csv",
+        "plots": [
+          "breakthrough_out/2026-07-17-conc15-flow0.10/P1_2026-07-17-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-17-conc15-flow0.10/P2_2026-07-17-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-17-conc15-flow0.10/P3_2026-07-17-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-17-conc15-flow0.10/P4_2026-07-17-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-17-conc15-flow0.10/P5_2026-07-17-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-17-conc15-flow0.10/P6_2026-07-17-conc15-flow0.10.png",
+          "breakthrough_out/2026-07-17-conc15-flow0.10/P7_2026-07-17-conc15-flow0.10.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-22-conc10-flow0.05",
+      "source_file": "src/solver/data/newest runs/2026-07-22-conc10-flow0.05.csv",
+      "sha256": "1c2c510e8b7d1159ff8c2ab02b2a0abf0612a1da150b9dfa584adfda5885f9c4",
+      "bytes": 132046,
+      "date": "2026-07-22",
+      "filename_states": {
+        "C0_pct": 10,
+        "Q_lpm": 0.05
+      },
+      "measured": {
+        "C0_ppm": 100610.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 23.0,
+        "d_col_mm": 8.2,
+        "T_K": 301.2,
+        "P_Pa": 101600.0,
+        "n_points": 1364
+      },
+      "flow_ml_min": {
+        "prose_header": 50.0,
+        "metadata_table": 100.0,
+        "used_by_pipeline": 100.0,
+        "status": "CONFLICT",
+        "owner": "lab"
+      },
+      "design_cell": {
+        "C0_nominal_pct": 10,
+        "Q_nominal_ml_min": 50,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 1364,
+        "t_b_min": 20.167,
+        "t_E_min": 112.875,
+        "t50_min": 34.816,
+        "q_dyn_mol_per_kg": 2.273,
+        "L_MTZ_cm": 13.55,
+        "psi": 0.4419,
+        "best_model_code": "M24",
+        "best_model_name": "Parallel two-component sigmoidal (Blagojev)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": true,
+        "provisional_reason": "q_dyn, L_MTZ and psi scale with volumetric flow; this run was fitted at the numeric-table flow, which its own prose header contradicts"
+      },
+      "reported_in": {
+        "replicate": "II",
+        "row": 4,
+        "t_b_min_printed": 20.166
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-22-conc10-flow0.05/results_2026-07-22-conc10-flow0.05.csv",
+        "plots": [
+          "breakthrough_out/2026-07-22-conc10-flow0.05/P1_2026-07-22-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.05/P2_2026-07-22-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.05/P3_2026-07-22-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.05/P4_2026-07-22-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.05/P5_2026-07-22-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.05/P6_2026-07-22-conc10-flow0.05.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.05/P7_2026-07-22-conc10-flow0.05.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-22-conc10-flow0.10",
+      "source_file": "src/solver/data/newest runs/2026-07-22-conc10-flow0.10.csv",
+      "sha256": "6c407aee128cf550ee3647e6ed1fe3c1d91fa7b586f2634ad7132a0b22081c3a",
+      "bytes": 32989,
+      "date": "2026-07-22",
+      "filename_states": {
+        "C0_pct": 10,
+        "Q_lpm": 0.1
+      },
+      "measured": {
+        "C0_ppm": 100430.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 23.0,
+        "d_col_mm": 8.2,
+        "T_K": 301.4,
+        "P_Pa": 101600.0,
+        "n_points": 325
+      },
+      "flow_ml_min": {
+        "prose_header": 150.0,
+        "metadata_table": 100.0,
+        "used_by_pipeline": 100.0,
+        "status": "CONFLICT",
+        "owner": "lab"
+      },
+      "design_cell": {
+        "C0_nominal_pct": 10,
+        "Q_nominal_ml_min": 150,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 325,
+        "t_b_min": 3.084,
+        "t_E_min": 48.026,
+        "t50_min": 8.23,
+        "q_dyn_mol_per_kg": 0.6889,
+        "L_MTZ_cm": 12.24,
+        "psi": 0.212,
+        "best_model_code": "M24",
+        "best_model_name": "Parallel two-component sigmoidal (Blagojev)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": true,
+        "provisional_reason": "q_dyn, L_MTZ and psi scale with volumetric flow; this run was fitted at the numeric-table flow, which its own prose header contradicts"
+      },
+      "reported_in": {
+        "replicate": "II",
+        "row": 6,
+        "t_b_min_printed": 3.081
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-22-conc10-flow0.10/results_2026-07-22-conc10-flow0.10.csv",
+        "plots": [
+          "breakthrough_out/2026-07-22-conc10-flow0.10/P1_2026-07-22-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.10/P2_2026-07-22-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.10/P3_2026-07-22-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.10/P4_2026-07-22-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.10/P5_2026-07-22-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.10/P6_2026-07-22-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-22-conc10-flow0.10/P7_2026-07-22-conc10-flow0.10.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-29-conc5-flow0.05",
+      "source_file": "src/solver/data/newest runs/2026-07-29-conc5-flow0.05.csv",
+      "sha256": "b2ccdc515223c73c47819470565ed4a78c354c1adbc29057130424801e0493b6",
+      "bytes": 62167,
+      "date": "2026-07-29",
+      "filename_states": {
+        "C0_pct": 5,
+        "Q_lpm": 0.05
+      },
+      "measured": {
+        "C0_ppm": 50780.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 22.5,
+        "d_col_mm": 8.2,
+        "T_K": 300.7,
+        "P_Pa": 101300.0,
+        "n_points": 603
+      },
+      "flow_ml_min": {
+        "prose_header": 50.0,
+        "metadata_table": 50.0,
+        "used_by_pipeline": 50.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 5,
+        "Q_nominal_ml_min": 50,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 603,
+        "t_b_min": 30.52,
+        "t_E_min": null,
+        "t50_min": 57.841,
+        "q_dyn_mol_per_kg": 1.0911,
+        "L_MTZ_cm": null,
+        "psi": 0.3598,
+        "best_model_code": "M24",
+        "best_model_name": "Parallel two-component sigmoidal (Blagojev)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "II",
+        "row": 1,
+        "t_b_min_printed": 30.521
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-29-conc5-flow0.05/results_2026-07-29-conc5-flow0.05.csv",
+        "plots": [
+          "breakthrough_out/2026-07-29-conc5-flow0.05/P1_2026-07-29-conc5-flow0.05.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.05/P2_2026-07-29-conc5-flow0.05.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.05/P3_2026-07-29-conc5-flow0.05.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.05/P4_2026-07-29-conc5-flow0.05.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.05/P5_2026-07-29-conc5-flow0.05.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.05/P6_2026-07-29-conc5-flow0.05.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.05/P7_2026-07-29-conc5-flow0.05.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-29-conc5-flow0.10",
+      "source_file": "src/solver/data/newest runs/2026-07-29-conc5-flow0.10.csv",
+      "sha256": "38d0a387a4e31eaf96b4fe6bca52b218feece1b8ad093bafae0a6042d44ce460",
+      "bytes": 161287,
+      "date": "2026-07-29",
+      "filename_states": {
+        "C0_pct": 5,
+        "Q_lpm": 0.1
+      },
+      "measured": {
+        "C0_ppm": 49900.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 23.0,
+        "d_col_mm": 8.2,
+        "T_K": 300.1,
+        "P_Pa": 100600.0,
+        "n_points": 1573
+      },
+      "flow_ml_min": {
+        "prose_header": 100.0,
+        "metadata_table": 100.0,
+        "used_by_pipeline": 100.0,
+        "status": "consistent",
+        "owner": null
+      },
+      "design_cell": {
+        "C0_nominal_pct": 5,
+        "Q_nominal_ml_min": 100,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 1573,
+        "t_b_min": 9.358,
+        "t_E_min": 111.012,
+        "t50_min": 22.56,
+        "q_dyn_mol_per_kg": 0.8642,
+        "L_MTZ_cm": 12.47,
+        "psi": 0.2611,
+        "best_model_code": "M24",
+        "best_model_name": "Parallel two-component sigmoidal (Blagojev)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": false,
+        "provisional_reason": null
+      },
+      "reported_in": {
+        "replicate": "II",
+        "row": 2,
+        "t_b_min_printed": 9.36
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-29-conc5-flow0.10/results_2026-07-29-conc5-flow0.10.csv",
+        "plots": [
+          "breakthrough_out/2026-07-29-conc5-flow0.10/P1_2026-07-29-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.10/P2_2026-07-29-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.10/P3_2026-07-29-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.10/P4_2026-07-29-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.10/P5_2026-07-29-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.10/P6_2026-07-29-conc5-flow0.10.png",
+          "breakthrough_out/2026-07-29-conc5-flow0.10/P7_2026-07-29-conc5-flow0.10.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-31-conc10-flow0.10",
+      "source_file": "src/solver/data/newest runs/2026-07-31-conc10-flow0.10.csv",
+      "sha256": "1485bbf3caefe920650374957a67571836b7e0bc429f1f755b37bbd2112906a5",
+      "bytes": 121561,
+      "date": "2026-07-31",
+      "filename_states": {
+        "C0_pct": 10,
+        "Q_lpm": 0.1
+      },
+      "measured": {
+        "C0_ppm": 99400.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 22.5,
+        "d_col_mm": 8.2,
+        "T_K": 300.7,
+        "P_Pa": 101300.0,
+        "n_points": 1171
+      },
+      "flow_ml_min": {
+        "prose_header": 100.0,
+        "metadata_table": 50.0,
+        "used_by_pipeline": 50.0,
+        "status": "CONFLICT",
+        "owner": "lab"
+      },
+      "design_cell": {
+        "C0_nominal_pct": 10,
+        "Q_nominal_ml_min": 100,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 1171,
+        "t_b_min": 4.155,
+        "t_E_min": 46.83,
+        "t50_min": 10.33,
+        "q_dyn_mol_per_kg": 0.3731,
+        "L_MTZ_cm": 12.25,
+        "psi": 0.2618,
+        "best_model_code": "M11",
+        "best_model_name": "Fractal Error-Function (Hu 2024)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": true,
+        "provisional_reason": "q_dyn, L_MTZ and psi scale with volumetric flow; this run was fitted at the numeric-table flow, which its own prose header contradicts"
+      },
+      "reported_in": {
+        "replicate": "II",
+        "row": 5,
+        "t_b_min_printed": 4.153
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-31-conc10-flow0.10/results_2026-07-31-conc10-flow0.10.csv",
+        "plots": [
+          "breakthrough_out/2026-07-31-conc10-flow0.10/P1_2026-07-31-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-31-conc10-flow0.10/P2_2026-07-31-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-31-conc10-flow0.10/P3_2026-07-31-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-31-conc10-flow0.10/P4_2026-07-31-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-31-conc10-flow0.10/P5_2026-07-31-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-31-conc10-flow0.10/P6_2026-07-31-conc10-flow0.10.png",
+          "breakthrough_out/2026-07-31-conc10-flow0.10/P7_2026-07-31-conc10-flow0.10.png"
+        ]
+      },
+      "status": "included"
+    },
+    {
+      "run_id": "2026-07-31-conc5-flow0.15",
+      "source_file": "src/solver/data/newest runs/2026-07-31-conc5-flow0.15.csv",
+      "sha256": "29284f5584683a516b2a53b6ab3e3c771ba52a8d2d485811eb5bcb6421537699",
+      "bytes": 35442,
+      "date": "2026-07-31",
+      "filename_states": {
+        "C0_pct": 5,
+        "Q_lpm": 0.15
+      },
+      "measured": {
+        "C0_ppm": 50470.0,
+        "mass_g": 8.0,
+        "L_bed_cm": 23.0,
+        "d_col_mm": 8.2,
+        "T_K": 300.3,
+        "P_Pa": 101100.0,
+        "n_points": 351
+      },
+      "flow_ml_min": {
+        "prose_header": 150.0,
+        "metadata_table": 100.0,
+        "used_by_pipeline": 100.0,
+        "status": "CONFLICT",
+        "owner": "lab"
+      },
+      "design_cell": {
+        "C0_nominal_pct": 5,
+        "Q_nominal_ml_min": 150,
+        "basis": "prose header flow + measured C0"
+      },
+      "derived": {
+        "n_points": 351,
+        "t_b_min": 3.412,
+        "t_E_min": 64.112,
+        "t50_min": 8.673,
+        "q_dyn_mol_per_kg": 0.3998,
+        "L_MTZ_cm": 12.11,
+        "psi": 0.2,
+        "best_model_code": "M11",
+        "best_model_name": "Fractal Error-Function (Hu 2024)",
+        "definitions": {
+          "t_b": "C/C0 = 0.05",
+          "t_E": "C/C0 = 0.95"
+        },
+        "provisional": true,
+        "provisional_reason": "q_dyn, L_MTZ and psi scale with volumetric flow; this run was fitted at the numeric-table flow, which its own prose header contradicts"
+      },
+      "reported_in": {
+        "replicate": "II",
+        "row": 3,
+        "t_b_min_printed": 3.415
+      },
+      "artefacts": {
+        "results_csv": "breakthrough_out/2026-07-31-conc5-flow0.15/results_2026-07-31-conc5-flow0.15.csv",
+        "plots": [
+          "breakthrough_out/2026-07-31-conc5-flow0.15/P1_2026-07-31-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-31-conc5-flow0.15/P2_2026-07-31-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-31-conc5-flow0.15/P3_2026-07-31-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-31-conc5-flow0.15/P4_2026-07-31-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-31-conc5-flow0.15/P5_2026-07-31-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-31-conc5-flow0.15/P6_2026-07-31-conc5-flow0.15.png",
+          "breakthrough_out/2026-07-31-conc5-flow0.15/P7_2026-07-31-conc5-flow0.15.png"
+        ]
+      },
+      "status": "included"
+    }
+  ],
+  "excluded": [
+    {
+      "run_id": "2026-07-17-conc15-flow0.1",
+      "source_file": "src/solver/data/newest runs/2026-07-17-conc15-flow0.1.csv",
+      "sha256": "87d14e69342d0e05bcca51a745653f285c4f8459fd0dc18ff5bdf7bf3ee8df0e",
+      "bytes": 105621,
+      "date": "2026-07-17",
+      "reason": "no embedded metadata header (raw Format-A sensor log): mass, bed height and tube diameter are absent",
+      "action": "excluded by the pipeline's own metadata guard, not fabricated",
+      "owner": "lab"
+    },
+    {
+      "run_id": "2026-07-17-conc15-flow0.15",
+      "source_file": "src/solver/data/newest runs/2026-07-17-conc15-flow0.15.csv",
+      "sha256": "35e1a7bf2a941f73d2524d3c41fbc3f008b0771da3bc85fea48f6adfe2cfc24c",
+      "bytes": 38163,
+      "date": "2026-07-17",
+      "reason": "no embedded metadata header (raw Format-A sensor log): mass, bed height and tube diameter are absent",
+      "action": "excluded by the pipeline's own metadata guard, not fabricated",
+      "owner": "lab"
+    }
+  ],
+  "untraceable_reported_rows": [
+    {
+      "replicate": "II",
+      "row": 7,
+      "t_b_min_printed": 17.967,
+      "issue": "no committed CSV in `newest runs/` reproduces this row",
+      "owner": "author / lab"
+    },
+    {
+      "replicate": "II",
+      "row": 9,
+      "t_b_min_printed": 2.843,
+      "issue": "no committed CSV in `newest runs/` reproduces this row",
+      "owner": "author / lab"
+    }
+  ]
+}

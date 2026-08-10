@@ -75,7 +75,13 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from mechanistic_verify import (  # noqa: E402  (shared source of truth, task 1)
-    Bed, Langmuir, Toth, solve_iso, solve_full, crossing_time, trapz, R_GAS)
+    Bed, Langmuir, Toth, solve_iso, solve_full, trapz, R_GAS,
+    # `crossing_time` was renamed to `crossing` in 42b2ad7 (2026-08-03) without
+    # updating this caller, which has been unrunnable since. Same signature and
+    # same rising=True default, so this is an alias, not a substitution; the six
+    # call sites below are untouched. Owner of the proper rename: author.
+    crossing as crossing_time)
+from breakthrough_fit.axes_origin import snap_origin  # noqa: E402
 
 FIGDIR = os.path.join("src", "img", "generated", "psi_quadrature")
 
@@ -416,6 +422,7 @@ def run_fig1(fig=True, competition=False):
         ax[1].set(xlabel="t (min)", ylabel="T ($^\\circ$C)", xlim=(0, 45),
                   title="Danilov Fig. 1 (right): outlet gas T")
         ax[1].legend(fontsize=7)
+        snap_origin(fg, label="F1_danilov_fig1_reproduction")
         fg.tight_layout()
         fg.savefig(os.path.join(FIGDIR, "F1_danilov_fig1_reproduction.png"), dpi=150)
         plt.close(fg)
@@ -526,6 +533,7 @@ def run_langmuir(fig=True):
         ax[1].set(xlabel="t/t$_{st}$", ylabel="c(L,t)/c$_f$",
                   title="outlet breakthrough (symmetric ansatz vs asymmetric exact)")
         ax[1].legend(fontsize=8)
+        snap_origin(fg, label="F2_three_way_langmuir_wave")
         fg.tight_layout()
         fg.savefig(os.path.join(FIGDIR, "F2_three_way_langmuir_wave.png"), dpi=150)
         plt.close(fg)
@@ -550,7 +558,11 @@ def run_noniso(fig=True):
         t_st = p.L * (p.eps * p.cf + p.alpha_b * qf) / (p.u * p.cf)
         Nn = 600
         t_eval = np.linspace(0.0, 3.0 * t_st, 1600)
-        sol, dzn = solve_full(p, iso, Nn, t_eval)
+        # solve_full returns just `sol` (mechanistic_verify.py:258, and see its own
+        # call site at :394); only solve_iso returns the (sol, dz) pair. This caller
+        # went stale in the same 42b2ad7 pass as crossing_time above. The unpacked
+        # `dzn` was never used, so dropping it changes no number here.
+        sol = solve_full(p, iso, Nn, t_eval)
         curves[tag] = (t_eval, sol.y[3 * (Nn - 1)] / p.cf,
                        sol.y[2::3][Nn - 1] - p.T0)
     p = Bed(k=5e-3, DL=5e-5, hw=0.0)                 # Danilov has no wall term: adiabatic-
@@ -586,6 +598,7 @@ def run_noniso(fig=True):
         ax[1].set(xlabel="t [min]", ylabel="T(L,t) $-$ T$_0$ [K]",
                   title="outlet temperature excursion (note the $\\psi$-quad scale)")
         ax[1].legend(fontsize=7)
+        snap_origin(fg, label="F3_nonisothermal_overlay")
         fg.tight_layout()
         fg.savefig(os.path.join(FIGDIR, "F3_nonisothermal_overlay.png"), dpi=150)
         plt.close(fg)

@@ -1,0 +1,6 @@
+# Build artefacts of the report-editing scripts. Regenerated on demand from the
+# committed PNGs and the committed .docx; never edit or commit these.
+_figcache/
+_work_report.docx
+_work_report_figs.docx
+__pycache__/

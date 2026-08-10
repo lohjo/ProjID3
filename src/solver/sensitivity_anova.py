@@ -72,6 +72,7 @@ from scipy.stats.qmc import LatinHypercube
 _HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(_HERE))
 
+from breakthrough_fit.axes_origin import snap_origin  # noqa: E402
 from breakthrough_fit.models import REGISTRY  # noqa: E402
 
 # ---------------------------------------------------------------------------
@@ -910,6 +911,7 @@ def fig_tier1(t1: dict):
                 _scatter_panel(axes[i, j], d[fac], d[resp], K_CLUSTERS_EXP, flab, rlab)
         fig.suptitle(f"Tier 1 - cluster ANOVA of experimental scatterplots ({scope}); "
                      f"dashed lines = cluster boundaries", fontsize=11)
+        snap_origin(fig, label=f"S1_{key}")
         fig.tight_layout(rect=(0, 0, 1, 0.96))
         name = f"S1_experimental_clusters_{key}.png"
         fig.savefig(FIG_DIR / name, dpi=300)
@@ -935,6 +937,7 @@ def fig_tier2(t2: dict, codes: list[str]):
             fig.suptitle(f"Tier 2 - {code} {reg_model[code].name}; "
                          f"{scheme} LHS, N = {N_MC}, k = {K_CLUSTERS_MC} clusters",
                          fontsize=11)
+            snap_origin(fig, label=f"S2_{code}_{scheme}")
             fig.tight_layout(rect=(0, 0, 1, 0.97))
             name = f"S2_{code}_{scheme}.png"
             fig.savefig(FIG_DIR / name, dpi=200)
@@ -966,6 +969,7 @@ def fig_identifiability(df: pd.DataFrame, codes: list[str]):
         ax.legend(fontsize=7)
     fig.suptitle("Parameter identifiability: fitted values lie on a 1-D ridge",
                  fontsize=11)
+    snap_origin(fig, label="S3")
     fig.tight_layout(rect=(0, 0, 1, 0.94))
     fig.savefig(FIG_DIR / "S3_identifiability_ridge.png", dpi=300)
     plt.close(fig)

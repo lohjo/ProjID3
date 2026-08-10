@@ -466,3 +466,183 @@ Gap analysis of the Danilov-pairing comment vs. the three sessions it seeded (Me
     Standing flags unchanged: k0/h non-identifiable (rho_S = 0.984 M11 / 0.971 M10; 11.3% / 8.3% of
     independent-uniform draws produce no breakthrough curve vs 0% rank-correlated); do not pool the
     5 old runs (every eta2 still falls); L_MTZ dynamic range is a formula artefact; rho_p still unknown.
+
+  09/08/2026 — Final Report §5 "Experiments" inserted; document renumbered
+
+    src/T32_PI05_Final_Report.docx, edited in place (backup:
+    src/T32_PI05_Final_Report.backup-2026-08-09.docx). The report recorded the SOP (§4) and the
+    outcomes (§5) but never recorded the experiments themselves: no run inventory, no source file
+    per number, no exclusion list. The replicate tables identified runs only by grid position
+    "No. 1-9", the ambiguity flagged as review item 3.11.
+
+    New §5 Experiments, between the SOP and Experimental Results:
+      5.1 Design as executed        — Table 3, cell counts for the 3x3 grid (16 runs, 7 cells replicated)
+      5.2 Run inventory/provenance  — Table 4, 16 rows: run, both stated flows, C0, m, L_bed, d_col,
+                                      n points, best model, and where each run appears later
+      5.3 Excluded/flagged records  — Table 5, 9 rows, each with an owner
+      5.4 Data lineage              — pipeline chain, passport, and the t_b/t_E definition note
+
+    Scoped to the `newest runs/` campaign only; runs 3/4/5/6/8 stay where they are and are explicitly
+    not pooled (different rig geometry).
+
+    Renumbering, forced by the insertion and applied by script:
+      H1  5-10 -> 6-11.  H2/H3 7.x -> 8.x, 8.x -> 9.x, 9.x -> 10.x, 5.x -> 6.x.
+      Tables 3-9 -> 6-13; new tables take 3-5. This resolved a pre-existing collision (two different
+      tables were both captioned "Table 7)") and a prose reference that pointed at the wrong one.
+      12 report-internal section cross-references retargeted; refs to `experimental-results.md` §N
+      and all §3.x/§4.x refs left alone.
+      "7Fitting performance and analysis" and §6.1-6.3 were body-styled, so they never reached the
+      table of contents; promoted to Heading1/Heading2. <w:updateFields> set, so Word offers to
+      refresh the TOC (and its page numbers) on open.
+
+    New: src/solver/build_experiments_passport.py -> src/docs/experiments_passport.{json,md}.
+    experiments_provenance[] carries, per record: source path, SHA-256, size, date, the metadata the
+    file states about itself (prose block AND numeric cell, kept separate), what the pipeline actually
+    used, the derived metrics read back from the committed results CSV, and status. Nothing is refitted;
+    the three docx tables are rendered from it, so no value in §5 is hand-typed. The generator asserts
+    each run's derived t_b matches the value already printed in the report to within 0.05 min -- all 16
+    pass, which is what establishes that the report's replicate tables are these runs.
+
+    Two data findings, reported in §5.3 and not silently fixed:
+      - Four files state flow twice and disagree with themselves (prose block vs numeric cell `v`).
+        parse.py reads `v`, so those four were fitted at the numeric value; comparing t_b against the
+        same-concentration runs shows the prose value is the physical one in every case. q_dyn, L_MTZ
+        and psi for those four are provisional. Owner: lab. Note this contradicts sensitivity-analysis.md
+        §1.2(a), which states 2026-07-22-conc10-flow0.10 was "treated as 0.15 lpm throughout" -- the
+        artefacts show 0.10. That doc needs reconciling against the artefacts.
+      - Rows 7 and 9 of the replicate-II table (15% at 50 and 150 ml/min, t_b = 17.967 and 2.843 min)
+        are not reproducible from any committed CSV. Retained as recorded, flagged as untraceable.
+        Owner: author/lab.
+
+    Verification, all run: 1518 paragraphs / 24 tables (was 1241 / 21); H1 sequence 1-11 with no gaps;
+    body table captions 3-13 unique; no stale report-internal section reference remains; all 59 zip
+    parts parse; the 20 embedded images are byte-identical to the backup; all 252 cells of the three
+    new tables found verbatim in experiments_passport.md.
+
+    Still open: experimental-results.md §10 documents only the first 9 of the 16 grid runs; the TOC
+    needs one field refresh in Word; the "7.?.4" heading still carries a literal "?".
+
+  09/08/2026 (later the same day) — every generated figure and every fit statistic
+  embedded in the Final Report
+
+    src/T32_PI05_Final_Report.docx, edited in place (backup:
+    src/T32_PI05_Final_Report.backup-2026-08-09-prefigures.docx, which is Word's own
+    re-save of the post-§5 document, i.e. the exact pre-edit state).
+
+    The report held 20 images, of which 3 were results plots, and exactly one error-
+    statistics table (Table 11, five rows). Meanwhile the repo held 147 per-run fit
+    plots, 21 x 24 = 504 rows of fit statistics, 9 sensitivity figures, a 17-sheet
+    ANOVA workbook and 17 model-verification figures, none of it in the manuscript.
+    06-change-list.md named this as the outstanding gap (items 2.16/2.17 and its
+    "deliberately not in this list" note).
+
+    Now in the document:
+      §6.4  new   The measured breakthrough curves themselves (Fig. 9-11): the 3x3
+                  design as small multiples, the sixteen grid runs overlaid, and the
+                  five earlier runs overlaid separately
+      §7          The four charts that were embedded without captions are now
+                  Fig. 12-15; the three existing results figures became Fig. 16-18
+                  (no prose referenced them by number, checked by grep)
+      §7.1  new   Cross-run trends and model ranking (Fig. 19-21)
+      §7.2        The five stale "6.???"/"7.?.4" pseudo-headings renumbered to
+                  7.2/7.2.1-7.2.4 and promoted to Heading2/Heading3, so they reach
+                  the table of contents for the first time
+      §8.2        Error-statistics definitions and the nonlinear-vs-linearised
+                  estimation-strategy justification (Hu et al. 2024 §4, §5.2, §5.5),
+                  then Tables 14-17: fit quality for the 16 grid runs, both
+                  campaigns' 24-model rankings, and the nested F-test on all 21 runs
+      §8.5  new   Sensitivity analysis (Tables 18-21, Fig. 22-30), carrying the three
+                  standing flags verbatim: q_dyn is not currently measurable (78.4 %
+                  pure replicate error), k0 and h are not independently identifiable
+                  (report kappa = k0*tau0^-h), L_MTZ's dynamic range is a formula
+                  artefact; the pooled scope is shown but not used for inference
+      §9.4  new   Numerical verification (Fig. 31-41: V1-V4, F5/F6, psi-quadrature
+                  F1-F3, minimal kinetic x2), with the four limitations stated -
+                  placeholder thermal parameters, floored epsilon, the unreconciled
+                  two-temperature/pseudo-homogeneous split, and no fit against §6-§8
+      App. A new  Per-run fit diagnostics: 7 plots x 21 real runs = 147 figures
+                  (Fig. A1-A147), indexed by Table A.1. Nothing selected - every run
+                  the pipeline fitted is there, flags carried into the index
+      App. B new  Complete fit statistics: B.1 the 504-row master table (n, p, RSS,
+                  R2, AdjR2, RMSE, chi2_red, AICc, dAICc, AAD), B.2 all fitted
+                  parameters with curve_fit's asymptotic standard errors, B.3 all six
+                  nested F-tests per run (126 rows), B.4 the 60 degenerate fits
+      Also        Fig. 16's caption completed ("isother" -> "isotherm"); "Table 7)" and
+                  "Table 11)" given the space they were missing after the bracket;
+                  List of Figures gained 34 figure and 16 table entries and lost 2
+                  superseded ones.
+
+    Scripts (all new, all one-shot, all reading committed artefacts only):
+      src/docs/review/_source/report_stats_tables.py      table builders
+      src/docs/review/_source/insert_figures_and_stats.py the docx pass
+      src/docs/review/_source/verify_figures_and_stats.py the checks below
+      src/docs/review/_source/regen_truncated_p7.py       the one damaged figure
+
+    Nothing was refitted. The only arithmetic is dAICc (a difference of two committed
+    numbers) and the nested F-test, computed with breakthrough_fit.stats.f_test, the
+    same function the pipeline calls - it reproduces table4_ftest.csv exactly.
+
+    Verification, all executed: 35/35 checks pass. All 39 XML parts parse; 189 image
+    references resolve to 189 distinct media parts with no double reference and no
+    orphan; the 20 pre-existing images are byte-identical to the backup; body figures
+    are 1-41 (8 reserved, see below) and appendix figures A1-A147, each caption
+    directly following its picture; table captions 1-21, A.1 and B.1-B.4 each appear
+    once; and all 12,148 cells of the fifteen generated tables were re-read out of the
+    saved .docx and compared against freshly rendered tables from the source CSVs and
+    the ANOVA workbook, with zero mismatches. Word opens the result in under 5 s:
+    193 pages, 187 inline shapes, 37 tables, 44,697 words. Every picture paragraph
+    and every table caption carries <w:keepNext>, so a page break cannot land between
+    a figure and its caption or between a caption and its table.
+
+    A figure-basis correction caught by rendering the draft and looking at it.
+    fig9-fig12 from breakthrough_fit/cross_run_figs.py were drafted into §6.4 and
+    §7.1, then pulled: that script's "clean runs" selector is ^(\d+)ml_(\d+)g$, i.e.
+    the twelve SYNTHETIC parametric CSVs, and fig11/fig12 plot the May-* records.
+    CLAUDE.md rule 1 forbids presenting either as measured, and the first PDF proof
+    showed "50ml_2g" and "May-22-2026-conc10-flow0.05" printed inside figures
+    captioned "Measured breakthrough curves". Replaced by src/solver/
+    report_figs_measured.py, new, which builds four figures on the real 21-run basis:
+    R1 the 3x3 design as small multiples with replicates overlaid and the flagged
+    runs marked, R2 the sixteen grid runs on one axis, R3 the 24-model ranking with
+    the two campaigns as separate series, R4 all six performance metrics against
+    flow with the four provisional runs drawn as open markers. Curves come from the
+    raw CSVs through the pipeline's own DataParser; every statistic is read back from
+    the committed results CSVs. fig9-fig12 are left on disk, unused by the report.
+
+    Two repository defects found while scoping, one fixed and one deliberately not:
+      - P7_2026-07-03-conc5-flow0.10.png was truncated (852,244 bytes, ends mid-
+        stream) in both breakthrough_out trees. Regenerated; the refit reproduces the
+        committed optimum to 8.6e-7 max relative difference over 24 models x 10
+        columns, which is what licensed using it. Only the PNG was replaced.
+      - Nine of the sixteen results CSVs under the repo-root breakthrough_out/ carry
+        unresolved git merge-conflict markers (<<<<<<< HEAD / ======= / >>>>>>>
+        ed48a6a) and parse as 51 rows instead of 24. Both conflict sides agree to
+        ~1e-14 relative and side A is byte-identical to the clean copy under
+        src/solver/breakthrough_out/. NOT silently rewritten: the report build reads
+        the clean tree and refuses any file that is not a 24-row single-run table.
+        The root tree needs a real git resolution. Owner: author.
+
+    Still open, flagged not fixed:
+      - Fig. 8 ("Labelled process flow diagram") is in the List of Figures but has no
+        caption and no image, and no such diagram exists anywhere in the repo. The
+        number is left reserved rather than closing the gap by renumbering; the author
+        must supply the diagram or delete the entry.
+      - The abstract still carries the literal placeholder "[Insert 1-2 sentences
+        summarising your key experimental findings/trends here...]".
+      - `mechanistic_selfcontained.py`'s RUNS dict now lists "run 1".."run 9", but
+        `new runs/` contains only run 3/4/5/6/8, so parse_run("run 1") raises and the
+        script can no longer reproduce its own committed F5/F6. Those two figures are
+        from the real five runs (their titles and annotations prove it) and are used
+        as-is; the script needs its RUNS dict restored. Owner: author.
+      - The document is 43.7 MB (42.1 MB before Word's own re-save). Rebuild the
+        atlas with --max-width 1100 for roughly 26 MB if a
+        submission portal objects; P7 and the 9-panel sensitivity figures lose
+        legibility at that width.
+      - The table of contents was refreshed and saved through Word after the build,
+        so it already lists 6.4, 7.1, 7.2.x, 8.5, 9.4, Appendix A (all 21 run
+        subsections) and Appendix B.1-B.4 with page numbers. That save renumbered
+        and re-encoded the media parts, which is why the verifier compares
+        pre-existing images by decoded pixels rather than by part name; all 20 are
+        present unaltered.
+      - requirements.txt gained openpyxl and pillow; the interpreter is .venv/, not
+        the venv/ that CLAUDE.md still names.

@@ -26,11 +26,18 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable
 
+import matplotlib
+
+matplotlib.use("Agg")  # headless backend; figures are written, never shown
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import solve_ivp
 from scipy.optimize import curve_fit
 from scipy.special import erf
+
+# This script lives in src/solver/, which Python puts on sys.path when it is run
+# as `python src/solver/illustration.py`, so this package import resolves.
+from breakthrough_fit.axes_origin import snap_origin
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = REPO_ROOT / "src" / "solver" / "data"
@@ -212,6 +219,7 @@ def fig_linear_transport():
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 0.6)
 
+    snap_origin(fig, label="fig1")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "fig1_linear_transport.png", dpi=200)
     plt.close(fig)
@@ -292,6 +300,7 @@ def fig_adv_diff_ldf():
     ax.set_xlim(0, 0.325)
     ax.set_ylim(-0.05, 1.1)
 
+    snap_origin(fig, label="fig2")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "fig2_advdiff_ldf.png", dpi=200)
     plt.close(fig)
@@ -352,6 +361,7 @@ def fig_sigmoid_kernels():
     ax.legend(loc="lower right")
     ax.set_xlim(-6, 6); ax.set_ylim(-0.05, 1.1)
 
+    snap_origin(fig, label="fig3")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "fig3_sigmoid_kernels.png", dpi=200)
     plt.close(fig)
@@ -464,6 +474,7 @@ def fig_ba_thomas_yn_equivalence(runs: list[BTRun]):
     ax.legend(loc="lower right")
     ax.set_xlim(left=0); ax.set_ylim(-0.05, 1.1)
 
+    snap_origin(fig, label="fig4")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "fig4_ba_thomas_yn_equivalence.png", dpi=200)
     plt.close(fig)
@@ -575,6 +586,7 @@ def fig_chernchien(runs: list[BTRun]):
                         color=CMAP["grey"],
                         arrowprops=dict(arrowstyle="->", color=CMAP["grey"], lw=0.8))
 
+    snap_origin(fig, label="fig5")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "fig5_chernchien_langmuir_freundlich.png", dpi=200)
     plt.close(fig)
@@ -664,6 +676,7 @@ def fig_pei_model_comparison(runs: list[BTRun]):
 
     fig.suptitle("PEI@SiO$_2$ breakthrough -- model comparison "
                  "(C$_0$ $\\approx$ 4% CO$_2$ on SUTD rig)", y=0.995)
+    snap_origin(fig, label="fig6")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "fig6_pei_model_grid.png", dpi=200)
     plt.close(fig)
@@ -743,6 +756,7 @@ def fig_curve_diagnostics(runs: list[BTRun]):
     ax.legend(loc="upper right")
     ax.set_xlim(left=0)
 
+    snap_origin(fig, label="fig7")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "fig7_curve_diagnostics.png", dpi=200)
     plt.close(fig)
@@ -798,6 +812,7 @@ def fig_residuals(runs: list[BTRun]):
     ax.set_ylabel("Residual (experiment - model)")
     ax.set_title(f"Residuals on {run.label}  --  thinner residual band wins")
     ax.legend(loc="upper right")
+    snap_origin(fig, label="fig8")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "fig8_residuals.png", dpi=200)
     plt.close(fig)

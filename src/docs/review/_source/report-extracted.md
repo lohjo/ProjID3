@@ -35,9 +35,9 @@
 
 [p19] Declaration by students:
 
-- [p20] By submitting this report online, I confirm that the report has been submitted to and vetted by my institution supervisor and thereby confirm that the report contains no confidential material from the company.
+[p20] By submitting this report online, I confirm that the report has been submitted to and vetted by my institution supervisor and thereby confirm that the report contains no confidential material from the company.
 
-- [p21] I declare that the report is written by me and not plagiarised from other sources.
+[p21] I declare that the report is written by me and not plagiarised from other sources.
 
 [p23] ____________________
 
@@ -45,27 +45,25 @@
 
 ## [p26] Abstract
 
-- [p27] The growing demand for scalable carbon capture technologies has intensified research into adsorption processes, particularly using amine-impregnated capture sorbent. In this paper, a comprehensive review on breakthrough models, discussing the process parameters and assumptions is provided. Models are validated against breakthrough data at three inlet CO2 concentrations (5, 10 and 15% by volume) at three flow rates (50, 100 and 150 ml/min), across a 3×3 design of experiment. Existing problems in breakthrough adsorption including data reliability, complete and partial breakthrough curves are discussed, and a standard operating procedure (SOP) is proposed to solve these issues. Breakthrough data are further employed to evaluate existing adsorption breakthrough models and support predictive modelling in Python, with the aim of identifying operating conditions that enhance CO2 capture efficiency.
+- [p27] The growing demand for scalable carbon capture technologies has driven interest in adsorption processes using amine-functionalised sorbents. Empirical models help identify the effect of operating parameters on the final breakthrough curve. This report reviews existing breakthrough models, covering key process parameters and assumptions. A 3×3 design of experiments (DOE) was conducted to study the effects of two parameters: three inlet CO₂ concentrations (5, 10, and 15% by volume) and three gas inlet flow rates (50, 100, and 150 ml/min). The fitted parameters i.e., $`k`$ and $`τ`$ , was identified by nonlinear least-squares regression. Experimental analysis confirmed that breakthrough curves were strongly influenced by inlet CO₂ concentration and gas flow rate, while the amount of sorbent and resulting bed depth also affected the adsorption behaviour. Regression analysis of experimental data demonstrated that analytical models could explain breakthrough curves. Common challenges encountered in breakthrough adsorption experiments are also discussed in this report including data reliability and the distinction between complete and partial breakthrough curves. A standard operating procedure (SOP) is hence proposed to mitigate these challenges. The results show that a time-dependent rate constant better addresses surface heterogeneity. Similarly, the introduction of a shape parameter proved to fit asymmetric curves better. A sensitivity analysis on empirical parameters such as $`k`$ … [Insert 1–2 sentences summarising your key experimental findings/trends here once results are available, e.g. how CO₂ concentration and flow rate affected breakthrough time/capacity.] Ultimately, this project aims to predict the behaviour of the breakthrough curve and identify the operating conditions that improve CO₂ capture efficiency.
 
-## [p28] Table of Contents
+## [p29] Table of Contents
 
-[p29] Abstract 2
+[p30] Abstract 2
 
-[p30] Table of Contents 3
+[p31] Table of Contents 3
 
-[p31] List of Figures 5
+[p32] List of Figures 8
 
-[p32] 1 Introduction 6
+[p33] 1 Introduction 11
 
-[p33] 1.1 Scope of Project 8
+[p34] 2 Project Outline and Objectives 13
 
-[p34] 2 Project Outline and Objectives 8
+[p35] 2.1 Project Outline 13
 
-[p35] 2.1 Project Outline 8
+[p36] 2.2 Project Objectives 13
 
-[p36] 2.2 Project Objectives 9
-
-[p37] 2.2 Project Schedule 10
+[p37] 2.3 Project Schedule 14
 
 [p38] 3 Literature review 16
 
@@ -73,1292 +71,28264 @@
 
 [p40] 3.2 Adsorption process 17
 
-[p41] 3.3 Packed-bed adsorption and breakthrough behaviour 18
+[p41] 3.4 Packed-bed adsorption and breakthrough behaviour 18
 
-[p42] 3.3 Adsorption Isotherms 21
+[p42] 3.5 Adsorption Isotherms 21
 
-[p43] 3.3.1 Langmuir Isotherm 21
+[p43] 3.5.1 Langmuir Isotherm 22
 
-[p44] 3.3.2 Toth Isotherm 22
+[p44] 3.5.2 Toth Isotherm 22
 
-[p45] 3.4 Adsorption breakthrough models 22
+[p45] 3.6 Adsorption breakthrough models 23
 
-[p46] 3.4.1 Bohart-Adams Model 23
+[p46] 3.6.1 Bohart-Adams Model 23
 
-[p47] 3.4.2 Thomas Model 23
+[p47] 3.6.2 Thomas Model 24
 
-[p48] 3.4.3 Yoon-Nelson Model 24
+[p48] 3.6.3 Yoon-Nelson Model 24
 
-[p49] 3.4.4 Mathematical equivalence of traditional breakthrough models 24
+[p49] 3.6.4 Mathematical equivalence of traditional breakthrough models 24
 
-[p50] 3.4.5 Clark Model 25
+[p50] 3.6.5 Clark Model 26
 
-[p51] 3.4.6 Gudermannian and Error functions 26
+[p51] 3.6.6 Gudermannian and Error functions 26
 
-[p52] 3.4.7 Weibull and Avrami Models 26
+[p52] 3.6.7 Weibull and Avrami Models 26
 
-[p53] 3.5 Review of Prior Solutions 26
+[p53] 3.6.8 Fractal-Like Model Equations 27
 
-[p54] 3.5.1 Classical Symmetric Models 27
+[p54] 3.6.9 Wolborska and Dose-Response Models 28
 
-[p55] 3.5.2 Models for Asymmetric Breakthrough Curves 27
+[p55] 3.6.10 Tanh, Log-Normal and Gompertz Models 28
 
-[p56] 3.5.3 Implication for Packed-Bed CO2 Capture 27
+[p56] 3.6.11 Klinkenberg and Dima Models 29
 
-[p57] 3.6 Design or Research Procedure 28
+[p57] 3.6.12 Chern–Chien Isotherm-Embedded Models 30
 
-[p58] 4. Standard Operating Procedure for CO₂ Adsorption Experiment 28
+[p58] 3.6.13 Log-Modified and n-Order Models 30
 
-[p59] 4.1 Apparatus and Instrumentation 30
+[p59] 3.6.14 Parallel Two-Component Model 30
 
-[p60] 4.1.1 Gas Feeding Section 30
+[p60] 3.7 Review of Prior Solutions 31
 
-[p61] 4.1.2 Adsorption Column 31
+[p61] 3.7.1 Classical Symmetric Models 31
 
-[p62] 4.1.3 Gas Analysis and Monitoring 31
+[p62] 3.7.2 Models for Asymmetric Breakthrough Curves 31
 
-[p63] 4.1.4 Pre-Run Preparation 31
+[p63] 3.7.3 Implication for Packed-Bed CO2 Capture 32
 
-[p64] 4.2 Experimental Procedure 32
+[p64] 3.8 Design or Research Procedure 32
 
-[p65] 4.2.1 Sensor Setup and Calibration 32
+[p65] 4 Standard Operating Procedure (SOP) 33
 
-[p66] 4.2.3 Feed Gas Preparation 32
+[p66] 4.1 Apparatus and Instrumentation 33
 
-[p67] 4.2.2 Column Loading and Purge 33
+[p67] 4.1.1 Gas Feeding Section 33
 
-[p68] 4.2.4 CO2 Adsorption (Breakthrough Experiment) Run 34
+[p68] 4.1.2 Adsorption Column 33
 
-[p69] 4.3 After the Run 35
+[p69] 4.1.3 Gas Analysis Column 34
 
-[p70] 4.3.1 Acceptance Criteria and Validity 35
+[p70] 4.2 Experimental Procedure 35
 
-[p71] 4.4 Data to Record 35
+[p71] 4.2.1 Sensor Setup and Calibration 35
 
-[p72] 4.5 Safety Notes 36
+[p72] 4.2.2 Feed Gas Preparation 35
 
-[p73] 5 Experimental Results 36
+[p73] 4.2.3 Column Loading and Purge 36
 
-[p74] 6 Experimental Analysis 38
+[p74] 4.2.4 CO₂ Adsorption (Breakthrough Experiment) Run 36
 
-[p75] 7 Conclusions 40
+[p75] 4.3 Safety Notes 36
 
-[p76] 7.1 Next Steps 41
+[p76] 4.4 Errors Observed and Adjustments Made 37
 
-[p77] 8 References 42
+[p77] 4.4.1 Sorbent Preparation 37
 
-## [p79] List of Figures
+[p78] 4.4.2 Handling of Granules 37
 
-[p80] Fig. 1) Greenhouse gas emissions by sector in Singapore, 2023. Adapted from CO₂ and Greenhouse Gas Emissions, by H. Ritchie and P. Rosado, 2025, Our World in Data (https://ourworldindata.org/profile/co2/singapore).
+[p79] 4.4.3 Purge Flow 37
 
-[p81] Fig. 2) Research methodology design of design for CO2 breakthrough adsorption.
+[p80] 5 Experiments 38
 
-[p82] Fig. 3) Packed-bed configuration. Influent gas flows axially towards the outlet along the $`x`$ -axis. A cylindrical packed-bed column of length $`L`$ and internal radius $`R`$ , filled with spherical or near-spherical PEI@SiO2 granules of mean diameter $`dp`$ . A gas mixture of CO2 (mole fraction $`yin`$ ) in N2 enters at superficial velocity $`us`$ and temperature $`Tin`$ .
+[p81] 5.1 Design as executed 38
 
-[p83] Table 1) Weekly Gantt chart schedule for Design Project; timeline is split into phases and tasks within each phase ensure that deliverables are clearly defined and progress is on track; one week is represented as ‘W’; (a) Weeks 0 to 5; (b) Weeks 8 to 13
+[p82] 5.2 Run inventory and provenance 39
 
-[p84] Fig. 5 & 6) Sourced from SUTD via Dr. Prapatsorn in Project_introduction.pptx. Shows lab setup for granule-based adsorption experiments using packed-bed columns via polymer-based sorbents; where $`C0`$ is the sorbate initial concentration, $`Ct`$ the sorbate concentration at time $`t`$ , $`t0`$ the breakthrough time, $`tE`$ : equilibrium time (saturation time), $`V0`$ : superficial velocity, $`v`$ : interstitial velocity, $`Qo`$ : initial gas volumetric flow rate, $`Ac`$ : column cross-sectional area.
+[p83] 5.3 Excluded and flagged records 40
 
-[p85] Fig. 7) shows an image of the adsorption setup, including the gas supply lines, MFCs, adsorption column, and associated sensors. The valves are labelled 1 to 5, and will be referenced as such in the rest of the SOP.
+[p84] 5.4 Data lineage and reproducibility 41
 
-[p86] Fig. 8) Labelled process flow diagram of CO2 adsorption in fixed-bed column
+[p85] 6 Experimental Results 42
 
-[p87] Fig. 9) Predicted vs. observed values in breakthrough models fit using scipy.optimise_curve.fit()
+[p86] 6.1 Parameters Measured 43
 
-[p88] Fig. 10) Breakthrough curve fitting with linear adsorption isotherm using scipy.optimise_curve.fit()
+[p87] 6.2 Adsorption Capacity Calculation 44
 
-## [p89] 1 Introduction
+[p88] 6.3 Results 45
 
-- [p90] Anthropogenic carbon dioxide (CO2) emissions are a primary driver of climate change (Shariff et al., 2012). Atmospheric CO2 concentrations rose from 280 ppm to over 440 ppm above pre-industrial levels today and is expected to rise to 900 ppm should current CO2 emissions level persist (Xu et al., 2024). As a result, global temperatures are rising with more frequent extreme weather events, and a rising sea-level. While nations aim to limit global warming, conventional emissions reduction strategies are insufficient to meet the 2 $`℃`$ target set during the Paris Agreement. More pressingly, carbon dioxide accumulation also has immediate consequences for human health, comfort, and wellbeing (IPCC, 2023; WMO, 2023) across two distinct operational scales.
+[p89] 6.4 Measured breakthrough curves 46
 
-- [p91] At the atmospheric level, anthropogenic CO2 emissions drive climate-induced heatwaves and severe environmental disruptions. These systemic shifts placed unprecedented strain on public health, particularly among vulnerable demographics such as the elderly, children, and outdoor workers, while simultaneously threatening infrastructure resilience and global food security (IPCC, 2023; WMO, 2023).
+[p90] 7 Experimental Analysis 48
 
-- [p92] Secondly, modern populations spend most of their time indoors. Localised CO2 accumulation can show poor ventilation and degraded air quality. Ambient indoor concentrations exceeding 800 ppm are explicitly linked to acute physiological symptoms, including headaches, chronic fatigue, dizziness, and upper respiratory tract irritation (Norbäck & Nordström, 2008; Tsai et al., 2012). In high-density environments like offices and schools, these elevated levels aggravate chronic conditions such as asthma and severely impair cognitive performance and workplace productivity (Simoni et al., 2010; Carreiro-Martins et al., 2014).
+[p91] 7.1 Cross-run trends and model ranking 53
 
-[p93] *(1 embedded image)*
+[p92] 7.2 Determining the Optimal Operating Parameters 56
 
-[p94] Fig. 1) Greenhouse gas emissions by section in Singapore (2023)
+[p93] 7.2.1 Identifying the Optimal Condition 56
 
-- [p95] This issue of increased CO2 levels is especially relevant in Singapore, where land is limited and the economy is closely tied to hard-to-abate sectors (Ritchie & Rosado, 2025) such as shipping, aviation, and petrochemicals as shown in Fig. 1). Thus, Singapore cannot rely on land-intensive carbon sinks such as large-scale afforestation to reduce the CO2 in the atmosphere and will need solutions to curb excessive increase in indoor settings. As a result, there is growing interest in compact and scalable carbon capture technologies that can reduce CO₂ emissions more effectively.
+[p94] 7.2.2 Why This is Still Not Good Enough 57
 
-- [p96] Fixed-bed column adsorption presents a promising separation method for CO2 capture due to its simple setup and fast adsorption-desorption cycles. Recent developments in CO2 capture by adsorption demonstrate the attractiveness of this technique for post-combustion treatment of flue gas. Various adsorption technologies such as pressure swing adsorption (PSA), vacuum swing adsorption (VSA), temperature swing adsorption (TSA) and moisture swing adsorption (MSA) are thus viewed as scalable CO2 separation and purification techniques. Prior to the design of an adsorption process, many studies concerning the selection of an appropriate adsorbent material for CO2 capture have resulted in a wide variety of adsorbent materials investigated. Sorbent materials for low-pressure CO2 capture, such as amine-functionalised materials, zeolites, metal oxides, metal-based materials, silicas, activated carbon and carbon molecular sieves (Chuah et al., 2025; Xu et al., 2005), have varying process dependent parameters (i.e. selectivity, working capacity, desorption capacity, etc). Solid sorbent-based carbon capture offers advantages over amine scrubbing: lower regeneration energy, reduced corrosion, and tolerance to moisture (Qi et al., 2011). Amine-functionalised silica sorbents, particularly polyethyleneimine (PEI) impregnated SiO2 exhibit high CO2 selectivity, fast kinetics and good cyclic stability (Qi et al., 2011; Jung et al., 2017).
+[p95] 7.2.3 Real-World Settings 58
 
-### [p97] 1.1 Scope of Project
+[p96] 7.2.4 Possible Adjustments to Increase Utilisation 58
 
-- [p98] Development of a mathematical model is essential to describe the complex dynamics of adsorption. However, existing phenomenological models often fail to capture all process-dependent parameters. Furthermore, constructing predictive models solely through extensive experimentation is both time-consuming and costly (Siahpoosh et al., 2009). In principle, models that utilise established parameters, such as adsorption rate constants and equilibrium data, can estimate column capacity without extensive experimental work. However, prediction of column dynamics requires the solution of a set of simultaneous partial differential equations (PDEs) representing mass, energy and momentum balances over a fixed bed with appropriate boundary conditions (Hwang et al., 1995). Thus, the use of simpler and more tractable models (Hu et al., 2024) that can satisfactorily predict fixed-bed behaviour is desirable. The literature survey reveals how these simplified assumptions can be made to represent transport phenomena within adsorbent particles as an alternative way to investigate fixed-bed adsorption calculations.
+[p97] 8 Fitting performance and analysis 59
 
-## [p99] 2 Project Outline and Objectives
+[p98] 8.1 Model identifiability and selection criterion 59
 
-### [p100] 2.1 Project Outline
+[p99] 8.2 Fit-quality results with standard errors 60
 
-- [p101] This project addresses the need for effective CO₂ capture technologies that can be applied in compact, modular systems. The experimental work is centered on a packed-bed adsorption setup designed to capture CO₂ using Carbon Capture Composite (C3) granules (Wong et al., 2021). The system was selected because adsorption is well suited to diluting gas streams and can be operated with relatively low energy demand compared with liquid-based capture systems (Karimi et al., 2023; Stampi-Bombelli et al., 2024).
+[p100] 8.3 Parameter trends with operating conditions 64
 
-- [p102] The project began with laboratory familiarisation, followed by the procurement of components and assembly of the experimental setup. After this, we developed a standard operating procedure (SOP) and planned the design of experiments (DOE) for the adsorption runs. The technical understanding gained so far indicates that breakthrough behaviour is strongly influenced by inlet concentration, flow rate, and the interaction between the gas stream and the sorbent surface (Jin et al., n.d.; Karimi et al., 2023). These factors hence form the basis for the experimental and modelling work in the project.
+[p101] 8.4 Python reproducibility 65
 
-- [p103] The aim of this project was to review and understand existing breakthrough models (Myers et al., 2023; Hu et al., 2024) and apply practical templates (Lin, 2017; Juela, 2021) against collected breakthrough data. These models were experimentally verified at three inlet CO2 concentrations (5, 10 and 15% by volume) at three flow rates (50, 100 and 150 ml/min). The system’s adsorption performance across a 3×3 parameter sweep will be compared to support model development and validation. The overall aim is to determine how operating conditions affect the adsorption behaviour of the packed-bed column and to assess the suitability of the sorbent system for future carbon capture studies.
+[p102] 8.5 Sensitivity analysis 65
 
-- [p104] Problem Statement: To design and analyse a packed-bed column for CO₂ capture using PEI@SiO₂ granules, evaluating breakthrough dynamics and validating predictive models.
+[p103] 9 Mathematical Modelling 72
 
-### [p105] 2.2 Project Objectives
+[p104] 9.1 Minimal kinetic model 72
 
-[p106] The project aims to:
+[p105] 9.2 Parameter estimation strategy 74
 
-- [p107] Assemble and operate the packed-bed adsorption experimental setup.
+[p106] 9.3 Limitations of the minimal kinetic model 75
 
-- [p108] Carry out breakthrough experiments using C3 granules.
+[p107] 9.4 Numerical verification 75
 
-- [p109] Study the effects of CO₂ concentration and flow rate on adsorption capacity.
+[p108] 10 Conclusions 80
 
-- [p110] Fit and validate breakthrough models using Python.
+[p109] 10.1 Next Steps 81
 
-- [p111] Identify operating conditions that improve adsorption performance.
+[p110] 10.2 AI-Use Disclosure 81
 
-### [p113] 2.2 Project Schedule
+[p111] 11 References 82
 
-[p114] Table 1. Design Project Schedule (a) Timeline for Weeks 0 to 6; (b) Timeline for Weeks 8 to 13;
+[p112] Appendix A Per-run fit diagnostics 88
 
-[p115] Phase (a)
+[p113] A.1 run 3 90
 
-[p116] Task
+[p114] A.2 run 4 93
 
-[p117] W0 (20/04)
+[p115] A.3 run 5 97
 
-[p118] W1 (27/04)
+[p116] A.4 run 6 101
 
-[p119] W2 (04/05)
+[p117] A.5 run 8 105
 
-[p120] W3 (11/05)
+[p118] A.6 06-26 c5 f0.05 109
 
-[p121] W4 (18/05)
+[p119] A.7 07-03 c5 f0.10 113
 
-[p122] W5 (25/05)
+[p120] A.8 07-08 c5 f0.15 117
 
-[p123] Deliverables
+[p121] A.9 07-08 c10 f0.05 121
 
-[p124] First Meetings w/ Supervisors
+[p122] A.10 07-08 c10 f0.10 125
 
-[p132] Literature Review
+[p123] A.11 07-08 c10 f0.15 129
 
-[p140] Bi-weekly Journal #1
+[p124] A.12 07-10 c15 f0.05 133
 
-[p148] Defining our Problem Statement
+[p125] A.13 07-10 c15 f0.10 137
 
-[p156] Refining our Problem Statement
+[p126] A.14 07-15 c15 f0.15 141
 
-[p164] Bi-weekly Journal #2
+[p127] A.15 07-17 c15 f0.10 145
 
-[p172] Submit First Draft of Interim Report
+[p128] A.16 07-22 c10 f0.05* 149
 
-[p180] Interim Report
+[p129] A.17 07-22 c10 f0.10* 153
 
-[p188] Interim Review & Presentation
+[p130] A.18 07-29 c5 f0.05† 157
 
-[p196] Bi-weekly Journal #3
+[p131] A.19 07-29 c5 f0.10 161
 
-[p204] Bi-weekly Journal #4
+[p132] A.20 07-31 c5 f0.15* 165
 
-[p212] Final Report
+[p133] A.21 07-31 c10 f0.10* 169
 
-[p220] Final Presentation
+[p134] Appendix B Complete fit statistics 173
 
-[p227] Literature
-Review
+[p135] B.1 Model fit statistics, all models and all runs 174
 
-[p228] Review on CO2 capture (material and technology)
+[p136] B.2 Fitted parameters and standard errors 184
 
-[p236] Review on packed bed adsorption and models
+[p137] B.3 Nested F-tests 191
 
-[p244] Review on breakthrough model
+[p138] B.4 Non-converged and degenerate fits 192
 
-[p252] Review data analysis methods
+[p141] Nomenclature
 
-[p260] Review mathematical models (Toth, DK)
+[p142] Symbol
 
-[p268] Finalise Models to Use
+[p143] Meaning
 
-[p275] Mathematical Modelling
+[p145] $`c(z,t)`$
 
-[p276] R-H shock + travelling wave (Myers & Font 2020)
+[p146] Gas-phase CO₂ concentration, mol m⁻³
 
-[p284] Method of lines+stiff ODE theory
+[p147] $`c0`$
 
-[p292] Upwind schemas, CFL, numerical diffusion (LeVeque, Ch. 6-7)
+[p148] Inlet CO₂ concentration, mol m⁻³
 
-[p300] Constant pattern analysis (Ruthven, Ch. 8)
+[p149] $`C0`$
 
-[p308] Sensitivity equations; forward sensitivity analysis
+[p150] Inlet CO₂ concentration, – (mole fraction)
 
-[p316] Breakthrough metrics (Ruthven, Ch. 5)
+[p151] $`C/C₀`$
 
-[p324] Dimensionless analysis (Pe, NTU, α)
+[p152] Outlet concentration ratio, –
 
-[p332] Response surface design (Montgomery, Ch. 1)
+[p153] $`z`$
 
-[p339] Experimentation
-Preparation
+[p154] Axial coordinate along the column, m
 
-[p340] Prepare Bill of Materials (BOM)
+[p155] $`x`$
 
-[p348] Rig Familiarisation
+[p156] Axial coordinate used in Fig. 3 and BA/Thomas/YN, m
 
-[p356] Standard of Procedure (SOP)
+[p157] $`u`$
 
-[p364] Equipment Setup
+[p158] Superficial gas velocity, m s⁻¹
 
-[p372] Data acquisition & curve-fit workflow setup
+[p159] $`ε`$
 
-[p380] Pre-Session Checks (recurring)
+[p160] Bed void fraction, –
 
-[p387] Experimentation
-Execution
+[p161] $`ϵ`$
 
-[p388] OAT - vary flow rate & concentration
+[p162] Adsorption-site energy, J
 
-[p396] Model Fitting & Error Minimisation
+[p163] $`kB`$
 
-[p404] Validation runs - baseline (4 exp; PFO/DK model)
+[p164] Boltzmann constant, J K⁻¹
 
-[p412] Addition/Repeat (if required)
+[p165] $`DL`$
 
-[p420] Phase (b)
+[p166] Axial dispersion coefficient, m² s⁻¹
 
-[p421] Task
+[p167] $`q(z,t)`$
 
-[p422] W8 (15/06)
+[p168] Solid-phase loading, mol kg⁻¹
 
-[p423] W9 (22/06)
+[p169] $`qt`$
 
-[p424] W10 (29/06)
+[p170] Adsorbed amount at time $`t`$ , mol kg⁻¹
 
-[p425] W11 (06/07)
+[p171] $`qe`$
 
-[p426] W12 (13/07)
+[p172] Equilibrium adsorbed amount, mol kg⁻¹
 
-[p427] W13 (20/07)
+[p173] $`qs/q0`$
 
-[p428] Deliverables
+[p174] Equilibrium capacity, mol kg⁻¹
 
-[p429] First Meetings w/ Supervisors
+[p175] $`ks`$
 
-[p437] Literature Review
+[p176] LDF mass-transfer rate constant, s⁻¹
 
-[p445] Bi-weekly Journal #1
+[p177] $`kYN`$
 
-[p453] Defining our Problem Statement
+[p178] Yoon-Nelson rate constant, s⁻¹
 
-[p461] Refining our Problem Statement
+[p179] $`kBA`$
 
-[p469] Bi-weekly Journal #2
+[p180] Bohart-Adam’s rate constant, m³ mol⁻¹ s⁻¹
 
-[p477] Submit First Draft of Interim Report
+[p181] $`kTh`$
 
-[p485] Interim Report
+[p182] Thomas effective rate constant, m³ mol⁻¹ s⁻¹
 
-[p493] Interim Review & Presentation
+[p183] $`bT`$
 
-[p501] Bi-weekly Journal #3
+[p184] Toth isotherm affinity constant, kPa⁻¹
 
-[p509] Bi-weekly Journal #4
+[p185] $`h`$
 
-[p517] Final Report
+[p186] Time-decaying rate parameter, –
 
-[p525] Final Presentation
+[p187] $`τ,τ0`$
 
-[p532] Literature
-Review
+[p188] Characteristic breakthrough time, s
 
-[p533] Review on CO2 capture (material and technology)
+[p189] $`ρp`$
 
-[p541] Review on packed bed adsorption and models
+[p190] Sorbent pellet density, kg m⁻³
 
-[p549] Review on breakthrough model
+[p191] $`ρb`$
 
-[p557] Review data analysis methods
+[p192] Bed bulk density, kg m⁻³
 
-[p565] Review mathematical models (Toth, DK)
+[p193] $`m`$
 
-[p573] Finalise Models to Use
+[p194] Sorbent mass, kg/g
 
-[p580] Mathematical Modelling
+[p195] $`L`$
 
-[p581] R-H shock + travelling wave (Myers & Font 2020)
+[p196] Packed-bed length, cm
 
-[p589] Method of lines+stiff ODE theory
+[p197] $`Q`$
 
-[p597] Upwind schemas, CFL, numerical diffusion (LeVeque, Ch. 6-7)
+[p198] Volumetric flow rate, L h⁻¹ / lpm
 
-[p605] Constant pattern analysis (Ruthven, Ch. 8)
+[p199] $`dp`$
 
-[p613] Sensitivity equations; forward sensitivity analysis
+[p200] Pellet diameter, mm
 
-[p621] Breakthrough metrics (Ruthven, Ch. 5)
+## [p203] List of Figures
 
-[p629] Dimensionless analysis (Pe, NTU, α)
+[p204] Fig. 1) Greenhouse gas emissions by sector in Singapore, 2023. Adapted from CO₂ and Greenhouse Gas Emissions, by H. Ritchie and P. Rosado, 2025, Our World in Data (https://ourworldindata.org/profile/co2/singapore).
 
-[p637] Response surface design (Montgomery, Ch. 1)
+[p205] Fig. 2) Research methodology design for CO2 breakthrough adsorption.
 
-[p645] Modelling in Python
+[p206] Fig. 3) Packed-bed configuration. Influent gas flows axially towards the outlet along the $`x`$ -axis. A cylindrical packed-bed column of length $`L`$ and internal radius $`R`$ , filled with spherical or near-spherical PEI@SiO2 granules of mean diameter $`dp`$ . A gas mixture of CO2 (mole fraction $`Cin`$ ) in N2 enters at superficial velocity $`uin`$ .
 
-[p652] Experimentation
-Preparation
+[p207] Fig. 4) Diagram of spherical C3 granule of mean diameter $`dp`$ showing surface heterogeneity.
 
-[p653] Prepare Bill of Materials (BOM)
+[p208] Table 1) Weekly Gantt chart schedule for Design Project; timeline is split into phases and tasks within each phase ensure that deliverables are clearly defined and progress is on track; one week is represented as ‘W’; (a) Weeks 0 to 5; (b) Weeks 8 to 13
 
-[p661] Rig Familiarisation
+[p209] Fig. 5 & 6) Sourced from SUTD via Dr. Prapatsorn in Project_introduction.pptx. Shows lab setup for granule-based adsorption experiments using packed-bed columns via polymer-based sorbents; where $`C0`$ is the sorbate initial concentration, $`Ct`$ the sorbate concentration at time $`t`$ , $`t0`$ the breakthrough time, $`tE`$ : equilibrium time (saturation time), $`V0`$ : superficial velocity, $`v`$ : interstitial velocity, $`Qo`$ : initial gas volumetric flow rate, $`Ac`$ : column cross-sectional area.
 
-[p669] Standard of Procedure (SOP)
+[p210] Fig. 7) shows an image of the adsorption setup, including the gas supply lines, MFCs, adsorption column, and associated sensors. The valves are labelled 1 to 5 and will be referenced as such in the rest of the SOP.
 
-[p677] Equipment Setup
+[p211] Fig. 8) Labelled process flow diagram of CO2 adsorption in fixed-bed column.
 
-[p685] Data acquisition & curve-fit workflow setup
+[p212] Fig. 9) Measured breakthrough curves, 3×3 flow × concentration design
 
-[p693] Pre-Session Checks (recurring)
+[p213] Fig. 10) The sixteen grid runs overlaid on one axis
 
-[p700] Experimentation
-Execution
+[p214] Fig. 11) Measured breakthrough curves for runs 3/4/5/6/8, overlaid
 
-[p701] OAT - vary flow rate & concentration
+[p215] Fig. 12) Breakthrough time against inlet flow rate
 
-[p709] Model Fitting & Error Minimisation
+[p216] Fig. 13) Saturation time against inlet flow rate
 
-[p717] Validation runs - baseline (4 exp; PFO/DK model)
+[p217] Fig. 14) Saturation capacity against inlet flow rate
 
-[p725] Addition/Repeat (if required)
+[p218] Fig. 15) Breakthrough capacity against inlet flow rate
 
-[p733] Legend
+[p219] Fig. 16) Predicted vs. observed values in breakthrough models fit
 
-###### [p735] Done
+[p220] Fig. 17) Breakthrough curve fitting with linear adsorption isotherm
 
-[p736] Recurring
+[p221] Fig. 18) Validation of fractal-like kinetics on logistic breakthrough model curve
 
-[p737] Not Started
+[p222] Fig. 19) Registry models ranked by mean adjusted R², both campaigns
 
-[p739] In Progress
+[p223] Fig. 20) Measured performance metrics against flow, grid campaign
 
-[p741] Submission
+[p224] Fig. 21) Predicted against observed C/C₀ for runs 3/4/5/6/8
 
-## [p744] 3 Literature review
+[p225] Fig. 22) Tier-1 cluster ANOVA, 3×3 grid campaign
 
-### [p745] Experimental dataBreakthrough curve $`c/c0`$ vs. $`t`$ Breakthrough model typesApplication scopeAdsorption principlesBreakthrough modelsLinear fittingNonlinear fittingData fitting (parameter estimation)Error functionsPlot of residualsOptimal modelPredictionMathematical modellingExperimental dataBreakthrough curve $`c/c0`$ vs. $`t`$ Breakthrough model typesApplication scopeAdsorption principlesBreakthrough modelsLinear fittingNonlinear fittingData fitting (parameter estimation)Error functionsPlot of residualsOptimal modelPredictionMathematical modelling3.1 Overview
+[p226] Fig. 23) Tier-1 cluster ANOVA, pooled scope
 
-[p746] Experimental data
+[p227] Fig. 24) Tier-2 Monte-Carlo cluster ANOVA, M11, independent sampling
 
-[p747] Breakthrough curve
+[p228] Fig. 25) Tier-2 Monte-Carlo cluster ANOVA, M11, rank-correlated sampling
 
-[p748] $`c/c0`$ vs. $`t`$
+[p229] Fig. 26) Tier-2 Monte-Carlo cluster ANOVA, M10, independent sampling
 
-[p750] Breakthrough model types
+[p230] Fig. 27) Tier-2 Monte-Carlo cluster ANOVA, M10, rank-correlated sampling
 
-[p751] Application scope
+[p231] Fig. 28) Tier-2 Monte-Carlo cluster ANOVA, M24, independent sampling
 
-[p752] Adsorption principles
+[p232] Fig. 29) Tier-2 Monte-Carlo cluster ANOVA, M24, rank-correlated sampling
 
-[p753] Breakthrough models
+[p233] Fig. 30) Parameter identifiability: the k₀-h ridge
 
-[p754] Linear fitting
+[p234] Fig. 31) V1 — advection-dispersion against the exact erfc solution
 
-[p755] Nonlinear fitting
+[p235] Fig. 32) V2 — isothermal equilibrium shock, Rankine-Hugoniot verification
 
-[p756] Data fitting (parameter estimation)
+[p236] Fig. 33) V3 — linear-driving-force travelling wave against the closed form
 
-[p757] Error functions
+[p237] Fig. 34) V4 — non-isothermal Toth demonstration (placeholder thermal parameters)
 
-[p758] Plot of residuals
+[p238] Fig. 35) F5 — measured breakthrough against the global mechanistic fit
 
-[p759] Optimal model
+[p239] Fig. 36) F6 — fitted isotherms with measured dynamic capacities overlaid
 
-[p760] Prediction
+[p240] Fig. 37) Ψ-quadrature: reproduction of Danilov Fig. 1
 
-[p761] Mathematical modelling
+[p241] Fig. 38) Ψ-quadrature: three-way Langmuir wave comparison
 
-[p762] Experimental data
+[p242] Fig. 39) Ψ-quadrature: non-isothermal Toth overlay
 
-[p763] Breakthrough curve
+[p243] Fig. 40) Minimal kinetic model against every measured run
 
-[p764] $`c/c0`$ vs. $`t`$
+[p244] Fig. 41) Rankine-Hugoniot check for the minimal kinetic model
 
-[p766] Breakthrough model types
+[p245] Fig. A1 – A147) Per-run fit diagnostics, seven plots for each of the twenty-one real runs — indexed by run in Table A.1 (Appendix A)
 
-[p767] Application scope
+[p246] Table 1) Project Schedule
 
-[p768] Adsorption principles
+[p247] Table 2) Breakdown of Project Schedule
 
-[p769] Breakthrough models
+[p248] Table 3) Design as executed: number of usable runs in each flow × concentration cell, 26 June to 31 July 2026.
 
-[p770] Linear fitting
+[p249] Table 4) Run inventory and provenance for the sixteen usable breakthrough records.
 
-[p771] Nonlinear fitting
+[p250] Table 5) Excluded records and records carrying a caveat, with the owner of each open item.
 
-[p772] Data fitting (parameter estimation)
+[p251] Table 6) The basic parameters for packed-bed adsorption.
 
-[p773] Error functions
+[p252] Table 7) Experimental Parameters of PEI@SiO2 Fixed-Bed Adsorbers
 
-[p774] Plot of residuals
+[p253] Table 8) Breakthrough adsorption of CO2 onto PEI@SiO2 granules
 
-[p775] Optimal model
+[p254] Table 9) Breakthrough (tb) and equilibrium (te) times and corresponding CO₂ adsorption capacities (qb, qe) for C3 granules across varying inlet CO₂ concentrations and flow rates (I)
 
-[p776] Prediction
+[p255] Table 10) Breakthrough (tb) and equilibrium (te) times and corresponding CO₂ adsorption capacities (qb, qe) for C3 granules across varying inlet CO₂ concentrations and flow rates (II)
 
-[p777] Mathematical modelling
+[p256] Table 11) Winning model per run vs. M01 baseline, with asymptotic standard errors
 
-[p799] Legend:
+[p257] Table 12) Langmuir isotherm parameters for CO2
 
-[p800] Decision nodesInput nodesDecision nodesInput nodes
+[p258] Table 13) The basic parameters for packed-bed adsorption
 
-[p801] Decision nodes
+[p259] Table 14) Fit quality for the sixteen grid runs
 
-[p802] Input nodes
+[p260] Table 15) Registry models ranked by mean adjusted R², grid campaign
 
-[p803] Decision nodes
+[p261] Table 16) Registry models ranked by mean adjusted R², five-run campaign
 
-[p804] Input nodes
+[p262] Table 17) Nested F-test of the fractal exponent, every run
 
-[p808] Fig. 2) Research methodology design for CO2 breakthrough adsorption
+[p263] Table 18) Tier-1 cluster ANOVA of the experimental factors
 
-### [p809] 3.2 Adsorption process
+[p264] Table 19) Two-way factorial ANOVA with replication
 
-- [p810] Adsorption is a surface phenomenon in which molecules from a gas or liquid phase accumulate on the surface of a solid material rather than penetrating its bulk structure. The term originates from the Latin adsorptio or adsorbere, meaning “to draw towards” or “to suck in”, which reflects the tendency of molecules to be retained at a surface through intermolecular interactions (Etymonline, 2024; Wiktionary, 2021). Physisorption, where gas molecules attach to the surface through weak van der Waals forces, is quickly reversible via regeneration but results in poor selectivity at low partial pressures as most physical sorbents lose most of their CO2 capacity in the presence of humidity because water competes for the same sites (Xu et al., 2024). Chemisorption forms covalent or ionic bonds with CO2 and is highly selective; amine-functionalised sorbents leverage this by impregnating amine groups that react with CO2 via two distinct mechanisms: (i) carbamate-ammonium ion pairs are formed under dry conditions and can hydrolyse to bicarbonate in the presence of water and; (ii) polymer plasticisation induced chain mobility can enable CO2 to access the amine-sites that were previously inaccessible.
+[p265] Table 20) Replicate reproducibility: pure error against total variance
 
-- [p811] Amine-functionalised silica composites represent a major class of solid sorbents for CO₂ capture. These materials combine the high CO₂ affinity of amines with the large surface area and pore volume of porous silica supports. Chen et al. (2020) classified amine-silica composites into three categories based on preparation method: (i) physical impregnation of polymeric amines such as polyethylenimine (PEI) or tetraethylenepentamine (TEPA) into porous supports; (ii) chemical grafting of aminosilanes via covalent bonding to surface silanol groups; and (iii) in-situ polymerisation of amine-containing monomers to create hyperbranched aminosilicas (Chen et al., 2020). The review by Chen et al. (2020) emphasised that mesoporous silica supports such as MCM-41, SBA-15, and KIT-6 have been widely studied, with textural properties (particularly pore diameter and pore volume) playing a critical role in determining CO₂ capture performance at a given amine loading.
+[p266] Table 21) Parameters pinned at a fitting bound
 
-- [p812] In particular, PEI-fumed structured sorbents exhibits two distinct classes of amine sites: (i) accessible surface amine sites at the PEI-gas interface, and (ii) bulk amine-layer sites buried within the PEI polymer matrix, which require diffusion through the viscous polymer before CO₂ can react (Bollini et al., 2012; Kalyanaraman et al., 2015; Stampi-Bombelli et al., 2024). This heterogeneity produces the characteristic sharp initial breakthrough followed by a prolonged tail observed experimentally in amine-functionalised sorbents, which a simple pseudo-first-order (PFO) model cannot capture. This resulted in extensive research into adsorption modelling, particularly in packed-bed columns, which is one of the simplest configurations for studying breakthrough adsorption behaviour.
+[p267] Table A.1) Contents of Appendix A
 
-### [p813] 3.3 Packed-bed adsorption and breakthrough behaviour
+[p268] Table B.1) Fit statistics for all models on all runs
 
-[p814] $`cin`$ $`uin`$ $`x`$ $`cin`$ $`uin`$ $`x`$
+[p269] Table B.2) Fitted parameters and standard errors
 
-[p815] $`cin`$
+[p270] Table B.3) Nested F-tests
 
-[p816] $`uin`$
+[p271] Table B.4) Non-converged and degenerate fits
 
-[p817] $`x`$
+## [p273] 1 Introduction
 
-[p818] $`cin`$
+- [p274] Anthropogenic carbon dioxide (CO2) emissions are a primary driver of climate change (Shariff et al., 2012). Atmospheric CO2 concentrations rose from 280 ppm to over 440 ppm above pre-industrial levels today and atmospheric concentrations have climbed from 280 ppm in the pre-industrial era to over 440 ppm today and could reach 900 ppm if current emissions trends continue (Xu et al., 2024). This has led to rising global temperatures, more frequent extreme weather events, and rising sea levels. This has led to rising global temperatures, more frequent extreme weather, and rising sea levels, impacts that conventional emissions reduction strategies have so far failed to contain within the Paris Agreement's 2°C target.
 
-[p819] $`uin`$
+- [p275] Beyond its role in climate change, CO₂ accumulation also has direct consequences for human health and comfort, at both the atmospheric and indoor scale (IPCC, 2023; WMO, 2023).
 
-[p820] $`x`$
+- [p276] Rising CO₂ emissions in the atmosphere cause widespread environmental disruption. These place strain on vulnerable groups such as the elderly, children, and outdoor workers, while also threatening infrastructure resilience and food security (IPCC, 2023; WMO, 2023).
 
-[p821] Fig. 3) Packed-bed configuration. Influent gas flows axially towards the outlet along the $`x`$ -axis.
+- [p277] Since people spend most of their time indoors, poor ventilation can allow CO₂ to accumulate locally, degrading air quality. Indoor concentrations above 800 ppm are linked to headaches, fatigue, dizziness, and upper respiratory irritation (Norbäck & Nordström, 2008; Tsai et al., 2012). In high-occupancy settings such as offices and schools, elevated CO₂ levels can also aggravate chronic conditions like asthma and reduce cognitive performance and productivity (Simoni et al., 2010; Carreiro-Martins et al., 2014).
 
-- [p822] $`dp`$ $`dp`$
+- [p278] This issue is particularly relevant in Singapore as seen in Fig. 1) where limited land area and an economy tied to hard-to-abate sectors, such as shipping, aviation, and petrochemicals (Ritchie & Rosado, 2025), rule out land-intensive solutions such as large-scale afforestation. Singapore therefore needs alternative approaches to manage rising CO₂ levels, particularly indoors, motivating growing interest in compact, scalable carbon capture technologies.
 
-[p823] $`dp`$
+- [p279] Fixed-bed column adsorption is a promising method for CO₂ capture, offering a simple setup and fast adsorption-desorption cycles, and is well suited to post-combustion treatment of flue gas.
 
-[p825] $`dp`$
+[p280] *(1 embedded image)*
 
-- [p827] Fig. 4) Diagram of spherical PEI@SiO₂ granule of mean diameter $`dp`$
+###### [p281] Fig. 1) Greenhouse gas emissions by section in Singapore (2023)
 
-- [p828] Packed beds filled with pellets have long been the preferred design for adsorption processes due to their ease of processing, costs, flow distributions and ease to handle (Born et al., 2024). However, packed bed pressure drop primarily depends on the gas velocity and pellet size. Moreover, the increase in pressure drop generally leads to excessive power consumption (de Joannis, 2025). The system under consideration as shown in Fig. 3) is a cylindrical packed-bed column of length $`L`$ and internal radius $`R`$ , the bed is filled with spherical or near-spherical PEI@SiO₂ granules of mean diameter $`dp`$ as shown in Fig. 4). In Fig. 3), a gas mixture of CO₂ (mole fraction $`cin`$ ) in N₂ enters the column at superficial velocity $`uin`$ .
+- [p282] Common adsorption-based processes include pressure swing adsorption (PSA), vacuum swing adsorption (VSA), temperature swing adsorption (TSA), and moisture swing adsorption (MSA). Selecting an appropriate sorbent material is a key design step, and prior studies have explored a wide range of options: from amine-functionalised materials, zeolites, metal oxides, metal-based materials, silicas, activated carbon, and carbon molecular sieves (Chuah et al., 2025; Xu et al., 2005), each with different performance characteristics (e.g. selectivity, working capacity, desorption capacity). Solid sorbents offer several advantages over amine scrubbing, including lower regeneration energy, reduced corrosion, and better tolerance to moisture (Qi et al., 2011). Among these, amine-functionalised silica sorbents, particularly polyethyleneimine (PEI)-impregnated SiO₂, combine high CO₂ selectivity, fast kinetics, and good cyclic stability (Qi et al., 2011; Jung et al., 2017).
 
-[p829] *(1 embedded image)*
+## [p283] 2 Project Outline and Objectives
 
-[p830] Fig. 5) Schematic diagram of MTZ traveling through a fixed-bed column
+### [p284] 2.1 Project Outline
 
-- [p831] In a fixed-bed column, fresh gas enters one end and pushes a sharp adsorption front, called the mass transfer zone (MTZ) progressively towards the outlet. In Fig. 4) the inlet CO₂ concentration (mole fraction $`C0`$ ) flows through the packed bed at a volumetric flow rate of $`v0`$ . As the CO₂ gas gets adsorbed by the adsorbent material, the adsorption zone is indicated by the red-shaded region travelling axially through the columns at a speed much slower than the influent gas velocity.
+- [p285] This project is limited to the experimental and modelling study of CO2 adsorption in a fixed-bed column packed with Carbon Capture Composite (C3) granules (Wong et al., 2021), operated under ambient temperature and near-atmospheric pressure. The problem was identified through a combination of a literature review looking at existing carbon capture technologies, the packed-bed theory, and existing adsorption breakthrough models. The experimental work centres on a packed-bed adsorption setup using C3 granules to capture CO2.
 
-[p832] *(1 embedded image)*
+- [p286] The project started with laboratory familiarisation, followed by procurement and assembly of the experimental setup in Weeks 3 and 4. A Standard Operating Procedure (SOP) was developed for the adsorption experiments. According to the literature, inlet Co2 concentration, flow rate and interaction between the gas stream and the sorbent surface and/or active sites strongly influent to the breakthrough behaviour (Jin et al., n.d; Karimi et al., 2023), which are the factors that form the basis of the experimental and modelling work done below.
 
-[p833] Fig. 6) Breakthrough curve diagram through a fixed-bed column
+### [p287] 2.2 Project Objectives
 
-- [p834] Hence, in Fig. 5) the bed divides into three zones during adsorption: saturation zone, mass-transfer zone, and adsorption zone. In the saturation zone, the adsorbent contaminant reaches dynamic equilibrium, where the amount absorbed, $`q0`$ , is in equilibrium to the influent concentration, $`c0`$ . Thus, the loading capacity of the adsorbent is exhausted, and no mass transfer takes place. Adsorption only occurs in the MTZ, in which the adsorbent accumulates molecules continuously from the feed, and the amount adsorbed in the bed increases from zero to $`q0`$ . The shape and length of the MTZ largely depends on the rate of adsorption, $`κ`$ , and the shape of the isotherm curve. Breakthrough is registered when the MTZ first reaches the outlet, and the resulting S-shaped breakthrough curve is a mirror of the MTZ whose sharpness is set jointly by the rate of adsorption and the curvature of the equilibrium isotherm (Hu et al., 2024). With the assumptions: (i) plug flow in the axial direction; (ii) negligible radial dispersion; (ii) a linear driving force for solid adsorption; (iii) uniformly spherical adsorbent particles and; (iv) constant geometric dimensions, interstitial velocity, and void fraction (Hu et al., 2024). This behaviour can be described by the following mass-balance equation:
+- [p288] Building on this understanding, this project aims to characterise breakthrough behaviour of the C3 granules in a packed column. The breakthrough data will then be fitted to a breakthrough model at three inlet concentrations (5%, 10%, 15% by volume) and three flow rates (50, 100, 150 ml/min), giving rise to a 3x3 parameter sweep. Specifically, our project’s objectives are:
 
-- [p835] $`δcδt+uδcδz+1-εεδqtδt=DLδ2cδz2`$
+- [p289] Design and implement a Standard Operating Procedure (SOP) for the packed-bed CO₂ adsorption setup to ensure consistent, reproducible breakthrough experiments.
 
-- [p836] where $`c`$ represents the adsorbate concentration in fluid phase, $`z`$ is the distance along the bed length, $`u`$ is the fluid velocity, $`t`$ denotes time, $`ε`$ is the void bed fraction, $`qt`$ is the concentration in an adsorbent particle component and the effect of axial dispersion is lumped into a single effective axial dispersion coefficient $`DL`$ .
+- [p290] Determine the breakthrough parameters of C3 granules experimentally across varying inlet CO₂ concentrations and flow rates.
 
-- [p837] The advection term $`uδcδz`$ and the axial dispersion term $`DLδ2cδz2`$ transport CO2 along the column while the sink term $`1-εεδqtδt`$ represents gas to solid phase transition via intraparticle resistances lumped as linear driving force (LDF). The axial dispersion coefficient can be estimated as $`DL=udp20εDmudp+12`$ where $`Dm`$ is the molecular diffusivity. The linear driving force can be represented as the linear approach of the instantaneous loading $`qt`$ to its equilibrium value $`qe`$ expressed as:
+- [p291] Review existing breakthrough adsorption models, identifying their governing assumptions and applicability to this system.
 
-[p838] $`δqtδt=ksqe-qt`$
+- [p292] Identify the operating conditions (CO2 concentration and flow rate) that yield the most CO₂ capture performance among those tested.
 
-- [p839] The initial and boundary conditions can be given via Danckwert’s boundary conditions for a dispersed plug flow, expressed as:
+- [p293] Problem statement. To evaluate the breakthrough parameters of a packed-bed CO2 adsorption column using C3 granules, and to develop and validate a predictive breakthrough model based on the collected experimental data.
 
-[p840] $`DLδcδt​z=0=-u​z=0ci​z=0--ci​z=0, δcδz​z=L=0`$
+### [p294] 2.3 Project Schedule
 
-[p841] where $`ci​z=0`$ is the feed composition for component $`i`$ and $`L`$ is the bed length.
+[p295] This section provides a detailed review of the project timeline.
 
-### [p842] 3.3 Adsorption Isotherms
+###### [p296] Table 1) Project Schedule
 
-- [p843] Adsorption depends on the concentration of the target molecule in the fluid and gas pressure in the bulk phase. Adsorption site heterogeneity combines the properties of the adsorbent at various amounts adsorbed, including surface area, pore volume, concentration of functional groups and pore-size distribution. The ‘heterogeneity’ of the adsorbent can be estimated by modelling the number of adsorption sites of the solid and their types (Kumar et al., 2021). Adsorption isotherms are graphs that indicate loading-pressure relationships in the $`x`$ - and $`y`$ -axis respectively. In the case of CO2 adsorption, the x-axis represents pressure of CO2 in gas phase (or the concentration of the species or partial pressure) while the y-axis represents CO2 loading on the sorbent (or the number of adsorbed species by the adsorbent) at equilibrium (the state where the rate of molecules attaching to the sorbent surface equals to the rate of molecules being released from the sorbent). A wide variety of models have been formulated to describe the adsorption isotherms observed experimentally. Some of the more common adsorption isotherms are described in the following sections. In practice, CO2 capacity of PEI-impregnated sorbents will not be able to reach its maximum theoretical limit due to the mass transfer resistances involved.
+[p297] Item
 
-#### [p844] 3.3.1 Langmuir Isotherm
+[p298] Wk1
 
-- [p845] Assuming that: (i) adsorption of molecules occur at a fixed number of well-defined localised sites; (ii) each site only accommodates one adsorbent molecule (monolayer adsorption); (iii) the surface of the adsorbent is homogeneous i.e. all sites are energetically equivalent and; (iv) there are no interactions between the neighboring sites and molecules already adsorbed (Ruthven, 1985).
+[p299] Wk2
 
-- [p846] The Langmuir isotherm relates the surface coverage, $`θ`$ , to pressure, $`P`$ , and temperature, $`T`$ :
+[p300] Wk3
 
-[p847] $`θ=KP1+KP`$
+[p301] Wk4
 
-- [p848] , where $`K=1p0e-ϵ/kT`$ is the rate constant of equilibrium. We observe that for $`KP≪1`$ , the model increases linearly. But as $`KP`$ increases (i.e pressure increases), the model converges to 1. Higher temperatures lead to slower asymptotic convergence. In the case where the amount adsorbed, $`q`$ , is much smaller than the maximum adsorption capacity, $`qs,`$ a linear equation following Henry’s is derived: $`θ=KP`$ .
+[p302] Wk5
 
-- [p849] Langmuir isotherm assumes a homogeneous (i.e. uniform) binding site distribution. Discrete models attempt to preserve model heterogeneity by assuming a discrete number of different adsorption sites (K. Vasanth, n.d.). However, different adsorbents have different numbers of adsorption sites with varying binding energy. Continuous distribution functions are considered an improvement to discrete models—considering the affinity spectrum which is a plot of the binding affinity against the number of adsorption sites. A Toth isotherm is hence used to model both a homogeneous and heterogeneous distribution of adsorption site affinities. The values of parameters of the Toth model can be found by nonlinear curve fitting method using sigma plot software (Benzaoui et al. 2017).
+[p303] Wk6
 
-#### [p850] 3.3.2 Toth Isotherm
+[p304] Wk7
 
-- [p851] In this work, as a case study, we used only the three-parameter Toth isotherms to describe adsorption on both homogeneous and heterogeneous surfaces. Mathematically, the Toth isotherm can predict the monolayer adsorption capacity of a homogeneous surface that will match with the surface area predicted by Langmuir isotherm. The Toth isotherm (1971) is given by:
+[p305] Wk8
 
-[p852] $`q=qskTp1+kTpt1t`$
+[p306] Wk9
 
-- [p853] , where $`kT`$ and $`t`$ are the Toth isotherm constants. $`kT`$ is related to the binding energy, $`qs`$ is the monolayer adsorption capacity.
+[p307] Wk10
 
-### [p854] 3.4 Adsorption breakthrough models
+[p308] Wk11
 
-- [p855] Traditional breakthrough models i.e. Bohart-Adams, Thomas, Yoon-Nelson are dissected and expressed as a single logistic function in three notations: $`kYN=kBAc0=kTc0; τ=a0xuc0=q0mvc0`$ . For the more general Clark model, when $`n≠2`$ , the dominant mass-transfer mechanism results in an asymmetric breakthrough curve. Thus, empirical breakthrough models like the Gudermannian and error functions (Hu et al., 2021) with the involvement of fractal-like kinetics i.e. $`kt=k0t-h`$ , where $`h`$ is the heterogeneity parameter—is needed to fit asymmetric breakthrough curves.
+[p309] Wk12
 
-#### [p856] 3.4.1 Bohart-Adams Model
+[p310] Wk13
 
-- [p857] Bohart-Adams and other models discussed below remain popular because it can be linearized, allowing unknown parameters to be determined via linear regression analysis. The Bohart-Adams model predicts a linear relationship between bed depth and breakthrough time. Interestingly, the form—also known as an incorrect “Adams-Bohart” model originates from a 1995 paper by Guibal et al. which provided no derivation—is expressed as (Hu et al., 2025):
+[p311] Wk14
 
-[p858] $`cc0=11+expKBAc0a0xuc0-t`$
+[p312] Wk15
 
-- [p859] However, the appropriate analytical solution for the adsorbate concentration at the column as a function of time is given as (Khim, 2019; Hu et al., 2024):
+[p313] Wk16
 
-[p860] $`cc0=expkBAc0texpkBAa0xu+expkBAc0t-1`$
+[p314] Who
 
-- [p861] Rewriting this into its linear form gives us (Khim, 2019):
+[p315] Project Brief & First Meetings
 
-[p862] $`lnc0c-1=lnexpkBAN0Lu-1 -kBAc0t`$
+[p333] Literature Review
 
-- [p863] As the rate of adsorption ( $`kBA)`$ becomes very large,
+[p351] SOP, BOM & Setup
 
-[p864] $`lnc0c-1=kBAN0Lu-kBAc0t`$
+[p369] Full 3x3 DOE Execution
 
-- [p865] Thus, $`kBA`$ can be evaluated by finding the slope of $`lnc0c-1`$ against $`t`$ , $`N0`$ from the y-intercept.
+[p387] Writing & Testing Code
 
-#### [p866] 3.4.2 Thomas Model
+[p405] Improving
 
-- [p867] The simplified solution is given as
+[p406] SOP
 
-[p868] $`lnc0c-1=kTc0q0mvc0-t`$
+[p424] Redo 3x3
 
-- [p869] , where it assumes Langmuir equilibrium (Hu et al., 2024). However, $`q0`$ and $`kT`$ are purely empirical parameters which can be estimated by fitting. Eq. () can be written as:
+[p425] DOE
 
-[p870] $`cc0=11+exp⁡(a-bt)`$
+[p443] Results & Analysis
 
-- [p871] , where $`a=kTq0MQ`$ and $`b=kTc0`$ . Since this is a logistic equation, Eqs. () and () will exhibit the same shape and error statistics as they are mathematically equivalent. The same applies to the Yoon-Nelson model as described below.
+[p461] Final
 
-#### [p872] 3.4.3 Yoon-Nelson Model
+[p462] Report
 
-- [p873] This model is derived from probability arguments about the column inlet. It assumes that the probability of adsorption rate increase is proportional to the probabilities of adsorption and breakthrough respectively. This can be written as:
+[p481] Table 2) Breakdown of Project Schedule
 
-[p874] $`cc0=11+exp⁡(a+bt)`$
+[p482] Item
 
-[p875] , where $`a=kYNτ, b=kYN`$ .
+[p483] Description
 
-#### [p876] 3.4.4 Mathematical equivalence of traditional breakthrough models
+[p485] Project Brief & First Meetings
 
-- [p877] We show that these are notational variances of a single logistic sigmoid.
+[p486] Discussion with Dr. Prapatsorn during First Project Briefing: scope changed from regeneration to adsorption in packed-bed column; Review of Mathematical Preliminaries from Prof. Erik Birghesson’s online lectures. Self-review on relevant literature.
 
-[p878] Theorem (BA-Thomas-YN equivalence). Define the logistic breakthrough curve
+[p487] Literature Review
 
-[p879] $`cc0=σkYNt-τ≔11+exp⁡(kYN(t-τ))`$
+[p488] Reviewed literature provided by Dr. Prapatsorn; Approval of timeline for project via use of Gantt Chart; Submission of biweekly journals with included literature, action items and future objectives; Review on these topics: CO2 capture material and technology, packed-bed adsorption and models, data analysis methods and mathematical modelling of adsorption process.
 
-- [p880] Thus, $`kYN=kBAc0=kTc0; τ=a0xuc0=q0mvc0`$ , where $`a0`$ is the Bohart-Adams volumetric capacity, $`q0`$ the Thomas equilibrium loading, $`m`$ the sorbent mass, $`v`$ the volumetric flow rate, and $`x`$ the bed length.
+[p489] SOP, BOM & Setup
 
-- [p881] Proof Bohart-Adams model is $`cc0=1+expkBAa0x/u-c0t-1`$ . Factoring $`c0`$ from the exponent gives $`cc0=σkBAc0t-a0xuc0`$ . The Thomas model is $`cc0=1+expkTq0m/v-c0t-1`$ , and the same factoring gives $`c/c0=σkTc0(t-q0m/(vc0))`$ . The YN model is $`σkYNt-τ`$ by definition.
+[p490] Familiarization and setting up of rig; Wrote Bill of Materials (BOM), Standard of Procedure (SOP), Design of Experiment (DOE) and results;
 
-- [p882] Remark. Three sigmoidal functions appear in the breakthrough literature (Hu et al., 2024): the logistic $`σx=1+e-x-1,`$ the error function: $`erfx`$ and the Gudermannian function $`gd(x)=2arctantanh(x/2).`$ Before normalization, these have ranges $`0,1`$ , $`-1,1`$ and $`-π2,π2`$ respectively. After affine scaling,
+[p491] Full 3x3 DOE Execution
 
-[p883] $`σ=σx, erf (x)=12(erfx+1), gd (x)=1πgdx+12`$
+[p492] Conducted nine experiment runs using our DOE twice—with process improvements in the second cycle; extracted data from GasLab files.
 
-- [p884] all three map $`R→0,1`$ with $`f0=0.5`$ , and they are visually indistinguishable in the central transient region $`X≤2`$ . Anchoring an experimental breakthrough curve $`ctc0`$ fixes both the location $`τ`$ and (after slope fitting) the rate constant; the residual sup-norm distance between any two of $`σ*,E*,G*`$ i.e.:
+[p493] Writing & Testing Code
 
-- [p885] $`maxf,g∈σ*,E*,G*fX-gX<0.04`$ 
-on the central region $`X≤0.5`$ . Consequently, if observational noise has standard deviation $`ε≥0.04`$ —typical of NDIR sensors on packed-bed rigs—then no statistically meaningful distinction between the three kernels is possible on the experimentally accessible breakthrough region (ChatGPT, n.d.; $`§8.2`$ ).
+[p494] Converting reviewed literature on breakthrough models into Python; the use of AI has been declared in §9.2.
 
-#### [p886] 3.4.5 Clark Model
+[p495] Improving SOP
 
-- [p887] The Clark (1987) model introduces asymmetry through an additional exponent $`n≥1`$ :
+[p496] Improvements that could be made were included in our second iteration of the SOP; this included optimizing the duration where the C3 sorbent was exposed to ambient environment, purging the line, the empty column and the packed-bed column (previous version in §A.??) and using new C3 granules provided by the lab.
 
-[p888] $`cc0=11+Ae-rt1/(n-1)`$
+[p497] Redo 3x3 DOE
 
-- [p889] At $`n=2`$ , this reduces to the logistic Eq. (??). For $`n>2`$ , the curve is left-asymmetric i.e. sharper rise, longer tail; for $`1<n<2`$ it is right-asymmetric. The Clark model is therefore a minimal one-parameter extension of the unified Bohart-Adams, Thomas, Yoon-Nelson family that can encode mass transfer asymmetry.
+[p498] Conducted nine experiment runs using our DOE—improved breakthrough capacity and breakthrough time; extracted data from GasLab files.
 
-#### [p890] 3.4.6 Gudermannian and Error functions
+[p499] Results & Analysis
 
-- [p891] In Hu et al. (2024), the normalized Gudermannian and error functions—when the range of the Gudermannian and error function is [0,1]—can define asymmetric breakthrough curves by employing two lumped parameters: $`κ`$ and $`τ`$ as majorly empirical fitting parameters, where $`κ`$ denotes the shape of the breakthrough and $`τ`$ denotes its location. The models are expressed as (Hu et al., 2024):
+[p500] Found that breakthrough curve was affected by flow rate, initial concentration and bed height—relating to the amount of sorbent in the packed column.
 
-- [p892] $`cc0=121+2πarctan(sinh[kt-τ])`$
+[p501] Final Report
 
-- [p893] $`cc0=121+erf[k(t-τ)]`$
+## [p504] 3 Literature review
 
-#### [p894] 3.4.7 Weibull and Avrami Models
+### [p505] Breakthrough model typesBreakthrough model typesApplication scopeApplication scopeAdsorption principlesAdsorption principles3.1 Overview
 
-- [p895] Weibull and Avrami models are probability distribution functions with floating inflection points. Kimani (2023) demonstrated that the Weibull function
+[p506] Breakthrough model types
 
-- [p896] $`cc0=1-exp-ta5b5 `$
+[p507] Breakthrough model types
 
-- [p897] outperformed normal and Gompertz functions (Adj R2 > 0.97) due to its flexible inflexion point that shifts towards the origin for asymmetric data. Hu et al., (2021) shows that the Weibull and Avrami models are nearly mathematically equivalent when describing breakthrough curves, explaining their near-identical performance.
+[p508] Application scope
 
-### [p898] 3.5 Review of Prior Solutions
+[p509] Application scope
 
-- [p899] A range of CO₂ capture technologies has been developed, including liquid solvent absorption, adsorption over solid sorbents, membrane separation, cryogenic separation, direct air capture (DAC), and hybrid systems. However, this experiment looks at specifically adsorption in a packed-bed setting.
+[p510] Adsorption principles
 
-- [p900] Adsorption-based capture is especially relevant to this project because it uses solid sorbents in packed-bed systems and is compatible with dilute CO₂ streams (Schindler, n.d.; Stampi-Bombelli et al., 2024). Prior work has shown that PEI-based silica C3 sorbents perform well for CO₂ capture, particularly in applications where adsorption capacity, regenerability, and process stability are important (Jin et al., n.d.; Karimi et al., 2023). These findings support the use of PEI@SiO₂ C3 granules as the sorbent material in our project.
+[p511] Adsorption principles
 
-#### [p901] 3.5.1 Classical Symmetric Models
+[p512] Experimental dataExperimental data
 
-- [p902] The Bohart-Adams, Thomas, and Yoon-Nelson models are mathematically equivalent forms of the logistic function, representing a centrosymmetric S-shaped curve with an inflection point fixed at $`c/c0`$ = 0.5 (Hu et al., 2019). These models perform well when the breakthrough curve is symmetric but fail for asymmetric (tailed) data characteristic of diffusion-limited adsorption on heterogeneous surfaces (Hu et al., 2019). Hu et al., 2019 demonstrated that for norfloxacin adsorption on granular activated carbon, the logistic model yielded Adj. R² = 0.9879, significantly lower than fractal-modified versions.
+[p513] Experimental data
 
-#### [p903] 3.5.2 Models for Asymmetric Breakthrough Curves
+[p514] Experimental data
 
-- [p904] Fractal-like models introduce a time-dependent rate coefficient ( $`k = k₀·t⁻ʰ`$ ) derived from fractal kinetics, which accounts for the heterogeneous, diffusion-limited nature of adsorption on real surfaces (Hu et al., 2019). The fractal-like Bohart-Adams (or equivalently, fractal-like Thomas and fractal-like Yoon-Nelson) model includes an additional parameter $`h`$ (fractal exponent). When $`h`$ = 0, the model reduces to the classical logistic function; as $`h `$ deviates from zero, the breakthrough curve becomes increasingly asymmetric (Hu et al., 2019). Kimani (2023) showed that the fractal-like Bohart-Adams model outperformed all others in fitting tailed breakthrough data from bisphenol-A adsorption on polyaniline (Adj. R2 > 0.99, lowest BIC values). The model accurately estimated breakthrough times (13, 26, and 90 min for 6, 9, and 12 mm bed depths) and a critical bed depth of 5.65 mm (Kimani, 2023).
+[p517] Breakthrough curve $`c/c0`$ vs. $`t`$ Breakthrough curve $`c/c0`$ vs. $`t`$ Breakthrough modelsBreakthrough modelsLinear fittingLinear fittingNonlinear fittingNonlinear fitting
 
-#### [p905] 3.5.3 Implication for Packed-Bed CO2 Capture
+[p518] Breakthrough curve
 
-- [p906] For the packed-bed adsorption of CO2 using C3 granules, the selection of an appropriate breakthrough model is crucial for accurate process design. The fractal-like models, particularly, fractal-Gudermannian and fractal-ERF are expected to provide superior fits when the breakthrough data exhibit asymmetry due to: (i) heterogeneous sorbent surface chemistry (amine-functionalised sites varying reactivity); (ii) diffusion limitations within the composite granule structure and; (ii) non-linear adsorption isotherms typical of CO2 chemisorption. The high Adj. R2 values (>0.998) reported for these models (Kimani, 2023; Hu et al., 2021; Hu et al., 2019) suggest they are well-suited to the diffusion-limited heterogeneous-surface systems characteristic of practical CO2 capture adsorbents.
+[p519] $`c/c0`$ vs. $`t`$
 
-### [p907] 3.6 Design or Research Procedure
+[p521] Breakthrough curve
 
-- [p908] The research procedure begins with a review of CO₂ capture technologies and adsorption principles, followed by the assembly and calibration of the experimental rig. Once the setup is complete, the SOP is used to standardise the operation of the system and ensure consistent testing conditions. A 3 × 3 DOE is then used to study the combined effects of CO₂ concentration and flow rate on adsorption breakthrough behaviour.
+[p522] $`c/c0`$ vs. $`t`$
 
-- [p909] The experimental data will be processed using Python to fit breakthrough curves to industry-standard models. These results will be used to assess the influence of operating conditions on adsorption performance and to validate the suitability of the PEI@SiO₂ sorbent under the tested conditions. The project requires knowledge of adsorption theory, laboratory operation, data analysis, and numerical modelling, and these skills are being developed through literature study, supervision, and trial runs of the experimental setup.
+[p524] Breakthrough models
 
-## [p910] 4 Fitting performance and analysis
+[p525] Breakthrough models
 
-## [p912] 5 Mathematical Modelling
+[p526] Linear fitting
 
-- [p913] In DAC processes, a trace level of CO2 adsorbed from an inert gas carrier such that a single component model applies in dry conditions. The mass transfer between gas and solid phases includes three resistances (external film, macropore and micropore) and can be depicted by a linear driving force (LDF) model, where a lumped uptake rate constant is used to take various resistances into account. The LDF model is conceptually simple, computationally efficient and therefore widely used in literature.
+[p527] Linear fitting
 
-### [p914] 5.1 Minimal kinetic model
+[p528] Nonlinear fitting
 
-- [p915] A minimal kinetic model is derived and proposed to validate and predict CO2 adsorption processes in a packed bed column. The model simply describes the adsorption breakthrough curve using two process parameters: gas flow rate and concentration. The following assumptions were made:
+[p529] Nonlinear fitting
 
-- [p916] A1. Plug flow, constant superficial gas velocity, no axial dispersion
+[p532] Data fitting (parameter estimation)Data fitting (parameter estimation)
 
-- [p917] A2. Isotherm model i.e. heat transfer has an insignificant effect on the breakthrough curve
+[p533] Data fitting (parameter estimation)
 
-- [p918] A3. 1-D model i.e. gas concentration gradients only exist in the axial direction
+[p534] Data fitting (parameter estimation)
 
-- [p919] A4. Gas phase behaves as ideal gas
+[p538] Error functionsError functions
 
-- [p920] A5. Negligible pressure drop due to short column length and relatively low flow rate
+[p539] Error functions
 
-- [p921] A6. Only CO2 adsorption is considered (others are treated as non-adsorbing components)
+[p540] Error functions
 
-- [p922] A7. LDF adsorption kinetics model
+[p541] Mathematical modellingMathematical modelling
 
-- [p923] Consider a 1-D isothermal plug flow model given as
+[p542] Mathematical modelling
 
-[p924] $`∂c∂t=-usε∂c∂z-ρbε∂q∂t (1)`$
+[p543] Mathematical modelling
 
-- [p925] where $`us`$ is the superficial gas velocity, $`ε`$ is the bed voidage and $`ρb`$ is the bulk density of the packed bed.
+[p544] Plot of residualsPlot of residuals
 
-- [p926] The LDF model used to describe the adsorption kinetics written as
+[p545] Plot of residuals
 
-[p927] $`∂q∂t=kqe-q (2)`$
+[p546] Plot of residuals
 
-- [p928] where $`k`$ ( $`s-1`$ ) is the uptake rate constant, $`qe`$ (mol/kg) is the equilibrium adsorption concentration.
+[p550] Optimal modelOptimal modelLegend:
 
-- [p929] Assuming the surface has identical elementary adsorption sites to host a single adsorbed molecule, a Langmuir isotherm was used to describe the adsorbed quantity $`qe`$ as a function of bulk gas pressure:
+[p551] Optimal model
 
-[p930] $`qe=qmbPCO21+bPCO2 (3)`$
+[p552] Optimal model
 
-- [p931] where $`qm`$ is the theoretical maximum CO2 concentration, $`PCO2`$ is given by the ideal gas law:
+[p553] Decision nodesInput nodesDecision nodesInput nodes
 
-[p932] $`P=cRT (4)`$
+[p554] Decision nodes
 
-- [p933] where $`c`$ is the molar concentration in (mol/m3), $`R`$ is the universal gas constant and $`T`$ is the absolute temperature; and $`b(T)`$ is described by the van’t Hoff equation:
+[p555] Input nodes
 
-[p934] $`bT=b0exp-ΔHRT (5)`$
+[p556] Decision nodes
 
-- [p935] where $`-ΔH>0`$ is the heat of adsorption.
+[p557] Input nodes
 
-- [p936] The initial condition used were $`c=0,q=0`$ and $`T=T0`$ at $`t=0`$ , and boundary conditions were $`c=c0`$ and $`T=T0`$ at $`z=0`$ , $`∂c/∂z=0`$ and $`∂T/∂z=0`$ at $`z=L`$ .
+[p558] PredictionPrediction
 
-### [p937] 5.2 Parameter estimation strategy
+[p559] Prediction
 
-- [p938] Using our minimal kinetic model, we examined the effects of $`k`$ , $`us`$ , $`q`$ on the breakthrough curves at flue gas conditions. The parameters $`b,k`$ were determined using non-linear fitting methods to the experimental data.
+[p560] Prediction
 
-[p939] Table 1) Langmuir isotherm parameters for CO2.
+###### [p562] Fig. 2) Research methodology design for CO2 breakthrough adsorption
 
-[p940] Parameters
+- [p564] This section describes
 
-[p941] Values
+### [p565] 3.2 Adsorption process
 
-[p943] $`b`$
+- [p566] Adsorption is a surface phenomenon in which molecules from a gas or liquid phase accumulate on the surface of a solid material rather than penetrating its bulk structure. Physisorption, where gas molecules attach to the surface through weak van der Waals forces, is quickly reversible via regeneration but results in poor selectivity at low partial pressures as most physical sorbents lose most of their CO2 capacity in the presence of humidity because water competes for the same sites (Xu et al., 2024). Chemisorption forms covalent or ionic bonds with CO2 and is highly selective; amine-functionalised sorbents leverage this by impregnating amine groups that react with CO2 via two distinct mechanisms: (i) carbamate-ammonium ion pairs are formed under dry conditions and can hydrolyse to bicarbonate in the presence of water and (ii) polymer plasticisation induced chain mobility can enable CO2 to access the amine-sites that were previously inaccessible.
 
-[p944] ??
+- [p567] Amine-functionalised silica composites represent a major class of solid sorbents for CO₂ capture. These materials combine the high CO₂ affinity of amines with the large surface area and pore volume of porous silica supports. Shafeeyan et al. (2014) classify amine-silica composites into three categories based on preparation method: (i) physical impregnation of polymeric amines such as polyethylenimine (PEI) or tetraethylenepentamine (TEPA) into porous supports; (ii) chemical grafting of aminosilanes via covalent bonding to surface silanol groups; and (iii) in-situ polymerisation of amine-containing monomers to create hyperbranched aminosilicas (Shafeeyan et al., 2014). That review also emphasises that mesoporous silica supports such as MCM-41, SBA-15, and KIT-6 have been widely studied, with textural properties (particularly pore diameter and pore volume) playing a critical role in determining CO₂ capture performance at a given amine loading.
 
-- [p945] Table 2) shows a list of parameters used and their values for the packed-bed adsorption experiments.
+- [p568] In particular, PEI-fumed structured sorbents exhibits two distinct classes of amine sites: (i) accessible surface amine sites at the PEI-gas interface, and (ii) bulk amine-layer sites buried within the PEI polymer matrix, which require diffusion through the viscous polymer before CO₂ can react (Stampi-Bombelli et al., 2024). This heterogeneity produces the characteristic sharp initial breakthrough followed by a prolonged tail observed experimentally in amine-functionalised sorbents, which a simple pseudo-first-order (PFO) model cannot capture. This resulted in extensive research into adsorption modelling, particularly in packed-bed columns, which is one of the simplest configurations for studying breakthrough adsorption behaviour.
 
-[p946] Table 2) The basic parameters for packed-bed adsorption.
+### [p569] $`x`$ $`x`$ 3.4 Packed-bed adsorption and breakthrough behaviour
 
-[p947] Parameter
+[p570] $`x`$
 
-[p948] Value
+[p571] $`x`$
 
-[p949] Units
+[p573] $`cin`$ $`uin`$ $`cin`$ $`uin`$
 
-[p951] Inlet diameter
+[p574] $`cin`$
 
-[p952] 0.85
+[p575] $`uin`$
 
-[p953] cm
+[p576] $`cin`$
 
-[p954] Height of packed-bed
+[p577] $`uin`$
 
-[p955] 21.0 – 21.5 (per run)
+###### [p578] Fig. 3) Packed-bed configuration. Influent gas flows axially towards the outlet along the $`x`$ -axis.
 
-[p956] cm
+- [p579] $`dp`$ $`dp`$
 
-[p957] Volume of packing
+[p587] $`dp`$
 
-[p958] 11.92
+[p596] $`dp`$
 
-[p959] cm3
+###### [p598] Fig. 4) Diagram of spherical C3 granule of mean diameter $`dp`$
 
-[p960] Inlet velocity
+- [p599] Packed beds filled with pellets have long been the preferred design for adsorption processes due to their ease of processing, costs, flow distributions, and ease to handle. However, packed bed pressure drop primarily depends on the gas velocity and pellet size. Moreover, the increase in pressure drop leads to excessive power consumption. The system under consideration as shown in Fig. 3) is a cylindrical packed-bed column of length $`L`$ and internal radius $`R`$ , the bed is filled with spherical or near-spherical C3 granules of mean diameter $`dp`$ as shown in Fig. 4). In Fig. 3), a gas mixture of CO₂ (mole fraction $`cin`$ ) in N₂ enters the column at superficial velocity $`uin`$ .
 
-[p961] 1.47 – 4.41
+[p600] *(1 embedded image)*
 
-[p962] cm $`∙`$ s-1
+###### [p601] Fig. 5) Schematic diagram of MTZ traveling through a fixed-bed column.
 
-[p963] Volume flow rate
+- [p602] In a fixed-bed column, fresh gas enters one end and pushes a sharp adsorption front, called the mass transfer zone (MTZ) progressively towards the outlet. In Fig. 5), the inlet CO₂ concentration (mole fraction $`C0`$ ) flows through the packed bed at a volumetric flow rate of $`v0`$ . As the CO₂ gas gets adsorbed by the adsorbent material, the adsorption zone is indicated by the red-shaded region travelling axially through the columns at a speed much slower than the influent gas velocity.
 
-[p964] 0.3 – 0.9
+[p603] *(1 embedded image)*
 
-[p965] m3 $`∙`$ h-1
+###### [p604] Fig. 6) Breakthrough curve diagram through a fixed-bed column
 
-[p966] Angle of bed
+- [p605] Hence, in Fig. 5) the bed divides into three zones during adsorption: saturation zone, mass-transfer zone, and adsorption zone. In the saturation zone, the adsorbent contaminant reaches dynamic equilibrium, where the amount absorbed, $`q0`$ , is in equilibrium to the influent concentration, $`c0`$ . Thus, the loading capacity of the adsorbent is exhausted, and no mass transfer takes place. Adsorption only occurs in the MTZ, in which the adsorbent accumulates molecules continuously from the feed, and the amount adsorbed in the bed increases from zero to $`q0`$ . The shape and length of the MTZ depends on the rate of adsorption, $`κ`$ , and the shape of the isotherm curve. Breakthrough is registered when the MTZ first reaches the outlet, and the resulting S-shaped breakthrough curve is a mirror of the MTZ whose sharpness is set jointly by the rate of adsorption and the curvature of the equilibrium isotherm (Hu et al., 2024). With the assumptions: (i) plug flow in the axial direction; (ii) negligible radial dispersion; (ii) a linear driving force for solid adsorption; (iii) uniformly spherical adsorbent particles and (iv) constant geometric dimensions, interstitial velocity, and void fraction (Hu et al., 2024). This behaviour can be described by the following mass-balance equation:
 
-[p967] 90
+- [p606] $`∂c∂t+u∂c∂z+1-εε∂qt∂t=DL∂2c∂z2`$
 
-[p968] Deg
+[p607] where $`c`$ represents the adsorbate concentration in fluid phase, $`z`$ is the distance along the bed length, $`u`$ is the fluid velocity, $`t`$ denotes time, $`ε`$ is the void bed fraction, $`qt`$ is the concentration in an adsorbent particle component and the effect of axial dispersion is lumped into a single effective axial dispersion coefficient $`DL`$ .
 
-[p969] Bed void fraction $`ε`$
+- [p608] The advection term $`u∂c∂z`$ and the axial dispersion term $`DL∂2c∂z2`$ transport CO2 along the column while the sink term $`1-εε∂qt∂t`$ represents gas to solid phase transition via intraparticle resistances lumped as linear driving force (LDF). The axial dispersion coefficient can be estimated as $`DL=udp20εDmudp+12`$ where $`Dm`$ is the molecular diffusivity is. The linear driving force can be represented as the linear approach of the instantaneous loading $`qt`$ to its equilibrium value $`qe`$ expressed as:
 
-[p970] ??
+[p609] $`∂qt∂t=ksqe-qt`$
 
-[p971] -
+- [p610] The initial and boundary conditions can be given via Danckwert’s boundary conditions for a dispersed plug flow, expressed as:
 
-[p972] Adsorbent bulk density $`ρb`$
+[p611] $`DL∂c∂z​z=0=-u​z=0ci​z=0--ci​z=0, ∂c∂z​z=L=0`$
 
-[p973] ??
+[p612] where $`ci​z=0`$ is the feed composition for component $`i`$ and $`L`$ is the bed length.
 
-[p974] g $`∙`$ cm-3
+### [p613] 3.5 Adsorption Isotherms
 
-[p975] Superficial velocity $`us`$
+- [p614] Adsorption depends on the concentration of the target molecule in the fluid and gas pressure in the bulk phase. Adsorption site heterogeneity combines the properties of the adsorbent at various amounts adsorbed, including surface area, pore volume, concentration of functional groups and pore-size distribution. The ‘heterogeneity’ of the adsorbent can be estimated by modelling the number of adsorption sites of the solid and their types. Adsorption isotherms are graphs that indicate loading-pressure relationships in the $`x`$ - and $`y`$ -axis, respectively. In the case of CO2 adsorption, the x-axis represents pressure of CO2 in gas phase (or the concentration of the species or partial pressure) while the y-axis represents CO2 loading on the sorbent (or the number of adsorbed species by the adsorbent) at equilibrium (the state where the rate of molecules attaching to the sorbent surface equals to the rate of molecules being released from the sorbent). A wide variety of models have been formulated to describe the adsorption isotherms observed experimentally. Some of the more common adsorption isotherms are described in the following sections. In practice, CO2 capacity of PEI-impregnated sorbents will not be able to reach its maximum theoretical limit due to the mass transfer resistances involved.
 
-[p976] ??
+#### [p615] 3.5.1 Langmuir Isotherm
 
-[p977] cm $`∙`$ s-1
+- [p616] Following Langmuir (1918), and assuming that: (i) adsorption of molecules occur at a fixed number of well-defined localised sites; (ii) each site only accommodates one adsorbent molecule (monolayer adsorption); (iii) the surface of the adsorbent is homogeneous i.e. all sites are energetically equivalent and (iv) there are no interactions between the neighboring sites and molecules already adsorbed (Ruthven, 1984).
 
-[p978] CO2 uptake rate constant $`k`$
+- [p617] The Langmuir isotherm relates the surface coverage, $`θ`$ , to pressure, $`P`$ , and temperature, $`T`$ :
 
-[p979] ??
+[p618] $`θ=KP1+KP`$
 
-[p980] s-1
+[p619] where $`K=1p0e-ϵ/(kBT)`$ is the rate constant of equilibrium. We observe that for $`KP≪1`$ , the model increases linearly. But as $`KP`$ increases (i.e pressure increases), the model converges to 1. Higher temperatures lead to slower asymptotic convergence. In the case where the amount adsorbed, $`q`$ , is much smaller than the maximum adsorption capacity, $`qs,`$ a linear equation following Henry’s is derived: $`θ=KP`$ .
 
-[p981] CO2 feed concentration $`c10`$
+- [p620] Langmuir isotherm assumes a homogeneous (i.e., uniform) binding site distribution. Discrete models attempt to preserve model heterogeneity by assuming a discrete number of different adsorption sites. However, different adsorbents have different numbers of adsorption sites with varying binding energy. Continuous distribution functions are considered an improvement to discrete models—considering the affinity spectrum which is a plot of the binding affinity against the number of adsorption sites. A Toth isotherm is hence used to model both a homogeneous and heterogeneous distribution of adsorption site affinities. The values of parameters of the Toth model can be found by nonlinear curve fitting method using sigma plot software.
 
-[p982] ??
+#### [p621] 3.5.2 Toth Isotherm
 
-[p983] mmol $`∙`$ cm-3
+- [p622] In this work, as a case study, we used only the three-parameter Toth isotherms to describe adsorption on both homogeneous and heterogeneous surfaces. Mathematically, the Toth isotherm can predict the monolayer adsorption capacity of a homogeneous surface that will match with the surface area predicted by Langmuir isotherm. The Toth (1971) isotherm is given by:
 
-### [p985] 5.3 Limitations of the minimal kinetic model
+[p623] $`q=qsbTp1+bTpt1t`$
 
-- [p986] - Classical closed-form solutions that assume first-order or Langmuir-type kinetics and do not capture the specific stoichiometry of the amine–CO2 reaction, the second-order dependence on free amine sites, or the role of humidity. (Alba et al., 2026).
+- [p624] where $`bT`$ and $`t`$ are the Toth isotherm constants. $`bT`$ is related to the binding energy, $`qs`$ is the monolayer adsorption capacity.
 
-- [p987] - Langmuir equation parameters have the ability to only compare between different adsorbents but fail with the explanation of the reaction mechanism (Al-Ghouti et al., 2020).
+### [p625] 3.6 Adsorption breakthrough models
 
-## [p989] 6. Standard Operating Procedure for CO₂ Adsorption Experiment
+- [p626] Traditional breakthrough models i.e., Bohart-Adams, Thomas, Yoon-Nelson are dissected (Shafeeyan et al., 2014) and expressed as a single logistic function in three notations: $`kYN=kBAc0=kThc0; τ=a0xuc0=q0mvc0`$ . For the more general Clark model, when $`n≠2`$ , the dominant mass-transfer mechanism results in an asymmetric breakthrough curve. Thus, empirical breakthrough models like the Gudermannian and error functions (Hu et al., 2021) with the involvement of fractal-like kinetics i.e., $`kt=k0t-h`$ , where $`h`$ is the heterogeneity parameter—is needed to fit asymmetric breakthrough curves.
 
-- [p990] This SOP describes the step-by-step method for operating the SUTD fixed-bed experimental setup to conduct CO₂ adsorption breakthrough experiments using C3 (PEI@SiO₂) granules as the solid sorbent. The aim is to observe the behaviour of the system under initial and boundary conditions across repeated experimental runs and obtain breakthrough data for subsequent breakthrough parameters estimation and modelling. Fig. 7. shows the labelled valves (1, 2, 3, 4, and 5). Fig. 8. shows the process flow diagram of the CO2 adsorption experiment in packed-bed column.
+#### [p627] 3.6.1 Bohart-Adams Model
 
-[p991] *(1 embedded image)*
+- [p628] The Bohart-Adams model (Bohart & Adams, 1920), and other models discussed below, remain popular because they can be linearised, allowing unknown parameters to be determined via linear regression analysis (Chu, 2020). The Bohart-Adams model predicts a linear relationship between bed depth and breakthrough time, and is expressed as:
 
-- [p992] Fig. 7) labelled valves and apparatus for SUTD CO2 Adsorption experiments
+[p629] $`cc0=11+expKBAc0a0xuc0-t`$
 
-- [p993] X%
-CO2 (v/v)CO2 concentrationGas stream temperatureGas stream pressureGas stream flow ratePEI@SiO2 granules bedHeat for regenerationTo purge column before start adsorptionX%
-CO2 (v/v)CO2 concentrationGas stream temperatureGas stream pressureGas stream flow ratePEI@SiO2 granules bedHeat for regenerationTo purge column before start adsorption
+- [p630] However, the appropriate analytical solution for the adsorbate concentration at the column as a function of time is given as (Chu, 2020; Hu et al., 2024):
 
-[p994] X%
-CO2 (v/v)
+[p631] $`cc0=expkBAc0texpkBAa0xu+expkBAc0t-1`$
 
-[p995] CO2 concentration
+[p632] Rewriting this into its linear form gives us (Chu, 2020):
 
-[p996] Gas stream temperature
+[p633] $`lnc0c-1=lnexpkBAN0Lu-1 -kBAc0t`$
 
-[p997] Gas stream pressure
+[p634] As the rate of adsorption ( $`kBA)`$ becomes very large,
 
-[p998] Gas stream flow rate
+[p635] $`lnc0c-1=kBAN0Lu-kBAc0t`$
 
-[p999] PEI@SiO2 granules bed
+[p636] Thus, $`kBA`$ can be evaluated by finding the slope of $`lnc0c-1`$ against $`t`$ , $`N0`$ from the y-intercept.
 
-[p1000] Heat for regeneration
+#### [p637] 3.6.2 Thomas Model
 
-[p1001] To purge column before start adsorption
+- [p638] The Thomas (1944) model's simplified solution is given as
 
-[p1002] X%
-CO2 (v/v)
+[p639] $`lnc0c-1=kThc0q0mvc0-t`$
 
-[p1003] CO2 concentration
+[p640] where it assumes Langmuir equilibrium (Hu et al., 2024). However, $`q0`$ and $`kTh`$ are purely empirical parameters which can be estimated by fitting. This can be rewritten as:
 
-[p1004] Gas stream temperature
+[p641] $`cc0=11+exp⁡(a-bt)`$
 
-[p1005] Gas stream pressure
+[p642] where $`a=kThq0MQ`$ and $`b=kThc0`$ . Since this is a logistic equation, The two equations will exhibit the same shape and error statistics as they are mathematically equivalent. The same applies to the Yoon-Nelson model as described below.
 
-[p1006] Gas stream flow rate
+#### [p643] 3.6.3 Yoon-Nelson Model
 
-[p1007] PEI@SiO2 granules bed
+- [p644] This model (Yoon & Nelson, 1984) is derived from probability arguments about the column inlet. It assumes that the probability of adsorption rate increase is proportional to the probabilities of adsorption and breakthrough, respectively. This can be written as:
 
-[p1008] Heat for regeneration
+[p645] $`cc0=11+exp⁡(a+bt)`$
 
-[p1009] To purge column before start adsorption
+[p646] where $`a=kYNτ, b=kYN`$ .
 
-- [p1010] Fig. 8) labelled process flow diagram of CO2 adsorption in fixed-bed column
+#### [p647] 3.6.4 Mathematical equivalence of traditional breakthrough models
 
-### [p1011] 4.1 Apparatus and Instrumentation
+- [p648] We show that these are notational variances of a single logistic sigmoid, independently confirming the equivalence established by Hu et al. (2020) and Chu (2020).
 
-- [p1012] The apparatus comprises a gas-feeding section, an adsorption column and a gas analysis section at the outlet, as described below.
+[p649] Theorem (BA-Thomas-YN equivalence). Define the logistic breakthrough curve.
 
-#### [p1013] 4.1.1 Gas Feeding Section
+[p650] $`cc0=σkYNt-τ≔11+exp⁡(kYN(t-τ))`$
 
-- [p1014] Two compressed gas cylinders with pure CO2 and pure N2 is fitted with a dedicated pressure regulator and a manual needle valve. Three mass flow controllers (MFCs) regulate the volumetric flow rates throughout the experiment:
+- [p651] Thus, $`kYN=kBAc0=kThc0; τ=a0xuc0=q0mvc0`$ , where $`a0`$ is the Bohart-Adams volumetric capacity, $`q0`$ the Thomas equilibrium loading, $`m`$ the sorbent mass, $`v`$ the volumetric flow rate, and $`x`$ the bed length.
 
-- [p1015] MFC-A (top position): controls the N₂ flow used exclusively for the pre-adsorption column purge and for the regeneration purge sweep.
+- [p652] Proof Bohart-Adams model is $`cc0=1+expkBAa0x/u-c0t-1`$ . Factoring $`c0`$ from the exponent gives $`cc0=σkBAc0t-a0xuc0`$ . The Thomas model is $`cc0=1+expkThq0m/v-c0t-1`$ , and the same factoring gives $`c/c0=σkThc0(t-q0m/(vc0))`$ . The YN model is $`σkYNt-τ`$ by definition.
 
-- [p1016] MFC-B (middle position): controls the N₂ flow during the adsorption step, contributing to the binary N₂/CO₂ feed mixture.
+- [p653] Remark. Three sigmoidal functions appear in the breakthrough literature (Hu et al., 2024): the logistic $`σx=1+e-x-1,`$ the error function: $`erfx`$ and the Gudermannian function $`gd(x)=2arctantanh(x/2).`$ Before normalization, these have ranges $`0,1`$ , $`-1,1`$ and $`-π2,π2`$ respectively. After affine scaling,
 
-- [p1017] MFC-C (lower position): controls the CO₂ flow during the adsorption step; blended with the N₂ stream from MFC-B to produce a feed gas of composition X% CO₂ (v/v), where X is a pre-specified experimental variable.
+[p654] $`σ=σx, erf (x)=12(erfx+1), gd (x)=1πgdx+12`$
 
-- [p1018] The mixed gas stream is produced by combining the outputs of MFC-B and MFC-C at a T-junction downstream of both controllers, prior to entry into the column inlet.
+- [p655] all three map $`R→0,1`$ with $`f0=0.5`$ , and they are visually indistinguishable, uniformly over all X once the rate constant of each kernel is matched to the others' slope at the inflection point (as any least-squares fit does automatically) -- see below. On the raw, unmatched argument they are not close (the largest pairwise gap reaches 0.19); it is the fit, not the functional form, which makes them converge $`X≤2`$ . Anchoring an experimental breakthrough curve $`ctc0`$ fixes both the location $`τ`$ and (after slope fitting) the rate constant; the residual sup-norm distance between any two of $`σ*,E*,G*`$ i.e.:
 
-#### [p1019] 4.1.2 Adsorption Column
+- [p656] $`maxf,g∈σ*,E*,G*fX-gX<0.031`$ 
+uniformly over the entire real line, with the global worst case ≈ 0.031 attained near |X| ≈ 2.7 (verified numerically from the model definitions used throughout this report — logistic, error-function and Gudermannian kernels evaluated after matching each kernel’s slope at its inflection point to the logistic reference slope, exactly as a nonlinear least-squares fit does automatically). Consequently, if observational noise has standard deviation ε ≥ 0.03 — consistent with the ±3–5 % of reading accuracy specified for the NDIR CO₂ sensors used in this rig's own gas-analysis train (GasLab, CU-1106 series specifications; §4.1.3) — then no statistically meaningful distinction between the three kernels is possible on the experimentally accessible breakthrough region.
 
-- [p1020] The fixed-bed column is oriented vertically with gas entering at the bottom inlet and exiting at the top outlet. The column, with an inside diameter of 8.2mm and length of 32cm is packed with PEI@SiO₂ granules.
+#### [p657] 3.6.5 Clark Model
 
-#### [p1021] 4.1.3 Gas Analysis and Monitoring
+- [p658] The Clark (1987) model introduces asymmetry through an additional exponent $`n≥1`$ :
 
-- [p1022] The outlet stream passes through four in-line instruments arranged in series: (i) CO₂ analyser (CO2), thermocouple (TI), pressure indicator (PI) and flow meter (FI). A dedicated purge outlet line at the top of the rig vents the N₂ stream used during column purge; this line is isolated from the analysis train during adsorption.
+[p659] $`cc0=11+Ae-rt1/(n-1)`$
 
-[p1023] The following lists the equipment needed for the experiment:
+- [p660] At $`n=2`$ , this reduces to the logistic form of §3.6.4. For $`n>2`$ , the curve is left-asymmetric i.e., sharper rise, longer tail; for $`1<n<2`$ it is right-asymmetric. The Clark model is therefore a minimal one-parameter extension of the unified Bohart-Adams, Thomas, Yoon-Nelson family that can encode mass transfer asymmetry.
 
-- [p1024] Compressed CO₂ gas cylinder with 100% CO2,
+#### [p661] 3.6.6 Gudermannian and Error functions
 
-- [p1025] Compressed N₂ gas cylinder with 100% N2,
+- [p662] In Hu et al. (2021), the normalized Gudermannian and error functions—when the range of the Gudermannian and error function is [0,1]—can define asymmetric breakthrough curves by employing two lumped parameters: $`κ`$ and $`τ`$ as majorly empirical fitting parameters, where $`κ`$ denotes the shape of the breakthrough and $`τ`$ denotes its location. The models are expressed as (Hu et al., 2021):
 
-- [p1026] Mass flow controllers (MFCs), connected to the Sensirion software on the laptop,
+- [p663] $`cc0=121+2πarctan(sinh[kt-τ])`$
 
-- [p1027] Three-way valves (Labelled 1, 2, 3, 4 and 5) and gas lines with tube inside diameter of 6mm,
+- [p664] $`cc0=121+erf[k(t-τ)]`$
 
-- [p1028] Adsorption column, inside diameter of 0.85cm and length 38.6 $`±`$ 0.1cm, packed with PEI@SiO₂ based C3 granules,
+#### [p665] 3.6.7 Weibull and Avrami Models
 
-- [p1029] CO₂ concentration sensor, connected to the Gaslab software on the laptop,
+- [p666] Weibull and Avrami models are probability distribution functions with floating inflection points. Both are probability distribution functions with floating inflection points, the Weibull function.
 
-- [p1030] Flow rate sensor, connected to the Sensirion software on the laptop,
+- [p667] $`cc0=1-exp-ta5b5 `$
 
-- [p1031] Laptop interfaces for sensor monitoring and data acquisition.
+- [p668] and log-Gompertz functions have floating inflection points that can shift towards the origin for asymmetric data, unlike the fixed-inflection normal and Gompertz forms. Kimani (2024) found that of the floating-inflection-point family, only log-Gompertz gave a satisfactory fit regardless of curve symmetry, and that log- and fractal-like Bohart–Adams models fit the curves perfectly regardless of symmetry—a result that independently corroborates the fractal-like models' advantage reported in §7 of this work. In this project's own fits, the Weibull (M14) and Avrami (M15) models return statistically indistinguishable goodness-of-fit in every run (identical R², RMSE and AICc to at least five significant figures — see §8), consistent with their known near-equivalence as stretched-exponential forms.
 
-#### [p1032] 4.1.4 Pre-Run Preparation
+#### [p669] 3.6.8 Fractal-Like Model Equations
 
-- [p1033] Before beginning the experiment, inspect all gas lines, valves, and fittings to ensure that the system is secure. Ensure that the MFCs, sensors, and data acquisition software are functioning correctly. Weigh approximately 8g of granules was used for the pre-run experiment. Ensure that the bed is packed consistently by tapping the column until no changed in packed height. Note down the sorbent mass and bed length.
+- [p670] Beyond the seven classical and asymmetric forms above, the remaining models fitted in the §8 comparison is introduced below, grouped by functional family. The fractal-like generalisation already discussed qualitatively in §3.7.2 applies to each kernel above by replacing its constant rate parameter with a time-dependent one, k = k₀t⁻ʰ. For the Clark model (§3.6.5), this gives the fractal Clark form (M03, Hu et al., 2024):
 
-### [p1034] 4.2 Experimental Procedure
+- [p671] $`C/C₀ = 11 + A0·exp-r1-h·t1-h1n-1`$
 
-#### [p1035] 4.2.1 Sensor Setup and Calibration
+[p672] which collapses to the Clark model (M02) when h = 0.
 
-[p1036] Connect all sensors to their respective laptop applications.
+- [p673] For the Gudermannian and error-function kernels (§3.6.6), the corresponding fractal forms are the fractal Gudermannian (M10) and fractal error-function (M11) models that win in four of the five original runs (§8; Hu et al., 2024):
 
-[p1037] Verify that the CO₂ concentration sensor is connected to the Gaslab interface.
+- [p674] $`CC0=121 + 2π·arctansinhk0t-ʰt-τ0`$ (M10)
 
-[p1038] Remember to adjust Auto-Logging to 5 Seconds for 6 Hours.
+[p675] $`CC0=121 +erfk0t-ʰt-τ0`$ (M11)
 
-[p1039] Verify that the flow sensor is connected to the Sensirion software.
+- [p676] The fractal Yoon-Nelson form applies the same substitution to the logistic kernel of §3.6.3 (Hu et al., 2024):
 
-[p1040] Flow 1 bar of N₂ using the MFC and tube connected to valve 3 through the mixed-gas secondary line by turning valve 2 upward, and valve 3 to the left. to establish a baseline before calibration.
+- [p677] $`CC0=11 +expkYN1-h·τ1-h- t1-h (M23)`$
 
-[p1041] This is done by using the N2 MFC and line connected to valve 3, and by turning valve 2 upward and valve 3 to the left. Valve 1 would be turned to the left, to allow the gas to flow from the mixed-gas secondary line into the sensors. Meanwhile, valves 4 and 5 is turned to the right to prevent pressure buildup in the tubes connected to the column.
+[p678] recovering the standard Yoon-Nelson model as $`h → 0`$ .
 
-[p1042] Allow the CO₂ sensor to stabilise at 0 ppm, or at a stable linear baseline, before continuing.
+#### [p679] 3.6.9 Wolborska and Dose-Response Models
 
-[p1043] Maintain this calibration period for approximately 15 minutes, or until the readings are stable to ensure that the line contain only N2 gas.
+- [p680] Wolborska (1989) modelled the early-breakthrough region with a linear-driving-force approximation that is exact only for $`C/C₀ ≤ 0.15`$ :
 
-[p1044] If the CO2 sensor does not calibrate to zero, but maintains a stable reading, can ‘configure to zero’ on the Gaslab application.
+- [p681] $`ln(C/C₀)`$ = $`(`$ slope $`)·t +`$ intercept (M05)
 
-#### [p1045] 4.2.3 Feed Gas Preparation
+[p682] fitted here only to that restricted early window, so its goodness-of-fit statistics in §8 are not on the same scale as the full-curve models. Hu et al. (2020) caution specifically against using Wolborska to describe the complete dynamic behaviour of a fixed-bed column, since the model “does not represent a S-shaped curve and thereby fails to describe the breakthrough curve completely”; it is retained here, on the early window only, for completeness rather than as a candidate in the model-selection comparison of §8.
 
-[p1046] Set the desired CO₂ and N₂ flow rates using the MFCs corresponding to desired inlet CO2 concentration.This is done by calculating the required MFC setpoints for MFC-B (N₂) and MFC-C (CO₂) such that their combined volumetric flow rates give the desired composition at the target total flow rate $`Qtotal`$ . The inlet CO₂ mole fraction $`yCO2`$ satisfies:
+- [p683] Yan et al. (2001) proposed a modified dose-response form parameterised directly on the half-breakthrough time t₅₀:
 
-[p1047] $`yCO2=QCO2QCO2+QN2=X100`$
+- [p684] $`CC0= 1 -11 + tt50a `$ (M04)
 
-[p1048] , where $`QCO2`$ and $`QN2`$ are the volumetric flow rates set on MFC-C and MFC-B, respectively.
+[p685] where a is an empirical shape exponent; it produces a logistic-like sigmoid but, unlike the Yoon-Nelson form (§3.6.3), is written directly in terms of the operationally meaningful t₅₀ rather than a rate constant.
 
-[p1049] Direct the mixed gas stream through the secondary bypass line.
+#### [p686] 3.6.10 Tanh, Log-Normal and Gompertz Models
 
-[p1050] This is done by turning valve 2 upward and valve 3 to the left. Valve 1 would be turned to the left, to allow the gas to flow from the mixed-gas secondary line into the sensors.
+- [p687] Hu et al. (2019) also fit a hyperbolic-tangent kernel,
 
-[p1051] Use the CO₂ concentration sensor to confirm that the influent concentration, and the flow rate sensor to ensure the amount of gas flowing through are correct before introducing the gas into the packed bed.
+- [p688] $`C/C₀ =121 +tanh(k(t-τ)`$ (M08)
 
-[p1052] Adjust the flow setting if necessary, until the target or desired inlet concentration is obtained and stable.
+[p689] algebraically close to the logistic and Gudermannian forms discussed in §3.6.4's Remark but with a different tail decay rate. Chu & Hashim (2023) instead track the long-time coordinate with a normal (Gaussian) cumulative distribution,
 
-#### [p1053] 4.2.2 Column Loading and Purge
+- [p690] $`CC0=121 +erflnt- ba2`$ (M09)
 
-[p1054] After calibration, disconnect the temporary tube arrangement.
+[p691] which—like the log-modified models of §3.6.13—gives the curve a floating inflection points in t while remaining symmetric in ln t. The Gompertz function,
 
-[p1055] Load the pre-weighed PEI@SiO₂ granules into the adsorption column (if not already done before the start of the calibration).
+- [p692] $`CC0=exp-expαG- βG·t`$ (M12)
 
-[p1056] Pack the sorbent uniformly by tapping the column to ensure consistent and distribute flow through the bed.
+[p693] and its log-time counterpart,
 
-[p1057] Perform an N₂ purge through the column to remove residual atmospheric gases and establish an initial condition without CO2 accumulation.
+- [p694] $`CC0=exp-expαG- βG·lnt`$ (M13)
 
-[p1058] This is done by using the purge line connected to valve 5. Turn valves 1 and 4 to the right, and valve 5 to the left, to allow the gas to flow through the column and into the sensors.
+[p695] are asymmetric growth-curve forms long used for breakthrough correlation (Chu, 2020). §3.6.7 already reports that log-Gompertz was the only floating-inflection-point model Kimani (2024) found to fit satisfactorily regardless of curve symmetry.
 
-[p1059] As during calibration, position the other valves to prevent pressure build-up within the experimental setup.
+#### [p696] 3.6.11 Klinkenberg and Dima Models
 
-[p1060] Continue purging until the system is stable, there is no more/very little CO2 in the column and now, the setup ready for the adsorption experiment.
+- [p697] Klinkenberg (1948) derived an asymptotic closed-form solution to the linear-driving-force mass-transfer equations in terms of two dimensionless groups—the bed Stanton number $`ζ = Kfaux-1`$ and a dimensionless time $`τK:`$
 
-#### [p1061] 4.2.4 CO2 Adsorption (Breakthrough Experiment) Run
+- [p698] $`C/C₀ =121 +erfτK- ζ+18τK+18ζ`$ (M16)
 
-[p1062] Once the inlet conditions have been verified, divert the mixed-gas stream from the bypass line into the adsorption column.
+[p699] The approximation is valid only for $`ζ≥2`$ and $`τK≥1`$ (Klinkenberg, 1948; Hu et al., 2024); §8 reports that these conditions were not met for this column, so M16 is fitted but excluded from the model-preference conclusions. Dima et al. (2024) solved the coupled mass-balance and linear-driving-force equations by Laplace transform and showed that, in the travelling-wave limit, the solution reduces to an error-function wave,
 
-[p1063] To do this, turn valve 5 to the right, valve 4 to the left, and valve 3 to the right in that order to prevent pressure buildup. Valve 1 needs to be to the right to ensure the gas through the column goes to the sensors. By this time, the N2 purge line can be switched off (by setting the gas flow to 0 lpm) or disconnected.
+- [p700] $`CC0= ½1 +erfvd·t - x2·σa`$ (M17)
 
-[p1064] Indicate the time when the valves are turned (specifically valve 3) as the experiment start time (t = 0 s).
+[p701] consistent with the R-H shock and travelling-wave analysis referenced in the project schedule (Table 1) and developed in mechanistic-model.md §D.
 
-[p1065] Monitor the outlet CO₂ concentration continuously throughout the run with 5 s interval.
+#### [p702] 3.6.12 Chern–Chien Isotherm-Embedded Models
 
-[p1066] Continue the experiment until the outlet CO₂ concentration rises close and/or equal to the inlet concentration, indicating that breakthrough and equilibrium adsorption has occurred.
+- [p703] Chern & Chien (2002) derived breakthrough solutions directly from the constant-pattern wave approach for Langmuir (M18) and Freundlich (M19) equilibria, solving implicitly for the time t at which the outlet reaches a given C/C₀ = x rather than for C/C₀(t) directly; both require root-finding (Brent's method here) at every evaluated time point. In this project's fits, M18 and M19 converge formally but return non-finite RSS and an undefined R² in every run (§8); following the same treatment as M16, they are reported for completeness but excluded from the model-preference ranking. A stiffer initial-guess strategy, or re-parameterising the fit in x rather than t, is the fix and is left for future work.
 
-[p1067] When CO2 concentration rise to 5% of an inlet concentration, indicate the time as breakthrough time
+#### [p704] 3.6.13 Log-Modified and n-Order Models
 
-[p1068] When CO2 concentration rises close and/or equal to the inlet concentration, indicate the time as equilibrium time.
+- [p705] Apiratikul & Chu (2021) proposed logarithmic modifications of the Bohart-Adams and Yoon-Nelson logistic kernels (§3.6.1, §3.6.3), replacing linear time with log time to better track curves that are steep near breakthrough and long-tailed near saturation:
 
-[p1069] Stop the run once the bed approaches saturation and the data trend has stabilised.
+- [p706] $`CC0=11 +expkBA·loga0xuC0-logt`$ (M20)
 
-[p1070] Record time as end time, before turning valve 3 to the left, valve 2 turn down, turning off the MFCs, and finally disconnecting all gas from the main gas tube.
+- [p707] $`CC0=11 + expkYN·log τ - log t`$ (M21)
 
-[p1071] Save all data files with a filename that encodes the experimental date, run number, and key parameters (e.g., YYYYMMDD_Run##_Cin_Qtotal.csv).
+- [p708] Hu et al. (2021) generalised the Bohart-Adams rate law itself to n-th order in the gas-phase driving force (M22), recovering the classical logistic form (§3.6.1) as the n = 1 special case; the resulting closed-form solution is algebraically more involved than M01 and is evaluated numerically here from the same generalised rate equation.
 
-### [p1072] 4.3 After the Run
+#### [p709] 3.6.14 Parallel Two-Component Model
 
-[p1073] At the end of the experiment, stop the gas flow and close all valves in a controlled manner. Save all collected data and verify that the system is left in a safe condition for the next run.
+- [p710] Blagojev et al. (2019) observed that some breakthrough curves are better described as a weighted superposition of two independent adsorption mechanisms—for example, two populations of binding sites with different affinities—than by any single sigmoidal kernel:
 
-#### [p1074] 4.3.1 Acceptance Criteria and Validity
+- [p711] $`CC0= p·1-11+tτ1k1+ 1-p·1-11+tτ2k2`$ (M24)
 
-[p1075] A completed run is considered valid and suitable for quantitative analysis only if all of the following are satisfied:
+[p712] where $`p ∈ [0,1]`$ weights two Weibull-type components $`(τ₁,k1)`$ and $`(τ₂,k2).`$ With five free parameters, M24 is the most flexible model in the 24-model registry; §8 reports its AICc penalty and whether the added flexibility is justified for this column.X`
 
-[p1076] The CO₂ analyser baseline prior to adsorption was ≤ 10 ppm (confirming complete purge).
+### [p713] 3.7 Review of Prior Solutions
 
-[p1077] The inlet composition, as back-calculated from MFC-B and MFC-C setpoints and confirmed by the steady-state outlet concentration at saturation, matches the target Cin within ±2%.
+- [p714] A range of CO₂ capture technologies has been developed, including liquid solvent absorption, adsorption over solid sorbents, membrane separation, cryogenic separation, direct air capture (DAC), and hybrid systems. However, this experiment looks at specifically adsorption in a packed-bed setting.
 
-[p1078] The outlet flow rate (FI) remained within ±5% of the inlet total flow rate throughout the adsorption step, confirming no significant pressure build-up or line blockage.
+- [p715] Adsorption-based capture is especially relevant to this project because it uses solid sorbents in packed-bed systems and is compatible with dilute CO₂ streams (Stampi-Bombelli et al., 2024). Prior work has shown that PEI-impregnated silica sorbents perform well for CO₂ capture, particularly in applications where adsorption capacity, regenerability, and process stability are important (Cabrera-Codony et al., 2026; Karimi et al., 2023). These findings support the use of PEI@SiO₂ C3 granules as the sorbent material in our project. Stampi-Bombelli et al. (2024) characterise this sorbent class for direct air capture at ≈400 ppm CO₂; this work operates at 5–15 % CO₂, well outside that range, so its isotherm and geometry parameters are used here as a benchmark rather than as validated inputs for the conditions studied.
 
-[p1079] Any run that fails one or more criteria shall be marked as invalid in the data log and the cause investigated before repeating.
+#### [p716] 3.7.1 Classical Symmetric Models
 
-### [p1080] 4.4 Data to Record
+- [p717] The Bohart-Adams, Thomas, and Yoon-Nelson models are mathematically equivalent forms of the logistic function, representing a centrosymmetric S-shaped curve with an inflection point fixed at $`c/c0`$ = 0.5 (Hu et al., 2019). These models perform well when the breakthrough curve is symmetric but fail for asymmetric (tailed) data characteristic of diffusion-limited adsorption on heterogeneous surfaces (Hu et al., 2019). Hu et al., 2019 demonstrated that for norfloxacin adsorption on granular activated carbon, the logistic model yielded Adj. R² = 0.9879, significantly lower than fractal-modified versions.
 
-[p1081] During the experiment, record the following variables:
+#### [p718] 3.7.2 Models for Asymmetric Breakthrough Curves
 
-[p1082] Weight of adsorbent and corresponding packed height
+- [p719] Fractal-like models introduce a time-dependent rate coefficient ( $`k = k₀·t⁻ʰ`$ ) derived from fractal kinetics, which accounts for the heterogeneous, diffusion-limited nature of adsorption on real surfaces (Hu et al., 2021). The fractal-like Bohart-Adams (or equivalently, fractal-like Thomas and fractal-like Yoon-Nelson) model includes an additional parameter $`h`$ (fractal exponent). When $`h`$ = 0, the model reduces to the classical logistic function; as $`h `$ deviates from zero, the breakthrough curve becomes increasingly asymmetric (Hu et al., 2021). Kimani (2024) showed that the fractal-like Bohart-Adams model outperformed all others in fitting tailed breakthrough data from bisphenol-A adsorption on polyaniline (Adj. R2 > 0.99, lowest BIC values). The model accurately estimated breakthrough times (13, 26, and 90 min for 6, 9, and 12 mm bed depths) and a critical bed depth of 5.65 mm (Kimani, 2024).
 
-[p1083] CO₂ inlet concentration,
+#### [p720] 3.7.3 Implication for Packed-Bed CO2 Capture
 
-[p1084] CO₂ outlet concentration,
+- [p721] For the packed-bed adsorption of CO2 using C3 granules, the selection of an appropriate breakthrough model is crucial for accurate process design. The fractal-like models, particularly, fractal-Gudermannian and fractal-ERF are expected to provide superior fits when the breakthrough data exhibit asymmetry due to: (i) heterogeneous sorbent surface chemistry (amine-functionalised sites varying reactivity); (ii) diffusion limitations within the composite granule structure and (ii) non-linear adsorption isotherms typical of CO2 chemisorption. The high Adj. R2 values (>0.998) reported for these models (Kimani, 2024; Hu et al., 2021) suggest they are well-suited to the diffusion-limited heterogeneous-surface systems characteristic of practical CO2 capture adsorbents.
 
-[p1085] Gas outlet flow rate, to confirm consistency with inlet setpoint,
+### [p722] 3.8 Design or Research Procedure
 
-[p1086] Time taken to reach breakthrough, from the breakthrough time,
+- [p723] The research procedure begins with a review of CO₂ capture technologies and adsorption principles, followed by the assembly and calibration of the experimental rig. Once the setup is complete, the SOP is used to standardise the operation of the system and ensure consistent testing conditions. A 3 × 3 DOE is then used to study the combined effects of CO₂ concentration and flow rate on adsorption breakthrough behaviour.
 
-[p1087] Time taken to reach equilibrium, from the equilibrium time; when outlet concentration reaches $`≥`$ 95% of $`Cin`$ and has been stable for $`≥`$ 5 minutes.
+- [p724] The experimental data will be processed using Python to fit breakthrough curves to industry-standard models. These results will be used to assess the influence of operating conditions on adsorption performance and to validate the suitability of the PEI@SiO₂ sorbent under the tested conditions. The project requires knowledge of adsorption theory, laboratory operation, data analysis, and numerical modelling, and these skills are being developed through literature study, supervision, and trial runs of the experimental setup.
 
-[p1088] 50% breakthrough, when outlet concentration reaches 0.5 $`Cin`$
+## [p725] 4 Standard Operating Procedure (SOP)
 
-[p1089] Outlet gas temperature (to detect thermal wave front passing through the bed)
+- [p726] This SOP describes the step-by-step method for operating the packed-bed experimental setup assembled in the SUTD’s laboratory to conduct CO2 adsorption breakthrough experiments using C3 granules as the solid adsorbent. Running this experiment allows system behaviour to be observed under defined initial and boundary conditions across repeated runs, and provides data for parameter estimation and modelling.
 
-[p1090] Outlet pressure, P1, to confirm no unintended pressure build up
+### [p727] 4.1 Apparatus and Instrumentation
 
-[p1091] These data will be used to construct the breakthrough curve and assess the adsorption performance of the sorbent under the selected operating conditions.
+- [p728] The apparatus comprises a gas-feeding section, an adsorption column, and a gas analysis section at the outlet (CO2 sensor and flow sensor), connected using 6 mm gas tubes and labelled valves.
 
-### [p1092] 4.5 Safety Notes
+#### [p729] 4.1.1 Gas Feeding Section
 
-[p1093] Handle gas cylinders carefully and ensure that the system is operated in a well-ventilated laboratory.
+- [p730] Two compressed gas cylinders (pure N₂ and pure CO₂) are each fitted with a dedicated pressure regulator and manual needle valve. Three mass flow controllers (MFCs) regulate volumetric flow rates:
 
-[p1094] Check for leaks before each run and make sure all fittings are tightened properly.
+- [p731] MFC-A: controls N₂ flow for the pre-adsorption column purge.
 
-[p1095] Follow laboratory safety procedures at all times when working with pressurised gases, sensors, and electrical instrumentation.
+- [p732] MFC-B: controls N₂ flow during the adsorption step, forming part of the mixed gas feed.
 
-## [p1097] 7. Experimental Results
+- [p733] MFC-C: controls CO₂ flow during the adsorption step, mixing with the MFC-B stream to produce a feed gas of X% CO₂, where X is a pre-specified experimental variable.
 
-- [p1098] The equilibrium adsorption data was carried out in an experimental batch adsorber. Experiments were conducted in the adsorber packed with C3 granules of different initial concentrations at ambient room temperature. For the fixed-bed experiments, an acrylic column with an inside diameter of 8.5 mm and a length of 38.6 $`±`$ 0.1 cm was used as an adsorber. The influent concentration of the CO2 gas was varied at three inlet concentrations (5, 10 and 15%). The gas flow rate varied at 50, 100 and 150 ml per minute respectively. The operating conditions and the corresponding parameters are given in Table 2). The result of the equilibrium adsorption test is shown in Table 3).
+#### [p734] 4.1.2 Adsorption Column
 
-- [p1099] Higher concentration and flow rate was used with the experimental setup, resulting in drastic changes in breakthrough and saturation on different operating conditions. This work simulates post-combustion carbon capture scenarios like flue gas, rather than ambient CO2 found indoors. Nonetheless, a trend of accelerated breakthrough time with increased concentration and inlet flow rate was observed, but for equilibrium time, there seemed to be a good in-between value that showed it at peak optimisation. Experimental errors, like sudden sensor jumps, as well as the experiment never reaching its initial concentration was encountered. Next steps are to maximise data reliability, giving the precise foundation for optimization of the packed bed's performance.
+- [p735] The packed-bed column is oriented vertically, with gas entering at the bottom and exiting at the top. The column has an inside diameter of 8.2 mm, an outside diameter of 8.5 mm, and a length of 380 mm. During the adsorption run, the column is packed with 8 g of C3 granules, reaching a bed height of approximately 230–240 mm.
 
-[p1100] Table 2) The basic parameters for packed-bed adsorption.
+#### [p736] 4.1.3 Gas Analysis Column
 
-[p1101] Parameter
+[p737] The outlet stream passes through two in-line instruments in series:
 
-[p1102] Value
+- [p738] CO₂ Concentration Sensor: measures CO₂ concentration, temperature, pressure, and humidity; connected to the GasLab software.
 
-[p1103] Units
+- [p739] Flow sensor: measures outlet flow rate; connected to the Sensirion software.
 
-[p1105] Length of column
+[p741] Equipment list:
 
-[p1106] 38.6 $`±`$ 0.1
+- [p742] Compressed CO₂ gas cylinder (100% CO₂)
 
-[p1107] cm
+- [p743] Compressed N₂ gas cylinder (100% N₂)
 
-[p1108] Inlet diameter
+- [p744] Mass flow controllers (MFCs), connected to Sensirion software
 
-[p1109] 0.85
+- [p745] Three-way valves (labelled 1–5) and gas lines, 6 mm tube ID
 
-[p1110] cm
+- [p746] Adsorption column, 8.2 mm ID × 380 mm length, packed with PEI@SiO₂ (C3) granules
 
-[p1111] Height of packed-bed
+- [p747] CO₂ concentration sensor, connected to GasLab software
 
-[p1112] 21.0 – 21.5 (per run)
+- [p748] Flow rate sensor, connected to Sensirion software
 
-[p1113] cm
+- [p749] Laptop for sensor monitoring and data acquisition
 
-[p1114] Volume of packing
+[p751] *(1 embedded image)*
 
-[p1115] 11.92
+###### [p752] Fig. 7) shows an image of the adsorption setup, including the gas supply lines, MFCs, adsorption column, and associated sensors. The valves are labelled 1 to 5, and will be referenced as such in the rest of the SOP.
 
-[p1116] cm3
+### [p753] 4.2 Experimental Procedure
 
-[p1117] Inlet velocity
+- [p754] Before beginning the experiment, inspect all gas lines, valves, and fittings to ensure that the system is secure. Confirm that the MFCs, sensors, and data acquisition software are functioning correctly.
 
-[p1118] 1.47 – 4.41
+#### [p755] 4.2.1 Sensor Setup and Calibration
 
-[p1119] cm $`∙`$ s-1
+- [p756] Connect all sensors to their respective laptop applications.
 
-[p1120] Volume flow rate
+- [p757] Verify that the CO₂ concentration sensor is connected to the GasLab interface.
 
-[p1121] 3.0 – 9.0
+- [p758] Verify that the flow sensor is connected to the Sensirion application
 
-[p1122] cm3 $`∙`$ h-1
+- [p759] Pass N₂ using the MFC and tube connected to valve 3 through the mixed-gas secondary line by turning valve 2 upward, and valve 3 to the left. to establish a baseline before calibration.
 
-[p1123] Angle of bed
+- [p760] This is done by using the N2 MFC and line connected to valve 3, and by turning valve 2 upward and valve 3 to the left. Valve 1 would be turned to the left, to allow the gas to flow from the mixed-gas secondary line into the sensors. Meanwhile, valves 4 and 5 is turned to the right to prevent pressure buildup in the tubes connected to the column.
 
-[p1124] 90
+- [p761] Allow the CO₂ sensor to stabilise at 0 ppm, or at a stable linear baseline, before continuing.
 
-[p1125] deg
+- [p762] Maintain this calibration period for approximately 15 minutes, or until the readings are stable.
 
-[p1127] Table 3) Experimental Parameters of PEI@SiO2 Fixed-Bed Adsorbers
+- [p763] If the CO2 sensor does not calibrate to zero, but maintains a stable reading, apply ‘configure to zero’ on the Gaslab application.
 
-[p1128] No.
+#### [p764] 4.2.2 Feed Gas Preparation
 
-[p1129] Interstitial Velocity, m/s
+- [p765] Set the desired CO₂ and N₂ flow rates using the MFCs.
 
-[p1130] Hgt. of Carbon Bed, m
+- [p766] Direct the mixed gas stream through the secondary bypass line.
 
-[p1132] 3
+- [p767] This is done by turning valve 2 upward and valve 3 to the left. Valve 1 would be turned to the left to allow the gas to flow from the mixed-gas secondary line into the sensors.
 
-[p1133] 0.147
+- [p768] Use the CO₂ concentration sensor to confirm that the influent concentration, and the flow rate sensor to ensure the amount of gas flowing through is correct before introducing the gas into the packed bed.
 
-[p1134] 0.210
+- [p769] Adjust the flow settings if necessary, until the target inlet concentration is obtained and stable.
 
-[p1135] 4
+#### [p770] 4.2.3 Column Loading and Purge
 
-[p1136] 0.049
+- [p771] After the feed gas preparation, disconnect the temporary tube arrangement.
 
-[p1137] 0.213
+- [p772] Perform an initial N₂ purge through a different, empty column to remove residual atmospheric gases and establish a clean initial condition.
 
-[p1138] 5
+- [p773] This is done by using the purge line connected to valve 5. Turn valves 1 and 4 to the right, and valve 5 to the left, to allow the gas to flow through the column and into the sensors.
 
-[p1139] 0.098
+- [p774] As during calibration, position the other valves to prevent pressure build-up within the experimental setup.
 
-[p1140] 0.212
+- [p775] 5 minutes into the initial purge, weigh out 8g of granules and transfer them into the column that will be used for adsorption.
 
-[p1141] 6
+- [p776] Replace the column to the one with granules and continue purging until readings are stable and CO2 in the column is negligible.
 
-[p1142] 0.147
+#### [p777] 4.2.4 CO₂ Adsorption (Breakthrough Experiment) Run
 
-[p1143] 0.215
+- [p778] Once inlet conditions are verified, divert the mixed-gas stream from the bypass line into the column.
 
-[p1144] 8
+- [p779] This is done by turning valve 5 to the right, valve 4 to the left, and valve 3 to the right, in that order, to prevent pressure buildup.
 
-[p1145] 0.098
+- [p780] Turn valve 1 to the right so gas passing through the column reaches the sensors.
 
-[p1146] 0.215
+- [p781] Switch off or disconnect the N₂ purge line at this point.
 
-[p1148] Table 4) Breakthrough adsorption of CO2 onto PEI@SiO2 granules
+- [p782] Record the time valve 3 is turned as the experiment start time (t = 0 s).
 
-[p1149] No.
+- [p783] Monitor outlet CO₂ concentration continuously at 5s intervals.
 
-[p1150] CO2 concentration (%)
+- [p784] Stop the run once the bed approaches saturation, and the data trend has stabilised. Record this as the end time, then turn valve 3 to the left, valve 2 down, switch off the MFCs, and disconnect the gas supply.
 
-[p1151] Flow Rate (lpm)
+- [p785] Save data files using a filename encoding the date, run number, and key parameters (e.g., Date_Flow_Conc.csv).
 
-[p1152] Breakthrough Time (min)
+### [p786] 4.3 Safety Notes
 
-[p1153] Equilibrium Time (min)
+[p787] Handle gas cylinders carefully and operate the system in a well-ventilated laboratory.
 
-[p1155] 1
+[p788] Check for leaks before each run and ensure all fittings are tightened properly.
 
-[p1156] 5
+[p789] Follow laboratory safety procedures at all times when working with pressurised gases, sensors, and electrical instrumentation.
 
-[p1157] 0.05
+### [p790] 4.4 Errors Observed and Adjustments Made
 
-[p1158] 14
+- [p791] Previous experimental runs from our interim report showed two recurring issues: unexpectedly short breakthrough times and inconsistent pressure readings during the purge step. As a result, changes were made to our experimental steps and are highlighted below.
 
-[p1159] 108
+#### [p792] 4.4.1 Sorbent Preparation
 
-[p1160] 2
+- [p793] Our C3 granules were originally baked overnight before use. We suspected that this prolonged heating period may have inadvertently reduced their adsorption capacity. This was changed to a 2-hour bake, which reduced over-drying of the granules and gave more consistent breakthrough behaviour between runs.
 
-[p1161] 5
+#### [p794] 4.4.2 Handling of Granules
 
-[p1162] 0.10
+- [p795] The handling of the granules during the experimental setup had some significant flaws. The C3 granules are highly hydrophilic, they readily absorb ambient moisture, causing premature saturation. This ultimately reduces the granules' remaining adsorption capacity and skews the rate measurements once the actual experiment begins. In our case, the original procedure involved loading the material into the column before sensor purging and calibration, exposing it to the surrounding air for long periods.
 
-[p1163] 4
+- [p796] We therefore adopted a new purging procedure, in which all experimental setup steps are first carried out using an empty column. The entire system, including the empty column, is then purged with pure N₂ for approximately 10 minutes. After the first 5 minutes of this initial purge, the granules are weighed and transferred into the actual packed-bed column. Once the packed-bed column is installed, the system is purged with pure N₂ for an additional 10 minutes before the experiment begins. This new procedure limits the granules' exposure to ambient air to a maximum of 5 minutes.
 
-[p1164] 125
+#### [p797] 4.4.3 Purge Flow
 
-[p1165] 3
+- [p798] In our original experiments, N₂ gas entering the columns during purging was inconsistent, and often quite weak. Upon further testing (running gas through at different flow rates), we found this was caused by the original purge line being split between two setups, despite placing valves near the split, some gas was still diverted to the other line, so the column received a lower and less accurate flow rate than the value set on the MFC. This was resolved by increasing the N₂ purge flow rate to 0.3 L/min, which provided sufficient pressure to compensate for the flow losses caused by the split line and ensured a stable, consistent purge throughout the system.
 
-[p1166] 5
+## [p799] 5 Experiments
 
-[p1167] 0.15
+- [p800] This section records the experiments as they were actually run. Section 4 gives the procedure and Section 6 reports the outcomes; what follows is the inventory that connects the two, so that each result reported later can be traced back to the record it came from.
 
-[p1168] 2
+- [p801] Eighteen breakthrough records were logged between 26 June and 31 July 2026 on the 8.2 mm internal-diameter column. Sixteen of them carry an embedded header block stating sorbent mass, bed height, tube diameter, flow rate and inlet CO₂ concentration, and those sixteen form the basis of every result in this report. The remaining two are raw sensor logs without that header and are excluded for the reasons set out in Table 5. The five earlier runs on the 8.5 mm column, whose parameters appear in Table 7, are a separate campaign and are not pooled with the grid below: bed length and column internal diameter differ systematically between the two rigs, so pooling them would confound a change of apparatus with the effects being measured.
 
-[p1169] 110
+### [p802] 5.1 Design as executed
 
-[p1170] 4
+- [p803] The design is a 3 × 3 factorial in inlet CO₂ concentration (5, 10 and 15 % by volume) and total gas flow rate (50, 100 and 150 ml/min). The remaining factors were held fixed: 8.00 g of PEI@SiO₂ granules in a bed of 22.5 to 24.5 cm, an 8.2 mm internal diameter, ambient temperature, and a pressure of approximately 101.3 kPa. Seven of the nine cells were run more than once, giving the counts in Table 3.
 
-[p1171] 10
+- [p804] Replication carries more weight here than the extra runs alone suggest. With a single run per cell the interaction between flow rate and concentration cannot be separated from residual error at all, because no degrees of freedom remain to estimate that error. The seven repeated cells supply seven such degrees of freedom, which is what makes the interaction term and the pure measurement scatter separately estimable. The design is nonetheless unbalanced as executed: the 15 % cells at 50 and 150 ml/min were each run once, so any effect resting on those two cells rests on less evidence than the rest of the grid.
 
-[p1172] 0.05
+- [p805] Table 3) Design as executed: number of usable runs in each flow × concentration cell, 26 June to 31 July 2026.
 
-[p1173] 11
+[p806] Flow rate (ml/min)
 
-[p1174] 146
+[p807] 5 % CO2
 
-[p1175] 5
+[p808] 10 % CO2
 
-[p1176] 10
+[p809] 15 % CO2
 
-[p1177] 0.10
+[p810] Total
 
-[p1178] 3
+[p811] 50 (0.05 lpm)
 
-[p1179] 64
+[p812] 2
 
-[p1180] 6
+[p813] 2
 
-[p1181] 10
+[p814] 1
 
-[p1182] 0.15
+[p815] 5
 
-[p1183] 3
+[p816] 100 (0.10 lpm)
 
-[p1184] 58
+[p817] 2
 
-[p1185] 7
+[p818] 2
 
-[p1186] 15
+[p819] 2
 
-[p1187] 0.05
+[p820] 6
 
-[p1188] 4
+[p821] 150 (0.15 lpm)
 
-[p1189] 151
+[p822] 2
 
-[p1190] 8
+[p823] 2
 
-[p1191] 15
+[p824] 1
 
-[p1192] 0.10
+[p825] 5
 
-[p1193] 2
+[p826] Total
 
-[p1194] 81
+[p827] 6
 
-[p1195] 9
+[p828] 6
 
-[p1196] 15
+[p829] 4
 
-[p1197] 0.15
+[p830] 16
 
-[p1198] 1
+### [p832] 5.2 Run inventory and provenance
 
-[p1199] 78
+- [p833] Table 4 lists every usable run, the file it was read from, the conditions that file states about itself, and the point later in this report where its results appear. Inlet concentration, sorbent mass, bed height and column diameter are extracted from each file's own header rather than transcribed by hand, so the values in Table 4 are the values the fitting pipeline used, not a separate record of them. Runs are ordered to match the two replicate tables in §6.3: numbers 1 to 9 are replicate I, numbers 10 to 16 are replicate II.
 
-## [p1202] 8. Experimental Analysis
+- [p834] Table 4) Run inventory and provenance for the sixteen usable breakthrough records. Conditions are read from each file's own embedded header. The source file for each run is <run>.csv in src/solver/data/newest runs/.
 
-- [p1203] The experimental results show that both CO₂ concentration and gas flow rate influenced the adsorption behaviour of the PEI@SiO₂ packed-bed system. At 5% CO₂, the breakthrough time decreased from 14 min at 0.05 l/min to 4 min at 0.1 l/min and 2 min at 0.15 l/min, indicating that higher flow rates shortened the contact time between the gas stream and the sorbent. A similar trend was observed at 10% CO₂, where breakthrough time reduced from 11 min at 0.05 l/min to 3 min at both 0.1 l/min and 0.15 l/min. At 15% CO₂, breakthrough times were again short, decreasing from 4 min to 2 min and finally 1 min as flow rate increased. Overall, the data suggest that increasing flow rate accelerates breakthrough, while higher CO₂ concentration also leads to faster saturation of the column.
+[p835] No.
 
-- [p1204] The equilibrium times showed greater variability and did not follow a perfectly monotonic trend. At 5% CO₂, equilibrium time ranged from 108 min to 125 min and then 110 min, while at 10% CO₂ it varied from 146 min to 64 min and 58 min. At 15% CO₂, equilibrium time decreased from 151 min at 0.05 l/min to 81 min and 78 min at the higher flow rates. This suggests that equilibrium behaviour is influenced by additional factors beyond concentration and flow rate alone, such as packing uniformity, pressure drop, sensor response, and gas–solid mass transfer effects.
+[p836] Run (date-conc-flow)
 
-[p1207] *(2 embedded images)*
+[p837] Q header (ml/min)
 
-[p1208] *(2 embedded images)*
+[p838] Q fitted (ml/min)
 
-- [p1209] Fig. 9) Predicted vs. observed values in breakthrough models fit
+[p839] C0 (ppm)
 
-[p1210] *(1 embedded image)*
+[p840] m (g)
 
-- [p1211] Fig. 10) Breakthrough curve fitting with linear adsorption isotherm
+[p841] L_bed (cm)
 
-[p1212] *(1 embedded image)*
+[p842] d_col (mm)
 
-- [p1213] Fig. 11) Validation of fractal-like kinetics on logistic breakthrough model curve
+[p843] n pts
 
-## [p1214] 9 Conclusions
+[p844] Best model (AICc)
 
-- [p1215] This interim report provides a comparative analysis of breakthrough models for CO2 adsorption in a packed-bed column using PEI@SiO₂ (C3) granules. It also develops a new standard operating procedure (SOP) and initial experiment data. For systems exhibiting asymmetric breakthrough behaviour, which is common when adsorbent surfaces are increasingly heterogeneous, fractal-like coefficients have shown to provide superior fits. Similarly, the introduction of a shape parameter $`n`$ into logistic and hyperbolic tangent models further improves asymmetric breakthrough curve fit. The project is ongoing, with Python-based model fitting and a 3×3 design-of-experiments sweep planned to systematically resolve the interplay between flow rate, feed concentration, and adsorbent loading effects on breakthrough dynamics and equilibrium capacity.
+[p845] Reported in
 
-### [p1216] 7.1 Next Steps
+[p846] 1
 
-- [p1217] 1) To plot and optimise breakthrough adsorption curves using Python 3.11; 2) employ methods in error statistics to evaluate fitting quality of various breakthrough models; 3) estimate hidden parameters by linear regression to implement a full non-isothermal solver to predict and model breakthrough curves from elementary adsorption principles.
+[p847] 2026-06-26-conc5-flow0.05
 
-## [p1220] 10 References
+[p848] 50
 
-- [p1221] Azuma, K., Kagi, N., Yanagi, U., & Osawa, H. (2018). Effects of low-level inhalation exposure to carbon dioxide in indoor environments: A short review on human health and psychomotor performance. Environment International, 121, 51–56. https://doi.org/10.1016/j.envint.2018.08.059
+[p849] 50
 
-- [p1222] Bos, M. J., Kroeze, V., Sutanto, S., & Brilman, D. W. F. (2018). Evaluating Regeneration Options of Solid Amine Sorbent for CO2 Removal. Industrial & Engineering Chemistry Research, 57(32), 11141–11153. https://doi.org/10.1021/acs.iecr.8b00768
+[p850] 50 000
 
-- [p1223] Cabrera-Codony, A., Calvo-Schwarzwalder, M., Lopez, L. R., Valverde, A., Puig, S., & Myers, T. G. (2026). An analytical breakthrough model for CO2 adsorption on PEI-impregnated silica: Separating stoichiometric and structural effects of humidity. Carbon Capture Science & Technology, 19, 100618. https://doi.org/10.1016/j.ccst.2026.100618
+[p851] 8.0
 
-- [p1224] Carreiro-Martins, P., Viegas, J., Papoila, A. L., Aelenei, D., Caires, I., Araújo-Martins, J., Gaspar-Marques, J., Cano, M. M., Mendes, A. S., Virella, D., Rosado-Pinto, J., Leiria-Pinto, P., Annesi-Maesano, I., & Neuparth, N. (2014). CO2 concentration in day care centres is related to wheezing in attending children. European Journal of Pediatrics, 173(8), 1041–1049. https://doi.org/10.1007/s00431-014-2283-0
+[p852] 23.5
 
-- [p1225] Chu, K. H. (2020). Breakthrough curve analysis by simplistic models of fixed bed adsorption: In defense of the century-old Bohart-Adams model. Chemical Engineering Journal, 380, 122513. https://doi.org/10.1016/j.cej.2019.122513
+[p853] 8.2
 
-- [p1226] Chuah, C. Y., Ho, Y. L., Syed, A. M. H., Thivyalakshmi, K. G. K., Yang, E., Johari, K., Yang, Y., & Poon, W. C. (2025). Applicability of Adsorbents in Direct Air Capture (DAC): Recent Progress and Future Perspectives. Industrial & Engineering Chemistry Research, 64(8), 4117–4147. https://doi.org/10.1021/acs.iecr.4c03265
+[p854] 1658
 
-- [p1227] de Joannis, P., Castel, C., Kanniche, M., Favre, E., & Authier, O. (2025). Techno-economic analysis of packed bed and structured adsorbent for direct air capture. Carbon Capture Science & Technology, 17, 100518. https://doi.org/10.1016/j.ccst.2025.100518
+[p855] M11
 
-- [p1228] Elfving, J., Kauppinen, J., Jegoroff, M., Ruuskanen, V., Järvinen, L., & Sainio, T. (2021). Experimental comparison of regeneration methods for CO2 concentration from air using amine-based adsorbent. Chemical Engineering Journal, 404, 126337. https://doi.org/10.1016/j.cej.2020.126337
+[p856] Table 9, row 1
 
-- [p1229] Hu, Q., Huang, Q., Yang, D., & Liu, H. (2021). Prediction of breakthrough curves in a fixed-bed column based on normalized Gudermannian and error functions. Journal of Molecular Liquids, 323, 115061. https://doi.org/10.1016/j.molliq.2020.115061
+[p857] 2
 
-- [p1230] Hu, Q., Lan, R., He, L., Liu, H., & Pei, X. (2023). A critical review of adsorption isotherm models for aqueous contaminants: Curve characteristics, site energy distribution and common controversies. Journal of Environmental Management, 329, 117104. https://doi.org/10.1016/j.jenvman.2022.117104
+[p858] 2026-07-03-conc5-flow0.10
 
-- [p1231] Hu, Q., Wang, D., Pang, S., & Xu, L. (2022). Prediction of breakthrough curves for multicomponent adsorption in a fixed-bed column using logistic and Gompertz functions. Arabian Journal of Chemistry, 15. https://doi.org/10.1016/j.arabjc.2022.104034
+[p859] 100
 
-- [p1232] Hu, Q., Xie, Y., & Zhang, Z. (2020). Modification of breakthrough models in a continuous-flow fixed-bed column: Mathematical characteristics of breakthrough curves and rate profiles. Separation and Purification Technology, 238, 116399. https://doi.org/10.1016/j.seppur.2019.116399
+[p860] 100
 
-- [p1233] International Adsorption Society. (n.d.). What is adsorption? https://www.int-ads-soc.org/what-is-adsorption/
+[p861] 50 010
 
-- [p1234] International Energy Agency. (2022). Direct air capture 2022. https://www.iea.org/reports/direct-air-capture-2022
+[p862] 8.0
 
-- [p1235] Ji, Y., Liu, W., Yong, J. Y., Zhang, X. J., & Jiang, L. (2024). Techno-economic analysis on temperature vacuum swing adsorption system integrated with pre-dehumidification for direct air capture. Carbon Capture Science & Technology, 12, 100199. https://doi.org/10.1016/j.ccst.2024.100199
+[p863] 24.0
 
-- [p1236] Juela, D., Vera, M., Cruzat, C., Alvarez, X., & Vanegas, E. (2021). Mathematical modeling and numerical simulation of sulfamethoxazole adsorption onto sugarcane bagasse in a fixed-bed column. Chemosphere, 280, 130687. https://doi.org/10.1016/j.chemosphere.2021.130687
+[p864] 8.2
 
-- [p1237] Langlo, P., & Espedal, M. S. (1994). Macrodispersion for two-phase, immiscible flow in porous media. Advances in Water Resources, 17(5), 297–316. https://doi.org/10.1016/0309-1708(94)90033-7
+[p865] 413
 
-- [p1238] Myers, T. G., Cabrera-Codony, A., & Valverde, A. (2023). On the development of a consistent mathematical model for adsorption in a packed column (and why standard models fail). International Journal of Heat and Mass Transfer, 202, 123660. https://doi.org/10.1016/j.ijheatmasstransfer.2022.123660
+[p866] M24
 
-- [p1239] Norbäck, D., & Nordström, K. (2008). Sick building syndrome in relation to air exchange rate, CO2, room temperature and relative air humidity in university computer classrooms: An experimental study. International Archives of Occupational and Environmental Health, 82(1), 21–30. https://doi.org/10.1007/s00420-008-0301-x
+[p867] Table 9, row 2
 
-- [p1240] Online Etymology Dictionary. (n.d.). Adsorb. https://www.etymonline.com/word/adsorb
+[p868] 3
 
-- [p1241] Pedrozo, H. A., Gonzalez-Ramirez, M. G., Lin, T. Y., Moore, T., Roy, T., Nguyen, D. T., Roy, P., Baker, S., Biegler, L. T., & Panagakos, G. (2026). Optimization of direct air capture processes using reactive transport models of adsorption-desorption cycles. Computers & Chemical Engineering, 204, 109379. https://doi.org/10.1016/j.compchemeng.2025.109379
+[p869] 2026-07-08-conc5-flow0.15
 
-- [p1242] Schindler, M. (2012). Untersuchungen zur selektiven Adsorption von Kohlendioxid aus Gasgemischen an metallorganischen Koordinationspolymeren (in German) [Doctoral dissertation, Technische Universität Kaiserslautern]. https://kluedo.ub.rptu.de/frontdoor/deliver/index/docId/3359/file/Dissertation_Schindler.pdf
+[p870] 150
 
-- [p1243] Shafeeyan, M. S., Wan Daud, W. M. A., & Shamiri, A. (2014). A review of mathematical modeling of fixed-bed columns for carbon dioxide adsorption. Chemical Engineering Research and Design, 92(5), 961–988. https://doi.org/10.1016/j.cherd.2013.08.018
+[p871] 150
 
-- [p1244] Simoni, M., Annesi-Maesano, I., Sigsgaard, T., Norback, D., Wieslander, G., Nystad, W., Canciani, M., Sestini, P., & Viegi, G. (2010). School air quality related to dry cough, rhinitis and nasal patency in children. European Respiratory Journal, 35(4), 742–749. https://doi.org/10.1183/09031936.00016209
+[p872] 50 220
 
-- [p1245] Stampi-Bombelli, V., Storione, A., Grossmann, Q., & Mazzotti, M. (2024). On Comparing Packed Beds and Monoliths for CO2 Capture from Air Through Experiments, Theory, and Modeling. Industrial & Engineering Chemistry Research, 63(26), 11637–11653. https://doi.org/10.1021/acs.iecr.4c01392
+[p873] 8.0
 
-- [p1246] Tsai, D. H., Lin, J. S., & Chan, C. C. (2012). Office workers' sick building syndrome and indoor carbon dioxide concentrations. Journal of Occupational and Environmental Hygiene, 9(6), 345–351. https://doi.org/10.1080/15459624.2012.675291
+[p874] 23.5
 
-- [p1247] Wong, H. C., Low, H. Y., & Tan, M. C. (2021). Textured carbon capture composite (C3) films for distributed direct air capture in urban spaces. Cleaner Engineering and Technology, 4, 100145. https://doi.org/10.1016/j.clet.2021.100145
+[p875] 8.2
 
-- [p1248] Xu, H., Yu, L., Chong, C., & Wang, F. (2024). A comprehensive review on direct air carbon capture (DAC) technology by adsorption: From fundamentals to applications. Energy Conversion and Management, 322, 119119. https://doi.org/10.1016/j.enconman.2024.119119
+[p876] 440
+
+[p877] M11
+
+[p878] Table 9, row 3
+
+[p879] 4
+
+[p880] 2026-07-08-conc10-flow0.05
+
+[p881] 50
+
+[p882] 50
+
+[p883] 99 000
+
+[p884] 8.0
+
+[p885] 23.0
+
+[p886] 8.2
+
+[p887] 1746
+
+[p888] M11
+
+[p889] Table 9, row 4
+
+[p890] 5
+
+[p891] 2026-07-08-conc10-flow0.10
+
+[p892] 100
+
+[p893] 100
+
+[p894] 100 580
+
+[p895] 8.0
+
+[p896] 23.3
+
+[p897] 8.2
+
+[p898] 1472
+
+[p899] M11
+
+[p900] Table 9, row 5
+
+[p901] 6
+
+[p902] 2026-07-08-conc10-flow0.15
+
+[p903] 150
+
+[p904] 150
+
+[p905] 100 000
+
+[p906] 8.0
+
+[p907] 24.0
+
+[p908] 8.2
+
+[p909] 477
+
+[p910] M03
+
+[p911] Table 9, row 6
+
+[p912] 7
+
+[p913] 2026-07-10-conc15-flow0.05
+
+[p914] 50
+
+[p915] 50
+
+[p916] 150 970
+
+[p917] 8.0
+
+[p918] 24.5
+
+[p919] 8.2
+
+[p920] 1650
+
+[p921] M11
+
+[p922] Table 9, row 7
+
+[p923] 8
+
+[p924] 2026-07-10-conc15-flow0.10
+
+[p925] 100
+
+[p926] 100
+
+[p927] 149 800
+
+[p928] 8.0
+
+[p929] 24.0
+
+[p930] 8.2
+
+[p931] 1147
+
+[p932] M11
+
+[p933] Table 9, row 8
+
+[p934] 9
+
+[p935] 2026-07-15-conc15-flow0.15
+
+[p936] 150
+
+[p937] 150
+
+[p938] 150 100
+
+[p939] 8.0
+
+[p940] 24.0
+
+[p941] 8.2
+
+[p942] 1002
+
+[p943] M11
+
+[p944] Table 9, row 9
+
+[p945] 10
+
+[p946] 2026-07-29-conc5-flow0.05
+
+[p947] 50
+
+[p948] 50
+
+[p949] 50 780
+
+[p950] 8.0
+
+[p951] 22.5
+
+[p952] 8.2
+
+[p953] 603
+
+[p954] M24
+
+[p955] Table 10, row 1
+
+[p956] 11
+
+[p957] 2026-07-29-conc5-flow0.10
+
+[p958] 100
+
+[p959] 100
+
+[p960] 49 900
+
+[p961] 8.0
+
+[p962] 23.0
+
+[p963] 8.2
+
+[p964] 1573
+
+[p965] M24
+
+[p966] Table 10, row 2
+
+[p967] 12
+
+[p968] 2026-07-31-conc5-flow0.15
+
+[p969] 150 *
+
+[p970] 100 *
+
+[p971] 50 470
+
+[p972] 8.0
+
+[p973] 23.0
+
+[p974] 8.2
+
+[p975] 351
+
+[p976] M11
+
+[p977] Table 10, row 3
+
+[p978] 13
+
+[p979] 2026-07-22-conc10-flow0.05
+
+[p980] 50 *
+
+[p981] 100 *
+
+[p982] 100 610
+
+[p983] 8.0
+
+[p984] 23.0
+
+[p985] 8.2
+
+[p986] 1364
+
+[p987] M24
+
+[p988] Table 10, row 4
+
+[p989] 14
+
+[p990] 2026-07-31-conc10-flow0.10
+
+[p991] 100 *
+
+[p992] 50 *
+
+[p993] 99 400
+
+[p994] 8.0
+
+[p995] 22.5
+
+[p996] 8.2
+
+[p997] 1171
+
+[p998] M11
+
+[p999] Table 10, row 5
+
+[p1000] 15
+
+[p1001] 2026-07-22-conc10-flow0.10
+
+[p1002] 150 *
+
+[p1003] 100 *
+
+[p1004] 100 430
+
+[p1005] 8.0
+
+[p1006] 23.0
+
+[p1007] 8.2
+
+[p1008] 325
+
+[p1009] M24
+
+[p1010] Table 10, row 6
+
+[p1011] 16
+
+[p1012] 2026-07-17-conc15-flow0.10
+
+[p1013] 100
+
+[p1014] 100
+
+[p1015] 150 800
+
+[p1016] 8.0
+
+[p1017] 23.0
+
+[p1018] 8.2
+
+[p1019] 778
+
+[p1020] M24
+
+[p1021] Table 10, row 8
+
+- [p1023] Four files state their flow rate twice and state it differently. These are marked with an asterisk in Table 4, and the discrepancy is set out in §5.3.
+
+### [p1024] 5.3 Excluded and flagged records
+
+- [p1025] No record was dropped silently and none was reconstructed. Table 5 lists every record that is either excluded from the analysis or carries a caveat affecting how its numbers should be read, together with the party who can close each open item.
+
+- [p1026] Table 5) Excluded records and records carrying a caveat, with the owner of each open item.
+
+[p1027] Record
+
+[p1028] Issue
+
+[p1029] Consequence
+
+[p1030] Owner
+
+[p1031] 2026-07-17-conc15-flow0.1.csv
+
+[p1032] no embedded metadata header (raw Format-A sensor log): mass, bed height and tube diameter are absent
+
+[p1033] excluded by the pipeline's own metadata guard, not fabricated
+
+[p1034] lab
+
+[p1035] 2026-07-17-conc15-flow0.15.csv
+
+[p1036] no embedded metadata header (raw Format-A sensor log): mass, bed height and tube diameter are absent
+
+[p1037] excluded by the pipeline's own metadata guard, not fabricated
+
+[p1038] lab
+
+[p1039] 2026-07-22-conc10-flow0.05.csv
+
+[p1040] prose header states 50 ml/min; the numeric metadata cell the parser reads states 100 ml/min
+
+[p1041] fitted at 100 ml/min, so q_dyn, L_MTZ and psi for this run are provisional; t_b is unaffected
+
+[p1042] lab
+
+[p1043] 2026-07-22-conc10-flow0.10.csv
+
+[p1044] prose header states 150 ml/min; the numeric metadata cell the parser reads states 100 ml/min
+
+[p1045] fitted at 100 ml/min, so q_dyn, L_MTZ and psi for this run are provisional; t_b is unaffected
+
+[p1046] lab
+
+[p1047] 2026-07-31-conc10-flow0.10.csv
+
+[p1048] prose header states 100 ml/min; the numeric metadata cell the parser reads states 50 ml/min
+
+[p1049] fitted at 50 ml/min, so q_dyn, L_MTZ and psi for this run are provisional; t_b is unaffected
+
+[p1050] lab
+
+[p1051] 2026-07-31-conc5-flow0.15.csv
+
+[p1052] prose header states 150 ml/min; the numeric metadata cell the parser reads states 100 ml/min
+
+[p1053] fitted at 100 ml/min, so q_dyn, L_MTZ and psi for this run are provisional; t_b is unaffected
+
+[p1054] lab
+
+[p1055] 2026-07-29-conc5-flow0.05.csv
+
+[p1056] outlet never reaches C/C0 = 0.95
+
+[p1057] t_E and L_MTZ undefined; capacity integrated over a truncated window; dropped pairwise, never imputed
+
+[p1058] lab
+
+[p1059] Table 10, row 7 (replicate II)
+
+[p1060] no committed CSV in `newest runs/` reproduces this row (t_b = 17.967 min as printed)
+
+[p1061] retained as recorded; not reproducible from the committed data set
+
+[p1062] author / lab
+
+[p1063] Table 10, row 9 (replicate II)
+
+[p1064] no committed CSV in `newest runs/` reproduces this row (t_b = 2.843 min as printed)
+
+[p1065] retained as recorded; not reproducible from the committed data set
+
+[p1066] author / lab
+
+- [p1068] The four flow-rate conflicts share a pattern worth stating plainly. In every case the prose value, not the numeric cell the parser reads, is the one consistent with the measured data. The clearest instance is 2026-07-22-conc10-flow0.10, which breaks through at 3.08 min: that sits beside the 3.55 min of the 150 ml/min run at the same concentration and nowhere near the 5.43 min of the 100 ml/min run. The same comparison favours the prose value in the other three files.
+
+- [p1069] The consequence is bounded but real. Breakthrough time is read from the concentration record itself and does not depend on the stated flow rate, so it is unaffected. Dynamic capacity, mass-transfer-zone length and stoichiometric efficiency all scale with volumetric flow, so for these four runs those three quantities are provisional until the lab confirms which of the two values is correct. The filename of 2026-07-22-conc10-flow0.10.csv, which disagrees with its own header, should be corrected in the same pass.
+
+### [p1070] 5.4 Data lineage and reproducibility
+
+- [p1071] Every record passes through the same chain. The parser reads the file together with its embedded header; the fitting stage fits the 24-model set by non-linear least squares using 12 multi-start initialisations under a fixed random seed of 42; the performance stage derives the operating-time and capacity metrics; and the result is written to a per-run results file alongside seven diagnostic plots. Tables 3, 4 and 5 are generated from those artefacts by build_experiments_passport.py, which also writes a provenance record carrying a SHA-256 checksum for every raw file, so that any table cell here can be traced to the exact bytes it came from. No value in this section is entered by hand.
+
+- [p1072] One definitional point carries forward into the results. Breakthrough and equilibrium times in Tables 9 and 10 are read at C/C₀ = 0.05 and C/C₀ = 0.95 respectively, as defined in §6.1, and every derived quantity in the analysis that follows uses those definitions. The times recorded in Table 8 were noted during the runs using a visual onset criterion that was not written down, and they are systematically shorter: the first run of the grid is entered there as 14 min against 23.96 min at C/C₀ = 0.05. Both are reported. The C/C₀ definitions are the ones used for analysis throughout.
+
+## [p1073] 6 Experimental Results
+
+- [p1074] Breakthrough experiments were conducted on the fixed-bed column described in Section 4, packed with 8 g of C3 granules, and operated under ambient room temperature and pressure. An acrylic column with an inside diameter of 8.5 mm and a length of 38.6 $`±`$ 0.1 cm was used as an adsorber. Inlet CO₂ concentration was varied across three values (5, 10, and 15% by volume) and total gas flow rate across three values (50, 100, and 150 ml/min), giving a 3×3 design of experiments, with selected conditions repeated to assess reproducibility. The operating conditions and the corresponding parameters are given in Table 6).
+
+[p1075] Table 6) The basic parameters for packed-bed adsorption.
+
+[p1076] Parameter
+
+[p1077] Value
+
+[p1078] Units
+
+[p1080] Length of column
+
+[p1081] 38.6 $`±`$ 0.1
+
+[p1082] cm
+
+[p1083] Inlet diameter
+
+[p1084] 0.85
+
+[p1085] cm
+
+[p1086] Height of packed-bed
+
+[p1087] 21.0 – 21.5 (per run)
+
+[p1088] cm
+
+[p1089] Volume of packing
+
+[p1090] 11.92
+
+[p1091] cm3
+
+[p1092] Inlet velocity
+
+[p1093] 1.47 – 4.41
+
+[p1094] cm $`∙`$ s-1
+
+[p1095] Volume flow rate
+
+[p1096] 3.0 – 9.0
+
+[p1097] cm3 $`∙`$ h-1
+
+- [p1098] Higher concentration and flow rate was used with the experimental setup, resulting in drastic changes in breakthrough and saturation on different operating conditions. This work simulates post-combustion carbon capture scenarios like flue gas, rather than ambient CO2 found indoors as the 5% - 15% CO2 range lies well outside the 400 ppm DAC conditions Stampi-Bombelli et al. (2024) characterised their sorbent in §3.7. Nonetheless, a trend of accelerated breakthrough time with increased concentration and inlet flow rate was observed, but for equilibrium time, there seemed to be an optimal intermediate value that produced the best results. Experimental errors, like sudden sensor jumps, as well as the experiment never reaching its initial concentration was encountered. Next steps are to maximise data reliability, giving the precise foundation for optimisation of the packed bed's performance.
+
+- [p1099] Using the formula $`u=Qεπd/22`$ , where $`Q`$ is the flow rate in cm3s-1, $`ε`$ is the bed voidage and $`d`$ is the inlet diameter in cm, The result of the equilibrium adsorption test is shown in Table 7).
+
+[p1100] Table 7) ExperimentalParameters of PEI@SiO2 Fixed-Bed Adsorbers
+
+[p1101] No.
+
+[p1102] Interstitial Velocity, m/s
+
+[p1103] Hgt. of Carbon Bed, m
+
+[p1105] 3
+
+[p1106] 0.147
+
+[p1107] 0.210
+
+[p1108] 4
+
+[p1109] 0.049
+
+[p1110] 0.213
+
+[p1111] 5
+
+[p1112] 0.098
+
+[p1113] 0.212
+
+[p1114] 6
+
+[p1115] 0.147
+
+[p1116] 0.215
+
+[p1117] 8
+
+[p1118] 0.098
+
+[p1119] 0.215
+
+[p1121] Table 8) Breakthrough adsorption of CO2 onto PEI@SiO2 granules
+
+[p1122] No.
+
+[p1123] CO2 concentration (%)
+
+[p1124] Flow Rate (lpm)
+
+[p1125] Breakthrough Time (min)
+
+[p1126] Equilibrium Time (min)
+
+[p1128] 1
+
+[p1129] 5
+
+[p1130] 0.05
+
+[p1131] 14
+
+[p1132] 108
+
+[p1133] 2
+
+[p1134] 5
+
+[p1135] 0.10
+
+[p1136] 4
+
+[p1137] 125
+
+[p1138] 3
+
+[p1139] 5
+
+[p1140] 0.15
+
+[p1141] 2
+
+[p1142] 110
+
+[p1143] 4
+
+[p1144] 10
+
+[p1145] 0.05
+
+[p1146] 11
+
+[p1147] 146
+
+[p1148] 5
+
+[p1149] 10
+
+[p1150] 0.10
+
+[p1151] 3
+
+[p1152] 64
+
+[p1153] 6
+
+[p1154] 10
+
+[p1155] 0.15
+
+[p1156] 3
+
+[p1157] 58
+
+[p1158] 7
+
+[p1159] 15
+
+[p1160] 0.05
+
+[p1161] 4
+
+[p1162] 151
+
+[p1163] 8
+
+[p1164] 15
+
+[p1165] 0.10
+
+[p1166] 2
+
+[p1167] 81
+
+[p1168] 9
+
+[p1169] 15
+
+[p1170] 0.15
+
+[p1171] 1
+
+[p1172] 78
+
+### [p1178] 6.1 Parameters Measured
+
+[p1179] Four primary parameters characterise the breakthrough behaviour of each run:
+
+- [p1180] Breakthrough time (tb): the time at which outlet concentration first reaches 5% of the inlet concentration (C/C0 = 0.05). This marks the point at which the column can no longer be considered to be capturing CO2 effectively.
+
+- [p1181] Breakthrough capacity (qb): the mass of CO₂ captured per gram of sorbent. This represents the usable capacity of the bed, the amount of CO2 actually captured before the column
+
+- [p1182] Equilibrium time (te): the time at which outlet concentration reaches ≥95% of the inlet concentration and remains stable, indicating the bed has reached full saturation.
+
+- [p1183] Equilibrium capacity (qe): the total CO₂ the sorbent can hold at full saturation under a given condition, its adsorption capacity at the defined equilibrium/saturation point.
+
+- [p1184] Breakthrough utilisation ratio (qb/qe): the fraction of the sorbent's total equilibrium capacity that is actually realised by the time breakthrough occurs. This is the key efficiency metric for process design, since it quantifies how much of the bed's theoretical capacity is left unused at the end of the experiment.
+
+### [p1185] 6.2 Adsorption Capacity Calculation
+
+[p1186] The instantaneous molar amount of CO₂ adsorbed in each 5 s (0.1667 min) logging interval was calculated from the difference between inlet and outlet CO₂ concentration, combined with the outlet volumetric flow rate via the ideal gas law:
+
+[p1187] $`ΔnCO2t=P⋅Q⋅ΔtR⋅T×C0-C×10-6`$
+
+[p1188] where:
+
+- [p1189] P is the outlet pressure (Pa)
+
+- [p1190] Q is the outlet volumetric flow rate at time t (dm³/min)
+
+- [p1191] Δt is the logging interval (min)
+
+- [p1192] R is the universal gas constant (8.314 J·mol⁻¹·K⁻¹)
+
+- [p1193] T is the outlet temperature at time t, converted to Kelvin (T°C + 273.15)
+
+- [p1194] C0 is the inlet CO₂ concentration (ppm)
+
+- [p1195] C is the outlet CO₂ concentration at time t (ppm)
+
+- [p1196] 10⁻⁶ converts the ppm-based concentration difference to a dimensionless mole fraction, while a combined factor of 10⁻³ (folded into the 10⁻⁹ constant below) converts Q from dm³ to m³, so that P (Pa), Q·Δt (m³), and R (J·mol⁻¹·K⁻¹ = Pa·m³·mol⁻¹·K⁻¹) are dimensionally consistent and Δn is returned in mol.
+
+[p1197] Combining the two unit conversions (10⁻⁶ × 10⁻³ = 10⁻⁹) gives the working form used by us in our excel sheet for data manipulation:
+
+[p1198] $`ΔnCO2t=P⋅Q⋅Δt⋅C0-C×10-9R⋅T`$
+
+[p1199] The cumulative moles of CO₂ adsorbed up to time t are obtained by summing these increments over all preceding intervals:
+
+[p1200] $`nCO2t=ΣΔnCO2ti, for i=0 to t`$
+
+[p1201] The adsorption capacity at time t, in mmol CO₂ per gram of sorbent, is then:
+
+[p1202] $`qt=1000×nCO2tm`$
+
+[p1203] where m is the sorbent mass (g). qb and qe are this quantity evaluated at tb and te respectively.
+
+### [p1204] 6.3 Results
+
+[p1205] Table 9) Breakthrough, t_b, and equilibrium, t_e, times and corresponding CO₂ adsorption capacities (q_b, q_e) for C3 granules across varying inlet CO₂ concentrations and flow rates (I)
+
+[p1206] No.
+
+[p1207] conc. (%)
+
+[p1208] FR ml/min
+
+[p1209] (min)
+
+[p1210] (mmol/g)
+
+[p1211] (min)
+
+[p1212] (mmol/g)
+
+[p1213] Ratio
+
+[p1215] 1
+
+[p1216] 5
+
+[p1217] 50
+
+[p1218] 23.958
+
+[p1219] 0.303
+
+[p1220] 270.172
+
+[p1221] 0.954
+
+[p1222] 31.8%
+
+[p1223] 2
+
+[p1224] 5
+
+[p1225] 100
+
+[p1226] 10.651
+
+[p1227] 0.270
+
+[p1228] 115.222
+
+[p1229] 0.970
+
+[p1230] 27.8%
+
+[p1231] 3
+
+[p1232] 5
+
+[p1233] 150
+
+[p1234] 4.198
+
+[p1235] 0.162
+
+[p1236] 122.406
+
+[p1237] 0.992
+
+[p1238] 16.3%
+
+[p1239] 4
+
+[p1240] 10
+
+[p1241] 50
+
+[p1242] 19.050
+
+[p1243] 0.484
+
+[p1244] 192.842
+
+[p1245] 1.394
+
+[p1246] 34.7%
+
+[p1247] 5
+
+[p1248] 10
+
+[p1249] 100
+
+[p1250] 5.430
+
+[p1251] 0.280
+
+[p1252] 79.651
+
+[p1253] 1.199
+
+[p1254] 23.4%
+
+[p1255] 6
+
+[p1256] 10
+
+[p1257] 150
+
+[p1258] 3.550
+
+[p1259] 0.272
+
+[p1260] 80.161
+
+[p1261] 1.461
+
+[p1262] 18.6%
+
+[p1263] 7
+
+[p1264] 15
+
+[p1265] 50
+
+[p1266] 17.677
+
+[p1267] 0.674
+
+[p1268] 164.630
+
+[p1269] 1.478
+
+[p1270] 45.6%
+
+[p1271] 8
+
+[p1272] 15
+
+[p1273] 100
+
+[p1274] 4.295
+
+[p1275] 0.323
+
+[p1276] 57.003
+
+[p1277] 1.234
+
+[p1278] 26.2%
+
+[p1279] 9
+
+[p1280] 15
+
+[p1281] 150
+
+[p1282] 2.588
+
+[p1283] 0.295
+
+[p1284] 43.134
+
+[p1285] 1.273
+
+[p1286] 23.2%
+
+[p1288] Table 10) Breakthrough, , and equilibrium, , times and corresponding CO₂ adsorption capacities (, ) for C3 granules across varying inlet CO₂ concentrations and flow rates (II)
+
+[p1289] No.
+
+[p1290] conc. (%)
+
+[p1291] FR ml/min
+
+[p1292] (min)
+
+[p1293] (mmol/g)
+
+[p1294] (min)
+
+[p1295] (mmol/g)
+
+[p1296] Ratio
+
+[p1298] 1
+
+[p1299] 5
+
+[p1300] 50
+
+[p1301] 30.521
+
+[p1302] 0.391
+
+[p1303] 266.109
+
+[p1304] 1.112
+
+[p1305] 35.2%
+
+[p1306] 2
+
+[p1307] 5
+
+[p1308] 100
+
+[p1309] 9.360
+
+[p1310] 0.235
+
+[p1311] 116.279
+
+[p1312] 0.881
+
+[p1313] 26.7%
+
+[p1314] 3
+
+[p1315] 5
+
+[p1316] 150
+
+[p1317] 3.415
+
+[p1318] 0.087
+
+[p1319] 74.320
+
+[p1320] 0.418
+
+[p1321] 20.8%
+
+[p1322] 4
+
+[p1323] 10
+
+[p1324] 50
+
+[p1325] 20.166
+
+[p1326] 1.027
+
+[p1327] 115.029
+
+[p1328] 2.292
+
+[p1329] 44.8%
+
+[p1330] 5
+
+[p1331] 10
+
+[p1332] 100
+
+[p1333] 4.153
+
+[p1334] 0.104
+
+[p1335] 48.410
+
+[p1336] 0.380
+
+[p1337] 27.4%
+
+[p1338] 6
+
+[p1339] 10
+
+[p1340] 150
+
+[p1341] 3.081
+
+[p1342] 0.234
+
+[p1343] 54.885
+
+[p1344] 1.061
+
+[p1345] 22.1%
+
+[p1346] 7
+
+[p1347] 15
+
+[p1348] 50
+
+[p1349] 17.967
+
+[p1350] 0.683
+
+[p1351] 136.458
+
+[p1352] 1.792
+
+[p1353] 38.8%
+
+[p1354] 8
+
+[p1355] 15
+
+[p1356] 100
+
+[p1357] 5.189
+
+[p1358] 0.396
+
+[p1359] 50.257
+
+[p1360] 1.228
+
+[p1361] 32.2%
+
+[p1362] 9
+
+[p1363] 15
+
+[p1364] 150
+
+[p1365] 2.843
+
+[p1366] 0.321
+
+[p1367] 44.810
+
+[p1368] 1.240
+
+[p1369] 25.9%
+
+### [p1374] 6.4 Measured breakthrough curves
+
+[p1375] Sections 6.1 to 6.3 report the breakthrough and equilibrium metrics as numbers. Figures 9 to 11 show the curves those numbers were read from. Figure 9 lays the sixteen grid runs out in the 3×3 design they were measured on, so the replicate structure is visible directly: seven of the nine cells carry two runs, and the two 15 % cells at 50 and 150 mL/min carry one each. Figure 10 overlays the same sixteen on a single axis, and Figure 11 does the same for the five earlier runs on the 8.5 mm column.
+
+[p1376] Two records are marked in Figure 9 rather than quietly smoothed over. The 5 % / 50 mL/min run of 29 July never reaches C/C₀ = 0.95, so its t_E, L_MTZ and ψ are undefined and are left undefined — every statistic that depends on them is computed pairwise on the fifteen runs that do reach it. Four further runs state their flow rate twice in the source file and disagree with themselves; the affected metrics are provisional, and Table 5 names the owner. Two additional records logged on 17 July carry no embedded geometry at all and are excluded by the pipeline's own metadata guard, not by selection.
+
+[p1377] The per-run curves for all twenty-one runs, each with its full set of fit diagnostics, are in Appendix A.
+
+[p1378] *(1 embedded image)*
+
+###### [p1379] Fig. 9) Measured breakthrough curves for the 3×3 flow × concentration design, one panel per cell with every run in that cell overlaid. Dotted and dash-dot rules mark the C/C₀ = 0.05 and 0.95 definitions of t_b and t_E. * flow stated twice and inconsistently in the source file; † run never reaches C/C₀ = 0.95, so its t_E is undefined and is never imputed.
+
+[p1380] *(1 embedded image)*
+
+###### [p1381] Fig. 10) The same sixteen runs on one axis. Colour encodes inlet CO₂ and line style encodes flow rate, so the two effects can be read against each other directly.
+
+[p1382] *(1 embedded image)*
+
+###### [p1383] Fig. 11) Measured breakthrough curves for the five earlier runs (3/4/5/6/8) on the 8.5 mm column. Plotted separately from Figures 9 and 10 because the two campaigns differ in bed length and column internal diameter and are not pooled.
+
+## [p1384] 7 Experimental Analysis
+
+[p1385] *(1 embedded image)*
+
+###### [p1386] Fig. 12) Breakthrough time t_b against inlet flow rate, grouped by inlet CO₂ concentration (5, 10 and 15 % v/v). Circle and square markers are the two replicate sets reported in Tables 9 and 10.
+
+[p1388] Breakthrough time drops sharply as concentration and flow rate go up, from 23.8–30.4 min at 5%/50 ml/min down to just 2.6–2.7 min at 15%/150 ml/min. A higher inlet concentration pushes CO₂ into the sorbent harder, so each layer of the bed fills up faster and the ‘active’ adsorbing region (mass transfer zone, or MTZ) moves through the column more quickly (Chowdhury et al., 2013). A higher flow rate has a similar effect for a different reason: the gas simply does not stay in contact with each granule for as long before it exits.
+
+[p1389] *(1 embedded image)*
+
+###### [p1390] Fig. 13) Saturation time t_E against inlet flow rate, same grouping as Fig. 12. t_E is defined at C/C₀ = 0.95.
+
+[p1391] *(1 embedded image)*
+
+###### [p1392] Fig. 14) Saturation capacity q_E against inlet flow rate, same grouping as Fig. 12.
+
+[p1393] Equilibrium capacity goes up with concentration, but barely changes with flow rate; qe stays roughly the same across all three flow rates at a given concentration (e.g. 0.87 - 1.09 mmol/g across 50–150 ml/min at 5% CO₂). That makes sense: qe is about how much CO₂ the sorbent can hold once it is fully saturated, which depends on how much CO₂ is in the gas (concentration), not on how fast the gas was flowing to get there (Lima et al., 2024).
+
+[p1394] *(1 embedded image)*
+
+###### [p1395] Fig. 15) Breakthrough capacity q_B against inlet flow rate, same grouping as Fig. 12.
+
+[p1396] Breakthrough capacity is highest when flow rate is low and concentration is high, peaking at 15% CO₂/50 ml/min (qb ≈ 0.673 - 0.681 mmol/g). At low flow rate, the MTZ has more time to develop before breakthrough happens, so more of the bed’s eventual capacity has already been used by that point. At high flow rate, breakthrough happens almost right away, before the MTZ has even properly formed, so qb stays low even in cases where qe (the sorbent’s theoretical ceiling) is still fairly high.
+
+[p1397] *(2 embedded images)*
+
+[p1398] *(2 embedded images)*
+
+###### [p1399] Fig. 16) Predicted vs. observed values in breakthrough models fit.
+
+[p1400] *(1 embedded image)*
+
+###### [p1401] Fig. 17) Breakthrough curve fitting with linear adsorption isotherm
+
+###### [p1402] Fig. 18) Validation of fractal-like kinetics on logistic breakthrough model curve
+
+### [p1403] 7.1 Cross-run trends and model ranking
+
+[p1404] The four charts above read one metric at a time off the replicate tables. Figures 19 to 21 aggregate across runs instead. Figure 19 ranks the twenty-four registry models by mean adjusted R²; Figure 20 puts all six measured performance metrics on a common flow axis; Figure 21 is the predicted-against-observed parity plot for the five-run campaign.
+
+[p1405] Two cautions apply to every panel in this group. First, the two campaigns are not pooled: the five earlier runs were measured on an 8.5 mm column with a 21 cm bed and the sixteen grid runs on an 8.2 mm column with a 22.5-24.5 cm bed, so a pooled trend would confound a change of apparatus with the effect being measured. Where a figure covers both, the two are drawn as separate series. Second, q_dyn is not currently a comparable quantity across runs — Section 8.5 quantifies why — so the capacity panel of Figure 20 should be read as a record of what was measured, not as a capacity trend.
+
+[p1406] *(1 embedded image)*
+
+###### [p1407] Fig. 19) All twenty-four registry models ranked by mean adjusted R², the two campaigns side by side and never pooled. The numeric values, with median, RMSE, mean ΔAICc and runs won, are Tables 15 and 16.
+
+[p1408] *(1 embedded image)*
+
+###### [p1409] Fig. 20) Every measured performance metric against flow for the grid campaign: t_b, t_E, t₅₀, q_dyn, L_MTZ and ψ. Open markers are the four runs whose source file states its flow twice and disagrees with itself, for which q_dyn, L_MTZ and ψ are provisional (Table 5).
+
+[p1410] *(1 embedded image)*
+
+###### [p1411] Fig. 21) Predicted against observed C/C₀ for runs 3/4/5/6/8, nine models coloured by family. Departure from the 1:1 line is the fit error that Tables 14-17 quantify.
+
+### [p1413] 7.2 Determining the Optimal Operating Parameters
+
+#### [p1414] 7.2.1 Identifying the Optimal Condition
+
+[p1415] Three metrics were used jointly to identify the optimal operating condition: breakthrough capacity (qb), breakthrough time (tb), and breakthrough utilisation ration (qb/qe). At 50 ml/min, mean qb/qe rises from 33.7% at 5% CO₂ (condition 1), to 39.9% at 10% (condition 4), to 40.6% at 15% (condition 7). The deciding factor between conditions 4 and 7 is absolute breakthrough capacity: condition 7 delivers an average of 0.677 mmol/g, 36% higher than condition 4's 0.498 mmol/g, while both reach breakthrough within a comparable, workable window (17.80 vs. 19.56 minutes). On this basis, 15% CO₂ at 50 ml/min is identified as the better-performing condition of the two tested at the lowest flow rate, and the best-performing condition overall among the nine tested.
+
+#### [p1416] 7.2.2 Why This is Still Not Good Enough
+
+[p1417] Even at its best, qb/qe ≈ 40% at the optimal condition means roughly 60% of the bed's equilibrium capacity remains unused at the point of breakthrough.
+
+[p1418] This can be benchmarked directly against literature: a CO₂/N₂ breakthrough study using molecular sieve and silica gel sorbents reported a maximum CO₂ uptake of 0.665 mmol/g, with the narrower mass transfer zone and higher column efficiency of 87.5% for the molecular sieve indicating efficient use of the adsorbent (Al Mesfer et al., 2020). However, the same pattern of low fractional bed utilisation relative to bed height has been reported elsewhere in fixed-bed adsorption, where utilisation factors below 50% are attributed to an insufficiently developed mass transfer zone relative to the column length (Karunarathne & Amarasinghe, 2013).
+
+[p1419] So from reading, we found two possible reasons for the low utilisation observed:
+
+- [p1420] The bed might just be too short. At 230 to 240 mm, the column may not give the mass transfer zone (the ‘active’ region doing most of the adsorbing) enough room to fully form before the gas reaches the outlet. A longer bed would let more of that zone sit inside the column at the moment of breakthrough, pushing tb closer to te and raising qb/qe (Futalan & Wan, 2022).
+
+- [p1421] The sorbent itself might be slow to absorb CO₂. Studies on PEI-coated sorbents like this one show a fast initial uptake followed by a much slower period as CO₂ has to diffuse deeper into the amine-coated pores to reach remaining sorption sites (Moon et al., 2023). If this is the real bottleneck, a longer bed would not fully fix it, the adsorption front would stay broad regardless of bed length, because it is limited by how fast CO₂ can get into each granule, not by how much room the bed has.
+
+[p1422] Applying a mass-transfer breakthrough model will differentiate between these causes: an active zone width that scales with bed length indicates a physical column limit, whereas a constant zone width indicates internal diffusion constraints.
+
+[p1423] Low bed utilisation is not just an efficiency curiosity; it has direct economic and design consequences that become more severe as the process moves from bench scale toward large-scale industrial deployment. Because a lower qb/qe ratio means a larger fraction of installed sorbent is sitting idle at any given time, every percentage point of unused material means additional capital cost for sorbent and column volume that a real capture plant would otherwise not need.
+
+#### [p1424] 7.2.3 Real-World Settings
+
+[p1425] Low bed utilisation is exactly what has pushed real CO₂ capture systems away from a single simple fixed-bed column and toward more complex setups: three-column systems with vacuum regeneration (Kinosita & Yogo, 2021), fluidised beds designed carefully around heat transfer (Schöny et al., 2018), and completely different equipment like rotating packed beds. These rotating designs have shown up to 10 times smaller equipment and 50% lower cost than standard packed columns for smaller industrial CO₂ sources (under 300 tonnes/day), by solving the same mass-transfer and utilisation problem seen in this study, just with a different piece of equipment instead of a longer column.
+
+[p1426] Another useful comparison: one study tested a rotary (spinning) sorbent bed directly against a three-column fixed-bed system, using a similar solid amine sorbent under the same CO₂ capture conditions. The rotary version came out ahead on CO₂ recovery, energy use, and cost, because a spinning bed never has a large chunk of sorbent sitting idle between breakthrough and full regeneration the way a static column does (RSC, 2023). These comparisons suggest that the observed low utilisation may reflect limitations associated with mass transfer and fixed-bed operation rather than the equilibrium capacity of the sorbent alone. However, further modelling and experiments are required to distinguish between bed-length limitations and intraparticle diffusion effects. The fixes suggested later on (longer bed, smaller particles, running beds in pairs) can help, but they are really just working around a limitation that industry has already moved past with different equipment designs.
+
+#### [p1427] 7.2.4 Possible Adjustments to Increase Utilisation
+
+[p1428] In future with a predictive model, it may be able to tell if this under-utilisation is caused by the height of bed or the granules. However if we are looking at adjusting our set up alone:
+
+[p1429] Based on observations as well as comparisons with the real-world examples, three practical steps follow from the two possible explanations above, and would help capture more of the sorbent’s available capacity in practice:
+
+[p1430] ● Make the bed longer. If the mass transfer zone just does not have enough room, doubling the bed length (e.g. to 460–480 mm, keeping the same diameter and flow rate) would give it that room, pushing breakthrough later relative to full saturation and raising qb/qe. This is the easiest thing to test first, since it does not require changing the sorbent at all.
+
+[p1431] ● Use smaller sorbent particles. If the real problem is how fast CO₂ can diffuse into the granules, crushing the C3 granules to a smaller size would shorten that diffusion path and narrow the mass transfer zone. Testing this directly would also help rule out the bed-length explanation.
+
+[p1432] ● Run two beds in sequence (lead-lag). Instead of using one column until it breaks through and wasting whatever capacity is left, you can route gas from a column that’s close to breakthrough into a second, fresh column, the first bed keeps adsorbing using its remaining capacity while the second one catches any CO₂ that slips through. This is common industrial practice for exactly this problem, the three-column system in Section 5.4 (Kinosita & Yogo, 2021) is a real working example of it, and would let you use nearly all of qe without redesigning the column.
+
+## [p1433] 8 Fitting performance and analysis
+
+### [p1434] 8.1 Model identifiability and selection criterion
+
+- [p1435] Model selection throughout this section uses the corrected Akaike Information Criterion (AICc), which penalises additional free parameters and is the appropriate criterion for the sample sizes here (n = 255-1432 points per run; Hu et al., 2024). Within any single run, the AICc gap between the best and second-best model is large: ΔAICc = 20.2 (run 3, M11 over M10), 329.0 (run 4, M14 over M10), 517.1 (run 5, M11 over M14), 282.1 (run 6, M10 over M11), and 198.2 (run 8, M10 over M11) — in every case far above the ΔAICc > 10 threshold conventionally treated as decisive. Model selection is therefore never ambiguous within a run.
+
+- [p1436] What is not stable is which model wins across runs. M11 (fractal error-function) is best in runs 3 and 5, M10 (fractal Gudermannian) in runs 6 and 8, and M14 (Weibull) in run 4 — the three-way alternation flagged in the literature-completeness audit. This is not evidence of an unreliable fitting procedure. M10, M11, M14 and M23 are all closely related asymmetric sigmoids (§3.6.6-3.6.8) that trace near-identical curves once fitted: §3.6.4's Remark shows their pairwise sup-norm distance, after slope-matching at the inflection point, is ≤0.031 uniformly over the whole curve. AICc is correctly identifying, per run, which of several near-equivalent functional forms best absorbs that run's particular noise realisation — it is not resolving a genuine physical distinction between the kernels. The stable, model-independent signal is the fractal/asymmetric exponent itself (h = 0.42-0.87 across all five runs), whose presence is decisive in every run by the nested F-test in experimental-results.md §5 (F > 10 000, p ≪ 0.001 throughout) — not the specific choice of kernel that carries it.
+
+- [p1437] A parsing note on the pipeline's own output: the `W_AICc` column in `results_<run>.csv` is a pairwise logistic transform of ΔAICc against the best model in the set, 1/(1+exp(0.5·ΔAICc)) (`breakthrough_fit/stats.py`), not a normalised Akaike weight over all candidates. It trivially equals 0.5 for the best model by construction (ΔAICc = 0), regardless of how decisively it wins — it should not be read as "the best model carries 50 % of the evidence". Raw ΔAICc, used throughout this section, is the correct comparison.
+
+### [p1438] 8.2 Fit-quality results with standard errors
+
+- [p1439] Table 11 reports the winning model per run against the M01 (logistic Yoon-Nelson/Thomas/Bohart-Adams) baseline, with curve_fit's asymptotic standard errors on every fitted parameter (from results_<run>.csv's stderr column; nonlinear least-squares, trust-region-reflective, 12 multi-start initialisations, §4.1). Coefficients of variation on the fractal exponent h are all below 1 %, and on the location parameter (τ or τ0) below 0.7 % — the model parameters are tightly identified given the data, even where the choice of *kernel* alternates (§8.1).
+
+[p1440] Table 11) Winning model per run vs. M01 baseline, with asymptotic standard errors.
+
+[p1441] Run
+
+[p1442] Model
+
+[p1443] τ/ $`τ0`$ (s) ± SE
+
+[p1444] h ± SE
+
+[p1445] Adj $`R2`$
+
+[p1446] M01 τ (s) ± SE
+
+[p1447] M01 Adj. R²
+
+[p1449] 3
+
+[p1450] M11 Fractal-erf
+
+[p1451] 316.6 ± 1.65
+
+[p1452] 0.5245 ± 0.0031
+
+[p1453] 0.99883
+
+[p1454] 507.5 ± 15.7
+
+[p1455] 0.91349
+
+[p1456] 4
+
+[p1457] M14 Weibull
+
+[p1458] 1202.5 ± 1.30
+
+[p1459] 0.8105 ± 0.0011
+
+[p1460] 0.99961
+
+[p1461] 1004.3 ± 9.3
+
+[p1462] 0.96304
+
+[p1463] 5
+
+[p1464] M11 Fractal-erf
+
+[p1465] 226.3 ± 0.60
+
+[p1466] 0.4721 ± 0.0018
+
+[p1467] 0.99946
+
+[p1468] 342.6 ± 5.7
+
+[p1469] 0.94385
+
+[p1470] 6
+
+[p1471] M10 Fractal-Gud.
+
+[p1472] 237.1 ± 0.85
+
+[p1473] 0.4671 ± 0.0024
+
+[p1474] 0.99964
+
+[p1475] 349.7 ± 10.1
+
+[p1476] 0.94163
+
+[p1477] 8
+
+[p1478] M10 Fractal-Gud.
+
+[p1479] 246.7 ± 1.00
+
+[p1480] 0.4747 ± 0.0032
+
+[p1481] 0.99947
+
+[p1482] 348.0 ± 10.3
+
+[p1483] 0.94162
+
+[p1484] All free parameters — for both the minimal kinetic model of Section 9.1 and the twenty-four-model registry of Section 3.6 — were determined by nonlinear least-squares regression (scipy.optimize.curve_fit, trust-region-reflective algorithm, twelve multi-start initialisations per model) rather than by linearising each model to a straight line.
+
+[p1485] This choice follows Hu et al. (2024, §5.5) directly. Linearising a breakthrough model — for example the Thomas model's linear form ln(c₀/c − 1) = k_Th q₀ m/ν − k_Th c₀ t — implicitly transforms the response variable and alters its error structure: ordinary least squares on the linearised form assumes constant-variance, normally distributed residuals in the transformed coordinate, an assumption the untransformed C/C₀ data need not satisfy. The transform is also undefined at C/C₀ = 0 and C/C₀ = 1, so a linearised fit must exclude data at and near breakthrough and near saturation — precisely the regions the acceptance criteria of Section 4 are built to capture completely. Hu et al. (2024) report that this exclusion inflates linearised parameter error most sharply near those same two limits. Nonlinear regression avoids both problems, fitting the untransformed C/C₀ response directly with no domain exclusion, and extends without modification to the fractal-like and two-component models of Sections 3.6.8 and 3.6.14, which have no closed linear form at all.
+
+[p1486] A second methodological choice follows from the same source. Every model is fitted to the complete breakthrough curve, not a curve truncated before saturation. Hu et al. (2024, §5.2) quantify why this matters: fitting the Thomas model to progressively truncated breakthrough data (100 % down to 20 % of the complete curve) produced relative errors in the fitted rate constant of up to 110.8 %, 26.1 % and 47.5 % at three influent concentrations — even though the truncated fits still reported adjusted R² above 0.99. A good statistical fit to a partial curve does not imply an accurate parameter estimate.
+
+[p1487] The error statistics reported in Tables 14 to 17 and in Appendix B are defined as follows (Hu et al., 2024, §4). The coefficient of determination is R² = 1 − Σ(yᵢ − ŷᵢ)² / Σ(yᵢ − ȳ)²; the adjusted R² penalises the parameter count p; the root-mean-square error RMSE is reported in units of C/C₀, so it is directly comparable between runs; the reduced chi-square χ²_red is the residual sum of squares per degree of freedom; and model comparison uses the corrected Akaike criterion AICc, reported here as ΔAICc against the best model in each run. A nested pair of models is compared by the F-test F = [(RSS₁ − RSS₂)/(df₁ − df₂)] / [RSS₂/df₂], Table 17 and Appendix B.3.
+
+[p1488] Two caveats are recorded rather than resolved. First, the column labelled W_AICc in the pipeline's results files is a pairwise logistic transform 1/(1 + exp(0.5·ΔAICc)) against the best model in the set, not a normalised Akaike weight over all candidates; it equals 0.5 for the best model by construction and is not reported in this section for that reason. Second, Hu et al. (2024, §4) caution that R², adjusted R² and AIC alone are not sufficient to judge fit quality and recommend the residual plot as the more reliable diagnostic. That applies here with force: C/C₀ is bounded on [0, 1], so residual variance is structurally pinched near both limits and is heteroscedastic by construction — an assumption the F-test and AICc comparisons do not themselves test. The residual diagnostics for every model of every run are reproduced in Appendix A as the P7 panel of each run.
+
+[p1489] Table 14 reports, for each of the sixteen grid runs, the model selected by AICc against the M01 logistic (Bohart-Adams / Thomas / Yoon-Nelson) baseline. Tables 15 and 16 rank all twenty-four registry models by mean adjusted R², separately for each campaign, and Table 17 gives the nested F-test that asks whether the fractal exponent h earns its parameter. The complete per-model, per-run statistics — 504 rows — are in Appendix B.1, the fitted parameters with their asymptotic standard errors in Appendix B.2, all six nested comparisons in Appendix B.3, and the degenerate fits in Appendix B.4.
+
+[p1490] Table 14) Fit quality for the sixteen grid runs: model selected by AICc against the M01 logistic baseline. * flow rate stated twice and inconsistently in the source file (Table 5); † run never reaches C/C₀ = 0.95.
+
+[p1491] Run
+
+[p1492] n
+
+[p1493] Best model (AICc)
+
+[p1494] p
+
+[p1495] R²
+
+[p1496] Adj R²
+
+[p1497] RMSE
+
+[p1498] AICc
+
+[p1499] ΔAICc vs M01
+
+[p1500] M01 Adj R²
+
+[p1501] M01 RMSE
+
+[p1502] 06-26 c5 f0.05
+
+[p1503] 1658
+
+[p1504] M11 Fractal Error-Function (Hu 2024)
+
+[p1505] 3
+
+[p1506] 0.999028
+
+[p1507] 0.999027
+
+[p1508] 0.009058
+
+[p1509] -15594.6
+
+[p1510] 7273.4
+
+[p1511] 0.921729
+
+[p1512] 0.08127
+
+[p1513] 07-03 c5 f0.10
+
+[p1514] 413
+
+[p1515] M24 Parallel two-component sigmoidal (Blagojev)
+
+[p1516] 5
+
+[p1517] 0.999159
+
+[p1518] 0.999150
+
+[p1519] 0.008903
+
+[p1520] -3891.70
+
+[p1521] 1727.7
+
+[p1522] 0.943862
+
+[p1523] 0.07263
+
+[p1524] 07-08 c5 f0.15
+
+[p1525] 440
+
+[p1526] M11 Fractal Error-Function (Hu 2024)
+
+[p1527] 3
+
+[p1528] 0.999626
+
+[p1529] 0.999624
+
+[p1530] 0.004422
+
+[p1531] -4766.56
+
+[p1532] 2507.0
+
+[p1533] 0.887599
+
+[p1534] 0.07654
+
+[p1535] 07-08 c10 f0.05
+
+[p1536] 1746
+
+[p1537] M11 Fractal Error-Function (Hu 2024)
+
+[p1538] 3
+
+[p1539] 0.999567
+
+[p1540] 0.999567
+
+[p1541] 0.006895
+
+[p1542] -17375.7
+
+[p1543] 8435.6
+
+[p1544] 0.945643
+
+[p1545] 0.07725
+
+[p1546] 07-08 c10 f0.10
+
+[p1547] 1472
+
+[p1548] M11 Fractal Error-Function (Hu 2024)
+
+[p1549] 3
+
+[p1550] 0.999617
+
+[p1551] 0.999616
+
+[p1552] 0.005038
+
+[p1553] -15572.0
+
+[p1554] 7387.0
+
+[p1555] 0.941933
+
+[p1556] 0.06198
+
+[p1557] 07-08 c10 f0.15
+
+[p1558] 477
+
+[p1559] M03 Fractal Clark
+
+[p1560] 4
+
+[p1561] 0.999241
+
+[p1562] 0.999236
+
+[p1563] 0.007004
+
+[p1564] -4726.94
+
+[p1565] 2164.1
+
+[p1566] 0.928355
+
+[p1567] 0.06798
+
+[p1568] 07-10 c15 f0.05
+
+[p1569] 1650
+
+[p1570] M11 Fractal Error-Function (Hu 2024)
+
+[p1571] 3
+
+[p1572] 0.999343
+
+[p1573] 0.999342
+
+[p1574] 0.008330
+
+[p1575] -15796.1
+
+[p1576] 7418.4
+
+[p1577] 0.940964
+
+[p1578] 0.07892
+
+[p1579] 07-10 c15 f0.10
+
+[p1580] 1147
+
+[p1581] M11 Fractal Error-Function (Hu 2024)
+
+[p1582] 3
+
+[p1583] 0.999367
+
+[p1584] 0.999366
+
+[p1585] 0.006504
+
+[p1586] -11547.0
+
+[p1587] 5130.1
+
+[p1588] 0.944409
+
+[p1589] 0.06093
+
+[p1590] 07-15 c15 f0.15
+
+[p1591] 1002
+
+[p1592] M11 Fractal Error-Function (Hu 2024)
+
+[p1593] 3
+
+[p1594] 0.999261
+
+[p1595] 0.999259
+
+[p1596] 0.006069
+
+[p1597] -10225.6
+
+[p1598] 4605.4
+
+[p1599] 0.926506
+
+[p1600] 0.06048
+
+[p1601] 07-17 c15 f0.10
+
+[p1602] 778
+
+[p1603] M24 Parallel two-component sigmoidal (Blagojev)
+
+[p1604] 5
+
+[p1605] 0.998851
+
+[p1606] 0.998845
+
+[p1607] 0.01005
+
+[p1608] -7149.89
+
+[p1609] 2725.1
+
+[p1610] 0.961483
+
+[p1611] 0.05814
+
+[p1612] 07-22 c10 f0.05*
+
+[p1613] 1364
+
+[p1614] M24 Parallel two-component sigmoidal (Blagojev)
+
+[p1615] 5
+
+[p1616] 0.999096
+
+[p1617] 0.999093
+
+[p1618] 0.01090
+
+[p1619] -12319.4
+
+[p1620] 5034.1
+
+[p1621] 0.963588
+
+[p1622] 0.06916
+
+[p1623] 07-22 c10 f0.10*
+
+[p1624] 325
+
+[p1625] M24 Parallel two-component sigmoidal (Blagojev)
+
+[p1626] 5
+
+[p1627] 0.998593
+
+[p1628] 0.998575
+
+[p1629] 0.009486
+
+[p1630] -3019.50
+
+[p1631] 1226.5
+
+[p1632] 0.937350
+
+[p1633] 0.06319
+
+[p1634] 07-29 c5 f0.05†
+
+[p1635] 603
+
+[p1636] M24 Parallel two-component sigmoidal (Blagojev)
+
+[p1637] 5
+
+[p1638] 0.998252
+
+[p1639] 0.998241
+
+[p1640] 0.01428
+
+[p1641] -5116.18
+
+[p1642] 2227.4
+
+[p1643] 0.928912
+
+[p1644] 0.09099
+
+[p1645] 07-29 c5 f0.10
+
+[p1646] 1573
+
+[p1647] M24 Parallel two-component sigmoidal (Blagojev)
+
+[p1648] 5
+
+[p1649] 0.998957
+
+[p1650] 0.998954
+
+[p1651] 0.009293
+
+[p1652] -14710.6
+
+[p1653] 6505.9
+
+[p1654] 0.934464
+
+[p1655] 0.07364
+
+[p1656] 07-31 c5 f0.15*
+
+[p1657] 351
+
+[p1658] M11 Fractal Error-Function (Hu 2024)
+
+[p1659] 3
+
+[p1660] 0.998888
+
+[p1661] 0.998881
+
+[p1662] 0.008363
+
+[p1663] -3354.27
+
+[p1664] 1557.0
+
+[p1665] 0.905290
+
+[p1666] 0.07706
+
+[p1667] 07-31 c10 f0.10*
+
+[p1668] 1171
+
+[p1669] M11 Fractal Error-Function (Hu 2024)
+
+[p1670] 3
+
+[p1671] 0.999082
+
+[p1672] 0.999081
+
+[p1673] 0.007737
+
+[p1674] -11382.2
+
+[p1675] 4561.8
+
+[p1676] 0.954754
+
+[p1677] 0.05431
+
+[p1679] Table 15) All twenty-four registry models ranked by mean adjusted R² over the sixteen grid runs.
+
+[p1680] Rank
+
+[p1681] Code
+
+[p1682] Model
+
+[p1683] Mean Adj R²
+
+[p1684] Median Adj R²
+
+[p1685] Mean RMSE
+
+[p1686] Mean ΔAICc
+
+[p1687] Runs won
+
+[p1688] Converged / n
+
+[p1689] 1
+
+[p1690] M11
+
+[p1691] Fractal Error-Function (Hu 2024)
+
+[p1692] 0.998928
+
+[p1693] 0.999013
+
+[p1694] 0.009086
+
+[p1695] 138.75
+
+[p1696] 9
+
+[p1697] 16 / 16
+
+[p1698] 2
+
+[p1699] M24
+
+[p1700] Parallel two-component sigmoidal (Blagojev)
+
+[p1701] 0.998829
+
+[p1702] 0.998915
+
+[p1703] 0.009615
+
+[p1704] 400.90
+
+[p1705] 6
+
+[p1706] 16 / 16
+
+[p1707] 3
+
+[p1708] M13
+
+[p1709] Log-Gompertz (Chu 2020)
+
+[p1710] 0.997826
+
+[p1711] 0.998224
+
+[p1712] 0.01289
+
+[p1713] 918.18
+
+[p1714] 0
+
+[p1715] 16 / 16
+
+[p1716] 4
+
+[p1717] M03
+
+[p1718] Fractal Clark
+
+[p1719] 0.997781
+
+[p1720] 0.997890
+
+[p1721] 0.01310
+
+[p1722] 954.36
+
+[p1723] 1
+
+[p1724] 16 / 16
+
+[p1725] 5
+
+[p1726] M10
+
+[p1727] Fractal Gudermannian (Hu 2024)
+
+[p1728] 0.997193
+
+[p1729] 0.997252
+
+[p1730] 0.01479
+
+[p1731] 1203.5
+
+[p1732] 0
+
+[p1733] 16 / 16
+
+[p1734] 6
+
+[p1735] M04
+
+[p1736] Modified Dose-Response (Yan)
+
+[p1737] 0.992522
+
+[p1738] 0.993488
+
+[p1739] 0.02430
+
+[p1740] 2266.7
+
+[p1741] 0
+
+[p1742] 16 / 16
+
+[p1743] 7
+
+[p1744] M20
+
+[p1745] Log-modified Bohart-Adams
+
+[p1746] 0.992522
+
+[p1747] 0.993488
+
+[p1748] 0.02430
+
+[p1749] 2266.7
+
+[p1750] 0
+
+[p1751] 16 / 16
+
+[p1752] 8
+
+[p1753] M21
+
+[p1754] Log-modified Yoon-Nelson
+
+[p1755] 0.992522
+
+[p1756] 0.993488
+
+[p1757] 0.02430
+
+[p1758] 2266.7
+
+[p1759] 0
+
+[p1760] 16 / 16
+
+[p1761] 9
+
+[p1762] M09
+
+[p1763] Log-Normal (Chu-Hashim)
+
+[p1764] 0.991264
+
+[p1765] 0.992202
+
+[p1766] 0.02611
+
+[p1767] 2425.9
+
+[p1768] 0
+
+[p1769] 16 / 16
+
+[p1770] 10
+
+[p1771] M23
+
+[p1772] Fractal Yoon-Nelson (Hu 2024)
+
+[p1773] 0.991175
+
+[p1774] 0.992095
+
+[p1775] 0.02636
+
+[p1776] 2438.3
+
+[p1777] 0
+
+[p1778] 16 / 16
+
+[p1779] 11
+
+[p1780] M14
+
+[p1781] Weibull (Chu 2021)
+
+[p1782] 0.972978
+
+[p1783] 0.974998
+
+[p1784] 0.04620
+
+[p1785] 3604.6
+
+[p1786] 0
+
+[p1787] 16 / 16
+
+[p1788] 12
+
+[p1789] M15
+
+[p1790] Avrami (Singh)
+
+[p1791] 0.972969
+
+[p1792] 0.974927
+
+[p1793] 0.04621
+
+[p1794] 3605.2
+
+[p1795] 0
+
+[p1796] 16 / 16
+
+[p1797] 13
+
+[p1798] M12
+
+[p1799] Gompertz (Chu 2020)
+
+[p1800] 0.959926
+
+[p1801] 0.963357
+
+[p1802] 0.05458
+
+[p1803] 3869.2
+
+[p1804] 0
+
+[p1805] 16 / 16
+
+[p1806] 14
+
+[p1807] M02
+
+[p1808] Clark
+
+[p1809] 0.959595
+
+[p1810] 0.963055
+
+[p1811] 0.05477
+
+[p1812] 3878.9
+
+[p1813] 0
+
+[p1814] 16 / 16
+
+[p1815] 15
+
+[p1816] M05
+
+[p1817] Wolborska (linearised, early)
+
+[p1818] 0.946749
+
+[p1819] 0.949151
+
+[p1820] 0.01039
+
+[p1821] 9567.7
+
+[p1822] 0
+
+[p1823] 16 / 16
+
+[p1824] 16
+
+[p1825] M06
+
+[p1826] Gudermannian (Hu 2021)
+
+[p1827] 0.938655
+
+[p1828] 0.942054
+
+[p1829] 0.06859
+
+[p1830] 4357.1
+
+[p1831] 0
+
+[p1832] 16 / 16
+
+[p1833] 17
+
+[p1834] M01
+
+[p1835] Yoon-Nelson / Thomas / BA (logistic)
+
+[p1836] 0.935427
+
+[p1837] 0.939157
+
+[p1838] 0.07028
+
+[p1839] 4405.4
+
+[p1840] 0
+
+[p1841] 16 / 16
+
+[p1842] 18
+
+[p1843] M08
+
+[p1844] Tanh (Hu 2019)
+
+[p1845] 0.935427
+
+[p1846] 0.939157
+
+[p1847] 0.07028
+
+[p1848] 4405.4
+
+[p1849] 0
+
+[p1850] 16 / 16
+
+[p1851] 19
+
+[p1852] M17
+
+[p1853] Dima (wave erf)
+
+[p1854] 0.930256
+
+[p1855] 0.933984
+
+[p1856] 0.07294
+
+[p1857] 4479.9
+
+[p1858] 0
+
+[p1859] 16 / 16
+
+[p1860] 20
+
+[p1861] M07
+
+[p1862] Error-Function (Hu 2021)
+
+[p1863] 0.930256
+
+[p1864] 0.933984
+
+[p1865] 0.07294
+
+[p1866] 4479.9
+
+[p1867] 0
+
+[p1868] 16 / 16
+
+[p1869] 21
+
+[p1870] M16
+
+[p1871] Klinkenberg
+
+[p1872] 0.735445
+
+[p1873] 0.765821
+
+[p1874] 0.1466
+
+[p1875] 5930.5
+
+[p1876] 0
+
+[p1877] 16 / 16
+
+[p1878] 22
+
+[p1879] M22
+
+[p1880] n-Order Bohart-Adams
+
+[p1881] -0.719768
+
+[p1882] -0.654456
+
+[p1883] 0.3725
+
+[p1884] 7822.0
+
+[p1885] 0
+
+[p1886] 16 / 16
+
+[p1887] 23
+
+[p1888] M18
+
+[p1889] Chern-Chien Langmuir
+
+[p1890] -75070.1
+
+[p1891] -55363.0
+
+[p1892] 0.4970
+
+[p1893] n/a
+
+[p1894] 0
+
+[p1895] 16 / 16
+
+[p1896] 24
+
+[p1897] M19
+
+[p1898] Chern-Chien Freundlich
+
+[p1899] -75070.1
+
+[p1900] -55363.0
+
+[p1901] 0.4970
+
+[p1902] n/a
+
+[p1903] 0
+
+[p1904] 16 / 16
+
+[p1906] Table 16) All twenty-four registry models ranked by mean adjusted R² over the five earlier runs (3/4/5/6/8). Reported separately from Table 15; the two campaigns are not pooled.
+
+[p1907] Rank
+
+[p1908] Code
+
+[p1909] Model
+
+[p1910] Mean Adj R²
+
+[p1911] Median Adj R²
+
+[p1912] Mean RMSE
+
+[p1913] Mean ΔAICc
+
+[p1914] Runs won
+
+[p1915] Converged / n
+
+[p1916] 1
+
+[p1917] M10
+
+[p1918] Fractal Gudermannian (Hu 2024)
+
+[p1919] 0.999272
+
+[p1920] 0.999471
+
+[p1921] 0.006588
+
+[p1922] 176.10
+
+[p1923] 2
+
+[p1924] 5 / 5
+
+[p1925] 2
+
+[p1926] M11
+
+[p1927] Fractal Error-Function (Hu 2024)
+
+[p1928] 0.999124
+
+[p1929] 0.999025
+
+[p1930] 0.007195
+
+[p1931] 191.09
+
+[p1932] 2
+
+[p1933] 5 / 5
+
+[p1934] 3
+
+[p1935] M24
+
+[p1936] Parallel two-component sigmoidal (Blagojev)
+
+[p1937] 0.998977
+
+[p1938] 0.999243
+
+[p1939] 0.007835
+
+[p1940] 402.67
+
+[p1941] 0
+
+[p1942] 5 / 5
+
+[p1943] 4
+
+[p1944] M03
+
+[p1945] Fractal Clark
+
+[p1946] 0.998922
+
+[p1947] 0.999141
+
+[p1948] 0.008029
+
+[p1949] 464.18
+
+[p1950] 0
+
+[p1951] 5 / 5
+
+[p1952] 5
+
+[p1953] M23
+
+[p1954] Fractal Yoon-Nelson (Hu 2024)
+
+[p1955] 0.998263
+
+[p1956] 0.998774
+
+[p1957] 0.01022
+
+[p1958] 742.93
+
+[p1959] 0
+
+[p1960] 5 / 5
+
+[p1961] 6
+
+[p1962] M14
+
+[p1963] Weibull (Chu 2021)
+
+[p1964] 0.997974
+
+[p1965] 0.997746
+
+[p1966] 0.01019
+
+[p1967] 367.84
+
+[p1968] 1
+
+[p1969] 5 / 5
+
+[p1970] 7
+
+[p1971] M15
+
+[p1972] Avrami (Singh)
+
+[p1973] 0.997974
+
+[p1974] 0.997746
+
+[p1975] 0.01019
+
+[p1976] 367.84
+
+[p1977] 0
+
+[p1978] 5 / 5
+
+[p1979] 8
+
+[p1980] M09
+
+[p1981] Log-Normal (Chu-Hashim)
+
+[p1982] 0.997744
+
+[p1983] 0.996869
+
+[p1984] 0.01177
+
+[p1985] 1037.1
+
+[p1986] 0
+
+[p1987] 5 / 5
+
+[p1988] 9
+
+[p1989] M20
+
+[p1990] Log-modified Bohart-Adams
+
+[p1991] 0.995081
+
+[p1992] 0.994697
+
+[p1993] 0.01758
+
+[p1994] 1496.4
+
+[p1995] 0
+
+[p1996] 5 / 5
+
+[p1997] 10
+
+[p1998] M04
+
+[p1999] Modified Dose-Response (Yan)
+
+[p2000] 0.995081
+
+[p2001] 0.994697
+
+[p2002] 0.01758
+
+[p2003] 1496.4
+
+[p2004] 0
+
+[p2005] 5 / 5
+
+[p2006] 11
+
+[p2007] M21
+
+[p2008] Log-modified Yoon-Nelson
+
+[p2009] 0.995081
+
+[p2010] 0.994697
+
+[p2011] 0.01758
+
+[p2012] 1496.4
+
+[p2013] 0
+
+[p2014] 5 / 5
+
+[p2015] 12
+
+[p2016] M13
+
+[p2017] Log-Gompertz (Chu 2020)
+
+[p2018] 0.986641
+
+[p2019] 0.986084
+
+[p2020] 0.02918
+
+[p2021] 2117.6
+
+[p2022] 0
+
+[p2023] 5 / 5
+
+[p2024] 13
+
+[p2025] M12
+
+[p2026] Gompertz (Chu 2020)
+
+[p2027] 0.961868
+
+[p2028] 0.962002
+
+[p2029] 0.04738
+
+[p2030] 2573.4
+
+[p2031] 0
+
+[p2032] 5 / 5
+
+[p2033] 14
+
+[p2034] M02
+
+[p2035] Clark
+
+[p2036] 0.961532
+
+[p2037] 0.961621
+
+[p2038] 0.04753
+
+[p2039] 2580.5
+
+[p2040] 0
+
+[p2041] 5 / 5
+
+[p2042] 15
+
+[p2043] M06
+
+[p2044] Gudermannian (Hu 2021)
+
+[p2045] 0.943617
+
+[p2046] 0.944579
+
+[p2047] 0.05858
+
+[p2048] 2897.2
+
+[p2049] 0
+
+[p2050] 5 / 5
+
+[p2051] 16
+
+[p2052] M08
+
+[p2053] Tanh (Hu 2019)
+
+[p2054] 0.940726
+
+[p2055] 0.941626
+
+[p2056] 0.05997
+
+[p2057] 2923.0
+
+[p2058] 0
+
+[p2059] 5 / 5
+
+[p2060] 17
+
+[p2061] M01
+
+[p2062] Yoon-Nelson / Thomas / BA (logistic)
+
+[p2063] 0.940726
+
+[p2064] 0.941626
+
+[p2065] 0.05997
+
+[p2066] 2923.0
+
+[p2067] 0
+
+[p2068] 5 / 5
+
+[p2069] 18
+
+[p2070] M05
+
+[p2071] Wolborska (linearised, early)
+
+[p2072] 0.940321
+
+[p2073] 0.940135
+
+[p2074] 0.01231
+
+[p2075] 8720.6
+
+[p2076] 0
+
+[p2077] 4 / 5
+
+[p2078] 19
+
+[p2079] M17
+
+[p2080] Dima (wave erf)
+
+[p2081] 0.936168
+
+[p2082] 0.938155
+
+[p2083] 0.06214
+
+[p2084] 2964.6
+
+[p2085] 0
+
+[p2086] 5 / 5
+
+[p2087] 20
+
+[p2088] M07
+
+[p2089] Error-Function (Hu 2021)
+
+[p2090] 0.936168
+
+[p2091] 0.938155
+
+[p2092] 0.06214
+
+[p2093] 2964.6
+
+[p2094] 0
+
+[p2095] 5 / 5
+
+[p2096] 21
+
+[p2097] M22
+
+[p2098] n-Order Bohart-Adams
+
+[p2099] 0.289743
+
+[p2100] 0.312541
+
+[p2101] 0.2120
+
+[p2102] 4606.1
+
+[p2103] 0
+
+[p2104] 5 / 5
+
+[p2105] 22
+
+[p2106] M16
+
+[p2107] Klinkenberg
+
+[p2108] 0.255343
+
+[p2109] 0.324946
+
+[p2110] 0.2202
+
+[p2111] 4711.3
+
+[p2112] 0
+
+[p2113] 5 / 5
+
+[p2114] 23
+
+[p2115] M18
+
+[p2116] Chern-Chien Langmuir
+
+[p2117] n/a
+
+[p2118] n/a
+
+[p2119] 0.3695
+
+[p2120] n/a
+
+[p2121] 0
+
+[p2122] 5 / 5
+
+[p2123] 24
+
+[p2124] M19
+
+[p2125] Chern-Chien Freundlich
+
+[p2126] n/a
+
+[p2127] n/a
+
+[p2128] 0.3695
+
+[p2129] n/a
+
+[p2130] 0
+
+[p2131] 5 / 5
+
+[p2133] Table 17) Nested F-test of the fractal exponent: M01 logistic against M23 fractal Yoon-Nelson, every run.
+
+[p2134] Run
+
+[p2135] Simple
+
+[p2136] Complex
+
+[p2137] RSS simple
+
+[p2138] RSS complex
+
+[p2139] df simple
+
+[p2140] df complex
+
+[p2141] F
+
+[p2142] p
+
+[p2143] Extra term warranted
+
+[p2144] run 3
+
+[p2145] M01
+
+[p2146] M23
+
+[p2147] 1.61929
+
+[p2148] 0.0532120
+
+[p2149] 381
+
+[p2150] 380
+
+[p2151] 11183.8
+
+[p2152] 6.151e-284
+
+[p2153] yes
+
+[p2154] run 4
+
+[p2155] M01
+
+[p2156] M23
+
+[p2157] 5.50269
+
+[p2158] 0.182407
+
+[p2159] 1430
+
+[p2160] 1429
+
+[p2161] 41679.7
+
+[p2162] < 1e-300
+
+[p2163] yes
+
+[p2164] run 5
+
+[p2165] M01
+
+[p2166] M23
+
+[p2167] 3.29267
+
+[p2168] 0.147710
+
+[p2169] 819
+
+[p2170] 818
+
+[p2171] 17416.3
+
+[p2172] < 1e-300
+
+[p2173] yes
+
+[p2174] run 6
+
+[p2175] M01
+
+[p2176] M23
+
+[p2177] 0.921294
+
+[p2178] 0.0164726
+
+[p2179] 283
+
+[p2180] 282
+
+[p2181] 15489.9
+
+[p2182] 1.836e-248
+
+[p2183] yes
+
+[p2184] run 8
+
+[p2185] M01
+
+[p2186] M23
+
+[p2187] 0.688046
+
+[p2188] 0.0121829
+
+[p2189] 253
+
+[p2190] 252
+
+[p2191] 13980.0
+
+[p2192] 9.323e-223
+
+[p2193] yes
+
+[p2194] 06-26 c5 f0.05
+
+[p2195] M01
+
+[p2196] M23
+
+[p2197] 10.9365
+
+[p2198] 1.82447
+
+[p2199] 1656
+
+[p2200] 1655
+
+[p2201] 8265.67
+
+[p2202] < 1e-300
+
+[p2203] yes
+
+[p2204] 07-03 c5 f0.10
+
+[p2205] M01
+
+[p2206] M23
+
+[p2207] 2.16812
+
+[p2208] 0.241321
+
+[p2209] 411
+
+[p2210] 410
+
+[p2211] 3273.61
+
+[p2212] 1.430e-197
+
+[p2213] yes
+
+[p2214] 07-08 c5 f0.15
+
+[p2215] M01
+
+[p2216] M23
+
+[p2217] 2.56570
+
+[p2218] 0.209480
+
+[p2219] 438
+
+[p2220] 437
+
+[p2221] 4915.37
+
+[p2222] 7.207e-240
+
+[p2223] yes
+
+[p2224] 07-08 c10 f0.05
+
+[p2225] M01
+
+[p2226] M23
+
+[p2227] 10.4067
+
+[p2228] 2.23255
+
+[p2229] 1744
+
+[p2230] 1743
+
+[p2231] 6381.73
+
+[p2232] < 1e-300
+
+[p2233] yes
+
+[p2234] 07-08 c10 f0.10
+
+[p2235] M01
+
+[p2236] M23
+
+[p2237] 5.64738
+
+[p2238] 0.413453
+
+[p2239] 1470
+
+[p2240] 1469
+
+[p2241] 18596.2
+
+[p2242] < 1e-300
+
+[p2243] yes
+
+[p2244] 07-08 c10 f0.15
+
+[p2245] M01
+
+[p2246] M23
+
+[p2247] 2.19524
+
+[p2248] 0.186388
+
+[p2249] 475
+
+[p2250] 474
+
+[p2251] 5108.67
+
+[p2252] 5.507e-256
+
+[p2253] yes
+
+[p2254] 07-10 c15 f0.05
+
+[p2255] M01
+
+[p2256] M23
+
+[p2257] 10.2652
+
+[p2258] 2.68907
+
+[p2259] 1648
+
+[p2260] 1647
+
+[p2261] 4640.21
+
+[p2262] < 1e-300
+
+[p2263] yes
+
+[p2264] 07-10 c15 f0.10
+
+[p2265] M01
+
+[p2266] M23
+
+[p2267] 4.25008
+
+[p2268] 0.469803
+
+[p2269] 1145
+
+[p2270] 1144
+
+[p2271] 9205.23
+
+[p2272] < 1e-300
+
+[p2273] yes
+
+[p2274] 07-15 c15 f0.15
+
+[p2275] M01
+
+[p2276] M23
+
+[p2277] 3.65739
+
+[p2278] 0.399415
+
+[p2279] 1000
+
+[p2280] 999
+
+[p2281] 8148.71
+
+[p2282] < 1e-300
+
+[p2283] yes
+
+[p2284] 07-17 c15 f0.10
+
+[p2285] M01
+
+[p2286] M23
+
+[p2287] 2.62263
+
+[p2288] 0.381902
+
+[p2289] 776
+
+[p2290] 775
+
+[p2291] 4547.15
+
+[p2292] < 1e-300
+
+[p2293] yes
+
+[p2294] 07-22 c10 f0.05*
+
+[p2295] M01
+
+[p2296] M23
+
+[p2297] 6.51538
+
+[p2298] 1.60755
+
+[p2299] 1362
+
+[p2300] 1361
+
+[p2301] 4155.12
+
+[p2302] < 1e-300
+
+[p2303] yes
+
+[p2304] 07-22 c10 f0.10*
+
+[p2305] M01
+
+[p2306] M23
+
+[p2307] 1.28992
+
+[p2308] 0.142825
+
+[p2309] 323
+
+[p2310] 322
+
+[p2311] 2586.14
+
+[p2312] 6.247e-156
+
+[p2313] yes
+
+[p2314] 07-29 c5 f0.05†
+
+[p2315] M01
+
+[p2316] M23
+
+[p2317] 4.97567
+
+[p2318] 1.10555
+
+[p2319] 601
+
+[p2320] 600
+
+[p2321] 2100.37
+
+[p2322] 3.849e-198
+
+[p2323] yes
+
+[p2324] 07-29 c5 f0.10
+
+[p2325] M01
+
+[p2326] M23
+
+[p2327] 8.51824
+
+[p2328] 1.00994
+
+[p2329] 1571
+
+[p2330] 1570
+
+[p2331] 11672.0
+
+[p2332] < 1e-300
+
+[p2333] yes
+
+[p2334] 07-31 c5 f0.15*
+
+[p2335] M01
+
+[p2336] M23
+
+[p2337] 2.07265
+
+[p2338] 0.249547
+
+[p2339] 349
+
+[p2340] 348
+
+[p2341] 2542.37
+
+[p2342] 4.870e-162
+
+[p2343] yes
+
+[p2344] 07-31 c10 f0.10*
+
+[p2345] M01
+
+[p2346] M23
+
+[p2347] 3.44795
+
+[p2348] 0.334409
+
+[p2349] 1169
+
+[p2350] 1168
+
+[p2351] 10874.7
+
+[p2352] < 1e-300
+
+[p2353] yes
+
+[p2355] The ranking is stable in family and unstable in kernel. M10, M11, M23 and M24 occupy the top of both campaigns, but which of them wins a given run changes from run to run. This is not an unreliable fitting procedure: these are closely related asymmetric sigmoids whose fitted curves lie within a sup-norm distance of about 0.03 of one another once slope-matched at the inflection point (Section 3.6.4), so AICc is choosing which near-equivalent functional form best absorbs that run's particular noise realisation, not resolving a physical distinction. The model-independent result is the fractal exponent itself: Table 17 rejects the non-fractal baseline in every run, at F values in the thousands.
+
+### [p2356] 8.3 Parameter trends with operating conditions
+
+- [p2357] Supervisor comment A1 asks how the fitted parameters behave as flow and inlet concentration are varied. The cleanest sub-experiment for this is the ~10 % CO₂ flow sweep (runs 4/5/6, superficial velocity U = 1.47/2.94/4.41 cm s⁻¹): the M01 rate constant k_YN increases with flow (0.001549 → 0.003852 → 0.003949 s⁻¹), consistent with a shorter residence time producing a sharper apparent front, while the M01 location parameter τ falls accordingly (1004.3 → 342.6 → 349.7 s). The expected Thomas/Yoon-Nelson scaling τ ∝ 1/U predicts a continued fall from run 5 to run 6; instead τ is essentially flat between them (342.6 s vs 349.7 s) — the same 50→100→150 mL min⁻¹ anomaly already reported for t₅₀ and t_E in experimental-results.md §6.1, and consistent with run-to-run variability at these short timescales rather than a reversal of the underlying physics.
+
+- [p2358] The fractal exponent h increases monotonically with flow across the same sweep for both fractal kernels (M11: 0.4178 → 0.4721 → 0.5489; M10 mirrors this trend in runs 6/8), meaning kinetic heterogeneity becomes more pronounced as contact time per unit bed volume falls — consistent with the diffusion-limited interpretation in experimental-results.md §6.3: at higher velocity, the more accessible amine sites saturate quickly and the remaining uptake is increasingly rate-limited by diffusion into less accessible sites, which is exactly what a rising h encodes (k ∝ t⁻ʰ, §3.6.8).
+
+- [p2359] Across the concentration comparison at fixed flow (run 5, 95 420 ppm, vs run 8, 150 630 ppm, both ≈100 mL min⁻¹), the M10/M11 location parameter falls only slightly (τ0: 226.3 → 246.7 s for M10's counterpart values, i.e. little change) while q_dyn rises substantially (0.552 → 0.787 mol kg⁻¹, experimental-results.md §6.2) — higher inlet concentration drives more mass through the column per unit time without proportionally accelerating breakthrough, which is the expected signature of a favourable (concave) isotherm rather than a linear one.
+
+- [p2360] Two supervisor-relevant caveats apply to all trends above. First, the flow sweep and concentration comparison are not fully orthogonal: runs 4/5/6 differ in C₀ by up to ~7 % (97 800/95 420/102 140 ppm) even though flow is nominally the controlled variable, so the reported flow effects are conditional on that residual concentration variation. Second, every trend above is read from n = 1 run per operating point — there is no replication, so run-to-run scatter (most visible in the 100→150 mL min⁻¹ anomaly) cannot be separated from a genuine physical effect without a repeat measurement.
+
+### [p2361] 8.4 Python reproducibility
+
+- [p2362] The full pipeline (`new_runs_pipeline.py`, 9 runs × 24 models × 16 numeric result columns) was re-run in a fresh virtual environment (numpy 2.5.1, scipy 1.18.0, matplotlib 3.11.1, pandas 3.0.5, Python 3.13) and compared against the committed CSV artefacts. Of 9 × 24 × 16 = 3456 compared values, two differed from the committed baseline, both in run 2026-07-10-conc15-flow0.05, model M24 (chi2_red and RSS), at a relative difference of 1.305 × 10⁻⁹ — the last significant digit of a double-precision float, attributable to floating-point summation order differing across library versions rather than any change in the fitting procedure. Every other value across all 3456 comparisons was bit-identical. This is a strong reproducibility result for a nonlinear least-squares pipeline with 12 multi-start initialisations per model, and no published number in this report is sensitive to it.
+
+- [p2363] Two environment caveats apply to reproducing this result directly. First, a committed `venv/` at the repository root does not exist in this working copy despite being referenced as the setup step; a fresh `.venv` with `pip install numpy scipy matplotlib pandas` (or `requirements.txt`) is required before running the pipeline. Second, the reproducibility checks above ran under Python 3.13, not Python 3.11 referenced elsewhere in this report's planning material; the pipeline requires numpy ≥ 2.0, which is otherwise unstated. Readers reproducing these results should pin dependency versions explicitly rather than relying on the newest available release.
+
+### [p2364] 8.5 Sensitivity analysis
+
+[p2365] The sensitivity analysis follows the cluster-based method of Kleijnen and Helton (1999a) — partition an input into k clusters, then test by ANOVA whether the response mean differs across clusters — supplemented by standardised regression coefficients (Saltelli et al., 2000). It is run at two tiers. Tier 1 treats the experiment itself as the input: flow rate and inlet concentration against the measured responses t_b, t_E, t₅₀, q_dyn, L_MTZ and ψ. Tier 2 samples the fitted model parameters by Latin hypercube and asks which of them the predicted responses are sensitive to.
+
+[p2366] Table 18 gives the Tier-1 cluster ANOVA, Table 19 the two-way factorial ANOVA with replication (Type II sums of squares, unbalanced design), and Table 20 the replicate-reproducibility decomposition that separates pure error from total variance. Table 21 lists the parameters that sit at a fitting bound often enough to disqualify their model from the parameter dissection.
+
+[p2367] Three findings constrain how the rest of this report may be read, and are stated here rather than buried in the tables.
+
+[p2368] First, q_dyn is not currently a measurable quantity on this rig. 78.4 % of its variance is pure replicate error and replicate pairs differ by up to a factor of 3.04. Any statement of the form "concentration sets capacity" is therefore withdrawn: the acquisition endpoint must be fixed at a consistent C/C₀ — 0.98 is the natural choice — before capacity is compared across runs at all. Breakthrough time t_b, by contrast, is well determined: flow rate alone accounts for 85.9 % of its variance (Table 19).
+
+[p2369] Second, the rate constant k₀ and the fractal exponent h are not independently identifiable. Their fitted values lie on a one-dimensional ridge with Spearman ρ_S = 0.984 for M11 and 0.971 for M10 (Figure 30). What the data constrain is the compound κ = k₀ τ₀^(−h), and that is what should be reported and compared; a bare k₀ from one run is not comparable with a bare k₀ from another. The same ridge is why the Tier-2 Monte Carlo is run twice: sampling the parameters independently produces no breakthrough curve at all in 11.3 % of draws for M11 and 8.3 % for M10, while rank-correlated sampling produces none.
+
+[p2370] Third, L_MTZ has a hard algebraic floor of one half the bed length and a coefficient of variation of only 4.0 % across the campaign, so its apparent effects are a property of the formula rather than of the bed. It is reported for completeness and no conclusion rests on it.
+
+[p2371] Table 18) Tier-1 cluster ANOVA of the experimental factors against the measured responses, both scopes. q_BH is the Benjamini-Hochberg adjusted p-value.
+
+[p2372] Scope
+
+[p2373] Factor
+
+[p2374] Response
+
+[p2375] n
+
+[p2376] k
+
+[p2377] df1
+
+[p2378] df2
+
+[p2379] F
+
+[p2380] p
+
+[p2381] η²
+
+[p2382] q (BH)
+
+[p2383] Verdict
+
+[p2384] grid n=16
+
+[p2385] Flow rate Q [lpm]
+
+[p2386] t_b [s]
+
+[p2387] 16
+
+[p2388] 3
+
+[p2389] 2
+
+[p2390] 13
+
+[p2391] 46.21
+
+[p2392] 1.2350e-06
+
+[p2393] 0.8767
+
+[p2394] 2.9639e-05
+
+[p2395] ***
+
+[p2396] grid n=16
+
+[p2397] Flow rate Q [lpm]
+
+[p2398] t_E [s]
+
+[p2399] 15
+
+[p2400] 3
+
+[p2401] 2
+
+[p2402] 12
+
+[p2403] 7.849
+
+[p2404] 0.006613
+
+[p2405] 0.5668
+
+[p2406] 0.02267
+
+[p2407] **
+
+[p2408] grid n=16
+
+[p2409] Flow rate Q [lpm]
+
+[p2410] t50 [s]
+
+[p2411] 16
+
+[p2412] 3
+
+[p2413] 2
+
+[p2414] 13
+
+[p2415] 26.22
+
+[p2416] 2.7380e-05
+
+[p2417] 0.8014
+
+[p2418] 2.1904e-04
+
+[p2419] ***
+
+[p2420] grid n=16
+
+[p2421] Flow rate Q [lpm]
+
+[p2422] q_dyn [mol/kg]
+
+[p2423] 16
+
+[p2424] 3
+
+[p2425] 2
+
+[p2426] 13
+
+[p2427] 2.648
+
+[p2428] 0.1085
+
+[p2429] 0.2895
+
+[p2430] 0.1859
+
+[p2431] n.s.
+
+[p2432] grid n=16
+
+[p2433] Flow rate Q [lpm]
+
+[p2434] L_MTZ [m]
+
+[p2435] 15
+
+[p2436] 3
+
+[p2437] 2
+
+[p2438] 12
+
+[p2439] 6.273
+
+[p2440] 0.01365
+
+[p2441] 0.5111
+
+[p2442] 0.04096
+
+[p2443] *
+
+[p2444] grid n=16
+
+[p2445] Flow rate Q [lpm]
+
+[p2446] psi [-]
+
+[p2447] 16
+
+[p2448] 3
+
+[p2449] 2
+
+[p2450] 13
+
+[p2451] 32.08
+
+[p2452] 9.3904e-06
+
+[p2453] 0.8315
+
+[p2454] 1.1269e-04
+
+[p2455] ***
+
+[p2456] grid n=16
+
+[p2457] Inlet CO2 C0 [ppm]
+
+[p2458] t_b [s]
+
+[p2459] 16
+
+[p2460] 3
+
+[p2461] 2
+
+[p2462] 13
+
+[p2463] 0.1241
+
+[p2464] 0.8843
+
+[p2465] 0.01874
+
+[p2466] 0.8843
+
+[p2467] n.s.
+
+[p2468] grid n=16
+
+[p2469] Inlet CO2 C0 [ppm]
+
+[p2470] t_E [s]
+
+[p2471] 15
+
+[p2472] 3
+
+[p2473] 2
+
+[p2474] 12
+
+[p2475] 1.503
+
+[p2476] 0.2615
+
+[p2477] 0.2003
+
+[p2478] 0.4081
+
+[p2479] n.s.
+
+[p2480] grid n=16
+
+[p2481] Inlet CO2 C0 [ppm]
+
+[p2482] t50 [s]
+
+[p2483] 16
+
+[p2484] 3
+
+[p2485] 2
+
+[p2486] 13
+
+[p2487] 0.2722
+
+[p2488] 0.7659
+
+[p2489] 0.04020
+
+[p2490] 0.7992
+
+[p2491] n.s.
+
+[p2492] grid n=16
+
+[p2493] Inlet CO2 C0 [ppm]
+
+[p2494] q_dyn [mol/kg]
+
+[p2495] 16
+
+[p2496] 3
+
+[p2497] 2
+
+[p2498] 13
+
+[p2499] 3.746
+
+[p2500] 0.05193
+
+[p2501] 0.3656
+
+[p2502] 0.1133
+
+[p2503] .
+
+[p2504] grid n=16
+
+[p2505] Inlet CO2 C0 [ppm]
+
+[p2506] L_MTZ [m]
+
+[p2507] 15
+
+[p2508] 3
+
+[p2509] 2
+
+[p2510] 12
+
+[p2511] 4.893
+
+[p2512] 0.02793
+
+[p2513] 0.4492
+
+[p2514] 0.07447
+
+[p2515] *
+
+[p2516] grid n=16
+
+[p2517] Inlet CO2 C0 [ppm]
+
+[p2518] psi [-]
+
+[p2519] 16
+
+[p2520] 3
+
+[p2521] 2
+
+[p2522] 13
+
+[p2523] 0.9033
+
+[p2524] 0.4292
+
+[p2525] 0.1220
+
+[p2526] 0.5151
+
+[p2527] n.s.
+
+[p2528] pooled n=21
+
+[p2529] Flow rate Q [lpm]
+
+[p2530] t_b [s]
+
+[p2531] 21
+
+[p2532] 3
+
+[p2533] 2
+
+[p2534] 18
+
+[p2535] 14.27
+
+[p2536] 1.9358e-04
+
+[p2537] 0.6133
+
+[p2538] 9.2916e-04
+
+[p2539] ***
+
+[p2540] pooled n=21
+
+[p2541] Flow rate Q [lpm]
+
+[p2542] t_E [s]
+
+[p2543] 20
+
+[p2544] 3
+
+[p2545] 2
+
+[p2546] 17
+
+[p2547] 7.853
+
+[p2548] 0.003841
+
+[p2549] 0.4802
+
+[p2550] 0.01536
+
+[p2551] **
+
+[p2552] pooled n=21
+
+[p2553] Flow rate Q [lpm]
+
+[p2554] t50 [s]
+
+[p2555] 21
+
+[p2556] 3
+
+[p2557] 2
+
+[p2558] 18
+
+[p2559] 16.18
+
+[p2560] 9.5097e-05
+
+[p2561] 0.6426
+
+[p2562] 5.7058e-04
+
+[p2563] ***
+
+[p2564] pooled n=21
+
+[p2565] Flow rate Q [lpm]
+
+[p2566] q_dyn [mol/kg]
+
+[p2567] 21
+
+[p2568] 3
+
+[p2569] 2
+
+[p2570] 18
+
+[p2571] 3.023
+
+[p2572] 0.07378
+
+[p2573] 0.2515
+
+[p2574] 0.1362
+
+[p2575] .
+
+[p2576] pooled n=21
+
+[p2577] Flow rate Q [lpm]
+
+[p2578] L_MTZ [m]
+
+[p2579] 20
+
+[p2580] 3
+
+[p2581] 2
+
+[p2582] 17
+
+[p2583] 1.160
+
+[p2584] 0.3371
+
+[p2585] 0.1201
+
+[p2586] 0.4760
+
+[p2587] n.s.
+
+[p2588] pooled n=21
+
+[p2589] Flow rate Q [lpm]
+
+[p2590] psi [-]
+
+[p2591] 21
+
+[p2592] 3
+
+[p2593] 2
+
+[p2594] 18
+
+[p2595] 3.513
+
+[p2596] 0.05151
+
+[p2597] 0.2808
+
+[p2598] 0.1133
+
+[p2599] .
+
+[p2600] pooled n=21
+
+[p2601] Inlet CO2 C0 [ppm]
+
+[p2602] t_b [s]
+
+[p2603] 21
+
+[p2604] 3
+
+[p2605] 2
+
+[p2606] 18
+
+[p2607] 1.018
+
+[p2608] 0.3813
+
+[p2609] 0.1016
+
+[p2610] 0.4816
+
+[p2611] n.s.
+
+[p2612] pooled n=21
+
+[p2613] Inlet CO2 C0 [ppm]
+
+[p2614] t_E [s]
+
+[p2615] 20
+
+[p2616] 3
+
+[p2617] 2
+
+[p2618] 17
+
+[p2619] 1.054
+
+[p2620] 0.3703
+
+[p2621] 0.1103
+
+[p2622] 0.4816
+
+[p2623] n.s.
+
+[p2624] pooled n=21
+
+[p2625] Inlet CO2 C0 [ppm]
+
+[p2626] t50 [s]
+
+[p2627] 21
+
+[p2628] 3
+
+[p2629] 2
+
+[p2630] 18
+
+[p2631] 1.400
+
+[p2632] 0.2721
+
+[p2633] 0.1347
+
+[p2634] 0.4081
+
+[p2635] n.s.
+
+[p2636] pooled n=21
+
+[p2637] Inlet CO2 C0 [ppm]
+
+[p2638] q_dyn [mol/kg]
+
+[p2639] 21
+
+[p2640] 3
+
+[p2641] 2
+
+[p2642] 18
+
+[p2643] 3.062
+
+[p2644] 0.07170
+
+[p2645] 0.2538
+
+[p2646] 0.1362
+
+[p2647] .
+
+[p2648] pooled n=21
+
+[p2649] Inlet CO2 C0 [ppm]
+
+[p2650] L_MTZ [m]
+
+[p2651] 20
+
+[p2652] 3
+
+[p2653] 2
+
+[p2654] 17
+
+[p2655] 0.5113
+
+[p2656] 0.6086
+
+[p2657] 0.05674
+
+[p2658] 0.6956
+
+[p2659] n.s.
+
+[p2660] pooled n=21
+
+[p2661] Inlet CO2 C0 [ppm]
+
+[p2662] psi [-]
+
+[p2663] 21
+
+[p2664] 3
+
+[p2665] 2
+
+[p2666] 18
+
+[p2667] 0.3907
+
+[p2668] 0.6822
+
+[p2669] 0.04160
+
+[p2670] 0.7442
+
+[p2671] n.s.
+
+[p2673] Table 19) Two-way factorial ANOVA with replication (Type II sums of squares) over the 3×3 grid.
+
+[p2674] Response
+
+[p2675] n
+
+[p2676] F flow
+
+[p2677] p flow
+
+[p2678] F conc
+
+[p2679] p conc
+
+[p2680] F flow×conc
+
+[p2681] p int
+
+[p2682] η² flow
+
+[p2683] η² conc
+
+[p2684] η² int
+
+[p2685] η² resid
+
+[p2686] t_b [s]
+
+[p2687] 16
+
+[p2688] 145.3
+
+[p2689] 1.9961e-06
+
+[p2690] 12.27
+
+[p2691] 0.005145
+
+[p2692] 2.546
+
+[p2693] 0.1326
+
+[p2694] 0.8586
+
+[p2695] 0.07254
+
+[p2696] 0.03010
+
+[p2697] 0.02068
+
+[p2698] t_E [s]
+
+[p2699] 15
+
+[p2700] 27.98
+
+[p2701] 9.0772e-04
+
+[p2702] 12.81
+
+[p2703] 0.006836
+
+[p2704] 1.570
+
+[p2705] 0.2955
+
+[p2706] 0.6398
+
+[p2707] 0.2928
+
+[p2708] 0.07182
+
+[p2709] 0.06859
+
+[p2710] t50 [s]
+
+[p2711] 16
+
+[p2712] 145.8
+
+[p2713] 1.9714e-06
+
+[p2714] 24.93
+
+[p2715] 6.5469e-04
+
+[p2716] 4.364
+
+[p2717] 0.04388
+
+[p2718] 0.7796
+
+[p2719] 0.1333
+
+[p2720] 0.04666
+
+[p2721] 0.01871
+
+[p2722] q_dyn [mol/kg]
+
+[p2723] 16
+
+[p2724] 3.003
+
+[p2725] 0.1144
+
+[p2726] 1.898
+
+[p2727] 0.2196
+
+[p2728] 0.6987
+
+[p2729] 0.6167
+
+[p2730] 0.3140
+
+[p2731] 0.1984
+
+[p2732] 0.1461
+
+[p2733] 0.3660
+
+[p2734] L_MTZ [m]
+
+[p2735] 15
+
+[p2736] 9.217
+
+[p2737] 0.01481
+
+[p2738] 3.894
+
+[p2739] 0.08239
+
+[p2740] 1.174
+
+[p2741] 0.4090
+
+[p2742] 0.4875
+
+[p2743] 0.2060
+
+[p2744] 0.1242
+
+[p2745] 0.1587
+
+[p2746] psi [-]
+
+[p2747] 16
+
+[p2748] 29.80
+
+[p2749] 3.7642e-04
+
+[p2750] 1.252
+
+[p2751] 0.3430
+
+[p2752] 0.6230
+
+[p2753] 0.6609
+
+[p2754] 0.8371
+
+[p2755] 0.03516
+
+[p2756] 0.03500
+
+[p2757] 0.09832
+
+[p2759] Table 20) Replicate reproducibility: pure error against total variance, per response.
+
+[p2760] Response
+
+[p2761] Replicated cells
+
+[p2762] Pure-error SD
+
+[p2763] Total SD
+
+[p2764] Pure error / total var.
+
+[p2765] Median within-cell CV
+
+[p2766] Max within-cell CV
+
+[p2767] Worst cell ratio
+
+[p2768] t_b [s]
+
+[p2769] 7
+
+[p2770] 112.5
+
+[p2771] 534.4
+
+[p2772] 0.04432
+
+[p2773] 0.1330
+
+[p2774] 0.1884
+
+[p2775] 1.307
+
+[p2776] t_E [s]
+
+[p2777] 6
+
+[p2778] 1369
+
+[p2779] 3423
+
+[p2780] 0.1601
+
+[p2781] 0.2691
+
+[p2782] 0.3847
+
+[p2783] 1.747
+
+[p2784] t50 [s]
+
+[p2785] 7
+
+[p2786] 190.6
+
+[p2787] 951.8
+
+[p2788] 0.04009
+
+[p2789] 0.1158
+
+[p2790] 0.2743
+
+[p2791] 1.481
+
+[p2792] q_dyn [mol/kg]
+
+[p2793] 7
+
+[p2794] 0.4042
+
+[p2795] 0.4564
+
+[p2796] 0.7843
+
+[p2797] 0.3673
+
+[p2798] 0.7136
+
+[p2799] 3.037
+
+[p2800] L_MTZ [m]
+
+[p2801] 6
+
+[p2802] 0.003130
+
+[p2803] 0.005145
+
+[p2804] 0.3703
+
+[p2805] 0.01785
+
+[p2806] 0.03830
+
+[p2807] 1.056
+
+[p2808] psi [-]
+
+[p2809] 7
+
+[p2810] 0.03803
+
+[p2811] 0.08284
+
+[p2812] 0.2107
+
+[p2813] 0.1395
+
+[p2814] 0.1846
+
+[p2815] 1.300
+
+[p2817] Table 21) Parameters pinned at a fitting bound. A model is disqualified from the parameter dissection when any of its parameters sits at its own bound in more than 25 % of runs.
+
+[p2818] Code
+
+[p2819] Model
+
+[p2820] Parameter
+
+[p2821] Lower
+
+[p2822] Upper
+
+[p2823] Runs
+
+[p2824] Pinned
+
+[p2825] Fraction pinned
+
+[p2826] M02
+
+[p2827] Clark
+
+[p2828] n
+
+[p2829] 1.010
+
+[p2830] 10
+
+[p2831] 21
+
+[p2832] 21
+
+[p2833] 1
+
+[p2834] M03
+
+[p2835] Fractal Clark
+
+[p2836] A0
+
+[p2837] 1.0000e-06
+
+[p2838] 1.0000e+06
+
+[p2839] 21
+
+[p2840] 10
+
+[p2841] 0.476
+
+[p2842] M03
+
+[p2843] Fractal Clark
+
+[p2844] n
+
+[p2845] 1.010
+
+[p2846] 10
+
+[p2847] 21
+
+[p2848] 21
+
+[p2849] 1
+
+[p2850] M10
+
+[p2851] Fractal Gudermannian (Hu 2024)
+
+[p2852] k0
+
+[p2853] 1.0000e-06
+
+[p2854] 1
+
+[p2855] 21
+
+[p2856] 1
+
+[p2857] 0.0476
+
+[p2858] M16
+
+[p2859] Klinkenberg
+
+[p2860] K_fa
+
+[p2861] 1.0000e-06
+
+[p2862] 1
+
+[p2863] 21
+
+[p2864] 21
+
+[p2865] 1
+
+[p2866] M22
+
+[p2867] n-Order Bohart-Adams
+
+[p2868] k_n
+
+[p2869] 1.0000e-08
+
+[p2870] 1
+
+[p2871] 21
+
+[p2872] 15
+
+[p2873] 0.714
+
+[p2874] M23
+
+[p2875] Fractal Yoon-Nelson (Hu 2024)
+
+[p2876] h
+
+[p2877] 0
+
+[p2878] 0.9500
+
+[p2879] 21
+
+[p2880] 16
+
+[p2881] 0.762
+
+[p2883] *(1 embedded image)*
+
+###### [p2884] Fig. 22) Tier-1 cluster ANOVA of the experimental scatterplots, 3×3 grid campaign (n = 16). Each panel is one factor against one response; dashed lines are cluster boundaries and the red trace joins the cluster means. Panel titles carry F, p and η².
+
+[p2885] *(1 embedded image)*
+
+###### [p2886] Fig. 23) Tier-1 cluster ANOVA, pooled scope (n = 21). Shown for completeness only: pooling the two campaigns confounds a change of apparatus with the effects being measured, and every η² falls relative to Fig. 22. Inference in this report is drawn from the grid scope.
+
+[p2887] *(1 embedded image)*
+
+###### [p2888] Fig. 24) Tier-2 Monte-Carlo cluster ANOVA for M11 (fractal error-function) under independent Latin-hypercube sampling of the fitted parameters.
+
+[p2889] *(1 embedded image)*
+
+###### [p2890] Fig. 25) Tier-2 Monte-Carlo cluster ANOVA for M11 under rank-correlated sampling. Independent sampling produces no breakthrough curve in 11.3 % of draws for this model; rank-correlated sampling, which respects the k₀-h ridge of Fig. 30, produces none.
+
+[p2891] *(1 embedded image)*
+
+###### [p2892] Fig. 26) Tier-2 Monte-Carlo cluster ANOVA for M10 (fractal Gudermannian), independent sampling.
+
+[p2893] *(1 embedded image)*
+
+###### [p2894] Fig. 27) Tier-2 Monte-Carlo cluster ANOVA for M10, rank-correlated sampling (8.3 % of independent draws produce no curve; none under rank correlation).
+
+[p2895] *(1 embedded image)*
+
+###### [p2896] Fig. 28) Tier-2 Monte-Carlo cluster ANOVA for M24 (parallel two-component sigmoidal), independent sampling.
+
+[p2897] *(1 embedded image)*
+
+###### [p2898] Fig. 29) Tier-2 Monte-Carlo cluster ANOVA for M24, rank-correlated sampling.
+
+[p2899] *(1 embedded image)*
+
+###### [p2900] Fig. 30) Parameter identifiability: the fitted (k₀, h) pairs lie on a one-dimensional ridge, Spearman ρ_S = 0.984 for M11 and 0.971 for M10. k₀ and h are therefore not independently identifiable and the compound κ = k₀τ₀^(−h) is what the data constrain.
+
+[p2901] One consequence for the report as a whole: the pooled scope in Table 18 and Figure 23 is shown for completeness only. Every η² falls when the two campaigns are pooled, because bed length and column internal diameter differ systematically between the two rigs. All inference in this report is drawn from the sixteen-run grid scope.
+
+## [p2902] 9 Mathematical Modelling
+
+- [p2903] This chapter is supplementary to the report's core empirical contribution in §§4-8: it develops a minimal kinetic model as groundwork for the project's continuation, per the supervisor's guidance that mathematical modelling is supplementary to, not a substitute for, the experimental model-fitting programme. None of its parameters have yet been fitted against the measured breakthrough data in §6-§8; it is presented as a derivation and scoping exercise.
+
+- [p2904] In this work, CO₂ is adsorbed from a simulated post-combustion flue gas stream at 5–15 % CO₂ by volume — 125–375× the ≈400 ppm trace level typical of direct air capture (DAC) — such that a single-component model applies in dry conditions. The mass transfer between gas and solid phases includes three resistances (external film, macropore and micropore) and can be depicted by a linear driving force (LDF) model, where a lumped uptake rate constant is used to take various resistances into account. The LDF model is conceptually simple, computationally efficient, and therefore widely used in literature.
+
+### [p2905] 9.1 Minimal kinetic model
+
+- [p2906] A minimal kinetic model is derived and proposed to validate and predict CO2 adsorption processes in a packed bed column. The model simply describes the adsorption breakthrough curve using two process parameters: gas flow rate and concentration. The following assumptions were made:
+
+- [p2907] A1. Plug flow, constant superficial gas velocity, no axial dispersion.
+
+- [p2908] A2. Isothermal, i.e., heat transfer has an insignificant effect on the breakthrough curve.
+
+- [p2909] A3. 1-D model i.e., gas concentration gradients only exist in the axial direction
+
+- [p2910] A4. Gas phase behaves as ideal gas.
+
+- [p2911] A5. Negligible pressure drops due to short column length and low flowrate.
+
+- [p2912] A6. Only CO2 adsorption is considered (others are treated as non-adsorbing components)
+
+- [p2913] A7. LDF adsorption kinetics model
+
+- [p2914] Consider a 1-D isothermal plug flow model given as
+
+[p2915] $`∂c∂t=-usε∂c∂z-ρbε∂q∂t (1)`$
+
+- [p2916] where $`us`$ is the superficial gas velocity, $`ε`$ is the bed voidage and $`ρb`$ is the bulk density of the packed bed.
+
+- [p2917] This is the same mass balance as the governing PDE of §3.4, written in the bulk-density form: u_s here is the superficial velocity u of §3.4 (this model does not additionally distinguish an interstitial velocity), and ρ_b = ρ_p(1−ε) so that ρ_b/ε·∂q/∂t is the same sink term as (1−ε)/ε·∂q_t/∂t there, with q and q_t both denoting solid-phase loading per unit sorbent mass. The two forms are declared equivalent under this substitution rather than independently re-derived.
+
+- [p2918] The LDF model used to describe the adsorption kinetics written as
+
+[p2919] $`∂q∂t=kqe-q (2)`$
+
+[p2920] where $`k`$ ( $`s-1`$ ) is the uptake rate constant, $`qe`$ (mol/kg) is the equilibrium adsorption concentration.
+
+- [p2921] Assuming the surface has identical elementary adsorption sites to host a single adsorbed molecule, a Langmuir isotherm was used to describe the adsorbed quantity $`qe`$ as a function of bulk gas pressure:
+
+[p2922] $`qe=qmbPCO21+bPCO2 (3)`$
+
+[p2923] where $`qm`$ is the theoretical maximum CO2 concentration, $`PCO2`$ is given by the ideal gas law:
+
+[p2924] $`P=cRT (4)`$
+
+[p2925] where $`c`$ is the molar concentration in (mol/m3), $`R`$ is the universal gas constant and $`T`$ is the absolute temperature; and $`b(T)`$ is described by the van’t Hoff equation:
+
+[p2926] $`bT=b0exp-ΔHRT (5)`$
+
+[p2927] where $`-ΔH>0`$ is the heat of adsorption?
+
+- [p2928] The initial condition used were $`c=0,q=0`$ and $`T=T0`$ at $`t=0`$ , and boundary conditions were $`c=c0`$ and $`T=T0`$ at $`z=0`$ , $`∂c/∂z=0`$ and $`∂T/∂z=0`$ at $`z=L`$ .
+
+### [p2929] 9.2 Parameter estimation strategy
+
+- [p2930] Using our minimal kinetic model, we examined the effects of $`k`$ , $`us`$ , $`q`$ on the breakthrough curves at flue gas conditions. The parameters $`b,k`$ were determined using non-linear fitting methods to the experimental data. Table 12) shows the Langmuir isotherm parameters and Table 13) shows a listof parameters used and their values for the packed-bed adsorption experiments.
+
+[p2931] Table 12) Langmuir isotherm parameters for CO2.
+
+[p2932] Parameters
+
+[p2933] Values
+
+[p2935] $`b`$
+
+[p2936] ??
+
+[p2937] Table 13) The basic parameters for packed-bed adsorption.
+
+[p2938] Parameter
+
+[p2939] Value
+
+[p2940] Units
+
+[p2942] Inlet diameter
+
+[p2943] 0.85
+
+[p2944] cm
+
+[p2945] Height of packed-bed
+
+[p2946] 21.0 – 21.5 (per run)
+
+[p2947] cm
+
+[p2948] Volume of packing
+
+[p2949] 11.92
+
+[p2950] cm3
+
+[p2951] Inlet velocity
+
+[p2952] 1.47 – 4.41
+
+[p2953] cm $`∙`$ s-1
+
+[p2954] Volume flow rate
+
+[p2955] 0.3 – 0.9
+
+[p2956] m3 $`∙`$ h-1
+
+[p2957] Angle of bed
+
+[p2958] 90
+
+[p2959] Deg
+
+[p2960] Bed void fraction $`ε`$
+
+[p2961] ??
+
+[p2962] -
+
+[p2963] Adsorbent bulk density $`ρb`$
+
+[p2964] ??
+
+[p2965] g $`∙`$ cm-3
+
+[p2966] Superficial velocity $`us`$
+
+[p2967] ??
+
+[p2968] cm $`∙`$ s-1
+
+[p2969] CO2 uptake rate constant $`k`$
+
+[p2970] ??
+
+[p2971] s-1
+
+[p2972] CO2 feed concentration $`c10`$
+
+[p2973] ??
+
+[p2974] mmol $`∙`$ cm-3
+
+- [p2976] Table 13) shows a list of parameters used and their values for the packed-bed adsorption experiments.
+
+- [p2977] Bed void fraction ε and adsorbent bulk density ρ_p are left as ?? (unconfirmed) rather than assumed, per the open data dependency in CLAUDE.md: the pipeline's provisional ρ_p = 800 kg m⁻³ gives an unrealistically low ε ≈ 0.16-0.18 (floored to 0.30 in code), so any ε-derived quantity such as interstitial velocity is not physically reliable until ρ_p is supplied by the lab. Only superficial velocity U (Table 13, above), which depends solely on volumetric flow rate and column cross-section and not on ε, is reported as a measured value.
+
+### [p2979] 9.3 Limitations of the minimal kinetic model
+
+- [p2980] - Classical closed-form solutions that assume first-order or Langmuir-type kinetics and do not capture the specific stoichiometry of the amine–CO2 reaction, the second-order dependence on free amine sites, or the role of humidity. (Cabrera-Codony et al., 2026).
+
+- [p2981] - Langmuir equation parameters have the ability to only compare between different adsorbents but fail with the explanation of the reaction mechanism (Al-Ghouti & Da'ana, 2020).
+
+### [p2983] 9.4 Numerical verification
+
+[p2984] The model equations of Sections 9.1 to 9.3 are verified against cases with known answers before any of them is used. Figures 31 to 34 are the four verification cases: the sink-free advection-dispersion limit against the exact Ogata-Banks solution (V1), the equilibrium shock against its Rankine-Hugoniot chord velocity (V2), the linear-driving-force travelling wave against its implicit closed form (V3), and a non-isothermal Toth demonstration (V4). Figures 35 and 36 fit the mechanistic model globally to the five-run campaign, and Figures 37 to 39 check the Ψ-quadrature treatment against an external reproduction and against the asymmetric exact solution. Figures 40 and 41 are the minimal kinetic model of Section 9.1 and its Rankine-Hugoniot check.
+
+[p2985] Four limitations attach to this group and none of them is resolved here. The thermal parameters in Figure 34 are placeholders, so V4 demonstrates that the energy balance integrates, not that it is calibrated. The bed voidage used in Figures 35 and 36 is the floored ε discussed in Section 6.1; the pellet density ρ_p that would make it physical is still an open input from the sorbent supplier. The solver scaffold carries two temperatures while the analytical derivation uses a single pseudo-homogeneous energy balance, and the two have not yet been reconciled. And the parameters of this chapter have not been fitted against the measured breakthrough data of Sections 6 to 8: the chapter is a derivation and scoping exercise, as Section 9's opening paragraph states.
+
+[p2986] *(1 embedded image)*
+
+###### [p2987] Fig. 31) V1 — advection-dispersion with the sink switched off, finite-volume solution against the exact Ogata-Banks erfc solution, at four mesh resolutions. The L² error and its halving with mesh refinement are printed on the legend.
+
+[p2988] *(1 embedded image)*
+
+###### [p2989] Fig. 32) V2 — isothermal equilibrium shock. Left: concentration profiles against the Rankine-Hugoniot shock position. Right: the numerical front position z₅₀(t) against the R-H chord velocity.
+
+[p2990] *(1 embedded image)*
+
+###### [p2991] Fig. 33) V3 — linear-driving-force travelling wave against the implicit closed form, in the moving coordinate η = z − v_RH t. The RMS deviation over 0.02 < c/c_f < 0.98 is printed in the title.
+
+[p2992] *(1 embedded image)*
+
+###### [p2993] Fig. 34) V4 — non-isothermal Toth demonstration. The thermal parameters are placeholders, not measured values, and are flagged as such on the figure: this panel demonstrates that the energy balance runs, not that it is calibrated to this rig.
+
+[p2994] *(1 embedded image)*
+
+###### [p2995] Fig. 35) F5 — measured breakthrough curves for runs 3/4/5/6/8 against a single global mechanistic fit (one n_s, b, t, k for all five runs). The bed voidage ε carried in this fit is the floored placeholder discussed in Section 6.1; the fit is a scoping exercise, not a validated calibration.
+
+[p2996] *(1 embedded image)*
+
+###### [p2997] Fig. 36) F6 — fitted isotherms at ambient temperature with the measured dynamic capacities overlaid. q_dyn is a dynamic capacity, not an equilibrium loading, and the two are not interchangeable.
+
+[p2998] *(1 embedded image)*
+
+###### [p2999] Fig. 37) Reproduction of Danilov's Figure 1 (CO₂ breakthrough, left; outlet gas temperature, right) as an external check on the Ψ-quadrature solver.
+
+[p3000] *(1 embedded image)*
+
+###### [p3001] Fig. 38) Three-way comparison for the Langmuir wave: profiles at t = 0.65 t_st, and the outlet breakthrough under the symmetric ansatz against the asymmetric exact solution.
+
+[p3002] *(1 embedded image)*
+
+###### [p3003] Fig. 39) Non-isothermal Toth case: outlet breakthrough and the outlet temperature excursion on the Ψ-quadrature scale.
+
+[p3004] *(1 embedded image)*
+
+###### [p3005] Fig. 40) Minimal kinetic model of Section 9.1 with one global (q_m, b, k) against every measured run. Per-run RMSE in C/C₀ is printed to stdout by minimal_kinetic_model.py.
+
+[p3006] *(1 embedded image)*
+
+###### [p3007] Fig. 41) Rankine-Hugoniot check for the minimal kinetic model on the run 5 geometry, using the fitted isotherm in the equilibrium limit.
+
+## [p3008] 10 Conclusions
+
+- [p3009] This report provides a comparative analysis of breakthrough models for CO2 adsorption in a packed-bed column using PEI@SiO₂ (C3) granules. It also develops a new standard operating procedure (SOP) and initial experiment data. For systems exhibiting asymmetric breakthrough behaviour, which is common when adsorbent surfaces are increasingly heterogeneous, fractal-like coefficients have shown to provide superior fits. Similarly, the introduction of a shape parameter $`n`$ into logistic and hyperbolic tangent models further improves asymmetric breakthrough curve fit. The project is ongoing, with Python-based model fitting and a 3×3 design-of-experiments sweep planned to systematically resolve the interplay between flow rate, feed concentration, and adsorbent loading effects on breakthrough dynamics and equilibrium capacity.
+
+### [p3010] 10.1 Next Steps
+
+- [p3011] 1) To plot and optimise breakthrough adsorption curves using Python 3.11; 2) employ methods in error statistics to evaluate fitting quality of various breakthrough models; 3) estimate hidden parameters by linear regression to implement a full non-isothermal solver to predict and model breakthrough curves from elementary adsorption principles.
+
+### [p3012] 10.2 AI-Use Disclosure
+
+- [p3013] Editorial and literature-search assistance for portions of this report (citation verification, notation-consistency checks, structural corrections, and prose editing) was provided by an AI writing assistant (Claude, Anthropic) under the author's direction and review. All experimental data, model fits, and numerical results originate from the author's own Python pipeline (src/solver/breakthrough_fit/) and raw instrument logs; the AI assistant did not generate, alter, or select any measured or fitted value. The author takes full responsibility for the accuracy of all content in this report.
+
+## [p3016] 11 References
+
+- [p3017] Al-Ghouti, M. A., & Da'ana, D. A. (2020). Guidelines for the use and interpretation of adsorption isotherm models: A review. Journal of Hazardous Materials, 393, 122383. https://doi.org/10.1016/j.jhazmat.2020.122383
+
+- [p3018] Al Mesfer, M. K., Danish, M., Khan, M. I., Ali, I. H., Hasan, M., & El Jery, A. (2020). Continuous fixed bed CO₂ adsorption: Breakthrough, column efficiency, mass transfer zone. Processes, 8(10), 1233. https://doi.org/10.3390/pr8101233
+
+- [p3019] Apiratikul, R., & Chu, K. H. (2021). Improved fixed bed models for correlating asymmetric adsorption breakthrough curves. Journal of Water Process Engineering, 40, 101810. https://doi.org/10.1016/j.jwpe.2021.101810
+
+- [p3020] Blagojev, N., Kukić, D., Vasić, V., Šćiban, M., Prodanović, J., & Bera, O. (2019). A new approach for modelling and optimization of Cu(II) biosorption from aqueous solutions using sugar beet shreds in a fixed-bed column. Journal of Hazardous Materials, 363, 366–375. https://doi.org/10.1016/j.jhazmat.2018.09.068
+
+- [p3021] Bohart, G. S., & Adams, E. Q. (1920). Some aspects of the behavior of charcoal with respect to chlorine. Journal of the American Chemical Society, 42(3), 523–544. https://doi.org/10.1021/ja01448a018
+
+- [p3022] Cabrera-Codony, A., Calvo-Schwarzwalder, M., Lopez, L. R., Valverde, A., Puig, S., & Myers, T. G. (2026). An analytical breakthrough model for CO2 adsorption on PEI-impregnated silica: Separating stoichiometric and structural effects of humidity. Carbon Capture Science & Technology, 19, 100618. https://doi.org/10.1016/j.ccst.2026.100618
+
+- [p3023] Chern, J. M., & Chien, Y. W. (2002). Adsorption of nitrophenol onto activated carbon: Isotherms and breakthrough curves. Water Research, 36(3), 647–655. https://doi.org/10.1016/S0043-1354(01)00258-5
+
+- [p3024] Chowdhury, S., Chakraborty, S., & Saha, P. (2013). Breakthrough curve analysis for column dynamics sorption of Mn(II) ions from wastewater by using Mangostana garcinia peel-based granular-activated carbon. Journal of Chemistry, 2013, 959761. https://doi.org/10.1155/2013/959761
+
+- [p3025] Chu, K. H. (2020). Breakthrough curve analysis by simplistic models of fixed bed adsorption: In defense of the century-old Bohart-Adams model. Chemical Engineering Journal, 380, 122513. https://doi.org/10.1016/j.cej.2019.122513
+
+- [p3026] Chu, K. H., & Hashim, M. A. (2023). Fixed bed adsorption of water and air contaminants: Analysis of breakthrough curves using probability distribution functions. Chemical Engineering Communications, 210(9), 1528–1537. https://doi.org/10.1080/00986445.2022.2116325
+
+- [p3027] Chuah, C. Y., Ho, Y. L., Syed, A. M. H., Thivyalakshmi, K. G. K., Yang, E., Johari, K., Yang, Y., & Poon, W. C. (2025). Applicability of Adsorbents in Direct Air Capture (DAC): Recent Progress and Future Perspectives. Industrial & Engineering Chemistry Research, 64(8), 4117–4147. https://doi.org/10.1021/acs.iecr.4c03265
+
+- [p3028] Clark, R. M. (1987). Evaluating the cost and performance of field-scale granular activated carbon systems. Environmental Science & Technology, 21(6), 573–580. https://doi.org/10.1021/es00160a008
+
+- [p3029] Dima, J. B., Ferrari, M. A., & Zaritzky, N. (2024). Mathematical modeling of breakthrough curves in dynamic column adsorption: Analytical solutions and validation. Journal of Engineering Mathematics, 147, Article 8. https://doi.org/10.1007/s10665-024-10375-x
+
+- [p3030] Dvořák, M., Hrdlička, J., Pilař, L., Skopec, P., & Burda, J. (2025). CO₂ capture in pilot-scale unit using solid adsorbent in biomass fluidised bed boiler flue gas. Acta Polytechnica, 64(6). https://doi.org/10.14311/AP.2024.64.0501
+
+- [p3031] Futalan, C. M., & Wan, M.-W. (2022). Fixed-bed adsorption of lead from aqueous solution using chitosan-coated bentonite. International Journal of Environmental Research and Public Health, 19(5), 2597. https://doi.org/10.3390/ijerph19052597
+
+- [p3032] Hu, Q., Huang, Q., Yang, D., & Liu, H. (2021). Prediction of breakthrough curves in a fixed-bed column based on normalized Gudermannian and error functions. Journal of Molecular Liquids, 323, 115061. https://doi.org/10.1016/j.molliq.2020.115061
+
+- [p3033] Hu, Q., Lan, R., He, L., Liu, H., & Pei, X. (2023). A critical review of adsorption isotherm models for aqueous contaminants: Curve characteristics, site energy distribution, and common controversies. Journal of Environmental Management, 329, 117104. https://doi.org/10.1016/j.jenvman.2022.117104
+
+- [p3034] Hu, Q., Yang, X., Huang, L., Li, Y., Hao, L., Pei, Q., & Pei, X. (2024). A critical review of breakthrough models with analytical solutions in a fixed-bed column. Journal of Water Process Engineering, 59, 105065. https://doi.org/10.1016/j.jwpe.2024.105065
+
+- [p3035] Hu, Q., Wang, D., Pang, S., & Xu, L. (2022). Prediction of breakthrough curves for multicomponent adsorption in a fixed-bed column using logistic and Gompertz functions. Arabian Journal of Chemistry, 15. https://doi.org/10.1016/j.arabjc.2022.104034
+
+- [p3036] Hu, Q., Xie, Y., Feng, C., & Zhang, Z. (2019). Prediction of breakthrough behaviors using logistic, hyperbolic tangent and double exponential models in the fixed-bed column. Separation and Purification Technology, 212, 572–579. https://doi.org/10.1016/j.seppur.2018.11.071
+
+- [p3037] Hu, Q., Xie, Y., & Zhang, Z. (2020). Modification of breakthrough models in a continuous-flow fixed-bed column: Mathematical characteristics of breakthrough curves and rate profiles. Separation and Purification Technology, 238, 116399. https://doi.org/10.1016/j.seppur.2019.116399
+
+- [p3038] IPCC. (2023). Climate Change 2023: Synthesis Report. Contribution of Working Groups I, II and III to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change. Geneva: IPCC. https://www.ipcc.ch/report/ar6/syr/
+
+- [p3039] Juela, D., Vera, M., Cruzat, C., Alvarez, X., & Vanegas, E. (2021). Mathematical modeling and numerical simulation of sulfamethoxazole adsorption onto sugarcane bagasse in a fixed-bed column. Chemosphere, 280, 130687. https://doi.org/10.1016/j.chemosphere.2021.130687
+
+- [p3040] Karimi, M., Shirzad, M., Silva, J. A. C., & Rodrigues, A. E. (2023). Carbon dioxide separation and capture by adsorption: a review. Environmental Chemistry Letters, 21(4), 2041–2084. https://doi.org/10.1007/s10311-023-01589-z
+
+- [p3041] Karunarathne, H. D. S. S., & Amarasinghe, B. M. W. P. K. (2013). Fixed bed adsorption column studies for the removal of aqueous phenol from activated carbon prepared from sugarcane bagasse. Energy Procedia, 34, 83–90. https://doi.org/10.1016/j.egypro.2013.06.736
+
+- [p3042] Kimani, P. K. (2024). Asymmetrical fixed-bed breakthrough curve modelling: Comparing simplistic, log-modified, fractal-like, and probability distribution function models. Chemical Engineering Research and Design, 201, 446–456. https://doi.org/10.1016/j.cherd.2023.11.024
+
+- [p3043] Kinosita, T., & Yogo, K. (2021). Simulation-based optimization of fixed-bed continuous CO₂ capture process with an amine-impregnated solid sorbent. Industrial & Engineering Chemistry Research, 60(27), 9906–9914. https://doi.org/10.1021/acs.iecr.1c00922
+
+- [p3044] Klinkenberg, A. (1948). Numerical evaluation of equations describing transient heat and mass transfer in packed solids. Industrial & Engineering Chemistry, 40(10), 1992–1994. https://doi.org/10.1021/ie50466a034
+
+- [p3045] Langmuir, I. (1918). The adsorption of gases on plane surfaces of glass, mica, and platinum. Journal of the American Chemical Society, 40(9), 1361–1403. https://doi.org/10.1021/ja02242a004
+
+- [p3046] Moon, H. J., Carrillo, J. M. Y., & Jones, C. W. (2023). Distribution and mobility of amines confined in porous silica supports assessed via neutron scattering, NMR, and MD simulations: Impacts on CO₂ sorption kinetics and capacities. Accounts of Chemical Research, 56(19), 2620–2630. https://doi.org/10.1021/acs.accounts.3c00363
+
+- [p3047] Myers, T. G., & Font, F. (2020). Mass transfers from a fluid flowing through a porous media. International Journal of Heat and Mass Transfer, 163, 120374. https://doi.org/10.1016/j.ijheatmasstransfer.2020.120374
+
+- [p3048] Myers, T. G., Valverde, A., Cabrera-Codony, A., & Font, F. (2023). On the development of a consistent mathematical model for adsorption in a packed column (and why standard models fail). International Journal of Heat and Mass Transfer, 202, 123660. https://doi.org/10.1016/j.ijheatmasstransfer.2022.123660
+
+- [p3049] Norbäck, D., & Nordström, K. (2008). Sick building syndrome in relation to air exchange rate, CO2, room temperature, and relative air humidity in university computer classrooms: An experimental study. International Archives of Occupational and Environmental Health, 82(1), 21–30. https://doi.org/10.1007/s00420-008-0301-x
+
+- [p3050] Ritchie, H., & Rosado, P. (2025). CO₂ and Greenhouse Gas Emissions. Our World in Data. https://ourworldindata.org/co2-and-greenhouse-gas-emissions
+
+- [p3051] Ruthven, D. M. (1984). Principles of adsorption and adsorption processes. John Wiley & Sons.
+
+- [p3052] Shafeeyan, M. S., Wan Daud, W. M. A., & Shamiri, A. (2014). A review of mathematical modeling of fixed-bed columns for carbon dioxide adsorption. Chemical Engineering Research and Design, 92(5), 961–988. https://doi.org/10.1016/j.cherd.2013.08.018
+
+- [p3053] Shafeeyan, M. S., Daud, W. M. A. W., Shamiri, A., & Aghamohammadi, N. (2015). Modeling of carbon dioxide adsorption onto ammonia-modified activated carbon: Kinetic analysis and breakthrough behavior. Energy & Fuels, 29(10), 6565–6577. https://doi.org/10.1021/acs.energyfuels.5b00653
+
+- [p3054] Schöny, G., Fuchs, J., Infantino, M., van de Graaf, J., van Paasen, S., & Hofbauer, H. (2018). Pilot scale demonstration of solid sorbent CO₂ capture technology at a biomass power station. 14th International Conference on Greenhouse Gas Control Technologies (GHGT-14), Melbourne. https://doi.org/10.2139/ssrn.3366409
+
+- [p3055] Stampi-Bombelli, V., Storione, A., Grossmann, Q., & Mazzotti, M. (2024). On Comparing Packed Beds and Monoliths for CO2 Capture from Air Through Experiments, Theory, and Modeling. Industrial & Engineering Chemistry Research, 63(26), 11637–11653. https://doi.org/10.1021/acs.iecr.4c01392
+
+- [p3056] Thomas, H. C. (1944). Heterogeneous ion exchange in a flowing system. Journal of the American Chemical Society, 66(10), 1664–1666. https://doi.org/10.1021/ja01238a017
+
+- [p3057] Tóth, J. (1971). State equation of the solid-gas interface layers. Acta Chimica Academiae Scientiarum Hungaricae, 69, 311–317.
+
+- [p3058] Tsai, D. H., Lin, J. S., & Chan, C. C. (2012). Office workers' sick building syndrome and indoor carbon dioxide concentrations. Journal of Occupational and Environmental Hygiene, 9(6), 345–351. https://doi.org/10.1080/15459624.2012.675291
+
+- [p3059] Ward, A., & Pini, R. (2022). Integrated uncertainty quantification and sensitivity analysis of single-component dynamic column breakthrough experiments. Adsorption, 28, 161–183. https://doi.org/10.1007/s10450-021-00341-4
+
+- [p3060] Wirawan, D., Kim, J., Wong, H. C., Low, H. Y., & Tan, M. C. (2021). Textured carbon capture composite (C3) films for distributed direct air capture in urban spaces. Cleaner Engineering and Technology, 4, 100145. https://doi.org/10.1016/j.clet.2021.100145
+
+- [p3061] WMO. (2023). State of the Global Climate 2023 (WMO-No. 1347). Geneva: World Meteorological Organization. https://library.wmo.int/records/item/68835-state-of-the-global-climate-2023
+
+- [p3062] Wolborska, A. (1989). Adsorption on activated carbon of p-nitrophenol from aqueous solution. Water Research, 23(1), 85–91. https://doi.org/10.1016/0043-1354(89)90066-3
+
+- [p3063] Xu, H., Yu, L., Chong, C., & Wang, F. (2024). A comprehensive review on direct carbon capture (DAC) technology by adsorption: From fundamentals to applications. Energy Conversion and Management, 322, 119119. https://doi.org/10.1016/j.enconman.2024.119119
+
+- [p3064] Yan, G., Viraraghavan, T., & Chen, M. (2001). A new model for heavy metal removal in a biosorption column. Adsorption Science & Technology, 19(1), 25–43. https://doi.org/10.1260/0263617011493953
+
+- [p3065] Yoon, Y. H., & Nelson, J. H. (1984). Application of gas adsorption kinetics I. A theoretical model for respirator cartridge service life. American Industrial Hygiene Association Journal, 45(8), 509–516. https://doi.org/10.1080/15298668491400197
+
+## [p3068] Appendix A Per-run fit diagnostics
+
+[p3069] This appendix reproduces the complete diagnostic set for every one of the twenty-one real runs: seven plots per run, 147 figures in total. Nothing has been selected — every run the pipeline fitted appears here, including the runs whose metrics are flagged as provisional in Table 5.
+
+[p3070] The seven plots are the same for every run. P1 is the parity plot of predicted against observed C/C₀ for the eight best-fitting models. P2 shows the Langmuir-family and Freundlich-family fits over the raw data with t_b and t_E marked. P3 is the Weibull fit with its wave-front rate. P4 contrasts the symmetric M01 Thomas/Yoon-Nelson fit with the asymmetric M04 dose-response fit and shades the asymmetry between them. P5 projects the mass-transfer-zone propagation from the M01 fit at the baseline geometry and at varied velocity and bed length. P6 places the standard Yoon-Nelson fit beside the fractal Yoon-Nelson fit with their residuals. P7 is the residual diagnostic grid, one panel per converged model.
+
+[p3071] The figures carry no fitted statistics on their faces; the statistics are tabulated in Appendix B, and the corresponding numbers for the plotted fits are in Appendix B.1 and B.2. Figure numbers in this appendix run A1 to A147 and are indexed by run in Table A.1.
+
+[p3072] Table A.1) Contents of Appendix A: the twenty-one real runs, their conditions, and the figure numbers that belong to each. * flow rate stated twice and inconsistently in the source file; † run never reaches C/C₀ = 0.95.
+
+[p3073] Run
+
+[p3074] Campaign
+
+[p3075] Q (mL/min)
+
+[p3076] C₀ (ppm)
+
+[p3077] m (g)
+
+[p3078] L_bed (cm)
+
+[p3079] d_col (mm)
+
+[p3080] n points
+
+[p3081] Best model
+
+[p3082] Figures
+
+[p3083] run 3
+
+[p3084] new runs (5-run)
+
+[p3085] 150
+
+[p3086] see Table 7
+
+[p3087] 8.008
+
+[p3088] 21.0
+
+[p3089] 8.5
+
+[p3090] 383
+
+[p3091] M11
+
+[p3092] A1–A7
+
+[p3093] run 4
+
+[p3094] new runs (5-run)
+
+[p3095] 50
+
+[p3096] see Table 7
+
+[p3097] 8
+
+[p3098] 21.3
+
+[p3099] 8.5
+
+[p3100] 1432
+
+[p3101] M14
+
+[p3102] A8–A14
+
+[p3103] run 5
+
+[p3104] new runs (5-run)
+
+[p3105] 100
+
+[p3106] see Table 7
+
+[p3107] 8
+
+[p3108] 21.2
+
+[p3109] 8.5
+
+[p3110] 821
+
+[p3111] M11
+
+[p3112] A15–A21
+
+[p3113] run 6
+
+[p3114] new runs (5-run)
+
+[p3115] 150
+
+[p3116] see Table 7
+
+[p3117] 8
+
+[p3118] 21.5
+
+[p3119] 8.5
+
+[p3120] 285
+
+[p3121] M10
+
+[p3122] A22–A28
+
+[p3123] run 8
+
+[p3124] new runs (5-run)
+
+[p3125] 100
+
+[p3126] see Table 7
+
+[p3127] 8
+
+[p3128] 21.5
+
+[p3129] 8.5
+
+[p3130] 255
+
+[p3131] M10
+
+[p3132] A29–A35
+
+[p3133] 06-26 c5 f0.05
+
+[p3134] newest runs (3×3 grid)
+
+[p3135] 50
+
+[p3136] 50000
+
+[p3137] 8.00
+
+[p3138] 23.50
+
+[p3139] 8.2
+
+[p3140] 1658
+
+[p3141] M11
+
+[p3142] A36–A42
+
+[p3143] 07-03 c5 f0.10
+
+[p3144] newest runs (3×3 grid)
+
+[p3145] 100
+
+[p3146] 50010
+
+[p3147] 8.00
+
+[p3148] 24.00
+
+[p3149] 8.2
+
+[p3150] 413
+
+[p3151] M24
+
+[p3152] A43–A49
+
+[p3153] 07-08 c5 f0.15
+
+[p3154] newest runs (3×3 grid)
+
+[p3155] 150
+
+[p3156] 50220
+
+[p3157] 8.00
+
+[p3158] 23.50
+
+[p3159] 8.2
+
+[p3160] 440
+
+[p3161] M11
+
+[p3162] A50–A56
+
+[p3163] 07-08 c10 f0.05
+
+[p3164] newest runs (3×3 grid)
+
+[p3165] 50
+
+[p3166] 99000
+
+[p3167] 8.00
+
+[p3168] 23.00
+
+[p3169] 8.2
+
+[p3170] 1746
+
+[p3171] M11
+
+[p3172] A57–A63
+
+[p3173] 07-08 c10 f0.10
+
+[p3174] newest runs (3×3 grid)
+
+[p3175] 100
+
+[p3176] 100580
+
+[p3177] 8.00
+
+[p3178] 23.30
+
+[p3179] 8.2
+
+[p3180] 1472
+
+[p3181] M11
+
+[p3182] A64–A70
+
+[p3183] 07-08 c10 f0.15
+
+[p3184] newest runs (3×3 grid)
+
+[p3185] 150
+
+[p3186] 100000
+
+[p3187] 8.00
+
+[p3188] 24.00
+
+[p3189] 8.2
+
+[p3190] 477
+
+[p3191] M03
+
+[p3192] A71–A77
+
+[p3193] 07-10 c15 f0.05
+
+[p3194] newest runs (3×3 grid)
+
+[p3195] 50
+
+[p3196] 150970
+
+[p3197] 8.00
+
+[p3198] 24.50
+
+[p3199] 8.2
+
+[p3200] 1650
+
+[p3201] M11
+
+[p3202] A78–A84
+
+[p3203] 07-10 c15 f0.10
+
+[p3204] newest runs (3×3 grid)
+
+[p3205] 100
+
+[p3206] 149800
+
+[p3207] 8.00
+
+[p3208] 24.00
+
+[p3209] 8.2
+
+[p3210] 1147
+
+[p3211] M11
+
+[p3212] A85–A91
+
+[p3213] 07-15 c15 f0.15
+
+[p3214] newest runs (3×3 grid)
+
+[p3215] 150
+
+[p3216] 150100
+
+[p3217] 8.00
+
+[p3218] 24.00
+
+[p3219] 8.2
+
+[p3220] 1002
+
+[p3221] M11
+
+[p3222] A92–A98
+
+[p3223] 07-17 c15 f0.10
+
+[p3224] newest runs (3×3 grid)
+
+[p3225] 100
+
+[p3226] 150800
+
+[p3227] 8.00
+
+[p3228] 23.00
+
+[p3229] 8.2
+
+[p3230] 778
+
+[p3231] M24
+
+[p3232] A99–A105
+
+[p3233] 07-22 c10 f0.05*
+
+[p3234] newest runs (3×3 grid)
+
+[p3235] 100
+
+[p3236] 100610
+
+[p3237] 8.00
+
+[p3238] 23.00
+
+[p3239] 8.2
+
+[p3240] 1364
+
+[p3241] M24
+
+[p3242] A106–A112
+
+[p3243] 07-22 c10 f0.10*
+
+[p3244] newest runs (3×3 grid)
+
+[p3245] 100
+
+[p3246] 100430
+
+[p3247] 8.00
+
+[p3248] 23.00
+
+[p3249] 8.2
+
+[p3250] 325
+
+[p3251] M24
+
+[p3252] A113–A119
+
+[p3253] 07-29 c5 f0.05†
+
+[p3254] newest runs (3×3 grid)
+
+[p3255] 50
+
+[p3256] 50780
+
+[p3257] 8.00
+
+[p3258] 22.50
+
+[p3259] 8.2
+
+[p3260] 603
+
+[p3261] M24
+
+[p3262] A120–A126
+
+[p3263] 07-29 c5 f0.10
+
+[p3264] newest runs (3×3 grid)
+
+[p3265] 100
+
+[p3266] 49900
+
+[p3267] 8.00
+
+[p3268] 23.00
+
+[p3269] 8.2
+
+[p3270] 1573
+
+[p3271] M24
+
+[p3272] A127–A133
+
+[p3273] 07-31 c5 f0.15*
+
+[p3274] newest runs (3×3 grid)
+
+[p3275] 100
+
+[p3276] 50470
+
+[p3277] 8.00
+
+[p3278] 23.00
+
+[p3279] 8.2
+
+[p3280] 351
+
+[p3281] M11
+
+[p3282] A134–A140
+
+[p3283] 07-31 c10 f0.10*
+
+[p3284] newest runs (3×3 grid)
+
+[p3285] 50
+
+[p3286] 99400
+
+[p3287] 8.00
+
+[p3288] 22.50
+
+[p3289] 8.2
+
+[p3290] 1171
+
+[p3291] M11
+
+[p3292] A141–A147
+
+### [p3294] A.1 run 3
+
+[p3295] *(1 embedded image)*
+
+###### [p3296] Fig. A1) run 3 — P1: predicted against observed C/C₀, eight best models.
+
+[p3297] *(1 embedded image)*
+
+###### [p3298] Fig. A2) run 3 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3299] *(1 embedded image)*
+
+###### [p3300] Fig. A3) run 3 — P3: Weibull fit and wave-front rate.
+
+[p3301] *(1 embedded image)*
+
+###### [p3302] Fig. A4) run 3 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3303] *(1 embedded image)*
+
+###### [p3304] Fig. A5) run 3 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3305] *(1 embedded image)*
+
+###### [p3306] Fig. A6) run 3 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3307] *(1 embedded image)*
+
+###### [p3308] Fig. A7) run 3 — P7: residual diagnostics, one panel per converged model.
+
+### [p3309] A.2 run 4
+
+[p3310] *(1 embedded image)*
+
+###### [p3311] Fig. A8) run 4 — P1: predicted against observed C/C₀, eight best models.
+
+[p3312] *(1 embedded image)*
+
+###### [p3313] Fig. A9) run 4 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3314] *(1 embedded image)*
+
+###### [p3315] Fig. A10) run 4 — P3: Weibull fit and wave-front rate.
+
+[p3316] *(1 embedded image)*
+
+###### [p3317] Fig. A11) run 4 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3318] *(1 embedded image)*
+
+###### [p3319] Fig. A12) run 4 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3320] *(1 embedded image)*
+
+###### [p3321] Fig. A13) run 4 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3322] *(1 embedded image)*
+
+###### [p3323] Fig. A14) run 4 — P7: residual diagnostics, one panel per converged model.
+
+### [p3324] A.3 run 5
+
+[p3325] *(1 embedded image)*
+
+###### [p3326] Fig. A15) run 5 — P1: predicted against observed C/C₀, eight best models.
+
+[p3327] *(1 embedded image)*
+
+###### [p3328] Fig. A16) run 5 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3329] *(1 embedded image)*
+
+###### [p3330] Fig. A17) run 5 — P3: Weibull fit and wave-front rate.
+
+[p3331] *(1 embedded image)*
+
+###### [p3332] Fig. A18) run 5 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3333] *(1 embedded image)*
+
+###### [p3334] Fig. A19) run 5 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3335] *(1 embedded image)*
+
+###### [p3336] Fig. A20) run 5 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3337] *(1 embedded image)*
+
+###### [p3338] Fig. A21) run 5 — P7: residual diagnostics, one panel per converged model.
+
+### [p3339] A.4 run 6
+
+[p3340] *(1 embedded image)*
+
+###### [p3341] Fig. A22) run 6 — P1: predicted against observed C/C₀, eight best models.
+
+[p3342] *(1 embedded image)*
+
+###### [p3343] Fig. A23) run 6 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3344] *(1 embedded image)*
+
+###### [p3345] Fig. A24) run 6 — P3: Weibull fit and wave-front rate.
+
+[p3346] *(1 embedded image)*
+
+###### [p3347] Fig. A25) run 6 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3348] *(1 embedded image)*
+
+###### [p3349] Fig. A26) run 6 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3350] *(1 embedded image)*
+
+###### [p3351] Fig. A27) run 6 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3352] *(1 embedded image)*
+
+###### [p3353] Fig. A28) run 6 — P7: residual diagnostics, one panel per converged model.
+
+### [p3354] A.5 run 8
+
+[p3355] *(1 embedded image)*
+
+###### [p3356] Fig. A29) run 8 — P1: predicted against observed C/C₀, eight best models.
+
+[p3357] *(1 embedded image)*
+
+###### [p3358] Fig. A30) run 8 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3359] *(1 embedded image)*
+
+###### [p3360] Fig. A31) run 8 — P3: Weibull fit and wave-front rate.
+
+[p3361] *(1 embedded image)*
+
+###### [p3362] Fig. A32) run 8 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3363] *(1 embedded image)*
+
+###### [p3364] Fig. A33) run 8 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3365] *(1 embedded image)*
+
+###### [p3366] Fig. A34) run 8 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3367] *(1 embedded image)*
+
+###### [p3368] Fig. A35) run 8 — P7: residual diagnostics, one panel per converged model.
+
+### [p3369] A.6 06-26 c5 f0.05
+
+[p3370] *(1 embedded image)*
+
+###### [p3371] Fig. A36) 2026-06-26-conc5-flow0.05 — P1: predicted against observed C/C₀, eight best models.
+
+[p3372] *(1 embedded image)*
+
+###### [p3373] Fig. A37) 2026-06-26-conc5-flow0.05 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3374] *(1 embedded image)*
+
+###### [p3375] Fig. A38) 2026-06-26-conc5-flow0.05 — P3: Weibull fit and wave-front rate.
+
+[p3376] *(1 embedded image)*
+
+###### [p3377] Fig. A39) 2026-06-26-conc5-flow0.05 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3378] *(1 embedded image)*
+
+###### [p3379] Fig. A40) 2026-06-26-conc5-flow0.05 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3380] *(1 embedded image)*
+
+###### [p3381] Fig. A41) 2026-06-26-conc5-flow0.05 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3382] *(1 embedded image)*
+
+###### [p3383] Fig. A42) 2026-06-26-conc5-flow0.05 — P7: residual diagnostics, one panel per converged model.
+
+### [p3384] A.7 07-03 c5 f0.10
+
+[p3385] *(1 embedded image)*
+
+###### [p3386] Fig. A43) 2026-07-03-conc5-flow0.10 — P1: predicted against observed C/C₀, eight best models.
+
+[p3387] *(1 embedded image)*
+
+###### [p3388] Fig. A44) 2026-07-03-conc5-flow0.10 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3389] *(1 embedded image)*
+
+###### [p3390] Fig. A45) 2026-07-03-conc5-flow0.10 — P3: Weibull fit and wave-front rate.
+
+[p3391] *(1 embedded image)*
+
+###### [p3392] Fig. A46) 2026-07-03-conc5-flow0.10 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3393] *(1 embedded image)*
+
+###### [p3394] Fig. A47) 2026-07-03-conc5-flow0.10 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3395] *(1 embedded image)*
+
+###### [p3396] Fig. A48) 2026-07-03-conc5-flow0.10 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3397] *(1 embedded image)*
+
+###### [p3398] Fig. A49) 2026-07-03-conc5-flow0.10 — P7: residual diagnostics, one panel per converged model.
+
+### [p3399] A.8 07-08 c5 f0.15
+
+[p3400] *(1 embedded image)*
+
+###### [p3401] Fig. A50) 2026-07-08-conc5-flow0.15 — P1: predicted against observed C/C₀, eight best models.
+
+[p3402] *(1 embedded image)*
+
+###### [p3403] Fig. A51) 2026-07-08-conc5-flow0.15 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3404] *(1 embedded image)*
+
+###### [p3405] Fig. A52) 2026-07-08-conc5-flow0.15 — P3: Weibull fit and wave-front rate.
+
+[p3406] *(1 embedded image)*
+
+###### [p3407] Fig. A53) 2026-07-08-conc5-flow0.15 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3408] *(1 embedded image)*
+
+###### [p3409] Fig. A54) 2026-07-08-conc5-flow0.15 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3410] *(1 embedded image)*
+
+###### [p3411] Fig. A55) 2026-07-08-conc5-flow0.15 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3412] *(1 embedded image)*
+
+###### [p3413] Fig. A56) 2026-07-08-conc5-flow0.15 — P7: residual diagnostics, one panel per converged model.
+
+### [p3414] A.9 07-08 c10 f0.05
+
+[p3415] *(1 embedded image)*
+
+###### [p3416] Fig. A57) 2026-07-08-conc10-flow0.05 — P1: predicted against observed C/C₀, eight best models.
+
+[p3417] *(1 embedded image)*
+
+###### [p3418] Fig. A58) 2026-07-08-conc10-flow0.05 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3419] *(1 embedded image)*
+
+###### [p3420] Fig. A59) 2026-07-08-conc10-flow0.05 — P3: Weibull fit and wave-front rate.
+
+[p3421] *(1 embedded image)*
+
+###### [p3422] Fig. A60) 2026-07-08-conc10-flow0.05 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3423] *(1 embedded image)*
+
+###### [p3424] Fig. A61) 2026-07-08-conc10-flow0.05 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3425] *(1 embedded image)*
+
+###### [p3426] Fig. A62) 2026-07-08-conc10-flow0.05 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3427] *(1 embedded image)*
+
+###### [p3428] Fig. A63) 2026-07-08-conc10-flow0.05 — P7: residual diagnostics, one panel per converged model.
+
+### [p3429] A.10 07-08 c10 f0.10
+
+[p3430] *(1 embedded image)*
+
+###### [p3431] Fig. A64) 2026-07-08-conc10-flow0.10 — P1: predicted against observed C/C₀, eight best models.
+
+[p3432] *(1 embedded image)*
+
+###### [p3433] Fig. A65) 2026-07-08-conc10-flow0.10 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3434] *(1 embedded image)*
+
+###### [p3435] Fig. A66) 2026-07-08-conc10-flow0.10 — P3: Weibull fit and wave-front rate.
+
+[p3436] *(1 embedded image)*
+
+###### [p3437] Fig. A67) 2026-07-08-conc10-flow0.10 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3438] *(1 embedded image)*
+
+###### [p3439] Fig. A68) 2026-07-08-conc10-flow0.10 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3440] *(1 embedded image)*
+
+###### [p3441] Fig. A69) 2026-07-08-conc10-flow0.10 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3442] *(1 embedded image)*
+
+###### [p3443] Fig. A70) 2026-07-08-conc10-flow0.10 — P7: residual diagnostics, one panel per converged model.
+
+### [p3444] A.11 07-08 c10 f0.15
+
+[p3445] *(1 embedded image)*
+
+###### [p3446] Fig. A71) 2026-07-08-conc10-flow0.15 — P1: predicted against observed C/C₀, eight best models.
+
+[p3447] *(1 embedded image)*
+
+###### [p3448] Fig. A72) 2026-07-08-conc10-flow0.15 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3449] *(1 embedded image)*
+
+###### [p3450] Fig. A73) 2026-07-08-conc10-flow0.15 — P3: Weibull fit and wave-front rate.
+
+[p3451] *(1 embedded image)*
+
+###### [p3452] Fig. A74) 2026-07-08-conc10-flow0.15 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3453] *(1 embedded image)*
+
+###### [p3454] Fig. A75) 2026-07-08-conc10-flow0.15 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3455] *(1 embedded image)*
+
+###### [p3456] Fig. A76) 2026-07-08-conc10-flow0.15 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3457] *(1 embedded image)*
+
+###### [p3458] Fig. A77) 2026-07-08-conc10-flow0.15 — P7: residual diagnostics, one panel per converged model.
+
+### [p3459] A.12 07-10 c15 f0.05
+
+[p3460] *(1 embedded image)*
+
+###### [p3461] Fig. A78) 2026-07-10-conc15-flow0.05 — P1: predicted against observed C/C₀, eight best models.
+
+[p3462] *(1 embedded image)*
+
+###### [p3463] Fig. A79) 2026-07-10-conc15-flow0.05 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3464] *(1 embedded image)*
+
+###### [p3465] Fig. A80) 2026-07-10-conc15-flow0.05 — P3: Weibull fit and wave-front rate.
+
+[p3466] *(1 embedded image)*
+
+###### [p3467] Fig. A81) 2026-07-10-conc15-flow0.05 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3468] *(1 embedded image)*
+
+###### [p3469] Fig. A82) 2026-07-10-conc15-flow0.05 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3470] *(1 embedded image)*
+
+###### [p3471] Fig. A83) 2026-07-10-conc15-flow0.05 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3472] *(1 embedded image)*
+
+###### [p3473] Fig. A84) 2026-07-10-conc15-flow0.05 — P7: residual diagnostics, one panel per converged model.
+
+### [p3474] A.13 07-10 c15 f0.10
+
+[p3475] *(1 embedded image)*
+
+###### [p3476] Fig. A85) 2026-07-10-conc15-flow0.10 — P1: predicted against observed C/C₀, eight best models.
+
+[p3477] *(1 embedded image)*
+
+###### [p3478] Fig. A86) 2026-07-10-conc15-flow0.10 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3479] *(1 embedded image)*
+
+###### [p3480] Fig. A87) 2026-07-10-conc15-flow0.10 — P3: Weibull fit and wave-front rate.
+
+[p3481] *(1 embedded image)*
+
+###### [p3482] Fig. A88) 2026-07-10-conc15-flow0.10 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3483] *(1 embedded image)*
+
+###### [p3484] Fig. A89) 2026-07-10-conc15-flow0.10 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3485] *(1 embedded image)*
+
+###### [p3486] Fig. A90) 2026-07-10-conc15-flow0.10 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3487] *(1 embedded image)*
+
+###### [p3488] Fig. A91) 2026-07-10-conc15-flow0.10 — P7: residual diagnostics, one panel per converged model.
+
+### [p3489] A.14 07-15 c15 f0.15
+
+[p3490] *(1 embedded image)*
+
+###### [p3491] Fig. A92) 2026-07-15-conc15-flow0.15 — P1: predicted against observed C/C₀, eight best models.
+
+[p3492] *(1 embedded image)*
+
+###### [p3493] Fig. A93) 2026-07-15-conc15-flow0.15 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3494] *(1 embedded image)*
+
+###### [p3495] Fig. A94) 2026-07-15-conc15-flow0.15 — P3: Weibull fit and wave-front rate.
+
+[p3496] *(1 embedded image)*
+
+###### [p3497] Fig. A95) 2026-07-15-conc15-flow0.15 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3498] *(1 embedded image)*
+
+###### [p3499] Fig. A96) 2026-07-15-conc15-flow0.15 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3500] *(1 embedded image)*
+
+###### [p3501] Fig. A97) 2026-07-15-conc15-flow0.15 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3502] *(1 embedded image)*
+
+###### [p3503] Fig. A98) 2026-07-15-conc15-flow0.15 — P7: residual diagnostics, one panel per converged model.
+
+### [p3504] A.15 07-17 c15 f0.10
+
+[p3505] *(1 embedded image)*
+
+###### [p3506] Fig. A99) 2026-07-17-conc15-flow0.10 — P1: predicted against observed C/C₀, eight best models.
+
+[p3507] *(1 embedded image)*
+
+###### [p3508] Fig. A100) 2026-07-17-conc15-flow0.10 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3509] *(1 embedded image)*
+
+###### [p3510] Fig. A101) 2026-07-17-conc15-flow0.10 — P3: Weibull fit and wave-front rate.
+
+[p3511] *(1 embedded image)*
+
+###### [p3512] Fig. A102) 2026-07-17-conc15-flow0.10 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3513] *(1 embedded image)*
+
+###### [p3514] Fig. A103) 2026-07-17-conc15-flow0.10 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3515] *(1 embedded image)*
+
+###### [p3516] Fig. A104) 2026-07-17-conc15-flow0.10 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3517] *(1 embedded image)*
+
+###### [p3518] Fig. A105) 2026-07-17-conc15-flow0.10 — P7: residual diagnostics, one panel per converged model.
+
+### [p3519] A.16 07-22 c10 f0.05*
+
+[p3520] *(1 embedded image)*
+
+###### [p3521] Fig. A106) 2026-07-22-conc10-flow0.05 — P1: predicted against observed C/C₀, eight best models.
+
+[p3522] *(1 embedded image)*
+
+###### [p3523] Fig. A107) 2026-07-22-conc10-flow0.05 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3524] *(1 embedded image)*
+
+###### [p3525] Fig. A108) 2026-07-22-conc10-flow0.05 — P3: Weibull fit and wave-front rate.
+
+[p3526] *(1 embedded image)*
+
+###### [p3527] Fig. A109) 2026-07-22-conc10-flow0.05 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3528] *(1 embedded image)*
+
+###### [p3529] Fig. A110) 2026-07-22-conc10-flow0.05 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3530] *(1 embedded image)*
+
+###### [p3531] Fig. A111) 2026-07-22-conc10-flow0.05 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3532] *(1 embedded image)*
+
+###### [p3533] Fig. A112) 2026-07-22-conc10-flow0.05 — P7: residual diagnostics, one panel per converged model.
+
+### [p3534] A.17 07-22 c10 f0.10*
+
+[p3535] *(1 embedded image)*
+
+###### [p3536] Fig. A113) 2026-07-22-conc10-flow0.10 — P1: predicted against observed C/C₀, eight best models.
+
+[p3537] *(1 embedded image)*
+
+###### [p3538] Fig. A114) 2026-07-22-conc10-flow0.10 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3539] *(1 embedded image)*
+
+###### [p3540] Fig. A115) 2026-07-22-conc10-flow0.10 — P3: Weibull fit and wave-front rate.
+
+[p3541] *(1 embedded image)*
+
+###### [p3542] Fig. A116) 2026-07-22-conc10-flow0.10 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3543] *(1 embedded image)*
+
+###### [p3544] Fig. A117) 2026-07-22-conc10-flow0.10 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3545] *(1 embedded image)*
+
+###### [p3546] Fig. A118) 2026-07-22-conc10-flow0.10 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3547] *(1 embedded image)*
+
+###### [p3548] Fig. A119) 2026-07-22-conc10-flow0.10 — P7: residual diagnostics, one panel per converged model.
+
+### [p3549] A.18 07-29 c5 f0.05†
+
+[p3550] *(1 embedded image)*
+
+###### [p3551] Fig. A120) 2026-07-29-conc5-flow0.05 — P1: predicted against observed C/C₀, eight best models.
+
+[p3552] *(1 embedded image)*
+
+###### [p3553] Fig. A121) 2026-07-29-conc5-flow0.05 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3554] *(1 embedded image)*
+
+###### [p3555] Fig. A122) 2026-07-29-conc5-flow0.05 — P3: Weibull fit and wave-front rate.
+
+[p3556] *(1 embedded image)*
+
+###### [p3557] Fig. A123) 2026-07-29-conc5-flow0.05 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3558] *(1 embedded image)*
+
+###### [p3559] Fig. A124) 2026-07-29-conc5-flow0.05 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3560] *(1 embedded image)*
+
+###### [p3561] Fig. A125) 2026-07-29-conc5-flow0.05 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3562] *(1 embedded image)*
+
+###### [p3563] Fig. A126) 2026-07-29-conc5-flow0.05 — P7: residual diagnostics, one panel per converged model.
+
+### [p3564] A.19 07-29 c5 f0.10
+
+[p3565] *(1 embedded image)*
+
+###### [p3566] Fig. A127) 2026-07-29-conc5-flow0.10 — P1: predicted against observed C/C₀, eight best models.
+
+[p3567] *(1 embedded image)*
+
+###### [p3568] Fig. A128) 2026-07-29-conc5-flow0.10 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3569] *(1 embedded image)*
+
+###### [p3570] Fig. A129) 2026-07-29-conc5-flow0.10 — P3: Weibull fit and wave-front rate.
+
+[p3571] *(1 embedded image)*
+
+###### [p3572] Fig. A130) 2026-07-29-conc5-flow0.10 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3573] *(1 embedded image)*
+
+###### [p3574] Fig. A131) 2026-07-29-conc5-flow0.10 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3575] *(1 embedded image)*
+
+###### [p3576] Fig. A132) 2026-07-29-conc5-flow0.10 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3577] *(1 embedded image)*
+
+###### [p3578] Fig. A133) 2026-07-29-conc5-flow0.10 — P7: residual diagnostics, one panel per converged model.
+
+### [p3579] A.20 07-31 c5 f0.15*
+
+[p3580] *(1 embedded image)*
+
+###### [p3581] Fig. A134) 2026-07-31-conc5-flow0.15 — P1: predicted against observed C/C₀, eight best models.
+
+[p3582] *(1 embedded image)*
+
+###### [p3583] Fig. A135) 2026-07-31-conc5-flow0.15 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3584] *(1 embedded image)*
+
+###### [p3585] Fig. A136) 2026-07-31-conc5-flow0.15 — P3: Weibull fit and wave-front rate.
+
+[p3586] *(1 embedded image)*
+
+###### [p3587] Fig. A137) 2026-07-31-conc5-flow0.15 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3588] *(1 embedded image)*
+
+###### [p3589] Fig. A138) 2026-07-31-conc5-flow0.15 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3590] *(1 embedded image)*
+
+###### [p3591] Fig. A139) 2026-07-31-conc5-flow0.15 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3592] *(1 embedded image)*
+
+###### [p3593] Fig. A140) 2026-07-31-conc5-flow0.15 — P7: residual diagnostics, one panel per converged model.
+
+### [p3594] A.21 07-31 c10 f0.10*
+
+[p3595] *(1 embedded image)*
+
+###### [p3596] Fig. A141) 2026-07-31-conc10-flow0.10 — P1: predicted against observed C/C₀, eight best models.
+
+[p3597] *(1 embedded image)*
+
+###### [p3598] Fig. A142) 2026-07-31-conc10-flow0.10 — P2: breakthrough fits by isotherm family, with t_b and t_E marked.
+
+[p3599] *(1 embedded image)*
+
+###### [p3600] Fig. A143) 2026-07-31-conc10-flow0.10 — P3: Weibull fit and wave-front rate.
+
+[p3601] *(1 embedded image)*
+
+###### [p3602] Fig. A144) 2026-07-31-conc10-flow0.10 — P4: M01 Thomas/Yoon-Nelson against M04 dose-response, with residuals.
+
+[p3603] *(1 embedded image)*
+
+###### [p3604] Fig. A145) 2026-07-31-conc10-flow0.10 — P5: mass-transfer-zone propagation at baseline, varied u and varied L.
+
+[p3605] *(1 embedded image)*
+
+###### [p3606] Fig. A146) 2026-07-31-conc10-flow0.10 — P6: standard against fractal Yoon-Nelson, with residuals.
+
+[p3607] *(1 embedded image)*
+
+###### [p3608] Fig. A147) 2026-07-31-conc10-flow0.10 — P7: residual diagnostics, one panel per converged model.
+
+## [p3609] Appendix B Complete fit statistics
+
+[p3610] Every number in this appendix is read back out of the committed results files, breakthrough_out/<run>/results_<run>.csv, one file per run and twenty-four rows per file. Nothing was refitted to produce these tables. The only arithmetic applied is the difference ΔAICc against the best model in each run, and the nested F-test of Appendix B.3, which is computed with the same breakthrough_fit.stats.f_test the pipeline itself calls.
+
+[p3611] Run labels are abbreviated as date-concentration-flow; * marks the four runs whose source file states its flow rate twice and disagrees with itself, and † the one run that never reaches C/C₀ = 0.95. For those five runs the time-based statistics are unaffected, while q_dyn, L_MTZ and ψ are provisional or undefined as set out in Table 5.
+
+### [p3612] B.1 Model fit statistics, all models and all runs
+
+[p3613] Table B.1) Fit statistics for all twenty-four registry models on all twenty-one runs, 504 rows. ΔAICc is measured against the best model within each run.
+
+[p3614] Run
+
+[p3615] Code
+
+[p3616] Model
+
+[p3617] Conv.
+
+[p3618] n
+
+[p3619] p
+
+[p3620] RSS
+
+[p3621] R²
+
+[p3622] Adj R²
+
+[p3623] RMSE
+
+[p3624] χ²_red
+
+[p3625] AICc
+
+[p3626] ΔAICc
+
+[p3627] AAD
+
+[p3628] run 3
+
+[p3629] M01
+
+[p3630] Yoon-Nelson / Thomas / BA (logistic)
+
+[p3631] yes
+
+[p3632] 383
+
+[p3633] 2
+
+[p3634] 1.61929
+
+[p3635] 0.913720
+
+[p3636] 0.913494
+
+[p3637] 0.06519
+
+[p3638] 0.004250
+
+[p3639] -2089.46
+
+[p3640] 1647.8
+
+[p3641] 0.1301
+
+[p3642] run 3
+
+[p3643] M02
+
+[p3644] Clark
+
+[p3645] yes
+
+[p3646] 383
+
+[p3647] 3
+
+[p3648] 1.14716
+
+[p3649] 0.938877
+
+[p3650] 0.938555
+
+[p3651] 0.05487
+
+[p3652] 0.003019
+
+[p3653] -2219.45
+
+[p3654] 1517.8
+
+[p3655] 0.1108
+
+[p3656] run 3
+
+[p3657] M03
+
+[p3658] Fractal Clark
+
+[p3659] yes
+
+[p3660] 383
+
+[p3661] 4
+
+[p3662] 0.0338284
+
+[p3663] 0.998198
+
+[p3664] 0.998183
+
+[p3665] 0.009423
+
+[p3666] 8.9257e-05
+
+[p3667] -3567.00
+
+[p3668] 170.25
+
+[p3669] 0.01062
+
+[p3670] run 3
+
+[p3671] M04
+
+[p3672] Modified Dose-Response (Yan)
+
+[p3673] yes
+
+[p3674] 383
+
+[p3675] 2
+
+[p3676] 0.131771
+
+[p3677] 0.992979
+
+[p3678] 0.992961
+
+[p3679] 0.01860
+
+[p3680] 3.4585e-04
+
+[p3681] -3050.29
+
+[p3682] 686.96
+
+[p3683] 0.02521
+
+[p3684] run 3
+
+[p3685] M05
+
+[p3686] Wolborska (linearised, early)
+
+[p3687] yes
+
+[p3688] 4
+
+[p3689] 2
+
+[p3690] 5.384483e-04
+
+[p3691] 0.950195
+
+[p3692] 0.925292
+
+[p3693] 0.01641
+
+[p3694] 2.6922e-04
+
+[p3695] -19.6525
+
+[p3696] 3717.6
+
+[p3697] 0.4407
+
+[p3698] run 3
+
+[p3699] M06
+
+[p3700] Gudermannian (Hu 2021)
+
+[p3701] yes
+
+[p3702] 383
+
+[p3703] 2
+
+[p3704] 1.51516
+
+[p3705] 0.919269
+
+[p3706] 0.919057
+
+[p3707] 0.06306
+
+[p3708] 0.003977
+
+[p3709] -2114.92
+
+[p3710] 1622.3
+
+[p3711] 0.1280
+
+[p3712] run 3
+
+[p3713] M07
+
+[p3714] Error-Function (Hu 2021)
+
+[p3715] yes
+
+[p3716] 383
+
+[p3717] 2
+
+[p3718] 1.77546
+
+[p3719] 0.905399
+
+[p3720] 0.905151
+
+[p3721] 0.06826
+
+[p3722] 0.004660
+
+[p3723] -2054.20
+
+[p3724] 1683.1
+
+[p3725] 0.1327
+
+[p3726] run 3
+
+[p3727] M08
+
+[p3728] Tanh (Hu 2019)
+
+[p3729] yes
+
+[p3730] 383
+
+[p3731] 2
+
+[p3732] 1.61929
+
+[p3733] 0.913720
+
+[p3734] 0.913494
+
+[p3735] 0.06519
+
+[p3736] 0.004250
+
+[p3737] -2089.46
+
+[p3738] 1647.8
+
+[p3739] 0.1301
+
+[p3740] run 3
+
+[p3741] M09
+
+[p3742] Log-Normal (Chu-Hashim)
+
+[p3743] yes
+
+[p3744] 383
+
+[p3745] 2
+
+[p3746] 0.0597607
+
+[p3747] 0.996816
+
+[p3748] 0.996807
+
+[p3749] 0.01252
+
+[p3750] 1.5685e-04
+
+[p3751] -3353.13
+
+[p3752] 384.12
+
+[p3753] 0.01796
+
+[p3754] run 3
+
+[p3755] M10
+
+[p3756] Fractal Gudermannian (Hu 2024)
+
+[p3757] yes
+
+[p3758] 383
+
+[p3759] 3
+
+[p3760] 0.0229869
+
+[p3761] 0.998775
+
+[p3762] 0.998769
+
+[p3763] 0.007767
+
+[p3764] 6.0492e-05
+
+[p3765] -3717.03
+
+[p3766] 20.226
+
+[p3767] 0.01021
+
+[p3768] run 3
+
+[p3769] M11
+
+[p3770] Fractal Error-Function (Hu 2024)
+
+[p3771] yes
+
+[p3772] 383
+
+[p3773] 3
+
+[p3774] 0.0218045
+
+[p3775] 0.998838
+
+[p3776] 0.998832
+
+[p3777] 0.007565
+
+[p3778] 5.7380e-05
+
+[p3779] -3737.25
+
+[p3780] 0
+
+[p3781] 0.01344
+
+[p3782] run 3
+
+[p3783] M12
+
+[p3784] Gompertz (Chu 2020)
+
+[p3785] yes
+
+[p3786] 383
+
+[p3787] 2
+
+[p3788] 1.14166
+
+[p3789] 0.939170
+
+[p3790] 0.939010
+
+[p3791] 0.05474
+
+[p3792] 0.002996
+
+[p3793] -2223.32
+
+[p3794] 1513.9
+
+[p3795] 0.1105
+
+[p3796] run 3
+
+[p3797] M13
+
+[p3798] Log-Gompertz (Chu 2020)
+
+[p3799] yes
+
+[p3800] 383
+
+[p3801] 2
+
+[p3802] 0.321975
+
+[p3803] 0.982844
+
+[p3804] 0.982799
+
+[p3805] 0.02907
+
+[p3806] 8.4508e-04
+
+[p3807] -2708.11
+
+[p3808] 1029.1
+
+[p3809] 0.04138
+
+[p3810] run 3
+
+[p3811] M14
+
+[p3812] Weibull (Chu 2021)
+
+[p3813] yes
+
+[p3814] 383
+
+[p3815] 2
+
+[p3816] 0.0421867
+
+[p3817] 0.997752
+
+[p3818] 0.997746
+
+[p3819] 0.01052
+
+[p3820] 1.1073e-04
+
+[p3821] -3486.51
+
+[p3822] 250.74
+
+[p3823] 0.01810
+
+[p3824] run 3
+
+[p3825] M15
+
+[p3826] Avrami (Singh)
+
+[p3827] yes
+
+[p3828] 383
+
+[p3829] 2
+
+[p3830] 0.0421867
+
+[p3831] 0.997752
+
+[p3832] 0.997746
+
+[p3833] 0.01052
+
+[p3834] 1.1073e-04
+
+[p3835] -3486.51
+
+[p3836] 250.74
+
+[p3837] 0.01810
+
+[p3838] run 3
+
+[p3839] M16
+
+[p3840] Klinkenberg
+
+[p3841] yes
+
+[p3842] 383
+
+[p3843] 2
+
+[p3844] 11.7848
+
+[p3845] 0.372077
+
+[p3846] 0.370429
+
+[p3847] 0.1759
+
+[p3848] 0.03093
+
+[p3849] -1329.28
+
+[p3850] 2408.0
+
+[p3851] 0.3190
+
+[p3852] run 3
+
+[p3853] M17
+
+[p3854] Dima (wave erf)
+
+[p3855] yes
+
+[p3856] 383
+
+[p3857] 2
+
+[p3858] 1.77546
+
+[p3859] 0.905399
+
+[p3860] 0.905151
+
+[p3861] 0.06826
+
+[p3862] 0.004660
+
+[p3863] -2054.20
+
+[p3864] 1683.1
+
+[p3865] 0.1327
+
+[p3866] run 3
+
+[p3867] M18
+
+[p3868] Chern-Chien Langmuir
+
+[p3869] yes
+
+[p3870] 0
+
+[p3871] 4
+
+[p3872] n/a
+
+[p3873] n/a
+
+[p3874] n/a
+
+[p3875] n/a
+
+[p3876] n/a
+
+[p3877] n/a
+
+[p3878] n/a
+
+[p3879] n/a
+
+[p3880] run 3
+
+[p3881] M19
+
+[p3882] Chern-Chien Freundlich
+
+[p3883] yes
+
+[p3884] 0
+
+[p3885] 4
+
+[p3886] n/a
+
+[p3887] n/a
+
+[p3888] n/a
+
+[p3889] n/a
+
+[p3890] n/a
+
+[p3891] n/a
+
+[p3892] n/a
+
+[p3893] n/a
+
+[p3894] run 3
+
+[p3895] M20
+
+[p3896] Log-modified Bohart-Adams
+
+[p3897] yes
+
+[p3898] 383
+
+[p3899] 2
+
+[p3900] 0.131771
+
+[p3901] 0.992979
+
+[p3902] 0.992961
+
+[p3903] 0.01860
+
+[p3904] 3.4585e-04
+
+[p3905] -3050.29
+
+[p3906] 686.96
+
+[p3907] 0.02521
+
+[p3908] run 3
+
+[p3909] M21
+
+[p3910] Log-modified Yoon-Nelson
+
+[p3911] yes
+
+[p3912] 383
+
+[p3913] 2
+
+[p3914] 0.131771
+
+[p3915] 0.992979
+
+[p3916] 0.992961
+
+[p3917] 0.01860
+
+[p3918] 3.4585e-04
+
+[p3919] -3050.29
+
+[p3920] 686.96
+
+[p3921] 0.02521
+
+[p3922] run 3
+
+[p3923] M22
+
+[p3924] n-Order Bohart-Adams
+
+[p3925] yes
+
+[p3926] 383
+
+[p3927] 3
+
+[p3928] 15.6969
+
+[p3929] 0.163634
+
+[p3930] 0.159232
+
+[p3931] 0.2030
+
+[p3932] 0.04131
+
+[p3933] -1217.46
+
+[p3934] 2519.8
+
+[p3935] 0.2944
+
+[p3936] run 3
+
+[p3937] M23
+
+[p3938] Fractal Yoon-Nelson (Hu 2024)
+
+[p3939] yes
+
+[p3940] 383
+
+[p3941] 3
+
+[p3942] 0.0532120
+
+[p3943] 0.997165
+
+[p3944] 0.997150
+
+[p3945] 0.01182
+
+[p3946] 1.4003e-04
+
+[p3947] -3395.55
+
+[p3948] 341.70
+
+[p3949] 0.01644
+
+[p3950] run 3
+
+[p3951] M24
+
+[p3952] Parallel two-component sigmoidal (Blagojev)
+
+[p3953] yes
+
+[p3954] 383
+
+[p3955] 5
+
+[p3956] 0.0334929
+
+[p3957] 0.998215
+
+[p3958] 0.998197
+
+[p3959] 0.009376
+
+[p3960] 8.8606e-05
+
+[p3961] -3568.77
+
+[p3962] 168.49
+
+[p3963] 0.01407
+
+[p3964] run 4
+
+[p3965] M01
+
+[p3966] Yoon-Nelson / Thomas / BA (logistic)
+
+[p3967] yes
+
+[p3968] 1432
+
+[p3969] 2
+
+[p3970] 5.50269
+
+[p3971] 0.963064
+
+[p3972] 0.963038
+
+[p3973] 0.06203
+
+[p3974] 0.003848
+
+[p3975] -7960.19
+
+[p3976] 6502.5
+
+[p3977] 0.6236
+
+[p3978] run 4
+
+[p3979] M02
+
+[p3980] Clark
+
+[p3981] yes
+
+[p3982] 1432
+
+[p3983] 3
+
+[p3984] 2.81591
+
+[p3985] 0.981099
+
+[p3986] 0.981072
+
+[p3987] 0.04438
+
+[p3988] 0.001971
+
+[p3989] -8917.55
+
+[p3990] 5545.1
+
+[p3991] 0.5040
+
+[p3992] run 4
+
+[p3993] M03
+
+[p3994] Fractal Clark
+
+[p3995] yes
+
+[p3996] 1432
+
+[p3997] 4
+
+[p3998] 0.127684
+
+[p3999] 0.999143
+
+[p4000] 0.999141
+
+[p4001] 0.009449
+
+[p4002] 8.9415e-05
+
+[p4003] -13345.4
+
+[p4004] 1117.3
+
+[p4005] 0.04657
+
+[p4006] run 4
+
+[p4007] M04
+
+[p4008] Modified Dose-Response (Yan)
+
+[p4009] yes
+
+[p4010] 1432
+
+[p4011] 2
+
+[p4012] 0.789464
+
+[p4013] 0.994701
+
+[p4014] 0.994697
+
+[p4015] 0.02350
+
+[p4016] 5.5207e-04
+
+[p4017] -10740.6
+
+[p4018] 3722.1
+
+[p4019] 0.04634
+
+[p4020] run 4
+
+[p4021] M05
+
+[p4022] Wolborska (linearised, early)
+
+[p4023] yes
+
+[p4024] 31
+
+[p4025] 2
+
+[p4026] 0.00372091
+
+[p4027] 0.935126
+
+[p4028] 0.932889
+
+[p4029] 0.01133
+
+[p4030] 1.2831e-04
+
+[p4031] -275.432
+
+[p4032] 14187
+
+[p4033] 0.4257
+
+[p4034] run 4
+
+[p4035] M06
+
+[p4036] Gudermannian (Hu 2021)
+
+[p4037] yes
+
+[p4038] 1432
+
+[p4039] 2
+
+[p4040] 5.35574
+
+[p4041] 0.964050
+
+[p4042] 0.964025
+
+[p4043] 0.06120
+
+[p4044] 0.003745
+
+[p4045] -7998.95
+
+[p4046] 6463.7
+
+[p4047] 0.6327
+
+[p4048] run 4
+
+[p4049] M07
+
+[p4050] Error-Function (Hu 2021)
+
+[p4051] yes
+
+[p4052] 1432
+
+[p4053] 2
+
+[p4054] 5.79968
+
+[p4055] 0.961071
+
+[p4056] 0.961043
+
+[p4057] 0.06368
+
+[p4058] 0.004056
+
+[p4059] -7884.91
+
+[p4060] 6577.8
+
+[p4061] 0.6122
+
+[p4062] run 4
+
+[p4063] M08
+
+[p4064] Tanh (Hu 2019)
+
+[p4065] yes
+
+[p4066] 1432
+
+[p4067] 2
+
+[p4068] 5.50269
+
+[p4069] 0.963064
+
+[p4070] 0.963038
+
+[p4071] 0.06203
+
+[p4072] 0.003848
+
+[p4073] -7960.19
+
+[p4074] 6502.5
+
+[p4075] 0.6236
+
+[p4076] run 4
+
+[p4077] M09
+
+[p4078] Log-Normal (Chu-Hashim)
+
+[p4079] yes
+
+[p4080] 1432
+
+[p4081] 2
+
+[p4082] 0.466175
+
+[p4083] 0.996871
+
+[p4084] 0.996869
+
+[p4085] 0.01806
+
+[p4086] 3.2600e-04
+
+[p4087] -11495.0
+
+[p4088] 2967.7
+
+[p4089] 0.04023
+
+[p4090] run 4
+
+[p4091] M10
+
+[p4092] Fractal Gudermannian (Hu 2024)
+
+[p4093] yes
+
+[p4094] 1432
+
+[p4095] 3
+
+[p4096] 0.0737348
+
+[p4097] 0.999505
+
+[p4098] 0.999504
+
+[p4099] 0.007181
+
+[p4100] 5.1599e-05
+
+[p4101] -14133.7
+
+[p4102] 328.97
+
+[p4103] 0.01730
+
+[p4104] run 4
+
+[p4105] M11
+
+[p4106] Fractal Error-Function (Hu 2024)
+
+[p4107] yes
+
+[p4108] 1432
+
+[p4109] 3
+
+[p4110] 0.0816600
+
+[p4111] 0.999452
+
+[p4112] 0.999451
+
+[p4113] 0.007557
+
+[p4114] 5.7145e-05
+
+[p4115] -13987.5
+
+[p4116] 475.16
+
+[p4117] 0.02170
+
+[p4118] run 4
+
+[p4119] M12
+
+[p4120] Gompertz (Chu 2020)
+
+[p4121] yes
+
+[p4122] 1432
+
+[p4123] 2
+
+[p4124] 2.78762
+
+[p4125] 0.981289
+
+[p4126] 0.981275
+
+[p4127] 0.04415
+
+[p4128] 0.001949
+
+[p4129] -8934.02
+
+[p4130] 5528.7
+
+[p4131] 0.5024
+
+[p4132] run 4
+
+[p4133] M13
+
+[p4134] Log-Gompertz (Chu 2020)
+
+[p4135] yes
+
+[p4136] 1432
+
+[p4137] 2
+
+[p4138] 2.07170
+
+[p4139] 0.986094
+
+[p4140] 0.986084
+
+[p4141] 0.03806
+
+[p4142] 0.001449
+
+[p4143] -9359.06
+
+[p4144] 5103.6
+
+[p4145] 0.07140
+
+[p4146] run 4
+
+[p4147] M14
+
+[p4148] Weibull (Chu 2021)
+
+[p4149] yes
+
+[p4150] 1432
+
+[p4151] 2
+
+[p4152] 0.0586829
+
+[p4153] 0.999606
+
+[p4154] 0.999606
+
+[p4155] 0.006406
+
+[p4156] 4.1037e-05
+
+[p4157] -14462.7
+
+[p4158] 0
+
+[p4159] 0.01604
+
+[p4160] run 4
+
+[p4161] M15
+
+[p4162] Avrami (Singh)
+
+[p4163] yes
+
+[p4164] 1432
+
+[p4165] 2
+
+[p4166] 0.0586829
+
+[p4167] 0.999606
+
+[p4168] 0.999606
+
+[p4169] 0.006406
+
+[p4170] 4.1037e-05
+
+[p4171] -14462.7
+
+[p4172] 4.68390e-09
+
+[p4173] 0.01604
+
+[p4174] run 4
+
+[p4175] M16
+
+[p4176] Klinkenberg
+
+[p4177] yes
+
+[p4178] 1432
+
+[p4179] 2
+
+[p4180] 144.012
+
+[p4181] 0.0333444
+
+[p4182] 0.0326684
+
+[p4183] 0.3173
+
+[p4184] 0.1007
+
+[p4185] -3285.20
+
+[p4186] 11177
+
+[p4187] 3.452
+
+[p4188] run 4
+
+[p4189] M17
+
+[p4190] Dima (wave erf)
+
+[p4191] yes
+
+[p4192] 1432
+
+[p4193] 2
+
+[p4194] 5.79968
+
+[p4195] 0.961071
+
+[p4196] 0.961043
+
+[p4197] 0.06368
+
+[p4198] 0.004056
+
+[p4199] -7884.91
+
+[p4200] 6577.8
+
+[p4201] 0.6121
+
+[p4202] run 4
+
+[p4203] M18
+
+[p4204] Chern-Chien Langmuir
+
+[p4205] yes
+
+[p4206] 1
+
+[p4207] 4
+
+[p4208] 0.247949
+
+[p4209] n/a
+
+[p4210] n/a
+
+[p4211] 0.4979
+
+[p4212] 0.2479
+
+[p4213] n/a
+
+[p4214] n/a
+
+[p4215] 0.9918
+
+[p4216] run 4
+
+[p4217] M19
+
+[p4218] Chern-Chien Freundlich
+
+[p4219] yes
+
+[p4220] 1
+
+[p4221] 4
+
+[p4222] 0.247949
+
+[p4223] n/a
+
+[p4224] n/a
+
+[p4225] 0.4979
+
+[p4226] 0.2479
+
+[p4227] n/a
+
+[p4228] n/a
+
+[p4229] 0.9918
+
+[p4230] run 4
+
+[p4231] M20
+
+[p4232] Log-modified Bohart-Adams
+
+[p4233] yes
+
+[p4234] 1432
+
+[p4235] 2
+
+[p4236] 0.789464
+
+[p4237] 0.994701
+
+[p4238] 0.994697
+
+[p4239] 0.02350
+
+[p4240] 5.5207e-04
+
+[p4241] -10740.6
+
+[p4242] 3722.1
+
+[p4243] 0.04634
+
+[p4244] run 4
+
+[p4245] M21
+
+[p4246] Log-modified Yoon-Nelson
+
+[p4247] yes
+
+[p4248] 1432
+
+[p4249] 2
+
+[p4250] 0.789464
+
+[p4251] 0.994701
+
+[p4252] 0.994697
+
+[p4253] 0.02350
+
+[p4254] 5.5207e-04
+
+[p4255] -10740.6
+
+[p4256] 3722.1
+
+[p4257] 0.04634
+
+[p4258] run 4
+
+[p4259] M22
+
+[p4260] n-Order Bohart-Adams
+
+[p4261] yes
+
+[p4262] 1432
+
+[p4263] 3
+
+[p4264] 103.635
+
+[p4265] 0.304366
+
+[p4266] 0.303392
+
+[p4267] 0.2692
+
+[p4268] 0.07252
+
+[p4269] -3754.35
+
+[p4270] 10708
+
+[p4271] 0.7983
+
+[p4272] run 4
+
+[p4273] M23
+
+[p4274] Fractal Yoon-Nelson (Hu 2024)
+
+[p4275] yes
+
+[p4276] 1432
+
+[p4277] 3
+
+[p4278] 0.182407
+
+[p4279] 0.998776
+
+[p4280] 0.998774
+
+[p4281] 0.01129
+
+[p4282] 1.2765e-04
+
+[p4283] -12836.6
+
+[p4284] 1626.0
+
+[p4285] 0.06000
+
+[p4286] run 4
+
+[p4287] M24
+
+[p4288] Parallel two-component sigmoidal (Blagojev)
+
+[p4289] yes
+
+[p4290] 1432
+
+[p4291] 5
+
+[p4292] 0.112409
+
+[p4293] 0.999245
+
+[p4294] 0.999243
+
+[p4295] 0.008866
+
+[p4296] 7.8773e-05
+
+[p4297] -13525.8
+
+[p4298] 936.83
+
+[p4299] 0.02137
+
+[p4300] run 5
+
+[p4301] M01
+
+[p4302] Yoon-Nelson / Thomas / BA (logistic)
+
+[p4303] yes
+
+[p4304] 821
+
+[p4305] 2
+
+[p4306] 3.29267
+
+[p4307] 0.943921
+
+[p4308] 0.943852
+
+[p4309] 0.06341
+
+[p4310] 0.004020
+
+[p4311] -4526.94
+
+[p4312] 3819.1
+
+[p4313] 17.54
+
+[p4314] run 5
+
+[p4315] M02
+
+[p4316] Clark
+
+[p4317] yes
+
+[p4318] 821
+
+[p4319] 3
+
+[p4320] 1.99590
+
+[p4321] 0.966007
+
+[p4322] 0.965924
+
+[p4323] 0.04937
+
+[p4324] 0.002440
+
+[p4325] -4935.92
+
+[p4326] 3410.1
+
+[p4327] 11.17
+
+[p4328] run 5
+
+[p4329] M03
+
+[p4330] Fractal Clark
+
+[p4331] yes
+
+[p4332] 821
+
+[p4333] 4
+
+[p4334] 0.0941340
+
+[p4335] 0.998397
+
+[p4336] 0.998391
+
+[p4337] 0.01072
+
+[p4338] 1.1522e-04
+
+[p4339] -7441.34
+
+[p4340] 904.67
+
+[p4341] 1.900
+
+[p4342] run 5
+
+[p4343] M04
+
+[p4344] Modified Dose-Response (Yan)
+
+[p4345] yes
+
+[p4346] 821
+
+[p4347] 2
+
+[p4348] 0.387292
+
+[p4349] 0.993404
+
+[p4350] 0.993396
+
+[p4351] 0.02175
+
+[p4352] 4.7288e-04
+
+[p4353] -6284.11
+
+[p4354] 2061.9
+
+[p4355] 0.04952
+
+[p4356] run 5
+
+[p4357] M05
+
+[p4358] Wolborska (linearised, early)
+
+[p4359] yes
+
+[p4360] 10
+
+[p4361] 2
+
+[p4362] 7.600257e-04
+
+[p4363] 0.960643
+
+[p4364] 0.955723
+
+[p4365] 0.009747
+
+[p4366] 9.5003e-05
+
+[p4367] -89.1331
+
+[p4368] 8256.9
+
+[p4369] 0.4025
+
+[p4370] run 5
+
+[p4371] M06
+
+[p4372] Gudermannian (Hu 2021)
+
+[p4373] yes
+
+[p4374] 821
+
+[p4375] 2
+
+[p4376] 3.13404
+
+[p4377] 0.946623
+
+[p4378] 0.946558
+
+[p4379] 0.06186
+
+[p4380] 0.003827
+
+[p4381] -4567.48
+
+[p4382] 3778.5
+
+[p4383] 18.27
+
+[p4384] run 5
+
+[p4385] M07
+
+[p4386] Error-Function (Hu 2021)
+
+[p4387] yes
+
+[p4388] 821
+
+[p4389] 2
+
+[p4390] 3.55001
+
+[p4391] 0.939538
+
+[p4392] 0.939464
+
+[p4393] 0.06584
+
+[p4394] 0.004335
+
+[p4395] -4465.16
+
+[p4396] 3880.9
+
+[p4397] 16.54
+
+[p4398] run 5
+
+[p4399] M08
+
+[p4400] Tanh (Hu 2019)
+
+[p4401] yes
+
+[p4402] 821
+
+[p4403] 2
+
+[p4404] 3.29267
+
+[p4405] 0.943921
+
+[p4406] 0.943852
+
+[p4407] 0.06341
+
+[p4408] 0.004020
+
+[p4409] -4526.94
+
+[p4410] 3819.1
+
+[p4411] 17.54
+
+[p4412] run 5
+
+[p4413] M09
+
+[p4414] Log-Normal (Chu-Hashim)
+
+[p4415] yes
+
+[p4416] 821
+
+[p4417] 2
+
+[p4418] 0.197774
+
+[p4419] 0.996632
+
+[p4420] 0.996628
+
+[p4421] 0.01554
+
+[p4422] 2.4148e-04
+
+[p4423] -6835.86
+
+[p4424] 1510.1
+
+[p4425] 0.04269
+
+[p4426] run 5
+
+[p4427] M10
+
+[p4428] Fractal Gudermannian (Hu 2024)
+
+[p4429] yes
+
+[p4430] 821
+
+[p4431] 3
+
+[p4432] 0.0598835
+
+[p4433] 0.998980
+
+[p4434] 0.998978
+
+[p4435] 0.008551
+
+[p4436] 7.3207e-05
+
+[p4437] -7814.72
+
+[p4438] 531.30
+
+[p4439] 0.07489
+
+[p4440] run 5
+
+[p4441] M11
+
+[p4442] Fractal Error-Function (Hu 2024)
+
+[p4443] yes
+
+[p4444] 821
+
+[p4445] 3
+
+[p4446] 0.0313517
+
+[p4447] 0.999466
+
+[p4448] 0.999465
+
+[p4449] 0.006187
+
+[p4450] 3.8327e-05
+
+[p4451] -8346.01
+
+[p4452] 0
+
+[p4453] 0.03063
+
+[p4454] run 5
+
+[p4455] M12
+
+[p4456] Gompertz (Chu 2020)
+
+[p4457] yes
+
+[p4458] 821
+
+[p4459] 2
+
+[p4460] 1.98152
+
+[p4461] 0.966252
+
+[p4462] 0.966211
+
+[p4463] 0.04919
+
+[p4464] 0.002419
+
+[p4465] -4943.87
+
+[p4466] 3402.1
+
+[p4467] 11.08
+
+[p4468] run 5
+
+[p4469] M13
+
+[p4470] Log-Gompertz (Chu 2020)
+
+[p4471] yes
+
+[p4472] 821
+
+[p4473] 2
+
+[p4474] 0.896045
+
+[p4475] 0.984739
+
+[p4476] 0.984720
+
+[p4477] 0.03308
+
+[p4478] 0.001094
+
+[p4479] -5595.44
+
+[p4480] 2750.6
+
+[p4481] 0.06777
+
+[p4482] run 5
+
+[p4483] M14
+
+[p4484] Weibull (Chu 2021)
+
+[p4485] yes
+
+[p4486] 821
+
+[p4487] 2
+
+[p4488] 0.0590010
+
+[p4489] 0.998995
+
+[p4490] 0.998994
+
+[p4491] 0.008488
+
+[p4492] 7.2040e-05
+
+[p4493] -7828.92
+
+[p4494] 517.09
+
+[p4495] 0.03422
+
+[p4496] run 5
+
+[p4497] M15
+
+[p4498] Avrami (Singh)
+
+[p4499] yes
+
+[p4500] 821
+
+[p4501] 2
+
+[p4502] 0.0590010
+
+[p4503] 0.998995
+
+[p4504] 0.998994
+
+[p4505] 0.008488
+
+[p4506] 7.2040e-05
+
+[p4507] -7828.92
+
+[p4508] 517.09
+
+[p4509] 0.03422
+
+[p4510] run 5
+
+[p4511] M16
+
+[p4512] Klinkenberg
+
+[p4513] yes
+
+[p4514] 821
+
+[p4515] 2
+
+[p4516] 48.1021
+
+[p4517] 0.180749
+
+[p4518] 0.179749
+
+[p4519] 0.2423
+
+[p4520] 0.05873
+
+[p4521] -2325.32
+
+[p4522] 6020.7
+
+[p4523] 123.2
+
+[p4524] run 5
+
+[p4525] M17
+
+[p4526] Dima (wave erf)
+
+[p4527] yes
+
+[p4528] 821
+
+[p4529] 2
+
+[p4530] 3.55001
+
+[p4531] 0.939538
+
+[p4532] 0.939464
+
+[p4533] 0.06584
+
+[p4534] 0.004335
+
+[p4535] -4465.16
+
+[p4536] 3880.9
+
+[p4537] 16.54
+
+[p4538] run 5
+
+[p4539] M18
+
+[p4540] Chern-Chien Langmuir
+
+[p4541] yes
+
+[p4542] 1
+
+[p4543] 4
+
+[p4544] 0.242469
+
+[p4545] n/a
+
+[p4546] n/a
+
+[p4547] 0.4924
+
+[p4548] 0.2425
+
+[p4549] n/a
+
+[p4550] n/a
+
+[p4551] 0.9839
+
+[p4552] run 5
+
+[p4553] M19
+
+[p4554] Chern-Chien Freundlich
+
+[p4555] yes
+
+[p4556] 1
+
+[p4557] 4
+
+[p4558] 0.242469
+
+[p4559] n/a
+
+[p4560] n/a
+
+[p4561] 0.4924
+
+[p4562] 0.2425
+
+[p4563] n/a
+
+[p4564] n/a
+
+[p4565] 0.9839
+
+[p4566] run 5
+
+[p4567] M20
+
+[p4568] Log-modified Bohart-Adams
+
+[p4569] yes
+
+[p4570] 821
+
+[p4571] 2
+
+[p4572] 0.387292
+
+[p4573] 0.993404
+
+[p4574] 0.993396
+
+[p4575] 0.02175
+
+[p4576] 4.7288e-04
+
+[p4577] -6284.11
+
+[p4578] 2061.9
+
+[p4579] 0.04952
+
+[p4580] run 5
+
+[p4581] M21
+
+[p4582] Log-modified Yoon-Nelson
+
+[p4583] yes
+
+[p4584] 821
+
+[p4585] 2
+
+[p4586] 0.387292
+
+[p4587] 0.993404
+
+[p4588] 0.993396
+
+[p4589] 0.02175
+
+[p4590] 4.7288e-04
+
+[p4591] -6284.11
+
+[p4592] 2061.9
+
+[p4593] 0.04952
+
+[p4594] run 5
+
+[p4595] M22
+
+[p4596] n-Order Bohart-Adams
+
+[p4597] yes
+
+[p4598] 821
+
+[p4599] 3
+
+[p4600] 37.8356
+
+[p4601] 0.355603
+
+[p4602] 0.354027
+
+[p4603] 0.2149
+
+[p4604] 0.04625
+
+[p4605] -2520.41
+
+[p4606] 5825.6
+
+[p4607] 9.355
+
+[p4608] run 5
+
+[p4609] M23
+
+[p4610] Fractal Yoon-Nelson (Hu 2024)
+
+[p4611] yes
+
+[p4612] 821
+
+[p4613] 3
+
+[p4614] 0.147710
+
+[p4615] 0.997484
+
+[p4616] 0.997478
+
+[p4617] 0.01343
+
+[p4618] 1.8058e-04
+
+[p4619] -7073.47
+
+[p4620] 1272.5
+
+[p4621] 2.768
+
+[p4622] run 5
+
+[p4623] M24
+
+[p4624] Parallel two-component sigmoidal (Blagojev)
+
+[p4625] yes
+
+[p4626] 821
+
+[p4627] 5
+
+[p4628] 0.0701569
+
+[p4629] 0.998805
+
+[p4630] 0.998799
+
+[p4631] 0.009255
+
+[p4632] 8.5977e-05
+
+[p4633] -7680.68
+
+[p4634] 665.33
+
+[p4635] 0.03369
+
+[p4636] run 6
+
+[p4637] M01
+
+[p4638] Yoon-Nelson / Thomas / BA (logistic)
+
+[p4639] yes
+
+[p4640] 285
+
+[p4641] 2
+
+[p4642] 0.921294
+
+[p4643] 0.941831
+
+[p4644] 0.941626
+
+[p4645] 0.05706
+
+[p4646] 0.003255
+
+[p4647] -1630.28
+
+[p4648] 1447.5
+
+[p4649] 14.82
+
+[p4650] run 6
+
+[p4651] M02
+
+[p4652] Clark
+
+[p4653] yes
+
+[p4654] 285
+
+[p4655] 3
+
+[p4656] 0.621414
+
+[p4657] 0.960765
+
+[p4658] 0.960487
+
+[p4659] 0.04686
+
+[p4660] 0.002204
+
+[p4661] -1740.46
+
+[p4662] 1337.3
+
+[p4663] 9.316
+
+[p4664] run 6
+
+[p4665] M03
+
+[p4666] Fractal Clark
+
+[p4667] yes
+
+[p4668] 285
+
+[p4669] 4
+
+[p4670] 0.00797466
+
+[p4671] 0.999496
+
+[p4672] 0.999491
+
+[p4673] 0.005308
+
+[p4674] 2.8380e-05
+
+[p4675] -2979.79
+
+[p4676] 97.994
+
+[p4677] 0.5219
+
+[p4678] run 6
+
+[p4679] M04
+
+[p4680] Modified Dose-Response (Yan)
+
+[p4681] yes
+
+[p4682] 285
+
+[p4683] 2
+
+[p4684] 0.0485605
+
+[p4685] 0.996934
+
+[p4686] 0.996923
+
+[p4687] 0.01310
+
+[p4688] 1.7159e-04
+
+[p4689] -2469.03
+
+[p4690] 608.76
+
+[p4691] 0.02982
+
+[p4692] run 6
+
+[p4693] M05
+
+[p4694] Wolborska (linearised, early)
+
+[p4695] yes
+
+[p4696] 3
+
+[p4697] 2
+
+[p4698] 1.382289e-04
+
+[p4699] 0.973691
+
+[p4700] 0.947381
+
+[p4701] 0.01176
+
+[p4702] 1.3823e-04
+
+[p4703] n/a
+
+[p4704] n/a
+
+[p4705] 0.1122
+
+[p4706] run 6
+
+[p4707] M06
+
+[p4708] Gudermannian (Hu 2021)
+
+[p4709] yes
+
+[p4710] 285
+
+[p4711] 2
+
+[p4712] 0.885906
+
+[p4713] 0.944066
+
+[p4714] 0.943868
+
+[p4715] 0.05595
+
+[p4716] 0.003130
+
+[p4717] -1641.44
+
+[p4718] 1436.3
+
+[p4719] 15.64
+
+[p4720] run 6
+
+[p4721] M07
+
+[p4722] Error-Function (Hu 2021)
+
+[p4723] yes
+
+[p4724] 285
+
+[p4725] 2
+
+[p4726] 0.976063
+
+[p4727] 0.938373
+
+[p4728] 0.938155
+
+[p4729] 0.05873
+
+[p4730] 0.003449
+
+[p4731] -1613.82
+
+[p4732] 1464.0
+
+[p4733] 13.70
+
+[p4734] run 6
+
+[p4735] M08
+
+[p4736] Tanh (Hu 2019)
+
+[p4737] yes
+
+[p4738] 285
+
+[p4739] 2
+
+[p4740] 0.921294
+
+[p4741] 0.941831
+
+[p4742] 0.941626
+
+[p4743] 0.05706
+
+[p4744] 0.003255
+
+[p4745] -1630.28
+
+[p4746] 1447.5
+
+[p4747] 14.82
+
+[p4748] run 6
+
+[p4749] M09
+
+[p4750] Log-Normal (Chu-Hashim)
+
+[p4751] yes
+
+[p4752] 285
+
+[p4753] 2
+
+[p4754] 0.0138564
+
+[p4755] 0.999125
+
+[p4756] 0.999122
+
+[p4757] 0.006997
+
+[p4758] 4.8963e-05
+
+[p4759] -2826.43
+
+[p4760] 251.35
+
+[p4761] 0.02291
+
+[p4762] run 6
+
+[p4763] M10
+
+[p4764] Fractal Gudermannian (Hu 2024)
+
+[p4765] yes
+
+[p4766] 285
+
+[p4767] 3
+
+[p4768] 0.00569535
+
+[p4769] 0.999640
+
+[p4770] 0.999638
+
+[p4771] 0.004486
+
+[p4772] 2.0196e-05
+
+[p4773] -3077.78
+
+[p4774] 0
+
+[p4775] 0.01666
+
+[p4776] run 6
+
+[p4777] M11
+
+[p4778] Fractal Error-Function (Hu 2024)
+
+[p4779] yes
+
+[p4780] 285
+
+[p4781] 3
+
+[p4782] 0.0153278
+
+[p4783] 0.999032
+
+[p4784] 0.999025
+
+[p4785] 0.007359
+
+[p4786] 5.4354e-05
+
+[p4787] -2795.63
+
+[p4788] 282.15
+
+[p4789] 0.02603
+
+[p4790] run 6
+
+[p4791] M12
+
+[p4792] Gompertz (Chu 2020)
+
+[p4793] yes
+
+[p4794] 285
+
+[p4795] 2
+
+[p4796] 0.617982
+
+[p4797] 0.960982
+
+[p4798] 0.960844
+
+[p4799] 0.04673
+
+[p4800] 0.002184
+
+[p4801] -1744.09
+
+[p4802] 1333.7
+
+[p4803] 9.237
+
+[p4804] run 6
+
+[p4805] M13
+
+[p4806] Log-Gompertz (Chu 2020)
+
+[p4807] yes
+
+[p4808] 285
+
+[p4809] 2
+
+[p4810] 0.170213
+
+[p4811] 0.989253
+
+[p4812] 0.989215
+
+[p4813] 0.02452
+
+[p4814] 6.0146e-04
+
+[p4815] -2111.57
+
+[p4816] 966.22
+
+[p4817] 0.04955
+
+[p4818] run 6
+
+[p4819] M14
+
+[p4820] Weibull (Chu 2021)
+
+[p4821] yes
+
+[p4822] 285
+
+[p4823] 2
+
+[p4824] 0.0426196
+
+[p4825] 0.997309
+
+[p4826] 0.997300
+
+[p4827] 0.01227
+
+[p4828] 1.5060e-04
+
+[p4829] -2506.22
+
+[p4830] 571.57
+
+[p4831] 0.03591
+
+[p4832] run 6
+
+[p4833] M15
+
+[p4834] Avrami (Singh)
+
+[p4835] yes
+
+[p4836] 285
+
+[p4837] 2
+
+[p4838] 0.0426196
+
+[p4839] 0.997309
+
+[p4840] 0.997300
+
+[p4841] 0.01227
+
+[p4842] 1.5060e-04
+
+[p4843] -2506.22
+
+[p4844] 571.57
+
+[p4845] 0.03591
+
+[p4846] run 6
+
+[p4847] M16
+
+[p4848] Klinkenberg
+
+[p4849] yes
+
+[p4850] 285
+
+[p4851] 2
+
+[p4852] 10.6541
+
+[p4853] 0.327323
+
+[p4854] 0.324946
+
+[p4855] 0.1940
+
+[p4856] 0.03765
+
+[p4857] -932.624
+
+[p4858] 2145.2
+
+[p4859] 108.5
+
+[p4860] run 6
+
+[p4861] M17
+
+[p4862] Dima (wave erf)
+
+[p4863] yes
+
+[p4864] 285
+
+[p4865] 2
+
+[p4866] 0.976063
+
+[p4867] 0.938373
+
+[p4868] 0.938155
+
+[p4869] 0.05873
+
+[p4870] 0.003449
+
+[p4871] -1613.82
+
+[p4872] 1464.0
+
+[p4873] 13.70
+
+[p4874] run 6
+
+[p4875] M18
+
+[p4876] Chern-Chien Langmuir
+
+[p4877] yes
+
+[p4878] 1
+
+[p4879] 4
+
+[p4880] 0.0139320
+
+[p4881] n/a
+
+[p4882] n/a
+
+[p4883] 0.1180
+
+[p4884] 0.01393
+
+[p4885] n/a
+
+[p4886] n/a
+
+[p4887] 0.2361
+
+[p4888] run 6
+
+[p4889] M19
+
+[p4890] Chern-Chien Freundlich
+
+[p4891] yes
+
+[p4892] 1
+
+[p4893] 4
+
+[p4894] 0.0139320
+
+[p4895] n/a
+
+[p4896] n/a
+
+[p4897] 0.1180
+
+[p4898] 0.01393
+
+[p4899] n/a
+
+[p4900] n/a
+
+[p4901] 0.2361
+
+[p4902] run 6
+
+[p4903] M20
+
+[p4904] Log-modified Bohart-Adams
+
+[p4905] yes
+
+[p4906] 285
+
+[p4907] 2
+
+[p4908] 0.0485605
+
+[p4909] 0.996934
+
+[p4910] 0.996923
+
+[p4911] 0.01310
+
+[p4912] 1.7159e-04
+
+[p4913] -2469.03
+
+[p4914] 608.76
+
+[p4915] 0.02982
+
+[p4916] run 6
+
+[p4917] M21
+
+[p4918] Log-modified Yoon-Nelson
+
+[p4919] yes
+
+[p4920] 285
+
+[p4921] 2
+
+[p4922] 0.0485605
+
+[p4923] 0.996934
+
+[p4924] 0.996923
+
+[p4925] 0.01310
+
+[p4926] 1.7159e-04
+
+[p4927] -2469.03
+
+[p4928] 608.76
+
+[p4929] 0.02982
+
+[p4930] run 6
+
+[p4931] M22
+
+[p4932] n-Order Bohart-Adams
+
+[p4933] yes
+
+[p4934] 285
+
+[p4935] 3
+
+[p4936] 10.7017
+
+[p4937] 0.324314
+
+[p4938] 0.319522
+
+[p4939] 0.1945
+
+[p4940] 0.03795
+
+[p4941] -929.309
+
+[p4942] 2148.5
+
+[p4943] 8.237
+
+[p4944] run 6
+
+[p4945] M23
+
+[p4946] Fractal Yoon-Nelson (Hu 2024)
+
+[p4947] yes
+
+[p4948] 285
+
+[p4949] 3
+
+[p4950] 0.0164726
+
+[p4951] 0.998960
+
+[p4952] 0.998953
+
+[p4953] 0.007629
+
+[p4954] 5.8414e-05
+
+[p4955] -2775.10
+
+[p4956] 302.68
+
+[p4957] 1.411
+
+[p4958] run 6
+
+[p4959] M24
+
+[p4960] Parallel two-component sigmoidal (Blagojev)
+
+[p4961] yes
+
+[p4962] 285
+
+[p4963] 5
+
+[p4964] 0.00992159
+
+[p4965] 0.999374
+
+[p4966] 0.999365
+
+[p4967] 0.005921
+
+[p4968] 3.5434e-05
+
+[p4969] -2915.46
+
+[p4970] 162.32
+
+[p4971] 0.01985
+
+[p4972] run 8
+
+[p4973] M01
+
+[p4974] Yoon-Nelson / Thomas / BA (logistic)
+
+[p4975] yes
+
+[p4976] 255
+
+[p4977] 2
+
+[p4978] 0.688046
+
+[p4979] 0.941850
+
+[p4980] 0.941620
+
+[p4981] 0.05215
+
+[p4982] 0.002720
+
+[p4983] -1504.32
+
+[p4984] 1198.3
+
+[p4985] 24.10
+
+[p4986] run 8
+
+[p4987] M02
+
+[p4988] Clark
+
+[p4989] yes
+
+[p4990] 255
+
+[p4991] 3
+
+[p4992] 0.450536
+
+[p4993] 0.961923
+
+[p4994] 0.961621
+
+[p4995] 0.04220
+
+[p4996] 0.001788
+
+[p4997] -1610.24
+
+[p4998] 1092.3
+
+[p4999] 18.08
+
+[p5000] run 8
+
+[p5001] M03
+
+[p5002] Fractal Clark
+
+[p5003] yes
+
+[p5004] 255
+
+[p5005] 4
+
+[p5006] 0.00695324
+
+[p5007] 0.999412
+
+[p5008] 0.999405
+
+[p5009] 0.005242
+
+[p5010] 2.7702e-05
+
+[p5011] -2671.84
+
+[p5012] 30.733
+
+[p5013] 0.2083
+
+[p5014] run 8
+
+[p5015] M04
+
+[p5016] Modified Dose-Response (Yan)
+
+[p5017] yes
+
+[p5018] 255
+
+[p5019] 2
+
+[p5020] 0.0303231
+
+[p5021] 0.997437
+
+[p5022] 0.997427
+
+[p5023] 0.01095
+
+[p5024] 1.1985e-04
+
+[p5025] -2300.42
+
+[p5026] 402.16
+
+[p5027] 0.01985
+
+[p5028] run 8
+
+[p5029] M05
+
+[p5030] Wolborska (linearised, early)
+
+[p5031] no
+
+[p5032] 255
+
+[p5033] 2
+
+[p5034] n/a
+
+[p5035] n/a
+
+[p5036] n/a
+
+[p5037] n/a
+
+[p5038] n/a
+
+[p5039] n/a
+
+[p5040] n/a
+
+[p5041] n/a
+
+[p5042] run 8
+
+[p5043] M06
+
+[p5044] Gudermannian (Hu 2021)
+
+[p5045] yes
+
+[p5046] 255
+
+[p5047] 2
+
+[p5048] 0.653175
+
+[p5049] 0.944797
+
+[p5050] 0.944579
+
+[p5051] 0.05081
+
+[p5052] 0.002582
+
+[p5053] -1517.58
+
+[p5054] 1185.0
+
+[p5055] 24.80
+
+[p5056] run 8
+
+[p5057] M07
+
+[p5058] Error-Function (Hu 2021)
+
+[p5059] yes
+
+[p5060] 255
+
+[p5061] 2
+
+[p5062] 0.742169
+
+[p5063] 0.937276
+
+[p5064] 0.937028
+
+[p5065] 0.05416
+
+[p5066] 0.002933
+
+[p5067] -1485.01
+
+[p5068] 1217.6
+
+[p5069] 23.17
+
+[p5070] run 8
+
+[p5071] M08
+
+[p5072] Tanh (Hu 2019)
+
+[p5073] yes
+
+[p5074] 255
+
+[p5075] 2
+
+[p5076] 0.688046
+
+[p5077] 0.941850
+
+[p5078] 0.941620
+
+[p5079] 0.05215
+
+[p5080] 0.002720
+
+[p5081] -1504.32
+
+[p5082] 1198.3
+
+[p5083] 24.10
+
+[p5084] run 8
+
+[p5085] M09
+
+[p5086] Log-Normal (Chu-Hashim)
+
+[p5087] yes
+
+[p5088] 255
+
+[p5089] 2
+
+[p5090] 0.00831541
+
+[p5091] 0.999297
+
+[p5092] 0.999294
+
+[p5093] 0.005733
+
+[p5094] 3.2867e-05
+
+[p5095] -2630.33
+
+[p5096] 72.241
+
+[p5097] 0.01377
+
+[p5098] run 8
+
+[p5099] M10
+
+[p5100] Fractal Gudermannian (Hu 2024)
+
+[p5101] yes
+
+[p5102] 255
+
+[p5103] 3
+
+[p5104] 0.00621385
+
+[p5105] 0.999475
+
+[p5106] 0.999471
+
+[p5107] 0.004956
+
+[p5108] 2.4658e-05
+
+[p5109] -2702.58
+
+[p5110] 0
+
+[p5111] 0.01292
+
+[p5112] run 8
+
+[p5113] M11
+
+[p5114] Fractal Error-Function (Hu 2024)
+
+[p5115] yes
+
+[p5116] 255
+
+[p5117] 3
+
+[p5118] 0.0135156
+
+[p5119] 0.998858
+
+[p5120] 0.998849
+
+[p5121] 0.007309
+
+[p5122] 5.3633e-05
+
+[p5123] -2504.42
+
+[p5124] 198.15
+
+[p5125] 0.01847
+
+[p5126] run 8
+
+[p5127] M12
+
+[p5128] Gompertz (Chu 2020)
+
+[p5129] yes
+
+[p5130] 255
+
+[p5131] 2
+
+[p5132] 0.447835
+
+[p5133] 0.962151
+
+[p5134] 0.962002
+
+[p5135] 0.04207
+
+[p5136] 0.001770
+
+[p5137] -1613.82
+
+[p5138] 1088.8
+
+[p5139] 17.99
+
+[p5140] run 8
+
+[p5141] M13
+
+[p5142] Log-Gompertz (Chu 2020)
+
+[p5143] yes
+
+[p5144] 255
+
+[p5145] 2
+
+[p5146] 0.113301
+
+[p5147] 0.990424
+
+[p5148] 0.990387
+
+[p5149] 0.02116
+
+[p5150] 4.4783e-04
+
+[p5151] -1964.29
+
+[p5152] 738.28
+
+[p5153] 0.03689
+
+[p5154] run 8
+
+[p5155] M14
+
+[p5156] Weibull (Chu 2021)
+
+[p5157] yes
+
+[p5158] 255
+
+[p5159] 2
+
+[p5160] 0.0444696
+
+[p5161] 0.996242
+
+[p5162] 0.996227
+
+[p5163] 0.01326
+
+[p5164] 1.7577e-04
+
+[p5165] -2202.78
+
+[p5166] 499.80
+
+[p5167] 0.03006
+
+[p5168] run 8
+
+[p5169] M15
+
+[p5170] Avrami (Singh)
+
+[p5171] yes
+
+[p5172] 255
+
+[p5173] 2
+
+[p5174] 0.0444696
+
+[p5175] 0.996242
+
+[p5176] 0.996227
+
+[p5177] 0.01326
+
+[p5178] 1.7577e-04
+
+[p5179] -2202.78
+
+[p5180] 499.80
+
+[p5181] 0.03006
+
+[p5182] run 8
+
+[p5183] M16
+
+[p5184] Klinkenberg
+
+[p5185] yes
+
+[p5186] 255
+
+[p5187] 2
+
+[p5188] 7.43767
+
+[p5189] 0.371407
+
+[p5190] 0.368923
+
+[p5191] 0.1715
+
+[p5192] 0.02940
+
+[p5193] -897.302
+
+[p5194] 1805.3
+
+[p5195] 135.1
+
+[p5196] run 8
+
+[p5197] M17
+
+[p5198] Dima (wave erf)
+
+[p5199] yes
+
+[p5200] 255
+
+[p5201] 2
+
+[p5202] 0.742169
+
+[p5203] 0.937276
+
+[p5204] 0.937028
+
+[p5205] 0.05416
+
+[p5206] 0.002933
+
+[p5207] -1485.01
+
+[p5208] 1217.6
+
+[p5209] 23.17
+
+[p5210] run 8
+
+[p5211] M18
+
+[p5212] Chern-Chien Langmuir
+
+[p5213] yes
+
+[p5214] 0
+
+[p5215] 4
+
+[p5216] n/a
+
+[p5217] n/a
+
+[p5218] n/a
+
+[p5219] n/a
+
+[p5220] n/a
+
+[p5221] n/a
+
+[p5222] n/a
+
+[p5223] n/a
+
+[p5224] run 8
+
+[p5225] M19
+
+[p5226] Chern-Chien Freundlich
+
+[p5227] yes
+
+[p5228] 0
+
+[p5229] 4
+
+[p5230] n/a
+
+[p5231] n/a
+
+[p5232] n/a
+
+[p5233] n/a
+
+[p5234] n/a
+
+[p5235] n/a
+
+[p5236] n/a
+
+[p5237] n/a
+
+[p5238] run 8
+
+[p5239] M20
+
+[p5240] Log-modified Bohart-Adams
+
+[p5241] yes
+
+[p5242] 255
+
+[p5243] 2
+
+[p5244] 0.0303231
+
+[p5245] 0.997437
+
+[p5246] 0.997427
+
+[p5247] 0.01095
+
+[p5248] 1.1985e-04
+
+[p5249] -2300.42
+
+[p5250] 402.16
+
+[p5251] 0.01985
+
+[p5252] run 8
+
+[p5253] M21
+
+[p5254] Log-modified Yoon-Nelson
+
+[p5255] yes
+
+[p5256] 255
+
+[p5257] 2
+
+[p5258] 0.0303231
+
+[p5259] 0.997437
+
+[p5260] 0.997427
+
+[p5261] 0.01095
+
+[p5262] 1.1985e-04
+
+[p5263] -2300.42
+
+[p5264] 402.16
+
+[p5265] 0.01985
+
+[p5266] run 8
+
+[p5267] M22
+
+[p5268] n-Order Bohart-Adams
+
+[p5269] yes
+
+[p5270] 255
+
+[p5271] 3
+
+[p5272] 8.07014
+
+[p5273] 0.317954
+
+[p5274] 0.312541
+
+[p5275] 0.1786
+
+[p5276] 0.03202
+
+[p5277] -874.443
+
+[p5278] 1828.1
+
+[p5279] 10.14
+
+[p5280] run 8
+
+[p5281] M23
+
+[p5282] Fractal Yoon-Nelson (Hu 2024)
+
+[p5283] yes
+
+[p5284] 255
+
+[p5285] 3
+
+[p5286] 0.0121829
+
+[p5287] 0.998970
+
+[p5288] 0.998962
+
+[p5289] 0.006939
+
+[p5290] 4.8345e-05
+
+[p5291] -2530.90
+
+[p5292] 171.68
+
+[p5293] 1.119
+
+[p5294] run 8
+
+[p5295] M24
+
+[p5296] Parallel two-component sigmoidal (Blagojev)
+
+[p5297] yes
+
+[p5298] 255
+
+[p5299] 5
+
+[p5300] 0.00837928
+
+[p5301] 0.999292
+
+[p5302] 0.999280
+
+[p5303] 0.005755
+
+[p5304] 3.3517e-05
+
+[p5305] -2622.19
+
+[p5306] 80.386
+
+[p5307] 0.01348
+
+[p5308] 06-26 c5 f0.05
+
+[p5309] M01
+
+[p5310] Yoon-Nelson / Thomas / BA (logistic)
+
+[p5311] yes
+
+[p5312] 1658
+
+[p5313] 2
+
+[p5314] 10.9365
+
+[p5315] 0.921776
+
+[p5316] 0.921729
+
+[p5317] 0.08127
+
+[p5318] 0.006604
+
+[p5319] -8321.24
+
+[p5320] 7273.4
+
+[p5321] 0.1702
+
+[p5322] 06-26 c5 f0.05
+
+[p5323] M02
+
+[p5324] Clark
+
+[p5325] yes
+
+[p5326] 1658
+
+[p5327] 3
+
+[p5328] 6.79555
+
+[p5329] 0.951394
+
+[p5330] 0.951336
+
+[p5331] 0.06406
+
+[p5332] 0.004106
+
+[p5333] -9108.18
+
+[p5334] 6486.5
+
+[p5335] 0.1407
+
+[p5336] 06-26 c5 f0.05
+
+[p5337] M03
+
+[p5338] Fractal Clark
+
+[p5339] yes
+
+[p5340] 1658
+
+[p5341] 4
+
+[p5342] 0.409266
+
+[p5343] 0.997073
+
+[p5344] 0.997067
+
+[p5345] 0.01572
+
+[p5346] 2.4744e-04
+
+[p5347] -13764.6
+
+[p5348] 1830.1
+
+[p5349] 0.05178
+
+[p5350] 06-26 c5 f0.05
+
+[p5351] M04
+
+[p5352] Modified Dose-Response (Yan)
+
+[p5353] yes
+
+[p5354] 1658
+
+[p5355] 2
+
+[p5356] 1.56008
+
+[p5357] 0.988841
+
+[p5358] 0.988835
+
+[p5359] 0.03069
+
+[p5360] 9.4207e-04
+
+[p5361] -11550.0
+
+[p5362] 4044.7
+
+[p5363] 0.08893
+
+[p5364] 06-26 c5 f0.05
+
+[p5365] M05
+
+[p5366] Wolborska (linearised, early)
+
+[p5367] yes
+
+[p5368] 31
+
+[p5369] 2
+
+[p5370] 0.00468124
+
+[p5371] 0.925797
+
+[p5372] 0.923238
+
+[p5373] 0.01271
+
+[p5374] 1.6142e-04
+
+[p5375] -268.315
+
+[p5376] 15326
+
+[p5377] 0.4227
+
+[p5378] 06-26 c5 f0.05
+
+[p5379] M06
+
+[p5380] Gudermannian (Hu 2021)
+
+[p5381] yes
+
+[p5382] 1658
+
+[p5383] 2
+
+[p5384] 10.3614
+
+[p5385] 0.925889
+
+[p5386] 0.925844
+
+[p5387] 0.07910
+
+[p5388] 0.006257
+
+[p5389] -8410.80
+
+[p5390] 7183.8
+
+[p5391] 0.1677
+
+[p5392] 06-26 c5 f0.05
+
+[p5393] M07
+
+[p5394] Error-Function (Hu 2021)
+
+[p5395] yes
+
+[p5396] 1658
+
+[p5397] 2
+
+[p5398] 11.8466
+
+[p5399] 0.915266
+
+[p5400] 0.915215
+
+[p5401] 0.08458
+
+[p5402] 0.007154
+
+[p5403] -8188.71
+
+[p5404] 7405.9
+
+[p5405] 0.1734
+
+[p5406] 06-26 c5 f0.05
+
+[p5407] M08
+
+[p5408] Tanh (Hu 2019)
+
+[p5409] yes
+
+[p5410] 1658
+
+[p5411] 2
+
+[p5412] 10.9365
+
+[p5413] 0.921776
+
+[p5414] 0.921729
+
+[p5415] 0.08127
+
+[p5416] 0.006604
+
+[p5417] -8321.24
+
+[p5418] 7273.4
+
+[p5419] 0.1702
+
+[p5420] 06-26 c5 f0.05
+
+[p5421] M09
+
+[p5422] Log-Normal (Chu-Hashim)
+
+[p5423] yes
+
+[p5424] 1658
+
+[p5425] 2
+
+[p5426] 1.87430
+
+[p5427] 0.986594
+
+[p5428] 0.986586
+
+[p5429] 0.03364
+
+[p5430] 0.001132
+
+[p5431] -11245.7
+
+[p5432] 4348.9
+
+[p5433] 0.09635
+
+[p5434] 06-26 c5 f0.05
+
+[p5435] M10
+
+[p5436] Fractal Gudermannian (Hu 2024)
+
+[p5437] yes
+
+[p5438] 1658
+
+[p5439] 3
+
+[p5440] 0.371586
+
+[p5441] 0.997342
+
+[p5442] 0.997339
+
+[p5443] 0.01498
+
+[p5444] 2.2452e-04
+
+[p5445] -13926.7
+
+[p5446] 1667.9
+
+[p5447] 0.04644
+
+[p5448] 06-26 c5 f0.05
+
+[p5449] M11
+
+[p5450] Fractal Error-Function (Hu 2024)
+
+[p5451] yes
+
+[p5452] 1658
+
+[p5453] 3
+
+[p5454] 0.135884
+
+[p5455] 0.999028
+
+[p5456] 0.999027
+
+[p5457] 0.009058
+
+[p5458] 8.2105e-05
+
+[p5459] -15594.6
+
+[p5460] 0
+
+[p5461] 0.03095
+
+[p5462] 06-26 c5 f0.05
+
+[p5463] M12
+
+[p5464] Gompertz (Chu 2020)
+
+[p5465] yes
+
+[p5466] 1658
+
+[p5467] 2
+
+[p5468] 6.74930
+
+[p5469] 0.951725
+
+[p5470] 0.951696
+
+[p5471] 0.06384
+
+[p5472] 0.004076
+
+[p5473] -9121.51
+
+[p5474] 6473.1
+
+[p5475] 0.1403
+
+[p5476] 06-26 c5 f0.05
+
+[p5477] M13
+
+[p5478] Log-Gompertz (Chu 2020)
+
+[p5479] yes
+
+[p5480] 1658
+
+[p5481] 2
+
+[p5482] 0.241039
+
+[p5483] 0.998276
+
+[p5484] 0.998275
+
+[p5485] 0.01206
+
+[p5486] 1.4556e-04
+
+[p5487] -14646.3
+
+[p5488] 948.29
+
+[p5489] 0.04126
+
+[p5490] 06-26 c5 f0.05
+
+[p5491] M14
+
+[p5492] Weibull (Chu 2021)
+
+[p5493] yes
+
+[p5494] 1658
+
+[p5495] 2
+
+[p5496] 5.15929
+
+[p5497] 0.963098
+
+[p5498] 0.963076
+
+[p5499] 0.05582
+
+[p5500] 0.003116
+
+[p5501] -9566.91
+
+[p5502] 6027.7
+
+[p5503] 0.1440
+
+[p5504] 06-26 c5 f0.05
+
+[p5505] M15
+
+[p5506] Avrami (Singh)
+
+[p5507] yes
+
+[p5508] 1658
+
+[p5509] 2
+
+[p5510] 5.15929
+
+[p5511] 0.963098
+
+[p5512] 0.963076
+
+[p5513] 0.05582
+
+[p5514] 0.003116
+
+[p5515] -9566.91
+
+[p5516] 6027.7
+
+[p5517] 0.1441
+
+[p5518] 06-26 c5 f0.05
+
+[p5519] M16
+
+[p5520] Klinkenberg
+
+[p5521] yes
+
+[p5522] 1658
+
+[p5523] 2
+
+[p5524] 39.7673
+
+[p5525] 0.715562
+
+[p5526] 0.715390
+
+[p5527] 0.1550
+
+[p5528] 0.02401
+
+[p5529] -6180.87
+
+[p5530] 9413.8
+
+[p5531] 0.2966
+
+[p5532] 06-26 c5 f0.05
+
+[p5533] M17
+
+[p5534] Dima (wave erf)
+
+[p5535] yes
+
+[p5536] 1658
+
+[p5537] 2
+
+[p5538] 11.8466
+
+[p5539] 0.915266
+
+[p5540] 0.915215
+
+[p5541] 0.08458
+
+[p5542] 0.007154
+
+[p5543] -8188.71
+
+[p5544] 7405.9
+
+[p5545] 0.1734
+
+[p5546] 06-26 c5 f0.05
+
+[p5547] M18
+
+[p5548] Chern-Chien Langmuir
+
+[p5549] yes
+
+[p5550] 2
+
+[p5551] 4
+
+[p5552] 0.494588
+
+[p5553] -61822.5
+
+[p5554] -61822.5
+
+[p5555] 0.7033
+
+[p5556] 0.4946
+
+[p5557] n/a
+
+[p5558] n/a
+
+[p5559] 0.9946
+
+[p5560] 06-26 c5 f0.05
+
+[p5561] M19
+
+[p5562] Chern-Chien Freundlich
+
+[p5563] yes
+
+[p5564] 2
+
+[p5565] 4
+
+[p5566] 0.494588
+
+[p5567] -61822.5
+
+[p5568] -61822.5
+
+[p5569] 0.7033
+
+[p5570] 0.4946
+
+[p5571] n/a
+
+[p5572] n/a
+
+[p5573] 0.9946
+
+[p5574] 06-26 c5 f0.05
+
+[p5575] M20
+
+[p5576] Log-modified Bohart-Adams
+
+[p5577] yes
+
+[p5578] 1658
+
+[p5579] 2
+
+[p5580] 1.56008
+
+[p5581] 0.988841
+
+[p5582] 0.988835
+
+[p5583] 0.03069
+
+[p5584] 9.4207e-04
+
+[p5585] -11550.0
+
+[p5586] 4044.7
+
+[p5587] 0.08893
+
+[p5588] 06-26 c5 f0.05
+
+[p5589] M21
+
+[p5590] Log-modified Yoon-Nelson
+
+[p5591] yes
+
+[p5592] 1658
+
+[p5593] 2
+
+[p5594] 1.56008
+
+[p5595] 0.988841
+
+[p5596] 0.988835
+
+[p5597] 0.03069
+
+[p5598] 9.4207e-04
+
+[p5599] -11550.0
+
+[p5600] 4044.7
+
+[p5601] 0.08893
+
+[p5602] 06-26 c5 f0.05
+
+[p5603] M22
+
+[p5604] n-Order Bohart-Adams
+
+[p5605] yes
+
+[p5606] 1658
+
+[p5607] 3
+
+[p5608] 264.032
+
+[p5609] -0.888507
+
+[p5610] -0.890789
+
+[p5611] 0.3993
+
+[p5612] 0.1595
+
+[p5613] -3040.22
+
+[p5614] 12554
+
+[p5615] 0.8427
+
+[p5616] 06-26 c5 f0.05
+
+[p5617] M23
+
+[p5618] Fractal Yoon-Nelson (Hu 2024)
+
+[p5619] yes
+
+[p5620] 1658
+
+[p5621] 3
+
+[p5622] 1.82447
+
+[p5623] 0.986950
+
+[p5624] 0.986935
+
+[p5625] 0.03319
+
+[p5626] 0.001102
+
+[p5627] -11288.4
+
+[p5628] 4306.2
+
+[p5629] 0.09441
+
+[p5630] 06-26 c5 f0.05
+
+[p5631] M24
+
+[p5632] Parallel two-component sigmoidal (Blagojev)
+
+[p5633] yes
+
+[p5634] 1658
+
+[p5635] 5
+
+[p5636] 0.223204
+
+[p5637] 0.998404
+
+[p5638] 0.998400
+
+[p5639] 0.01161
+
+[p5640] 1.3503e-04
+
+[p5641] -14767.8
+
+[p5642] 826.87
+
+[p5643] 0.03523
+
+[p5644] 07-03 c5 f0.10
+
+[p5645] M01
+
+[p5646] Yoon-Nelson / Thomas / BA (logistic)
+
+[p5647] yes
+
+[p5648] 413
+
+[p5649] 2
+
+[p5650] 2.16812
+
+[p5651] 0.943998
+
+[p5652] 0.943862
+
+[p5653] 0.07263
+
+[p5654] 0.005275
+
+[p5655] -2164.05
+
+[p5656] 1727.7
+
+[p5657] 4.640
+
+[p5658] 07-03 c5 f0.10
+
+[p5659] M02
+
+[p5660] Clark
+
+[p5661] yes
+
+[p5662] 413
+
+[p5663] 3
+
+[p5664] 1.17007
+
+[p5665] 0.969777
+
+[p5666] 0.969630
+
+[p5667] 0.05336
+
+[p5668] 0.002854
+
+[p5669] -2416.76
+
+[p5670] 1474.9
+
+[p5671] 3.569
+
+[p5672] 07-03 c5 f0.10
+
+[p5673] M03
+
+[p5674] Fractal Clark
+
+[p5675] yes
+
+[p5676] 413
+
+[p5677] 4
+
+[p5678] 0.0812593
+
+[p5679] 0.997901
+
+[p5680] 0.997886
+
+[p5681] 0.01406
+
+[p5682] 1.9868e-04
+
+[p5683] -3516.26
+
+[p5684] 375.44
+
+[p5685] 1.022
+
+[p5686] 07-03 c5 f0.10
+
+[p5687] M04
+
+[p5688] Modified Dose-Response (Yan)
+
+[p5689] yes
+
+[p5690] 413
+
+[p5691] 2
+
+[p5692] 0.209581
+
+[p5693] 0.994587
+
+[p5694] 0.994573
+
+[p5695] 0.02258
+
+[p5696] 5.0993e-04
+
+[p5697] -3129.03
+
+[p5698] 762.67
+
+[p5699] 2.189
+
+[p5700] 07-03 c5 f0.10
+
+[p5701] M05
+
+[p5702] Wolborska (linearised, early)
+
+[p5703] yes
+
+[p5704] 13
+
+[p5705] 2
+
+[p5706] 0.00118001
+
+[p5707] 0.951324
+
+[p5708] 0.946899
+
+[p5709] 0.01036
+
+[p5710] 1.0727e-04
+
+[p5711] -115.793
+
+[p5712] 3775.9
+
+[p5713] 0.3117
+
+[p5714] 07-03 c5 f0.10
+
+[p5715] M06
+
+[p5716] Gudermannian (Hu 2021)
+
+[p5717] yes
+
+[p5718] 413
+
+[p5719] 2
+
+[p5720] 2.06848
+
+[p5721] 0.946572
+
+[p5722] 0.946442
+
+[p5723] 0.07094
+
+[p5724] 0.005033
+
+[p5725] -2183.48
+
+[p5726] 1708.2
+
+[p5727] 4.719
+
+[p5728] 07-03 c5 f0.10
+
+[p5729] M07
+
+[p5730] Error-Function (Hu 2021)
+
+[p5731] yes
+
+[p5732] 413
+
+[p5733] 2
+
+[p5734] 2.34203
+
+[p5735] 0.939506
+
+[p5736] 0.939359
+
+[p5737] 0.07549
+
+[p5738] 0.005698
+
+[p5739] -2132.18
+
+[p5740] 1759.5
+
+[p5741] 4.540
+
+[p5742] 07-03 c5 f0.10
+
+[p5743] M08
+
+[p5744] Tanh (Hu 2019)
+
+[p5745] yes
+
+[p5746] 413
+
+[p5747] 2
+
+[p5748] 2.16812
+
+[p5749] 0.943998
+
+[p5750] 0.943862
+
+[p5751] 0.07263
+
+[p5752] 0.005275
+
+[p5753] -2164.05
+
+[p5754] 1727.7
+
+[p5755] 4.640
+
+[p5756] 07-03 c5 f0.10
+
+[p5757] M09
+
+[p5758] Log-Normal (Chu-Hashim)
+
+[p5759] yes
+
+[p5760] 413
+
+[p5761] 2
+
+[p5762] 0.187759
+
+[p5763] 0.995150
+
+[p5764] 0.995138
+
+[p5765] 0.02137
+
+[p5766] 4.5684e-04
+
+[p5767] -3174.44
+
+[p5768] 717.26
+
+[p5769] 2.056
+
+[p5770] 07-03 c5 f0.10
+
+[p5771] M10
+
+[p5772] Fractal Gudermannian (Hu 2024)
+
+[p5773] yes
+
+[p5774] 413
+
+[p5775] 3
+
+[p5776] 0.155272
+
+[p5777] 0.995989
+
+[p5778] 0.995970
+
+[p5779] 0.01944
+
+[p5780] 3.7871e-04
+
+[p5781] -3250.87
+
+[p5782] 640.83
+
+[p5783] 1.628
+
+[p5784] 07-03 c5 f0.10
+
+[p5785] M11
+
+[p5786] Fractal Error-Function (Hu 2024)
+
+[p5787] yes
+
+[p5788] 413
+
+[p5789] 3
+
+[p5790] 0.0569800
+
+[p5791] 0.998528
+
+[p5792] 0.998521
+
+[p5793] 0.01177
+
+[p5794] 1.3898e-04
+
+[p5795] -3664.89
+
+[p5796] 226.81
+
+[p5797] 0.9327
+
+[p5798] 07-03 c5 f0.10
+
+[p5799] M12
+
+[p5800] Gompertz (Chu 2020)
+
+[p5801] yes
+
+[p5802] 413
+
+[p5803] 2
+
+[p5804] 1.15918
+
+[p5805] 0.970059
+
+[p5806] 0.969986
+
+[p5807] 0.05311
+
+[p5808] 0.002820
+
+[p5809] -2422.65
+
+[p5810] 1469.1
+
+[p5811] 3.555
+
+[p5812] 07-03 c5 f0.10
+
+[p5813] M13
+
+[p5814] Log-Gompertz (Chu 2020)
+
+[p5815] yes
+
+[p5816] 413
+
+[p5817] 2
+
+[p5818] 0.114337
+
+[p5819] 0.997047
+
+[p5820] 0.997040
+
+[p5821] 0.01668
+
+[p5822] 2.7819e-04
+
+[p5823] -3379.29
+
+[p5824] 512.41
+
+[p5825] 0.5529
+
+[p5826] 07-03 c5 f0.10
+
+[p5827] M14
+
+[p5828] Weibull (Chu 2021)
+
+[p5829] yes
+
+[p5830] 413
+
+[p5831] 2
+
+[p5832] 0.737539
+
+[p5833] 0.980950
+
+[p5834] 0.980903
+
+[p5835] 0.04236
+
+[p5836] 0.001794
+
+[p5837] -2609.39
+
+[p5838] 1282.3
+
+[p5839] 3.634
+
+[p5840] 07-03 c5 f0.10
+
+[p5841] M15
+
+[p5842] Avrami (Singh)
+
+[p5843] yes
+
+[p5844] 413
+
+[p5845] 2
+
+[p5846] 0.737539
+
+[p5847] 0.980950
+
+[p5848] 0.980903
+
+[p5849] 0.04236
+
+[p5850] 0.001794
+
+[p5851] -2609.39
+
+[p5852] 1282.3
+
+[p5853] 3.634
+
+[p5854] 07-03 c5 f0.10
+
+[p5855] M16
+
+[p5856] Klinkenberg
+
+[p5857] yes
+
+[p5858] 413
+
+[p5859] 2
+
+[p5860] 11.2831
+
+[p5861] 0.708560
+
+[p5862] 0.707851
+
+[p5863] 0.1657
+
+[p5864] 0.02745
+
+[p5865] -1482.83
+
+[p5866] 2408.9
+
+[p5867] 11.15
+
+[p5868] 07-03 c5 f0.10
+
+[p5869] M17
+
+[p5870] Dima (wave erf)
+
+[p5871] yes
+
+[p5872] 413
+
+[p5873] 2
+
+[p5874] 2.34203
+
+[p5875] 0.939506
+
+[p5876] 0.939359
+
+[p5877] 0.07549
+
+[p5878] 0.005698
+
+[p5879] -2132.18
+
+[p5880] 1759.5
+
+[p5881] 4.540
+
+[p5882] 07-03 c5 f0.10
+
+[p5883] M18
+
+[p5884] Chern-Chien Langmuir
+
+[p5885] yes
+
+[p5886] 1
+
+[p5887] 4
+
+[p5888] 0.243542
+
+[p5889] n/a
+
+[p5890] n/a
+
+[p5891] 0.4935
+
+[p5892] 0.2435
+
+[p5893] n/a
+
+[p5894] n/a
+
+[p5895] 0.9876
+
+[p5896] 07-03 c5 f0.10
+
+[p5897] M19
+
+[p5898] Chern-Chien Freundlich
+
+[p5899] yes
+
+[p5900] 1
+
+[p5901] 4
+
+[p5902] 0.243542
+
+[p5903] n/a
+
+[p5904] n/a
+
+[p5905] 0.4935
+
+[p5906] 0.2435
+
+[p5907] n/a
+
+[p5908] n/a
+
+[p5909] 0.9876
+
+[p5910] 07-03 c5 f0.10
+
+[p5911] M20
+
+[p5912] Log-modified Bohart-Adams
+
+[p5913] yes
+
+[p5914] 413
+
+[p5915] 2
+
+[p5916] 0.209581
+
+[p5917] 0.994587
+
+[p5918] 0.994573
+
+[p5919] 0.02258
+
+[p5920] 5.0993e-04
+
+[p5921] -3129.03
+
+[p5922] 762.67
+
+[p5923] 2.189
+
+[p5924] 07-03 c5 f0.10
+
+[p5925] M21
+
+[p5926] Log-modified Yoon-Nelson
+
+[p5927] yes
+
+[p5928] 413
+
+[p5929] 2
+
+[p5930] 0.209581
+
+[p5931] 0.994587
+
+[p5932] 0.994573
+
+[p5933] 0.02258
+
+[p5934] 5.0993e-04
+
+[p5935] -3129.03
+
+[p5936] 762.67
+
+[p5937] 2.189
+
+[p5938] 07-03 c5 f0.10
+
+[p5939] M22
+
+[p5940] n-Order Bohart-Adams
+
+[p5941] yes
+
+[p5942] 413
+
+[p5943] 3
+
+[p5944] 76.4750
+
+[p5945] -0.975332
+
+[p5946] -0.984968
+
+[p5947] 0.4314
+
+[p5948] 0.1865
+
+[p5949] -690.459
+
+[p5950] 3201.2
+
+[p5951] 26.17
+
+[p5952] 07-03 c5 f0.10
+
+[p5953] M23
+
+[p5954] Fractal Yoon-Nelson (Hu 2024)
+
+[p5955] yes
+
+[p5956] 413
+
+[p5957] 3
+
+[p5958] 0.241321
+
+[p5959] 0.993767
+
+[p5960] 0.993736
+
+[p5961] 0.02423
+
+[p5962] 5.8859e-04
+
+[p5963] -3068.76
+
+[p5964] 822.94
+
+[p5965] 2.356
+
+[p5966] 07-03 c5 f0.10
+
+[p5967] M24
+
+[p5968] Parallel two-component sigmoidal (Blagojev)
+
+[p5969] yes
+
+[p5970] 413
+
+[p5971] 5
+
+[p5972] 0.0325777
+
+[p5973] 0.999159
+
+[p5974] 0.999150
+
+[p5975] 0.008903
+
+[p5976] 7.9847e-05
+
+[p5977] -3891.70
+
+[p5978] 0
+
+[p5979] 0.7839
+
+[p5980] 07-08 c5 f0.15
+
+[p5981] M01
+
+[p5982] Yoon-Nelson / Thomas / BA (logistic)
+
+[p5983] yes
+
+[p5984] 440
+
+[p5985] 2
+
+[p5986] 2.56570
+
+[p5987] 0.887855
+
+[p5988] 0.887599
+
+[p5989] 0.07654
+
+[p5990] 0.005858
+
+[p5991] -2259.57
+
+[p5992] 2507.0
+
+[p5993] 0.2572
+
+[p5994] 07-08 c5 f0.15
+
+[p5995] M02
+
+[p5996] Clark
+
+[p5997] yes
+
+[p5998] 440
+
+[p5999] 3
+
+[p6000] 1.87292
+
+[p6001] 0.918136
+
+[p6002] 0.917761
+
+[p6003] 0.06539
+
+[p6004] 0.004286
+
+[p6005] -2396.03
+
+[p6006] 2370.5
+
+[p6007] 0.2163
+
+[p6008] 07-08 c5 f0.15
+
+[p6009] M03
+
+[p6010] Fractal Clark
+
+[p6011] yes
+
+[p6012] 440
+
+[p6013] 4
+
+[p6014] 0.0245748
+
+[p6015] 0.998926
+
+[p6016] 0.998918
+
+[p6017] 0.007490
+
+[p6018] 5.6364e-05
+
+[p6019] -4300.74
+
+[p6020] 465.82
+
+[p6021] 0.04422
+
+[p6022] 07-08 c5 f0.15
+
+[p6023] M04
+
+[p6024] Modified Dose-Response (Yan)
+
+[p6025] yes
+
+[p6026] 440
+
+[p6027] 2
+
+[p6028] 0.157280
+
+[p6029] 0.993125
+
+[p6030] 0.993110
+
+[p6031] 0.01895
+
+[p6032] 3.5909e-04
+
+[p6033] -3488.03
+
+[p6034] 1278.5
+
+[p6035] 0.09968
+
+[p6036] 07-08 c5 f0.15
+
+[p6037] M05
+
+[p6038] Wolborska (linearised, early)
+
+[p6039] yes
+
+[p6040] 6
+
+[p6041] 2
+
+[p6042] 3.770576e-04
+
+[p6043] 0.961213
+
+[p6044] 0.951516
+
+[p6045] 0.009709
+
+[p6046] 9.4264e-05
+
+[p6047] -50.0492
+
+[p6048] 4716.5
+
+[p6049] 0.1698
+
+[p6050] 07-08 c5 f0.15
+
+[p6051] M06
+
+[p6052] Gudermannian (Hu 2021)
+
+[p6053] yes
+
+[p6054] 440
+
+[p6055] 2
+
+[p6056] 2.39700
+
+[p6057] 0.895229
+
+[p6058] 0.894989
+
+[p6059] 0.07398
+
+[p6060] 0.005473
+
+[p6061] -2289.50
+
+[p6062] 2477.1
+
+[p6063] 0.2553
+
+[p6064] 07-08 c5 f0.15
+
+[p6065] M07
+
+[p6066] Error-Function (Hu 2021)
+
+[p6067] yes
+
+[p6068] 440
+
+[p6069] 2
+
+[p6070] 2.81417
+
+[p6071] 0.876994
+
+[p6072] 0.876713
+
+[p6073] 0.08016
+
+[p6074] 0.006425
+
+[p6075] -2218.90
+
+[p6076] 2547.7
+
+[p6077] 0.2594
+
+[p6078] 07-08 c5 f0.15
+
+[p6079] M08
+
+[p6080] Tanh (Hu 2019)
+
+[p6081] yes
+
+[p6082] 440
+
+[p6083] 2
+
+[p6084] 2.56570
+
+[p6085] 0.887855
+
+[p6086] 0.887599
+
+[p6087] 0.07654
+
+[p6088] 0.005858
+
+[p6089] -2259.57
+
+[p6090] 2507.0
+
+[p6091] 0.2572
+
+[p6092] 07-08 c5 f0.15
+
+[p6093] M09
+
+[p6094] Log-Normal (Chu-Hashim)
+
+[p6095] yes
+
+[p6096] 440
+
+[p6097] 2
+
+[p6098] 0.214629
+
+[p6099] 0.990619
+
+[p6100] 0.990597
+
+[p6101] 0.02214
+
+[p6102] 4.9002e-04
+
+[p6103] -3351.24
+
+[p6104] 1415.3
+
+[p6105] 0.1088
+
+[p6106] 07-08 c5 f0.15
+
+[p6107] M10
+
+[p6108] Fractal Gudermannian (Hu 2024)
+
+[p6109] yes
+
+[p6110] 440
+
+[p6111] 3
+
+[p6112] 0.0387387
+
+[p6113] 0.998307
+
+[p6114] 0.998299
+
+[p6115] 0.009404
+
+[p6116] 8.8647e-05
+
+[p6117] -4102.53
+
+[p6118] 664.03
+
+[p6119] 0.05307
+
+[p6120] 07-08 c5 f0.15
+
+[p6121] M11
+
+[p6122] Fractal Error-Function (Hu 2024)
+
+[p6123] yes
+
+[p6124] 440
+
+[p6125] 3
+
+[p6126] 0.00856487
+
+[p6127] 0.999626
+
+[p6128] 0.999624
+
+[p6129] 0.004422
+
+[p6130] 1.9599e-05
+
+[p6131] -4766.56
+
+[p6132] 0
+
+[p6133] 0.02553
+
+[p6134] 07-08 c5 f0.15
+
+[p6135] M12
+
+[p6136] Gompertz (Chu 2020)
+
+[p6137] yes
+
+[p6138] 440
+
+[p6139] 2
+
+[p6140] 1.86487
+
+[p6141] 0.918488
+
+[p6142] 0.918301
+
+[p6143] 0.06525
+
+[p6144] 0.004258
+
+[p6145] -2399.95
+
+[p6146] 2366.6
+
+[p6147] 0.2158
+
+[p6148] 07-08 c5 f0.15
+
+[p6149] M13
+
+[p6150] Log-Gompertz (Chu 2020)
+
+[p6151] yes
+
+[p6152] 440
+
+[p6153] 2
+
+[p6154] 0.0199103
+
+[p6155] 0.999130
+
+[p6156] 0.999128
+
+[p6157] 0.006742
+
+[p6158] 4.5457e-05
+
+[p6159] -4397.42
+
+[p6160] 369.14
+
+[p6161] 0.03371
+
+[p6162] 07-08 c5 f0.15
+
+[p6163] M14
+
+[p6164] Weibull (Chu 2021)
+
+[p6165] yes
+
+[p6166] 440
+
+[p6167] 2
+
+[p6168] 0.751978
+
+[p6169] 0.967132
+
+[p6170] 0.967056
+
+[p6171] 0.04143
+
+[p6172] 0.001717
+
+[p6173] -2799.57
+
+[p6174] 1967.0
+
+[p6175] 0.1819
+
+[p6176] 07-08 c5 f0.15
+
+[p6177] M15
+
+[p6178] Avrami (Singh)
+
+[p6179] yes
+
+[p6180] 440
+
+[p6181] 2
+
+[p6182] 0.751978
+
+[p6183] 0.967132
+
+[p6184] 0.967056
+
+[p6185] 0.04143
+
+[p6186] 0.001717
+
+[p6187] -2799.57
+
+[p6188] 1967.0
+
+[p6189] 0.1819
+
+[p6190] 07-08 c5 f0.15
+
+[p6191] M16
+
+[p6192] Klinkenberg
+
+[p6193] yes
+
+[p6194] 440
+
+[p6195] 2
+
+[p6196] 5.07588
+
+[p6197] 0.778136
+
+[p6198] 0.777630
+
+[p6199] 0.1077
+
+[p6200] 0.01159
+
+[p6201] -1959.37
+
+[p6202] 2807.2
+
+[p6203] 0.3623
+
+[p6204] 07-08 c5 f0.15
+
+[p6205] M17
+
+[p6206] Dima (wave erf)
+
+[p6207] yes
+
+[p6208] 440
+
+[p6209] 2
+
+[p6210] 2.81417
+
+[p6211] 0.876994
+
+[p6212] 0.876713
+
+[p6213] 0.08016
+
+[p6214] 0.006425
+
+[p6215] -2218.90
+
+[p6216] 2547.7
+
+[p6217] 0.2594
+
+[p6218] 07-08 c5 f0.15
+
+[p6219] M18
+
+[p6220] Chern-Chien Langmuir
+
+[p6221] yes
+
+[p6222] 0
+
+[p6223] 4
+
+[p6224] n/a
+
+[p6225] n/a
+
+[p6226] n/a
+
+[p6227] n/a
+
+[p6228] n/a
+
+[p6229] n/a
+
+[p6230] n/a
+
+[p6231] n/a
+
+[p6232] 07-08 c5 f0.15
+
+[p6233] M19
+
+[p6234] Chern-Chien Freundlich
+
+[p6235] yes
+
+[p6236] 0
+
+[p6237] 4
+
+[p6238] n/a
+
+[p6239] n/a
+
+[p6240] n/a
+
+[p6241] n/a
+
+[p6242] n/a
+
+[p6243] n/a
+
+[p6244] n/a
+
+[p6245] n/a
+
+[p6246] 07-08 c5 f0.15
+
+[p6247] M20
+
+[p6248] Log-modified Bohart-Adams
+
+[p6249] yes
+
+[p6250] 440
+
+[p6251] 2
+
+[p6252] 0.157280
+
+[p6253] 0.993125
+
+[p6254] 0.993110
+
+[p6255] 0.01895
+
+[p6256] 3.5909e-04
+
+[p6257] -3488.03
+
+[p6258] 1278.5
+
+[p6259] 0.09968
+
+[p6260] 07-08 c5 f0.15
+
+[p6261] M21
+
+[p6262] Log-modified Yoon-Nelson
+
+[p6263] yes
+
+[p6264] 440
+
+[p6265] 2
+
+[p6266] 0.157280
+
+[p6267] 0.993125
+
+[p6268] 0.993110
+
+[p6269] 0.01895
+
+[p6270] 3.5909e-04
+
+[p6271] -3488.03
+
+[p6272] 1278.5
+
+[p6273] 0.09968
+
+[p6274] 07-08 c5 f0.15
+
+[p6275] M22
+
+[p6276] n-Order Bohart-Adams
+
+[p6277] yes
+
+[p6278] 440
+
+[p6279] 3
+
+[p6280] 38.4843
+
+[p6281] -0.682127
+
+[p6282] -0.689826
+
+[p6283] 0.2964
+
+[p6284] 0.08806
+
+[p6285] -1066.02
+
+[p6286] 3700.5
+
+[p6287] 1.040
+
+[p6288] 07-08 c5 f0.15
+
+[p6289] M23
+
+[p6290] Fractal Yoon-Nelson (Hu 2024)
+
+[p6291] yes
+
+[p6292] 440
+
+[p6293] 3
+
+[p6294] 0.209480
+
+[p6295] 0.990844
+
+[p6296] 0.990802
+
+[p6297] 0.02187
+
+[p6298] 4.7936e-04
+
+[p6299] -3359.90
+
+[p6300] 1406.7
+
+[p6301] 0.1112
+
+[p6302] 07-08 c5 f0.15
+
+[p6303] M24
+
+[p6304] Parallel two-component sigmoidal (Blagojev)
+
+[p6305] yes
+
+[p6306] 440
+
+[p6307] 5
+
+[p6308] 0.0208040
+
+[p6309] 0.999091
+
+[p6310] 0.999082
+
+[p6311] 0.006892
+
+[p6312] 4.7825e-05
+
+[p6313] -4371.99
+
+[p6314] 394.57
+
+[p6315] 0.03858
+
+[p6316] 07-08 c10 f0.05
+
+[p6317] M01
+
+[p6318] Yoon-Nelson / Thomas / BA (logistic)
+
+[p6319] yes
+
+[p6320] 1746
+
+[p6321] 2
+
+[p6322] 10.4067
+
+[p6323] 0.945674
+
+[p6324] 0.945643
+
+[p6325] 0.07725
+
+[p6326] 0.005967
+
+[p6327] -8940.11
+
+[p6328] 8435.6
+
+[p6329] 0.4140
+
+[p6330] 07-08 c10 f0.05
+
+[p6331] M02
+
+[p6332] Clark
+
+[p6333] yes
+
+[p6334] 1746
+
+[p6335] 3
+
+[p6336] 5.97681
+
+[p6337] 0.968800
+
+[p6338] 0.968764
+
+[p6339] 0.05854
+
+[p6340] 0.003429
+
+[p6341] -9906.37
+
+[p6342] 7469.3
+
+[p6343] 0.3331
+
+[p6344] 07-08 c10 f0.05
+
+[p6345] M03
+
+[p6346] Fractal Clark
+
+[p6347] yes
+
+[p6348] 1746
+
+[p6349] 4
+
+[p6350] 0.501650
+
+[p6351] 0.997381
+
+[p6352] 0.997377
+
+[p6353] 0.01696
+
+[p6354] 2.8797e-04
+
+[p6355] -14230.5
+
+[p6356] 3145.2
+
+[p6357] 0.1480
+
+[p6358] 07-08 c10 f0.05
+
+[p6359] M04
+
+[p6360] Modified Dose-Response (Yan)
+
+[p6361] yes
+
+[p6362] 1746
+
+[p6363] 2
+
+[p6364] 1.94772
+
+[p6365] 0.989832
+
+[p6366] 0.989827
+
+[p6367] 0.03342
+
+[p6368] 0.001117
+
+[p6369] -11866.0
+
+[p6370] 5509.6
+
+[p6371] 0.2747
+
+[p6372] 07-08 c10 f0.05
+
+[p6373] M05
+
+[p6374] Wolborska (linearised, early)
+
+[p6375] yes
+
+[p6376] 64
+
+[p6377] 2
+
+[p6378] 0.00705095
+
+[p6379] 0.940177
+
+[p6380] 0.939212
+
+[p6381] 0.01066
+
+[p6382] 1.1373e-04
+
+[p6383] -579.066
+
+[p6384] 16797
+
+[p6385] 0.4321
+
+[p6386] 07-08 c10 f0.05
+
+[p6387] M06
+
+[p6388] Gudermannian (Hu 2021)
+
+[p6389] yes
+
+[p6390] 1746
+
+[p6391] 2
+
+[p6392] 10.0845
+
+[p6393] 0.947357
+
+[p6394] 0.947326
+
+[p6395] 0.07604
+
+[p6396] 0.005782
+
+[p6397] -8995.03
+
+[p6398] 8380.6
+
+[p6399] 0.4202
+
+[p6400] 07-08 c10 f0.05
+
+[p6401] M07
+
+[p6402] Error-Function (Hu 2021)
+
+[p6403] yes
+
+[p6404] 1746
+
+[p6405] 2
+
+[p6406] 10.9745
+
+[p6407] 0.942711
+
+[p6408] 0.942678
+
+[p6409] 0.07933
+
+[p6410] 0.006293
+
+[p6411] -8847.36
+
+[p6412] 8528.3
+
+[p6413] 0.4061
+
+[p6414] 07-08 c10 f0.05
+
+[p6415] M08
+
+[p6416] Tanh (Hu 2019)
+
+[p6417] yes
+
+[p6418] 1746
+
+[p6419] 2
+
+[p6420] 10.4067
+
+[p6421] 0.945674
+
+[p6422] 0.945643
+
+[p6423] 0.07725
+
+[p6424] 0.005967
+
+[p6425] -8940.11
+
+[p6426] 8435.6
+
+[p6427] 0.4140
+
+[p6428] 07-08 c10 f0.05
+
+[p6429] M09
+
+[p6430] Log-Normal (Chu-Hashim)
+
+[p6431] yes
+
+[p6432] 1746
+
+[p6433] 2
+
+[p6434] 2.36343
+
+[p6435] 0.987662
+
+[p6436] 0.987655
+
+[p6437] 0.03681
+
+[p6438] 0.001355
+
+[p6439] -11528.3
+
+[p6440] 5847.4
+
+[p6441] 0.2790
+
+[p6442] 07-08 c10 f0.05
+
+[p6443] M10
+
+[p6444] Fractal Gudermannian (Hu 2024)
+
+[p6445] yes
+
+[p6446] 1746
+
+[p6447] 3
+
+[p6448] 0.289602
+
+[p6449] 0.998488
+
+[p6450] 0.998486
+
+[p6451] 0.01289
+
+[p6452] 1.6615e-04
+
+[p6453] -15191.7
+
+[p6454] 2183.9
+
+[p6455] 0.1300
+
+[p6456] 07-08 c10 f0.05
+
+[p6457] M11
+
+[p6458] Fractal Error-Function (Hu 2024)
+
+[p6459] yes
+
+[p6460] 1746
+
+[p6461] 3
+
+[p6462] 0.0829050
+
+[p6463] 0.999567
+
+[p6464] 0.999567
+
+[p6465] 0.006895
+
+[p6466] 4.7565e-05
+
+[p6467] -17375.7
+
+[p6468] 0
+
+[p6469] 0.07149
+
+[p6470] 07-08 c10 f0.05
+
+[p6471] M12
+
+[p6472] Gompertz (Chu 2020)
+
+[p6473] yes
+
+[p6474] 1746
+
+[p6475] 2
+
+[p6476] 5.92956
+
+[p6477] 0.969046
+
+[p6478] 0.969028
+
+[p6479] 0.05831
+
+[p6480] 0.003400
+
+[p6481] -9922.23
+
+[p6482] 7453.4
+
+[p6483] 0.3320
+
+[p6484] 07-08 c10 f0.05
+
+[p6485] M13
+
+[p6486] Log-Gompertz (Chu 2020)
+
+[p6487] yes
+
+[p6488] 1746
+
+[p6489] 2
+
+[p6490] 0.271427
+
+[p6491] 0.998583
+
+[p6492] 0.998582
+
+[p6493] 0.01248
+
+[p6494] 1.5563e-04
+
+[p6495] -15306.9
+
+[p6496] 2068.7
+
+[p6497] 0.1160
+
+[p6498] 07-08 c10 f0.05
+
+[p6499] M14
+
+[p6500] Weibull (Chu 2021)
+
+[p6501] yes
+
+[p6502] 1746
+
+[p6503] 2
+
+[p6504] 6.30743
+
+[p6505] 0.967074
+
+[p6506] 0.967055
+
+[p6507] 0.06014
+
+[p6508] 0.003617
+
+[p6509] -9814.37
+
+[p6510] 7561.3
+
+[p6511] 0.4074
+
+[p6512] 07-08 c10 f0.05
+
+[p6513] M15
+
+[p6514] Avrami (Singh)
+
+[p6515] yes
+
+[p6516] 1746
+
+[p6517] 2
+
+[p6518] 6.30810
+
+[p6519] 0.967070
+
+[p6520] 0.967051
+
+[p6521] 0.06014
+
+[p6522] 0.003617
+
+[p6523] -9814.18
+
+[p6524] 7561.5
+
+[p6525] 0.4098
+
+[p6526] 07-08 c10 f0.05
+
+[p6527] M16
+
+[p6528] Klinkenberg
+
+[p6529] yes
+
+[p6530] 1746
+
+[p6531] 2
+
+[p6532] 65.7517
+
+[p6533] 0.656760
+
+[p6534] 0.656563
+
+[p6535] 0.1942
+
+[p6536] 0.03770
+
+[p6537] -5721.47
+
+[p6538] 11654
+
+[p6539] 1.147
+
+[p6540] 07-08 c10 f0.05
+
+[p6541] M17
+
+[p6542] Dima (wave erf)
+
+[p6543] yes
+
+[p6544] 1746
+
+[p6545] 2
+
+[p6546] 10.9745
+
+[p6547] 0.942711
+
+[p6548] 0.942678
+
+[p6549] 0.07933
+
+[p6550] 0.006293
+
+[p6551] -8847.36
+
+[p6552] 8528.3
+
+[p6553] 0.4061
+
+[p6554] 07-08 c10 f0.05
+
+[p6555] M18
+
+[p6556] Chern-Chien Langmuir
+
+[p6557] yes
+
+[p6558] 2
+
+[p6559] 4
+
+[p6560] 0.259791
+
+[p6561] -31826.7
+
+[p6562] -31826.7
+
+[p6563] 0.5097
+
+[p6564] 0.2598
+
+[p6565] n/a
+
+[p6566] n/a
+
+[p6567] 0.6099
+
+[p6568] 07-08 c10 f0.05
+
+[p6569] M19
+
+[p6570] Chern-Chien Freundlich
+
+[p6571] yes
+
+[p6572] 2
+
+[p6573] 4
+
+[p6574] 0.259791
+
+[p6575] -31826.7
+
+[p6576] -31826.7
+
+[p6577] 0.5097
+
+[p6578] 0.2598
+
+[p6579] n/a
+
+[p6580] n/a
+
+[p6581] 0.6099
+
+[p6582] 07-08 c10 f0.05
+
+[p6583] M20
+
+[p6584] Log-modified Bohart-Adams
+
+[p6585] yes
+
+[p6586] 1746
+
+[p6587] 2
+
+[p6588] 1.94772
+
+[p6589] 0.989832
+
+[p6590] 0.989827
+
+[p6591] 0.03342
+
+[p6592] 0.001117
+
+[p6593] -11866.0
+
+[p6594] 5509.6
+
+[p6595] 0.2747
+
+[p6596] 07-08 c10 f0.05
+
+[p6597] M21
+
+[p6598] Log-modified Yoon-Nelson
+
+[p6599] yes
+
+[p6600] 1746
+
+[p6601] 2
+
+[p6602] 1.94772
+
+[p6603] 0.989832
+
+[p6604] 0.989827
+
+[p6605] 0.03342
+
+[p6606] 0.001117
+
+[p6607] -11866.0
+
+[p6608] 5509.6
+
+[p6609] 0.2747
+
+[p6610] 07-08 c10 f0.05
+
+[p6611] M22
+
+[p6612] n-Order Bohart-Adams
+
+[p6613] yes
+
+[p6614] 1746
+
+[p6615] 3
+
+[p6616] 390.621
+
+[p6617] -1.03914
+
+[p6618] -1.04148
+
+[p6619] 0.4733
+
+[p6620] 0.2241
+
+[p6621] -2608.35
+
+[p6622] 14767
+
+[p6623] 2.666
+
+[p6624] 07-08 c10 f0.05
+
+[p6625] M23
+
+[p6626] Fractal Yoon-Nelson (Hu 2024)
+
+[p6627] yes
+
+[p6628] 1746
+
+[p6629] 3
+
+[p6630] 2.23255
+
+[p6631] 0.988346
+
+[p6632] 0.988332
+
+[p6633] 0.03578
+
+[p6634] 0.001281
+
+[p6635] -11625.7
+
+[p6636] 5749.9
+
+[p6637] 0.2869
+
+[p6638] 07-08 c10 f0.05
+
+[p6639] M24
+
+[p6640] Parallel two-component sigmoidal (Blagojev)
+
+[p6641] yes
+
+[p6642] 1746
+
+[p6643] 5
+
+[p6644] 0.297257
+
+[p6645] 0.998448
+
+[p6646] 0.998445
+
+[p6647] 0.01306
+
+[p6648] 1.7074e-04
+
+[p6649] -15142.2
+
+[p6650] 2233.5
+
+[p6651] 0.1219
+
+[p6652] 07-08 c10 f0.10
+
+[p6653] M01
+
+[p6654] Yoon-Nelson / Thomas / BA (logistic)
+
+[p6655] yes
+
+[p6656] 1472
+
+[p6657] 2
+
+[p6658] 5.64738
+
+[p6659] 0.941973
+
+[p6660] 0.941933
+
+[p6661] 0.06198
+
+[p6662] 0.003842
+
+[p6663] -8185.00
+
+[p6664] 7387.0
+
+[p6665] 0.3227
+
+[p6666] 07-08 c10 f0.10
+
+[p6667] M02
+
+[p6668] Clark
+
+[p6669] yes
+
+[p6670] 1472
+
+[p6671] 3
+
+[p6672] 3.40368
+
+[p6673] 0.965027
+
+[p6674] 0.964979
+
+[p6675] 0.04812
+
+[p6676] 0.002317
+
+[p6677] -8928.32
+
+[p6678] 6643.7
+
+[p6679] 0.2525
+
+[p6680] 07-08 c10 f0.10
+
+[p6681] M03
+
+[p6682] Fractal Clark
+
+[p6683] yes
+
+[p6684] 1472
+
+[p6685] 4
+
+[p6686] 0.0535380
+
+[p6687] 0.999450
+
+[p6688] 0.999449
+
+[p6689] 0.006035
+
+[p6690] 3.6470e-05
+
+[p6691] -15038.4
+
+[p6692] 533.66
+
+[p6693] 0.04944
+
+[p6694] 07-08 c10 f0.10
+
+[p6695] M04
+
+[p6696] Modified Dose-Response (Yan)
+
+[p6697] yes
+
+[p6698] 1472
+
+[p6699] 2
+
+[p6700] 0.315473
+
+[p6701] 0.996758
+
+[p6702] 0.996756
+
+[p6703] 0.01465
+
+[p6704] 2.1461e-04
+
+[p6705] -12431.5
+
+[p6706] 3140.5
+
+[p6707] 0.1262
+
+[p6708] 07-08 c10 f0.10
+
+[p6709] M05
+
+[p6710] Wolborska (linearised, early)
+
+[p6711] yes
+
+[p6712] 29
+
+[p6713] 2
+
+[p6714] 0.00227375
+
+[p6715] 0.956631
+
+[p6716] 0.955025
+
+[p6717] 0.009177
+
+[p6718] 8.4213e-05
+
+[p6719] -269.693
+
+[p6720] 15302
+
+[p6721] 0.2904
+
+[p6722] 07-08 c10 f0.10
+
+[p6723] M06
+
+[p6724] Gudermannian (Hu 2021)
+
+[p6725] yes
+
+[p6726] 1472
+
+[p6727] 2
+
+[p6728] 5.29184
+
+[p6729] 0.945626
+
+[p6730] 0.945589
+
+[p6731] 0.06000
+
+[p6732] 0.003600
+
+[p6733] -8280.72
+
+[p6734] 7291.3
+
+[p6735] 0.3238
+
+[p6736] 07-08 c10 f0.10
+
+[p6737] M07
+
+[p6738] Error-Function (Hu 2021)
+
+[p6739] yes
+
+[p6740] 1472
+
+[p6741] 2
+
+[p6742] 6.21989
+
+[p6743] 0.936090
+
+[p6744] 0.936046
+
+[p6745] 0.06505
+
+[p6746] 0.004231
+
+[p6747] -8042.86
+
+[p6748] 7529.2
+
+[p6749] 0.3216
+
+[p6750] 07-08 c10 f0.10
+
+[p6751] M08
+
+[p6752] Tanh (Hu 2019)
+
+[p6753] yes
+
+[p6754] 1472
+
+[p6755] 2
+
+[p6756] 5.64738
+
+[p6757] 0.941973
+
+[p6758] 0.941933
+
+[p6759] 0.06198
+
+[p6760] 0.003842
+
+[p6761] -8185.00
+
+[p6762] 7387.0
+
+[p6763] 0.3227
+
+[p6764] 07-08 c10 f0.10
+
+[p6765] M09
+
+[p6766] Log-Normal (Chu-Hashim)
+
+[p6767] yes
+
+[p6768] 1472
+
+[p6769] 2
+
+[p6770] 0.423629
+
+[p6771] 0.995647
+
+[p6772] 0.995644
+
+[p6773] 0.01698
+
+[p6774] 2.8818e-04
+
+[p6775] -11997.6
+
+[p6776] 3574.4
+
+[p6777] 0.1307
+
+[p6778] 07-08 c10 f0.10
+
+[p6779] M10
+
+[p6780] Fractal Gudermannian (Hu 2024)
+
+[p6781] yes
+
+[p6782] 1472
+
+[p6783] 3
+
+[p6784] 0.150301
+
+[p6785] 0.998456
+
+[p6786] 0.998454
+
+[p6787] 0.01011
+
+[p6788] 1.0232e-04
+
+[p6789] -13520.9
+
+[p6790] 2051.1
+
+[p6791] 0.08498
+
+[p6792] 07-08 c10 f0.10
+
+[p6793] M11
+
+[p6794] Fractal Error-Function (Hu 2024)
+
+[p6795] yes
+
+[p6796] 1472
+
+[p6797] 3
+
+[p6798] 0.0373085
+
+[p6799] 0.999617
+
+[p6800] 0.999616
+
+[p6801] 0.005038
+
+[p6802] 2.5397e-05
+
+[p6803] -15572.0
+
+[p6804] 0
+
+[p6805] 0.03776
+
+[p6806] 07-08 c10 f0.10
+
+[p6807] M12
+
+[p6808] Gompertz (Chu 2020)
+
+[p6809] yes
+
+[p6810] 1472
+
+[p6811] 2
+
+[p6812] 3.37868
+
+[p6813] 0.965284
+
+[p6814] 0.965260
+
+[p6815] 0.04794
+
+[p6816] 0.002298
+
+[p6817] -8941.18
+
+[p6818] 6630.9
+
+[p6819] 0.2516
+
+[p6820] 07-08 c10 f0.10
+
+[p6821] M13
+
+[p6822] Log-Gompertz (Chu 2020)
+
+[p6823] yes
+
+[p6824] 1472
+
+[p6825] 2
+
+[p6826] 0.126872
+
+[p6827] 0.998696
+
+[p6828] 0.998695
+
+[p6829] 0.009290
+
+[p6830] 8.6308e-05
+
+[p6831] -13772.4
+
+[p6832] 1799.7
+
+[p6833] 0.03090
+
+[p6834] 07-08 c10 f0.10
+
+[p6835] M14
+
+[p6836] Weibull (Chu 2021)
+
+[p6837] yes
+
+[p6838] 1472
+
+[p6839] 2
+
+[p6840] 1.95788
+
+[p6841] 0.979883
+
+[p6842] 0.979869
+
+[p6843] 0.03650
+
+[p6844] 0.001332
+
+[p6845] -9744.33
+
+[p6846] 5827.7
+
+[p6847] 0.2420
+
+[p6848] 07-08 c10 f0.10
+
+[p6849] M15
+
+[p6850] Avrami (Singh)
+
+[p6851] yes
+
+[p6852] 1472
+
+[p6853] 2
+
+[p6854] 1.95788
+
+[p6855] 0.979883
+
+[p6856] 0.979869
+
+[p6857] 0.03650
+
+[p6858] 0.001332
+
+[p6859] -9744.33
+
+[p6860] 5827.7
+
+[p6861] 0.2420
+
+[p6862] 07-08 c10 f0.10
+
+[p6863] M16
+
+[p6864] Klinkenberg
+
+[p6865] yes
+
+[p6866] 1472
+
+[p6867] 2
+
+[p6868] 20.4398
+
+[p6869] 0.789979
+
+[p6870] 0.789836
+
+[p6871] 0.1179
+
+[p6872] 0.01390
+
+[p6873] -6291.58
+
+[p6874] 9280.4
+
+[p6875] 0.6565
+
+[p6876] 07-08 c10 f0.10
+
+[p6877] M17
+
+[p6878] Dima (wave erf)
+
+[p6879] yes
+
+[p6880] 1472
+
+[p6881] 2
+
+[p6882] 6.21989
+
+[p6883] 0.936090
+
+[p6884] 0.936046
+
+[p6885] 0.06505
+
+[p6886] 0.004231
+
+[p6887] -8042.86
+
+[p6888] 7529.2
+
+[p6889] 0.3216
+
+[p6890] 07-08 c10 f0.10
+
+[p6891] M18
+
+[p6892] Chern-Chien Langmuir
+
+[p6893] yes
+
+[p6894] 1
+
+[p6895] 4
+
+[p6896] 0.239881
+
+[p6897] n/a
+
+[p6898] n/a
+
+[p6899] 0.4898
+
+[p6900] 0.2399
+
+[p6901] n/a
+
+[p6902] n/a
+
+[p6903] 0.9799
+
+[p6904] 07-08 c10 f0.10
+
+[p6905] M19
+
+[p6906] Chern-Chien Freundlich
+
+[p6907] yes
+
+[p6908] 1
+
+[p6909] 4
+
+[p6910] 0.239881
+
+[p6911] n/a
+
+[p6912] n/a
+
+[p6913] 0.4898
+
+[p6914] 0.2399
+
+[p6915] n/a
+
+[p6916] n/a
+
+[p6917] 0.9799
+
+[p6918] 07-08 c10 f0.10
+
+[p6919] M20
+
+[p6920] Log-modified Bohart-Adams
+
+[p6921] yes
+
+[p6922] 1472
+
+[p6923] 2
+
+[p6924] 0.315473
+
+[p6925] 0.996758
+
+[p6926] 0.996756
+
+[p6927] 0.01465
+
+[p6928] 2.1461e-04
+
+[p6929] -12431.5
+
+[p6930] 3140.5
+
+[p6931] 0.1262
+
+[p6932] 07-08 c10 f0.10
+
+[p6933] M21
+
+[p6934] Log-modified Yoon-Nelson
+
+[p6935] yes
+
+[p6936] 1472
+
+[p6937] 2
+
+[p6938] 0.315473
+
+[p6939] 0.996758
+
+[p6940] 0.996756
+
+[p6941] 0.01465
+
+[p6942] 2.1461e-04
+
+[p6943] -12431.5
+
+[p6944] 3140.5
+
+[p6945] 0.1262
+
+[p6946] 07-08 c10 f0.10
+
+[p6947] M22
+
+[p6948] n-Order Bohart-Adams
+
+[p6949] yes
+
+[p6950] 1472
+
+[p6951] 3
+
+[p6952] 149.452
+
+[p6953] -0.535632
+
+[p6954] -0.537722
+
+[p6955] 0.3189
+
+[p6956] 0.1017
+
+[p6957] -3361.04
+
+[p6958] 12211
+
+[p6959] 1.696
+
+[p6960] 07-08 c10 f0.10
+
+[p6961] M23
+
+[p6962] Fractal Yoon-Nelson (Hu 2024)
+
+[p6963] yes
+
+[p6964] 1472
+
+[p6965] 3
+
+[p6966] 0.413453
+
+[p6967] 0.995752
+
+[p6968] 0.995746
+
+[p6969] 0.01677
+
+[p6970] 2.8145e-04
+
+[p6971] -12031.4
+
+[p6972] 3540.6
+
+[p6973] 0.1399
+
+[p6974] 07-08 c10 f0.10
+
+[p6975] M24
+
+[p6976] Parallel two-component sigmoidal (Blagojev)
+
+[p6977] yes
+
+[p6978] 1472
+
+[p6979] 5
+
+[p6980] 0.0562643
+
+[p6981] 0.999422
+
+[p6982] 0.999420
+
+[p6983] 0.006187
+
+[p6984] 3.8353e-05
+
+[p6985] -14963.2
+
+[p6986] 608.78
+
+[p6987] 0.05287
+
+[p6988] 07-08 c10 f0.15
+
+[p6989] M01
+
+[p6990] Yoon-Nelson / Thomas / BA (logistic)
+
+[p6991] yes
+
+[p6992] 477
+
+[p6993] 2
+
+[p6994] 2.19524
+
+[p6995] 0.928506
+
+[p6996] 0.928355
+
+[p6997] 0.06798
+
+[p6998] 0.004622
+
+[p6999] -2562.82
+
+[p7000] 2164.1
+
+[p7001] 0.1879
+
+[p7002] 07-08 c10 f0.15
+
+[p7003] M02
+
+[p7004] Clark
+
+[p7005] yes
+
+[p7006] 477
+
+[p7007] 3
+
+[p7008] 1.48528
+
+[p7009] 0.951628
+
+[p7010] 0.951424
+
+[p7011] 0.05592
+
+[p7012] 0.003133
+
+[p7013] -2747.15
+
+[p7014] 1979.8
+
+[p7015] 0.1539
+
+[p7016] 07-08 c10 f0.15
+
+[p7017] M03
+
+[p7018] Fractal Clark
+
+[p7019] yes
+
+[p7020] 477
+
+[p7021] 4
+
+[p7022] 0.0233034
+
+[p7023] 0.999241
+
+[p7024] 0.999236
+
+[p7025] 0.007004
+
+[p7026] 4.9267e-05
+
+[p7027] -4726.94
+
+[p7028] 0
+
+[p7029] 0.02762
+
+[p7030] 07-08 c10 f0.15
+
+[p7031] M04
+
+[p7032] Modified Dose-Response (Yan)
+
+[p7033] yes
+
+[p7034] 477
+
+[p7035] 2
+
+[p7036] 0.137055
+
+[p7037] 0.995536
+
+[p7038] 0.995527
+
+[p7039] 0.01699
+
+[p7040] 2.8854e-04
+
+[p7041] -3885.86
+
+[p7042] 841.08
+
+[p7043] 0.07206
+
+[p7044] 07-08 c10 f0.15
+
+[p7045] M05
+
+[p7046] Wolborska (linearised, early)
+
+[p7047] yes
+
+[p7048] 9
+
+[p7049] 2
+
+[p7050] 0.00105264
+
+[p7051] 0.936566
+
+[p7052] 0.927504
+
+[p7053] 0.01226
+
+[p7054] 1.5038e-04
+
+[p7055] -75.4831
+
+[p7056] 4651.5
+
+[p7057] 0.5222
+
+[p7058] 07-08 c10 f0.15
+
+[p7059] M06
+
+[p7060] Gudermannian (Hu 2021)
+
+[p7061] yes
+
+[p7062] 477
+
+[p7063] 2
+
+[p7064] 2.08337
+
+[p7065] 0.932149
+
+[p7066] 0.932006
+
+[p7067] 0.06623
+
+[p7068] 0.004386
+
+[p7069] -2587.77
+
+[p7070] 2139.2
+
+[p7071] 0.1878
+
+[p7072] 07-08 c10 f0.15
+
+[p7073] M07
+
+[p7074] Error-Function (Hu 2021)
+
+[p7075] yes
+
+[p7076] 477
+
+[p7077] 2
+
+[p7078] 2.36808
+
+[p7079] 0.922877
+
+[p7080] 0.922714
+
+[p7081] 0.07061
+
+[p7082] 0.004985
+
+[p7083] -2526.67
+
+[p7084] 2200.3
+
+[p7085] 0.1880
+
+[p7086] 07-08 c10 f0.15
+
+[p7087] M08
+
+[p7088] Tanh (Hu 2019)
+
+[p7089] yes
+
+[p7090] 477
+
+[p7091] 2
+
+[p7092] 2.19524
+
+[p7093] 0.928506
+
+[p7094] 0.928355
+
+[p7095] 0.06798
+
+[p7096] 0.004622
+
+[p7097] -2562.82
+
+[p7098] 2164.1
+
+[p7099] 0.1879
+
+[p7100] 07-08 c10 f0.15
+
+[p7101] M09
+
+[p7102] Log-Normal (Chu-Hashim)
+
+[p7103] yes
+
+[p7104] 477
+
+[p7105] 2
+
+[p7106] 0.211839
+
+[p7107] 0.993101
+
+[p7108] 0.993086
+
+[p7109] 0.02112
+
+[p7110] 4.4598e-04
+
+[p7111] -3678.15
+
+[p7112] 1048.8
+
+[p7113] 0.08012
+
+[p7114] 07-08 c10 f0.15
+
+[p7115] M10
+
+[p7116] Fractal Gudermannian (Hu 2024)
+
+[p7117] yes
+
+[p7118] 477
+
+[p7119] 3
+
+[p7120] 0.0411487
+
+[p7121] 0.998660
+
+[p7122] 0.998654
+
+[p7123] 0.009307
+
+[p7124] 8.6812e-05
+
+[p7125] -4457.75
+
+[p7126] 269.19
+
+[p7127] 0.03923
+
+[p7128] 07-08 c10 f0.15
+
+[p7129] M11
+
+[p7130] Fractal Error-Function (Hu 2024)
+
+[p7131] yes
+
+[p7132] 477
+
+[p7133] 3
+
+[p7134] 0.0306115
+
+[p7135] 0.999003
+
+[p7136] 0.998999
+
+[p7137] 0.008028
+
+[p7138] 6.4581e-05
+
+[p7139] -4598.86
+
+[p7140] 128.08
+
+[p7141] 0.02101
+
+[p7142] 07-08 c10 f0.15
+
+[p7143] M12
+
+[p7144] Gompertz (Chu 2020)
+
+[p7145] yes
+
+[p7146] 477
+
+[p7147] 2
+
+[p7148] 1.47713
+
+[p7149] 0.951893
+
+[p7150] 0.951792
+
+[p7151] 0.05577
+
+[p7152] 0.003110
+
+[p7153] -2751.80
+
+[p7154] 1975.1
+
+[p7155] 0.1534
+
+[p7156] 07-08 c10 f0.15
+
+[p7157] M13
+
+[p7158] Log-Gompertz (Chu 2020)
+
+[p7159] yes
+
+[p7160] 477
+
+[p7161] 2
+
+[p7162] 0.0268148
+
+[p7163] 0.999127
+
+[p7164] 0.999125
+
+[p7165] 0.007513
+
+[p7166] 5.6452e-05
+
+[p7167] -4664.05
+
+[p7168] 62.889
+
+[p7169] 0.02147
+
+[p7170] 07-08 c10 f0.15
+
+[p7171] M14
+
+[p7172] Weibull (Chu 2021)
+
+[p7173] yes
+
+[p7174] 477
+
+[p7175] 2
+
+[p7176] 0.786225
+
+[p7177] 0.974394
+
+[p7178] 0.974340
+
+[p7179] 0.04068
+
+[p7180] 0.001655
+
+[p7181] -3052.60
+
+[p7182] 1674.3
+
+[p7183] 0.1404
+
+[p7184] 07-08 c10 f0.15
+
+[p7185] M15
+
+[p7186] Avrami (Singh)
+
+[p7187] yes
+
+[p7188] 477
+
+[p7189] 2
+
+[p7190] 0.786225
+
+[p7191] 0.974394
+
+[p7192] 0.974340
+
+[p7193] 0.04068
+
+[p7194] 0.001655
+
+[p7195] -3052.60
+
+[p7196] 1674.3
+
+[p7197] 0.1404
+
+[p7198] 07-08 c10 f0.15
+
+[p7199] M16
+
+[p7200] Klinkenberg
+
+[p7201] yes
+
+[p7202] 477
+
+[p7203] 2
+
+[p7204] 6.74993
+
+[p7205] 0.780169
+
+[p7206] 0.779706
+
+[p7207] 0.1192
+
+[p7208] 0.01421
+
+[p7209] -2027.03
+
+[p7210] 2699.9
+
+[p7211] 0.3297
+
+[p7212] 07-08 c10 f0.15
+
+[p7213] M17
+
+[p7214] Dima (wave erf)
+
+[p7215] yes
+
+[p7216] 477
+
+[p7217] 2
+
+[p7218] 2.36808
+
+[p7219] 0.922877
+
+[p7220] 0.922714
+
+[p7221] 0.07061
+
+[p7222] 0.004985
+
+[p7223] -2526.67
+
+[p7224] 2200.3
+
+[p7225] 0.1880
+
+[p7226] 07-08 c10 f0.15
+
+[p7227] M18
+
+[p7228] Chern-Chien Langmuir
+
+[p7229] yes
+
+[p7230] 0
+
+[p7231] 4
+
+[p7232] n/a
+
+[p7233] n/a
+
+[p7234] n/a
+
+[p7235] n/a
+
+[p7236] n/a
+
+[p7237] n/a
+
+[p7238] n/a
+
+[p7239] n/a
+
+[p7240] 07-08 c10 f0.15
+
+[p7241] M19
+
+[p7242] Chern-Chien Freundlich
+
+[p7243] yes
+
+[p7244] 0
+
+[p7245] 4
+
+[p7246] n/a
+
+[p7247] n/a
+
+[p7248] n/a
+
+[p7249] n/a
+
+[p7250] n/a
+
+[p7251] n/a
+
+[p7252] n/a
+
+[p7253] n/a
+
+[p7254] 07-08 c10 f0.15
+
+[p7255] M20
+
+[p7256] Log-modified Bohart-Adams
+
+[p7257] yes
+
+[p7258] 477
+
+[p7259] 2
+
+[p7260] 0.137055
+
+[p7261] 0.995536
+
+[p7262] 0.995527
+
+[p7263] 0.01699
+
+[p7264] 2.8854e-04
+
+[p7265] -3885.86
+
+[p7266] 841.08
+
+[p7267] 0.07206
+
+[p7268] 07-08 c10 f0.15
+
+[p7269] M21
+
+[p7270] Log-modified Yoon-Nelson
+
+[p7271] yes
+
+[p7272] 477
+
+[p7273] 2
+
+[p7274] 0.137055
+
+[p7275] 0.995536
+
+[p7276] 0.995527
+
+[p7277] 0.01699
+
+[p7278] 2.8854e-04
+
+[p7279] -3885.86
+
+[p7280] 841.08
+
+[p7281] 0.07206
+
+[p7282] 07-08 c10 f0.15
+
+[p7283] M22
+
+[p7284] n-Order Bohart-Adams
+
+[p7285] yes
+
+[p7286] 477
+
+[p7287] 3
+
+[p7288] 47.8425
+
+[p7289] -0.558131
+
+[p7290] -0.564706
+
+[p7291] 0.3174
+
+[p7292] 0.1009
+
+[p7293] -1090.86
+
+[p7294] 3636.1
+
+[p7295] 0.9410
+
+[p7296] 07-08 c10 f0.15
+
+[p7297] M23
+
+[p7298] Fractal Yoon-Nelson (Hu 2024)
+
+[p7299] yes
+
+[p7300] 477
+
+[p7301] 3
+
+[p7302] 0.186388
+
+[p7303] 0.993930
+
+[p7304] 0.993904
+
+[p7305] 0.01981
+
+[p7306] 3.9322e-04
+
+[p7307] -3737.18
+
+[p7308] 989.76
+
+[p7309] 0.08111
+
+[p7310] 07-08 c10 f0.15
+
+[p7311] M24
+
+[p7312] Parallel two-component sigmoidal (Blagojev)
+
+[p7313] yes
+
+[p7314] 477
+
+[p7315] 5
+
+[p7316] 0.0460949
+
+[p7317] 0.998499
+
+[p7318] 0.998486
+
+[p7319] 0.009851
+
+[p7320] 9.7659e-05
+
+[p7321] -4399.53
+
+[p7322] 327.41
+
+[p7323] 0.03857
+
+[p7324] 07-10 c15 f0.05
+
+[p7325] M01
+
+[p7326] Yoon-Nelson / Thomas / BA (logistic)
+
+[p7327] yes
+
+[p7328] 1650
+
+[p7329] 2
+
+[p7330] 10.2652
+
+[p7331] 0.941000
+
+[p7332] 0.940964
+
+[p7333] 0.07892
+
+[p7334] 0.006229
+
+[p7335] -8377.62
+
+[p7336] 7418.4
+
+[p7337] 5.129
+
+[p7338] 07-10 c15 f0.05
+
+[p7339] M02
+
+[p7340] Clark
+
+[p7341] yes
+
+[p7342] 1650
+
+[p7343] 3
+
+[p7344] 6.05872
+
+[p7345] 0.965177
+
+[p7346] 0.965134
+
+[p7347] 0.06063
+
+[p7348] 0.003679
+
+[p7349] -9245.59
+
+[p7350] 6550.5
+
+[p7351] 4.267
+
+[p7352] 07-10 c15 f0.05
+
+[p7353] M03
+
+[p7354] Fractal Clark
+
+[p7355] yes
+
+[p7356] 1650
+
+[p7357] 4
+
+[p7358] 0.840337
+
+[p7359] 0.995170
+
+[p7360] 0.995161
+
+[p7361] 0.02258
+
+[p7362] 5.1053e-04
+
+[p7363] -12503.1
+
+[p7364] 3293.0
+
+[p7365] 2.432
+
+[p7366] 07-10 c15 f0.05
+
+[p7367] M04
+
+[p7368] Modified Dose-Response (Yan)
+
+[p7369] yes
+
+[p7370] 1650
+
+[p7371] 2
+
+[p7372] 2.40952
+
+[p7373] 0.986151
+
+[p7374] 0.986143
+
+[p7375] 0.03824
+
+[p7376] 0.001462
+
+[p7377] -10769.0
+
+[p7378] 5027.0
+
+[p7379] 3.974
+
+[p7380] 07-10 c15 f0.05
+
+[p7381] M05
+
+[p7382] Wolborska (linearised, early)
+
+[p7383] yes
+
+[p7384] 45
+
+[p7385] 2
+
+[p7386] 0.00385942
+
+[p7387] 0.955209
+
+[p7388] 0.954168
+
+[p7389] 0.009474
+
+[p7390] 8.9754e-05
+
+[p7391] -417.090
+
+[p7392] 15379
+
+[p7393] 0.3455
+
+[p7394] 07-10 c15 f0.05
+
+[p7395] M06
+
+[p7396] Gudermannian (Hu 2021)
+
+[p7397] yes
+
+[p7398] 1650
+
+[p7399] 2
+
+[p7400] 9.85457
+
+[p7401] 0.943360
+
+[p7402] 0.943325
+
+[p7403] 0.07733
+
+[p7404] 0.005980
+
+[p7405] -8444.98
+
+[p7406] 7351.1
+
+[p7407] 5.240
+
+[p7408] 07-10 c15 f0.05
+
+[p7409] M07
+
+[p7410] Error-Function (Hu 2021)
+
+[p7411] yes
+
+[p7412] 1650
+
+[p7413] 2
+
+[p7414] 10.9530
+
+[p7415] 0.937046
+
+[p7416] 0.937008
+
+[p7417] 0.08152
+
+[p7418] 0.006646
+
+[p7419] -8270.61
+
+[p7420] 7525.4
+
+[p7421] 4.977
+
+[p7422] 07-10 c15 f0.05
+
+[p7423] M08
+
+[p7424] Tanh (Hu 2019)
+
+[p7425] yes
+
+[p7426] 1650
+
+[p7427] 2
+
+[p7428] 10.2652
+
+[p7429] 0.941000
+
+[p7430] 0.940964
+
+[p7431] 0.07892
+
+[p7432] 0.006229
+
+[p7433] -8377.62
+
+[p7434] 7418.4
+
+[p7435] 5.129
+
+[p7436] 07-10 c15 f0.05
+
+[p7437] M09
+
+[p7438] Log-Normal (Chu-Hashim)
+
+[p7439] yes
+
+[p7440] 1650
+
+[p7441] 2
+
+[p7442] 2.90553
+
+[p7443] 0.983300
+
+[p7444] 0.983290
+
+[p7445] 0.04199
+
+[p7446] 0.001763
+
+[p7447] -10460.2
+
+[p7448] 5335.9
+
+[p7449] 4.011
+
+[p7450] 07-10 c15 f0.05
+
+[p7451] M10
+
+[p7452] Fractal Gudermannian (Hu 2024)
+
+[p7453] yes
+
+[p7454] 1650
+
+[p7455] 3
+
+[p7456] 0.338991
+
+[p7457] 0.998052
+
+[p7458] 0.998049
+
+[p7459] 0.01434
+
+[p7460] 2.0582e-04
+
+[p7461] -14003.0
+
+[p7462] 1793.1
+
+[p7463] 2.008
+
+[p7464] 07-10 c15 f0.05
+
+[p7465] M11
+
+[p7466] Fractal Error-Function (Hu 2024)
+
+[p7467] yes
+
+[p7468] 1650
+
+[p7469] 3
+
+[p7470] 0.114351
+
+[p7471] 0.999343
+
+[p7472] 0.999342
+
+[p7473] 0.008330
+
+[p7474] 6.9430e-05
+
+[p7475] -15796.1
+
+[p7476] 0
+
+[p7477] 1.180
+
+[p7478] 07-10 c15 f0.05
+
+[p7479] M12
+
+[p7480] Gompertz (Chu 2020)
+
+[p7481] yes
+
+[p7482] 1650
+
+[p7483] 2
+
+[p7484] 6.01416
+
+[p7485] 0.965433
+
+[p7486] 0.965412
+
+[p7487] 0.06041
+
+[p7488] 0.003649
+
+[p7489] -9259.78
+
+[p7490] 6536.3
+
+[p7491] 4.255
+
+[p7492] 07-10 c15 f0.05
+
+[p7493] M13
+
+[p7494] Log-Gompertz (Chu 2020)
+
+[p7495] yes
+
+[p7496] 1650
+
+[p7497] 2
+
+[p7498] 0.533806
+
+[p7499] 0.996932
+
+[p7500] 0.996930
+
+[p7501] 0.01800
+
+[p7502] 3.2391e-04
+
+[p7503] -13255.8
+
+[p7504] 2540.2
+
+[p7505] 2.036
+
+[p7506] 07-10 c15 f0.05
+
+[p7507] M14
+
+[p7508] Weibull (Chu 2021)
+
+[p7509] yes
+
+[p7510] 1650
+
+[p7511] 2
+
+[p7512] 6.88637
+
+[p7513] 0.960420
+
+[p7514] 0.960396
+
+[p7515] 0.06464
+
+[p7516] 0.004179
+
+[p7517] -9036.32
+
+[p7518] 6759.7
+
+[p7519] 5.494
+
+[p7520] 07-10 c15 f0.05
+
+[p7521] M15
+
+[p7522] Avrami (Singh)
+
+[p7523] yes
+
+[p7524] 1650
+
+[p7525] 2
+
+[p7526] 6.88746
+
+[p7527] 0.960413
+
+[p7528] 0.960389
+
+[p7529] 0.06465
+
+[p7530] 0.004179
+
+[p7531] -9036.06
+
+[p7532] 6760.0
+
+[p7533] 5.540
+
+[p7534] 07-10 c15 f0.05
+
+[p7535] M16
+
+[p7536] Klinkenberg
+
+[p7537] yes
+
+[p7538] 1650
+
+[p7539] 2
+
+[p7540] 59.7142
+
+[p7541] 0.656785
+
+[p7542] 0.656577
+
+[p7543] 0.1904
+
+[p7544] 0.03623
+
+[p7545] -5472.28
+
+[p7546] 10324
+
+[p7547] 14.60
+
+[p7548] 07-10 c15 f0.05
+
+[p7549] M17
+
+[p7550] Dima (wave erf)
+
+[p7551] yes
+
+[p7552] 1650
+
+[p7553] 2
+
+[p7554] 10.9530
+
+[p7555] 0.937046
+
+[p7556] 0.937008
+
+[p7557] 0.08152
+
+[p7558] 0.006646
+
+[p7559] -8270.61
+
+[p7560] 7525.4
+
+[p7561] 4.977
+
+[p7562] 07-10 c15 f0.05
+
+[p7563] M18
+
+[p7564] Chern-Chien Langmuir
+
+[p7565] yes
+
+[p7566] 2
+
+[p7567] 4
+
+[p7568] 0.252248
+
+[p7569] -1.577277e+05
+
+[p7570] -1.577277e+05
+
+[p7571] 0.5022
+
+[p7572] 0.2522
+
+[p7573] n/a
+
+[p7574] n/a
+
+[p7575] 0.5605
+
+[p7576] 07-10 c15 f0.05
+
+[p7577] M19
+
+[p7578] Chern-Chien Freundlich
+
+[p7579] yes
+
+[p7580] 2
+
+[p7581] 4
+
+[p7582] 0.252248
+
+[p7583] -1.577277e+05
+
+[p7584] -1.577277e+05
+
+[p7585] 0.5022
+
+[p7586] 0.2522
+
+[p7587] n/a
+
+[p7588] n/a
+
+[p7589] 0.5605
+
+[p7590] 07-10 c15 f0.05
+
+[p7591] M20
+
+[p7592] Log-modified Bohart-Adams
+
+[p7593] yes
+
+[p7594] 1650
+
+[p7595] 2
+
+[p7596] 2.40952
+
+[p7597] 0.986151
+
+[p7598] 0.986143
+
+[p7599] 0.03824
+
+[p7600] 0.001462
+
+[p7601] -10769.0
+
+[p7602] 5027.0
+
+[p7603] 3.974
+
+[p7604] 07-10 c15 f0.05
+
+[p7605] M21
+
+[p7606] Log-modified Yoon-Nelson
+
+[p7607] yes
+
+[p7608] 1650
+
+[p7609] 2
+
+[p7610] 2.40952
+
+[p7611] 0.986151
+
+[p7612] 0.986143
+
+[p7613] 0.03824
+
+[p7614] 0.001462
+
+[p7615] -10769.0
+
+[p7616] 5027.0
+
+[p7617] 3.974
+
+[p7618] 07-10 c15 f0.05
+
+[p7619] M22
+
+[p7620] n-Order Bohart-Adams
+
+[p7621] yes
+
+[p7622] 1650
+
+[p7623] 3
+
+[p7624] 334.342
+
+[p7625] -0.921670
+
+[p7626] -0.924004
+
+[p7627] 0.4504
+
+[p7628] 0.2030
+
+[p7629] -2627.99
+
+[p7630] 13168
+
+[p7631] 30.49
+
+[p7632] 07-10 c15 f0.05
+
+[p7633] M23
+
+[p7634] Fractal Yoon-Nelson (Hu 2024)
+
+[p7635] yes
+
+[p7636] 1650
+
+[p7637] 3
+
+[p7638] 2.68907
+
+[p7639] 0.984544
+
+[p7640] 0.984525
+
+[p7641] 0.04039
+
+[p7642] 0.001633
+
+[p7643] -10585.9
+
+[p7644] 5210.2
+
+[p7645] 4.099
+
+[p7646] 07-10 c15 f0.05
+
+[p7647] M24
+
+[p7648] Parallel two-component sigmoidal (Blagojev)
+
+[p7649] yes
+
+[p7650] 1650
+
+[p7651] 5
+
+[p7652] 0.271280
+
+[p7653] 0.998441
+
+[p7654] 0.998437
+
+[p7655] 0.01283
+
+[p7656] 1.6491e-04
+
+[p7657] -14366.6
+
+[p7658] 1429.4
+
+[p7659] 1.690
+
+[p7660] 07-10 c15 f0.10
+
+[p7661] M01
+
+[p7662] Yoon-Nelson / Thomas / BA (logistic)
+
+[p7663] yes
+
+[p7664] 1147
+
+[p7665] 2
+
+[p7666] 4.25008
+
+[p7667] 0.944457
+
+[p7668] 0.944409
+
+[p7669] 0.06093
+
+[p7670] 0.003712
+
+[p7671] -6416.86
+
+[p7672] 5130.1
+
+[p7673] 0.2189
+
+[p7674] 07-10 c15 f0.10
+
+[p7675] M02
+
+[p7676] Clark
+
+[p7677] yes
+
+[p7678] 1147
+
+[p7679] 3
+
+[p7680] 2.60076
+
+[p7681] 0.966012
+
+[p7682] 0.965952
+
+[p7683] 0.04766
+
+[p7684] 0.002273
+
+[p7685] -6978.18
+
+[p7686] 4568.8
+
+[p7687] 0.1734
+
+[p7688] 07-10 c15 f0.10
+
+[p7689] M03
+
+[p7690] Fractal Clark
+
+[p7691] yes
+
+[p7692] 1147
+
+[p7693] 4
+
+[p7694] 0.0759748
+
+[p7695] 0.999007
+
+[p7696] 0.999005
+
+[p7697] 0.008146
+
+[p7698] 6.6470e-05
+
+[p7699] -11028.7
+
+[p7700] 518.30
+
+[p7701] 0.03702
+
+[p7702] 07-10 c15 f0.10
+
+[p7703] M04
+
+[p7704] Modified Dose-Response (Yan)
+
+[p7705] yes
+
+[p7706] 1147
+
+[p7707] 2
+
+[p7708] 0.380031
+
+[p7709] 0.995034
+
+[p7710] 0.995029
+
+[p7711] 0.01822
+
+[p7712] 3.3190e-04
+
+[p7713] -9186.22
+
+[p7714] 2360.8
+
+[p7715] 0.09938
+
+[p7716] 07-10 c15 f0.10
+
+[p7717] M05
+
+[p7718] Wolborska (linearised, early)
+
+[p7719] yes
+
+[p7720] 21
+
+[p7721] 2
+
+[p7722] 0.00165445
+
+[p7723] 0.954249
+
+[p7724] 0.951841
+
+[p7725] 0.009331
+
+[p7726] 8.7076e-05
+
+[p7727] -193.758
+
+[p7728] 11353
+
+[p7729] 0.2859
+
+[p7730] 07-10 c15 f0.10
+
+[p7731] M06
+
+[p7732] Gudermannian (Hu 2021)
+
+[p7733] yes
+
+[p7734] 1147
+
+[p7735] 2
+
+[p7736] 4.01991
+
+[p7737] 0.947465
+
+[p7738] 0.947419
+
+[p7739] 0.05925
+
+[p7740] 0.003511
+
+[p7741] -6480.72
+
+[p7742] 5066.3
+
+[p7743] 0.2201
+
+[p7744] 07-10 c15 f0.10
+
+[p7745] M07
+
+[p7746] Error-Function (Hu 2021)
+
+[p7747] yes
+
+[p7748] 1147
+
+[p7749] 2
+
+[p7750] 4.61425
+
+[p7751] 0.939698
+
+[p7752] 0.939645
+
+[p7753] 0.06348
+
+[p7754] 0.004030
+
+[p7755] -6322.56
+
+[p7756] 5224.4
+
+[p7757] 0.2172
+
+[p7758] 07-10 c15 f0.10
+
+[p7759] M08
+
+[p7760] Tanh (Hu 2019)
+
+[p7761] yes
+
+[p7762] 1147
+
+[p7763] 2
+
+[p7764] 4.25008
+
+[p7765] 0.944457
+
+[p7766] 0.944409
+
+[p7767] 0.06093
+
+[p7768] 0.003712
+
+[p7769] -6416.86
+
+[p7770] 5130.1
+
+[p7771] 0.2189
+
+[p7772] 07-10 c15 f0.10
+
+[p7773] M09
+
+[p7774] Log-Normal (Chu-Hashim)
+
+[p7775] yes
+
+[p7776] 1147
+
+[p7777] 2
+
+[p7778] 0.497044
+
+[p7779] 0.993504
+
+[p7780] 0.993499
+
+[p7781] 0.02084
+
+[p7782] 4.3410e-04
+
+[p7783] -8878.34
+
+[p7784] 2668.7
+
+[p7785] 0.1053
+
+[p7786] 07-10 c15 f0.10
+
+[p7787] M10
+
+[p7788] Fractal Gudermannian (Hu 2024)
+
+[p7789] yes
+
+[p7790] 1147
+
+[p7791] 3
+
+[p7792] 0.159471
+
+[p7793] 0.997916
+
+[p7794] 0.997912
+
+[p7795] 0.01180
+
+[p7796] 1.3940e-04
+
+[p7797] -10180.3
+
+[p7798] 1366.7
+
+[p7799] 0.06217
+
+[p7800] 07-10 c15 f0.10
+
+[p7801] M11
+
+[p7802] Fractal Error-Function (Hu 2024)
+
+[p7803] yes
+
+[p7804] 1147
+
+[p7805] 3
+
+[p7806] 0.0484381
+
+[p7807] 0.999367
+
+[p7808] 0.999366
+
+[p7809] 0.006504
+
+[p7810] 4.2341e-05
+
+[p7811] -11547.0
+
+[p7812] 0
+
+[p7813] 0.02878
+
+[p7814] 07-10 c15 f0.10
+
+[p7815] M12
+
+[p7816] Gompertz (Chu 2020)
+
+[p7817] yes
+
+[p7818] 1147
+
+[p7819] 2
+
+[p7820] 2.58240
+
+[p7821] 0.966251
+
+[p7822] 0.966222
+
+[p7823] 0.04749
+
+[p7824] 0.002255
+
+[p7825] -6988.31
+
+[p7826] 4558.7
+
+[p7827] 0.1728
+
+[p7828] 07-10 c15 f0.10
+
+[p7829] M13
+
+[p7830] Log-Gompertz (Chu 2020)
+
+[p7831] yes
+
+[p7832] 1147
+
+[p7833] 2
+
+[p7834] 0.0907773
+
+[p7835] 0.998814
+
+[p7836] 0.998813
+
+[p7837] 0.008904
+
+[p7838] 7.9282e-05
+
+[p7839] -10828.5
+
+[p7840] 718.45
+
+[p7841] 0.02622
+
+[p7842] 07-10 c15 f0.10
+
+[p7843] M14
+
+[p7844] Weibull (Chu 2021)
+
+[p7845] yes
+
+[p7846] 1147
+
+[p7847] 2
+
+[p7848] 1.78122
+
+[p7849] 0.976722
+
+[p7850] 0.976702
+
+[p7851] 0.03944
+
+[p7852] 0.001556
+
+[p7853] -7414.33
+
+[p7854] 4132.7
+
+[p7855] 0.1809
+
+[p7856] 07-10 c15 f0.10
+
+[p7857] M15
+
+[p7858] Avrami (Singh)
+
+[p7859] yes
+
+[p7860] 1147
+
+[p7861] 2
+
+[p7862] 1.78122
+
+[p7863] 0.976722
+
+[p7864] 0.976702
+
+[p7865] 0.03944
+
+[p7866] 0.001556
+
+[p7867] -7414.33
+
+[p7868] 4132.7
+
+[p7869] 0.1809
+
+[p7870] 07-10 c15 f0.10
+
+[p7871] M16
+
+[p7872] Klinkenberg
+
+[p7873] yes
+
+[p7874] 1147
+
+[p7875] 2
+
+[p7876] 16.0743
+
+[p7877] 0.789930
+
+[p7878] 0.789747
+
+[p7879] 0.1185
+
+[p7880] 0.01404
+
+[p7881] -4891.02
+
+[p7882] 6656.0
+
+[p7883] 0.4579
+
+[p7884] 07-10 c15 f0.10
+
+[p7885] M17
+
+[p7886] Dima (wave erf)
+
+[p7887] yes
+
+[p7888] 1147
+
+[p7889] 2
+
+[p7890] 4.61425
+
+[p7891] 0.939698
+
+[p7892] 0.939645
+
+[p7893] 0.06348
+
+[p7894] 0.004030
+
+[p7895] -6322.56
+
+[p7896] 5224.4
+
+[p7897] 0.2172
+
+[p7898] 07-10 c15 f0.10
+
+[p7899] M18
+
+[p7900] Chern-Chien Langmuir
+
+[p7901] yes
+
+[p7902] 1
+
+[p7903] 4
+
+[p7904] 0.240353
+
+[p7905] n/a
+
+[p7906] n/a
+
+[p7907] 0.4903
+
+[p7908] 0.2404
+
+[p7909] n/a
+
+[p7910] n/a
+
+[p7911] 0.9779
+
+[p7912] 07-10 c15 f0.10
+
+[p7913] M19
+
+[p7914] Chern-Chien Freundlich
+
+[p7915] yes
+
+[p7916] 1
+
+[p7917] 4
+
+[p7918] 0.240353
+
+[p7919] n/a
+
+[p7920] n/a
+
+[p7921] 0.4903
+
+[p7922] 0.2404
+
+[p7923] n/a
+
+[p7924] n/a
+
+[p7925] 0.9779
+
+[p7926] 07-10 c15 f0.10
+
+[p7927] M20
+
+[p7928] Log-modified Bohart-Adams
+
+[p7929] yes
+
+[p7930] 1147
+
+[p7931] 2
+
+[p7932] 0.380031
+
+[p7933] 0.995034
+
+[p7934] 0.995029
+
+[p7935] 0.01822
+
+[p7936] 3.3190e-04
+
+[p7937] -9186.22
+
+[p7938] 2360.8
+
+[p7939] 0.09938
+
+[p7940] 07-10 c15 f0.10
+
+[p7941] M21
+
+[p7942] Log-modified Yoon-Nelson
+
+[p7943] yes
+
+[p7944] 1147
+
+[p7945] 2
+
+[p7946] 0.380031
+
+[p7947] 0.995034
+
+[p7948] 0.995029
+
+[p7949] 0.01822
+
+[p7950] 3.3190e-04
+
+[p7951] -9186.22
+
+[p7952] 2360.8
+
+[p7953] 0.09938
+
+[p7954] 07-10 c15 f0.10
+
+[p7955] M22
+
+[p7956] n-Order Bohart-Adams
+
+[p7957] yes
+
+[p7958] 1147
+
+[p7959] 3
+
+[p7960] 110.754
+
+[p7961] -0.447410
+
+[p7962] -0.449940
+
+[p7963] 0.3110
+
+[p7964] 0.09681
+
+[p7965] -2675.20
+
+[p7966] 8871.8
+
+[p7967] 1.188
+
+[p7968] 07-10 c15 f0.10
+
+[p7969] M23
+
+[p7970] Fractal Yoon-Nelson (Hu 2024)
+
+[p7971] yes
+
+[p7972] 1147
+
+[p7973] 3
+
+[p7974] 0.469803
+
+[p7975] 0.993860
+
+[p7976] 0.993850
+
+[p7977] 0.02026
+
+[p7978] 4.1067e-04
+
+[p7979] -8940.98
+
+[p7980] 2606.0
+
+[p7981] 0.1083
+
+[p7982] 07-10 c15 f0.10
+
+[p7983] M24
+
+[p7984] Parallel two-component sigmoidal (Blagojev)
+
+[p7985] yes
+
+[p7986] 1147
+
+[p7987] 5
+
+[p7988] 0.0580873
+
+[p7989] 0.999241
+
+[p7990] 0.999238
+
+[p7991] 0.007123
+
+[p7992] 5.0865e-05
+
+[p7993] -11334.6
+
+[p7994] 212.40
+
+[p7995] 0.03713
+
+[p7996] 07-15 c15 f0.15
+
+[p7997] M01
+
+[p7998] Yoon-Nelson / Thomas / BA (logistic)
+
+[p7999] yes
+
+[p8000] 1002
+
+[p8001] 2
+
+[p8002] 3.65739
+
+[p8003] 0.926579
+
+[p8004] 0.926506
+
+[p8005] 0.06048
+
+[p8006] 0.003657
+
+[p8007] -5620.22
+
+[p8008] 4605.4
+
+[p8009] 0.2104
+
+[p8010] 07-15 c15 f0.15
+
+[p8011] M02
+
+[p8012] Clark
+
+[p8013] yes
+
+[p8014] 1002
+
+[p8015] 3
+
+[p8016] 2.48448
+
+[p8017] 0.950125
+
+[p8018] 0.950025
+
+[p8019] 0.04984
+
+[p8020] 0.002487
+
+[p8021] -6005.67
+
+[p8022] 4219.9
+
+[p8023] 0.1736
+
+[p8024] 07-15 c15 f0.15
+
+[p8025] M03
+
+[p8026] Fractal Clark
+
+[p8027] yes
+
+[p8028] 1002
+
+[p8029] 4
+
+[p8030] 0.0622932
+
+[p8031] 0.998749
+
+[p8032] 0.998746
+
+[p8033] 0.007893
+
+[p8034] 6.2418e-05
+
+[p8035] -9696.99
+
+[p8036] 528.62
+
+[p8037] 0.04442
+
+[p8038] 07-15 c15 f0.15
+
+[p8039] M04
+
+[p8040] Modified Dose-Response (Yan)
+
+[p8041] yes
+
+[p8042] 1002
+
+[p8043] 2
+
+[p8044] 0.315062
+
+[p8045] 0.993675
+
+[p8046] 0.993669
+
+[p8047] 0.01775
+
+[p8048] 3.1506e-04
+
+[p8049] -8076.86
+
+[p8050] 2148.8
+
+[p8051] 0.09686
+
+[p8052] 07-15 c15 f0.15
+
+[p8053] M05
+
+[p8054] Wolborska (linearised, early)
+
+[p8055] yes
+
+[p8056] 12
+
+[p8057] 2
+
+[p8058] 0.00102131
+
+[p8059] 0.954041
+
+[p8060] 0.949445
+
+[p8061] 0.01011
+
+[p8062] 1.0213e-04
+
+[p8063] -107.126
+
+[p8064] 10118
+
+[p8065] 0.4181
+
+[p8066] 07-15 c15 f0.15
+
+[p8067] M06
+
+[p8068] Gudermannian (Hu 2021)
+
+[p8069] yes
+
+[p8070] 1002
+
+[p8071] 2
+
+[p8072] 3.44708
+
+[p8073] 0.930801
+
+[p8074] 0.930732
+
+[p8075] 0.05871
+
+[p8076] 0.003447
+
+[p8077] -5679.56
+
+[p8078] 4546.1
+
+[p8079] 0.2108
+
+[p8080] 07-15 c15 f0.15
+
+[p8081] M07
+
+[p8082] Error-Function (Hu 2021)
+
+[p8083] yes
+
+[p8084] 1002
+
+[p8085] 2
+
+[p8086] 3.97711
+
+[p8087] 0.920161
+
+[p8088] 0.920081
+
+[p8089] 0.06306
+
+[p8090] 0.003977
+
+[p8091] -5536.24
+
+[p8092] 4689.4
+
+[p8093] 0.2097
+
+[p8094] 07-15 c15 f0.15
+
+[p8095] M08
+
+[p8096] Tanh (Hu 2019)
+
+[p8097] yes
+
+[p8098] 1002
+
+[p8099] 2
+
+[p8100] 3.65739
+
+[p8101] 0.926579
+
+[p8102] 0.926506
+
+[p8103] 0.06048
+
+[p8104] 0.003657
+
+[p8105] -5620.22
+
+[p8106] 4605.4
+
+[p8107] 0.2104
+
+[p8108] 07-15 c15 f0.15
+
+[p8109] M09
+
+[p8110] Log-Normal (Chu-Hashim)
+
+[p8111] yes
+
+[p8112] 1002
+
+[p8113] 2
+
+[p8114] 0.450805
+
+[p8115] 0.990950
+
+[p8116] 0.990941
+
+[p8117] 0.02123
+
+[p8118] 4.5080e-04
+
+[p8119] -7717.88
+
+[p8120] 2507.7
+
+[p8121] 0.1069
+
+[p8122] 07-15 c15 f0.15
+
+[p8123] M10
+
+[p8124] Fractal Gudermannian (Hu 2024)
+
+[p8125] yes
+
+[p8126] 1002
+
+[p8127] 3
+
+[p8128] 0.108634
+
+[p8129] 0.997819
+
+[p8130] 0.997815
+
+[p8131] 0.01042
+
+[p8132] 1.0874e-04
+
+[p8133] -9141.76
+
+[p8134] 1083.9
+
+[p8135] 0.05732
+
+[p8136] 07-15 c15 f0.15
+
+[p8137] M11
+
+[p8138] Fractal Error-Function (Hu 2024)
+
+[p8139] yes
+
+[p8140] 1002
+
+[p8141] 3
+
+[p8142] 0.0368294
+
+[p8143] 0.999261
+
+[p8144] 0.999259
+
+[p8145] 0.006069
+
+[p8146] 3.6866e-05
+
+[p8147] -10225.6
+
+[p8148] 0
+
+[p8149] 0.02973
+
+[p8150] 07-15 c15 f0.15
+
+[p8151] M12
+
+[p8152] Gompertz (Chu 2020)
+
+[p8153] yes
+
+[p8154] 1002
+
+[p8155] 2
+
+[p8156] 2.47104
+
+[p8157] 0.950395
+
+[p8158] 0.950345
+
+[p8159] 0.04971
+
+[p8160] 0.002471
+
+[p8161] -6013.11
+
+[p8162] 4212.5
+
+[p8163] 0.1731
+
+[p8164] 07-15 c15 f0.15
+
+[p8165] M13
+
+[p8166] Log-Gompertz (Chu 2020)
+
+[p8167] yes
+
+[p8168] 1002
+
+[p8169] 2
+
+[p8170] 0.0522532
+
+[p8171] 0.998951
+
+[p8172] 0.998950
+
+[p8173] 0.007229
+
+[p8174] 5.2253e-05
+
+[p8175] -9877.12
+
+[p8176] 348.49
+
+[p8177] 0.03288
+
+[p8178] 07-15 c15 f0.15
+
+[p8179] M14
+
+[p8180] Weibull (Chu 2021)
+
+[p8181] yes
+
+[p8182] 1002
+
+[p8183] 2
+
+[p8184] 1.45481
+
+[p8185] 0.970795
+
+[p8186] 0.970766
+
+[p8187] 0.03814
+
+[p8188] 0.001455
+
+[p8189] -6543.93
+
+[p8190] 3681.7
+
+[p8191] 0.1719
+
+[p8192] 07-15 c15 f0.15
+
+[p8193] M15
+
+[p8194] Avrami (Singh)
+
+[p8195] yes
+
+[p8196] 1002
+
+[p8197] 2
+
+[p8198] 1.45481
+
+[p8199] 0.970795
+
+[p8200] 0.970766
+
+[p8201] 0.03814
+
+[p8202] 0.001455
+
+[p8203] -6543.93
+
+[p8204] 3681.7
+
+[p8205] 0.1719
+
+[p8206] 07-15 c15 f0.15
+
+[p8207] M16
+
+[p8208] Klinkenberg
+
+[p8209] yes
+
+[p8210] 1002
+
+[p8211] 2
+
+[p8212] 9.71893
+
+[p8213] 0.804895
+
+[p8214] 0.804700
+
+[p8215] 0.09858
+
+[p8216] 0.009719
+
+[p8217] -4640.94
+
+[p8218] 5584.7
+
+[p8219] 0.3647
+
+[p8220] 07-15 c15 f0.15
+
+[p8221] M17
+
+[p8222] Dima (wave erf)
+
+[p8223] yes
+
+[p8224] 1002
+
+[p8225] 2
+
+[p8226] 3.97711
+
+[p8227] 0.920161
+
+[p8228] 0.920081
+
+[p8229] 0.06306
+
+[p8230] 0.003977
+
+[p8231] -5536.24
+
+[p8232] 4689.4
+
+[p8233] 0.2097
+
+[p8234] 07-15 c15 f0.15
+
+[p8235] M18
+
+[p8236] Chern-Chien Langmuir
+
+[p8237] yes
+
+[p8238] 0
+
+[p8239] 4
+
+[p8240] n/a
+
+[p8241] n/a
+
+[p8242] n/a
+
+[p8243] n/a
+
+[p8244] n/a
+
+[p8245] n/a
+
+[p8246] n/a
+
+[p8247] n/a
+
+[p8248] 07-15 c15 f0.15
+
+[p8249] M19
+
+[p8250] Chern-Chien Freundlich
+
+[p8251] yes
+
+[p8252] 0
+
+[p8253] 4
+
+[p8254] n/a
+
+[p8255] n/a
+
+[p8256] n/a
+
+[p8257] n/a
+
+[p8258] n/a
+
+[p8259] n/a
+
+[p8260] n/a
+
+[p8261] n/a
+
+[p8262] 07-15 c15 f0.15
+
+[p8263] M20
+
+[p8264] Log-modified Bohart-Adams
+
+[p8265] yes
+
+[p8266] 1002
+
+[p8267] 2
+
+[p8268] 0.315062
+
+[p8269] 0.993675
+
+[p8270] 0.993669
+
+[p8271] 0.01775
+
+[p8272] 3.1506e-04
+
+[p8273] -8076.86
+
+[p8274] 2148.8
+
+[p8275] 0.09686
+
+[p8276] 07-15 c15 f0.15
+
+[p8277] M21
+
+[p8278] Log-modified Yoon-Nelson
+
+[p8279] yes
+
+[p8280] 1002
+
+[p8281] 2
+
+[p8282] 0.315062
+
+[p8283] 0.993675
+
+[p8284] 0.993669
+
+[p8285] 0.01775
+
+[p8286] 3.1506e-04
+
+[p8287] -8076.86
+
+[p8288] 2148.8
+
+[p8289] 0.09686
+
+[p8290] 07-15 c15 f0.15
+
+[p8291] M22
+
+[p8292] n-Order Bohart-Adams
+
+[p8293] yes
+
+[p8294] 1002
+
+[p8295] 3
+
+[p8296] 69.1089
+
+[p8297] -0.387339
+
+[p8298] -0.390116
+
+[p8299] 0.2629
+
+[p8300] 0.06918
+
+[p8301] -2673.39
+
+[p8302] 7552.2
+
+[p8303] 0.9560
+
+[p8304] 07-15 c15 f0.15
+
+[p8305] M23
+
+[p8306] Fractal Yoon-Nelson (Hu 2024)
+
+[p8307] yes
+
+[p8308] 1002
+
+[p8309] 3
+
+[p8310] 0.399415
+
+[p8311] 0.991982
+
+[p8312] 0.991966
+
+[p8313] 0.01999
+
+[p8314] 3.9982e-04
+
+[p8315] -7837.14
+
+[p8316] 2388.5
+
+[p8317] 0.1060
+
+[p8318] 07-15 c15 f0.15
+
+[p8319] M24
+
+[p8320] Parallel two-component sigmoidal (Blagojev)
+
+[p8321] yes
+
+[p8322] 1002
+
+[p8323] 5
+
+[p8324] 0.0484333
+
+[p8325] 0.999028
+
+[p8326] 0.999024
+
+[p8327] 0.006959
+
+[p8328] 4.8579e-05
+
+[p8329] -9947.14
+
+[p8330] 278.48
+
+[p8331] 0.03757
+
+[p8332] 07-17 c15 f0.10
+
+[p8333] M01
+
+[p8334] Yoon-Nelson / Thomas / BA (logistic)
+
+[p8335] yes
+
+[p8336] 778
+
+[p8337] 2
+
+[p8338] 2.62263
+
+[p8339] 0.961533
+
+[p8340] 0.961483
+
+[p8341] 0.05814
+
+[p8342] 0.003380
+
+[p8343] -4424.79
+
+[p8344] 2725.1
+
+[p8345] 0.2911
+
+[p8346] 07-17 c15 f0.10
+
+[p8347] M02
+
+[p8348] Clark
+
+[p8349] yes
+
+[p8350] 778
+
+[p8351] 3
+
+[p8352] 1.38414
+
+[p8353] 0.979698
+
+[p8354] 0.979646
+
+[p8355] 0.04223
+
+[p8356] 0.001786
+
+[p8357] -4919.99
+
+[p8358] 2229.9
+
+[p8359] 0.2253
+
+[p8360] 07-17 c15 f0.10
+
+[p8361] M03
+
+[p8362] Fractal Clark
+
+[p8363] yes
+
+[p8364] 778
+
+[p8365] 4
+
+[p8366] 0.131156
+
+[p8367] 0.998076
+
+[p8368] 0.998069
+
+[p8369] 0.01300
+
+[p8370] 1.6945e-04
+
+[p8371] -6751.29
+
+[p8372] 398.60
+
+[p8373] 0.07160
+
+[p8374] 07-17 c15 f0.10
+
+[p8375] M04
+
+[p8376] Modified Dose-Response (Yan)
+
+[p8377] yes
+
+[p8378] 778
+
+[p8379] 2
+
+[p8380] 0.336838
+
+[p8381] 0.995059
+
+[p8382] 0.995053
+
+[p8383] 0.02083
+
+[p8384] 4.3407e-04
+
+[p8385] -6021.50
+
+[p8386] 1128.4
+
+[p8387] 0.1523
+
+[p8388] 07-17 c15 f0.10
+
+[p8389] M05
+
+[p8390] Wolborska (linearised, early)
+
+[p8391] yes
+
+[p8392] 18
+
+[p8393] 2
+
+[p8394] 0.00146739
+
+[p8395] 0.954225
+
+[p8396] 0.951364
+
+[p8397] 0.009577
+
+[p8398] 9.1712e-05
+
+[p8399] -164.663
+
+[p8400] 6985.2
+
+[p8401] 0.3187
+
+[p8402] 07-17 c15 f0.10
+
+[p8403] M06
+
+[p8404] Gudermannian (Hu 2021)
+
+[p8405] yes
+
+[p8406] 778
+
+[p8407] 2
+
+[p8408] 2.51381
+
+[p8409] 0.963129
+
+[p8410] 0.963081
+
+[p8411] 0.05692
+
+[p8412] 0.003239
+
+[p8413] -4457.76
+
+[p8414] 2692.1
+
+[p8415] 0.2946
+
+[p8416] 07-17 c15 f0.10
+
+[p8417] M07
+
+[p8418] Error-Function (Hu 2021)
+
+[p8419] yes
+
+[p8420] 778
+
+[p8421] 2
+
+[p8422] 2.81188
+
+[p8423] 0.958757
+
+[p8424] 0.958704
+
+[p8425] 0.06020
+
+[p8426] 0.003624
+
+[p8427] -4370.58
+
+[p8428] 2779.3
+
+[p8429] 0.2867
+
+[p8430] 07-17 c15 f0.10
+
+[p8431] M08
+
+[p8432] Tanh (Hu 2019)
+
+[p8433] yes
+
+[p8434] 778
+
+[p8435] 2
+
+[p8436] 2.62263
+
+[p8437] 0.961533
+
+[p8438] 0.961483
+
+[p8439] 0.05814
+
+[p8440] 0.003380
+
+[p8441] -4424.79
+
+[p8442] 2725.1
+
+[p8443] 0.2911
+
+[p8444] 07-17 c15 f0.10
+
+[p8445] M09
+
+[p8446] Log-Normal (Chu-Hashim)
+
+[p8447] yes
+
+[p8448] 778
+
+[p8449] 2
+
+[p8450] 0.348427
+
+[p8451] 0.994889
+
+[p8452] 0.994883
+
+[p8453] 0.02119
+
+[p8454] 4.4900e-04
+
+[p8455] -5995.18
+
+[p8456] 1154.7
+
+[p8457] 0.1531
+
+[p8458] 07-17 c15 f0.10
+
+[p8459] M10
+
+[p8460] Fractal Gudermannian (Hu 2024)
+
+[p8461] yes
+
+[p8462] 778
+
+[p8463] 3
+
+[p8464] 0.245996
+
+[p8465] 0.996392
+
+[p8466] 0.996383
+
+[p8467] 0.01780
+
+[p8468] 3.1741e-04
+
+[p8469] -6264.00
+
+[p8470] 885.89
+
+[p8471] 0.1172
+
+[p8472] 07-17 c15 f0.10
+
+[p8473] M11
+
+[p8474] Fractal Error-Function (Hu 2024)
+
+[p8475] yes
+
+[p8476] 778
+
+[p8477] 3
+
+[p8478] 0.104331
+
+[p8479] 0.998470
+
+[p8480] 0.998466
+
+[p8481] 0.01160
+
+[p8482] 1.3462e-04
+
+[p8483] -6931.33
+
+[p8484] 218.56
+
+[p8485] 0.06774
+
+[p8486] 07-17 c15 f0.10
+
+[p8487] M12
+
+[p8488] Gompertz (Chu 2020)
+
+[p8489] yes
+
+[p8490] 778
+
+[p8491] 2
+
+[p8492] 1.37100
+
+[p8493] 0.979891
+
+[p8494] 0.979865
+
+[p8495] 0.04203
+
+[p8496] 0.001767
+
+[p8497] -4929.43
+
+[p8498] 2220.5
+
+[p8499] 0.2245
+
+[p8500] 07-17 c15 f0.10
+
+[p8501] M13
+
+[p8502] Log-Gompertz (Chu 2020)
+
+[p8503] yes
+
+[p8504] 778
+
+[p8505] 2
+
+[p8506] 0.177792
+
+[p8507] 0.997392
+
+[p8508] 0.997389
+
+[p8509] 0.01514
+
+[p8510] 2.2911e-04
+
+[p8511] -6518.64
+
+[p8512] 631.25
+
+[p8513] 0.04508
+
+[p8514] 07-17 c15 f0.10
+
+[p8515] M14
+
+[p8516] Weibull (Chu 2021)
+
+[p8517] yes
+
+[p8518] 778
+
+[p8519] 2
+
+[p8520] 1.23551
+
+[p8521] 0.981878
+
+[p8522] 0.981855
+
+[p8523] 0.03990
+
+[p8524] 0.001592
+
+[p8525] -5010.38
+
+[p8526] 2139.5
+
+[p8527] 0.2587
+
+[p8528] 07-17 c15 f0.10
+
+[p8529] M15
+
+[p8530] Avrami (Singh)
+
+[p8531] yes
+
+[p8532] 778
+
+[p8533] 2
+
+[p8534] 1.23551
+
+[p8535] 0.981878
+
+[p8536] 0.981855
+
+[p8537] 0.03990
+
+[p8538] 0.001592
+
+[p8539] -5010.38
+
+[p8540] 2139.5
+
+[p8541] 0.2588
+
+[p8542] 07-17 c15 f0.10
+
+[p8543] M16
+
+[p8544] Klinkenberg
+
+[p8545] yes
+
+[p8546] 778
+
+[p8547] 2
+
+[p8548] 16.5404
+
+[p8549] 0.757393
+
+[p8550] 0.757081
+
+[p8551] 0.1460
+
+[p8552] 0.02132
+
+[p8553] -2992.00
+
+[p8554] 4157.9
+
+[p8555] 0.7774
+
+[p8556] 07-17 c15 f0.10
+
+[p8557] M17
+
+[p8558] Dima (wave erf)
+
+[p8559] yes
+
+[p8560] 778
+
+[p8561] 2
+
+[p8562] 2.81188
+
+[p8563] 0.958757
+
+[p8564] 0.958704
+
+[p8565] 0.06020
+
+[p8566] 0.003624
+
+[p8567] -4370.58
+
+[p8568] 2779.3
+
+[p8569] 0.2867
+
+[p8570] 07-17 c15 f0.10
+
+[p8571] M18
+
+[p8572] Chern-Chien Langmuir
+
+[p8573] yes
+
+[p8574] 1
+
+[p8575] 4
+
+[p8576] 0.247904
+
+[p8577] n/a
+
+[p8578] n/a
+
+[p8579] 0.4979
+
+[p8580] 0.2479
+
+[p8581] n/a
+
+[p8582] n/a
+
+[p8583] 0.9919
+
+[p8584] 07-17 c15 f0.10
+
+[p8585] M19
+
+[p8586] Chern-Chien Freundlich
+
+[p8587] yes
+
+[p8588] 1
+
+[p8589] 4
+
+[p8590] 0.247904
+
+[p8591] n/a
+
+[p8592] n/a
+
+[p8593] 0.4979
+
+[p8594] 0.2479
+
+[p8595] n/a
+
+[p8596] n/a
+
+[p8597] 0.9919
+
+[p8598] 07-17 c15 f0.10
+
+[p8599] M20
+
+[p8600] Log-modified Bohart-Adams
+
+[p8601] yes
+
+[p8602] 778
+
+[p8603] 2
+
+[p8604] 0.336838
+
+[p8605] 0.995059
+
+[p8606] 0.995053
+
+[p8607] 0.02083
+
+[p8608] 4.3407e-04
+
+[p8609] -6021.50
+
+[p8610] 1128.4
+
+[p8611] 0.1523
+
+[p8612] 07-17 c15 f0.10
+
+[p8613] M21
+
+[p8614] Log-modified Yoon-Nelson
+
+[p8615] yes
+
+[p8616] 778
+
+[p8617] 2
+
+[p8618] 0.336838
+
+[p8619] 0.995059
+
+[p8620] 0.995053
+
+[p8621] 0.02083
+
+[p8622] 4.3407e-04
+
+[p8623] -6021.50
+
+[p8624] 1128.4
+
+[p8625] 0.1523
+
+[p8626] 07-17 c15 f0.10
+
+[p8627] M22
+
+[p8628] n-Order Bohart-Adams
+
+[p8629] yes
+
+[p8630] 778
+
+[p8631] 3
+
+[p8632] 99.0582
+
+[p8633] -0.452933
+
+[p8634] -0.456682
+
+[p8635] 0.3573
+
+[p8636] 0.1278
+
+[p8637] -1597.44
+
+[p8638] 5552.4
+
+[p8639] 1.831
+
+[p8640] 07-17 c15 f0.10
+
+[p8641] M23
+
+[p8642] Fractal Yoon-Nelson (Hu 2024)
+
+[p8643] yes
+
+[p8644] 778
+
+[p8645] 3
+
+[p8646] 0.381902
+
+[p8647] 0.994398
+
+[p8648] 0.994384
+
+[p8649] 0.02218
+
+[p8650] 4.9278e-04
+
+[p8651] -5921.80
+
+[p8652] 1228.1
+
+[p8653] 0.1626
+
+[p8654] 07-17 c15 f0.10
+
+[p8655] M24
+
+[p8656] Parallel two-component sigmoidal (Blagojev)
+
+[p8657] yes
+
+[p8658] 778
+
+[p8659] 5
+
+[p8660] 0.0783702
+
+[p8661] 0.998851
+
+[p8662] 0.998845
+
+[p8663] 0.01005
+
+[p8664] 1.0138e-04
+
+[p8665] -7149.89
+
+[p8666] 0
+
+[p8667] 0.06322
+
+[p8668] 07-22 c10 f0.05*
+
+[p8669] M01
+
+[p8670] Yoon-Nelson / Thomas / BA (logistic)
+
+[p8671] yes
+
+[p8672] 1364
+
+[p8673] 2
+
+[p8674] 6.51538
+
+[p8675] 0.963614
+
+[p8676] 0.963588
+
+[p8677] 0.06916
+
+[p8678] 0.004784
+
+[p8679] -7285.22
+
+[p8680] 5034.1
+
+[p8681] 0.8577
+
+[p8682] 07-22 c10 f0.05*
+
+[p8683] M02
+
+[p8684] Clark
+
+[p8685] yes
+
+[p8686] 1364
+
+[p8687] 3
+
+[p8688] 3.17898
+
+[p8689] 0.982247
+
+[p8690] 0.982221
+
+[p8691] 0.04831
+
+[p8692] 0.002336
+
+[p8693] -8262.03
+
+[p8694] 4057.3
+
+[p8695] 0.6842
+
+[p8696] 07-22 c10 f0.05*
+
+[p8697] M03
+
+[p8698] Fractal Clark
+
+[p8699] yes
+
+[p8700] 1364
+
+[p8701] 4
+
+[p8702] 0.376305
+
+[p8703] 0.997898
+
+[p8704] 0.997894
+
+[p8705] 0.01662
+
+[p8706] 2.7669e-04
+
+[p8707] -11170.7
+
+[p8708] 1148.7
+
+[p8709] 0.3503
+
+[p8710] 07-22 c10 f0.05*
+
+[p8711] M04
+
+[p8712] Modified Dose-Response (Yan)
+
+[p8713] yes
+
+[p8714] 1364
+
+[p8715] 2
+
+[p8716] 1.45026
+
+[p8717] 0.991901
+
+[p8718] 0.991895
+
+[p8719] 0.03263
+
+[p8720] 0.001065
+
+[p8721] -9334.53
+
+[p8722] 2984.8
+
+[p8723] 0.6227
+
+[p8724] 07-22 c10 f0.05*
+
+[p8725] M05
+
+[p8726] Wolborska (linearised, early)
+
+[p8727] yes
+
+[p8728] 44
+
+[p8729] 2
+
+[p8730] 0.00347585
+
+[p8731] 0.963119
+
+[p8732] 0.962241
+
+[p8733] 0.009097
+
+[p8734] 8.2758e-05
+
+[p8735] -411.336
+
+[p8736] 11908
+
+[p8737] 0.3116
+
+[p8738] 07-22 c10 f0.05*
+
+[p8739] M06
+
+[p8740] Gudermannian (Hu 2021)
+
+[p8741] yes
+
+[p8742] 1364
+
+[p8743] 2
+
+[p8744] 6.39570
+
+[p8745] 0.964283
+
+[p8746] 0.964257
+
+[p8747] 0.06853
+
+[p8748] 0.004696
+
+[p8749] -7310.51
+
+[p8750] 5008.8
+
+[p8751] 0.8711
+
+[p8752] 07-22 c10 f0.05*
+
+[p8753] M07
+
+[p8754] Error-Function (Hu 2021)
+
+[p8755] yes
+
+[p8756] 1364
+
+[p8757] 2
+
+[p8758] 6.79228
+
+[p8759] 0.962068
+
+[p8760] 0.962040
+
+[p8761] 0.07062
+
+[p8762] 0.004987
+
+[p8763] -7228.45
+
+[p8764] 5090.9
+
+[p8765] 0.8417
+
+[p8766] 07-22 c10 f0.05*
+
+[p8767] M08
+
+[p8768] Tanh (Hu 2019)
+
+[p8769] yes
+
+[p8770] 1364
+
+[p8771] 2
+
+[p8772] 6.51538
+
+[p8773] 0.963614
+
+[p8774] 0.963588
+
+[p8775] 0.06916
+
+[p8776] 0.004784
+
+[p8777] -7285.22
+
+[p8778] 5034.1
+
+[p8779] 0.8577
+
+[p8780] 07-22 c10 f0.05*
+
+[p8781] M09
+
+[p8782] Log-Normal (Chu-Hashim)
+
+[p8783] yes
+
+[p8784] 1364
+
+[p8785] 2
+
+[p8786] 1.55343
+
+[p8787] 0.991325
+
+[p8788] 0.991318
+
+[p8789] 0.03377
+
+[p8790] 0.001141
+
+[p8791] -9240.79
+
+[p8792] 3078.6
+
+[p8793] 0.6169
+
+[p8794] 07-22 c10 f0.05*
+
+[p8795] M10
+
+[p8796] Fractal Gudermannian (Hu 2024)
+
+[p8797] yes
+
+[p8798] 1364
+
+[p8799] 3
+
+[p8800] 0.655634
+
+[p8801] 0.996339
+
+[p8802] 0.996333
+
+[p8803] 0.02194
+
+[p8804] 4.8173e-04
+
+[p8805] -10415.4
+
+[p8806] 1904.0
+
+[p8807] 0.4060
+
+[p8808] 07-22 c10 f0.05*
+
+[p8809] M11
+
+[p8810] Fractal Error-Function (Hu 2024)
+
+[p8811] yes
+
+[p8812] 1364
+
+[p8813] 3
+
+[p8814] 0.288909
+
+[p8815] 0.998387
+
+[p8816] 0.998384
+
+[p8817] 0.01456
+
+[p8818] 2.1228e-04
+
+[p8819] -11533.2
+
+[p8820] 786.17
+
+[p8821] 0.2783
+
+[p8822] 07-22 c10 f0.05*
+
+[p8823] M12
+
+[p8824] Gompertz (Chu 2020)
+
+[p8825] yes
+
+[p8826] 1364
+
+[p8827] 2
+
+[p8828] 3.14551
+
+[p8829] 0.982434
+
+[p8830] 0.982421
+
+[p8831] 0.04806
+
+[p8832] 0.002309
+
+[p8833] -8278.47
+
+[p8834] 4040.9
+
+[p8835] 0.6816
+
+[p8836] 07-22 c10 f0.05*
+
+[p8837] M13
+
+[p8838] Log-Gompertz (Chu 2020)
+
+[p8839] yes
+
+[p8840] 1364
+
+[p8841] 2
+
+[p8842] 0.270793
+
+[p8843] 0.998488
+
+[p8844] 0.998487
+
+[p8845] 0.01410
+
+[p8846] 1.9882e-04
+
+[p8847] -11623.5
+
+[p8848] 695.83
+
+[p8849] 0.2866
+
+[p8850] 07-22 c10 f0.05*
+
+[p8851] M14
+
+[p8852] Weibull (Chu 2021)
+
+[p8853] yes
+
+[p8854] 1364
+
+[p8855] 2
+
+[p8856] 4.35607
+
+[p8857] 0.975673
+
+[p8858] 0.975655
+
+[p8859] 0.05655
+
+[p8860] 0.003198
+
+[p8861] -7834.36
+
+[p8862] 4485.0
+
+[p8863] 0.8786
+
+[p8864] 07-22 c10 f0.05*
+
+[p8865] M15
+
+[p8866] Avrami (Singh)
+
+[p8867] yes
+
+[p8868] 1364
+
+[p8869] 2
+
+[p8870] 4.38133
+
+[p8871] 0.975532
+
+[p8872] 0.975514
+
+[p8873] 0.05672
+
+[p8874] 0.003217
+
+[p8875] -7826.48
+
+[p8876] 4492.9
+
+[p8877] 0.9167
+
+[p8878] 07-22 c10 f0.05*
+
+[p8879] M16
+
+[p8880] Klinkenberg
+
+[p8881] yes
+
+[p8882] 1364
+
+[p8883] 2
+
+[p8884] 68.3333
+
+[p8885] 0.618387
+
+[p8886] 0.618107
+
+[p8887] 0.2240
+
+[p8888] 0.05017
+
+[p8889] -4079.51
+
+[p8890] 8239.8
+
+[p8891] 2.770
+
+[p8892] 07-22 c10 f0.05*
+
+[p8893] M17
+
+[p8894] Dima (wave erf)
+
+[p8895] yes
+
+[p8896] 1364
+
+[p8897] 2
+
+[p8898] 6.79228
+
+[p8899] 0.962068
+
+[p8900] 0.962040
+
+[p8901] 0.07062
+
+[p8902] 0.004987
+
+[p8903] -7228.45
+
+[p8904] 5090.9
+
+[p8905] 0.8417
+
+[p8906] 07-22 c10 f0.05*
+
+[p8907] M18
+
+[p8908] Chern-Chien Langmuir
+
+[p8909] yes
+
+[p8910] 2
+
+[p8911] 4
+
+[p8912] 0.489172
+
+[p8913] -48903.5
+
+[p8914] -48903.5
+
+[p8915] 0.6994
+
+[p8916] 0.4892
+
+[p8917] n/a
+
+[p8918] n/a
+
+[p8919] 0.9876
+
+[p8920] 07-22 c10 f0.05*
+
+[p8921] M19
+
+[p8922] Chern-Chien Freundlich
+
+[p8923] yes
+
+[p8924] 2
+
+[p8925] 4
+
+[p8926] 0.489172
+
+[p8927] -48903.5
+
+[p8928] -48903.5
+
+[p8929] 0.6994
+
+[p8930] 0.4892
+
+[p8931] n/a
+
+[p8932] n/a
+
+[p8933] 0.9876
+
+[p8934] 07-22 c10 f0.05*
+
+[p8935] M20
+
+[p8936] Log-modified Bohart-Adams
+
+[p8937] yes
+
+[p8938] 1364
+
+[p8939] 2
+
+[p8940] 1.45026
+
+[p8941] 0.991901
+
+[p8942] 0.991895
+
+[p8943] 0.03263
+
+[p8944] 0.001065
+
+[p8945] -9334.53
+
+[p8946] 2984.8
+
+[p8947] 0.6227
+
+[p8948] 07-22 c10 f0.05*
+
+[p8949] M21
+
+[p8950] Log-modified Yoon-Nelson
+
+[p8951] yes
+
+[p8952] 1364
+
+[p8953] 2
+
+[p8954] 1.45026
+
+[p8955] 0.991901
+
+[p8956] 0.991895
+
+[p8957] 0.03263
+
+[p8958] 0.001065
+
+[p8959] -9334.53
+
+[p8960] 2984.8
+
+[p8961] 0.6227
+
+[p8962] 07-22 c10 f0.05*
+
+[p8963] M22
+
+[p8964] n-Order Bohart-Adams
+
+[p8965] yes
+
+[p8966] 1364
+
+[p8967] 3
+
+[p8968] 359.473
+
+[p8969] -1.00750
+
+[p8970] -1.01045
+
+[p8971] 0.5137
+
+[p8972] 0.2641
+
+[p8973] -1812.93
+
+[p8974] 10506
+
+[p8975] 5.827
+
+[p8976] 07-22 c10 f0.05*
+
+[p8977] M23
+
+[p8978] Fractal Yoon-Nelson (Hu 2024)
+
+[p8979] yes
+
+[p8980] 1364
+
+[p8981] 3
+
+[p8982] 1.60755
+
+[p8983] 0.991023
+
+[p8984] 0.991009
+
+[p8985] 0.03436
+
+[p8986] 0.001181
+
+[p8987] -9192.07
+
+[p8988] 3127.3
+
+[p8989] 0.6430
+
+[p8990] 07-22 c10 f0.05*
+
+[p8991] M24
+
+[p8992] Parallel two-component sigmoidal (Blagojev)
+
+[p8993] yes
+
+[p8994] 1364
+
+[p8995] 5
+
+[p8996] 0.161869
+
+[p8997] 0.999096
+
+[p8998] 0.999093
+
+[p8999] 0.01090
+
+[p9000] 1.1911e-04
+
+[p9001] -12319.4
+
+[p9002] 0
+
+[p9003] 0.2350
+
+[p9004] 07-22 c10 f0.10*
+
+[p9005] M01
+
+[p9006] Yoon-Nelson / Thomas / BA (logistic)
+
+[p9007] yes
+
+[p9008] 325
+
+[p9009] 2
+
+[p9010] 1.28992
+
+[p9011] 0.937543
+
+[p9012] 0.937350
+
+[p9013] 0.06319
+
+[p9014] 0.003994
+
+[p9015] -1792.97
+
+[p9016] 1226.5
+
+[p9017] 0.2844
+
+[p9018] 07-22 c10 f0.10*
+
+[p9019] M02
+
+[p9020] Clark
+
+[p9021] yes
+
+[p9022] 325
+
+[p9023] 3
+
+[p9024] 0.830372
+
+[p9025] 0.959794
+
+[p9026] 0.959545
+
+[p9027] 0.05070
+
+[p9028] 0.002579
+
+[p9029] -1934.08
+
+[p9030] 1085.4
+
+[p9031] 0.2323
+
+[p9032] 07-22 c10 f0.10*
+
+[p9033] M03
+
+[p9034] Fractal Clark
+
+[p9035] yes
+
+[p9036] 325
+
+[p9037] 4
+
+[p9038] 0.0650102
+
+[p9039] 0.996852
+
+[p9040] 0.996823
+
+[p9041] 0.01419
+
+[p9042] 2.0252e-04
+
+[p9043] -2759.91
+
+[p9044] 259.59
+
+[p9045] 0.08268
+
+[p9046] 07-22 c10 f0.10*
+
+[p9047] M04
+
+[p9048] Modified Dose-Response (Yan)
+
+[p9049] yes
+
+[p9050] 325
+
+[p9051] 2
+
+[p9052] 0.128075
+
+[p9053] 0.993799
+
+[p9054] 0.993780
+
+[p9055] 0.01991
+
+[p9056] 3.9652e-04
+
+[p9057] -2543.63
+
+[p9058] 475.87
+
+[p9059] 0.1309
+
+[p9060] 07-22 c10 f0.10*
+
+[p9061] M05
+
+[p9062] Wolborska (linearised, early)
+
+[p9063] yes
+
+[p9064] 5
+
+[p9065] 2
+
+[p9066] 3.696714e-04
+
+[p9067] 0.961643
+
+[p9068] 0.948857
+
+[p9069] 0.01110
+
+[p9070] 1.2322e-04
+
+[p9071] -37.5617
+
+[p9072] 2981.9
+
+[p9073] 0.1780
+
+[p9074] 07-22 c10 f0.10*
+
+[p9075] M06
+
+[p9076] Gudermannian (Hu 2021)
+
+[p9077] yes
+
+[p9078] 325
+
+[p9079] 2
+
+[p9080] 1.21923
+
+[p9081] 0.940966
+
+[p9082] 0.940784
+
+[p9083] 0.06144
+
+[p9084] 0.003775
+
+[p9085] -1811.29
+
+[p9086] 1208.2
+
+[p9087] 0.2854
+
+[p9088] 07-22 c10 f0.10*
+
+[p9089] M07
+
+[p9090] Error-Function (Hu 2021)
+
+[p9091] yes
+
+[p9092] 325
+
+[p9093] 2
+
+[p9094] 1.40169
+
+[p9095] 0.932132
+
+[p9096] 0.931922
+
+[p9097] 0.06588
+
+[p9098] 0.004340
+
+[p9099] -1765.96
+
+[p9100] 1253.5
+
+[p9101] 0.2832
+
+[p9102] 07-22 c10 f0.10*
+
+[p9103] M08
+
+[p9104] Tanh (Hu 2019)
+
+[p9105] yes
+
+[p9106] 325
+
+[p9107] 2
+
+[p9108] 1.28992
+
+[p9109] 0.937543
+
+[p9110] 0.937350
+
+[p9111] 0.06319
+
+[p9112] 0.003994
+
+[p9113] -1792.97
+
+[p9114] 1226.5
+
+[p9115] 0.2844
+
+[p9116] 07-22 c10 f0.10*
+
+[p9117] M09
+
+[p9118] Log-Normal (Chu-Hashim)
+
+[p9119] yes
+
+[p9120] 325
+
+[p9121] 2
+
+[p9122] 0.114870
+
+[p9123] 0.994438
+
+[p9124] 0.994421
+
+[p9125] 0.01886
+
+[p9126] 3.5563e-04
+
+[p9127] -2578.99
+
+[p9128] 440.51
+
+[p9129] 0.1319
+
+[p9130] 07-22 c10 f0.10*
+
+[p9131] M10
+
+[p9132] Fractal Gudermannian (Hu 2024)
+
+[p9133] yes
+
+[p9134] 325
+
+[p9135] 3
+
+[p9136] 0.0933497
+
+[p9137] 0.995480
+
+[p9138] 0.995452
+
+[p9139] 0.01700
+
+[p9140] 2.8991e-04
+
+[p9141] -2644.37
+
+[p9142] 375.13
+
+[p9143] 0.1080
+
+[p9144] 07-22 c10 f0.10*
+
+[p9145] M11
+
+[p9146] Fractal Error-Function (Hu 2024)
+
+[p9147] yes
+
+[p9148] 325
+
+[p9149] 3
+
+[p9150] 0.0357372
+
+[p9151] 0.998270
+
+[p9152] 0.998259
+
+[p9153] 0.01052
+
+[p9154] 1.1098e-04
+
+[p9155] -2956.43
+
+[p9156] 63.073
+
+[p9157] 0.06741
+
+[p9158] 07-22 c10 f0.10*
+
+[p9159] M12
+
+[p9160] Gompertz (Chu 2020)
+
+[p9161] yes
+
+[p9162] 325
+
+[p9163] 2
+
+[p9164] 0.825112
+
+[p9165] 0.960049
+
+[p9166] 0.959925
+
+[p9167] 0.05054
+
+[p9168] 0.002555
+
+[p9169] -1938.18
+
+[p9170] 1081.3
+
+[p9171] 0.2316
+
+[p9172] 07-22 c10 f0.10*
+
+[p9173] M13
+
+[p9174] Log-Gompertz (Chu 2020)
+
+[p9175] yes
+
+[p9176] 325
+
+[p9177] 2
+
+[p9178] 0.102526
+
+[p9179] 0.995036
+
+[p9180] 0.995020
+
+[p9181] 0.01782
+
+[p9182] 3.1742e-04
+
+[p9183] -2615.94
+
+[p9184] 403.56
+
+[p9185] 0.05171
+
+[p9186] 07-22 c10 f0.10*
+
+[p9187] M14
+
+[p9188] Weibull (Chu 2021)
+
+[p9189] yes
+
+[p9190] 325
+
+[p9191] 2
+
+[p9192] 0.398441
+
+[p9193] 0.980708
+
+[p9194] 0.980648
+
+[p9195] 0.03512
+
+[p9196] 0.001234
+
+[p9197] -2174.77
+
+[p9198] 844.73
+
+[p9199] 0.2184
+
+[p9200] 07-22 c10 f0.10*
+
+[p9201] M15
+
+[p9202] Avrami (Singh)
+
+[p9203] yes
+
+[p9204] 325
+
+[p9205] 2
+
+[p9206] 0.398441
+
+[p9207] 0.980708
+
+[p9208] 0.980648
+
+[p9209] 0.03512
+
+[p9210] 0.001234
+
+[p9211] -2174.77
+
+[p9212] 844.73
+
+[p9213] 0.2184
+
+[p9214] 07-22 c10 f0.10*
+
+[p9215] M16
+
+[p9216] Klinkenberg
+
+[p9217] yes
+
+[p9218] 325
+
+[p9219] 2
+
+[p9220] 4.27178
+
+[p9221] 0.793165
+
+[p9222] 0.792525
+
+[p9223] 0.1150
+
+[p9224] 0.01323
+
+[p9225] -1403.80
+
+[p9226] 1615.7
+
+[p9227] 0.5169
+
+[p9228] 07-22 c10 f0.10*
+
+[p9229] M17
+
+[p9230] Dima (wave erf)
+
+[p9231] yes
+
+[p9232] 325
+
+[p9233] 2
+
+[p9234] 1.40169
+
+[p9235] 0.932132
+
+[p9236] 0.931922
+
+[p9237] 0.06588
+
+[p9238] 0.004340
+
+[p9239] -1765.96
+
+[p9240] 1253.5
+
+[p9241] 0.2832
+
+[p9242] 07-22 c10 f0.10*
+
+[p9243] M18
+
+[p9244] Chern-Chien Langmuir
+
+[p9245] yes
+
+[p9246] 0
+
+[p9247] 4
+
+[p9248] n/a
+
+[p9249] n/a
+
+[p9250] n/a
+
+[p9251] n/a
+
+[p9252] n/a
+
+[p9253] n/a
+
+[p9254] n/a
+
+[p9255] n/a
+
+[p9256] 07-22 c10 f0.10*
+
+[p9257] M19
+
+[p9258] Chern-Chien Freundlich
+
+[p9259] yes
+
+[p9260] 0
+
+[p9261] 4
+
+[p9262] n/a
+
+[p9263] n/a
+
+[p9264] n/a
+
+[p9265] n/a
+
+[p9266] n/a
+
+[p9267] n/a
+
+[p9268] n/a
+
+[p9269] n/a
+
+[p9270] 07-22 c10 f0.10*
+
+[p9271] M20
+
+[p9272] Log-modified Bohart-Adams
+
+[p9273] yes
+
+[p9274] 325
+
+[p9275] 2
+
+[p9276] 0.128075
+
+[p9277] 0.993799
+
+[p9278] 0.993780
+
+[p9279] 0.01991
+
+[p9280] 3.9652e-04
+
+[p9281] -2543.63
+
+[p9282] 475.87
+
+[p9283] 0.1309
+
+[p9284] 07-22 c10 f0.10*
+
+[p9285] M21
+
+[p9286] Log-modified Yoon-Nelson
+
+[p9287] yes
+
+[p9288] 325
+
+[p9289] 2
+
+[p9290] 0.128075
+
+[p9291] 0.993799
+
+[p9292] 0.993780
+
+[p9293] 0.01991
+
+[p9294] 3.9652e-04
+
+[p9295] -2543.63
+
+[p9296] 475.87
+
+[p9297] 0.1309
+
+[p9298] 07-22 c10 f0.10*
+
+[p9299] M22
+
+[p9300] n-Order Bohart-Adams
+
+[p9301] yes
+
+[p9302] 325
+
+[p9303] 3
+
+[p9304] 28.4194
+
+[p9305] -0.376036
+
+[p9306] -0.384583
+
+[p9307] 0.2966
+
+[p9308] 0.08826
+
+[p9309] -785.870
+
+[p9310] 2233.6
+
+[p9311] 1.375
+
+[p9312] 07-22 c10 f0.10*
+
+[p9313] M23
+
+[p9314] Fractal Yoon-Nelson (Hu 2024)
+
+[p9315] yes
+
+[p9316] 325
+
+[p9317] 3
+
+[p9318] 0.142825
+
+[p9319] 0.993085
+
+[p9320] 0.993042
+
+[p9321] 0.02103
+
+[p9322] 4.4356e-04
+
+[p9323] -2506.16
+
+[p9324] 513.34
+
+[p9325] 0.1413
+
+[p9326] 07-22 c10 f0.10*
+
+[p9327] M24
+
+[p9328] Parallel two-component sigmoidal (Blagojev)
+
+[p9329] yes
+
+[p9330] 325
+
+[p9331] 5
+
+[p9332] 0.0290630
+
+[p9333] 0.998593
+
+[p9334] 0.998575
+
+[p9335] 0.009486
+
+[p9336] 9.0822e-05
+
+[p9337] -3019.50
+
+[p9338] 0
+
+[p9339] 0.05343
+
+[p9340] 07-29 c5 f0.05†
+
+[p9341] M01
+
+[p9342] Yoon-Nelson / Thomas / BA (logistic)
+
+[p9343] yes
+
+[p9344] 603
+
+[p9345] 2
+
+[p9346] 4.97567
+
+[p9347] 0.929030
+
+[p9348] 0.928912
+
+[p9349] 0.09099
+
+[p9350] 0.008279
+
+[p9351] -2888.79
+
+[p9352] 2227.4
+
+[p9353] 7.361
+
+[p9354] 07-29 c5 f0.05†
+
+[p9355] M02
+
+[p9356] Clark
+
+[p9357] yes
+
+[p9358] 603
+
+[p9359] 3
+
+[p9360] 2.86526
+
+[p9361] 0.959132
+
+[p9362] 0.958996
+
+[p9363] 0.06905
+
+[p9364] 0.004775
+
+[p9365] -3219.56
+
+[p9366] 1896.6
+
+[p9367] 4.494
+
+[p9368] 07-29 c5 f0.05†
+
+[p9369] M03
+
+[p9370] Fractal Clark
+
+[p9371] yes
+
+[p9372] 603
+
+[p9373] 4
+
+[p9374] 0.335682
+
+[p9375] 0.995212
+
+[p9376] 0.995188
+
+[p9377] 0.02363
+
+[p9378] 5.6040e-04
+
+[p9379] -4510.52
+
+[p9380] 605.66
+
+[p9381] 0.8925
+
+[p9382] 07-29 c5 f0.05†
+
+[p9383] M04
+
+[p9384] Modified Dose-Response (Yan)
+
+[p9385] yes
+
+[p9386] 603
+
+[p9387] 2
+
+[p9388] 0.986423
+
+[p9389] 0.985930
+
+[p9390] 0.985907
+
+[p9391] 0.04051
+
+[p9392] 0.001641
+
+[p9393] -3864.58
+
+[p9394] 1251.6
+
+[p9395] 2.548
+
+[p9396] 07-29 c5 f0.05†
+
+[p9397] M05
+
+[p9398] Wolborska (linearised, early)
+
+[p9399] yes
+
+[p9400] 25
+
+[p9401] 2
+
+[p9402] 0.00177854
+
+[p9403] 0.962555
+
+[p9404] 0.960927
+
+[p9405] 0.008794
+
+[p9406] 7.7328e-05
+
+[p9407] -234.225
+
+[p9408] 4882.0
+
+[p9409] 0.3715
+
+[p9410] 07-29 c5 f0.05†
+
+[p9411] M06
+
+[p9412] Gudermannian (Hu 2021)
+
+[p9413] yes
+
+[p9414] 603
+
+[p9415] 2
+
+[p9416] 4.82650
+
+[p9417] 0.931158
+
+[p9418] 0.931043
+
+[p9419] 0.08961
+
+[p9420] 0.008031
+
+[p9421] -2907.14
+
+[p9422] 2209.0
+
+[p9423] 7.778
+
+[p9424] 07-29 c5 f0.05†
+
+[p9425] M07
+
+[p9426] Error-Function (Hu 2021)
+
+[p9427] yes
+
+[p9428] 603
+
+[p9429] 2
+
+[p9430] 5.24997
+
+[p9431] 0.925118
+
+[p9432] 0.924993
+
+[p9433] 0.09346
+
+[p9434] 0.008735
+
+[p9435] -2856.43
+
+[p9436] 2259.7
+
+[p9437] 6.761
+
+[p9438] 07-29 c5 f0.05†
+
+[p9439] M08
+
+[p9440] Tanh (Hu 2019)
+
+[p9441] yes
+
+[p9442] 603
+
+[p9443] 2
+
+[p9444] 4.97567
+
+[p9445] 0.929030
+
+[p9446] 0.928912
+
+[p9447] 0.09099
+
+[p9448] 0.008279
+
+[p9449] -2888.79
+
+[p9450] 2227.4
+
+[p9451] 7.361
+
+[p9452] 07-29 c5 f0.05†
+
+[p9453] M09
+
+[p9454] Log-Normal (Chu-Hashim)
+
+[p9455] yes
+
+[p9456] 603
+
+[p9457] 2
+
+[p9458] 1.05389
+
+[p9459] 0.984968
+
+[p9460] 0.984943
+
+[p9461] 0.04188
+
+[p9462] 0.001754
+
+[p9463] -3824.69
+
+[p9464] 1291.5
+
+[p9465] 2.192
+
+[p9466] 07-29 c5 f0.05†
+
+[p9467] M10
+
+[p9468] Fractal Gudermannian (Hu 2024)
+
+[p9469] yes
+
+[p9470] 603
+
+[p9471] 3
+
+[p9472] 0.245692
+
+[p9473] 0.996496
+
+[p9474] 0.996484
+
+[p9475] 0.02022
+
+[p9476] 4.0949e-04
+
+[p9477] -4700.73
+
+[p9478] 415.44
+
+[p9479] 0.7941
+
+[p9480] 07-29 c5 f0.05†
+
+[p9481] M11
+
+[p9482] Fractal Error-Function (Hu 2024)
+
+[p9483] yes
+
+[p9484] 603
+
+[p9485] 3
+
+[p9486] 0.127601
+
+[p9487] 0.998180
+
+[p9488] 0.998174
+
+[p9489] 0.01457
+
+[p9490] 2.1267e-04
+
+[p9491] -5095.80
+
+[p9492] 20.378
+
+[p9493] 0.4053
+
+[p9494] 07-29 c5 f0.05†
+
+[p9495] M12
+
+[p9496] Gompertz (Chu 2020)
+
+[p9497] yes
+
+[p9498] 603
+
+[p9499] 2
+
+[p9500] 2.84255
+
+[p9501] 0.959456
+
+[p9502] 0.959388
+
+[p9503] 0.06877
+
+[p9504] 0.004730
+
+[p9505] -3226.38
+
+[p9506] 1889.8
+
+[p9507] 4.452
+
+[p9508] 07-29 c5 f0.05†
+
+[p9509] M13
+
+[p9510] Log-Gompertz (Chu 2020)
+
+[p9511] yes
+
+[p9512] 603
+
+[p9513] 2
+
+[p9514] 0.237599
+
+[p9515] 0.996611
+
+[p9516] 0.996605
+
+[p9517] 0.01988
+
+[p9518] 3.9534e-04
+
+[p9519] -4722.95
+
+[p9520] 393.23
+
+[p9521] 0.6909
+
+[p9522] 07-29 c5 f0.05†
+
+[p9523] M14
+
+[p9524] Weibull (Chu 2021)
+
+[p9525] yes
+
+[p9526] 603
+
+[p9527] 2
+
+[p9528] 2.59779
+
+[p9529] 0.962947
+
+[p9530] 0.962885
+
+[p9531] 0.06575
+
+[p9532] 0.004322
+
+[p9533] -3280.68
+
+[p9534] 1835.5
+
+[p9535] 4.697
+
+[p9536] 07-29 c5 f0.05†
+
+[p9537] M15
+
+[p9538] Avrami (Singh)
+
+[p9539] yes
+
+[p9540] 603
+
+[p9541] 2
+
+[p9542] 2.59779
+
+[p9543] 0.962947
+
+[p9544] 0.962885
+
+[p9545] 0.06575
+
+[p9546] 0.004322
+
+[p9547] -3280.68
+
+[p9548] 1835.5
+
+[p9549] 4.698
+
+[p9550] 07-29 c5 f0.05†
+
+[p9551] M16
+
+[p9552] Klinkenberg
+
+[p9553] yes
+
+[p9554] 603
+
+[p9555] 2
+
+[p9556] 28.2501
+
+[p9557] 0.597059
+
+[p9558] 0.596389
+
+[p9559] 0.2168
+
+[p9560] 0.04701
+
+[p9561] -1841.66
+
+[p9562] 3274.5
+
+[p9563] 30.79
+
+[p9564] 07-29 c5 f0.05†
+
+[p9565] M17
+
+[p9566] Dima (wave erf)
+
+[p9567] yes
+
+[p9568] 603
+
+[p9569] 2
+
+[p9570] 5.24997
+
+[p9571] 0.925118
+
+[p9572] 0.924993
+
+[p9573] 0.09346
+
+[p9574] 0.008735
+
+[p9575] -2856.43
+
+[p9576] 2259.7
+
+[p9577] 6.761
+
+[p9578] 07-29 c5 f0.05†
+
+[p9579] M18
+
+[p9580] Chern-Chien Langmuir
+
+[p9581] yes
+
+[p9582] 1
+
+[p9583] 4
+
+[p9584] 0.248238
+
+[p9585] n/a
+
+[p9586] n/a
+
+[p9587] 0.4982
+
+[p9588] 0.2482
+
+[p9589] n/a
+
+[p9590] n/a
+
+[p9591] 0.9945
+
+[p9592] 07-29 c5 f0.05†
+
+[p9593] M19
+
+[p9594] Chern-Chien Freundlich
+
+[p9595] yes
+
+[p9596] 1
+
+[p9597] 4
+
+[p9598] 0.248238
+
+[p9599] n/a
+
+[p9600] n/a
+
+[p9601] 0.4982
+
+[p9602] 0.2482
+
+[p9603] n/a
+
+[p9604] n/a
+
+[p9605] 0.9945
+
+[p9606] 07-29 c5 f0.05†
+
+[p9607] M20
+
+[p9608] Log-modified Bohart-Adams
+
+[p9609] yes
+
+[p9610] 603
+
+[p9611] 2
+
+[p9612] 0.986423
+
+[p9613] 0.985930
+
+[p9614] 0.985907
+
+[p9615] 0.04051
+
+[p9616] 0.001641
+
+[p9617] -3864.58
+
+[p9618] 1251.6
+
+[p9619] 2.548
+
+[p9620] 07-29 c5 f0.05†
+
+[p9621] M21
+
+[p9622] Log-modified Yoon-Nelson
+
+[p9623] yes
+
+[p9624] 603
+
+[p9625] 2
+
+[p9626] 0.986423
+
+[p9627] 0.985930
+
+[p9628] 0.985907
+
+[p9629] 0.04051
+
+[p9630] 0.001641
+
+[p9631] -3864.58
+
+[p9632] 1251.6
+
+[p9633] 2.548
+
+[p9634] 07-29 c5 f0.05†
+
+[p9635] M22
+
+[p9636] n-Order Bohart-Adams
+
+[p9637] yes
+
+[p9638] 603
+
+[p9639] 3
+
+[p9640] 165.842
+
+[p9641] -1.36546
+
+[p9642] -1.37335
+
+[p9643] 0.5253
+
+[p9644] 0.2764
+
+[p9645] -772.361
+
+[p9646] 4343.8
+
+[p9647] 64.42
+
+[p9648] 07-29 c5 f0.05†
+
+[p9649] M23
+
+[p9650] Fractal Yoon-Nelson (Hu 2024)
+
+[p9651] yes
+
+[p9652] 603
+
+[p9653] 3
+
+[p9654] 1.10555
+
+[p9655] 0.984231
+
+[p9656] 0.984179
+
+[p9657] 0.04289
+
+[p9658] 0.001843
+
+[p9659] -3793.81
+
+[p9660] 1322.4
+
+[p9661] 2.760
+
+[p9662] 07-29 c5 f0.05†
+
+[p9663] M24
+
+[p9664] Parallel two-component sigmoidal (Blagojev)
+
+[p9665] yes
+
+[p9666] 603
+
+[p9667] 5
+
+[p9668] 0.122533
+
+[p9669] 0.998252
+
+[p9670] 0.998241
+
+[p9671] 0.01428
+
+[p9672] 2.0491e-04
+
+[p9673] -5116.18
+
+[p9674] 0
+
+[p9675] 0.5972
+
+[p9676] 07-29 c5 f0.10
+
+[p9677] M01
+
+[p9678] Yoon-Nelson / Thomas / BA (logistic)
+
+[p9679] yes
+
+[p9680] 1573
+
+[p9681] 2
+
+[p9682] 8.51824
+
+[p9683] 0.934506
+
+[p9684] 0.934464
+
+[p9685] 0.07364
+
+[p9686] 0.005422
+
+[p9687] -8204.74
+
+[p9688] 6505.9
+
+[p9689] 0.2485
+
+[p9690] 07-29 c5 f0.10
+
+[p9691] M02
+
+[p9692] Clark
+
+[p9693] yes
+
+[p9694] 1573
+
+[p9695] 3
+
+[p9696] 5.04903
+
+[p9697] 0.961180
+
+[p9698] 0.961130
+
+[p9699] 0.05669
+
+[p9700] 0.003216
+
+[p9701] -9025.43
+
+[p9702] 5685.2
+
+[p9703] 0.1992
+
+[p9704] 07-29 c5 f0.10
+
+[p9705] M03
+
+[p9706] Fractal Clark
+
+[p9707] yes
+
+[p9708] 1573
+
+[p9709] 4
+
+[p9710] 0.320344
+
+[p9711] 0.997537
+
+[p9712] 0.997532
+
+[p9713] 0.01428
+
+[p9714] 2.0417e-04
+
+[p9715] -13361.1
+
+[p9716] 1349.6
+
+[p9717] 0.06329
+
+[p9718] 07-29 c5 f0.10
+
+[p9719] M04
+
+[p9720] Modified Dose-Response (Yan)
+
+[p9721] yes
+
+[p9722] 1573
+
+[p9723] 2
+
+[p9724] 0.870054
+
+[p9725] 0.993310
+
+[p9726] 0.993306
+
+[p9727] 0.02353
+
+[p9728] 5.5382e-04
+
+[p9729] -11793.4
+
+[p9730] 2917.2
+
+[p9731] 0.1172
+
+[p9732] 07-29 c5 f0.10
+
+[p9733] M05
+
+[p9734] Wolborska (linearised, early)
+
+[p9735] yes
+
+[p9736] 36
+
+[p9737] 2
+
+[p9738] 0.00386691
+
+[p9739] 0.945394
+
+[p9740] 0.943788
+
+[p9741] 0.01066
+
+[p9742] 1.1373e-04
+
+[p9743] -324.634
+
+[p9744] 14386
+
+[p9745] 0.3529
+
+[p9746] 07-29 c5 f0.10
+
+[p9747] M06
+
+[p9748] Gudermannian (Hu 2021)
+
+[p9749] yes
+
+[p9750] 1573
+
+[p9751] 2
+
+[p9752] 8.07095
+
+[p9753] 0.937945
+
+[p9754] 0.937906
+
+[p9755] 0.07168
+
+[p9756] 0.005137
+
+[p9757] -8289.59
+
+[p9758] 6421.0
+
+[p9759] 0.2474
+
+[p9760] 07-29 c5 f0.10
+
+[p9761] M07
+
+[p9762] Error-Function (Hu 2021)
+
+[p9763] yes
+
+[p9764] 1573
+
+[p9765] 2
+
+[p9766] 9.24778
+
+[p9767] 0.928897
+
+[p9768] 0.928852
+
+[p9769] 0.07672
+
+[p9770] 0.005887
+
+[p9771] -8075.48
+
+[p9772] 6635.1
+
+[p9773] 0.2504
+
+[p9774] 07-29 c5 f0.10
+
+[p9775] M08
+
+[p9776] Tanh (Hu 2019)
+
+[p9777] yes
+
+[p9778] 1573
+
+[p9779] 2
+
+[p9780] 8.51824
+
+[p9781] 0.934506
+
+[p9782] 0.934464
+
+[p9783] 0.07364
+
+[p9784] 0.005422
+
+[p9785] -8204.74
+
+[p9786] 6505.9
+
+[p9787] 0.2485
+
+[p9788] 07-29 c5 f0.10
+
+[p9789] M09
+
+[p9790] Log-Normal (Chu-Hashim)
+
+[p9791] yes
+
+[p9792] 1573
+
+[p9793] 2
+
+[p9794] 0.854791
+
+[p9795] 0.993428
+
+[p9796] 0.993424
+
+[p9797] 0.02333
+
+[p9798] 5.4411e-04
+
+[p9799] -11821.2
+
+[p9800] 2889.4
+
+[p9801] 0.1184
+
+[p9802] 07-29 c5 f0.10
+
+[p9803] M10
+
+[p9804] Fractal Gudermannian (Hu 2024)
+
+[p9805] yes
+
+[p9806] 1573
+
+[p9807] 3
+
+[p9808] 0.570366
+
+[p9809] 0.995615
+
+[p9810] 0.995609
+
+[p9811] 0.01905
+
+[p9812] 3.6329e-04
+
+[p9813] -12455.6
+
+[p9814] 2255.0
+
+[p9815] 0.08845
+
+[p9816] 07-29 c5 f0.10
+
+[p9817] M11
+
+[p9818] Fractal Error-Function (Hu 2024)
+
+[p9819] yes
+
+[p9820] 1573
+
+[p9821] 3
+
+[p9822] 0.222868
+
+[p9823] 0.998286
+
+[p9824] 0.998284
+
+[p9825] 0.01191
+
+[p9826] 1.4195e-04
+
+[p9827] -13933.8
+
+[p9828] 776.85
+
+[p9829] 0.05806
+
+[p9830] 07-29 c5 f0.10
+
+[p9831] M12
+
+[p9832] Gompertz (Chu 2020)
+
+[p9833] yes
+
+[p9834] 1573
+
+[p9835] 2
+
+[p9836] 5.01029
+
+[p9837] 0.961478
+
+[p9838] 0.961453
+
+[p9839] 0.05647
+
+[p9840] 0.003189
+
+[p9841] -9039.56
+
+[p9842] 5671.1
+
+[p9843] 0.1986
+
+[p9844] 07-29 c5 f0.10
+
+[p9845] M13
+
+[p9846] Log-Gompertz (Chu 2020)
+
+[p9847] yes
+
+[p9848] 1573
+
+[p9849] 2
+
+[p9850] 0.380762
+
+[p9851] 0.997072
+
+[p9852] 0.997071
+
+[p9853] 0.01557
+
+[p9854] 2.4237e-04
+
+[p9855] -13093.3
+
+[p9856] 1617.3
+
+[p9857] 0.05059
+
+[p9858] 07-29 c5 f0.10
+
+[p9859] M14
+
+[p9860] Weibull (Chu 2021)
+
+[p9861] yes
+
+[p9862] 1573
+
+[p9863] 2
+
+[p9864] 2.98171
+
+[p9865] 0.977075
+
+[p9866] 0.977060
+
+[p9867] 0.04357
+
+[p9868] 0.001898
+
+[p9869] -9855.94
+
+[p9870] 4854.7
+
+[p9871] 0.1943
+
+[p9872] 07-29 c5 f0.10
+
+[p9873] M15
+
+[p9874] Avrami (Singh)
+
+[p9875] yes
+
+[p9876] 1573
+
+[p9877] 2
+
+[p9878] 2.98171
+
+[p9879] 0.977075
+
+[p9880] 0.977060
+
+[p9881] 0.04357
+
+[p9882] 0.001898
+
+[p9883] -9855.94
+
+[p9884] 4854.7
+
+[p9885] 0.1943
+
+[p9886] 07-29 c5 f0.10
+
+[p9887] M16
+
+[p9888] Klinkenberg
+
+[p9889] yes
+
+[p9890] 1573
+
+[p9891] 2
+
+[p9892] 32.2939
+
+[p9893] 0.751702
+
+[p9894] 0.751544
+
+[p9895] 0.1434
+
+[p9896] 0.02056
+
+[p9897] -6108.45
+
+[p9898] 8602.2
+
+[p9899] 0.4798
+
+[p9900] 07-29 c5 f0.10
+
+[p9901] M17
+
+[p9902] Dima (wave erf)
+
+[p9903] yes
+
+[p9904] 1573
+
+[p9905] 2
+
+[p9906] 9.24778
+
+[p9907] 0.928897
+
+[p9908] 0.928852
+
+[p9909] 0.07672
+
+[p9910] 0.005887
+
+[p9911] -8075.48
+
+[p9912] 6635.1
+
+[p9913] 0.2504
+
+[p9914] 07-29 c5 f0.10
+
+[p9915] M18
+
+[p9916] Chern-Chien Langmuir
+
+[p9917] yes
+
+[p9918] 1
+
+[p9919] 4
+
+[p9920] 0.215921
+
+[p9921] n/a
+
+[p9922] n/a
+
+[p9923] 0.4647
+
+[p9924] 0.2159
+
+[p9925] n/a
+
+[p9926] n/a
+
+[p9927] 0.9275
+
+[p9928] 07-29 c5 f0.10
+
+[p9929] M19
+
+[p9930] Chern-Chien Freundlich
+
+[p9931] yes
+
+[p9932] 1
+
+[p9933] 4
+
+[p9934] 0.215921
+
+[p9935] n/a
+
+[p9936] n/a
+
+[p9937] 0.4647
+
+[p9938] 0.2159
+
+[p9939] n/a
+
+[p9940] n/a
+
+[p9941] 0.9275
+
+[p9942] 07-29 c5 f0.10
+
+[p9943] M20
+
+[p9944] Log-modified Bohart-Adams
+
+[p9945] yes
+
+[p9946] 1573
+
+[p9947] 2
+
+[p9948] 0.870054
+
+[p9949] 0.993310
+
+[p9950] 0.993306
+
+[p9951] 0.02353
+
+[p9952] 5.5382e-04
+
+[p9953] -11793.4
+
+[p9954] 2917.2
+
+[p9955] 0.1172
+
+[p9956] 07-29 c5 f0.10
+
+[p9957] M21
+
+[p9958] Log-modified Yoon-Nelson
+
+[p9959] yes
+
+[p9960] 1573
+
+[p9961] 2
+
+[p9962] 0.870054
+
+[p9963] 0.993310
+
+[p9964] 0.993306
+
+[p9965] 0.02353
+
+[p9966] 5.5382e-04
+
+[p9967] -11793.4
+
+[p9968] 2917.2
+
+[p9969] 0.1172
+
+[p9970] 07-29 c5 f0.10
+
+[p9971] M22
+
+[p9972] n-Order Bohart-Adams
+
+[p9973] yes
+
+[p9974] 1573
+
+[p9975] 3
+
+[p9976] 235.599
+
+[p9977] -0.811442
+
+[p9978] -0.813749
+
+[p9979] 0.3873
+
+[p9980] 0.1501
+
+[p9981] -2980.50
+
+[p9982] 11730
+
+[p9983] 1.315
+
+[p9984] 07-29 c5 f0.10
+
+[p9985] M23
+
+[p9986] Fractal Yoon-Nelson (Hu 2024)
+
+[p9987] yes
+
+[p9988] 1573
+
+[p9989] 3
+
+[p9990] 1.00994
+
+[p9991] 0.992235
+
+[p9992] 0.992225
+
+[p9993] 0.02535
+
+[p9994] 6.4327e-04
+
+[p9995] -11556.9
+
+[p9996] 3153.8
+
+[p9997] 0.1251
+
+[p9998] 07-29 c5 f0.10
+
+[p9999] M24
+
+[p10000] Parallel two-component sigmoidal (Blagojev)
+
+[p10001] yes
+
+[p10002] 1573
+
+[p10003] 5
+
+[p10004] 0.135661
+
+[p10005] 0.998957
+
+[p10006] 0.998954
+
+[p10007] 0.009293
+
+[p10008] 8.6518e-05
+
+[p10009] -14710.6
+
+[p10010] 0
+
+[p10011] 0.04482
+
+[p10012] 07-31 c5 f0.15*
+
+[p10013] M01
+
+[p10014] Yoon-Nelson / Thomas / BA (logistic)
+
+[p10015] yes
+
+[p10016] 351
+
+[p10017] 2
+
+[p10018] 2.07265
+
+[p10019] 0.905561
+
+[p10020] 0.905290
+
+[p10021] 0.07706
+
+[p10022] 0.005939
+
+[p10023] -1797.28
+
+[p10024] 1557.0
+
+[p10025] 0.5705
+
+[p10026] 07-31 c5 f0.15*
+
+[p10027] M02
+
+[p10028] Clark
+
+[p10029] yes
+
+[p10030] 351
+
+[p10031] 3
+
+[p10032] 1.46668
+
+[p10033] 0.933171
+
+[p10034] 0.932787
+
+[p10035] 0.06483
+
+[p10036] 0.004215
+
+[p10037] -1916.63
+
+[p10038] 1437.6
+
+[p10039] 0.4768
+
+[p10040] 07-31 c5 f0.15*
+
+[p10041] M03
+
+[p10042] Fractal Clark
+
+[p10043] yes
+
+[p10044] 351
+
+[p10045] 4
+
+[p10046] 0.0519313
+
+[p10047] 0.997634
+
+[p10048] 0.997613
+
+[p10049] 0.01220
+
+[p10050] 1.4966e-04
+
+[p10051] -3087.22
+
+[p10052] 267.05
+
+[p10053] 0.1623
+
+[p10054] 07-31 c5 f0.15*
+
+[p10055] M04
+
+[p10056] Modified Dose-Response (Yan)
+
+[p10057] yes
+
+[p10058] 351
+
+[p10059] 2
+
+[p10060] 0.203057
+
+[p10061] 0.990748
+
+[p10062] 0.990721
+
+[p10063] 0.02412
+
+[p10064] 5.8182e-04
+
+[p10065] -2612.69
+
+[p10066] 741.58
+
+[p10067] 0.2977
+
+[p10068] 07-31 c5 f0.15*
+
+[p10069] M05
+
+[p10070] Wolborska (linearised, early)
+
+[p10071] yes
+
+[p10072] 6
+
+[p10073] 2
+
+[p10074] 6.090191e-04
+
+[p10075] 0.951917
+
+[p10076] 0.939896
+
+[p10077] 0.01234
+
+[p10078] 1.5225e-04
+
+[p10079] -47.1725
+
+[p10080] 3307.1
+
+[p10081] 0.2979
+
+[p10082] 07-31 c5 f0.15*
+
+[p10083] M06
+
+[p10084] Gudermannian (Hu 2021)
+
+[p10085] yes
+
+[p10086] 351
+
+[p10087] 2
+
+[p10088] 1.95997
+
+[p10089] 0.910695
+
+[p10090] 0.910439
+
+[p10091] 0.07494
+
+[p10092] 0.005616
+
+[p10093] -1816.90
+
+[p10094] 1537.4
+
+[p10095] 0.5742
+
+[p10096] 07-31 c5 f0.15*
+
+[p10097] M07
+
+[p10098] Error-Function (Hu 2021)
+
+[p10099] yes
+
+[p10100] 351
+
+[p10101] 2
+
+[p10102] 2.24148
+
+[p10103] 0.897869
+
+[p10104] 0.897576
+
+[p10105] 0.08014
+
+[p10106] 0.006423
+
+[p10107] -1769.80
+
+[p10108] 1584.5
+
+[p10109] 0.5657
+
+[p10110] 07-31 c5 f0.15*
+
+[p10111] M08
+
+[p10112] Tanh (Hu 2019)
+
+[p10113] yes
+
+[p10114] 351
+
+[p10115] 2
+
+[p10116] 2.07265
+
+[p10117] 0.905561
+
+[p10118] 0.905290
+
+[p10119] 0.07706
+
+[p10120] 0.005939
+
+[p10121] -1797.28
+
+[p10122] 1557.0
+
+[p10123] 0.5705
+
+[p10124] 07-31 c5 f0.15*
+
+[p10125] M09
+
+[p10126] Log-Normal (Chu-Hashim)
+
+[p10127] yes
+
+[p10128] 351
+
+[p10129] 2
+
+[p10130] 0.248029
+
+[p10131] 0.988699
+
+[p10132] 0.988666
+
+[p10133] 0.02666
+
+[p10134] 7.1068e-04
+
+[p10135] -2542.47
+
+[p10136] 811.80
+
+[p10137] 0.3104
+
+[p10138] 07-31 c5 f0.15*
+
+[p10139] M10
+
+[p10140] Fractal Gudermannian (Hu 2024)
+
+[p10141] yes
+
+[p10142] 351
+
+[p10143] 3
+
+[p10144] 0.0722509
+
+[p10145] 0.996708
+
+[p10146] 0.996689
+
+[p10147] 0.01439
+
+[p10148] 2.0762e-04
+
+[p10149] -2973.36
+
+[p10150] 380.91
+
+[p10151] 0.1793
+
+[p10152] 07-31 c5 f0.15*
+
+[p10153] M11
+
+[p10154] Fractal Error-Function (Hu 2024)
+
+[p10155] yes
+
+[p10156] 351
+
+[p10157] 3
+
+[p10158] 0.0244082
+
+[p10159] 0.998888
+
+[p10160] 0.998881
+
+[p10161] 0.008363
+
+[p10162] 7.0139e-05
+
+[p10163] -3354.27
+
+[p10164] 0
+
+[p10165] 0.1095
+
+[p10166] 07-31 c5 f0.15*
+
+[p10167] M12
+
+[p10168] Gompertz (Chu 2020)
+
+[p10169] yes
+
+[p10170] 351
+
+[p10171] 2
+
+[p10172] 1.45962
+
+[p10173] 0.933493
+
+[p10174] 0.933303
+
+[p10175] 0.06467
+
+[p10176] 0.004182
+
+[p10177] -1920.36
+
+[p10178] 1433.9
+
+[p10179] 0.4755
+
+[p10180] 07-31 c5 f0.15*
+
+[p10181] M13
+
+[p10182] Log-Gompertz (Chu 2020)
+
+[p10183] yes
+
+[p10184] 351
+
+[p10185] 2
+
+[p10186] 0.0399773
+
+[p10187] 0.998178
+
+[p10188] 0.998173
+
+[p10189] 0.01070
+
+[p10190] 1.1455e-04
+
+[p10191] -3183.13
+
+[p10192] 171.15
+
+[p10193] 0.1297
+
+[p10194] 07-31 c5 f0.15*
+
+[p10195] M14
+
+[p10196] Weibull (Chu 2021)
+
+[p10197] yes
+
+[p10198] 351
+
+[p10199] 2
+
+[p10200] 0.738748
+
+[p10201] 0.966339
+
+[p10202] 0.966243
+
+[p10203] 0.04601
+
+[p10204] 0.002117
+
+[p10205] -2159.38
+
+[p10206] 1194.9
+
+[p10207] 0.4674
+
+[p10208] 07-31 c5 f0.15*
+
+[p10209] M15
+
+[p10210] Avrami (Singh)
+
+[p10211] yes
+
+[p10212] 351
+
+[p10213] 2
+
+[p10214] 0.738748
+
+[p10215] 0.966339
+
+[p10216] 0.966243
+
+[p10217] 0.04601
+
+[p10218] 0.002117
+
+[p10219] -2159.38
+
+[p10220] 1194.9
+
+[p10221] 0.4674
+
+[p10222] 07-31 c5 f0.15*
+
+[p10223] M16
+
+[p10224] Klinkenberg
+
+[p10225] yes
+
+[p10226] 351
+
+[p10227] 2
+
+[p10228] 4.93355
+
+[p10229] 0.775206
+
+[p10230] 0.774562
+
+[p10231] 0.1189
+
+[p10232] 0.01414
+
+[p10233] -1492.88
+
+[p10234] 1861.4
+
+[p10235] 0.9638
+
+[p10236] 07-31 c5 f0.15*
+
+[p10237] M17
+
+[p10238] Dima (wave erf)
+
+[p10239] yes
+
+[p10240] 351
+
+[p10241] 2
+
+[p10242] 2.24148
+
+[p10243] 0.897869
+
+[p10244] 0.897576
+
+[p10245] 0.08014
+
+[p10246] 0.006423
+
+[p10247] -1769.80
+
+[p10248] 1584.5
+
+[p10249] 0.5657
+
+[p10250] 07-31 c5 f0.15*
+
+[p10251] M18
+
+[p10252] Chern-Chien Langmuir
+
+[p10253] yes
+
+[p10254] 0
+
+[p10255] 4
+
+[p10256] n/a
+
+[p10257] n/a
+
+[p10258] n/a
+
+[p10259] n/a
+
+[p10260] n/a
+
+[p10261] n/a
+
+[p10262] n/a
+
+[p10263] n/a
+
+[p10264] 07-31 c5 f0.15*
+
+[p10265] M19
+
+[p10266] Chern-Chien Freundlich
+
+[p10267] yes
+
+[p10268] 0
+
+[p10269] 4
+
+[p10270] n/a
+
+[p10271] n/a
+
+[p10272] n/a
+
+[p10273] n/a
+
+[p10274] n/a
+
+[p10275] n/a
+
+[p10276] n/a
+
+[p10277] n/a
+
+[p10278] 07-31 c5 f0.15*
+
+[p10279] M20
+
+[p10280] Log-modified Bohart-Adams
+
+[p10281] yes
+
+[p10282] 351
+
+[p10283] 2
+
+[p10284] 0.203057
+
+[p10285] 0.990748
+
+[p10286] 0.990721
+
+[p10287] 0.02412
+
+[p10288] 5.8182e-04
+
+[p10289] -2612.69
+
+[p10290] 741.58
+
+[p10291] 0.2977
+
+[p10292] 07-31 c5 f0.15*
+
+[p10293] M21
+
+[p10294] Log-modified Yoon-Nelson
+
+[p10295] yes
+
+[p10296] 351
+
+[p10297] 2
+
+[p10298] 0.203057
+
+[p10299] 0.990748
+
+[p10300] 0.990721
+
+[p10301] 0.02412
+
+[p10302] 5.8182e-04
+
+[p10303] -2612.69
+
+[p10304] 741.58
+
+[p10305] 0.2977
+
+[p10306] 07-31 c5 f0.15*
+
+[p10307] M22
+
+[p10308] n-Order Bohart-Adams
+
+[p10309] yes
+
+[p10310] 351
+
+[p10311] 3
+
+[p10312] 35.3310
+
+[p10313] -0.609835
+
+[p10314] -0.619087
+
+[p10315] 0.3182
+
+[p10316] 0.1015
+
+[p10317] -799.836
+
+[p10318] 2554.4
+
+[p10319] 2.466
+
+[p10320] 07-31 c5 f0.15*
+
+[p10321] M23
+
+[p10322] Fractal Yoon-Nelson (Hu 2024)
+
+[p10323] yes
+
+[p10324] 351
+
+[p10325] 3
+
+[p10326] 0.249547
+
+[p10327] 0.988630
+
+[p10328] 0.988564
+
+[p10329] 0.02674
+
+[p10330] 7.1709e-04
+
+[p10331] -2538.29
+
+[p10332] 815.98
+
+[p10333] 0.3200
+
+[p10334] 07-31 c5 f0.15*
+
+[p10335] M24
+
+[p10336] Parallel two-component sigmoidal (Blagojev)
+
+[p10337] yes
+
+[p10338] 351
+
+[p10339] 5
+
+[p10340] 0.0243908
+
+[p10341] 0.998889
+
+[p10342] 0.998876
+
+[p10343] 0.008360
+
+[p10344] 7.0494e-05
+
+[p10345] -3350.42
+
+[p10346] 3.8538
+
+[p10347] 0.1112
+
+[p10348] 07-31 c10 f0.10*
+
+[p10349] M01
+
+[p10350] Yoon-Nelson / Thomas / BA (logistic)
+
+[p10351] yes
+
+[p10352] 1171
+
+[p10353] 2
+
+[p10354] 3.44795
+
+[p10355] 0.954793
+
+[p10356] 0.954754
+
+[p10357] 0.05431
+
+[p10358] 0.002949
+
+[p10359] -6820.38
+
+[p10360] 4561.8
+
+[p10361] 0.3032
+
+[p10362] 07-31 c10 f0.10*
+
+[p10363] M02
+
+[p10364] Clark
+
+[p10365] yes
+
+[p10366] 1171
+
+[p10367] 3
+
+[p10368] 1.96562
+
+[p10369] 0.974228
+
+[p10370] 0.974184
+
+[p10371] 0.04101
+
+[p10372] 0.001683
+
+[p10373] -7476.44
+
+[p10374] 3905.7
+
+[p10375] 0.2387
+
+[p10376] 07-31 c10 f0.10*
+
+[p10377] M03
+
+[p10378] Fractal Clark
+
+[p10379] yes
+
+[p10380] 1171
+
+[p10381] 4
+
+[p10382] 0.111785
+
+[p10383] 0.998534
+
+[p10384] 0.998531
+
+[p10385] 0.009779
+
+[p10386] 9.5788e-05
+
+[p10387] -10831.7
+
+[p10388] 550.51
+
+[p10389] 0.07691
+
+[p10390] 07-31 c10 f0.10*
+
+[p10391] M04
+
+[p10392] Modified Dose-Response (Yan)
+
+[p10393] yes
+
+[p10394] 1171
+
+[p10395] 2
+
+[p10396] 0.288005
+
+[p10397] 0.996224
+
+[p10398] 0.996221
+
+[p10399] 0.01570
+
+[p10400] 2.4637e-04
+
+[p10401] -9727.46
+
+[p10402] 1654.7
+
+[p10403] 0.1386
+
+[p10404] 07-31 c10 f0.10*
+
+[p10405] M05
+
+[p10406] Wolborska (linearised, early)
+
+[p10407] yes
+
+[p10408] 19
+
+[p10409] 2
+
+[p10410] 0.00201633
+
+[p10411] 0.945282
+
+[p10412] 0.942063
+
+[p10413] 0.01089
+
+[p10414] 1.1861e-04
+
+[p10415] -169.117
+
+[p10416] 11213
+
+[p10417] 0.5035
+
+[p10418] 07-31 c10 f0.10*
+
+[p10419] M06
+
+[p10420] Gudermannian (Hu 2021)
+
+[p10421] yes
+
+[p10422] 1171
+
+[p10423] 2
+
+[p10424] 3.25413
+
+[p10425] 0.957334
+
+[p10426] 0.957297
+
+[p10427] 0.05276
+
+[p10428] 0.002784
+
+[p10429] -6888.13
+
+[p10430] 4494.0
+
+[p10431] 0.3056
+
+[p10432] 07-31 c10 f0.10*
+
+[p10433] M07
+
+[p10434] Error-Function (Hu 2021)
+
+[p10435] yes
+
+[p10436] 1171
+
+[p10437] 2
+
+[p10438] 3.76849
+
+[p10439] 0.950590
+
+[p10440] 0.950548
+
+[p10441] 0.05678
+
+[p10442] 0.003224
+
+[p10443] -6716.29
+
+[p10444] 4665.9
+
+[p10445] 0.3003
+
+[p10446] 07-31 c10 f0.10*
+
+[p10447] M08
+
+[p10448] Tanh (Hu 2019)
+
+[p10449] yes
+
+[p10450] 1171
+
+[p10451] 2
+
+[p10452] 3.44795
+
+[p10453] 0.954793
+
+[p10454] 0.954754
+
+[p10455] 0.05431
+
+[p10456] 0.002949
+
+[p10457] -6820.38
+
+[p10458] 4561.8
+
+[p10459] 0.3032
+
+[p10460] 07-31 c10 f0.10*
+
+[p10461] M09
+
+[p10462] Log-Normal (Chu-Hashim)
+
+[p10463] yes
+
+[p10464] 1171
+
+[p10465] 2
+
+[p10466] 0.295312
+
+[p10467] 0.996128
+
+[p10468] 0.996125
+
+[p10469] 0.01589
+
+[p10470] 2.5262e-04
+
+[p10471] -9698.12
+
+[p10472] 1684.1
+
+[p10473] 0.1409
+
+[p10474] 07-31 c10 f0.10*
+
+[p10475] M10
+
+[p10476] Fractal Gudermannian (Hu 2024)
+
+[p10477] yes
+
+[p10478] 1171
+
+[p10479] 3
+
+[p10480] 0.215874
+
+[p10481] 0.997170
+
+[p10482] 0.997165
+
+[p10483] 0.01359
+
+[p10484] 1.8482e-04
+
+[p10485] -10063.0
+
+[p10486] 1319.2
+
+[p10487] 0.1141
+
+[p10488] 07-31 c10 f0.10*
+
+[p10489] M11
+
+[p10490] Fractal Error-Function (Hu 2024)
+
+[p10491] yes
+
+[p10492] 1171
+
+[p10493] 3
+
+[p10494] 0.0699778
+
+[p10495] 0.999082
+
+[p10496] 0.999081
+
+[p10497] 0.007737
+
+[p10498] 5.9913e-05
+
+[p10499] -11382.2
+
+[p10500] 0
+
+[p10501] 0.06436
+
+[p10502] 07-31 c10 f0.10*
+
+[p10503] M12
+
+[p10504] Gompertz (Chu 2020)
+
+[p10505] yes
+
+[p10506] 1171
+
+[p10507] 2
+
+[p10508] 1.94930
+
+[p10509] 0.974442
+
+[p10510] 0.974420
+
+[p10511] 0.04084
+
+[p10512] 0.001667
+
+[p10513] -7488.21
+
+[p10514] 3894.0
+
+[p10515] 0.2378
+
+[p10516] 07-31 c10 f0.10*
+
+[p10517] M13
+
+[p10518] Log-Gompertz (Chu 2020)
+
+[p10519] yes
+
+[p10520] 1171
+
+[p10521] 2
+
+[p10522] 0.233737
+
+[p10523] 0.996935
+
+[p10524] 0.996933
+
+[p10525] 0.01414
+
+[p10526] 1.9995e-04
+
+[p10527] -9971.94
+
+[p10528] 1410.2
+
+[p10529] 0.04418
+
+[p10530] 07-31 c10 f0.10*
+
+[p10531] M14
+
+[p10532] Weibull (Chu 2021)
+
+[p10533] yes
+
+[p10534] 1171
+
+[p10535] 2
+
+[p10536] 1.28436
+
+[p10537] 0.983160
+
+[p10538] 0.983146
+
+[p10539] 0.03315
+
+[p10540] 0.001099
+
+[p10541] -7976.77
+
+[p10542] 3405.4
+
+[p10543] 0.2452
+
+[p10544] 07-31 c10 f0.10*
+
+[p10545] M15
+
+[p10546] Avrami (Singh)
+
+[p10547] yes
+
+[p10548] 1171
+
+[p10549] 2
+
+[p10550] 1.28436
+
+[p10551] 0.983160
+
+[p10552] 0.983146
+
+[p10553] 0.03315
+
+[p10554] 0.001099
+
+[p10555] -7976.77
+
+[p10556] 3405.4
+
+[p10557] 0.2452
+
+[p10558] 07-31 c10 f0.10*
+
+[p10559] M16
+
+[p10560] Klinkenberg
+
+[p10561] yes
+
+[p10562] 1171
+
+[p10563] 2
+
+[p10564] 15.3234
+
+[p10565] 0.799090
+
+[p10566] 0.798918
+
+[p10567] 0.1145
+
+[p10568] 0.01311
+
+[p10569] -5073.72
+
+[p10570] 6308.5
+
+[p10571] 0.6708
+
+[p10572] 07-31 c10 f0.10*
+
+[p10573] M17
+
+[p10574] Dima (wave erf)
+
+[p10575] yes
+
+[p10576] 1171
+
+[p10577] 2
+
+[p10578] 3.76849
+
+[p10579] 0.950590
+
+[p10580] 0.950548
+
+[p10581] 0.05678
+
+[p10582] 0.003224
+
+[p10583] -6716.29
+
+[p10584] 4665.9
+
+[p10585] 0.3003
+
+[p10586] 07-31 c10 f0.10*
+
+[p10587] M18
+
+[p10588] Chern-Chien Langmuir
+
+[p10589] yes
+
+[p10590] 1
+
+[p10591] 4
+
+[p10592] 0.0139320
+
+[p10593] n/a
+
+[p10594] n/a
+
+[p10595] 0.1180
+
+[p10596] 0.01393
+
+[p10597] n/a
+
+[p10598] n/a
+
+[p10599] 0.2361
+
+[p10600] 07-31 c10 f0.10*
+
+[p10601] M19
+
+[p10602] Chern-Chien Freundlich
+
+[p10603] yes
+
+[p10604] 1
+
+[p10605] 4
+
+[p10606] 0.0139320
+
+[p10607] n/a
+
+[p10608] n/a
+
+[p10609] 0.1180
+
+[p10610] 0.01393
+
+[p10611] n/a
+
+[p10612] n/a
+
+[p10613] 0.2361
+
+[p10614] 07-31 c10 f0.10*
+
+[p10615] M20
+
+[p10616] Log-modified Bohart-Adams
+
+[p10617] yes
+
+[p10618] 1171
+
+[p10619] 2
+
+[p10620] 0.288005
+
+[p10621] 0.996224
+
+[p10622] 0.996221
+
+[p10623] 0.01570
+
+[p10624] 2.4637e-04
+
+[p10625] -9727.46
+
+[p10626] 1654.7
+
+[p10627] 0.1386
+
+[p10628] 07-31 c10 f0.10*
+
+[p10629] M21
+
+[p10630] Log-modified Yoon-Nelson
+
+[p10631] yes
+
+[p10632] 1171
+
+[p10633] 2
+
+[p10634] 0.288005
+
+[p10635] 0.996224
+
+[p10636] 0.996221
+
+[p10637] 0.01570
+
+[p10638] 2.4637e-04
+
+[p10639] -9727.46
+
+[p10640] 1654.7
+
+[p10641] 0.1386
+
+[p10642] 07-31 c10 f0.10*
+
+[p10643] M22
+
+[p10644] n-Order Bohart-Adams
+
+[p10645] yes
+
+[p10646] 1171
+
+[p10647] 3
+
+[p10648] 105.441
+
+[p10649] -0.382467
+
+[p10650] -0.384834
+
+[p10651] 0.3003
+
+[p10652] 0.09027
+
+[p10653] -2813.12
+
+[p10654] 8569.1
+
+[p10655] 1.659
+
+[p10656] 07-31 c10 f0.10*
+
+[p10657] M23
+
+[p10658] Fractal Yoon-Nelson (Hu 2024)
+
+[p10659] yes
+
+[p10660] 1171
+
+[p10661] 3
+
+[p10662] 0.334409
+
+[p10663] 0.995615
+
+[p10664] 0.995608
+
+[p10665] 0.01691
+
+[p10666] 2.8631e-04
+
+[p10667] -9550.51
+
+[p10668] 1831.7
+
+[p10669] 0.1500
+
+[p10670] 07-31 c10 f0.10*
+
+[p10671] M24
+
+[p10672] Parallel two-component sigmoidal (Blagojev)
+
+[p10673] yes
+
+[p10674] 1171
+
+[p10675] 5
+
+[p10676] 0.0758973
+
+[p10677] 0.999005
+
+[p10678] 0.999001
+
+[p10679] 0.008058
+
+[p10680] 6.5092e-05
+
+[p10681] -11283.1
+
+[p10682] 99.120
+
+[p10683] 0.05645
+
+### [p10685] B.2 Fitted parameters and standard errors
+
+[p10686] Table B.2) Fitted parameter values with the asymptotic standard errors returned by scipy.optimize.curve_fit, all models and all runs.
+
+[p10687] Run
+
+[p10688] Code
+
+[p10689] Model
+
+[p10690] Fitted parameters ± SE
+
+[p10691] run 3
+
+[p10692] M01
+
+[p10693] Yoon-Nelson / Thomas / BA (logistic)
+
+[p10694] k_YN = 0.00212307 ± 7.32681e-05; tau = 507.498 ± 15.6765
+
+[p10695] run 3
+
+[p10696] M02
+
+[p10697] Clark
+
+[p10698] r = 0.00165464 ± 0.000110358; A = 0.0155012 ± 0.308705; n = 1.01 ± 0.19781
+
+[p10699] run 3
+
+[p10700] M03
+
+[p10701] Fractal Clark
+
+[p10702] r = 0.102107 ± 0.0164048; A0 = 0.0602529 ± 0.601712; n = 1.01 ± 0.097379; h = 0.664066 ± 0.021032
+
+[p10703] run 3
+
+[p10704] M04
+
+[p10705] Modified Dose-Response (Yan)
+
+[p10706] a = 1.1776 ± 0.00992723; t50 = 342.691 ± 3.62129
+
+[p10707] run 3
+
+[p10708] M05
+
+[p10709] Wolborska (linearised, early)
+
+[p10710] slope = 0.032465 ± 0.00699615; intercept = -3.60909 ± 0.333603
+
+[p10711] run 3
+
+[p10712] M06
+
+[p10713] Gudermannian (Hu 2021)
+
+[p10714] k = 0.00170659 ± 5.8368e-05; tau = 500.773 ± 15.2943
+
+[p10715] run 3
+
+[p10716] M07
+
+[p10717] Error-Function (Hu 2021)
+
+[p10718] k = 0.000920041 ± 3.20512e-05; tau = 515.742 ± 16.2119
+
+[p10719] run 3
+
+[p10720] M08
+
+[p10721] Tanh (Hu 2019)
+
+[p10722] k = 0.0010616 ± 3.66367e-05; tau = 507.491 ± 15.6759
+
+[p10723] run 3
+
+[p10724] M09
+
+[p10725] Log-Normal (Chu-Hashim)
+
+[p10726] a = 1.48195 ± 0.00807715; b = 5.8158 ± 0.00742745
+
+[p10727] run 3
+
+[p10728] M10
+
+[p10729] Fractal Gudermannian (Hu 2024)
+
+[p10730] k0 = 0.0295392 ± 0.000751437; tau0 = 335.647 ± 1.78574; h = 0.443444 ± 0.00343222
+
+[p10731] run 3
+
+[p10732] M11
+
+[p10733] Fractal Error-Function (Hu 2024)
+
+[p10734] k0 = 0.0264185 ± 0.000610544; tau0 = 316.589 ± 1.64818; h = 0.524485 ± 0.00307832
+
+[p10735] run 3
+
+[p10736] M12
+
+[p10737] Gompertz (Chu 2020)
+
+[p10738] alpha_G = 0.432177 ± 0.0289678; beta_G = 0.00165011 ± 4.39277e-05
+
+[p10739] run 3
+
+[p10740] M13
+
+[p10741] Log-Gompertz (Chu 2020)
+
+[p10742] alpha_G = 5.16403 ± 0.0775986; beta_G = 0.958202 ± 0.0118403
+
+[p10743] run 3
+
+[p10744] M14
+
+[p10745] Weibull (Chu 2021)
+
+[p10746] tau = 600.777 ± 3.13489; k = 0.634981 ± 0.00311947
+
+[p10747] run 3
+
+[p10748] M15
+
+[p10749] Avrami (Singh)
+
+[p10750] k = 0.0172016 ± 0.000379018; n = 0.634981 ± 0.00311946
+
+[p10751] run 3
+
+[p10752] M16
+
+[p10753] Klinkenberg
+
+[p10754] K_fa = 1 ± 0.122437; K = 1092.23 ± 74.2079
+
+[p10755] run 3
+
+[p10756] M17
+
+[p10757] Dima (wave erf)
+
+[p10758] v_d = 0.00193897 ± 6.09501e-05; sigma_a = 1.4902 ± 0.0771077
+
+[p10759] run 3
+
+[p10760] M18
+
+[p10761] Chern-Chien Langmuir
+
+[p10762] K_fa = 0.0121581 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 328.998 ± 0
+
+[p10763] run 3
+
+[p10764] M19
+
+[p10765] Chern-Chien Freundlich
+
+[p10766] K_fa = 0.0121581 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 328.998 ± 0
+
+[p10767] run 3
+
+[p10768] M20
+
+[p10769] Log-modified Bohart-Adams
+
+[p10770] k_BA = 1.1776 ± 0.00992723; log_a0_C0 = 5.83683 ± 0.0105672
+
+[p10771] run 3
+
+[p10772] M21
+
+[p10773] Log-modified Yoon-Nelson
+
+[p10774] k_YN = 1.1776 ± 0.00992723; tau = 342.691 ± 3.62129
+
+[p10775] run 3
+
+[p10776] M22
+
+[p10777] n-Order Bohart-Adams
+
+[p10778] k_n = 0.99999 ± 0.469109; a0 = 8641.8 ± 1.20503e-05; n = 1.37484 ± 0.00172891
+
+[p10779] run 3
+
+[p10780] M23
+
+[p10781] Fractal Yoon-Nelson (Hu 2024)
+
+[p10782] k_YN0 = 0.376823 ± 0.0179343; tau = 349.879 ± 2.59225; h = 0.829781 ± 0.00715339
+
+[p10783] run 3
+
+[p10784] M24
+
+[p10785] Parallel two-component sigmoidal (Blagojev)
+
+[p10786] p = 0.796536 ± 0.0320958; tau1 = 213.663 ± 13.5545; k1 = 1.3088 ± 0.0484109; tau2 = 1641.83 ± 88.589; k2 = 2.34305 ± 0.193017
+
+[p10787] run 4
+
+[p10788] M01
+
+[p10789] Yoon-Nelson / Thomas / BA (logistic)
+
+[p10790] k_YN = 0.00154866 ± 2.09562e-05; tau = 1004.26 ± 9.2779
+
+[p10791] run 4
+
+[p10792] M02
+
+[p10793] Clark
+
+[p10794] r = 0.00108895 ± 2.17049e-05; A = 0.0193667 ± 0.0871738; n = 1.01 ± 0.0446262
+
+[p10795] run 4
+
+[p10796] M03
+
+[p10797] Fractal Clark
+
+[p10798] r = 0.0428395 ± 0.00491547; A0 = 0.0483956 ± 0.248545; n = 1.01 ± 0.0501938; h = 0.543891 ± 0.0143147
+
+[p10799] run 4
+
+[p10800] M04
+
+[p10801] Modified Dose-Response (Yan)
+
+[p10802] a = 1.40911 ± 0.0069233; t50 = 740.69 ± 3.39601
+
+[p10803] run 4
+
+[p10804] M05
+
+[p10805] Wolborska (linearised, early)
+
+[p10806] slope = 0.0109446 ± 0.000647003; intercept = -3.39329 ± 0.072145
+
+[p10807] run 4
+
+[p10808] M06
+
+[p10809] Gudermannian (Hu 2021)
+
+[p10810] k = 0.00125754 ± 1.73925e-05; tau = 996.287 ± 9.20589
+
+[p10811] run 4
+
+[p10812] M07
+
+[p10813] Error-Function (Hu 2021)
+
+[p10814] k = 0.000663099 ± 8.73397e-06; tau = 1014.53 ± 9.41834
+
+[p10815] run 4
+
+[p10816] M08
+
+[p10817] Tanh (Hu 2019)
+
+[p10818] k = 0.000774351 ± 1.04786e-05; tau = 1004.24 ± 9.27775
+
+[p10819] run 4
+
+[p10820] M09
+
+[p10821] Log-Normal (Chu-Hashim)
+
+[p10822] a = 1.22062 ± 0.00438427; b = 6.59651 ± 0.00362314
+
+[p10823] run 4
+
+[p10824] M10
+
+[p10825] Fractal Gudermannian (Hu 2024)
+
+[p10826] k0 = 0.0119685 ± 0.000149726; tau0 = 773.686 ± 1.32614; h = 0.34746 ± 0.00164502
+
+[p10827] run 4
+
+[p10828] M11
+
+[p10829] Fractal Error-Function (Hu 2024)
+
+[p10830] k0 = 0.0101837 ± 0.000129344; tau0 = 743.234 ± 1.3905; h = 0.417758 ± 0.00165429
+
+[p10831] run 4
+
+[p10832] M12
+
+[p10833] Gompertz (Chu 2020)
+
+[p10834] alpha_G = 0.652641 ± 0.0104341; beta_G = 0.00108469 ± 9.70351e-06
+
+[p10835] run 4
+
+[p10836] M13
+
+[p10837] Log-Gompertz (Chu 2020)
+
+[p10838] alpha_G = 6.89008 ± 0.058582; beta_G = 1.11019 ± 0.00835829
+
+[p10839] run 4
+
+[p10840] M14
+
+[p10841] Weibull (Chu 2021)
+
+[p10842] tau = 1202.5 ± 1.30075; k = 0.810509 ± 0.00109452
+
+[p10843] run 4
+
+[p10844] M15
+
+[p10845] Avrami (Singh)
+
+[p10846] k = 0.00318833 ± 2.59437e-05; n = 0.810509 ± 0.0010945
+
+[p10847] run 4
+
+[p10848] M16
+
+[p10849] Klinkenberg
+
+[p10850] K_fa = 1 ± 0.0924986; K = 1869.77 ± 103.306
+
+[p10851] run 4
+
+[p10852] M17
+
+[p10853] Dima (wave erf)
+
+[p10854] v_d = 0.000985683 ± 9.15059e-06; sigma_a = 1.05109 ± 0.0166063
+
+[p10855] run 4
+
+[p10856] M18
+
+[p10857] Chern-Chien Langmuir
+
+[p10858] K_fa = 0.00529004 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 756.138 ± 0
+
+[p10859] run 4
+
+[p10860] M19
+
+[p10861] Chern-Chien Freundlich
+
+[p10862] K_fa = 0.00529004 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 756.138 ± 0
+
+[p10863] run 4
+
+[p10864] M20
+
+[p10865] Log-modified Bohart-Adams
+
+[p10866] k_BA = 1.40911 ± 0.0069233; log_a0_C0 = 6.60758 ± 0.00458493
+
+[p10867] run 4
+
+[p10868] M21
+
+[p10869] Log-modified Yoon-Nelson
+
+[p10870] k_YN = 1.40911 ± 0.0069233; tau = 740.69 ± 3.39601
+
+[p10871] run 4
+
+[p10872] M22
+
+[p10873] n-Order Bohart-Adams
+
+[p10874] k_n = 0.999988 ± 2.9022e+08; a0 = 8643.83 ± 4.96256e+09; n = 1.37472 ± 2.36783e+11
+
+[p10875] run 4
+
+[p10876] M23
+
+[p10877] Fractal Yoon-Nelson (Hu 2024)
+
+[p10878] k_YN0 = 0.245005 ± 0.00571845; tau = 775.724 ± 1.91064; h = 0.755388 ± 0.00329987
+
+[p10879] run 4
+
+[p10880] M24
+
+[p10881] Parallel two-component sigmoidal (Blagojev)
+
+[p10882] p = 0.575215 ± 0.0239768; tau1 = 323.191 ± 17.267; k1 = 1.45744 ± 0.0400372; tau2 = 1750.4 ± 33.5352; k2 = 2.30494 ± 0.0543141
+
+[p10883] run 5
+
+[p10884] M01
+
+[p10885] Yoon-Nelson / Thomas / BA (logistic)
+
+[p10886] k_YN = 0.00385243 ± 8.04846e-05; tau = 342.617 ± 5.69172
+
+[p10887] run 5
+
+[p10888] M02
+
+[p10889] Clark
+
+[p10890] r = 0.00282153 ± 9.51356e-05; A = 0.0172099 ± 0.144578; n = 1.01 ± 0.0833548
+
+[p10891] run 5
+
+[p10892] M03
+
+[p10893] Fractal Clark
+
+[p10894] r = 0.0944968 ± 0.0119398; A0 = 0.0542127 ± 0.392809; n = 1.01 ± 0.0706975; h = 0.610014 ± 0.0179012
+
+[p10895] run 5
+
+[p10896] M04
+
+[p10897] Modified Dose-Response (Yan)
+
+[p10898] a = 1.30051 ± 0.00855469; t50 = 236.039 ± 1.75832
+
+[p10899] run 5
+
+[p10900] M05
+
+[p10901] Wolborska (linearised, early)
+
+[p10902] slope = 0.0437903 ± 0.00397241; intercept = -3.64916 ± 0.131191
+
+[p10903] run 5
+
+[p10904] M06
+
+[p10905] Gudermannian (Hu 2021)
+
+[p10906] k = 0.0031131 ± 6.55261e-05; tau = 338.627 ± 5.60603
+
+[p10907] run 5
+
+[p10908] M07
+
+[p10909] Error-Function (Hu 2021)
+
+[p10910] k = 0.00165977 ± 3.43014e-05; tau = 347.617 ± 5.81797
+
+[p10911] run 5
+
+[p10912] M08
+
+[p10913] Tanh (Hu 2019)
+
+[p10914] k = 0.00192629 ± 4.02446e-05; tau = 342.611 ± 5.69159
+
+[p10915] run 5
+
+[p10916] M09
+
+[p10917] Log-Normal (Chu-Hashim)
+
+[p10918] a = 1.33782 ± 0.00600803; b = 5.44828 ± 0.00552445
+
+[p10919] run 5
+
+[p10920] M10
+
+[p10921] Fractal Gudermannian (Hu 2024)
+
+[p10922] k0 = 0.0290106 ± 0.000533984; tau0 = 238.687 ± 0.854784; h = 0.39103 ± 0.00269539
+
+[p10923] run 5
+
+[p10924] M11
+
+[p10925] Fractal Error-Function (Hu 2024)
+
+[p10926] k0 = 0.024742 ± 0.000312276; tau0 = 226.306 ± 0.596591; h = 0.472106 ± 0.00182535
+
+[p10927] run 5
+
+[p10928] M12
+
+[p10929] Gompertz (Chu 2020)
+
+[p10930] alpha_G = 0.535537 ± 0.0169709; beta_G = 0.00281173 ± 4.18196e-05
+
+[p10931] run 5
+
+[p10932] M13
+
+[p10933] Log-Gompertz (Chu 2020)
+
+[p10934] alpha_G = 5.29563 ± 0.0600043; beta_G = 1.04983 ± 0.00988183
+
+[p10935] run 5
+
+[p10936] M14
+
+[p10937] Weibull (Chu 2021)
+
+[p10938] tau = 398.252 ± 1.00496; k = 0.71278 ± 0.00186537
+
+[p10939] run 5
+
+[p10940] M15
+
+[p10941] Avrami (Singh)
+
+[p10942] k = 0.0140172 ± 0.000171487; n = 0.71278 ± 0.00186536
+
+[p10943] run 5
+
+[p10944] M16
+
+[p10945] Klinkenberg
+
+[p10946] K_fa = 1 ± 0.111101; K = 670.98 ± 41.5622
+
+[p10947] run 5
+
+[p10948] M17
+
+[p10949] Dima (wave erf)
+
+[p10950] v_d = 0.00287673 ± 4.81473e-05; sigma_a = 1.22557 ± 0.0337048
+
+[p10951] run 5
+
+[p10952] M18
+
+[p10953] Chern-Chien Langmuir
+
+[p10954] K_fa = 0.0174138 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 229.703 ± 0
+
+[p10955] run 5
+
+[p10956] M19
+
+[p10957] Chern-Chien Freundlich
+
+[p10958] K_fa = 0.0174138 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 229.703 ± 0
+
+[p10959] run 5
+
+[p10960] M20
+
+[p10961] Log-modified Bohart-Adams
+
+[p10962] k_BA = 1.30051 ± 0.00855469; log_a0_C0 = 5.464 ± 0.00744929
+
+[p10963] run 5
+
+[p10964] M21
+
+[p10965] Log-modified Yoon-Nelson
+
+[p10966] k_YN = 1.30051 ± 0.00855469; tau = 236.039 ± 1.75832
+
+[p10967] run 5
+
+[p10968] M22
+
+[p10969] n-Order Bohart-Adams
+
+[p10970] k_n = 0.999996 ± 0.242634; a0 = 8643.41 ± 6.22951e-06; n = 1.37462 ± 0.000188452
+
+[p10971] run 5
+
+[p10972] M23
+
+[p10973] Fractal Yoon-Nelson (Hu 2024)
+
+[p10974] k_YN0 = 0.375371 ± 0.0122579; tau = 244.547 ± 1.24166; h = 0.799187 ± 0.00532837
+
+[p10975] run 5
+
+[p10976] M24
+
+[p10977] Parallel two-component sigmoidal (Blagojev)
+
+[p10978] p = 0.753 ± 0.0203777; tau1 = 137.716 ± 5.46475; k1 = 1.42571 ± 0.0355241; tau2 = 900.45 ± 23.0497; k2 = 2.63502 ± 0.119993
+
+[p10979] run 6
+
+[p10980] M01
+
+[p10981] Yoon-Nelson / Thomas / BA (logistic)
+
+[p10982] k_YN = 0.00394886 ± 0.000154501; tau = 349.692 ± 10.1312
+
+[p10983] run 6
+
+[p10984] M02
+
+[p10985] Clark
+
+[p10986] r = 0.00284712 ± 0.000201379; A = 0.0177951 ± 0.3116; n = 1.01 ± 0.173719
+
+[p10987] run 6
+
+[p10988] M03
+
+[p10989] Fractal Clark
+
+[p10990] r = 0.142195 ± 0.0139956; A0 = 0.0862631 ± 0.542178; n = 1.01 ± 0.0609728; h = 0.688258 ± 0.0136143
+
+[p10991] run 6
+
+[p10992] M04
+
+[p10993] Modified Dose-Response (Yan)
+
+[p10994] a = 1.2389 ± 0.0091296; t50 = 239.894 ± 2.13738
+
+[p10995] run 6
+
+[p10996] M05
+
+[p10997] Wolborska (linearised, early)
+
+[p10998] slope = 0.0400946 ± 0.00798357; intercept = -3.73874 ± 0.319386
+
+[p10999] run 6
+
+[p11000] M06
+
+[p11001] Gudermannian (Hu 2021)
+
+[p11002] k = 0.00316361 ± 0.000125304; tau = 346.658 ± 10.0771
+
+[p11003] run 6
+
+[p11004] M07
+
+[p11005] Error-Function (Hu 2021)
+
+[p11006] k = 0.00171895 ± 6.60454e-05; tau = 353.317 ± 10.2109
+
+[p11007] run 6
+
+[p11008] M08
+
+[p11009] Tanh (Hu 2019)
+
+[p11010] k = 0.00197444 ± 7.72509e-05; tau = 349.691 ± 10.1312
+
+[p11011] run 6
+
+[p11012] M09
+
+[p11013] Log-Normal (Chu-Hashim)
+
+[p11014] a = 1.41874 ± 0.00534392; b = 5.46139 ± 0.00495658
+
+[p11015] run 6
+
+[p11016] M10
+
+[p11017] Fractal Gudermannian (Hu 2024)
+
+[p11018] k0 = 0.0452729 ± 0.000766154; tau0 = 237.076 ± 0.849004; h = 0.467123 ± 0.0024173
+
+[p11019] run 6
+
+[p11020] M11
+
+[p11021] Fractal Error-Function (Hu 2024)
+
+[p11022] k0 = 0.0391285 ± 0.00102426; tau0 = 223.372 ± 1.31869; h = 0.548947 ± 0.00368553
+
+[p11023] run 6
+
+[p11024] M12
+
+[p11025] Gompertz (Chu 2020)
+
+[p11026] alpha_G = 0.568756 ± 0.0323439; beta_G = 0.00283667 ± 8.3707e-05
+
+[p11027] run 6
+
+[p11028] M13
+
+[p11029] Log-Gompertz (Chu 2020)
+
+[p11030] alpha_G = 5.04916 ± 0.0783809; beta_G = 1.00259 ± 0.0128619
+
+[p11031] run 6
+
+[p11032] M14
+
+[p11033] Weibull (Chu 2021)
+
+[p11034] tau = 417.703 ± 3.09878; k = 0.672637 ± 0.00485809
+
+[p11035] run 6
+
+[p11036] M15
+
+[p11037] Avrami (Singh)
+
+[p11038] k = 0.0172627 ± 0.000553609; n = 0.672637 ± 0.00485808
+
+[p11039] run 6
+
+[p11040] M16
+
+[p11041] Klinkenberg
+
+[p11042] K_fa = 1 ± 0.165797; K = 715.609 ± 73.9245
+
+[p11043] run 6
+
+[p11044] M17
+
+[p11045] Dima (wave erf)
+
+[p11046] v_d = 0.00283035 ± 8.17974e-05; sigma_a = 1.16427 ± 0.0558838
+
+[p11047] run 6
+
+[p11048] M18
+
+[p11049] Chern-Chien Langmuir
+
+[p11050] K_fa = 0.0166672 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 239.993 ± 0
+
+[p11051] run 6
+
+[p11052] M19
+
+[p11053] Chern-Chien Freundlich
+
+[p11054] K_fa = 0.0166672 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 239.993 ± 0
+
+[p11055] run 6
+
+[p11056] M20
+
+[p11057] Log-modified Bohart-Adams
+
+[p11058] k_BA = 1.2389 ± 0.00912961; log_a0_C0 = 5.4802 ± 0.00890967
+
+[p11059] run 6
+
+[p11060] M21
+
+[p11061] Log-modified Yoon-Nelson
+
+[p11062] k_YN = 1.2389 ± 0.00912961; tau = 239.894 ± 2.13738
+
+[p11063] run 6
+
+[p11064] M22
+
+[p11065] n-Order Bohart-Adams
+
+[p11066] k_n = 0.99999 ± 0.471477; a0 = 8643.83 ± 1.2106e-05; n = 1.37471 ± 0.00052003
+
+[p11067] run 6
+
+[p11068] M23
+
+[p11069] Fractal Yoon-Nelson (Hu 2024)
+
+[p11070] k_YN0 = 0.528911 ± 0.0195631; tau = 245.942 ± 1.38686; h = 0.86454 ± 0.0059113
+
+[p11071] run 6
+
+[p11072] M24
+
+[p11073] Parallel two-component sigmoidal (Blagojev)
+
+[p11074] p = 0.660414 ± 0.0574073; tau1 = 125.358 ± 13.3815; k1 = 1.3704 ± 0.0655206; tau2 = 722.209 ± 55.3633; k2 = 1.80783 ± 0.0863179
+
+[p11075] run 8
+
+[p11076] M01
+
+[p11077] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11078] k_YN = 0.00393298 ± 0.000155153; tau = 347.975 ± 10.2564
+
+[p11079] run 8
+
+[p11080] M02
+
+[p11081] Clark
+
+[p11082] r = 0.00290121 ± 0.000198099; A = 0.0180663 ± 0.320724; n = 1.01 ± 0.176146
+
+[p11083] run 8
+
+[p11084] M03
+
+[p11085] Fractal Clark
+
+[p11086] r = 0.155687 ± 0.0187584; A0 = 0.110598 ± 0.848983; n = 1.01 ± 0.0742722; h = 0.691162 ± 0.0167305
+
+[p11087] run 8
+
+[p11088] M04
+
+[p11089] Modified Dose-Response (Yan)
+
+[p11090] a = 1.33102 ± 0.00922121; t50 = 250.401 ± 1.95876
+
+[p11091] run 8
+
+[p11092] M05
+
+[p11093] Wolborska (linearised, early)
+
+[p11094] slope = nan ± nan; intercept = nan ± nan
+
+[p11095] run 8
+
+[p11096] M06
+
+[p11097] Gudermannian (Hu 2021)
+
+[p11098] k = 0.00315854 ± 0.000125043; tau = 344.51 ± 10.1176
+
+[p11099] run 8
+
+[p11100] M07
+
+[p11101] Error-Function (Hu 2021)
+
+[p11102] k = 0.0017079 ± 6.69276e-05; tau = 352.196 ± 10.4512
+
+[p11103] run 8
+
+[p11104] M08
+
+[p11105] Tanh (Hu 2019)
+
+[p11106] k = 0.00196661 ± 7.75825e-05; tau = 347.968 ± 10.256
+
+[p11107] run 8
+
+[p11108] M09
+
+[p11109] Log-Normal (Chu-Hashim)
+
+[p11110] a = 1.32393 ± 0.00463323; b = 5.50289 ± 0.00429706
+
+[p11111] run 8
+
+[p11112] M10
+
+[p11113] Fractal Gudermannian (Hu 2024)
+
+[p11114] k0 = 0.0512282 ± 0.00113849; tau0 = 246.677 ± 0.997409; h = 0.47473 ± 0.00318301
+
+[p11115] run 8
+
+[p11116] M11
+
+[p11117] Fractal Error-Function (Hu 2024)
+
+[p11118] k0 = 0.0460807 ± 0.00142228; tau0 = 234.217 ± 1.40051; h = 0.562731 ± 0.00436428
+
+[p11119] run 8
+
+[p11120] M12
+
+[p11121] Gompertz (Chu 2020)
+
+[p11122] alpha_G = 0.584075 ± 0.0340523; beta_G = 0.00289136 ± 8.41388e-05
+
+[p11123] run 8
+
+[p11124] M13
+
+[p11125] Log-Gompertz (Chu 2020)
+
+[p11126] alpha_G = 5.56682 ± 0.0827315; beta_G = 1.08653 ± 0.0135222
+
+[p11127] run 8
+
+[p11128] M14
+
+[p11129] Weibull (Chu 2021)
+
+[p11130] tau = 415.647 ± 3.51004; k = 0.71751 ± 0.00637721
+
+[p11131] run 8
+
+[p11132] M15
+
+[p11133] Avrami (Singh)
+
+[p11134] k = 0.0132142 ± 0.000554081; n = 0.717509 ± 0.00637718
+
+[p11135] run 8
+
+[p11136] M16
+
+[p11137] Klinkenberg
+
+[p11138] K_fa = 1 ± 0.1782; K = 696.72 ± 66.7556
+
+[p11139] run 8
+
+[p11140] M17
+
+[p11141] Dima (wave erf)
+
+[p11142] v_d = 0.00283933 ± 8.42558e-05; sigma_a = 1.17554 ± 0.0601711
+
+[p11143] run 8
+
+[p11144] M18
+
+[p11145] Chern-Chien Langmuir
+
+[p11146] K_fa = 0.0162674 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 245.891 ± 0
+
+[p11147] run 8
+
+[p11148] M19
+
+[p11149] Chern-Chien Freundlich
+
+[p11150] K_fa = 0.0162674 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 245.891 ± 0
+
+[p11151] run 8
+
+[p11152] M20
+
+[p11153] Log-modified Bohart-Adams
+
+[p11154] k_BA = 1.33102 ± 0.00922121; log_a0_C0 = 5.52306 ± 0.00782249
+
+[p11155] run 8
+
+[p11156] M21
+
+[p11157] Log-modified Yoon-Nelson
+
+[p11158] k_YN = 1.33102 ± 0.00922121; tau = 250.401 ± 1.95876
+
+[p11159] run 8
+
+[p11160] M22
+
+[p11161] n-Order Bohart-Adams
+
+[p11162] k_n = 0.999997 ± 0.517697; a0 = 8645.14 ± 1.32908e-05; n = 1.3747 ± 0.00053634
+
+[p11163] run 8
+
+[p11164] M23
+
+[p11165] Fractal Yoon-Nelson (Hu 2024)
+
+[p11166] k_YN0 = 0.594731 ± 0.0255555; tau = 253.883 ± 1.35648; h = 0.872362 ± 0.00682942
+
+[p11167] run 8
+
+[p11168] M24
+
+[p11169] Parallel two-component sigmoidal (Blagojev)
+
+[p11170] p = 0.668105 ± 0.0723802; tau1 = 142.814 ± 16.69; k1 = 1.48146 ± 0.0804182; tau2 = 685.977 ± 64.4641; k2 = 1.85887 ± 0.0992562
+
+[p11171] 06-26 c5 f0.05
+
+[p11172] M01
+
+[p11173] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11174] k_YN = 0.000596415 ± 8.92068e-06; tau = 3624.39 ± 26.2487
+
+[p11175] 06-26 c5 f0.05
+
+[p11176] M02
+
+[p11177] Clark
+
+[p11178] r = 0.000433171 ± 1.06145e-05; A = 0.0315964 ± 0.195172; n = 1.01 ± 0.061159
+
+[p11179] 06-26 c5 f0.05
+
+[p11180] M03
+
+[p11181] Fractal Clark
+
+[p11182] r = 0.795706 ± 0.14582; A0 = 1e+06 ± 9.48667e+06; n = 1.01 ± 0.0453014; h = 0.918501 ± 0.0205016
+
+[p11183] 06-26 c5 f0.05
+
+[p11184] M04
+
+[p11185] Modified Dose-Response (Yan)
+
+[p11186] a = 2.03204 ± 0.0103776; t50 = 3190.44 ± 9.96874
+
+[p11187] 06-26 c5 f0.05
+
+[p11188] M05
+
+[p11189] Wolborska (linearised, early)
+
+[p11190] slope = 0.00597851 ± 0.000384783; intercept = -11.5931 ± 0.604305
+
+[p11191] 06-26 c5 f0.05
+
+[p11192] M06
+
+[p11193] Gudermannian (Hu 2021)
+
+[p11194] k = 0.000479628 ± 7.19991e-06; tau = 3602.44 ± 25.8617
+
+[p11195] 06-26 c5 f0.05
+
+[p11196] M07
+
+[p11197] Error-Function (Hu 2021)
+
+[p11198] k = 0.000259086 ± 3.85226e-06; tau = 3650.19 ± 26.7716
+
+[p11199] 06-26 c5 f0.05
+
+[p11200] M08
+
+[p11201] Tanh (Hu 2019)
+
+[p11202] k = 0.000298221 ± 4.46067e-06; tau = 3624.35 ± 26.248
+
+[p11203] 06-26 c5 f0.05
+
+[p11204] M09
+
+[p11205] Log-Normal (Chu-Hashim)
+
+[p11206] a = 0.838079 ± 0.00441682; b = 8.07108 ± 0.00345702
+
+[p11207] 06-26 c5 f0.05
+
+[p11208] M10
+
+[p11209] Fractal Gudermannian (Hu 2024)
+
+[p11210] k0 = 0.275208 ± 0.009054; tau0 = 3027.08 ± 4.66014; h = 0.758809 ± 0.00370524
+
+[p11211] 06-26 c5 f0.05
+
+[p11212] M11
+
+[p11213] Fractal Error-Function (Hu 2024)
+
+[p11214] k0 = 0.236025 ± 0.00427992; tau0 = 2987.45 ± 2.77379; h = 0.818659 ± 0.00202648
+
+[p11215] 06-26 c5 f0.05
+
+[p11216] M12
+
+[p11217] Gompertz (Chu 2020)
+
+[p11218] alpha_G = 1.14092 ± 0.0175586; beta_G = 0.000431637 ± 4.63657e-06
+
+[p11219] 06-26 c5 f0.05
+
+[p11220] M13
+
+[p11221] Log-Gompertz (Chu 2020)
+
+[p11222] alpha_G = 12.1826 ± 0.0247148; beta_G = 1.56505 ± 0.00299685
+
+[p11223] 06-26 c5 f0.05
+
+[p11224] M14
+
+[p11225] Weibull (Chu 2021)
+
+[p11226] tau = 4511.42 ± 22.4942; k = 1.21719 ± 0.0111031
+
+[p11227] 06-26 c5 f0.05
+
+[p11228] M15
+
+[p11229] Avrami (Singh)
+
+[p11230] k = 3.57911e-05 ± 3.39103e-06; n = 1.21671 ± 0.0110698
+
+[p11231] 06-26 c5 f0.05
+
+[p11232] M16
+
+[p11233] Klinkenberg
+
+[p11234] K_fa = 1 ± 0.0337354; K = 6236.5 ± 118.244
+
+[p11235] 06-26 c5 f0.05
+
+[p11236] M17
+
+[p11237] Dima (wave erf)
+
+[p11238] v_d = 0.000273961 ± 2.0094e-06; sigma_a = 0.747712 ± 0.0127512
+
+[p11239] 06-26 c5 f0.05
+
+[p11240] M18
+
+[p11241] Chern-Chien Langmuir
+
+[p11242] K_fa = 0.00135819 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 2945.1 ± 0
+
+[p11243] 06-26 c5 f0.05
+
+[p11244] M19
+
+[p11245] Chern-Chien Freundlich
+
+[p11246] K_fa = 0.00135819 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 2945.1 ± 0
+
+[p11247] 06-26 c5 f0.05
+
+[p11248] M20
+
+[p11249] Log-modified Bohart-Adams
+
+[p11250] k_BA = 2.03205 ± 0.0103776; log_a0_C0 = 8.06791 ± 0.00312456
+
+[p11251] 06-26 c5 f0.05
+
+[p11252] M21
+
+[p11253] Log-modified Yoon-Nelson
+
+[p11254] k_YN = 2.03204 ± 0.0103776; tau = 3190.44 ± 9.96874
+
+[p11255] 06-26 c5 f0.05
+
+[p11256] M22
+
+[p11257] n-Order Bohart-Adams
+
+[p11258] k_n = 0.997987 ± 3.04675; a0 = 8644.97 ± 7.8162e-05; n = 1.37563 ± 0.0444035
+
+[p11259] 06-26 c5 f0.05
+
+[p11260] M23
+
+[p11261] Fractal Yoon-Nelson (Hu 2024)
+
+[p11262] k_YN0 = 1.342 ± 0.162664; tau = 3210.32 ± 12.0436; h = 0.95 ± 0.0145161
+
+[p11263] 06-26 c5 f0.05
+
+[p11264] M24
+
+[p11265] Parallel two-component sigmoidal (Blagojev)
+
+[p11266] p = 0.534576 ± 0.0212559; tau1 = 2250.86 ± 10.2496; k1 = 4.50313 ± 0.123756; tau2 = 5575.56 ± 211.385; k2 = 2.07723 ± 0.0352452
+
+[p11267] 07-03 c5 f0.10
+
+[p11268] M01
+
+[p11269] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11270] k_YN = 0.00109974 ± 2.78134e-05; tau = 1903.87 ± 23.1559
+
+[p11271] 07-03 c5 f0.10
+
+[p11272] M02
+
+[p11273] Clark
+
+[p11274] r = 0.000808676 ± 3.23458e-05; A = 0.0304102 ± 0.300963; n = 1.01 ± 0.0979969
+
+[p11275] 07-03 c5 f0.10
+
+[p11276] M03
+
+[p11277] Fractal Clark
+
+[p11278] r = 0.487174 ± 0.147771; A0 = 129.931 ± 1380.49; n = 1.01 ± 0.0798096; h = 0.849132 ± 0.0366688
+
+[p11279] 07-03 c5 f0.10
+
+[p11280] M04
+
+[p11281] Modified Dose-Response (Yan)
+
+[p11282] a = 2.02802 ± 0.014762; t50 = 1663.83 ± 6.96765
+
+[p11283] 07-03 c5 f0.10
+
+[p11284] M05
+
+[p11285] Wolborska (linearised, early)
+
+[p11286] slope = 0.00784496 ± 0.000660546; intercept = -8.03673 ± 0.489785
+
+[p11287] 07-03 c5 f0.10
+
+[p11288] M06
+
+[p11289] Gudermannian (Hu 2021)
+
+[p11290] k = 0.00089203 ± 2.28001e-05; tau = 1890.32 ± 22.7439
+
+[p11291] 07-03 c5 f0.10
+
+[p11292] M07
+
+[p11293] Error-Function (Hu 2021)
+
+[p11294] k = 0.000471395 ± 1.17922e-05; tau = 1921.15 ± 23.8209
+
+[p11295] 07-03 c5 f0.10
+
+[p11296] M08
+
+[p11297] Tanh (Hu 2019)
+
+[p11298] k = 0.000549885 ± 1.39073e-05; tau = 1903.85 ± 23.1555
+
+[p11299] 07-03 c5 f0.10
+
+[p11300] M09
+
+[p11301] Log-Normal (Chu-Hashim)
+
+[p11302] a = 0.83492 ± 0.00542648; b = 7.41934 ± 0.00399522
+
+[p11303] 07-03 c5 f0.10
+
+[p11304] M10
+
+[p11305] Fractal Gudermannian (Hu 2024)
+
+[p11306] k0 = 0.0896364 ± 0.00675877; tau0 = 1623.71 ± 6.44937; h = 0.602546 ± 0.00933643
+
+[p11307] 07-03 c5 f0.10
+
+[p11308] M11
+
+[p11309] Fractal Error-Function (Hu 2024)
+
+[p11310] k0 = 0.0711192 ± 0.0030149; tau0 = 1604.16 ± 3.90763; h = 0.658203 ± 0.0052042
+
+[p11311] 07-03 c5 f0.10
+
+[p11312] M12
+
+[p11313] Gompertz (Chu 2020)
+
+[p11314] alpha_G = 1.10285 ± 0.0264405; beta_G = 0.000805888 ± 1.37949e-05
+
+[p11315] 07-03 c5 f0.10
+
+[p11316] M13
+
+[p11317] Log-Gompertz (Chu 2020)
+
+[p11318] alpha_G = 10.9461 ± 0.0595931; beta_G = 1.53672 ± 0.00790562
+
+[p11319] 07-03 c5 f0.10
+
+[p11320] M14
+
+[p11321] Weibull (Chu 2021)
+
+[p11322] tau = 2353.34 ± 16.6562; k = 1.24362 ± 0.0166534
+
+[p11323] 07-03 c5 f0.10
+
+[p11324] M15
+
+[p11325] Avrami (Singh)
+
+[p11326] k = 6.41802e-05 ± 8.37321e-06; n = 1.24347 ± 0.0166302
+
+[p11327] 07-03 c5 f0.10
+
+[p11328] M16
+
+[p11329] Klinkenberg
+
+[p11330] K_fa = 1 ± 0.0664651; K = 3284.84 ± 132.493
+
+[p11331] 07-03 c5 f0.10
+
+[p11332] M17
+
+[p11333] Dima (wave erf)
+
+[p11334] v_d = 0.000520524 ± 6.45426e-06; sigma_a = 0.780804 ± 0.021955
+
+[p11335] 07-03 c5 f0.10
+
+[p11336] M18
+
+[p11337] Chern-Chien Langmuir
+
+[p11338] K_fa = 0.00255257 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 1567.05 ± 0
+
+[p11339] 07-03 c5 f0.10
+
+[p11340] M19
+
+[p11341] Chern-Chien Freundlich
+
+[p11342] K_fa = 0.00255257 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 1567.05 ± 0
+
+[p11343] 07-03 c5 f0.10
+
+[p11344] M20
+
+[p11345] Log-modified Bohart-Adams
+
+[p11346] k_BA = 2.02802 ± 0.014762; log_a0_C0 = 7.41688 ± 0.00418771
+
+[p11347] 07-03 c5 f0.10
+
+[p11348] M21
+
+[p11349] Log-modified Yoon-Nelson
+
+[p11350] k_YN = 2.02802 ± 0.014762; tau = 1663.83 ± 6.96765
+
+[p11351] 07-03 c5 f0.10
+
+[p11352] M22
+
+[p11353] n-Order Bohart-Adams
+
+[p11354] k_n = 0.999272 ± 3.30849; a0 = 8645.01 ± 8.50678e-05; n = 1.37624 ± 0.0989614
+
+[p11355] 07-03 c5 f0.10
+
+[p11356] M23
+
+[p11357] Fractal Yoon-Nelson (Hu 2024)
+
+[p11358] k_YN0 = 1.38446 ± 0.220192; tau = 1674.48 ± 8.51347; h = 0.95 ± 0.0207565
+
+[p11359] 07-03 c5 f0.10
+
+[p11360] M24
+
+[p11361] Parallel two-component sigmoidal (Blagojev)
+
+[p11362] p = 0.504976 ± 0.0177912; tau1 = 1047.2 ± 10.7906; k1 = 4.16367 ± 0.111803; tau2 = 2950.94 ± 76.339; k2 = 2.56023 ± 0.0464314
+
+[p11363] 07-08 c5 f0.15
+
+[p11364] M01
+
+[p11365] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11366] k_YN = 0.0013391 ± 4.38401e-05; tau = 1028.16 ± 23.4853
+
+[p11367] 07-08 c5 f0.15
+
+[p11368] M02
+
+[p11369] Clark
+
+[p11370] r = 0.0010443 ± 6.84734e-05; A = 0.0196862 ± 0.395225; n = 1.01 ± 0.199287
+
+[p11371] 07-08 c5 f0.15
+
+[p11372] M03
+
+[p11373] Fractal Clark
+
+[p11374] r = 0.750686 ± 0.0862958; A0 = 1e+06 ± 9.62704e+06; n = 1.01 ± 0.0486944; h = 0.940588 ± 0.0143077
+
+[p11375] 07-08 c5 f0.15
+
+[p11376] M04
+
+[p11377] Modified Dose-Response (Yan)
+
+[p11378] a = 1.45331 ± 0.00991544; t50 = 828.127 ± 5.13973
+
+[p11379] 07-08 c5 f0.15
+
+[p11380] M05
+
+[p11381] Wolborska (linearised, early)
+
+[p11382] slope = 0.0164233 ± 0.00196319; intercept = -7.13189 ± 0.584879
+
+[p11383] 07-08 c5 f0.15
+
+[p11384] M06
+
+[p11385] Gudermannian (Hu 2021)
+
+[p11386] k = 0.0010734 ± 3.47645e-05; tau = 1018.48 ± 22.9304
+
+[p11387] 07-08 c5 f0.15
+
+[p11388] M07
+
+[p11389] Error-Function (Hu 2021)
+
+[p11390] k = 0.000582058 ± 1.92682e-05; tau = 1040.12 ± 24.2586
+
+[p11391] 07-08 c5 f0.15
+
+[p11392] M08
+
+[p11393] Tanh (Hu 2019)
+
+[p11394] k = 0.000669549 ± 2.19202e-05; tau = 1028.16 ± 23.4853
+
+[p11395] 07-08 c5 f0.15
+
+[p11396] M09
+
+[p11397] Log-Normal (Chu-Hashim)
+
+[p11398] a = 1.18036 ± 0.00894254; b = 6.71552 ± 0.00739584
+
+[p11399] 07-08 c5 f0.15
+
+[p11400] M10
+
+[p11401] Fractal Gudermannian (Hu 2024)
+
+[p11402] k0 = 0.121189 ± 0.00349611; tau0 = 792.725 ± 2.43803; h = 0.646206 ± 0.00361771
+
+[p11403] 07-08 c5 f0.15
+
+[p11404] M11
+
+[p11405] Fractal Error-Function (Hu 2024)
+
+[p11406] k0 = 0.102176 ± 0.00125161; tau0 = 771.421 ± 1.10474; h = 0.712298 ± 0.00151681
+
+[p11407] 07-08 c5 f0.15
+
+[p11408] M12
+
+[p11409] Gompertz (Chu 2020)
+
+[p11410] alpha_G = 0.670581 ± 0.0333467; beta_G = 0.00104144 ± 2.66584e-05
+
+[p11411] 07-08 c5 f0.15
+
+[p11412] M13
+
+[p11413] Log-Gompertz (Chu 2020)
+
+[p11414] alpha_G = 7.28096 ± 0.0187173; beta_G = 1.14792 ± 0.00262042
+
+[p11415] 07-08 c5 f0.15
+
+[p11416] M14
+
+[p11417] Weibull (Chu 2021)
+
+[p11418] tau = 1319.05 ± 15.2133; k = 0.83188 ± 0.012529
+
+[p11419] 07-08 c5 f0.15
+
+[p11420] M15
+
+[p11421] Avrami (Singh)
+
+[p11422] k = 0.00253705 ± 0.000239489; n = 0.831876 ± 0.0125286
+
+[p11423] 07-08 c5 f0.15
+
+[p11424] M16
+
+[p11425] Klinkenberg
+
+[p11426] K_fa = 1 ± 0.0547174; K = 2007.4 ± 61.8536
+
+[p11427] 07-08 c5 f0.15
+
+[p11428] M17
+
+[p11429] Dima (wave erf)
+
+[p11430] v_d = 0.000961438 ± 2.24237e-05; sigma_a = 1.16798 ± 0.0529643
+
+[p11431] 07-08 c5 f0.15
+
+[p11432] M18
+
+[p11433] Chern-Chien Langmuir
+
+[p11434] K_fa = 0.00518964 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 770.766 ± 0
+
+[p11435] 07-08 c5 f0.15
+
+[p11436] M19
+
+[p11437] Chern-Chien Freundlich
+
+[p11438] K_fa = 0.00518964 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 770.766 ± 0
+
+[p11439] 07-08 c5 f0.15
+
+[p11440] M20
+
+[p11441] Log-modified Bohart-Adams
+
+[p11442] k_BA = 1.45331 ± 0.00991544; log_a0_C0 = 6.71917 ± 0.00620646
+
+[p11443] 07-08 c5 f0.15
+
+[p11444] M21
+
+[p11445] Log-modified Yoon-Nelson
+
+[p11446] k_YN = 1.45331 ± 0.00991545; tau = 828.127 ± 5.13973
+
+[p11447] 07-08 c5 f0.15
+
+[p11448] M22
+
+[p11449] n-Order Bohart-Adams
+
+[p11450] k_n = 0.999272 ± 2.27333; a0 = 8645.01 ± 5.84519e-05; n = 1.37624 ± 0.0680093
+
+[p11451] 07-08 c5 f0.15
+
+[p11452] M23
+
+[p11453] Fractal Yoon-Nelson (Hu 2024)
+
+[p11454] k_YN0 = 1.01453 ± 0.109967; tau = 835.155 ± 6.3035; h = 0.95 ± 0.0149542
+
+[p11455] 07-08 c5 f0.15
+
+[p11456] M24
+
+[p11457] Parallel two-component sigmoidal (Blagojev)
+
+[p11458] p = 0.481274 ± 0.035569; tau1 = 499.897 ± 6.2204; k1 = 3.09033 ± 0.14299; tau2 = 1586.27 ± 111.939; k2 = 1.54223 ± 0.0287586
+
+[p11459] 07-08 c10 f0.05
+
+[p11460] M01
+
+[p11461] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11462] k_YN = 0.00106073 ± 1.43074e-05; tau = 2605.82 ± 13.6038
+
+[p11463] 07-08 c10 f0.05
+
+[p11464] M02
+
+[p11465] Clark
+
+[p11466] r = 0.000730482 ± 1.53568e-05; A = 0.0439286 ± 0.208089; n = 1.01 ± 0.0468106
+
+[p11467] 07-08 c10 f0.05
+
+[p11468] M03
+
+[p11469] Fractal Clark
+
+[p11470] r = 0.853724 ± 0.166981; A0 = 1e+06 ± 8.98742e+06; n = 1.01 ± 0.0421419; h = 0.905426 ± 0.0229894
+
+[p11471] 07-08 c10 f0.05
+
+[p11472] M04
+
+[p11473] Modified Dose-Response (Yan)
+
+[p11474] a = 2.41281 ± 0.0129493; t50 = 2400.78 ± 6.18956
+
+[p11475] 07-08 c10 f0.05
+
+[p11476] M05
+
+[p11477] Wolborska (linearised, early)
+
+[p11478] slope = 0.00592885 ± 0.000232322; intercept = -9.82117 ± 0.296761
+
+[p11479] 07-08 c10 f0.05
+
+[p11480] M06
+
+[p11481] Gudermannian (Hu 2021)
+
+[p11482] k = 0.000858283 ± 1.17995e-05; tau = 2596.03 ± 13.4979
+
+[p11483] 07-08 c10 f0.05
+
+[p11484] M07
+
+[p11485] Error-Function (Hu 2021)
+
+[p11486] k = 0.000456232 ± 5.99563e-06; tau = 2618.05 ± 13.7745
+
+[p11487] 07-08 c10 f0.05
+
+[p11488] M08
+
+[p11489] Tanh (Hu 2019)
+
+[p11490] k = 0.000530366 ± 7.15376e-06; tau = 2605.82 ± 13.6038
+
+[p11491] 07-08 c10 f0.05
+
+[p11492] M09
+
+[p11493] Log-Normal (Chu-Hashim)
+
+[p11494] a = 0.703562 ± 0.00392209; b = 7.78728 ± 0.00285707
+
+[p11495] 07-08 c10 f0.05
+
+[p11496] M10
+
+[p11497] Fractal Gudermannian (Hu 2024)
+
+[p11498] k0 = 0.549323 ± 0.0152628; tau0 = 2281.16 ± 2.33628; h = 0.818281 ± 0.00329515
+
+[p11499] 07-08 c10 f0.05
+
+[p11500] M11
+
+[p11501] Fractal Error-Function (Hu 2024)
+
+[p11502] k0 = 0.461379 ± 0.00622877; tau0 = 2257.09 ± 1.2378; h = 0.878543 ± 0.00158776
+
+[p11503] 07-08 c10 f0.05
+
+[p11504] M12
+
+[p11505] Gompertz (Chu 2020)
+
+[p11506] alpha_G = 1.46814 ± 0.0175026; beta_G = 0.000727453 ± 6.8856e-06
+
+[p11507] 07-08 c10 f0.05
+
+[p11508] M13
+
+[p11509] Log-Gompertz (Chu 2020)
+
+[p11510] alpha_G = 13.6201 ± 0.0271133; beta_G = 1.8074 ± 0.00345277
+
+[p11511] 07-08 c10 f0.05
+
+[p11512] M14
+
+[p11513] Weibull (Chu 2021)
+
+[p11514] tau = 3192.33 ± 13.6218; k = 1.53788 ± 0.0148141
+
+[p11515] 07-08 c10 f0.05
+
+[p11516] M15
+
+[p11517] Avrami (Singh)
+
+[p11518] k = 4.32654e-06 ± 5.05032e-07; n = 1.53065 ± 0.014403
+
+[p11519] 07-08 c10 f0.05
+
+[p11520] M16
+
+[p11521] Klinkenberg
+
+[p11522] K_fa = 1 ± 0.0359398; K = 4562.1 ± 103.866
+
+[p11523] 07-08 c10 f0.05
+
+[p11524] M17
+
+[p11525] Dima (wave erf)
+
+[p11526] v_d = 0.000381966 ± 2.0097e-06; sigma_a = 0.591999 ± 0.00822583
+
+[p11527] 07-08 c10 f0.05
+
+[p11528] M18
+
+[p11529] Chern-Chien Langmuir
+
+[p11530] K_fa = 0.00177117 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 2258.4 ± 0
+
+[p11531] 07-08 c10 f0.05
+
+[p11532] M19
+
+[p11533] Chern-Chien Freundlich
+
+[p11534] K_fa = 0.00177117 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 2258.4 ± 0
+
+[p11535] 07-08 c10 f0.05
+
+[p11536] M20
+
+[p11537] Log-modified Bohart-Adams
+
+[p11538] k_BA = 2.41281 ± 0.0129493; log_a0_C0 = 7.78355 ± 0.00257815
+
+[p11539] 07-08 c10 f0.05
+
+[p11540] M21
+
+[p11541] Log-modified Yoon-Nelson
+
+[p11542] k_YN = 2.41281 ± 0.0129493; tau = 2400.78 ± 6.18956
+
+[p11543] 07-08 c10 f0.05
+
+[p11544] M22
+
+[p11545] n-Order Bohart-Adams
+
+[p11546] k_n = 0.997987 ± 3.61108; a0 = 8644.97 ± 9.26393e-05; n = 1.37563 ± 0.052628
+
+[p11547] 07-08 c10 f0.05
+
+[p11548] M23
+
+[p11549] Fractal Yoon-Nelson (Hu 2024)
+
+[p11550] k_YN0 = 1.62601 ± 0.221095; tau = 2412.13 ± 7.59479; h = 0.95 ± 0.0170793
+
+[p11551] 07-08 c10 f0.05
+
+[p11552] M24
+
+[p11553] Parallel two-component sigmoidal (Blagojev)
+
+[p11554] p = 0.644853 ± 0.0273044; tau1 = 1886.76 ± 9.83278; k1 = 4.33568 ± 0.107517; tau2 = 4484.78 ± 261.688; k2 = 2.21561 ± 0.0627691
+
+[p11555] 07-08 c10 f0.10
+
+[p11556] M01
+
+[p11557] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11558] k_YN = 0.0017345 ± 2.48991e-05; tau = 1088.28 ± 8.51462
+
+[p11559] 07-08 c10 f0.10
+
+[p11560] M02
+
+[p11561] Clark
+
+[p11562] r = 0.0012971 ± 3.07153e-05; A = 0.0269229 ± 0.170896; n = 1.01 ± 0.0629045
+
+[p11563] 07-08 c10 f0.10
+
+[p11564] M03
+
+[p11565] Fractal Clark
+
+[p11566] r = 0.627383 ± 0.0366946; A0 = 969.652 ± 2697.89; n = 1.01 ± 0.019726; h = 0.881648 ± 0.00743412
+
+[p11567] 07-08 c10 f0.10
+
+[p11568] M04
+
+[p11569] Modified Dose-Response (Yan)
+
+[p11570] a = 1.87965 ± 0.00552344; t50 = 928.094 ± 1.91202
+
+[p11571] 07-08 c10 f0.10
+
+[p11572] M05
+
+[p11573] Wolborska (linearised, early)
+
+[p11574] slope = 0.0133359 ± 0.000666775; intercept = -7.36831 ± 0.256243
+
+[p11575] 07-08 c10 f0.10
+
+[p11576] M06
+
+[p11577] Gudermannian (Hu 2021)
+
+[p11578] k = 0.00140278 ± 2.00938e-05; tau = 1079.76 ± 8.30566
+
+[p11579] 07-08 c10 f0.10
+
+[p11580] M07
+
+[p11581] Error-Function (Hu 2021)
+
+[p11582] k = 0.000745276 ± 1.07198e-05; tau = 1099.38 ± 8.83015
+
+[p11583] 07-08 c10 f0.10
+
+[p11584] M08
+
+[p11585] Tanh (Hu 2019)
+
+[p11586] k = 0.000867273 ± 1.24501e-05; tau = 1088.27 ± 8.51449
+
+[p11587] 07-08 c10 f0.10
+
+[p11588] M09
+
+[p11589] Log-Normal (Chu-Hashim)
+
+[p11590] a = 0.913184 ± 0.00295406; b = 6.8331 ± 0.00242734
+
+[p11591] 07-08 c10 f0.10
+
+[p11592] M10
+
+[p11593] Fractal Gudermannian (Hu 2024)
+
+[p11594] k0 = 0.108551 ± 0.00216925; tau0 = 904.466 ± 1.33656; h = 0.605005 ± 0.00256796
+
+[p11595] 07-08 c10 f0.10
+
+[p11596] M11
+
+[p11597] Fractal Error-Function (Hu 2024)
+
+[p11598] k0 = 0.100912 ± 0.000919148; tau0 = 884.02 ± 0.649864; h = 0.686505 ± 0.00115736
+
+[p11599] 07-08 c10 f0.10
+
+[p11600] M12
+
+[p11601] Gompertz (Chu 2020)
+
+[p11602] alpha_G = 0.981799 ± 0.0152834; beta_G = 0.00129289 ± 1.31414e-05
+
+[p11603] 07-08 c10 f0.10
+
+[p11604] M13
+
+[p11605] Log-Gompertz (Chu 2020)
+
+[p11606] alpha_G = 9.56108 ± 0.0181689; beta_G = 1.46515 ± 0.00256894
+
+[p11607] 07-08 c10 f0.10
+
+[p11608] M14
+
+[p11609] Weibull (Chu 2021)
+
+[p11610] tau = 1349.8 ± 6.04233; k = 1.11723 ± 0.00832387
+
+[p11611] 07-08 c10 f0.10
+
+[p11612] M15
+
+[p11613] Avrami (Singh)
+
+[p11614] k = 0.000318315 ± 1.95987e-05; n = 1.1172 ± 0.00832167
+
+[p11615] 07-08 c10 f0.10
+
+[p11616] M16
+
+[p11617] Klinkenberg
+
+[p11618] K_fa = 1 ± 0.032701; K = 1874.44 ± 34.4058
+
+[p11619] 07-08 c10 f0.10
+
+[p11620] M17
+
+[p11621] Dima (wave erf)
+
+[p11622] v_d = 0.000909607 ± 7.30595e-06; sigma_a = 0.863012 ± 0.0148399
+
+[p11623] 07-08 c10 f0.10
+
+[p11624] M18
+
+[p11625] Chern-Chien Langmuir
+
+[p11626] K_fa = 0.00454167 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 880.733 ± 0
+
+[p11627] 07-08 c10 f0.10
+
+[p11628] M19
+
+[p11629] Chern-Chien Freundlich
+
+[p11630] K_fa = 0.00454167 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 880.733 ± 0
+
+[p11631] 07-08 c10 f0.10
+
+[p11632] M20
+
+[p11633] Log-modified Bohart-Adams
+
+[p11634] k_BA = 1.87965 ± 0.00552344; log_a0_C0 = 6.83313 ± 0.00206015
+
+[p11635] 07-08 c10 f0.10
+
+[p11636] M21
+
+[p11637] Log-modified Yoon-Nelson
+
+[p11638] k_YN = 1.87965 ± 0.00552344; tau = 928.094 ± 1.91202
+
+[p11639] 07-08 c10 f0.10
+
+[p11640] M22
+
+[p11641] n-Order Bohart-Adams
+
+[p11642] k_n = 0.999272 ± 2.44344; a0 = 8645.01 ± 6.28257e-05; n = 1.37624 ± 0.0730981
+
+[p11643] 07-08 c10 f0.10
+
+[p11644] M23
+
+[p11645] Fractal Yoon-Nelson (Hu 2024)
+
+[p11646] k_YN0 = 1.31363 ± 0.0736759; tau = 934.506 ± 2.38294; h = 0.95 ± 0.00777545
+
+[p11647] 07-08 c10 f0.10
+
+[p11648] M24
+
+[p11649] Parallel two-component sigmoidal (Blagojev)
+
+[p11650] p = 0.360403 ± 0.0168245; tau1 = 560.431 ± 3.33465; k1 = 4.13597 ± 0.124939; tau2 = 1335.52 ± 27.5557; k2 = 2.00791 ± 0.0132824
+
+[p11651] 07-08 c10 f0.15
+
+[p11652] M01
+
+[p11653] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11654] k_YN = 0.00215963 ± 6.1828e-05; tau = 819.729 ± 13.1398
+
+[p11655] 07-08 c10 f0.15
+
+[p11656] M02
+
+[p11657] Clark
+
+[p11658] r = 0.00159748 ± 8.4299e-05; A = 0.0244351 ± 0.343402; n = 1.01 ± 0.139314
+
+[p11659] 07-08 c10 f0.15
+
+[p11660] M03
+
+[p11661] Fractal Clark
+
+[p11662] r = 0.8112 ± 0.081436; A0 = 1e+06 ± 7.82686e+06; n = 1.01 ± 0.03958; h = 0.933623 ± 0.0130257
+
+[p11663] 07-08 c10 f0.15
+
+[p11664] M04
+
+[p11665] Modified Dose-Response (Yan)
+
+[p11666] a = 1.64743 ± 0.00978656; t50 = 681.941 ± 3.17797
+
+[p11667] 07-08 c10 f0.15
+
+[p11668] M05
+
+[p11669] Wolborska (linearised, early)
+
+[p11670] slope = 0.020016 ± 0.00245473; intercept = -7.32478 ± 0.620865
+
+[p11671] 07-08 c10 f0.15
+
+[p11672] M06
+
+[p11673] Gudermannian (Hu 2021)
+
+[p11674] k = 0.00173151 ± 4.97351e-05; tau = 814.007 ± 12.9598
+
+[p11675] 07-08 c10 f0.15
+
+[p11676] M07
+
+[p11677] Error-Function (Hu 2021)
+
+[p11678] k = 0.000938714 ± 2.67266e-05; tau = 826.758 ± 13.4025
+
+[p11679] 07-08 c10 f0.15
+
+[p11680] M08
+
+[p11681] Tanh (Hu 2019)
+
+[p11682] k = 0.00107982 ± 3.09144e-05; tau = 819.728 ± 13.1398
+
+[p11683] 07-08 c10 f0.15
+
+[p11684] M09
+
+[p11685] Log-Normal (Chu-Hashim)
+
+[p11686] a = 1.04098 ± 0.00730828; b = 6.52441 ± 0.00589428
+
+[p11687] 07-08 c10 f0.15
+
+[p11688] M10
+
+[p11689] Fractal Gudermannian (Hu 2024)
+
+[p11690] k0 = 0.138048 ± 0.00381569; tau0 = 655.324 ± 1.70932; h = 0.638971 ± 0.00361322
+
+[p11691] 07-08 c10 f0.15
+
+[p11692] M11
+
+[p11693] Fractal Error-Function (Hu 2024)
+
+[p11694] k0 = 0.120472 ± 0.00260026; tau0 = 637.873 ± 1.4257; h = 0.713494 ± 0.00278208
+
+[p11695] 07-08 c10 f0.15
+
+[p11696] M12
+
+[p11697] Gompertz (Chu 2020)
+
+[p11698] alpha_G = 0.88511 ± 0.0295799; beta_G = 0.00159214 ± 3.43251e-05
+
+[p11699] 07-08 c10 f0.15
+
+[p11700] M13
+
+[p11701] Log-Gompertz (Chu 2020)
+
+[p11702] alpha_G = 7.91115 ± 0.021464; beta_G = 1.28075 ± 0.00315737
+
+[p11703] 07-08 c10 f0.15
+
+[p11704] M14
+
+[p11705] Weibull (Chu 2021)
+
+[p11706] tau = 1037.61 ± 10.1196; k = 0.987697 ± 0.014436
+
+[p11707] 07-08 c10 f0.15
+
+[p11708] M15
+
+[p11709] Avrami (Singh)
+
+[p11710] k = 0.00104978 ± 0.00010825; n = 0.987688 ± 0.014435
+
+[p11711] 07-08 c10 f0.15
+
+[p11712] M16
+
+[p11713] Klinkenberg
+
+[p11714] K_fa = 1 ± 0.0556388; K = 1510.03 ± 52.1222
+
+[p11715] 07-08 c10 f0.15
+
+[p11716] M17
+
+[p11717] Dima (wave erf)
+
+[p11718] v_d = 0.00120955 ± 1.9608e-05; sigma_a = 0.911118 ± 0.0305686
+
+[p11719] 07-08 c10 f0.15
+
+[p11720] M18
+
+[p11721] Chern-Chien Langmuir
+
+[p11722] K_fa = 0.00612584 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 652.971 ± 0
+
+[p11723] 07-08 c10 f0.15
+
+[p11724] M19
+
+[p11725] Chern-Chien Freundlich
+
+[p11726] K_fa = 0.00612584 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 652.971 ± 0
+
+[p11727] 07-08 c10 f0.15
+
+[p11728] M20
+
+[p11729] Log-modified Bohart-Adams
+
+[p11730] k_BA = 1.64743 ± 0.00978657; log_a0_C0 = 6.52494 ± 0.00466018
+
+[p11731] 07-08 c10 f0.15
+
+[p11732] M21
+
+[p11733] Log-modified Yoon-Nelson
+
+[p11734] k_YN = 1.64743 ± 0.00978657; tau = 681.941 ± 3.17797
+
+[p11735] 07-08 c10 f0.15
+
+[p11736] M22
+
+[p11737] n-Order Bohart-Adams
+
+[p11738] k_n = 0.999272 ± 2.43377; a0 = 8645.01 ± 6.2577e-05; n = 1.37624 ± 0.0727974
+
+[p11739] 07-08 c10 f0.15
+
+[p11740] M23
+
+[p11741] Fractal Yoon-Nelson (Hu 2024)
+
+[p11742] k_YN0 = 1.16795 ± 0.114274; tau = 687.807 ± 4.03574; h = 0.95 ± 0.0140634
+
+[p11743] 07-08 c10 f0.15
+
+[p11744] M24
+
+[p11745] Parallel two-component sigmoidal (Blagojev)
+
+[p11746] p = 0.47028 ± 0.0969817; tau1 = 450.006 ± 13.1231; k1 = 2.87962 ± 0.273395; tau2 = 1107.15 ± 161.112; k2 = 1.63 ± 0.0394493
+
+[p11747] 07-10 c15 f0.05
+
+[p11748] M01
+
+[p11749] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11750] k_YN = 0.00134147 ± 1.94545e-05; tau = 2143.86 ± 11.855
+
+[p11751] 07-10 c15 f0.05
+
+[p11752] M02
+
+[p11753] Clark
+
+[p11754] r = 0.000930041 ± 2.06063e-05; A = 0.0481155 ± 0.248442; n = 1.01 ± 0.0510193
+
+[p11755] 07-10 c15 f0.05
+
+[p11756] M03
+
+[p11757] Fractal Clark
+
+[p11758] r = 0.885568 ± 0.251841; A0 = 1e+06 ± 1.26171e+07; n = 1.01 ± 0.0599355; h = 0.89815 ± 0.0343184
+
+[p11759] 07-10 c15 f0.05
+
+[p11760] M04
+
+[p11761] Modified Dose-Response (Yan)
+
+[p11762] a = 2.56914 ± 0.0165971; t50 = 1986.98 ± 6.05723
+
+[p11763] 07-10 c15 f0.05
+
+[p11764] M05
+
+[p11765] Wolborska (linearised, early)
+
+[p11766] slope = 0.00877489 ± 0.000355895; intercept = -12.332 ± 0.409599
+
+[p11767] 07-10 c15 f0.05
+
+[p11768] M06
+
+[p11769] Gudermannian (Hu 2021)
+
+[p11770] k = 0.00108519 ± 1.59328e-05; tau = 2135.43 ± 11.7223
+
+[p11771] 07-10 c15 f0.05
+
+[p11772] M07
+
+[p11773] Error-Function (Hu 2021)
+
+[p11774] k = 0.000577928 ± 8.2333e-06; tau = 2153.9 ± 12.0458
+
+[p11775] 07-10 c15 f0.05
+
+[p11776] M08
+
+[p11777] Tanh (Hu 2019)
+
+[p11778] k = 0.000670736 ± 9.72731e-06; tau = 2143.86 ± 11.855
+
+[p11779] 07-10 c15 f0.05
+
+[p11780] M09
+
+[p11781] Log-Normal (Chu-Hashim)
+
+[p11782] a = 0.662934 ± 0.00442839; b = 7.59844 ± 0.00336964
+
+[p11783] 07-10 c15 f0.05
+
+[p11784] M10
+
+[p11785] Fractal Gudermannian (Hu 2024)
+
+[p11786] k0 = 1 ± 0.0339368; tau0 = 1885.6 ± 2.14669; h = 0.87885 ± 0.00410931
+
+[p11787] 07-10 c15 f0.05
+
+[p11788] M11
+
+[p11789] Fractal Error-Function (Hu 2024)
+
+[p11790] k0 = 0.981993 ± 0.0174871; tau0 = 1865.49 ± 1.21919; h = 0.95963 ± 0.00213856
+
+[p11791] 07-10 c15 f0.05
+
+[p11792] M12
+
+[p11793] Gompertz (Chu 2020)
+
+[p11794] alpha_G = 1.55909 ± 0.0205238; beta_G = 0.000926327 ± 9.5144e-06
+
+[p11795] 07-10 c15 f0.05
+
+[p11796] M13
+
+[p11797] Log-Gompertz (Chu 2020)
+
+[p11798] alpha_G = 14.3906 ± 0.0435553; beta_G = 1.95356 ± 0.00566258
+
+[p11799] 07-10 c15 f0.05
+
+[p11800] M14
+
+[p11801] Weibull (Chu 2021)
+
+[p11802] tau = 2608.06 ± 12.0721; k = 1.6004 ± 0.0173763
+
+[p11803] 07-10 c15 f0.05
+
+[p11804] M15
+
+[p11805] Avrami (Singh)
+
+[p11806] k = 3.68645e-06 ± 4.90982e-07; n = 1.59033 ± 0.0167672
+
+[p11807] 07-10 c15 f0.05
+
+[p11808] M16
+
+[p11809] Klinkenberg
+
+[p11810] K_fa = 1 ± 0.0391999; K = 3582.9 ± 80.4905
+
+[p11811] 07-10 c15 f0.05
+
+[p11812] M17
+
+[p11813] Dima (wave erf)
+
+[p11814] v_d = 0.000464277 ± 2.59654e-06; sigma_a = 0.568046 ± 0.00874778
+
+[p11815] 07-10 c15 f0.05
+
+[p11816] M18
+
+[p11817] Chern-Chien Langmuir
+
+[p11818] K_fa = 0.00215619 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 1855.12 ± 0
+
+[p11819] 07-10 c15 f0.05
+
+[p11820] M19
+
+[p11821] Chern-Chien Freundlich
+
+[p11822] K_fa = 0.00215619 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 1855.12 ± 0
+
+[p11823] 07-10 c15 f0.05
+
+[p11824] M20
+
+[p11825] Log-modified Bohart-Adams
+
+[p11826] k_BA = 2.56914 ± 0.0165971; log_a0_C0 = 7.59437 ± 0.00304846
+
+[p11827] 07-10 c15 f0.05
+
+[p11828] M21
+
+[p11829] Log-modified Yoon-Nelson
+
+[p11830] k_YN = 2.56914 ± 0.0165971; tau = 1986.98 ± 6.05723
+
+[p11831] 07-10 c15 f0.05
+
+[p11832] M22
+
+[p11833] n-Order Bohart-Adams
+
+[p11834] k_n = 0.997987 ± 3.43682; a0 = 8644.97 ± 8.81687e-05; n = 1.37563 ± 0.0500883
+
+[p11835] 07-10 c15 f0.05
+
+[p11836] M23
+
+[p11837] Fractal Yoon-Nelson (Hu 2024)
+
+[p11838] k_YN0 = 1.74639 ± 0.29286; tau = 1995.34 ± 7.25118; h = 0.95 ± 0.021539
+
+[p11839] 07-10 c15 f0.05
+
+[p11840] M24
+
+[p11841] Parallel two-component sigmoidal (Blagojev)
+
+[p11842] p = 0.354911 ± 0.0199073; tau1 = 3652.63 ± 155.704; k1 = 2.36437 ± 0.0592835; tau2 = 1584.36 ± 5.02245; k2 = 5.22661 ± 0.115149
+
+[p11843] 07-10 c15 f0.10
+
+[p11844] M01
+
+[p11845] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11846] k_YN = 0.00263691 ± 4.49853e-05; tau = 780.41 ± 6.65011
+
+[p11847] 07-10 c15 f0.10
+
+[p11848] M02
+
+[p11849] Clark
+
+[p11850] r = 0.00192956 ± 5.49263e-05; A = 0.029609 ± 0.21468; n = 1.01 ± 0.0718087
+
+[p11851] 07-10 c15 f0.10
+
+[p11852] M03
+
+[p11853] Fractal Clark
+
+[p11854] r = 0.890654 ± 0.075361; A0 = 1e+06 ± 5.72848e+06; n = 1.01 ± 0.0294272; h = 0.920747 ± 0.0112226
+
+[p11855] 07-10 c15 f0.10
+
+[p11856] M04
+
+[p11857] Modified Dose-Response (Yan)
+
+[p11858] a = 1.96184 ± 0.00867416; t50 = 680.434 ± 1.96999
+
+[p11859] 07-10 c15 f0.10
+
+[p11860] M05
+
+[p11861] Wolborska (linearised, early)
+
+[p11862] slope = 0.0174819 ± 0.00105756; intercept = -7.53487 ± 0.319869
+
+[p11863] 07-10 c15 f0.10
+
+[p11864] M06
+
+[p11865] Gudermannian (Hu 2021)
+
+[p11866] k = 0.00212456 ± 3.63876e-05; tau = 775.358 ± 6.53764
+
+[p11867] 07-10 c15 f0.10
+
+[p11868] M07
+
+[p11869] Error-Function (Hu 2021)
+
+[p11870] k = 0.00114012 ± 1.93342e-05; tau = 786.7 ± 6.81274
+
+[p11871] 07-10 c15 f0.10
+
+[p11872] M08
+
+[p11873] Tanh (Hu 2019)
+
+[p11874] k = 0.00131851 ± 2.24939e-05; tau = 780.402 ± 6.64996
+
+[p11875] 07-10 c15 f0.10
+
+[p11876] M09
+
+[p11877] Log-Normal (Chu-Hashim)
+
+[p11878] a = 0.877028 ± 0.00423136; b = 6.5234 ± 0.00337034
+
+[p11879] 07-10 c15 f0.10
+
+[p11880] M10
+
+[p11881] Fractal Gudermannian (Hu 2024)
+
+[p11882] k0 = 0.159813 ± 0.00414998; tau0 = 661.056 ± 1.25836; h = 0.634885 ± 0.00347311
+
+[p11883] 07-10 c15 f0.10
+
+[p11884] M11
+
+[p11885] Fractal Error-Function (Hu 2024)
+
+[p11886] k0 = 0.148849 ± 0.00193104; tau0 = 647.608 ± 0.676759; h = 0.720737 ± 0.00171283
+
+[p11887] 07-10 c15 f0.10
+
+[p11888] M12
+
+[p11889] Gompertz (Chu 2020)
+
+[p11890] alpha_G = 1.07624 ± 0.0191644; beta_G = 0.00192279 ± 2.34426e-05
+
+[p11891] 07-10 c15 f0.10
+
+[p11892] M13
+
+[p11893] Log-Gompertz (Chu 2020)
+
+[p11894] alpha_G = 9.55554 ± 0.0208603; beta_G = 1.53331 ± 0.00309768
+
+[p11895] 07-10 c15 f0.10
+
+[p11896] M14
+
+[p11897] Weibull (Chu 2021)
+
+[p11898] tau = 972.228 ± 5.37016; k = 1.17141 ± 0.0115479
+
+[p11899] 07-10 c15 f0.10
+
+[p11900] M15
+
+[p11901] Avrami (Singh)
+
+[p11902] k = 0.000316383 ± 2.5661e-05; n = 1.17137 ± 0.0115448
+
+[p11903] 07-10 c15 f0.10
+
+[p11904] M16
+
+[p11905] Klinkenberg
+
+[p11906] K_fa = 1 ± 0.0386891; K = 1359.03 ± 30.0005
+
+[p11907] 07-10 c15 f0.10
+
+[p11908] M17
+
+[p11909] Dima (wave erf)
+
+[p11910] v_d = 0.00127114 ± 1.1008e-05; sigma_a = 0.788361 ± 0.015502
+
+[p11911] 07-10 c15 f0.10
+
+[p11912] M18
+
+[p11913] Chern-Chien Langmuir
+
+[p11914] K_fa = 0.00630915 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 634 ± 0
+
+[p11915] 07-10 c15 f0.10
+
+[p11916] M19
+
+[p11917] Chern-Chien Freundlich
+
+[p11918] K_fa = 0.00630915 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 634 ± 0
+
+[p11919] 07-10 c15 f0.10
+
+[p11920] M20
+
+[p11921] Log-modified Bohart-Adams
+
+[p11922] k_BA = 1.96184 ± 0.00867416; log_a0_C0 = 6.52273 ± 0.0028952
+
+[p11923] 07-10 c15 f0.10
+
+[p11924] M21
+
+[p11925] Log-modified Yoon-Nelson
+
+[p11926] k_YN = 1.96184 ± 0.00867416; tau = 680.434 ± 1.96999
+
+[p11927] 07-10 c15 f0.10
+
+[p11928] M22
+
+[p11929] n-Order Bohart-Adams
+
+[p11930] k_n = 0.999272 ± 2.38358; a0 = 8645.01 ± 6.12865e-05; n = 1.37624 ± 0.0713012
+
+[p11931] 07-10 c15 f0.10
+
+[p11932] M23
+
+[p11933] Fractal Yoon-Nelson (Hu 2024)
+
+[p11934] k_YN0 = 1.39385 ± 0.108796; tau = 684.653 ± 2.37338; h = 0.95 ± 0.0113461
+
+[p11935] 07-10 c15 f0.10
+
+[p11936] M24
+
+[p11937] Parallel two-component sigmoidal (Blagojev)
+
+[p11938] p = 0.597022 ± 0.016146; tau1 = 482.199 ± 3.53949; k1 = 3.5633 ± 0.0591938; tau2 = 1329.43 ± 39.4576; k2 = 2.16763 ± 0.0267011
+
+[p11939] 07-15 c15 f0.15
+
+[p11940] M01
+
+[p11941] Yoon-Nelson / Thomas / BA (logistic)
+
+[p11942] k_YN = 0.0035678 ± 7.27285e-05; tau = 496.782 ± 5.76491
+
+[p11943] 07-15 c15 f0.15
+
+[p11944] M02
+
+[p11945] Clark
+
+[p11946] r = 0.00268204 ± 9.76039e-05; A = 0.0250907 ± 0.251223; n = 1.01 ± 0.0992619
+
+[p11947] 07-15 c15 f0.15
+
+[p11948] M03
+
+[p11949] Fractal Clark
+
+[p11950] r = 0.875169 ± 0.0701817; A0 = 1e+06 ± 6.46597e+06; n = 1.01 ± 0.0340557; h = 0.928435 ± 0.0111029
+
+[p11951] 07-15 c15 f0.15
+
+[p11952] M04
+
+[p11953] Modified Dose-Response (Yan)
+
+[p11954] a = 1.74832 ± 0.00853814; t50 = 419.497 ± 1.60905
+
+[p11955] 07-15 c15 f0.15
+
+[p11956] M05
+
+[p11957] Wolborska (linearised, early)
+
+[p11958] slope = 0.0339265 ± 0.00292185; intercept = -8.33397 ± 0.523437
+
+[p11959] 07-15 c15 f0.15
+
+[p11960] M06
+
+[p11961] Gudermannian (Hu 2021)
+
+[p11962] k = 0.00286249 ± 5.8193e-05; tau = 492.83 ± 5.66609
+
+[p11963] 07-15 c15 f0.15
+
+[p11964] M07
+
+[p11965] Error-Function (Hu 2021)
+
+[p11966] k = 0.00155109 ± 3.16513e-05; tau = 501.578 ± 5.90109
+
+[p11967] 07-15 c15 f0.15
+
+[p11968] M08
+
+[p11969] Tanh (Hu 2019)
+
+[p11970] k = 0.00178399 ± 3.63667e-05; tau = 496.777 ± 5.76474
+
+[p11971] 07-15 c15 f0.15
+
+[p11972] M09
+
+[p11973] Log-Normal (Chu-Hashim)
+
+[p11974] a = 0.989046 ± 0.0055243; b = 6.03841 ± 0.00469458
+
+[p11975] 07-15 c15 f0.15
+
+[p11976] M10
+
+[p11977] Fractal Gudermannian (Hu 2024)
+
+[p11978] k0 = 0.192394 ± 0.00438489; tau0 = 404.772 ± 0.895962; h = 0.650462 ± 0.00314578
+
+[p11979] 07-15 c15 f0.15
+
+[p11980] M11
+
+[p11981] Fractal Error-Function (Hu 2024)
+
+[p11982] k0 = 0.174103 ± 0.00206788; tau0 = 395.246 ± 0.503696; h = 0.736368 ± 0.00161511
+
+[p11983] 07-15 c15 f0.15
+
+[p11984] M12
+
+[p11985] Gompertz (Chu 2020)
+
+[p11986] alpha_G = 0.911739 ± 0.0223121; beta_G = 0.00267347 ± 4.09242e-05
+
+[p11987] 07-15 c15 f0.15
+
+[p11988] M13
+
+[p11989] Log-Gompertz (Chu 2020)
+
+[p11990] alpha_G = 7.95827 ± 0.0163888; beta_G = 1.39067 ± 0.00257907
+
+[p11991] 07-15 c15 f0.15
+
+[p11992] M14
+
+[p11993] Weibull (Chu 2021)
+
+[p11994] tau = 625.686 ± 4.49976; k = 1.01578 ± 0.0111187
+
+[p11995] 07-15 c15 f0.15
+
+[p11996] M15
+
+[p11997] Avrami (Singh)
+
+[p11998] k = 0.00144389 ± 0.00010734; n = 1.01577 ± 0.0111181
+
+[p11999] 07-15 c15 f0.15
+
+[p12000] M16
+
+[p12001] Klinkenberg
+
+[p12002] K_fa = 1 ± 0.0392395; K = 893.763 ± 19.5492
+
+[p12003] 07-15 c15 f0.15
+
+[p12004] M17
+
+[p12005] Dima (wave erf)
+
+[p12006] v_d = 0.00199372 ± 2.34562e-05; sigma_a = 0.90888 ± 0.0226605
+
+[p12007] 07-15 c15 f0.15
+
+[p12008] M18
+
+[p12009] Chern-Chien Langmuir
+
+[p12010] K_fa = 0.0103428 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 386.743 ± 0
+
+[p12011] 07-15 c15 f0.15
+
+[p12012] M19
+
+[p12013] Chern-Chien Freundlich
+
+[p12014] K_fa = 0.0103428 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 386.743 ± 0
+
+[p12015] 07-15 c15 f0.15
+
+[p12016] M20
+
+[p12017] Log-modified Bohart-Adams
+
+[p12018] k_BA = 1.74832 ± 0.00853813; log_a0_C0 = 6.03906 ± 0.00383567
+
+[p12019] 07-15 c15 f0.15
+
+[p12020] M21
+
+[p12021] Log-modified Yoon-Nelson
+
+[p12022] k_YN = 1.74832 ± 0.00853814; tau = 419.497 ± 1.60905
+
+[p12023] 07-15 c15 f0.15
+
+[p12024] M22
+
+[p12025] n-Order Bohart-Adams
+
+[p12026] k_n = 0.999272 ± 2.01487; a0 = 8645.01 ± 5.18062e-05; n = 1.37624 ± 0.0602769
+
+[p12027] 07-15 c15 f0.15
+
+[p12028] M23
+
+[p12029] Fractal Yoon-Nelson (Hu 2024)
+
+[p12030] k_YN0 = 1.26615 ± 0.0941237; tau = 422.456 ± 1.92517; h = 0.95 ± 0.011403
+
+[p12031] 07-15 c15 f0.15
+
+[p12032] M24
+
+[p12033] Parallel two-component sigmoidal (Blagojev)
+
+[p12034] p = 0.479205 ± 0.0231727; tau1 = 275.757 ± 1.8513; k1 = 3.84761 ± 0.126271; tau2 = 716.451 ± 27.6568; k2 = 1.82661 ± 0.0203476
+
+[p12035] 07-17 c15 f0.10
+
+[p12036] M01
+
+[p12037] Yoon-Nelson / Thomas / BA (logistic)
+
+[p12038] k_YN = 0.00306976 ± 5.73068e-05; tau = 804.035 ± 6.48904
+
+[p12039] 07-17 c15 f0.10
+
+[p12040] M02
+
+[p12041] Clark
+
+[p12042] r = 0.00218219 ± 6.09297e-05; A = 0.0376083 ± 0.246714; n = 1.01 ± 0.0648821
+
+[p12043] 07-17 c15 f0.10
+
+[p12044] M03
+
+[p12045] Fractal Clark
+
+[p12046] r = 0.650519 ± 0.122391; A0 = 747.846 ± 5652.38; n = 1.01 ± 0.0540238; h = 0.851926 ± 0.0253516
+
+[p12047] 07-17 c15 f0.10
+
+[p12048] M04
+
+[p12049] Modified Dose-Response (Yan)
+
+[p12050] a = 2.32383 ± 0.01399; t50 = 722.739 ± 2.34112
+
+[p12051] 07-17 c15 f0.10
+
+[p12052] M05
+
+[p12053] Wolborska (linearised, early)
+
+[p12054] slope = 0.0179882 ± 0.00119335; intercept = -8.63992 ± 0.423931
+
+[p12055] 07-17 c15 f0.10
+
+[p12056] M06
+
+[p12057] Gudermannian (Hu 2021)
+
+[p12058] k = 0.00249033 ± 4.714e-05; tau = 799.652 ± 6.39965
+
+[p12059] 07-17 c15 f0.10
+
+[p12060] M07
+
+[p12061] Error-Function (Hu 2021)
+
+[p12062] k = 0.00131614 ± 2.41331e-05; tau = 809.629 ± 6.63043
+
+[p12063] 07-17 c15 f0.10
+
+[p12064] M08
+
+[p12065] Tanh (Hu 2019)
+
+[p12066] k = 0.00153493 ± 2.86546e-05; tau = 804.028 ± 6.48894
+
+[p12067] 07-17 c15 f0.10
+
+[p12068] M09
+
+[p12069] Log-Normal (Chu-Hashim)
+
+[p12070] a = 0.740035 ± 0.0043056; b = 6.58556 ± 0.00333985
+
+[p12071] 07-17 c15 f0.10
+
+[p12072] M10
+
+[p12073] Fractal Gudermannian (Hu 2024)
+
+[p12074] k0 = 0.148858 ± 0.00781398; tau0 = 707.911 ± 2.06693; h = 0.60609 ± 0.00718837
+
+[p12075] 07-17 c15 f0.10
+
+[p12076] M11
+
+[p12077] Fractal Error-Function (Hu 2024)
+
+[p12078] k0 = 0.141171 ± 0.00445965; tau0 = 696.675 ± 1.3335; h = 0.696214 ± 0.00427865
+
+[p12079] 07-17 c15 f0.10
+
+[p12080] M12
+
+[p12081] Gompertz (Chu 2020)
+
+[p12082] alpha_G = 1.31391 ± 0.0217794; beta_G = 0.00217388 ± 2.70964e-05
+
+[p12083] 07-17 c15 f0.10
+
+[p12084] M13
+
+[p12085] Log-Gompertz (Chu 2020)
+
+[p12086] alpha_G = 11.3445 ± 0.0493387; beta_G = 1.79285 ± 0.00735871
+
+[p12087] 07-17 c15 f0.10
+
+[p12088] M14
+
+[p12089] Weibull (Chu 2021)
+
+[p12090] tau = 983.728 ± 5.53447; k = 1.41213 ± 0.0165741
+
+[p12091] 07-17 c15 f0.10
+
+[p12092] M15
+
+[p12093] Avrami (Singh)
+
+[p12094] k = 5.95005e-05 ± 6.85511e-06; n = 1.41185 ± 0.0165474
+
+[p12095] 07-17 c15 f0.10
+
+[p12096] M16
+
+[p12097] Klinkenberg
+
+[p12098] K_fa = 1 ± 0.0522014; K = 1324.53 ± 40.8835
+
+[p12099] 07-17 c15 f0.10
+
+[p12100] M17
+
+[p12101] Dima (wave erf)
+
+[p12102] v_d = 0.00123514 ± 1.01152e-05; sigma_a = 0.663582 ± 0.0133411
+
+[p12103] 07-17 c15 f0.10
+
+[p12104] M18
+
+[p12105] Chern-Chien Langmuir
+
+[p12106] K_fa = 0.00588267 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 679.964 ± 0
+
+[p12107] 07-17 c15 f0.10
+
+[p12108] M19
+
+[p12109] Chern-Chien Freundlich
+
+[p12110] K_fa = 0.00588267 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 679.964 ± 0
+
+[p12111] 07-17 c15 f0.10
+
+[p12112] M20
+
+[p12113] Log-modified Bohart-Adams
+
+[p12114] k_BA = 2.32383 ± 0.01399; log_a0_C0 = 6.58305 ± 0.00323923
+
+[p12115] 07-17 c15 f0.10
+
+[p12116] M21
+
+[p12117] Log-modified Yoon-Nelson
+
+[p12118] k_YN = 2.32383 ± 0.0139899; tau = 722.739 ± 2.34112
+
+[p12119] 07-17 c15 f0.10
+
+[p12120] M22
+
+[p12121] n-Order Bohart-Adams
+
+[p12122] k_n = 0.999272 ± 2.73877; a0 = 8645.01 ± 7.04193e-05; n = 1.37624 ± 0.0819334
+
+[p12123] 07-17 c15 f0.10
+
+[p12124] M23
+
+[p12125] Fractal Yoon-Nelson (Hu 2024)
+
+[p12126] k_YN0 = 1.65213 ± 0.192732; tau = 726.515 ± 2.76325; h = 0.95 ± 0.0170493
+
+[p12127] 07-17 c15 f0.10
+
+[p12128] M24
+
+[p12129] Parallel two-component sigmoidal (Blagojev)
+
+[p12130] p = 0.665463 ± 0.0131701; tau1 = 537.718 ± 4.31544; k1 = 4.01155 ± 0.0686118; tau2 = 1489.09 ± 34.3266; k2 = 3.04047 ± 0.0583194
+
+[p12131] 07-22 c10 f0.05*
+
+[p12132] M01
+
+[p12133] Yoon-Nelson / Thomas / BA (logistic)
+
+[p12134] k_YN = 0.00136666 ± 1.85859e-05; tau = 2370.25 ± 11.0342
+
+[p12135] 07-22 c10 f0.05*
+
+[p12136] M02
+
+[p12137] Clark
+
+[p12138] r = 0.00093898 ± 1.83305e-05; A = 0.0600229 ± 0.258899; n = 1.01 ± 0.0425641
+
+[p12139] 07-22 c10 f0.05*
+
+[p12140] M03
+
+[p12141] Fractal Clark
+
+[p12142] r = 0.892947 ± 0.218062; A0 = 1e+06 ± 9.47477e+06; n = 1.01 ± 0.0442564; h = 0.885863 ± 0.0294179
+
+[p12143] 07-22 c10 f0.05*
+
+[p12144] M04
+
+[p12145] Modified Dose-Response (Yan)
+
+[p12146] a = 2.92869 ± 0.0178199; t50 = 2224.15 ± 5.36868
+
+[p12147] 07-22 c10 f0.05*
+
+[p12148] M05
+
+[p12149] Wolborska (linearised, early)
+
+[p12150] slope = 0.00784311 ± 0.000305749; intercept = -12.5458 ± 0.403479
+
+[p12151] 07-22 c10 f0.05*
+
+[p12152] M06
+
+[p12153] Gudermannian (Hu 2021)
+
+[p12154] k = 0.00111697 ± 1.56076e-05; tau = 2360.53 ± 10.9695
+
+[p12155] 07-22 c10 f0.05*
+
+[p12156] M07
+
+[p12157] Error-Function (Hu 2021)
+
+[p12158] k = 0.000580224 ± 7.62222e-06; tau = 2383.04 ± 11.1749
+
+[p12159] 07-22 c10 f0.05*
+
+[p12160] M08
+
+[p12161] Tanh (Hu 2019)
+
+[p12162] k = 0.000683347 ± 9.29334e-06; tau = 2370.23 ± 11.0341
+
+[p12163] 07-22 c10 f0.05*
+
+[p12164] M09
+
+[p12165] Log-Normal (Chu-Hashim)
+
+[p12166] a = 0.579843 ± 0.0034467; b = 7.7114 ± 0.00250597
+
+[p12167] 07-22 c10 f0.05*
+
+[p12168] M10
+
+[p12169] Fractal Gudermannian (Hu 2024)
+
+[p12170] k0 = 0.495779 ± 0.0301154; tau0 = 2140.95 ± 3.71401; h = 0.783166 ± 0.00740928
+
+[p12171] 07-22 c10 f0.05*
+
+[p12172] M11
+
+[p12173] Fractal Error-Function (Hu 2024)
+
+[p12174] k0 = 0.436578 ± 0.0160992; tau0 = 2125.54 ± 2.46129; h = 0.851501 ± 0.00446296
+
+[p12175] 07-22 c10 f0.05*
+
+[p12176] M12
+
+[p12177] Gompertz (Chu 2020)
+
+[p12178] alpha_G = 1.77907 ± 0.0190405; beta_G = 0.000935169 ± 8.37397e-06
+
+[p12179] 07-22 c10 f0.05*
+
+[p12180] M13
+
+[p12181] Log-Gompertz (Chu 2020)
+
+[p12182] alpha_G = 16.3402 ± 0.0423008; beta_G = 2.17968 ± 0.0054722
+
+[p12183] 07-22 c10 f0.05*
+
+[p12184] M14
+
+[p12185] Weibull (Chu 2021)
+
+[p12186] tau = 2829.54 ± 11.1953; k = 1.88222 ± 0.0197363
+
+[p12187] 07-22 c10 f0.05*
+
+[p12188] M15
+
+[p12189] Avrami (Singh)
+
+[p12190] k = 5.03993e-07 ± 6.36808e-08; n = 1.82374 ± 0.0156356
+
+[p12191] 07-22 c10 f0.05*
+
+[p12192] M16
+
+[p12193] Klinkenberg
+
+[p12194] K_fa = 1 ± 0.0450374; K = 3979.74 ± 116.649
+
+[p12195] 07-22 c10 f0.05*
+
+[p12196] M17
+
+[p12197] Dima (wave erf)
+
+[p12198] v_d = 0.000419634 ± 1.96785e-06; sigma_a = 0.511398 ± 0.00695531
+
+[p12199] 07-22 c10 f0.05*
+
+[p12200] M18
+
+[p12201] Chern-Chien Langmuir
+
+[p12202] K_fa = 0.00191484 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 2088.95 ± 0
+
+[p12203] 07-22 c10 f0.05*
+
+[p12204] M19
+
+[p12205] Chern-Chien Freundlich
+
+[p12206] K_fa = 0.00191484 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 2088.95 ± 0
+
+[p12207] 07-22 c10 f0.05*
+
+[p12208] M20
+
+[p12209] Log-modified Bohart-Adams
+
+[p12210] k_BA = 2.92869 ± 0.0178199; log_a0_C0 = 7.70713 ± 0.00241381
+
+[p12211] 07-22 c10 f0.05*
+
+[p12212] M21
+
+[p12213] Log-modified Yoon-Nelson
+
+[p12214] k_YN = 2.92869 ± 0.0178199; tau = 2224.15 ± 5.36868
+
+[p12215] 07-22 c10 f0.05*
+
+[p12216] M22
+
+[p12217] n-Order Bohart-Adams
+
+[p12218] k_n = 0.997987 ± 3.92023; a0 = 8644.97 ± 0.00010057; n = 1.37563 ± 0.0571336
+
+[p12219] 07-22 c10 f0.05*
+
+[p12220] M23
+
+[p12221] Fractal Yoon-Nelson (Hu 2024)
+
+[p12222] k_YN0 = 1.98365 ± 0.347544; tau = 2232.22 ± 6.57126; h = 0.95 ± 0.022371
+
+[p12223] 07-22 c10 f0.05*
+
+[p12224] M24
+
+[p12225] Parallel two-component sigmoidal (Blagojev)
+
+[p12226] p = 0.483525 ± 0.0139302; tau1 = 3352.58 ± 58.191; k1 = 3.13973 ± 0.0437782; tau2 = 1657.15 ± 5.22872; k2 = 6.7477 ± 0.141261
+
+[p12227] 07-22 c10 f0.10*
+
+[p12228] M01
+
+[p12229] Yoon-Nelson / Thomas / BA (logistic)
+
+[p12230] k_YN = 0.00269308 ± 9.07648e-05; tau = 644.424 ± 12.4831
+
+[p12231] 07-22 c10 f0.10*
+
+[p12232] M02
+
+[p12233] Clark
+
+[p12234] r = 0.00202665 ± 0.000123084; A = 0.0243028 ± 0.396679; n = 1.01 ± 0.161812
+
+[p12235] 07-22 c10 f0.10*
+
+[p12236] M03
+
+[p12237] Fractal Clark
+
+[p12238] r = 0.459897 ± 0.119824; A0 = 17.1754 ± 210.998; n = 1.01 ± 0.103278; h = 0.837901 ± 0.0350492
+
+[p12239] 07-22 c10 f0.10*
+
+[p12240] M04
+
+[p12241] Modified Dose-Response (Yan)
+
+[p12242] a = 1.73211 ± 0.0156908; t50 = 535.021 ± 3.66296
+
+[p12243] 07-22 c10 f0.10*
+
+[p12244] M05
+
+[p12245] Wolborska (linearised, early)
+
+[p12246] slope = 0.0254463 ± 0.00355328; intercept = -7.67951 ± 0.769296
+
+[p12247] 07-22 c10 f0.10*
+
+[p12248] M06
+
+[p12249] Gudermannian (Hu 2021)
+
+[p12250] k = 0.00217006 ± 7.32567e-05; tau = 638.892 ± 12.2571
+
+[p12251] 07-22 c10 f0.10*
+
+[p12252] M07
+
+[p12253] Error-Function (Hu 2021)
+
+[p12254] k = 0.00116356 ± 3.91392e-05; tau = 651.273 ± 12.8215
+
+[p12255] 07-22 c10 f0.10*
+
+[p12256] M08
+
+[p12257] Tanh (Hu 2019)
+
+[p12258] k = 0.00134659 ± 4.53847e-05; tau = 644.417 ± 12.4828
+
+[p12259] 07-22 c10 f0.10*
+
+[p12260] M09
+
+[p12261] Log-Normal (Chu-Hashim)
+
+[p12262] a = 0.994833 ± 0.00813586; b = 6.28318 ± 0.00660308
+
+[p12263] 07-22 c10 f0.10*
+
+[p12264] M10
+
+[p12265] Fractal Gudermannian (Hu 2024)
+
+[p12266] k0 = 0.0970267 ± 0.00627678; tau0 = 522.519 ± 3.24424; h = 0.571233 ± 0.00886438
+
+[p12267] 07-22 c10 f0.10*
+
+[p12268] M11
+
+[p12269] Fractal Error-Function (Hu 2024)
+
+[p12270] k0 = 0.0854871 ± 0.00316927; tau0 = 509.614 ± 1.95923; h = 0.651126 ± 0.00501782
+
+[p12271] 07-22 c10 f0.10*
+
+[p12272] M12
+
+[p12273] Gompertz (Chu 2020)
+
+[p12274] alpha_G = 0.879913 ± 0.0343173; beta_G = 0.00202026 ± 5.00525e-05
+
+[p12275] 07-22 c10 f0.10*
+
+[p12276] M13
+
+[p12277] Log-Gompertz (Chu 2020)
+
+[p12278] alpha_G = 8.08401 ± 0.0674372; beta_G = 1.359 ± 0.0103151
+
+[p12279] 07-22 c10 f0.10*
+
+[p12280] M14
+
+[p12281] Weibull (Chu 2021)
+
+[p12282] tau = 807.876 ± 8.59651; k = 1.01382 ± 0.0165946
+
+[p12283] 07-22 c10 f0.10*
+
+[p12284] M15
+
+[p12285] Avrami (Singh)
+
+[p12286] k = 0.00112849 ± 0.000129095; n = 1.01381 ± 0.0165936
+
+[p12287] 07-22 c10 f0.10*
+
+[p12288] M16
+
+[p12289] Klinkenberg
+
+[p12290] K_fa = 1 ± 0.0705151; K = 1165.08 ± 49.5598
+
+[p12291] 07-22 c10 f0.10*
+
+[p12292] M17
+
+[p12293] Dima (wave erf)
+
+[p12294] v_d = 0.00153546 ± 3.02286e-05; sigma_a = 0.93312 ± 0.0377165
+
+[p12295] 07-22 c10 f0.10*
+
+[p12296] M18
+
+[p12297] Chern-Chien Langmuir
+
+[p12298] K_fa = 0.00810071 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 493.784 ± 0
+
+[p12299] 07-22 c10 f0.10*
+
+[p12300] M19
+
+[p12301] Chern-Chien Freundlich
+
+[p12302] K_fa = 0.00810071 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 493.784 ± 0
+
+[p12303] 07-22 c10 f0.10*
+
+[p12304] M20
+
+[p12305] Log-modified Bohart-Adams
+
+[p12306] k_BA = 1.73211 ± 0.0156908; log_a0_C0 = 6.28231 ± 0.00684638
+
+[p12307] 07-22 c10 f0.10*
+
+[p12308] M21
+
+[p12309] Log-modified Yoon-Nelson
+
+[p12310] k_YN = 1.73211 ± 0.0156908; tau = 535.021 ± 3.66296
+
+[p12311] 07-22 c10 f0.10*
+
+[p12312] M22
+
+[p12313] n-Order Bohart-Adams
+
+[p12314] k_n = 0.999739 ± 2.27763; a0 = 8645.05 ± 5.8564e-05; n = 1.37593 ± 0.0565034
+
+[p12315] 07-22 c10 f0.10*
+
+[p12316] M23
+
+[p12317] Fractal Yoon-Nelson (Hu 2024)
+
+[p12318] k_YN0 = 1.23993 ± 0.163837; tau = 539.384 ± 4.20397; h = 0.95 ± 0.0197123
+
+[p12319] 07-22 c10 f0.10*
+
+[p12320] M24
+
+[p12321] Parallel two-component sigmoidal (Blagojev)
+
+[p12322] p = 0.569237 ± 0.0198957; tau1 = 326.309 ± 5.07904; k1 = 3.46803 ± 0.116018; tau2 = 1180.45 ± 44.1986; k2 = 2.27469 ± 0.0511158
+
+[p12323] 07-29 c5 f0.05†
+
+[p12324] M01
+
+[p12325] Yoon-Nelson / Thomas / BA (logistic)
+
+[p12326] k_YN = 0.000607009 ± 1.49103e-05; tau = 4242.85 ± 44.3315
+
+[p12327] 07-29 c5 f0.05†
+
+[p12328] M02
+
+[p12329] Clark
+
+[p12330] r = 0.000420779 ± 1.62647e-05; A = 0.0389549 ± 0.333941; n = 1.01 ± 0.0847371
+
+[p12331] 07-29 c5 f0.05†
+
+[p12332] M03
+
+[p12333] Fractal Clark
+
+[p12334] r = 0.802863 ± 0.411638; A0 = 1e+06 ± 2.30527e+07; n = 1.01 ± 0.10307; h = 0.91188 ± 0.0572053
+
+[p12335] 07-29 c5 f0.05†
+
+[p12336] M04
+
+[p12337] Modified Dose-Response (Yan)
+
+[p12338] a = 2.25023 ± 0.0233403; t50 = 3829.08 ± 20.4138
+
+[p12339] 07-29 c5 f0.05†
+
+[p12340] M05
+
+[p12341] Wolborska (linearised, early)
+
+[p12342] slope = 0.00476675 ± 0.000251884; intercept = -11.7826 ± 0.502096
+
+[p12343] 07-29 c5 f0.05†
+
+[p12344] M06
+
+[p12345] Gudermannian (Hu 2021)
+
+[p12346] k = 0.000493017 ± 1.23737e-05; tau = 4218.77 ± 43.9313
+
+[p12347] 07-29 c5 f0.05†
+
+[p12348] M07
+
+[p12349] Error-Function (Hu 2021)
+
+[p12350] k = 0.000260138 ± 6.21351e-06; tau = 4272.42 ± 44.9634
+
+[p12351] 07-29 c5 f0.05†
+
+[p12352] M08
+
+[p12353] Tanh (Hu 2019)
+
+[p12354] k = 0.000303524 ± 7.45591e-06; tau = 4242.76 ± 44.33
+
+[p12355] 07-29 c5 f0.05†
+
+[p12356] M09
+
+[p12357] Log-Normal (Chu-Hashim)
+
+[p12358] a = 0.751195 ± 0.00755106; b = 8.25575 ± 0.00551575
+
+[p12359] 07-29 c5 f0.05†
+
+[p12360] M10
+
+[p12361] Fractal Gudermannian (Hu 2024)
+
+[p12362] k0 = 0.657187 ± 0.0522511; tau0 = 3568.2 ± 10.1845; h = 0.857815 ± 0.00899247
+
+[p12363] 07-29 c5 f0.05†
+
+[p12364] M11
+
+[p12365] Fractal Error-Function (Hu 2024)
+
+[p12366] k0 = 0.454923 ± 0.0240971; tau0 = 3543 ± 7.34487; h = 0.891527 ± 0.00595593
+
+[p12367] 07-29 c5 f0.05†
+
+[p12368] M12
+
+[p12369] Gompertz (Chu 2020)
+
+[p12370] alpha_G = 1.34862 ± 0.0293561; beta_G = 0.000419085 ± 7.19606e-06
+
+[p12371] 07-29 c5 f0.05†
+
+[p12372] M13
+
+[p12373] Log-Gompertz (Chu 2020)
+
+[p12374] alpha_G = 13.4025 ± 0.0688236; beta_G = 1.6792 ± 0.00828017
+
+[p12375] 07-29 c5 f0.05†
+
+[p12376] M14
+
+[p12377] Weibull (Chu 2021)
+
+[p12378] tau = 5260.1 ± 41.7523; k = 1.40972 ± 0.0226772
+
+[p12379] 07-29 c5 f0.05†
+
+[p12380] M15
+
+[p12381] Avrami (Singh)
+
+[p12382] k = 5.68698e-06 ± 1.0934e-06; n = 1.40961 ± 0.0223137
+
+[p12383] 07-29 c5 f0.05†
+
+[p12384] M16
+
+[p12385] Klinkenberg
+
+[p12386] K_fa = 1 ± 0.0597711; K = 7441.78 ± 316.483
+
+[p12387] 07-29 c5 f0.05†
+
+[p12388] M17
+
+[p12389] Dima (wave erf)
+
+[p12390] v_d = 0.000234063 ± 2.46339e-06; sigma_a = 0.636218 ± 0.015982
+
+[p12391] 07-29 c5 f0.05†
+
+[p12392] M18
+
+[p12393] Chern-Chien Langmuir
+
+[p12394] K_fa = 0.00115259 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 3470.44 ± 0
+
+[p12395] 07-29 c5 f0.05†
+
+[p12396] M19
+
+[p12397] Chern-Chien Freundlich
+
+[p12398] K_fa = 0.00115259 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 3470.44 ± 0
+
+[p12399] 07-29 c5 f0.05†
+
+[p12400] M20
+
+[p12401] Log-modified Bohart-Adams
+
+[p12402] k_BA = 2.25024 ± 0.0233403; log_a0_C0 = 8.25038 ± 0.00533127
+
+[p12403] 07-29 c5 f0.05†
+
+[p12404] M21
+
+[p12405] Log-modified Yoon-Nelson
+
+[p12406] k_YN = 2.25024 ± 0.0233403; tau = 3829.07 ± 20.4138
+
+[p12407] 07-29 c5 f0.05†
+
+[p12408] M22
+
+[p12409] n-Order Bohart-Adams
+
+[p12410] k_n = 0.998008 ± 4.01046; a0 = 8642.19 ± 0.000102928; n = 1.37568 ± 0.0625126
+
+[p12411] 07-29 c5 f0.05†
+
+[p12412] M23
+
+[p12413] Fractal Yoon-Nelson (Hu 2024)
+
+[p12414] k_YN0 = 1.48143 ± 0.398547; tau = 3851.52 ± 25.5449; h = 0.95 ± 0.0320098
+
+[p12415] 07-29 c5 f0.05†
+
+[p12416] M24
+
+[p12417] Parallel two-component sigmoidal (Blagojev)
+
+[p12418] p = 0.538936 ± 0.027992; tau1 = 2687.72 ± 16.257; k1 = 5.41288 ± 0.220919; tau2 = 6718.25 ± 334.131; k2 = 2.34187 ± 0.0801083
+
+[p12419] 07-29 c5 f0.10
+
+[p12420] M01
+
+[p12421] Yoon-Nelson / Thomas / BA (logistic)
+
+[p12422] k_YN = 0.00115069 ± 1.61538e-05; tau = 1688.33 ± 12.2591
+
+[p12423] 07-29 c5 f0.10
+
+[p12424] M02
+
+[p12425] Clark
+
+[p12426] r = 0.000858183 ± 2.03849e-05; A = 0.0279199 ± 0.170858; n = 1.01 ± 0.0606254
+
+[p12427] 07-29 c5 f0.10
+
+[p12428] M03
+
+[p12429] Fractal Clark
+
+[p12430] r = 0.68878 ± 0.0977902; A0 = 10247.9 ± 69486.1; n = 1.01 ± 0.0416944; h = 0.899857 ± 0.017259
+
+[p12431] 07-29 c5 f0.10
+
+[p12432] M04
+
+[p12433] Modified Dose-Response (Yan)
+
+[p12434] a = 1.90695 ± 0.00782286; t50 = 1454.1 ± 3.79037
+
+[p12435] 07-29 c5 f0.10
+
+[p12436] M05
+
+[p12437] Wolborska (linearised, early)
+
+[p12438] slope = 0.0110058 ± 0.000560437; intercept = -9.17901 ± 0.354006
+
+[p12439] 07-29 c5 f0.10
+
+[p12440] M06
+
+[p12441] Gudermannian (Hu 2021)
+
+[p12442] k = 0.000931058 ± 1.31519e-05; tau = 1675.29 ± 12.0254
+
+[p12443] 07-29 c5 f0.10
+
+[p12444] M07
+
+[p12445] Error-Function (Hu 2021)
+
+[p12446] k = 0.000494319 ± 6.89161e-06; tau = 1705.05 ± 12.6203
+
+[p12447] 07-29 c5 f0.10
+
+[p12448] M08
+
+[p12449] Tanh (Hu 2019)
+
+[p12450] k = 0.000575367 ± 8.07729e-06; tau = 1688.31 ± 12.2589
+
+[p12451] 07-29 c5 f0.10
+
+[p12452] M09
+
+[p12453] Log-Normal (Chu-Hashim)
+
+[p12454] a = 0.891782 ± 0.00343145; b = 7.28396 ± 0.00261031
+
+[p12455] 07-29 c5 f0.10
+
+[p12456] M10
+
+[p12457] Fractal Gudermannian (Hu 2024)
+
+[p12458] k0 = 0.100212 ± 0.00363226; tau0 = 1412.27 ± 3.17265; h = 0.616746 ± 0.00449027
+
+[p12459] 07-29 c5 f0.10
+
+[p12460] M11
+
+[p12461] Fractal Error-Function (Hu 2024)
+
+[p12462] k0 = 0.0839961 ± 0.00175134; tau0 = 1389.69 ± 1.9605; h = 0.680124 ± 0.00255823
+
+[p12463] 07-29 c5 f0.10
+
+[p12464] M12
+
+[p12465] Gompertz (Chu 2020)
+
+[p12466] alpha_G = 1.01797 ± 0.0150263; beta_G = 0.000855349 ± 8.48792e-06
+
+[p12467] 07-29 c5 f0.10
+
+[p12468] M13
+
+[p12469] Log-Gompertz (Chu 2020)
+
+[p12470] alpha_G = 10.209 ± 0.028172; beta_G = 1.46355 ± 0.00377256
+
+[p12471] 07-29 c5 f0.10
+
+[p12472] M14
+
+[p12473] Weibull (Chu 2021)
+
+[p12474] tau = 2099.33 ± 8.88058; k = 1.15009 ± 0.00869779
+
+[p12475] 07-29 c5 f0.10
+
+[p12476] M15
+
+[p12477] Avrami (Singh)
+
+[p12478] k = 0.000151195 ± 1.02256e-05; n = 1.15002 ± 0.00869285
+
+[p12479] 07-29 c5 f0.10
+
+[p12480] M16
+
+[p12481] Klinkenberg
+
+[p12482] K_fa = 1 ± 0.0322582; K = 2946.18 ± 55.6348
+
+[p12483] 07-29 c5 f0.10
+
+[p12484] M17
+
+[p12485] Dima (wave erf)
+
+[p12486] v_d = 0.000586496 ± 4.34117e-06; sigma_a = 0.838967 ± 0.0137438
+
+[p12487] 07-29 c5 f0.10
+
+[p12488] M18
+
+[p12489] Chern-Chien Langmuir
+
+[p12490] K_fa = 0.00295508 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 1353.6 ± 0
+
+[p12491] 07-29 c5 f0.10
+
+[p12492] M19
+
+[p12493] Chern-Chien Freundlich
+
+[p12494] K_fa = 0.00295508 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 1353.6 ± 0
+
+[p12495] 07-29 c5 f0.10
+
+[p12496] M20
+
+[p12497] Log-modified Bohart-Adams
+
+[p12498] k_BA = 1.90695 ± 0.00782286; log_a0_C0 = 7.28214 ± 0.00260668
+
+[p12499] 07-29 c5 f0.10
+
+[p12500] M21
+
+[p12501] Log-modified Yoon-Nelson
+
+[p12502] k_YN = 1.90695 ± 0.00782286; tau = 1454.1 ± 3.79037
+
+[p12503] 07-29 c5 f0.10
+
+[p12504] M22
+
+[p12505] n-Order Bohart-Adams
+
+[p12506] k_n = 0.997987 ± 2.95491; a0 = 8644.97 ± 7.58058e-05; n = 1.37563 ± 0.0430682
+
+[p12507] 07-29 c5 f0.10
+
+[p12508] M23
+
+[p12509] Fractal Yoon-Nelson (Hu 2024)
+
+[p12510] k_YN0 = 1.30734 ± 0.106418; tau = 1464.07 ± 4.53274; h = 0.95 ± 0.0107369
+
+[p12511] 07-29 c5 f0.10
+
+[p12512] M24
+
+[p12513] Parallel two-component sigmoidal (Blagojev)
+
+[p12514] p = 0.534975 ± 0.0093945; tau1 = 922.762 ± 4.98614; k1 = 3.99846 ± 0.0571124; tau2 = 2789.41 ± 43.8316; k2 = 2.37395 ± 0.0237482
+
+[p12515] 07-31 c5 f0.15*
+
+[p12516] M01
+
+[p12517] Yoon-Nelson / Thomas / BA (logistic)
+
+[p12518] k_YN = 0.00233085 ± 8.52143e-05; tau = 686.503 ± 15.1389
+
+[p12519] 07-31 c5 f0.15*
+
+[p12520] M02
+
+[p12521] Clark
+
+[p12522] r = 0.00178107 ± 0.00012505; A = 0.0225682 ± 0.448159; n = 1.01 ± 0.196967
+
+[p12523] 07-31 c5 f0.15*
+
+[p12524] M03
+
+[p12525] Fractal Clark
+
+[p12526] r = 0.80982 ± 0.161767; A0 = 1e+06 ± 1.61719e+07; n = 1.01 ± 0.0811039; h = 0.93515 ± 0.026513
+
+[p12527] 07-31 c5 f0.15*
+
+[p12528] M04
+
+[p12529] Modified Dose-Response (Yan)
+
+[p12530] a = 1.59308 ± 0.0151692; t50 = 567.08 ± 4.35141
+
+[p12531] 07-31 c5 f0.15*
+
+[p12532] M05
+
+[p12533] Wolborska (linearised, early)
+
+[p12534] slope = 0.0259346 ± 0.00359985; intercept = -8.31349 ± 0.851987
+
+[p12535] 07-31 c5 f0.15*
+
+[p12536] M06
+
+[p12537] Gudermannian (Hu 2021)
+
+[p12538] k = 0.00186937 ± 6.83339e-05; tau = 680.256 ± 14.8805
+
+[p12539] 07-31 c5 f0.15*
+
+[p12540] M07
+
+[p12541] Error-Function (Hu 2021)
+
+[p12542] k = 0.00101198 ± 3.69158e-05; tau = 694.164 ± 15.5053
+
+[p12543] 07-31 c5 f0.15*
+
+[p12544] M08
+
+[p12545] Tanh (Hu 2019)
+
+[p12546] k = 0.00116544 ± 4.26077e-05; tau = 686.502 ± 15.1388
+
+[p12547] 07-31 c5 f0.15*
+
+[p12548] M09
+
+[p12549] Log-Normal (Chu-Hashim)
+
+[p12550] a = 1.07545 ± 0.0107325; b = 6.34262 ± 0.00862952
+
+[p12551] 07-31 c5 f0.15*
+
+[p12552] M10
+
+[p12553] Fractal Gudermannian (Hu 2024)
+
+[p12554] k0 = 0.174337 ± 0.00832721; tau0 = 539.952 ± 2.4709; h = 0.665475 ± 0.00636315
+
+[p12555] 07-31 c5 f0.15*
+
+[p12556] M11
+
+[p12557] Fractal Error-Function (Hu 2024)
+
+[p12558] k0 = 0.1422 ± 0.00357448; tau0 = 529.014 ± 1.39695; h = 0.731672 ± 0.00330418
+
+[p12559] 07-31 c5 f0.15*
+
+[p12560] M12
+
+[p12561] Gompertz (Chu 2020)
+
+[p12562] alpha_G = 0.806424 ± 0.0376601; beta_G = 0.00177577 ± 5.03289e-05
+
+[p12563] 07-31 c5 f0.15*
+
+[p12564] M13
+
+[p12565] Log-Gompertz (Chu 2020)
+
+[p12566] alpha_G = 7.5026 ± 0.0331802; beta_G = 1.25246 ± 0.0050024
+
+[p12567] 07-31 c5 f0.15*
+
+[p12568] M14
+
+[p12569] Weibull (Chu 2021)
+
+[p12570] tau = 879.171 ± 11.322; k = 0.929366 ± 0.0170761
+
+[p12571] 07-31 c5 f0.15*
+
+[p12572] M15
+
+[p12573] Avrami (Singh)
+
+[p12574] k = 0.00183609 ± 0.000219977; n = 0.929361 ± 0.0170754
+
+[p12575] 07-31 c5 f0.15*
+
+[p12576] M16
+
+[p12577] Klinkenberg
+
+[p12578] K_fa = 1 ± 0.0649166; K = 1313.96 ± 50.3499
+
+[p12579] 07-31 c5 f0.15*
+
+[p12580] M17
+
+[p12581] Dima (wave erf)
+
+[p12582] v_d = 0.00144059 ± 3.21781e-05; sigma_a = 1.00658 ± 0.04528
+
+[p12583] 07-31 c5 f0.15*
+
+[p12584] M18
+
+[p12585] Chern-Chien Langmuir
+
+[p12586] K_fa = 0.0076869 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 520.366 ± 0
+
+[p12587] 07-31 c5 f0.15*
+
+[p12588] M19
+
+[p12589] Chern-Chien Freundlich
+
+[p12590] K_fa = 0.0076869 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 520.366 ± 0
+
+[p12591] 07-31 c5 f0.15*
+
+[p12592] M20
+
+[p12593] Log-modified Bohart-Adams
+
+[p12594] k_BA = 1.59308 ± 0.0151692; log_a0_C0 = 6.3405 ± 0.00767335
+
+[p12595] 07-31 c5 f0.15*
+
+[p12596] M21
+
+[p12597] Log-modified Yoon-Nelson
+
+[p12598] k_YN = 1.59308 ± 0.0151693; tau = 567.081 ± 4.3514
+
+[p12599] 07-31 c5 f0.15*
+
+[p12600] M22
+
+[p12601] n-Order Bohart-Adams
+
+[p12602] k_n = 0.999272 ± 2.4409; a0 = 8645.01 ± 6.27604e-05; n = 1.37624 ± 0.0730159
+
+[p12603] 07-31 c5 f0.15*
+
+[p12604] M23
+
+[p12605] Fractal Yoon-Nelson (Hu 2024)
+
+[p12606] k_YN0 = 1.13748 ± 0.166332; tau = 572.042 ± 5.24617; h = 0.95 ± 0.0215204
+
+[p12607] 07-31 c5 f0.15*
+
+[p12608] M24
+
+[p12609] Parallel two-component sigmoidal (Blagojev)
+
+[p12610] p = 0.474603 ± 0.0291762; tau1 = 346.217 ± 3.30001; k1 = 3.91868 ± 0.187917; tau2 = 1057.4 ± 59.7347; k2 = 1.72747 ± 0.0349526
+
+[p12611] 07-31 c10 f0.10*
+
+[p12612] M01
+
+[p12613] Yoon-Nelson / Thomas / BA (logistic)
+
+[p12614] k_YN = 0.00274535 ± 4.22117e-05; tau = 749.862 ± 5.80437
+
+[p12615] 07-31 c10 f0.10*
+
+[p12616] M02
+
+[p12617] Clark
+
+[p12618] r = 0.00202138 ± 4.96024e-05; A = 0.029753 ± 0.187213; n = 1.01 ± 0.0623192
+
+[p12619] 07-31 c10 f0.10*
+
+[p12620] M03
+
+[p12621] Fractal Clark
+
+[p12622] r = 0.455698 ± 0.0501098; A0 = 22.9612 ± 102.808; n = 1.01 ± 0.0372669; h = 0.817411 ± 0.0147244
+
+[p12623] 07-31 c10 f0.10*
+
+[p12624] M04
+
+[p12625] Modified Dose-Response (Yan)
+
+[p12626] a = 2.02771 ± 0.00788832; t50 = 652.09 ± 1.62893
+
+[p12627] 07-31 c10 f0.10*
+
+[p12628] M05
+
+[p12629] Wolborska (linearised, early)
+
+[p12630] slope = 0.0218346 ± 0.00159832; intercept = -8.50847 ± 0.45813
+
+[p12631] 07-31 c10 f0.10*
+
+[p12632] M06
+
+[p12633] Gudermannian (Hu 2021)
+
+[p12634] k = 0.00221931 ± 3.42248e-05; tau = 744.904 ± 5.68944
+
+[p12635] 07-31 c10 f0.10*
+
+[p12636] M07
+
+[p12637] Error-Function (Hu 2021)
+
+[p12638] k = 0.00118177 ± 1.81148e-05; tau = 756.201 ± 5.98105
+
+[p12639] 07-31 c10 f0.10*
+
+[p12640] M08
+
+[p12641] Tanh (Hu 2019)
+
+[p12642] k = 0.00137271 ± 2.11066e-05; tau = 749.856 ± 5.80428
+
+[p12643] 07-31 c10 f0.10*
+
+[p12644] M09
+
+[p12645] Log-Normal (Chu-Hashim)
+
+[p12646] a = 0.849889 ± 0.00319728; b = 6.48008 ± 0.00257692
+
+[p12647] 07-31 c10 f0.10*
+
+[p12648] M10
+
+[p12649] Fractal Gudermannian (Hu 2024)
+
+[p12650] k0 = 0.105526 ± 0.0033339; tau0 = 641.152 ± 1.45759; h = 0.571646 ± 0.00430069
+
+[p12651] 07-31 c10 f0.10*
+
+[p12652] M11
+
+[p12653] Fractal Error-Function (Hu 2024)
+
+[p12654] k0 = 0.10213 ± 0.00170213; tau0 = 626.663 ± 0.813416; h = 0.664239 ± 0.00224291
+
+[p12655] 07-31 c10 f0.10*
+
+[p12656] M12
+
+[p12657] Gompertz (Chu 2020)
+
+[p12658] alpha_G = 1.08112 ± 0.0168012; beta_G = 0.00201446 ± 2.13571e-05
+
+[p12659] 07-31 c10 f0.10*
+
+[p12660] M13
+
+[p12661] Log-Gompertz (Chu 2020)
+
+[p12662] alpha_G = 9.8036 ± 0.0346323; beta_G = 1.58301 ± 0.00518148
+
+[p12663] 07-31 c10 f0.10*
+
+[p12664] M14
+
+[p12665] Weibull (Chu 2021)
+
+[p12666] tau = 924.713 ± 4.30009; k = 1.20736 ± 0.0102079
+
+[p12667] 07-31 c10 f0.10*
+
+[p12668] M15
+
+[p12669] Avrami (Singh)
+
+[p12670] k = 0.000262476 ± 1.86857e-05; n = 1.20732 ± 0.0102046
+
+[p12671] 07-31 c10 f0.10*
+
+[p12672] M16
+
+[p12673] Klinkenberg
+
+[p12674] K_fa = 1 ± 0.0385613; K = 1265.72 ± 27.3995
+
+[p12675] 07-31 c10 f0.10*
+
+[p12676] M17
+
+[p12677] Dima (wave erf)
+
+[p12678] v_d = 0.0013224 ± 1.04594e-05; sigma_a = 0.791255 ± 0.014138
+
+[p12679] 07-31 c10 f0.10*
+
+[p12680] M18
+
+[p12681] Chern-Chien Langmuir
+
+[p12682] K_fa = 0.00645369 ± 0; K_L = 1 ± 0; q0 = 1 ± 0; t12 = 619.8 ± 0
+
+[p12683] 07-31 c10 f0.10*
+
+[p12684] M19
+
+[p12685] Chern-Chien Freundlich
+
+[p12686] K_fa = 0.00645369 ± 0; n = 2 ± 0; q0 = 1 ± 0; t12 = 619.8 ± 0
+
+[p12687] 07-31 c10 f0.10*
+
+[p12688] M20
+
+[p12689] Log-modified Bohart-Adams
+
+[p12690] k_BA = 2.02771 ± 0.00788832; log_a0_C0 = 6.48018 ± 0.00249802
+
+[p12691] 07-31 c10 f0.10*
+
+[p12692] M21
+
+[p12693] Log-modified Yoon-Nelson
+
+[p12694] k_YN = 2.02771 ± 0.00788832; tau = 652.09 ± 1.62893
+
+[p12695] 07-31 c10 f0.10*
+
+[p12696] M22
+
+[p12697] n-Order Bohart-Adams
+
+[p12698] k_n = 0.999272 ± 2.30168; a0 = 8645.01 ± 5.91806e-05; n = 1.37624 ± 0.0688512
+
+[p12699] 07-31 c10 f0.10*
+
+[p12700] M23
+
+[p12701] Fractal Yoon-Nelson (Hu 2024)
+
+[p12702] k_YN0 = 1.44281 ± 0.0975628; tau = 656.029 ± 1.90189; h = 0.95 ± 0.00989714
+
+[p12703] 07-31 c10 f0.10*
+
+[p12704] M24
+
+[p12705] Parallel two-component sigmoidal (Blagojev)
+
+[p12706] p = 0.370702 ± 0.0162638; tau1 = 386.939 ± 2.79171; k1 = 4.82098 ± 0.167012; tau2 = 954.999 ± 19.0136; k2 = 2.27744 ± 0.0208666
+
+### [p12708] B.3 Nested F-tests
+
+[p12709] Table B.3) All six nested model comparisons the pipeline evaluates, for every run.
+
+[p12710] Run
+
+[p12711] Simple
+
+[p12712] Complex
+
+[p12713] RSS simple
+
+[p12714] RSS complex
+
+[p12715] df simple
+
+[p12716] df complex
+
+[p12717] F
+
+[p12718] p
+
+[p12719] Extra term warranted
+
+[p12720] run 3
+
+[p12721] M01
+
+[p12722] M02
+
+[p12723] 1.61929
+
+[p12724] 1.14716
+
+[p12725] 381
+
+[p12726] 380
+
+[p12727] 156.398
+
+[p12728] 2.711e-30
+
+[p12729] yes
+
+[p12730] run 3
+
+[p12731] M01
+
+[p12732] M04
+
+[p12733] 1.61929
+
+[p12734] 0.131771
+
+[p12735] 381
+
+[p12736] 381
+
+[p12737] n/a
+
+[p12738] n/a
+
+[p12739] no
+
+[p12740] run 3
+
+[p12741] M01
+
+[p12742] M23
+
+[p12743] 1.61929
+
+[p12744] 0.0532120
+
+[p12745] 381
+
+[p12746] 380
+
+[p12747] 11183.8
+
+[p12748] 6.151e-284
+
+[p12749] yes
+
+[p12750] run 3
+
+[p12751] M02
+
+[p12752] M03
+
+[p12753] 1.14716
+
+[p12754] 0.0338284
+
+[p12755] 380
+
+[p12756] 379
+
+[p12757] 12473.3
+
+[p12758] 4.161e-292
+
+[p12759] yes
+
+[p12760] run 3
+
+[p12761] M07
+
+[p12762] M11
+
+[p12763] 1.77546
+
+[p12764] 0.0218045
+
+[p12765] 381
+
+[p12766] 380
+
+[p12767] 30562.0
+
+[p12768] < 1e-300
+
+[p12769] yes
+
+[p12770] run 3
+
+[p12771] M06
+
+[p12772] M10
+
+[p12773] 1.51516
+
+[p12774] 0.0229869
+
+[p12775] 381
+
+[p12776] 380
+
+[p12777] 24667.2
+
+[p12778] < 1e-300
+
+[p12779] yes
+
+[p12780] run 4
+
+[p12781] M01
+
+[p12782] M02
+
+[p12783] 5.50269
+
+[p12784] 2.81591
+
+[p12785] 1430
+
+[p12786] 1429
+
+[p12787] 1363.47
+
+[p12788] 3.906e-210
+
+[p12789] yes
+
+[p12790] run 4
+
+[p12791] M01
+
+[p12792] M04
+
+[p12793] 5.50269
+
+[p12794] 0.789464
+
+[p12795] 1430
+
+[p12796] 1430
+
+[p12797] n/a
+
+[p12798] n/a
+
+[p12799] no
+
+[p12800] run 4
+
+[p12801] M01
+
+[p12802] M23
+
+[p12803] 5.50269
+
+[p12804] 0.182407
+
+[p12805] 1430
+
+[p12806] 1429
+
+[p12807] 41679.7
+
+[p12808] < 1e-300
+
+[p12809] yes
+
+[p12810] run 4
+
+[p12811] M02
+
+[p12812] M03
+
+[p12813] 2.81591
+
+[p12814] 0.127684
+
+[p12815] 1429
+
+[p12816] 1428
+
+[p12817] 30064.7
+
+[p12818] < 1e-300
+
+[p12819] yes
+
+[p12820] run 4
+
+[p12821] M07
+
+[p12822] M11
+
+[p12823] 5.79968
+
+[p12824] 0.0816600
+
+[p12825] 1430
+
+[p12826] 1429
+
+[p12827] 1.000618e+05
+
+[p12828] < 1e-300
+
+[p12829] yes
+
+[p12830] run 4
+
+[p12831] M06
+
+[p12832] M10
+
+[p12833] 5.35574
+
+[p12834] 0.0737348
+
+[p12835] 1430
+
+[p12836] 1429
+
+[p12837] 1.023666e+05
+
+[p12838] < 1e-300
+
+[p12839] yes
+
+[p12840] run 5
+
+[p12841] M01
+
+[p12842] M02
+
+[p12843] 3.29267
+
+[p12844] 1.99590
+
+[p12845] 819
+
+[p12846] 818
+
+[p12847] 531.465
+
+[p12848] 5.334e-91
+
+[p12849] yes
+
+[p12850] run 5
+
+[p12851] M01
+
+[p12852] M04
+
+[p12853] 3.29267
+
+[p12854] 0.387292
+
+[p12855] 819
+
+[p12856] 819
+
+[p12857] n/a
+
+[p12858] n/a
+
+[p12859] no
+
+[p12860] run 5
+
+[p12861] M01
+
+[p12862] M23
+
+[p12863] 3.29267
+
+[p12864] 0.147710
+
+[p12865] 819
+
+[p12866] 818
+
+[p12867] 17416.3
+
+[p12868] < 1e-300
+
+[p12869] yes
+
+[p12870] run 5
+
+[p12871] M02
+
+[p12872] M03
+
+[p12873] 1.99590
+
+[p12874] 0.0941340
+
+[p12875] 818
+
+[p12876] 817
+
+[p12877] 16505.7
+
+[p12878] < 1e-300
+
+[p12879] yes
+
+[p12880] run 5
+
+[p12881] M07
+
+[p12882] M11
+
+[p12883] 3.55001
+
+[p12884] 0.0313517
+
+[p12885] 819
+
+[p12886] 818
+
+[p12887] 91805.6
+
+[p12888] < 1e-300
+
+[p12889] yes
+
+[p12890] run 5
+
+[p12891] M06
+
+[p12892] M10
+
+[p12893] 3.13404
+
+[p12894] 0.0598835
+
+[p12895] 819
+
+[p12896] 818
+
+[p12897] 41992.5
+
+[p12898] < 1e-300
+
+[p12899] yes
+
+[p12900] run 6
+
+[p12901] M01
+
+[p12902] M02
+
+[p12903] 0.921294
+
+[p12904] 0.621414
+
+[p12905] 283
+
+[p12906] 282
+
+[p12907] 136.087
+
+[p12908] 6.362e-26
+
+[p12909] yes
+
+[p12910] run 6
+
+[p12911] M01
+
+[p12912] M04
+
+[p12913] 0.921294
+
+[p12914] 0.0485605
+
+[p12915] 283
+
+[p12916] 283
+
+[p12917] n/a
+
+[p12918] n/a
+
+[p12919] no
+
+[p12920] run 6
+
+[p12921] M01
+
+[p12922] M23
+
+[p12923] 0.921294
+
+[p12924] 0.0164726
+
+[p12925] 283
+
+[p12926] 282
+
+[p12927] 15489.9
+
+[p12928] 1.836e-248
+
+[p12929] yes
+
+[p12930] run 6
+
+[p12931] M02
+
+[p12932] M03
+
+[p12933] 0.621414
+
+[p12934] 0.00797466
+
+[p12935] 282
+
+[p12936] 281
+
+[p12937] 21615.5
+
+[p12938] 7.953e-268
+
+[p12939] yes
+
+[p12940] run 6
+
+[p12941] M07
+
+[p12942] M11
+
+[p12943] 0.976063
+
+[p12944] 0.0153278
+
+[p12945] 283
+
+[p12946] 282
+
+[p12947] 17675.6
+
+[p12948] 2.070e-256
+
+[p12949] yes
+
+[p12950] run 6
+
+[p12951] M06
+
+[p12952] M10
+
+[p12953] 0.885906
+
+[p12954] 0.00569535
+
+[p12955] 283
+
+[p12956] 282
+
+[p12957] 43582.8
+
+[p12958] < 1e-300
+
+[p12959] yes
+
+[p12960] run 8
+
+[p12961] M01
+
+[p12962] M02
+
+[p12963] 0.688046
+
+[p12964] 0.450536
+
+[p12965] 253
+
+[p12966] 252
+
+[p12967] 132.847
+
+[p12968] 5.738e-25
+
+[p12969] yes
+
+[p12970] run 8
+
+[p12971] M01
+
+[p12972] M04
+
+[p12973] 0.688046
+
+[p12974] 0.0303231
+
+[p12975] 253
+
+[p12976] 253
+
+[p12977] n/a
+
+[p12978] n/a
+
+[p12979] no
+
+[p12980] run 8
+
+[p12981] M01
+
+[p12982] M23
+
+[p12983] 0.688046
+
+[p12984] 0.0121829
+
+[p12985] 253
+
+[p12986] 252
+
+[p12987] 13980.0
+
+[p12988] 9.323e-223
+
+[p12989] yes
+
+[p12990] run 8
+
+[p12991] M02
+
+[p12992] M03
+
+[p12993] 0.450536
+
+[p12994] 0.00695324
+
+[p12995] 252
+
+[p12996] 251
+
+[p12997] 16012.6
+
+[p12998] 2.272e-229
+
+[p12999] yes
+
+[p13000] run 8
+
+[p13001] M07
+
+[p13002] M11
+
+[p13003] 0.742169
+
+[p13004] 0.0135156
+
+[p13005] 253
+
+[p13006] 252
+
+[p13007] 13585.9
+
+[p13008] 3.210e-221
+
+[p13009] yes
+
+[p13010] run 8
+
+[p13011] M06
+
+[p13012] M10
+
+[p13013] 0.653175
+
+[p13014] 0.00621385
+
+[p13015] 253
+
+[p13016] 252
+
+[p13017] 26237.2
+
+[p13018] 9.388e-257
+
+[p13019] yes
+
+[p13020] 06-26 c5 f0.05
+
+[p13021] M01
+
+[p13022] M02
+
+[p13023] 10.9365
+
+[p13024] 6.79555
+
+[p13025] 1656
+
+[p13026] 1655
+
+[p13027] 1008.50
+
+[p13028] 3.135e-173
+
+[p13029] yes
+
+[p13030] 06-26 c5 f0.05
+
+[p13031] M01
+
+[p13032] M04
+
+[p13033] 10.9365
+
+[p13034] 1.56008
+
+[p13035] 1656
+
+[p13036] 1656
+
+[p13037] n/a
+
+[p13038] n/a
+
+[p13039] no
+
+[p13040] 06-26 c5 f0.05
+
+[p13041] M01
+
+[p13042] M23
+
+[p13043] 10.9365
+
+[p13044] 1.82447
+
+[p13045] 1656
+
+[p13046] 1655
+
+[p13047] 8265.67
+
+[p13048] < 1e-300
+
+[p13049] yes
+
+[p13050] 06-26 c5 f0.05
+
+[p13051] M02
+
+[p13052] M03
+
+[p13053] 6.79555
+
+[p13054] 0.409266
+
+[p13055] 1655
+
+[p13056] 1654
+
+[p13057] 25809.4
+
+[p13058] < 1e-300
+
+[p13059] yes
+
+[p13060] 06-26 c5 f0.05
+
+[p13061] M07
+
+[p13062] M11
+
+[p13063] 11.8466
+
+[p13064] 0.135884
+
+[p13065] 1656
+
+[p13066] 1655
+
+[p13067] 1.426316e+05
+
+[p13068] < 1e-300
+
+[p13069] yes
+
+[p13070] 06-26 c5 f0.05
+
+[p13071] M06
+
+[p13072] M10
+
+[p13073] 10.3614
+
+[p13074] 0.371586
+
+[p13075] 1656
+
+[p13076] 1655
+
+[p13077] 44493.6
+
+[p13078] < 1e-300
+
+[p13079] yes
+
+[p13080] 07-03 c5 f0.10
+
+[p13081] M01
+
+[p13082] M02
+
+[p13083] 2.16812
+
+[p13084] 1.17007
+
+[p13085] 411
+
+[p13086] 410
+
+[p13087] 349.724
+
+[p13088] 7.059e-57
+
+[p13089] yes
+
+[p13090] 07-03 c5 f0.10
+
+[p13091] M01
+
+[p13092] M04
+
+[p13093] 2.16812
+
+[p13094] 0.209581
+
+[p13095] 411
+
+[p13096] 411
+
+[p13097] n/a
+
+[p13098] n/a
+
+[p13099] no
+
+[p13100] 07-03 c5 f0.10
+
+[p13101] M01
+
+[p13102] M23
+
+[p13103] 2.16812
+
+[p13104] 0.241321
+
+[p13105] 411
+
+[p13106] 410
+
+[p13107] 3273.61
+
+[p13108] 1.430e-197
+
+[p13109] yes
+
+[p13110] 07-03 c5 f0.10
+
+[p13111] M02
+
+[p13112] M03
+
+[p13113] 1.17007
+
+[p13114] 0.0812593
+
+[p13115] 410
+
+[p13116] 409
+
+[p13117] 5480.28
+
+[p13118] 5.384e-239
+
+[p13119] yes
+
+[p13120] 07-03 c5 f0.10
+
+[p13121] M07
+
+[p13122] M11
+
+[p13123] 2.34203
+
+[p13124] 0.0569800
+
+[p13125] 411
+
+[p13126] 410
+
+[p13127] 16442.1
+
+[p13128] < 1e-300
+
+[p13129] yes
+
+[p13130] 07-03 c5 f0.10
+
+[p13131] M06
+
+[p13132] M10
+
+[p13133] 2.06848
+
+[p13134] 0.155272
+
+[p13135] 411
+
+[p13136] 410
+
+[p13137] 5051.89
+
+[p13138] 1.195e-232
+
+[p13139] yes
+
+[p13140] 07-08 c5 f0.15
+
+[p13141] M01
+
+[p13142] M02
+
+[p13143] 2.56570
+
+[p13144] 1.87292
+
+[p13145] 438
+
+[p13146] 437
+
+[p13147] 161.643
+
+[p13148] 9.934e-32
+
+[p13149] yes
+
+[p13150] 07-08 c5 f0.15
+
+[p13151] M01
+
+[p13152] M04
+
+[p13153] 2.56570
+
+[p13154] 0.157280
+
+[p13155] 438
+
+[p13156] 438
+
+[p13157] n/a
+
+[p13158] n/a
+
+[p13159] no
+
+[p13160] 07-08 c5 f0.15
+
+[p13161] M01
+
+[p13162] M23
+
+[p13163] 2.56570
+
+[p13164] 0.209480
+
+[p13165] 438
+
+[p13166] 437
+
+[p13167] 4915.37
+
+[p13168] 7.207e-240
+
+[p13169] yes
+
+[p13170] 07-08 c5 f0.15
+
+[p13171] M02
+
+[p13172] M03
+
+[p13173] 1.87292
+
+[p13174] 0.0245748
+
+[p13175] 437
+
+[p13176] 436
+
+[p13177] 32792.9
+
+[p13178] < 1e-300
+
+[p13179] yes
+
+[p13180] 07-08 c5 f0.15
+
+[p13181] M07
+
+[p13182] M11
+
+[p13183] 2.81417
+
+[p13184] 0.00856487
+
+[p13185] 438
+
+[p13186] 437
+
+[p13187] 1.431487e+05
+
+[p13188] < 1e-300
+
+[p13189] yes
+
+[p13190] 07-08 c5 f0.15
+
+[p13191] M06
+
+[p13192] M10
+
+[p13193] 2.39700
+
+[p13194] 0.0387387
+
+[p13195] 438
+
+[p13196] 437
+
+[p13197] 26602.9
+
+[p13198] < 1e-300
+
+[p13199] yes
+
+[p13200] 07-08 c10 f0.05
+
+[p13201] M01
+
+[p13202] M02
+
+[p13203] 10.4067
+
+[p13204] 5.97681
+
+[p13205] 1744
+
+[p13206] 1743
+
+[p13207] 1291.88
+
+[p13208] 3.722e-212
+
+[p13209] yes
+
+[p13210] 07-08 c10 f0.05
+
+[p13211] M01
+
+[p13212] M04
+
+[p13213] 10.4067
+
+[p13214] 1.94772
+
+[p13215] 1744
+
+[p13216] 1744
+
+[p13217] n/a
+
+[p13218] n/a
+
+[p13219] no
+
+[p13220] 07-08 c10 f0.05
+
+[p13221] M01
+
+[p13222] M23
+
+[p13223] 10.4067
+
+[p13224] 2.23255
+
+[p13225] 1744
+
+[p13226] 1743
+
+[p13227] 6381.73
+
+[p13228] < 1e-300
+
+[p13229] yes
+
+[p13230] 07-08 c10 f0.05
+
+[p13231] M02
+
+[p13232] M03
+
+[p13233] 5.97681
+
+[p13234] 0.501650
+
+[p13235] 1743
+
+[p13236] 1742
+
+[p13237] 19012.7
+
+[p13238] < 1e-300
+
+[p13239] yes
+
+[p13240] 07-08 c10 f0.05
+
+[p13241] M07
+
+[p13242] M11
+
+[p13243] 10.9745
+
+[p13244] 0.0829050
+
+[p13245] 1744
+
+[p13246] 1743
+
+[p13247] 2.289851e+05
+
+[p13248] < 1e-300
+
+[p13249] yes
+
+[p13250] 07-08 c10 f0.05
+
+[p13251] M06
+
+[p13252] M10
+
+[p13253] 10.0845
+
+[p13254] 0.289602
+
+[p13255] 1744
+
+[p13256] 1743
+
+[p13257] 58951.6
+
+[p13258] < 1e-300
+
+[p13259] yes
+
+[p13260] 07-08 c10 f0.10
+
+[p13261] M01
+
+[p13262] M02
+
+[p13263] 5.64738
+
+[p13264] 3.40368
+
+[p13265] 1470
+
+[p13266] 1469
+
+[p13267] 968.360
+
+[p13268] 1.008e-163
+
+[p13269] yes
+
+[p13270] 07-08 c10 f0.10
+
+[p13271] M01
+
+[p13272] M04
+
+[p13273] 5.64738
+
+[p13274] 0.315473
+
+[p13275] 1470
+
+[p13276] 1470
+
+[p13277] n/a
+
+[p13278] n/a
+
+[p13279] no
+
+[p13280] 07-08 c10 f0.10
+
+[p13281] M01
+
+[p13282] M23
+
+[p13283] 5.64738
+
+[p13284] 0.413453
+
+[p13285] 1470
+
+[p13286] 1469
+
+[p13287] 18596.2
+
+[p13288] < 1e-300
+
+[p13289] yes
+
+[p13290] 07-08 c10 f0.10
+
+[p13291] M02
+
+[p13292] M03
+
+[p13293] 3.40368
+
+[p13294] 0.0535380
+
+[p13295] 1469
+
+[p13296] 1468
+
+[p13297] 91860.2
+
+[p13298] < 1e-300
+
+[p13299] yes
+
+[p13300] 07-08 c10 f0.10
+
+[p13301] M07
+
+[p13302] M11
+
+[p13303] 6.21989
+
+[p13304] 0.0373085
+
+[p13305] 1470
+
+[p13306] 1469
+
+[p13307] 2.434357e+05
+
+[p13308] < 1e-300
+
+[p13309] yes
+
+[p13310] 07-08 c10 f0.10
+
+[p13311] M06
+
+[p13312] M10
+
+[p13313] 5.29184
+
+[p13314] 0.150301
+
+[p13315] 1470
+
+[p13316] 1469
+
+[p13317] 50251.8
+
+[p13318] < 1e-300
+
+[p13319] yes
+
+[p13320] 07-08 c10 f0.15
+
+[p13321] M01
+
+[p13322] M02
+
+[p13323] 2.19524
+
+[p13324] 1.48528
+
+[p13325] 475
+
+[p13326] 474
+
+[p13327] 226.572
+
+[p13328] 3.928e-42
+
+[p13329] yes
+
+[p13330] 07-08 c10 f0.15
+
+[p13331] M01
+
+[p13332] M04
+
+[p13333] 2.19524
+
+[p13334] 0.137055
+
+[p13335] 475
+
+[p13336] 475
+
+[p13337] n/a
+
+[p13338] n/a
+
+[p13339] no
+
+[p13340] 07-08 c10 f0.15
+
+[p13341] M01
+
+[p13342] M23
+
+[p13343] 2.19524
+
+[p13344] 0.186388
+
+[p13345] 475
+
+[p13346] 474
+
+[p13347] 5108.67
+
+[p13348] 5.507e-256
+
+[p13349] yes
+
+[p13350] 07-08 c10 f0.15
+
+[p13351] M02
+
+[p13352] M03
+
+[p13353] 1.48528
+
+[p13354] 0.0233034
+
+[p13355] 474
+
+[p13356] 473
+
+[p13357] 29674.4
+
+[p13358] < 1e-300
+
+[p13359] yes
+
+[p13360] 07-08 c10 f0.15
+
+[p13361] M07
+
+[p13362] M11
+
+[p13363] 2.36808
+
+[p13364] 0.0306115
+
+[p13365] 475
+
+[p13366] 474
+
+[p13367] 36194.2
+
+[p13368] < 1e-300
+
+[p13369] yes
+
+[p13370] 07-08 c10 f0.15
+
+[p13371] M06
+
+[p13372] M10
+
+[p13373] 2.08337
+
+[p13374] 0.0411487
+
+[p13375] 475
+
+[p13376] 474
+
+[p13377] 23524.8
+
+[p13378] < 1e-300
+
+[p13379] yes
+
+[p13380] 07-10 c15 f0.05
+
+[p13381] M01
+
+[p13382] M02
+
+[p13383] 10.2652
+
+[p13384] 6.05872
+
+[p13385] 1648
+
+[p13386] 1647
+
+[p13387] 1143.48
+
+[p13388] 8.273e-191
+
+[p13389] yes
+
+[p13390] 07-10 c15 f0.05
+
+[p13391] M01
+
+[p13392] M04
+
+[p13393] 10.2652
+
+[p13394] 2.40952
+
+[p13395] 1648
+
+[p13396] 1648
+
+[p13397] n/a
+
+[p13398] n/a
+
+[p13399] no
+
+[p13400] 07-10 c15 f0.05
+
+[p13401] M01
+
+[p13402] M23
+
+[p13403] 10.2652
+
+[p13404] 2.68907
+
+[p13405] 1648
+
+[p13406] 1647
+
+[p13407] 4640.21
+
+[p13408] < 1e-300
+
+[p13409] yes
+
+[p13410] 07-10 c15 f0.05
+
+[p13411] M02
+
+[p13412] M03
+
+[p13413] 6.05872
+
+[p13414] 0.840337
+
+[p13415] 1647
+
+[p13416] 1646
+
+[p13417] 10221.5
+
+[p13418] < 1e-300
+
+[p13419] yes
+
+[p13420] 07-10 c15 f0.05
+
+[p13421] M07
+
+[p13422] M11
+
+[p13423] 10.9530
+
+[p13424] 0.114351
+
+[p13425] 1648
+
+[p13426] 1647
+
+[p13427] 1.561086e+05
+
+[p13428] < 1e-300
+
+[p13429] yes
+
+[p13430] 07-10 c15 f0.05
+
+[p13431] M06
+
+[p13432] M10
+
+[p13433] 9.85457
+
+[p13434] 0.338991
+
+[p13435] 1648
+
+[p13436] 1647
+
+[p13437] 46231.8
+
+[p13438] < 1e-300
+
+[p13439] yes
+
+[p13440] 07-10 c15 f0.10
+
+[p13441] M01
+
+[p13442] M02
+
+[p13443] 4.25008
+
+[p13444] 2.60076
+
+[p13445] 1145
+
+[p13446] 1144
+
+[p13447] 725.488
+
+[p13448] 3.732e-124
+
+[p13449] yes
+
+[p13450] 07-10 c15 f0.10
+
+[p13451] M01
+
+[p13452] M04
+
+[p13453] 4.25008
+
+[p13454] 0.380031
+
+[p13455] 1145
+
+[p13456] 1145
+
+[p13457] n/a
+
+[p13458] n/a
+
+[p13459] no
+
+[p13460] 07-10 c15 f0.10
+
+[p13461] M01
+
+[p13462] M23
+
+[p13463] 4.25008
+
+[p13464] 0.469803
+
+[p13465] 1145
+
+[p13466] 1144
+
+[p13467] 9205.23
+
+[p13468] < 1e-300
+
+[p13469] yes
+
+[p13470] 07-10 c15 f0.10
+
+[p13471] M02
+
+[p13472] M03
+
+[p13473] 2.60076
+
+[p13474] 0.0759748
+
+[p13475] 1144
+
+[p13476] 1143
+
+[p13477] 37984.1
+
+[p13478] < 1e-300
+
+[p13479] yes
+
+[p13480] 07-10 c15 f0.10
+
+[p13481] M07
+
+[p13482] M11
+
+[p13483] 4.61425
+
+[p13484] 0.0484381
+
+[p13485] 1145
+
+[p13486] 1144
+
+[p13487] 1.078345e+05
+
+[p13488] < 1e-300
+
+[p13489] yes
+
+[p13490] 07-10 c15 f0.10
+
+[p13491] M06
+
+[p13492] M10
+
+[p13493] 4.01991
+
+[p13494] 0.159471
+
+[p13495] 1145
+
+[p13496] 1144
+
+[p13497] 27693.7
+
+[p13498] < 1e-300
+
+[p13499] yes
+
+[p13500] 07-15 c15 f0.15
+
+[p13501] M01
+
+[p13502] M02
+
+[p13503] 3.65739
+
+[p13504] 2.48448
+
+[p13505] 1000
+
+[p13506] 999
+
+[p13507] 471.626
+
+[p13508] 5.803e-86
+
+[p13509] yes
+
+[p13510] 07-15 c15 f0.15
+
+[p13511] M01
+
+[p13512] M04
+
+[p13513] 3.65739
+
+[p13514] 0.315062
+
+[p13515] 1000
+
+[p13516] 1000
+
+[p13517] n/a
+
+[p13518] n/a
+
+[p13519] no
+
+[p13520] 07-15 c15 f0.15
+
+[p13521] M01
+
+[p13522] M23
+
+[p13523] 3.65739
+
+[p13524] 0.399415
+
+[p13525] 1000
+
+[p13526] 999
+
+[p13527] 8148.71
+
+[p13528] < 1e-300
+
+[p13529] yes
+
+[p13530] 07-15 c15 f0.15
+
+[p13531] M02
+
+[p13532] M03
+
+[p13533] 2.48448
+
+[p13534] 0.0622932
+
+[p13535] 999
+
+[p13536] 998
+
+[p13537] 38805.8
+
+[p13538] < 1e-300
+
+[p13539] yes
+
+[p13540] 07-15 c15 f0.15
+
+[p13541] M07
+
+[p13542] M11
+
+[p13543] 3.97711
+
+[p13544] 0.0368294
+
+[p13545] 1000
+
+[p13546] 999
+
+[p13547] 1.068805e+05
+
+[p13548] < 1e-300
+
+[p13549] yes
+
+[p13550] 07-15 c15 f0.15
+
+[p13551] M06
+
+[p13552] M10
+
+[p13553] 3.44708
+
+[p13554] 0.108634
+
+[p13555] 1000
+
+[p13556] 999
+
+[p13557] 30700.3
+
+[p13558] < 1e-300
+
+[p13559] yes
+
+[p13560] 07-17 c15 f0.10
+
+[p13561] M01
+
+[p13562] M02
+
+[p13563] 2.62263
+
+[p13564] 1.38414
+
+[p13565] 776
+
+[p13566] 775
+
+[p13567] 693.451
+
+[p13568] 1.164e-109
+
+[p13569] yes
+
+[p13570] 07-17 c15 f0.10
+
+[p13571] M01
+
+[p13572] M04
+
+[p13573] 2.62263
+
+[p13574] 0.336838
+
+[p13575] 776
+
+[p13576] 776
+
+[p13577] n/a
+
+[p13578] n/a
+
+[p13579] no
+
+[p13580] 07-17 c15 f0.10
+
+[p13581] M01
+
+[p13582] M23
+
+[p13583] 2.62263
+
+[p13584] 0.381902
+
+[p13585] 776
+
+[p13586] 775
+
+[p13587] 4547.15
+
+[p13588] < 1e-300
+
+[p13589] yes
+
+[p13590] 07-17 c15 f0.10
+
+[p13591] M02
+
+[p13592] M03
+
+[p13593] 1.38414
+
+[p13594] 0.131156
+
+[p13595] 775
+
+[p13596] 774
+
+[p13597] 7394.33
+
+[p13598] < 1e-300
+
+[p13599] yes
+
+[p13600] 07-17 c15 f0.10
+
+[p13601] M07
+
+[p13602] M11
+
+[p13603] 2.81188
+
+[p13604] 0.104331
+
+[p13605] 776
+
+[p13606] 775
+
+[p13607] 20112.5
+
+[p13608] < 1e-300
+
+[p13609] yes
+
+[p13610] 07-17 c15 f0.10
+
+[p13611] M06
+
+[p13612] M10
+
+[p13613] 2.51381
+
+[p13614] 0.245996
+
+[p13615] 776
+
+[p13616] 775
+
+[p13617] 7144.63
+
+[p13618] < 1e-300
+
+[p13619] yes
+
+[p13620] 07-22 c10 f0.05*
+
+[p13621] M01
+
+[p13622] M02
+
+[p13623] 6.51538
+
+[p13624] 3.17898
+
+[p13625] 1362
+
+[p13626] 1361
+
+[p13627] 1428.40
+
+[p13628] 2.513e-214
+
+[p13629] yes
+
+[p13630] 07-22 c10 f0.05*
+
+[p13631] M01
+
+[p13632] M04
+
+[p13633] 6.51538
+
+[p13634] 1.45026
+
+[p13635] 1362
+
+[p13636] 1362
+
+[p13637] n/a
+
+[p13638] n/a
+
+[p13639] no
+
+[p13640] 07-22 c10 f0.05*
+
+[p13641] M01
+
+[p13642] M23
+
+[p13643] 6.51538
+
+[p13644] 1.60755
+
+[p13645] 1362
+
+[p13646] 1361
+
+[p13647] 4155.12
+
+[p13648] < 1e-300
+
+[p13649] yes
+
+[p13650] 07-22 c10 f0.05*
+
+[p13651] M02
+
+[p13652] M03
+
+[p13653] 3.17898
+
+[p13654] 0.376305
+
+[p13655] 1361
+
+[p13656] 1360
+
+[p13657] 10129.1
+
+[p13658] < 1e-300
+
+[p13659] yes
+
+[p13660] 07-22 c10 f0.05*
+
+[p13661] M07
+
+[p13662] M11
+
+[p13663] 6.79228
+
+[p13664] 0.288909
+
+[p13665] 1362
+
+[p13666] 1361
+
+[p13667] 30636.2
+
+[p13668] < 1e-300
+
+[p13669] yes
+
+[p13670] 07-22 c10 f0.05*
+
+[p13671] M06
+
+[p13672] M10
+
+[p13673] 6.39570
+
+[p13674] 0.655634
+
+[p13675] 1362
+
+[p13676] 1361
+
+[p13677] 11915.5
+
+[p13678] < 1e-300
+
+[p13679] yes
+
+[p13680] 07-22 c10 f0.10*
+
+[p13681] M01
+
+[p13682] M02
+
+[p13683] 1.28992
+
+[p13684] 0.830372
+
+[p13685] 323
+
+[p13686] 322
+
+[p13687] 178.204
+
+[p13688] 1.179e-32
+
+[p13689] yes
+
+[p13690] 07-22 c10 f0.10*
+
+[p13691] M01
+
+[p13692] M04
+
+[p13693] 1.28992
+
+[p13694] 0.128075
+
+[p13695] 323
+
+[p13696] 323
+
+[p13697] n/a
+
+[p13698] n/a
+
+[p13699] no
+
+[p13700] 07-22 c10 f0.10*
+
+[p13701] M01
+
+[p13702] M23
+
+[p13703] 1.28992
+
+[p13704] 0.142825
+
+[p13705] 323
+
+[p13706] 322
+
+[p13707] 2586.14
+
+[p13708] 6.247e-156
+
+[p13709] yes
+
+[p13710] 07-22 c10 f0.10*
+
+[p13711] M02
+
+[p13712] M03
+
+[p13713] 0.830372
+
+[p13714] 0.0650102
+
+[p13715] 322
+
+[p13716] 321
+
+[p13717] 3779.12
+
+[p13718] 1.277e-179
+
+[p13719] yes
+
+[p13720] 07-22 c10 f0.10*
+
+[p13721] M07
+
+[p13722] M11
+
+[p13723] 1.40169
+
+[p13724] 0.0357372
+
+[p13725] 323
+
+[p13726] 322
+
+[p13727] 12307.5
+
+[p13728] 1.243e-258
+
+[p13729] yes
+
+[p13730] 07-22 c10 f0.10*
+
+[p13731] M06
+
+[p13732] M10
+
+[p13733] 1.21923
+
+[p13734] 0.0933497
+
+[p13735] 323
+
+[p13736] 322
+
+[p13737] 3883.60
+
+[p13738] 9.848e-182
+
+[p13739] yes
+
+[p13740] 07-29 c5 f0.05†
+
+[p13741] M01
+
+[p13742] M02
+
+[p13743] 4.97567
+
+[p13744] 2.86526
+
+[p13745] 601
+
+[p13746] 600
+
+[p13747] 441.929
+
+[p13748] 6.193e-74
+
+[p13749] yes
+
+[p13750] 07-29 c5 f0.05†
+
+[p13751] M01
+
+[p13752] M04
+
+[p13753] 4.97567
+
+[p13754] 0.986423
+
+[p13755] 601
+
+[p13756] 601
+
+[p13757] n/a
+
+[p13758] n/a
+
+[p13759] no
+
+[p13760] 07-29 c5 f0.05†
+
+[p13761] M01
+
+[p13762] M23
+
+[p13763] 4.97567
+
+[p13764] 1.10555
+
+[p13765] 601
+
+[p13766] 600
+
+[p13767] 2100.37
+
+[p13768] 3.849e-198
+
+[p13769] yes
+
+[p13770] 07-29 c5 f0.05†
+
+[p13771] M02
+
+[p13772] M03
+
+[p13773] 2.86526
+
+[p13774] 0.335682
+
+[p13775] 600
+
+[p13776] 599
+
+[p13777] 4513.86
+
+[p13778] 4.310e-281
+
+[p13779] yes
+
+[p13780] 07-29 c5 f0.05†
+
+[p13781] M07
+
+[p13782] M11
+
+[p13783] 5.24997
+
+[p13784] 0.127601
+
+[p13785] 601
+
+[p13786] 600
+
+[p13787] 24086.1
+
+[p13788] < 1e-300
+
+[p13789] yes
+
+[p13790] 07-29 c5 f0.05†
+
+[p13791] M06
+
+[p13792] M10
+
+[p13793] 4.82650
+
+[p13794] 0.245692
+
+[p13795] 601
+
+[p13796] 600
+
+[p13797] 11186.7
+
+[p13798] < 1e-300
+
+[p13799] yes
+
+[p13800] 07-29 c5 f0.10
+
+[p13801] M01
+
+[p13802] M02
+
+[p13803] 8.51824
+
+[p13804] 5.04903
+
+[p13805] 1571
+
+[p13806] 1570
+
+[p13807] 1078.75
+
+[p13808] 1.557e-180
+
+[p13809] yes
+
+[p13810] 07-29 c5 f0.10
+
+[p13811] M01
+
+[p13812] M04
+
+[p13813] 8.51824
+
+[p13814] 0.870054
+
+[p13815] 1571
+
+[p13816] 1571
+
+[p13817] n/a
+
+[p13818] n/a
+
+[p13819] no
+
+[p13820] 07-29 c5 f0.10
+
+[p13821] M01
+
+[p13822] M23
+
+[p13823] 8.51824
+
+[p13824] 1.00994
+
+[p13825] 1571
+
+[p13826] 1570
+
+[p13827] 11672.0
+
+[p13828] < 1e-300
+
+[p13829] yes
+
+[p13830] 07-29 c5 f0.10
+
+[p13831] M02
+
+[p13832] M03
+
+[p13833] 5.04903
+
+[p13834] 0.320344
+
+[p13835] 1570
+
+[p13836] 1569
+
+[p13837] 23160.4
+
+[p13838] < 1e-300
+
+[p13839] yes
+
+[p13840] 07-29 c5 f0.10
+
+[p13841] M07
+
+[p13842] M11
+
+[p13843] 9.24778
+
+[p13844] 0.222868
+
+[p13845] 1571
+
+[p13846] 1570
+
+[p13847] 63576.3
+
+[p13848] < 1e-300
+
+[p13849] yes
+
+[p13850] 07-29 c5 f0.10
+
+[p13851] M06
+
+[p13852] M10
+
+[p13853] 8.07095
+
+[p13854] 0.570366
+
+[p13855] 1571
+
+[p13856] 1570
+
+[p13857] 20646.2
+
+[p13858] < 1e-300
+
+[p13859] yes
+
+[p13860] 07-31 c5 f0.15*
+
+[p13861] M01
+
+[p13862] M02
+
+[p13863] 2.07265
+
+[p13864] 1.46668
+
+[p13865] 349
+
+[p13866] 348
+
+[p13867] 143.778
+
+[p13868] 5.779e-28
+
+[p13869] yes
+
+[p13870] 07-31 c5 f0.15*
+
+[p13871] M01
+
+[p13872] M04
+
+[p13873] 2.07265
+
+[p13874] 0.203057
+
+[p13875] 349
+
+[p13876] 349
+
+[p13877] n/a
+
+[p13878] n/a
+
+[p13879] no
+
+[p13880] 07-31 c5 f0.15*
+
+[p13881] M01
+
+[p13882] M23
+
+[p13883] 2.07265
+
+[p13884] 0.249547
+
+[p13885] 349
+
+[p13886] 348
+
+[p13887] 2542.37
+
+[p13888] 4.870e-162
+
+[p13889] yes
+
+[p13890] 07-31 c5 f0.15*
+
+[p13891] M02
+
+[p13892] M03
+
+[p13893] 1.46668
+
+[p13894] 0.0519313
+
+[p13895] 348
+
+[p13896] 347
+
+[p13897] 9453.24
+
+[p13898] 8.069e-254
+
+[p13899] yes
+
+[p13900] 07-31 c5 f0.15*
+
+[p13901] M07
+
+[p13902] M11
+
+[p13903] 2.24148
+
+[p13904] 0.0244082
+
+[p13905] 349
+
+[p13906] 348
+
+[p13907] 31609.8
+
+[p13908] < 1e-300
+
+[p13909] yes
+
+[p13910] 07-31 c5 f0.15*
+
+[p13911] M06
+
+[p13912] M10
+
+[p13913] 1.95997
+
+[p13914] 0.0722509
+
+[p13915] 349
+
+[p13916] 348
+
+[p13917] 9092.29
+
+[p13918] 1.684e-251
+
+[p13919] yes
+
+[p13920] 07-31 c10 f0.10*
+
+[p13921] M01
+
+[p13922] M02
+
+[p13923] 3.44795
+
+[p13924] 1.96562
+
+[p13925] 1169
+
+[p13926] 1168
+
+[p13927] 880.819
+
+[p13928] 1.046e-144
+
+[p13929] yes
+
+[p13930] 07-31 c10 f0.10*
+
+[p13931] M01
+
+[p13932] M04
+
+[p13933] 3.44795
+
+[p13934] 0.288005
+
+[p13935] 1169
+
+[p13936] 1169
+
+[p13937] n/a
+
+[p13938] n/a
+
+[p13939] no
+
+[p13940] 07-31 c10 f0.10*
+
+[p13941] M01
+
+[p13942] M23
+
+[p13943] 3.44795
+
+[p13944] 0.334409
+
+[p13945] 1169
+
+[p13946] 1168
+
+[p13947] 10874.7
+
+[p13948] < 1e-300
+
+[p13949] yes
+
+[p13950] 07-31 c10 f0.10*
+
+[p13951] M02
+
+[p13952] M03
+
+[p13953] 1.96562
+
+[p13954] 0.111785
+
+[p13955] 1168
+
+[p13956] 1167
+
+[p13957] 19353.5
+
+[p13958] < 1e-300
+
+[p13959] yes
+
+[p13960] 07-31 c10 f0.10*
+
+[p13961] M07
+
+[p13962] M11
+
+[p13963] 3.76849
+
+[p13964] 0.0699778
+
+[p13965] 1169
+
+[p13966] 1168
+
+[p13967] 61731.9
+
+[p13968] < 1e-300
+
+[p13969] yes
+
+[p13970] 07-31 c10 f0.10*
+
+[p13971] M06
+
+[p13972] M10
+
+[p13973] 3.25413
+
+[p13974] 0.215874
+
+[p13975] 1169
+
+[p13976] 1168
+
+[p13977] 16438.7
+
+[p13978] < 1e-300
+
+[p13979] yes
+
+### [p13981] B.4 Non-converged and degenerate fits
+
+[p13982] Table B.4) Models that failed to converge, or converged to a non-finite or negative adjusted R². Reported for completeness and excluded from every ranking in this report.
+
+[p13983] Run
+
+[p13984] Code
+
+[p13985] Model
+
+[p13986] Converged
+
+[p13987] Adj R²
+
+[p13988] AICc
+
+[p13989] Message
+
+[p13990] run 3
+
+[p13991] M18
+
+[p13992] Chern-Chien Langmuir
+
+[p13993] yes
+
+[p13994] n/a
+
+[p13995] n/a
+
+[p13996] converged
+
+[p13997] run 3
+
+[p13998] M19
+
+[p13999] Chern-Chien Freundlich
+
+[p14000] yes
+
+[p14001] n/a
+
+[p14002] n/a
+
+[p14003] converged
+
+[p14004] run 4
+
+[p14005] M18
+
+[p14006] Chern-Chien Langmuir
+
+[p14007] yes
+
+[p14008] n/a
+
+[p14009] n/a
+
+[p14010] converged
+
+[p14011] run 4
+
+[p14012] M19
+
+[p14013] Chern-Chien Freundlich
+
+[p14014] yes
+
+[p14015] n/a
+
+[p14016] n/a
+
+[p14017] converged
+
+[p14018] run 5
+
+[p14019] M18
+
+[p14020] Chern-Chien Langmuir
+
+[p14021] yes
+
+[p14022] n/a
+
+[p14023] n/a
+
+[p14024] converged
+
+[p14025] run 5
+
+[p14026] M19
+
+[p14027] Chern-Chien Freundlich
+
+[p14028] yes
+
+[p14029] n/a
+
+[p14030] n/a
+
+[p14031] converged
+
+[p14032] run 6
+
+[p14033] M05
+
+[p14034] Wolborska (linearised, early)
+
+[p14035] yes
+
+[p14036] 0.947381
+
+[p14037] n/a
+
+[p14038] converged
+
+[p14039] run 6
+
+[p14040] M18
+
+[p14041] Chern-Chien Langmuir
+
+[p14042] yes
+
+[p14043] n/a
+
+[p14044] n/a
+
+[p14045] converged
+
+[p14046] run 6
+
+[p14047] M19
+
+[p14048] Chern-Chien Freundlich
+
+[p14049] yes
+
+[p14050] n/a
+
+[p14051] n/a
+
+[p14052] converged
+
+[p14053] run 8
+
+[p14054] M05
+
+[p14055] Wolborska (linearised, early)
+
+[p14056] no
+
+[p14057] n/a
+
+[p14058] n/a
+
+[p14059] insufficient early-region points
+
+[p14060] run 8
+
+[p14061] M18
+
+[p14062] Chern-Chien Langmuir
+
+[p14063] yes
+
+[p14064] n/a
+
+[p14065] n/a
+
+[p14066] converged
+
+[p14067] run 8
+
+[p14068] M19
+
+[p14069] Chern-Chien Freundlich
+
+[p14070] yes
+
+[p14071] n/a
+
+[p14072] n/a
+
+[p14073] converged
+
+[p14074] 06-26 c5 f0.05
+
+[p14075] M18
+
+[p14076] Chern-Chien Langmuir
+
+[p14077] yes
+
+[p14078] -61822.5
+
+[p14079] n/a
+
+[p14080] converged
+
+[p14081] 06-26 c5 f0.05
+
+[p14082] M19
+
+[p14083] Chern-Chien Freundlich
+
+[p14084] yes
+
+[p14085] -61822.5
+
+[p14086] n/a
+
+[p14087] converged
+
+[p14088] 06-26 c5 f0.05
+
+[p14089] M22
+
+[p14090] n-Order Bohart-Adams
+
+[p14091] yes
+
+[p14092] -0.890789
+
+[p14093] -3040.22
+
+[p14094] converged
+
+[p14095] 07-03 c5 f0.10
+
+[p14096] M18
+
+[p14097] Chern-Chien Langmuir
+
+[p14098] yes
+
+[p14099] n/a
+
+[p14100] n/a
+
+[p14101] converged
+
+[p14102] 07-03 c5 f0.10
+
+[p14103] M19
+
+[p14104] Chern-Chien Freundlich
+
+[p14105] yes
+
+[p14106] n/a
+
+[p14107] n/a
+
+[p14108] converged
+
+[p14109] 07-03 c5 f0.10
+
+[p14110] M22
+
+[p14111] n-Order Bohart-Adams
+
+[p14112] yes
+
+[p14113] -0.984968
+
+[p14114] -690.459
+
+[p14115] converged
+
+[p14116] 07-08 c5 f0.15
+
+[p14117] M18
+
+[p14118] Chern-Chien Langmuir
+
+[p14119] yes
+
+[p14120] n/a
+
+[p14121] n/a
+
+[p14122] converged
+
+[p14123] 07-08 c5 f0.15
+
+[p14124] M19
+
+[p14125] Chern-Chien Freundlich
+
+[p14126] yes
+
+[p14127] n/a
+
+[p14128] n/a
+
+[p14129] converged
+
+[p14130] 07-08 c5 f0.15
+
+[p14131] M22
+
+[p14132] n-Order Bohart-Adams
+
+[p14133] yes
+
+[p14134] -0.689826
+
+[p14135] -1066.02
+
+[p14136] converged
+
+[p14137] 07-08 c10 f0.05
+
+[p14138] M18
+
+[p14139] Chern-Chien Langmuir
+
+[p14140] yes
+
+[p14141] -31826.7
+
+[p14142] n/a
+
+[p14143] converged
+
+[p14144] 07-08 c10 f0.05
+
+[p14145] M19
+
+[p14146] Chern-Chien Freundlich
+
+[p14147] yes
+
+[p14148] -31826.7
+
+[p14149] n/a
+
+[p14150] converged
+
+[p14151] 07-08 c10 f0.05
+
+[p14152] M22
+
+[p14153] n-Order Bohart-Adams
+
+[p14154] yes
+
+[p14155] -1.04148
+
+[p14156] -2608.35
+
+[p14157] converged
+
+[p14158] 07-08 c10 f0.10
+
+[p14159] M18
+
+[p14160] Chern-Chien Langmuir
+
+[p14161] yes
+
+[p14162] n/a
+
+[p14163] n/a
+
+[p14164] converged
+
+[p14165] 07-08 c10 f0.10
+
+[p14166] M19
+
+[p14167] Chern-Chien Freundlich
+
+[p14168] yes
+
+[p14169] n/a
+
+[p14170] n/a
+
+[p14171] converged
+
+[p14172] 07-08 c10 f0.10
+
+[p14173] M22
+
+[p14174] n-Order Bohart-Adams
+
+[p14175] yes
+
+[p14176] -0.537722
+
+[p14177] -3361.04
+
+[p14178] converged
+
+[p14179] 07-08 c10 f0.15
+
+[p14180] M18
+
+[p14181] Chern-Chien Langmuir
+
+[p14182] yes
+
+[p14183] n/a
+
+[p14184] n/a
+
+[p14185] converged
+
+[p14186] 07-08 c10 f0.15
+
+[p14187] M19
+
+[p14188] Chern-Chien Freundlich
+
+[p14189] yes
+
+[p14190] n/a
+
+[p14191] n/a
+
+[p14192] converged
+
+[p14193] 07-08 c10 f0.15
+
+[p14194] M22
+
+[p14195] n-Order Bohart-Adams
+
+[p14196] yes
+
+[p14197] -0.564706
+
+[p14198] -1090.86
+
+[p14199] converged
+
+[p14200] 07-10 c15 f0.05
+
+[p14201] M18
+
+[p14202] Chern-Chien Langmuir
+
+[p14203] yes
+
+[p14204] -1.577277e+05
+
+[p14205] n/a
+
+[p14206] converged
+
+[p14207] 07-10 c15 f0.05
+
+[p14208] M19
+
+[p14209] Chern-Chien Freundlich
+
+[p14210] yes
+
+[p14211] -1.577277e+05
+
+[p14212] n/a
+
+[p14213] converged
+
+[p14214] 07-10 c15 f0.05
+
+[p14215] M22
+
+[p14216] n-Order Bohart-Adams
+
+[p14217] yes
+
+[p14218] -0.924004
+
+[p14219] -2627.99
+
+[p14220] converged
+
+[p14221] 07-10 c15 f0.10
+
+[p14222] M18
+
+[p14223] Chern-Chien Langmuir
+
+[p14224] yes
+
+[p14225] n/a
+
+[p14226] n/a
+
+[p14227] converged
+
+[p14228] 07-10 c15 f0.10
+
+[p14229] M19
+
+[p14230] Chern-Chien Freundlich
+
+[p14231] yes
+
+[p14232] n/a
+
+[p14233] n/a
+
+[p14234] converged
+
+[p14235] 07-10 c15 f0.10
+
+[p14236] M22
+
+[p14237] n-Order Bohart-Adams
+
+[p14238] yes
+
+[p14239] -0.449940
+
+[p14240] -2675.20
+
+[p14241] converged
+
+[p14242] 07-15 c15 f0.15
+
+[p14243] M18
+
+[p14244] Chern-Chien Langmuir
+
+[p14245] yes
+
+[p14246] n/a
+
+[p14247] n/a
+
+[p14248] converged
+
+[p14249] 07-15 c15 f0.15
+
+[p14250] M19
+
+[p14251] Chern-Chien Freundlich
+
+[p14252] yes
+
+[p14253] n/a
+
+[p14254] n/a
+
+[p14255] converged
+
+[p14256] 07-15 c15 f0.15
+
+[p14257] M22
+
+[p14258] n-Order Bohart-Adams
+
+[p14259] yes
+
+[p14260] -0.390116
+
+[p14261] -2673.39
+
+[p14262] converged
+
+[p14263] 07-17 c15 f0.10
+
+[p14264] M18
+
+[p14265] Chern-Chien Langmuir
+
+[p14266] yes
+
+[p14267] n/a
+
+[p14268] n/a
+
+[p14269] converged
+
+[p14270] 07-17 c15 f0.10
+
+[p14271] M19
+
+[p14272] Chern-Chien Freundlich
+
+[p14273] yes
+
+[p14274] n/a
+
+[p14275] n/a
+
+[p14276] converged
+
+[p14277] 07-17 c15 f0.10
+
+[p14278] M22
+
+[p14279] n-Order Bohart-Adams
+
+[p14280] yes
+
+[p14281] -0.456682
+
+[p14282] -1597.44
+
+[p14283] converged
+
+[p14284] 07-22 c10 f0.05*
+
+[p14285] M18
+
+[p14286] Chern-Chien Langmuir
+
+[p14287] yes
+
+[p14288] -48903.5
+
+[p14289] n/a
+
+[p14290] converged
+
+[p14291] 07-22 c10 f0.05*
+
+[p14292] M19
+
+[p14293] Chern-Chien Freundlich
+
+[p14294] yes
+
+[p14295] -48903.5
+
+[p14296] n/a
+
+[p14297] converged
+
+[p14298] 07-22 c10 f0.05*
+
+[p14299] M22
+
+[p14300] n-Order Bohart-Adams
+
+[p14301] yes
+
+[p14302] -1.01045
+
+[p14303] -1812.93
+
+[p14304] converged
+
+[p14305] 07-22 c10 f0.10*
+
+[p14306] M18
+
+[p14307] Chern-Chien Langmuir
+
+[p14308] yes
+
+[p14309] n/a
+
+[p14310] n/a
+
+[p14311] converged
+
+[p14312] 07-22 c10 f0.10*
+
+[p14313] M19
+
+[p14314] Chern-Chien Freundlich
+
+[p14315] yes
+
+[p14316] n/a
+
+[p14317] n/a
+
+[p14318] converged
+
+[p14319] 07-22 c10 f0.10*
+
+[p14320] M22
+
+[p14321] n-Order Bohart-Adams
+
+[p14322] yes
+
+[p14323] -0.384583
+
+[p14324] -785.870
+
+[p14325] converged
+
+[p14326] 07-29 c5 f0.05†
+
+[p14327] M18
+
+[p14328] Chern-Chien Langmuir
+
+[p14329] yes
+
+[p14330] n/a
+
+[p14331] n/a
+
+[p14332] converged
+
+[p14333] 07-29 c5 f0.05†
+
+[p14334] M19
+
+[p14335] Chern-Chien Freundlich
+
+[p14336] yes
+
+[p14337] n/a
+
+[p14338] n/a
+
+[p14339] converged
+
+[p14340] 07-29 c5 f0.05†
+
+[p14341] M22
+
+[p14342] n-Order Bohart-Adams
+
+[p14343] yes
+
+[p14344] -1.37335
+
+[p14345] -772.361
+
+[p14346] converged
+
+[p14347] 07-29 c5 f0.10
+
+[p14348] M18
+
+[p14349] Chern-Chien Langmuir
+
+[p14350] yes
+
+[p14351] n/a
+
+[p14352] n/a
+
+[p14353] converged
+
+[p14354] 07-29 c5 f0.10
+
+[p14355] M19
+
+[p14356] Chern-Chien Freundlich
+
+[p14357] yes
+
+[p14358] n/a
+
+[p14359] n/a
+
+[p14360] converged
+
+[p14361] 07-29 c5 f0.10
+
+[p14362] M22
+
+[p14363] n-Order Bohart-Adams
+
+[p14364] yes
+
+[p14365] -0.813749
+
+[p14366] -2980.50
+
+[p14367] converged
+
+[p14368] 07-31 c5 f0.15*
+
+[p14369] M18
+
+[p14370] Chern-Chien Langmuir
+
+[p14371] yes
+
+[p14372] n/a
+
+[p14373] n/a
+
+[p14374] converged
+
+[p14375] 07-31 c5 f0.15*
+
+[p14376] M19
+
+[p14377] Chern-Chien Freundlich
+
+[p14378] yes
+
+[p14379] n/a
+
+[p14380] n/a
+
+[p14381] converged
+
+[p14382] 07-31 c5 f0.15*
+
+[p14383] M22
+
+[p14384] n-Order Bohart-Adams
+
+[p14385] yes
+
+[p14386] -0.619087
+
+[p14387] -799.836
+
+[p14388] converged
+
+[p14389] 07-31 c10 f0.10*
+
+[p14390] M18
+
+[p14391] Chern-Chien Langmuir
+
+[p14392] yes
+
+[p14393] n/a
+
+[p14394] n/a
+
+[p14395] converged
+
+[p14396] 07-31 c10 f0.10*
+
+[p14397] M19
+
+[p14398] Chern-Chien Freundlich
+
+[p14399] yes
+
+[p14400] n/a
+
+[p14401] n/a
+
+[p14402] converged
+
+[p14403] 07-31 c10 f0.10*
+
+[p14404] M22
+
+[p14405] n-Order Bohart-Adams
+
+[p14406] yes
+
+[p14407] -0.384834
+
+[p14408] -2813.12
+
+[p14409] converged
 

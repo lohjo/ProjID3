@@ -7,6 +7,7 @@ dictionary, returns the ``matplotlib`` figure, and writes a 300-dpi PNG to
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Iterable, Optional
 
@@ -16,6 +17,7 @@ import matplotlib
 matplotlib.use("Agg")  # headless backend; figures saved to disk
 import matplotlib.pyplot as plt
 
+from .axes_origin import snap_origin
 from .fit import FitResult
 from .models import weibull_derivative
 from .mtz_fem import project_snapshots
@@ -23,6 +25,9 @@ from .performance import t_breakthrough
 
 
 _DPI = 300
+# Set BREAKTHROUGH_AXES_LOG=1 to print the per-axis pin/skip audit for every
+# figure saved. Off by default so the pipeline's own tables stay readable.
+_VERBOSE_AXES = bool(os.environ.get("BREAKTHROUGH_AXES_LOG"))
 _FIGSIZE_S = (6.5, 5.0)
 _FIGSIZE_M = (9.0, 5.5)
 _FIGSIZE_L = (10.0, 7.0)
@@ -32,6 +37,10 @@ def _save(fig: plt.Figure, out_dir: Optional[Path], stem: str) -> plt.Figure:
     if out_dir is not None:
         out_dir = Path(out_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
+        # Pin (0,0) to the corner before laying out: the tick labels change, and
+        # tight_layout has to see the final ones. Residual panels in P4/P6/P7 are
+        # left alone automatically — their data is signed. See axes_origin.
+        snap_origin(fig, verbose=_VERBOSE_AXES, label=stem)
         fig.tight_layout()
         fig.savefig(out_dir / f"{stem}.png", dpi=_DPI)
     return fig

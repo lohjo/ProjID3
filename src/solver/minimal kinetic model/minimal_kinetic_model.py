@@ -32,9 +32,16 @@ import os
 from dataclasses import dataclass
 from datetime import datetime
 
+import sys
+
 import numpy as np
 from scipy.integrate import solve_ivp
 from scipy.optimize import least_squares
+
+# This script sits one level below src/solver/, so unlike its siblings it has to
+# put src/solver on sys.path itself before the shared figure helper resolves.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from breakthrough_fit.axes_origin import snap_origin  # noqa: E402
 
 # ---------------------------------------------------------------- constants
 R_GAS = 8.314          # J/(mol K)
@@ -289,6 +296,7 @@ def main():
     ax.set(xlabel="t [min]", ylabel="C/C0",
            title="Minimal kinetic model (global qm,b,k) vs measured")
     ax.legend(fontsize=8)
+    snap_origin(fg, label="minimal_kinetic_fit")
     fg.tight_layout()
     fg.savefig(os.path.join(FIGDIR, "minimal_kinetic_fit.png"), dpi=150)
     plt.close(fg)
@@ -299,6 +307,7 @@ def main():
     v_rh, v_num, err, t_st = verify_rankine_hugoniot(bed, qm, b, ax)
     fg.suptitle("Rankine–Hugoniot check, run 5 geometry (fitted isotherm, k -> eq.)",
                 fontsize=10)
+    snap_origin(fg, label="minimal_kinetic_rh")
     fg.tight_layout()
     fg.savefig(os.path.join(FIGDIR, "minimal_kinetic_rh.png"), dpi=150)
     plt.close(fg)

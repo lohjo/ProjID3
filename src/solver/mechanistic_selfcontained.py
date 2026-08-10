@@ -31,6 +31,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+# Run as `python src/solver/mechanistic_selfcontained.py`, so src/solver is on sys.path.
+from breakthrough_fit.axes_origin import snap_origin
+
 DATA_DIR = Path(__file__).parent / "data" / "new runs"
 OUT_DIR = Path(__file__).parents[1] / "img" / "generated" / "mechanistic_selfcontained"
 
@@ -276,6 +279,7 @@ def stage_v1():
     ax.plot(t_eval, ce / cf, "k--", lw=1.5, label="Ogata–Banks (D.5)")
     ax.set_xlabel("t [s]"); ax.set_ylabel("c(L,t)/c_f")
     ax.set_title("V1 — k=0 advection–dispersion vs exact erfc solution")
+    snap_origin(fig, label="V1_ade_vs_erfc")
     ax.legend(); fig.tight_layout()
     fig.savefig(OUT_DIR / "V1_ade_vs_erfc.png", dpi=300); plt.close(fig)
 
@@ -349,6 +353,7 @@ def stage_v2(iso):
     axes[1].set_title(f"RH speed check: err {err_v*100:.3f} %")
     axes[1].legend()
     fig.suptitle("V2 — isothermal equilibrium shock: Rankine–Hugoniot verification")
+    snap_origin(fig, label="V2_rh_front")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "V2_rh_front.png", dpi=300); plt.close(fig)
 
@@ -413,6 +418,7 @@ def stage_v3(iso):
     ax.set_xlabel("η = z − v_RH t [cm]"); ax.set_ylabel("c/c_f")
     ax.set_title(f"V3 — exact LDF travelling wave, RMS {rms*100:.2f}% "
                  f"(tail asymmetry ×{1+bc*cf:.2f})")
+    snap_origin(fig, label="V3_travelling_wave")
     ax.legend(); fig.tight_layout()
     fig.savefig(OUT_DIR / "V3_travelling_wave.png", dpi=300); plt.close(fig)
     assert rms < 0.01, "travelling-wave RMS >= 1 %"
@@ -470,6 +476,7 @@ def stage_v4(iso):
     axes[1].set_xlabel("t [s]"); axes[1].set_ylabel("T_out − T_0 [K]")
     axes[1].set_title("Outlet temperature excursion"); axes[1].legend()
     fig.suptitle("V4 — non-isothermal Toth demo (placeholder thermal parameters)")
+    snap_origin(fig, label="V4_nonisothermal")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "V4_nonisothermal.png", dpi=300); plt.close(fig)
 
@@ -673,6 +680,7 @@ def stage_fit():
         f"eps = {EPS} (placeholder, flagged)", fontsize=11, va="center")
     fig.suptitle("F5 — measured breakthrough vs global mechanistic fit "
                  "(runs 3/4/5/6/8)")
+    snap_origin(fig, label="F5_run_overlays")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "F5_run_overlays.png", dpi=300); plt.close(fig)
 
@@ -696,6 +704,7 @@ def stage_fit():
     ax.plot([], [], "kx", label="measured q_dyn (dynamic, NOT equilibrium)")
     ax.set_xlabel("p_CO2 [kPa]"); ax.set_ylabel("q* [mol/kg]")
     ax.set_title("F6 — fitted isothermal isotherms at T_amb (flagged: single-T fit)")
+    snap_origin(fig, label="F6_isotherm")
     ax.legend(); fig.tight_layout()
     fig.savefig(OUT_DIR / "F6_isotherm.png", dpi=300); plt.close(fig)
 

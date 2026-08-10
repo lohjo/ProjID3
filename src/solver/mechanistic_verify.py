@@ -42,6 +42,9 @@ import matplotlib
 matplotlib.use("Agg")          # headless: figures are written, never shown
 import matplotlib.pyplot as plt
 
+# Run as `python src/solver/mechanistic_verify.py`, so src/solver is on sys.path.
+from breakthrough_fit.axes_origin import snap_origin
+
 trapz = getattr(np, "trapezoid", None) or np.trapz  # numpy 2.x rename
 
 FIGDIR = os.path.join("src", "img", "generated", "mechanistic")
@@ -285,6 +288,7 @@ def test1_ade(fig):
         ax[1].loglog(Ns, es[0] * Ns[0] / Ns, "k:", label="slope −1 (1st order)")
         ax[1].set(xlabel="N", ylabel="rel. L² error", title="grid convergence")
         ax[1].legend()
+        snap_origin(fg, label="V1_ade_vs_erfc")
         fg.tight_layout()
         fg.savefig(os.path.join(FIGDIR, "V1_ade_vs_erfc.png"), dpi=150)
         plt.close(fg)
@@ -330,6 +334,7 @@ def test2_rh(fig):
         ax[1].axvline(1.0, color="k", ls=":", label="t_st (B.1/D.4)")
         ax[1].set(xlabel="t/t_st", ylabel="c(L,t)/c_f", title="outlet breakthrough")
         ax[1].legend()
+        snap_origin(fg, label="V2_rh_front")
         fg.tight_layout()
         fg.savefig(os.path.join(FIGDIR, "V2_rh_front.png"), dpi=150)
         plt.close(fg)
@@ -369,6 +374,7 @@ def test3_wave(fig):
         ax.set(xlabel="η − η₀ [m]", ylabel="c/c_f",
                title=f"T3: LDF constant-pattern wave  (RMS dev {err*100:.2f}%)")
         ax.legend()
+        snap_origin(fg, label="V3_travelling_wave")
         fg.tight_layout()
         fg.savefig(os.path.join(FIGDIR, "V3_travelling_wave.png"), dpi=150)
         plt.close(fg)
@@ -414,6 +420,7 @@ def test5_full(fig):
             ax[1].plot(tv / 60, dT, label=tag)
         ax[1].set(xlabel="t [min]", ylabel="T(L,t) − T₀ [K]", title="outlet temperature excursion")
         ax[1].legend(fontsize=8)
+        snap_origin(fg, label="V4_nonisothermal")
         fg.tight_layout()
         fg.savefig(os.path.join(FIGDIR, "V4_nonisothermal.png"), dpi=150)
         plt.close(fg)

@@ -35,6 +35,7 @@ import numpy as np
 import pandas as pd
 
 from breakthrough_fit import models as M
+from breakthrough_fit.axes_origin import snap_origin
 from breakthrough_fit.parse import DataParser
 
 # .../src/solver/breakthrough_fit/cross_run_figs.py -> repo root is parents[3].
@@ -44,6 +45,21 @@ RESULTS_GLOB = REPO / "src" / "solver" / "breakthrough_out"
 DATA_DIR = REPO / "src" / "solver" / "data"
 
 CLEAN_RE = re.compile(r"^(\d+)ml_(\d+)g$")
+
+
+def _perf(row, stem: str) -> float:
+    """Read a performance metric under either the old or the current column name.
+
+    The synthetic ``*ml_*g`` results tables this module was built on carry ``t_b``
+    / ``t_E`` / ``t50``; ``new_runs_pipeline._write_csv`` writes the same
+    seconds-valued metrics as ``t_b_s`` / ``t_E_s`` / ``t50_s``. This module was
+    never updated, so it raised KeyError on the first real-run CSV it globbed.
+    Same quantity, same units — read whichever name the file actually has.
+    """
+    for key in (stem, f"{stem}_s"):
+        if key in row.index:
+            return float(row[key]) if pd.notna(row[key]) else float("nan")
+    return float("nan")
 MASS_MARKERS = {2: "o", 4: "s", 6: "^"}
 MASS_COLORS = {2: "#1f77b4", 4: "#d62728", 6: "#2ca02c"}
 
@@ -180,9 +196,9 @@ def load_runs() -> list[dict]:
                 "R2_M24": r2_of("M24"),
                 "R2_M10": r2_of("M10"),
                 "R2_M11": r2_of("M11"),
-                "t_b_s": float(first["t_b"]) if pd.notna(first["t_b"]) else float("nan"),
-                "t_E_s": float(first["t_E"]) if pd.notna(first["t_E"]) else float("nan"),
-                "t50_s": float(first["t50"]) if pd.notna(first["t50"]) else float("nan"),
+                "t_b_s": _perf(first, "t_b"),
+                "t_E_s": _perf(first, "t_E"),
+                "t50_s": _perf(first, "t50"),
                 "q_dyn": float(first["q_dyn_mol_per_kg"])
                 if pd.notna(first["q_dyn_mol_per_kg"])
                 else float("nan"),
@@ -236,6 +252,7 @@ def fig9_param_trends(rows: list[dict]) -> None:
         "L = 32.5 cm, d = 3.37 cm)",
         fontsize=11,
     )
+    snap_origin(fig, label="fig9")
     fig.tight_layout(rect=(0, 0, 1, 0.95))
     path = OUT_DIR / "fig9_param_trends_vs_flow.png"
     fig.savefig(path, dpi=300)
@@ -275,6 +292,7 @@ def fig10_model_ranking(rows: list[dict]) -> None:
     ax.axvline(0.0, color="k", linewidth=0.6)
     ax.grid(axis="x", alpha=0.3)
     ax.set_title("Model performance ranking", fontsize=10)
+    snap_origin(fig, label="fig10")
     fig.tight_layout()
     path = OUT_DIR / "fig10_model_ranking.png"
     fig.savefig(path, dpi=300)
@@ -335,6 +353,7 @@ def fig11_breakthrough_window(rows: list[dict]) -> None:
     )
     ax.grid(alpha=0.3)
     ax.legend(fontsize=8, loc="lower right")
+    snap_origin(fig, label="fig11")
     fig.tight_layout()
     path = OUT_DIR / "fig11_breakthrough_window.png"
     fig.savefig(path, dpi=300)
@@ -378,6 +397,7 @@ def fig12_degenerate(rows: list[dict]) -> None:
     )
     ax.grid(alpha=0.3)
     ax.legend(fontsize=8, loc="upper right")
+    snap_origin(fig, label="fig12")
     fig.tight_layout()
     path = OUT_DIR / "fig12_degenerate_runs.png"
     fig.savefig(path, dpi=300)
